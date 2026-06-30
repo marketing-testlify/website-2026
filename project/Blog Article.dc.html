@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+a{text-decoration:none;color:inherit;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8A7A7D;margin:0 0 18px;}
+.eyebrow b{color:#F23F44;font-weight:600;}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;padding:14px 26px;border-radius:13px;transition:transform .25s ease, box-shadow .25s ease;cursor:pointer;border:none;}
+.btn-primary{background:#F23F44;color:#fff;box-shadow:0 12px 26px rgba(242,63,68,.30);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(242,63,68,.40);}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.artwrap{max-width:740px;margin:0 auto;padding:0 28px;}
+.crumb{font-size:13px;color:#9A878A;font-weight:600;margin:36px 0 22px;}
+.crumb a{color:#F23F44;}
+.arttitle{font-size:46px;line-height:1.08;font-weight:800;letter-spacing:-1.6px;margin:0 0 22px;}
+.artmeta{display:flex;align-items:center;gap:12px;font-size:13.5px;color:#9A878A;margin-bottom:30px;}
+.artav{width:42px;height:42px;border-radius:50%;background:#F23F44;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;}
+.artname{font-weight:700;color:#1A1014;font-size:14px;}
+.arthero{height:380px;border-radius:22px;background:linear-gradient(150deg,#F23F44,#7A1418);margin-bottom:44px;}
+.prose p{font-size:18px;line-height:1.75;color:#3A2C30;margin:0 0 24px;}
+.prose h2{font-size:30px;font-weight:800;letter-spacing:-.8px;margin:46px 0 18px;color:#1A1014;}
+.prose h3{font-size:22px;font-weight:700;letter-spacing:-.4px;margin:34px 0 12px;color:#1A1014;}
+.prose ul{margin:0 0 24px;padding-left:24px;}
+.prose li{font-size:18px;line-height:1.7;color:#3A2C30;margin-bottom:10px;}
+.prose strong{color:#1A1014;font-weight:700;}
+.pull{border-left:4px solid #F23F44;padding:6px 0 6px 24px;margin:32px 0;font-size:24px;line-height:1.45;font-weight:600;letter-spacing:-.4px;color:#1A1014;}
+.callout{background:#FBF3EE;border:1px solid #F4E1D6;border-radius:18px;padding:28px 30px;margin:36px 0;}
+.callout p{margin:0;font-size:16px;line-height:1.65;color:#3A2C30;}
+.share{display:flex;gap:10px;align-items:center;margin:48px 0;padding:24px 0;border-top:1px solid #F1E6E7;border-bottom:1px solid #F1E6E7;}
+.sbtn{width:42px;height:42px;border-radius:11px;border:1px solid #EFE2E3;display:flex;align-items:center;justify-content:center;color:#6A5A5D;font-weight:700;font-size:14px;transition:all .2s ease;}
+.sbtn:hover{border-color:#F2B7B9;color:#F23F44;transform:translateY(-2px);}
+.related{background:#FBF3EE;padding:72px 28px;margin-top:56px;}
+.relgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1100px;margin:0 auto;}
+.relcard{background:#fff;border:1px solid #EFE2E3;border-radius:18px;overflow:hidden;transition:transform .25s ease, box-shadow .25s ease;}
+.relcard:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(110,11,14,.10);}
+.relimg{height:140px;}
+.relbody{padding:20px;}
+.reltitle{font-size:16px;font-weight:700;line-height:1.35;margin:0 0 8px;}
+.relmeta{font-size:12.5px;color:#9A878A;}
+@media(max-width:920px){
+  .arttitle{font-size:34px;letter-spacing:-1px;}
+  .arthero{height:220px;}
+  .prose p,.prose li{font-size:16.5px;}
+  .relgrid{grid-template-columns:1fr;}
+}
+</style>
+</helmet>
+<dc-import name="Site Header" announcement="New guide · The 2026 skills-based hiring playbook" announcement-cta="Read now" home-href="Homepage.dc.html" hint-size="100%,110px"></dc-import>
+<article class="artwrap">
+  <p class="crumb reveal in"><a href="Blog.dc.html">Blog</a> &nbsp;·&nbsp; Hiring strategy</p>
+  <h1 class="arttitle reveal in">The 2026 skills-based hiring playbook</h1>
+  <div class="artmeta reveal in"><span class="artav">SK</span><div><div class="artname">Sneha Kulkarni</div><div>Co-founder &amp; CPO</div></div><span>·</span><span>12 min read</span><span>·</span><span>June 2026</span></div>
+</article>
+<div class="artwrap reveal in"><div class="arthero"></div></div>
+<div class="artwrap prose">
+  <p class="reveal in">For most of the last century, the résumé was the hiring world's currency. A degree, a job title, a recognizable logo — these were the proxies we used to guess who could do the work. The problem is that proxies are exactly that: guesses. And they systematically miss great people.</p>
+  <p class="reveal in">Skills-based hiring flips the model. Instead of asking "who looks qualified?", it asks "who can actually do this job?" — and then measures it directly. This playbook walks through how to put that into practice, step by step.</p>
+  <div class="pull reveal in">"The best predictor of job performance isn't where someone worked — it's whether they can do the work in front of them."</div>
+  <h2 class="reveal in">1. Start with the work, not the wishlist</h2>
+  <p class="reveal in">Before you write a single requirement, define the three to five outcomes this role must deliver in its first year. Every assessment you design should map back to one of them. If a "requirement" doesn't connect to an outcome, cut it — it's almost certainly filtering on background, not ability.</p>
+  <h2 class="reveal in">2. Replace screening filters with signals</h2>
+  <p class="reveal in">Keyword filters and degree requirements are blunt instruments. They reject qualified people for the wrong reasons and let unqualified people through for the right ones. Replace them with structured signals:</p>
+  <ul class="reveal in">
+    <li><strong>Work-sample tests</strong> that mirror real tasks from the role.</li>
+    <li><strong>Cognitive and role-specific assessments</strong> validated against performance.</li>
+    <li><strong>Structured, scored interviews</strong> using the same rubric for every candidate.</li>
+  </ul>
+  <h2 class="reveal in">3. Make the candidate experience worth it</h2>
+  <p class="reveal in">A skills-first process asks more of candidates, so it has to give more back. Keep assessments under 30 minutes, explain why each step matters, and give every applicant a result. Completion rates — and your employer brand — depend on it.</p>
+  <div class="callout reveal in"><p><strong>Rule of thumb:</strong> if your assessment takes longer than the first interview would have, it's too long. Aim for high signal per minute of candidate time.</p></div>
+  <h2 class="reveal in">4. Score consistently, decide together</h2>
+  <p class="reveal in">The whole point of structure is comparability. Use the same rubric and the same scale for every candidate, collect scores independently before discussion, and let the evidence — not the loudest voice in the room — drive the decision.</p>
+  <p class="reveal in">Teams that adopt this approach consistently report faster hiring, stronger performance from new hires, and noticeably more diverse pipelines. Not because they lowered the bar — but because they finally measured the right thing.</p>
+  <div class="share reveal in"><span style="font-size:13.5px;font-weight:700;color:#6A5A5D;margin-right:6px;">Share</span><a class="sbtn" href="#">in</a><a class="sbtn" href="#">X</a><a class="sbtn" href="#">f</a><a class="sbtn" href="#">↗</a></div>
+</div>
+<section class="related"><div style="text-align:center;max-width:640px;margin:0 auto 36px;"><p class="eyebrow reveal">Keep reading<b>.</b></p><h2 class="reveal" style="font-size:32px;font-weight:800;letter-spacing:-1px;margin:0;">Related articles</h2></div>
+  <div class="relgrid">
+    <a class="relcard reveal" href="Blog Article.dc.html"><div class="relimg" style="background:linear-gradient(150deg,#2A6FDB,#16335E);"></div><div class="relbody"><h3 class="reltitle">How to write a job description that attracts skill</h3><p class="relmeta">Aditya Rao · 7 min read</p></div></a>
+    <a class="relcard reveal" style="transition-delay:.06s" href="Blog Article.dc.html"><div class="relimg" style="background:linear-gradient(150deg,#1F8A5B,#0C3D29);"></div><div class="relbody"><h3 class="reltitle">Designing assessments candidates actually finish</h3><p class="relmeta">Elena Costa · 6 min read</p></div></a>
+    <a class="relcard reveal" style="transition-delay:.12s" href="Blog Article.dc.html"><div class="relimg" style="background:linear-gradient(150deg,#6B3FA0,#2E1A4A);"></div><div class="relbody"><h3 class="reltitle">Will AI make hiring fairer — or worse?</h3><p class="relmeta">Daniel Mwangi · 9 min read</p></div></a>
+  </div>
+</section>
+<section style="background:#1A1014;color:#fff;text-align:center;padding:80px 28px;"><div class="wrap" style="max-width:640px;">
+  <h2 class="reveal" style="font-size:38px;font-weight:800;letter-spacing:-1.2px;color:#fff;margin:0;">Put the playbook to work</h2>
+  <p class="reveal" style="font-size:19px;color:rgba(255,255,255,.78);margin:16px auto 28px;transition-delay:.04s;">Run your first skills-based assessment free — set up in minutes.</p>
+  <a class="btn btn-primary reveal" href="Pricing.dc.html" style="transition-delay:.08s;">Start free<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div></section>
+<dc-import name="Site Footer" home-href="Homepage.dc.html" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    const sweep = ()=>{
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.reveal:not(.in)').forEach(n=>{
+        if(n.getBoundingClientRect().top < vh + 600) n.classList.add('in');
+      });
+    };
+    this._sweep = sweep;
+    window.addEventListener('scroll', sweep, { passive:true });
+    window.addEventListener('resize', sweep);
+    [0,150,400,800,1500].forEach(t=>setTimeout(sweep, t));
+    requestAnimationFrame(sweep);
+    try{ this._mo = new MutationObserver(()=>requestAnimationFrame(sweep)); this._mo.observe(document.body,{childList:true,subtree:true}); }catch(e){}
+  }
+  componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); }
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>

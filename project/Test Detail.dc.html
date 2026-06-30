@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+a{text-decoration:none;color:inherit;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+.sec{padding:88px 28px;}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8A7A7D;margin:0 0 18px;}
+.eyebrow b{color:#F23F44;font-weight:600;}
+.h2{font-size:34px;line-height:1.1;font-weight:800;letter-spacing:-1.2px;margin:0;color:#1A1014;}
+.h3{font-size:20px;line-height:1.25;font-weight:700;letter-spacing:-.3px;margin:0;color:#1A1014;}
+.body{font-size:16px;line-height:1.66;color:#5A4B4E;}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;padding:14px 26px;border-radius:13px;transition:transform .25s ease, box-shadow .25s ease;cursor:pointer;border:none;}
+.btn-primary{background:#F23F44;color:#fff;box-shadow:0 12px 26px rgba(242,63,68,.30);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(242,63,68,.40);}
+.btn-ghost{background:#fff;color:#1A1014;border:1.5px solid #EADDDE;}
+.btn-ghost:hover{transform:translateY(-2px);border-color:#F2B7B9;box-shadow:0 10px 24px rgba(110,11,14,.08);}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.dhero{background:radial-gradient(1000px 480px at 80% -10%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff;padding:46px 28px 0;}
+.crumb{font-size:13px;color:#9A878A;font-weight:600;margin:0 0 26px;}
+.crumb a{color:#F23F44;}
+.dgrid{display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start;}
+.dtag{display:inline-flex;align-items:center;gap:7px;background:#FFF0F0;color:#C0242B;font-size:12px;font-weight:700;letter-spacing:.04em;padding:6px 13px;border-radius:999px;}
+.dtitle{font-size:44px;line-height:1.06;font-weight:800;letter-spacing:-1.6px;margin:16px 0 16px;}
+.dlede{font-size:18px;line-height:1.6;color:#5A4B4E;margin:0;}
+.metarow{display:flex;gap:28px;flex-wrap:wrap;margin-top:26px;}
+.metab{font-size:13px;color:#9A878A;font-weight:600;}
+.metab b{display:block;font-size:20px;color:#1A1014;font-weight:800;letter-spacing:-.5px;margin-top:2px;}
+.buybox{position:sticky;top:130px;background:#fff;border:1px solid #EFE2E3;border-radius:22px;padding:28px;box-shadow:0 24px 60px rgba(110,11,14,.10);}
+.buylist{list-style:none;margin:18px 0 22px;padding:0;display:flex;flex-direction:column;gap:11px;}
+.buylist li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:#46383C;line-height:1.4;}
+.buylist svg{flex:none;margin-top:2px;color:#1FA463;}
+.tabs{display:flex;gap:8px;border-bottom:1px solid #F1E6E7;margin-bottom:30px;flex-wrap:wrap;}
+.tab{border:none;background:none;font-family:inherit;font-size:15px;font-weight:600;color:#9A878A;padding:14px 6px;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s ease;}
+.tab.on{color:#F23F44;border-bottom-color:#F23F44;}
+.skillgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.skillrow{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #EFE2E3;border-radius:14px;padding:16px 18px;}
+.skillic{flex:none;width:38px;height:38px;border-radius:10px;background:#FBF3EE;color:#C0242B;display:flex;align-items:center;justify-content:center;}
+.qcard{background:#fff;border:1px solid #EFE2E3;border-radius:16px;padding:24px;margin-bottom:14px;}
+.qnum{font-size:12px;font-weight:700;letter-spacing:.08em;color:#D98A8D;margin:0 0 8px;}
+.relgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.relcard{background:#fff;border:1px solid #EFE2E3;border-radius:18px;padding:24px;transition:transform .22s ease, box-shadow .22s ease, border-color .22s;}
+.relcard:hover{transform:translateY(-4px);box-shadow:0 20px 42px rgba(110,11,14,.10);border-color:#F4D2D3;}
+.relic{width:42px;height:42px;border-radius:11px;background:#FFF0F0;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+@media(max-width:920px){
+  .dtitle{font-size:32px;letter-spacing:-1px;}
+  .h2{font-size:27px;}
+  .sec{padding:60px 22px;}
+  .dgrid{grid-template-columns:1fr;}
+  .buybox{position:static;}
+  .skillgrid,.relgrid{grid-template-columns:1fr;}
+}
+</style>
+</helmet>
+<dc-import name="Site Header" announcement="Every test peer-reviewed by subject-matter experts" announcement-cta="How we build tests" home-href="Homepage.dc.html" hint-size="100%,110px"></dc-import>
+<section class="dhero"><div class="wrap">
+  <p class="crumb reveal in"><a href="Test Library.dc.html">Test library</a> &nbsp;·&nbsp; Programming &nbsp;·&nbsp; JavaScript</p>
+  <div class="dgrid">
+    <div>
+      <span class="dtag reveal in"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> Coding test</span>
+      <h1 class="dtitle reveal in">JavaScript (Mid-level)</h1>
+      <p class="dlede reveal in">Assess practical JavaScript ability with real coding tasks — closures, async, the DOM and modern ES features. Built and peer-reviewed by senior engineers to predict on-the-job performance.</p>
+      <div class="metarow reveal in">
+        <div class="metab">Duration<b>35 min</b></div>
+        <div class="metab">Questions<b>18</b></div>
+        <div class="metab">Level<b>Mid</b></div>
+        <div class="metab">Type<b>Coding + MCQ</b></div>
+      </div>
+    </div>
+    <div class="buybox reveal in">
+      <p style="font-size:13px;color:#9A878A;font-weight:600;margin:0;">Included on</p>
+      <p class="h3" style="margin:4px 0 0;">Starter, Scale &amp; Enterprise</p>
+      <ul class="buylist">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Auto-graded with instant scoring</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Anti-cheat &amp; full-screen proctoring</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Customize or mix with other tests</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Code playback &amp; plagiarism checks</li>
+      </ul>
+      <a class="btn btn-primary" href="#" style="width:100%;justify-content:center;margin-bottom:10px;">Use this test free<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      <a class="btn btn-ghost" href="#" style="width:100%;justify-content:center;">Preview questions</a>
+    </div>
+  </div>
+</div></section>
+<section class="sec" style="padding-top:64px;"><div class="wrap" style="max-width:840px;">
+  <div class="tabs reveal in">
+    <button class="tab {{ tab0 }}" onClick="{{ setOver }}">Overview</button>
+    <button class="tab {{ tab1 }}" onClick="{{ setSkills }}">Skills covered</button>
+    <button class="tab {{ tab2 }}" onClick="{{ setSample }}">Sample questions</button>
+  </div>
+  <sc-if value="{{ isOver }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <h2 class="h2" style="margin-bottom:16px;">What this test measures</h2>
+      <p class="body" style="margin-bottom:14px;">This mid-level JavaScript assessment evaluates whether a candidate can write, debug and reason about real-world JavaScript — not just recite syntax. It blends short coding challenges with applied multiple-choice questions to give a rounded picture of ability.</p>
+      <p class="body" style="margin-bottom:14px;">Candidates work through tasks involving asynchronous code, array and object manipulation, closures and scope, and common DOM operations. Each coding task runs against a hidden test suite, so scoring is objective and instant.</p>
+      <h2 class="h2" style="margin:36px 0 16px;">Who it's for</h2>
+      <p class="body">Ideal for hiring front-end and full-stack developers with 2–5 years of experience. Pair it with a cognitive ability test or a culture-add assessment for a complete, skills-first first round.</p>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isSkills }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <h2 class="h2" style="margin-bottom:22px;">Skills covered</h2>
+      <div class="skillgrid">
+        <div class="skillrow"><span class="skillic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span><div><div style="font-weight:700;font-size:14.5px;">Closures &amp; scope</div><div style="font-size:12.5px;color:#9A878A;">Lexical scope, hoisting, this</div></div></div>
+        <div class="skillrow"><span class="skillic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span><div><div style="font-weight:700;font-size:14.5px;">Async &amp; promises</div><div style="font-size:12.5px;color:#9A878A;">async/await, event loop</div></div></div>
+        <div class="skillrow"><span class="skillic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"></path><path d="M9 20h6M12 4v16"></path></svg></span><div><div style="font-weight:700;font-size:14.5px;">Arrays &amp; objects</div><div style="font-size:12.5px;color:#9A878A;">map, reduce, destructuring</div></div></div>
+        <div class="skillrow"><span class="skillic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg></span><div><div style="font-weight:700;font-size:14.5px;">DOM manipulation</div><div style="font-size:12.5px;color:#9A878A;">Events, selectors, updates</div></div></div>
+        <div class="skillrow"><span class="skillic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6z"></path></svg></span><div><div style="font-weight:700;font-size:14.5px;">Modern ES features</div><div style="font-size:12.5px;color:#9A878A;">Spread, optional chaining</div></div></div>
+        <div class="skillrow"><span class="skillic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></span><div><div style="font-weight:700;font-size:14.5px;">Error handling</div><div style="font-size:12.5px;color:#9A878A;">try/catch, edge cases</div></div></div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isSample }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <h2 class="h2" style="margin-bottom:22px;">Sample questions</h2>
+      <div class="qcard"><p class="qnum">QUESTION 01 · MULTIPLE CHOICE</p><p class="h3" style="font-size:18px;margin-bottom:6px;">What does <code style="background:#FBF3EE;padding:2px 6px;border-radius:5px;font-size:15px;">Array.prototype.reduce</code> return when called on an empty array with no initial value?</p><p class="body" style="font-size:14px;margin:0;">Tests understanding of reduce semantics and common runtime errors.</p></div>
+      <div class="qcard"><p class="qnum">QUESTION 02 · CODING</p><p class="h3" style="font-size:18px;margin-bottom:6px;">Implement a debounce function</p><p class="body" style="font-size:14px;margin:0;">Write a <code style="background:#FBF3EE;padding:2px 6px;border-radius:5px;font-size:15px;">debounce(fn, delay)</code> that delays invocation until calls stop. Graded against a hidden test suite.</p></div>
+      <div class="qcard"><p class="qnum">QUESTION 03 · CODING</p><p class="h3" style="font-size:18px;margin-bottom:6px;">Flatten a nested array</p><p class="body" style="font-size:14px;margin:0;">Return a single-level array from an arbitrarily nested one, without using <code style="background:#FBF3EE;padding:2px 6px;border-radius:5px;font-size:15px;">Array.flat</code>.</p></div>
+    </div>
+  </sc-if>
+</div></section>
+<section class="sec" style="background:#FBF3EE;"><div class="wrap">
+  <div style="max-width:640px;margin:0 auto 40px;text-align:center;">
+    <p class="eyebrow reveal">Related tests<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">Build a complete assessment</h2>
+  </div>
+  <div class="relgrid">
+    <a class="relcard reveal" href="Test Detail.dc.html"><span class="relic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span><h3 class="h3" style="font-size:17px;margin-bottom:6px;">React (Mid-level)</h3><p class="body" style="font-size:13.5px;">Hooks, state, components · 40 min</p></a>
+    <a class="relcard reveal" style="transition-delay:.06s" href="Test Detail.dc.html"><span class="relic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg></span><h3 class="h3" style="font-size:17px;margin-bottom:6px;">Cognitive ability</h3><p class="body" style="font-size:13.5px;">Logical reasoning · 20 min</p></a>
+    <a class="relcard reveal" style="transition-delay:.12s" href="Test Detail.dc.html"><span class="relic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></span><h3 class="h3" style="font-size:17px;margin-bottom:6px;">Culture add</h3><p class="body" style="font-size:13.5px;">Values &amp; working style · 12 min</p></a>
+  </div>
+</div></section>
+<section class="sec" style="background:#1A1014;color:#fff;text-align:center;"><div class="wrap" style="max-width:720px;">
+  <h2 class="h2 reveal" style="color:#fff;font-size:40px;">Add this test to your next role</h2>
+  <p class="body reveal" style="font-size:19px;color:rgba(255,255,255,.78);margin:18px auto 30px;transition-delay:.04s;">Combine it with any of 3,500+ tests and start screening candidates in minutes.</p>
+  <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;transition-delay:.08s;">
+    <a class="btn" href="#" style="background:#fff;color:#C0242B;">Use this test free<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    <a class="btn" href="Test Library.dc.html" style="background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.4);">Browse all tests</a>
+  </div>
+</div></section>
+<dc-import name="Site Footer" home-href="Homepage.dc.html" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { tab:'over' };
+  componentDidMount(){
+    const sweep = ()=>{
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.reveal:not(.in)').forEach(n=>{
+        if(n.getBoundingClientRect().top < vh + 600) n.classList.add('in');
+      });
+    };
+    this._sweep = sweep;
+    window.addEventListener('scroll', sweep, { passive:true });
+    window.addEventListener('resize', sweep);
+    [0,150,400,800,1500].forEach(t=>setTimeout(sweep, t));
+    requestAnimationFrame(sweep);
+    try{ this._mo = new MutationObserver(()=>requestAnimationFrame(sweep)); this._mo.observe(document.body,{childList:true,subtree:true}); }catch(e){}
+  }
+  componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); }
+  renderVals(){
+    const t = this.state.tab;
+    return {
+      tab0: t==='over'?'on':'', tab1: t==='skills'?'on':'', tab2: t==='sample'?'on':'',
+      isOver: t==='over', isSkills: t==='skills', isSample: t==='sample',
+      setOver:()=>this.setState({tab:'over'}), setSkills:()=>this.setState({tab:'skills'}), setSample:()=>this.setState({tab:'sample'}),
+    };
+  }
+}
+</script>
+</body>
+</html>

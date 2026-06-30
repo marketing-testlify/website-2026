@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#FBF3EE"/><g transform="translate(120,116)"><rect x="0" y="0" width="160" height="44" rx="10" fill="#fff" stroke="#F0E2E3" stroke-width="2"/><circle cx="26" cy="22" r="9" fill="none" stroke="#F23F44" stroke-width="3"/><line x1="33" y1="29" x2="42" y2="38" stroke="#F23F44" stroke-width="3" stroke-linecap="round"/><rect x="58" y="17" width="78" height="10" rx="5" fill="#F0E2E3"/><rect x="0" y="64" width="74" height="74" rx="12" fill="#fff" stroke="#F0E2E3" stroke-width="2"/><rect x="86" y="64" width="74" height="74" rx="12" fill="#fff" stroke="#F0E2E3" stroke-width="2"/><rect x="14" y="80" width="30" height="30" rx="8" fill="#FFEDED"/><rect x="100" y="80" width="30" height="30" rx="8" fill="#E6F0FD"/><rect x="14" y="118" width="46" height="8" rx="4" fill="#EADDDE"/><rect x="100" y="118" width="46" height="8" rx="4" fill="#EADDDE"/></g></svg></template>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+a{text-decoration:none;color:inherit;}
+.tl-wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+.tl-hero{padding:66px 28px 40px;background:radial-gradient(1100px 540px at 82% -10%,#FCE0DE 0%,rgba(252,224,222,0) 56%),linear-gradient(180deg,#FFF8F7,#fff);}
+.tl-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#F23F44;margin:0 0 16px;}
+.tl-eyebrow span{color:#CBB6B9;}
+.tl-h1{font-size:52px;line-height:1.05;font-weight:800;letter-spacing:-1.4px;margin:0;max-width:780px;}
+.tl-h1 em{font-style:normal;color:#F23F44;}
+.tl-sub{font-size:18px;line-height:1.62;color:#5A4B4E;margin:20px 0 0;max-width:600px;}
+.tl-search{position:relative;max-width:600px;margin:30px 0 0;}
+.tl-search .si{position:absolute;left:19px;top:50%;transform:translateY(-50%);color:#C0989B;display:flex;}
+.tl-search input{width:100%;border:1.6px solid #F0DBDC;border-radius:15px;padding:18px 18px 18px 52px;font-size:16px;font-family:inherit;color:#1A1014;background:#fff;box-shadow:0 12px 36px rgba(110,11,14,.06);transition:border-color .2s, box-shadow .2s;}
+.tl-search input:focus{outline:none;border-color:#F23F44;box-shadow:0 12px 40px rgba(242,63,68,.12);}
+.tl-search input::placeholder{color:#B79DA0;}
+.pops{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:18px;}
+.pops .pl{font-size:13px;color:#8A767A;font-weight:500;margin-right:2px;}
+.pchip{font-size:13.5px;font-weight:600;color:#46383C;background:#fff;border:1px solid #EFDDDE;padding:7px 14px;border-radius:100px;cursor:pointer;transition:all .18s;}
+.pchip:hover{border-color:#F23F44;color:#F23F44;background:#FFF4F3;}
+.tl-stats{display:flex;align-items:center;gap:30px;flex-wrap:wrap;margin-top:34px;padding-top:30px;border-top:1px solid #F2E3E4;}
+.tl-stat .num{font-size:30px;font-weight:800;letter-spacing:-.5px;color:#1A1014;}
+.tl-stat .lab{font-size:13.5px;color:#7C6A6D;font-weight:500;margin-top:1px;}
+.tl-sdiv{width:1px;height:38px;background:#EEDFE0;}
+/* category tiles */
+.tl-cats{padding:62px 28px 8px;}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:26px;}
+.sec-h2{font-size:30px;font-weight:800;letter-spacing:-.8px;margin:0;}
+.sec-p{font-size:15px;color:#7C6A6D;margin:6px 0 0;}
+.catgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.cattile{display:flex;align-items:center;gap:13px;text-align:left;background:#fff;border:1.4px solid #F0E2E3;border-radius:14px;padding:15px 16px;cursor:pointer;font-family:inherit;transition:all .18s;}
+.cattile:hover{border-color:#F4B9BB;box-shadow:0 12px 26px rgba(110,11,14,.08);transform:translateY(-2px);}
+.cattile.on{border-color:#F23F44;background:#FFF6F5;box-shadow:0 12px 26px rgba(242,63,68,.12);}
+.catico{flex:none;width:42px;height:42px;border-radius:11px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;transition:all .18s;}
+.cattile.on .catico{background:#F23F44;color:#fff;}
+.cattile .cnm{font-size:14.5px;font-weight:600;color:#27181B;line-height:1.25;}
+.cattile .cct{font-size:12.5px;color:#9A868A;font-weight:500;margin-top:2px;}
+/* results */
+.tl-res{padding:40px 28px 30px;}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-bottom:22px;border-bottom:1px solid #F1E3E4;margin-bottom:30px;}
+.tb-left{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.tb-lab{font-size:13px;font-weight:600;color:#8A767A;}
+.seg{display:inline-flex;background:#F7ECEC;border-radius:11px;padding:4px;gap:3px;}
+.lvpill{border:0;background:transparent;font-family:inherit;font-size:13.5px;font-weight:600;color:#6A585B;padding:8px 15px;border-radius:8px;cursor:pointer;transition:all .16s;}
+.lvpill:hover{color:#F23F44;}
+.lvpill.on{background:#fff;color:#F23F44;box-shadow:0 2px 8px rgba(110,11,14,.1);}
+.tb-right{display:flex;align-items:center;gap:16px;}
+.rescount{font-size:14px;color:#6A585B;font-weight:500;}
+.rescount b{color:#1A1014;font-weight:700;}
+.actchip{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#F23F44;background:#FFF0EF;border:1px solid #F8CFD0;padding:7px 8px 7px 13px;border-radius:100px;}
+.actx{width:18px;height:18px;border-radius:50%;background:#F23F44;color:#fff;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;line-height:1;}
+.clearbtn{font-size:13.5px;font-weight:600;color:#8A767A;background:none;border:0;cursor:pointer;font-family:inherit;text-decoration:underline;text-underline-offset:3px;}
+.clearbtn:hover{color:#F23F44;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.card{display:flex;flex-direction:column;background:#fff;border:1.4px solid #EFE1E2;border-radius:16px;padding:22px 22px 18px;transition:all .2s;position:relative;overflow:hidden;}
+.card::after{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,#FF7A52,#F23F44);transform:scaleX(0);transform-origin:left;transition:transform .25s ease;}
+.card:hover{border-color:#F4B9BB;box-shadow:0 18px 40px rgba(110,11,14,.1);transform:translateY(-4px);}
+.card:hover::after{transform:scaleX(1);}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px;}
+.tbadge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#7A686B;}
+.tbico{width:30px;height:30px;border-radius:8px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;flex:none;}
+.lvtag{font-size:11px;font-weight:700;letter-spacing:.03em;padding:4px 10px;border-radius:100px;flex:none;}
+.lv-beg{background:#E8F6EE;color:#1B7F4B;}
+.lv-int{background:#FFF3E0;color:#B5740F;}
+.lv-adv{background:#FDE7E7;color:#D23B40;}
+.card-title{font-size:18.5px;font-weight:700;letter-spacing:-.3px;color:#1A1014;margin:0 0 8px;line-height:1.25;}
+.card-desc{font-size:14px;line-height:1.55;color:#6C5A5D;margin:0 0 18px;flex:1;}
+.card-meta{display:flex;align-items:center;gap:16px;padding-top:15px;border-top:1px solid #F4E7E8;}
+.mi{display:flex;align-items:center;gap:6px;font-size:12.5px;color:#7C6A6D;font-weight:500;}
+.mi svg{color:#C0989B;flex:none;}
+.card-cta{display:flex;align-items:center;gap:6px;margin-left:auto;font-size:13px;font-weight:700;color:#F23F44;opacity:0;transform:translateX(-6px);transition:all .2s;}
+.card:hover .card-cta{opacity:1;transform:translateX(0);}
+.empty{text-align:center;padding:64px 20px;border:1.5px dashed #EAD7D9;border-radius:18px;background:#FDF7F6;}
+.empty h3{font-size:20px;font-weight:700;margin:14px 0 6px;}
+.empty p{font-size:15px;color:#7C6A6D;margin:0 0 20px;}
+.empty .eico{width:54px;height:54px;border-radius:14px;background:#FFF0EF;color:#F23F44;display:inline-flex;align-items:center;justify-content:center;}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px;border-radius:12px;padding:14px 24px;cursor:pointer;border:0;font-family:inherit;transition:all .2s;}
+.btn-p{background:#F23F44;color:#fff;box-shadow:0 12px 28px rgba(242,63,68,.28);}
+.btn-p:hover{background:#DC3137;transform:translateY(-2px);}
+.btn-g{background:#fff;color:#1A1014;border:1.5px solid #EADDDE;}
+.btn-g:hover{border-color:#F23F44;color:#F23F44;}
+/* request band */
+.reqband{padding:40px 28px;}
+.reqcard{max-width:1240px;margin:0 auto;background:#FBF3EE;border:1px solid #F1E0DC;border-radius:22px;padding:40px 44px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;}
+.reqcard h3{font-size:24px;font-weight:800;letter-spacing:-.5px;margin:0 0 7px;}
+.reqcard p{font-size:15px;color:#6C5A5D;margin:0;max-width:520px;line-height:1.55;}
+/* cta band */
+.ctaband{padding:90px 28px;background:radial-gradient(900px 460px at 50% 0%,#2A1417 0%,#1A1014 60%);color:#fff;text-align:center;}
+.ctaband h2{font-size:40px;font-weight:800;letter-spacing:-1px;margin:0 auto 16px;max-width:680px;line-height:1.1;}
+.ctaband p{font-size:17px;color:#D8C5C8;margin:0 auto 30px;max-width:560px;line-height:1.6;}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
+.cta-mini{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:24px;font-size:13.5px;color:#B7A4A7;}
+.cta-mini span{display:inline-flex;align-items:center;gap:7px;}
+@media(max-width:960px){.catgrid{grid-template-columns:repeat(3,1fr);}.grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:760px){.tl-h1{font-size:36px;}.tl-hero{padding:44px 22px 30px;}.catgrid{grid-template-columns:repeat(2,1fr);}.grid{grid-template-columns:1fr;}.tl-stats{gap:20px;}.tl-sdiv{display:none;}.toolbar{flex-direction:column;align-items:flex-start;}.reqcard{padding:30px 26px;}.ctaband h2{font-size:30px;}.sec-h2{font-size:25px;}}
+</style>
+</helmet>
+<dc-import name="Site Header" announcement="3,000+ skills tests — every one validated by subject-matter experts" announcement-cta="Browse library" home-href="Homepage.dc.html" hint-size="100%,110px"></dc-import>
+<section class="tl-hero"><div class="tl-wrap">
+<p class="tl-eyebrow">Test library<span>.</span></p>
+<h1 class="tl-h1">3,184+ skills tests, <em>validated by experts</em></h1>
+<p class="tl-sub">Browse role-specific, cognitive, coding, language and personality assessments — each built by subject-matter experts and calibrated on real candidate data.</p>
+<div class="tl-search"><span class="si"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span><input type="text" value="{{ query }}" onInput="{{ onSearch }}" placeholder="Search 3,184+ tests by skill, role or topic"></div>
+<div class="pops"><span class="pl">Popular:</span><sc-for list="{{ popular }}" as="p" hint-placeholder-count="5"><button class="pchip" onClick="{{ p.onSelect }}">{{ p.label }}</button></sc-for></div>
+<div class="tl-stats"><div class="tl-stat"><div class="num">3,184+</div><div class="lab">Ready-to-use tests</div></div><div class="tl-sdiv"></div><div class="tl-stat"><div class="num">12</div><div class="lab">Test categories</div></div><div class="tl-sdiv"></div><div class="tl-stat"><div class="num">40+</div><div class="lab">Languages supported</div></div><div class="tl-sdiv"></div><div class="tl-stat"><div class="num">900+</div><div class="lab">Subject-matter experts</div></div></div>
+</div></section>
+<section class="tl-cats"><div class="tl-wrap">
+<div class="sec-head"><div><h2 class="sec-h2">Browse by category</h2><p class="sec-p">Pick a category to filter the library, or search above.</p></div></div>
+<div class="catgrid"><sc-for list="{{ cats }}" as="c" hint-placeholder-count="12"><button class="cattile {{ c.cls }}" onClick="{{ c.onSelect }}"><span class="catico">{{ c.icon }}</span><span><span class="cnm">{{ c.label }}</span><span class="cct">{{ c.count }} tests</span></span></button></sc-for></div>
+</div></section>
+<section class="tl-res"><div class="tl-wrap">
+<div class="toolbar"><div class="tb-left"><span class="tb-lab">Difficulty</span><div class="seg"><sc-for list="{{ levels }}" as="l" hint-placeholder-count="3"><button class="lvpill {{ l.cls }}" onClick="{{ l.onSelect }}">{{ l.label }}</button></sc-for></div><sc-if value="{{ showActiveType }}" hint-placeholder-val="{{ false }}"><span class="actchip">{{ activeType }}<button class="actx" onClick="{{ clearType }}">✕</button></span></sc-if></div><div class="tb-right"><span class="rescount"><b>{{ count }}</b> tests</span><sc-if value="{{ hasActive }}" hint-placeholder-val="{{ false }}"><button class="clearbtn" onClick="{{ clearAll }}">Clear all</button></sc-if></div></div>
+<sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}"><div class="grid"><sc-for list="{{ cards }}" as="c" hint-placeholder-count="9"><a class="card" href="{{ c.href }}"><div class="card-top"><span class="tbadge"><span class="tbico">{{ c.icon }}</span>{{ c.typeLabel }}</span><span class="lvtag {{ c.lvCls }}">{{ c.level }}</span></div><h3 class="card-title">{{ c.name }}</h3><p class="card-desc">{{ c.desc }}</p><div class="card-meta"><span class="mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>{{ c.q }} questions</span><span class="mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>{{ c.dur }} min</span><span class="card-cta">View<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div></a></sc-for></div></sc-if>
+<sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}"><div class="empty"><span class="eico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span><h3>No tests matched your search</h3><p>Try a different keyword or clear your filters to see the full library.</p><button class="btn btn-g" onClick="{{ clearAll }}">Clear filters</button></div></sc-if>
+</div></section>
+<section class="reqband"><div class="reqcard"><div><h3>Can't find the test you need?</h3><p>Request a custom assessment and our subject-matter experts will build it for your role — peer-reviewed and validated before it ships.</p></div><a class="btn btn-p" href="#">Request a test<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div></section>
+<section class="ctaband"><h2>Replace gut instinct with verified skills</h2><p>Your next great hire is in your pipeline right now. Surface them in 30 minutes — no resume bias, no bad-hire regret.</p><div class="cta-btns"><a class="btn btn-p" href="#">Try for free<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a class="btn btn-g" href="#">Book a demo</a></div><div class="cta-mini"><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7BE0A6" stroke-width="2.6" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>7-day free trial</span><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7BE0A6" stroke-width="2.6" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>Unlimited assessments</span><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7BE0A6" stroke-width="2.6" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>No credit card</span></div></section>
+<dc-import name="Site Footer" home-href="Homepage.dc.html" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { query: '', type: null, level: null };
+
+  types = [
+    ['role','Role specific',1240],
+    ['cognitive','Cognitive ability',245],
+    ['software','Software skills',320],
+    ['programming','Programming',210],
+    ['coding','Coding',180],
+    ['engineering','Engineering skills',140],
+    ['personality','Personality & culture',86],
+    ['language','Language',95],
+    ['situational','Situational judgment',64],
+    ['typing','Typing',18],
+    ['bluecollar','Blue collar',110],
+    ['simulation','Simulation',24],
+  ];
+
+  tests = [
+    ['Attention to Detail (Textual)','cognitive','Intermediate',15,10,'Spot inconsistencies and errors across written information under time pressure.'],
+    ['Attention to Detail (Visual)','cognitive','Intermediate',12,12,'Identify subtle differences in images, layouts and data at a glance.'],
+    ['Numerical Reasoning','cognitive','Intermediate',20,15,'Interpret charts, ratios and figures to draw accurate conclusions.'],
+    ['Verbal Reasoning','cognitive','Intermediate',18,14,'Evaluate arguments and draw logical inferences from written passages.'],
+    ['Logical Reasoning','cognitive','Advanced',20,15,'Solve abstract pattern and deduction problems that predict learning speed.'],
+    ['Abstract Reasoning','cognitive','Advanced',18,12,'Recognise rules and relationships in non-verbal sequences.'],
+    ['Critical Thinking','cognitive','Advanced',25,18,'Assess assumptions, evidence and conclusions in complex scenarios.'],
+    ['Problem Solving','cognitive','Intermediate',20,14,'Break down unfamiliar problems and reach sound, structured solutions.'],
+    ['JavaScript','programming','Intermediate',20,15,'Core language, ES6+, async, DOM and common front-end patterns.'],
+    ['Python','programming','Intermediate',20,15,'Syntax, data structures, OOP and standard-library fluency.'],
+    ['Java','programming','Advanced',25,18,'OOP design, collections, concurrency and JVM fundamentals.'],
+    ['React','programming','Advanced',22,16,'Hooks, state management, component design and performance.'],
+    ['Node.js','programming','Advanced',22,16,'Async I/O, Express, APIs and back-end architecture.'],
+    ['SQL','programming','Intermediate',18,14,'Joins, aggregation, sub-queries and query optimisation.'],
+    ['Data Structures','coding','Advanced',30,6,'Implement and reason about arrays, trees, graphs and hashing.'],
+    ['Algorithms','coding','Advanced',35,6,'Sorting, searching, recursion and complexity analysis in code.'],
+    ['Live Coding: Python','coding','Advanced',40,4,'Real-time coding challenge with an in-browser IDE and test cases.'],
+    ['Microsoft Excel','software','Intermediate',20,20,'Formulas, lookups, pivot tables and data modelling.'],
+    ['Microsoft Word','software','Beginner',15,15,'Formatting, styles, references and document collaboration.'],
+    ['Google Sheets','software','Intermediate',18,16,'Functions, queries, charts and shared-sheet workflows.'],
+    ['Adobe Photoshop','software','Intermediate',20,15,'Layers, masking, retouching and export for production.'],
+    ['Figma','software','Intermediate',18,14,'Components, auto-layout, prototyping and design systems.'],
+    ['Salesforce','software','Advanced',22,16,'Objects, automation, reports and admin best practices.'],
+    ['Mechanical Engineering','engineering','Advanced',25,18,'Statics, materials, thermodynamics and design principles.'],
+    ['Electrical Engineering','engineering','Advanced',25,18,'Circuits, signals, power systems and electronics fundamentals.'],
+    ['Big Five Personality (OCEAN)','personality','Beginner',15,50,'Measure the five core traits that predict workplace behaviour.'],
+    ['DISC Personality','personality','Beginner',12,28,'Map dominance, influence, steadiness and conscientiousness.'],
+    ['16 Personality Traits','personality','Beginner',20,60,'A comprehensive profile of work style and motivation.'],
+    ['Culture Fit','personality','Beginner',12,30,'Gauge alignment with your team values and ways of working.'],
+    ['Leadership Style','personality','Intermediate',15,24,'Reveal how a candidate motivates, decides and delegates.'],
+    ['English (CEFR)','language','Beginner',30,40,'Grammar, vocabulary and comprehension graded A1–C2.'],
+    ['Business English','language','Intermediate',20,25,'Professional writing, email and workplace communication.'],
+    ['Spanish','language','Beginner',20,25,'Reading, grammar and everyday conversational proficiency.'],
+    ['German','language','Beginner',20,25,'Foundational grammar, vocabulary and comprehension.'],
+    ['Digital Marketing','role','Intermediate',20,15,'SEO, paid media, analytics and campaign strategy essentials.'],
+    ['SEO Specialist','role','Intermediate',18,15,'On-page, technical and off-page optimisation know-how.'],
+    ['Content Writing','role','Intermediate',20,12,'Clarity, structure, tone and audience-aware editing.'],
+    ['Financial Analyst','role','Advanced',25,18,'Modelling, valuation, ratios and statement analysis.'],
+    ['Accounting','role','Intermediate',22,16,'Bookkeeping, reconciliation, GAAP and reporting basics.'],
+    ['HR Manager','role','Intermediate',20,15,'Hiring, employee relations, policy and compliance.'],
+    ['Project Management','role','Intermediate',22,16,'Scoping, scheduling, risk and stakeholder management.'],
+    ['Data Analyst','role','Advanced',25,18,'SQL, statistics, visualisation and insight communication.'],
+    ['Leadership SJT','situational','Intermediate',20,15,'Judgement on real leadership dilemmas and trade-offs.'],
+    ['Customer Service SJT','situational','Beginner',15,12,'Handle difficult customers and prioritise the right response.'],
+    ['Sales SJT','situational','Intermediate',18,14,'Navigate objections, qualifying and deal-stage decisions.'],
+    ['Typing Speed & Accuracy','typing','Beginner',5,1,'Measure words-per-minute and error rate in a timed test.'],
+    ['Warehouse Operations','bluecollar','Beginner',15,12,'Safety, inventory handling and process knowledge for ops roles.'],
+    ['Chat Support Simulation','simulation','Intermediate',20,8,'A realistic chat scenario scoring tone, accuracy and resolution.'],
+  ];
+
+  get tlab() {
+    const m = {};
+    this.types.forEach(t => { m[t[0]] = t[1]; });
+    return m;
+  }
+
+  mkIcon(key) {
+    const S = (...ch) => React.createElement('svg', { width: 18, height: 18, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round' }, ch);
+    const P = (d, i) => React.createElement('path', { key: 'p' + (i || 0), d });
+    const R = (x, y, w, h, rx, i) => React.createElement('rect', { key: 'r' + (i || 0), x, y, width: w, height: h, rx });
+    const C = (cx, cy, r, i) => React.createElement('circle', { key: 'c' + (i || 0), cx, cy, r });
+    const L = (x1, y1, x2, y2, i) => React.createElement('line', { key: 'l' + (i || 0), x1, y1, x2, y2 });
+    switch (key) {
+      case 'role': return S(R(2, 7, 20, 14, 2, 1), P('M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2', 2));
+      case 'cognitive': return S(P('M22 12h-4l-3 9L9 3l-3 9H2', 1));
+      case 'software': return S(R(3, 3, 18, 18, 2, 1), L(3, 9, 21, 9, 2), L(9, 21, 9, 9, 3));
+      case 'programming': return S(P('M16 18l6-6-6-6', 1), P('M8 6l-6 6 6 6', 2));
+      case 'coding': return S(R(2, 4, 20, 16, 2, 1), P('M7 9l3 3-3 3', 2), L(13, 15, 17, 15, 3));
+      case 'engineering': return S(C(12, 12, 3, 1), P('M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V22a2 2 0 0 1-4 0v-.2a1.6 1.6 0 0 0-2.7-1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1-2.7H2a2 2 0 0 1 0-4h.2a1.6 1.6 0 0 0 1-2.7l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3 1.6 1.6 0 0 0 1-1.5V2a2 2 0 0 1 4 0v.2a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8 1.6 1.6 0 0 0 1.5 1H22a2 2 0 0 1 0 4h-.2a1.6 1.6 0 0 0-1.4 1z', 2));
+      case 'personality': return S(C(12, 8, 4, 1), P('M4 21a8 8 0 0 1 16 0', 2));
+      case 'language': return S(C(12, 12, 10, 1), L(2, 12, 22, 12, 2), P('M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20', 3));
+      case 'situational': return S(P('M12 3v18', 1), P('M6 8l-4 6h8z', 2), P('M18 8l-4 6h8z', 3), L(4, 21, 20, 21, 4));
+      case 'typing': return S(R(2, 6, 20, 12, 2, 1), L(6, 10, 6.1, 10, 2), L(10, 10, 10.1, 10, 3), L(14, 10, 14.1, 10, 4), L(7, 14, 17, 14, 5));
+      case 'bluecollar': return S(P('M2 18a10 10 0 0 1 20 0', 1), P('M9 18V9a3 3 0 0 1 6 0v9', 2), L(2, 18, 22, 18, 3));
+      case 'simulation': return S(P('M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z', 1), P('M10 9l4 2-4 2z', 2));
+      default: return S(C(12, 12, 9, 1));
+    }
+  }
+
+  renderVals() {
+    const q = (this.state.query || '').trim().toLowerCase();
+    const type = this.state.type, level = this.state.level;
+    const lab = this.tlab;
+    const filtered = this.tests.filter(t => {
+      if (type && t[1] !== type) return false;
+      if (level && t[2] !== level) return false;
+      if (q) { const hay = (t[0] + ' ' + t[5] + ' ' + lab[t[1]]).toLowerCase(); if (!hay.includes(q)) return false; }
+      return true;
+    });
+    const lvClass = { Beginner: 'lv-beg', Intermediate: 'lv-int', Advanced: 'lv-adv' };
+    const cards = filtered.map((t, i) => ({
+      key: t[0] + i, name: t[0], typeLabel: lab[t[1]], icon: this.mkIcon(t[1]),
+      level: t[2], lvCls: lvClass[t[2]], dur: t[3], q: t[4], desc: t[5], href: 'Test Detail.dc.html'
+    }));
+    const cats = this.types.map(ty => ({
+      key: ty[0], label: ty[1], count: ty[2].toLocaleString(), icon: this.mkIcon(ty[0]),
+      cls: type === ty[0] ? 'on' : '',
+      onSelect: () => this.setState({ type: type === ty[0] ? null : ty[0] })
+    }));
+    const levels = ['Beginner', 'Intermediate', 'Advanced'].map(lv => ({
+      key: lv, label: lv, cls: level === lv ? 'on' : '',
+      onSelect: () => this.setState({ level: level === lv ? null : lv })
+    }));
+    const popular = ['Attention to Detail', 'JavaScript', 'Excel', 'English', 'Leadership'].map(name => ({
+      key: name, label: name, onSelect: () => this.setState({ query: name })
+    }));
+    return {
+      cards, cats, levels, popular,
+      count: cards.length,
+      query: this.state.query || '',
+      onSearch: (e) => this.setState({ query: e.target.value }),
+      hasActive: !!(type || level || q),
+      hasResults: cards.length > 0,
+      noResults: cards.length === 0,
+      showActiveType: !!type,
+      activeType: type ? lab[type] : '',
+      clearAll: () => this.setState({ query: '', type: null, level: null }),
+      clearType: () => this.setState({ type: null }),
+    };
+  }
+}
+</script>
+</body>
+</html>
