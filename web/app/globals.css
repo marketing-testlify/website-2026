@@ -43,20 +43,22 @@
   --color-adv-fg: #d23b40;
 }
 
-* {
-  box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-}
-body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  font-family: var(--font-sans);
-}
-a {
-  text-decoration: none;
-  color: inherit;
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--font-sans);
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 /* ============================================================
