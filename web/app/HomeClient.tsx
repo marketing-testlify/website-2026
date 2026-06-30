@@ -343,19 +343,6 @@ export default function HomeClient() {
                 <span ref={wordRef} className="tl-shimmer">
                   a hunch
                 </span>
-                <span
-                  aria-hidden
-                  style={{
-                    position: "absolute",
-                    left: 0,
-                    right: 0,
-                    bottom: 7,
-                    height: 13,
-                    background: "#FDD5D6",
-                    zIndex: -1,
-                    borderRadius: 7,
-                  }}
-                />
               </span>
               .
             </Reveal>
