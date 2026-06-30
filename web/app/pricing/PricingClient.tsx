@@ -543,7 +543,7 @@ export default function PricingClient() {
         .pcard::before{content:"";position:absolute;inset:0;border-radius:24px;padding:1.8px;background:conic-gradient(from var(--bang),transparent 0deg,#FF7A52 35deg,#F23F44 80deg,transparent 150deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;opacity:0;transition:opacity .35s ease;pointer-events:none;}
         .pcard:hover::before{opacity:1;animation:runborder 2.4s linear infinite;}
         .pcard:hover .picon{transform:translateY(-2px) scale(1.08) rotate(-3deg);box-shadow:0 14px 26px rgba(242,63,68,.4);}
-        .btn-base{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;padding:14px 26px;border-radius:13px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;cursor:pointer;border:none;position:relative;overflow:hidden;}
+        .btn-base{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;padding:14px 26px;border-radius:13px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;cursor:pointer;position:relative;overflow:hidden;}
         .ctbl th,.ctbl td{padding:15px 18px;text-align:center;border-bottom:1px solid #F1E6E7;font-size:14px;}
         .ctbl th{font-size:14.5px;font-weight:700;color:#1A1014;}
         .ctbl td:first-child,.ctbl th:first-child{text-align:left;color:#46383C;font-weight:500;}

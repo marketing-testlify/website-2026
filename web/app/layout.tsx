@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import ScrollProgress from "@/components/ScrollProgress";
-import MagneticButtons from "@/components/MagneticButtons";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -29,7 +28,6 @@ export default function RootLayout({
     <html lang="en" data-scroll-behavior="smooth" className={poppins.variable}>
       <body className="bg-white text-ink antialiased">
         <ScrollProgress />
-        <MagneticButtons />
         {children}
       </body>
     </html>
