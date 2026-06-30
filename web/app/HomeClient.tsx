@@ -9,6 +9,7 @@ import UseCaseCard from "@/components/UseCaseCard";
 import SecuritySection from "@/components/SecuritySection";
 import MagneticButtons from "@/components/MagneticButtons";
 import StatsNetCanvas from "@/components/StatsNetCanvas";
+import HeroGlobe from "@/components/HeroGlobe";
 
 /* ---------- data ---------- */
 
@@ -531,26 +532,23 @@ export default function HomeClient() {
             </Reveal>
           </div>
 
-          {/* right — ranked shortlist card with globe backdrop approximation */}
+          {/* right — ranked shortlist card with wireframe globe behind it */}
           <Reveal delay={0.18} className="relative">
             <div
               aria-hidden
-              className="tl-globe-spin"
               style={{
                 position: "absolute",
                 top: "48%",
                 left: "52%",
                 width: 660,
                 height: 660,
+                maxWidth: "none",
                 transform: "translate(-50%,-50%)",
                 zIndex: 0,
                 pointerEvents: "none",
-                borderRadius: "50%",
-                background:
-                  "radial-gradient(circle at 50% 50%,rgba(242,63,68,0.10) 0%,rgba(242,63,68,0.05) 38%,rgba(242,63,68,0) 62%)",
               }}
             >
-              <GlobeSvg />
+              <HeroGlobe />
             </div>
             <div
               aria-hidden
@@ -1632,29 +1630,6 @@ function Dashboard() {
         ))}
       </div>
     </div>
-  );
-}
-
-/* Hero globe — animated SVG approximation of the wireframe network globe */
-function GlobeSvg() {
-  return (
-    <svg viewBox="0 0 660 660" width="660" height="660" style={{ display: "block" }} aria-hidden>
-      <g fill="none" stroke="#F23F44" strokeWidth="1">
-        {[0.34, 0.62, 0.86, 1].map((rr, i) => (
-          <circle key={i} cx="330" cy="330" r={257 * rr} opacity={0.14 - i * 0.025} />
-        ))}
-        {[0, 30, 60, 90, 120, 150].map((deg) => (
-          <ellipse key={deg} cx="330" cy="330" rx="257" ry={257 * Math.abs(Math.cos((deg * Math.PI) / 180)) * 0.95 + 12} transform={`rotate(${deg} 330 330)`} opacity={0.1} />
-        ))}
-      </g>
-      {Array.from({ length: 90 }).map((_, i) => {
-        const a = (i / 90) * Math.PI * 2 * 3;
-        const r = 60 + (i / 90) * 195;
-        const x = 330 + Math.cos(a) * r;
-        const y = 330 + Math.sin(a) * r;
-        return <circle key={i} cx={x} cy={y} r={1 + (i % 5 === 0 ? 1.3 : 0.5)} fill={i % 9 === 0 ? "#F76A6E" : "#F23F44"} opacity={0.18 + (i / 90) * 0.5} />;
-      })}
-    </svg>
   );
 }
 
