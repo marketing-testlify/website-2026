@@ -1,25 +1,49 @@
-# CODING AGENTS: READ THIS FIRST
+# Testlify Website
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+The Testlify marketing site — an AI-native, skills-based pre-hire assessment
+platform — built in **Next.js 16 (App Router) + React 19 + TypeScript + Tailwind v4**.
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+Recreated from the Claude Design prototypes (kept in `project/` for reference) as a
+real, production-grade codebase. This codebase is the source of truth for the live site.
 
-## What you should do — IMPORTANT
+## Layout
 
-**Read the chat transcripts first.** There are 5 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+```
+web/        ← the Next.js application (deploy this)
+project/    ← original Claude Design prototypes (.dc.html) + brand assets, for reference
+chats/      ← the design conversation transcripts that produced the prototypes
+```
 
-**Read `project/Test Library.dc.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+## Run locally
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+```bash
+cd web
+npm install
+npm run dev      # http://localhost:3000
+```
 
-## About the design files
+Other scripts: `npm run build` (production build), `npm run start` (serve the build),
+`npx eslint .` (lint).
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+## Pages
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+`/` home · `/product` · `/test-library` (+ `/test-library/[slug]` test detail) ·
+`/pricing` · `/solutions` · `/integrations` · `/customers` · `/blog` (+ `/blog/[slug]`) ·
+`/resources` · `/about` · `/careers` · `/security` · `/legal` · `/section-templates`
 
-## Bundle contents
+## Architecture
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Testlify Website - NextJS` project files (HTML prototypes, assets, components)
+- **Shared chrome:** `web/components/SiteHeader.tsx` and `SiteFooter.tsx` are the single
+  source of truth for nav + footer — every page imports them.
+- **Shared sections:** `FAQ`, `SecuritySection`, `UseCaseCard`, `Reveal`
+  (scroll-reveal), `ScrollProgress`, `TestIcon`.
+- **Design tokens:** brand palette (coral/sand/ink), Poppins, and effect helpers live in
+  `web/app/globals.css` (Tailwind v4 `@theme`).
+- **Routes map:** `web/lib/routes.ts` centralizes every internal link.
+- `web/PORTING_GUIDE.md` documents the conventions used to port the prototypes.
+
+## Deploy to Vercel (Git integration)
+
+Import this repo in Vercel and set **Root Directory = `web`** (the app is in a
+subfolder). Framework preset: Next.js. After that, every push to the default branch
+auto-builds and deploys — keeping the live site in sync with the codebase.
