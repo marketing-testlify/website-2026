@@ -8,6 +8,7 @@ import FAQ from "@/components/FAQ";
 import UseCaseCard from "@/components/UseCaseCard";
 import SecuritySection from "@/components/SecuritySection";
 import MagneticButtons from "@/components/MagneticButtons";
+import StatsNetCanvas from "@/components/StatsNetCanvas";
 
 /* ---------- data ---------- */
 
@@ -183,7 +184,7 @@ export default function HomeClient() {
   const [tab, setTab] = useState(1);
   const [stage, setStage] = useState(0);
   const [slide, setSlide] = useState(0);
-  const [statMode, setStatMode] = useState<"globe" | "rays">("globe");
+  const [statActive, setStatActive] = useState(0);
   const [hovering, setHovering] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -1219,24 +1220,13 @@ export default function HomeClient() {
               borderRadius: 0,
               overflow: "hidden",
               padding: "74px 40px 92px",
-              transition: "background .5s ease, border-color .5s ease",
-              ...(statMode === "globe"
-                ? {
-                    background: "linear-gradient(165deg,#2A0E10 0%,#1A0A0C 60%,#12080A 100%)",
-                    border: "1px solid transparent",
-                    boxShadow: "0 30px 70px rgba(0,0,0,.18)",
-                  }
-                : {
-                    background: "linear-gradient(180deg,#FFFFFF 0%,#FFF7F5 60%,#FFF1EE 100%)",
-                    border: "1px solid #F4E4E5",
-                    boxShadow: "0 30px 70px rgba(110,11,14,.06)",
-                  }),
+              background: "linear-gradient(165deg,#2A0E10 0%,#1A0A0C 60%,#12080A 100%)",
+              border: "1px solid transparent",
+              boxShadow: "0 30px 70px rgba(0,0,0,.18)",
             }}
           >
-            {/* backdrop */}
-            <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none" }}>
-              {statMode === "rays" ? <RaysBackdrop /> : <GlobeBackdrop />}
-            </div>
+            {/* animated canvas backdrop (per-stat visualization) */}
+            <StatsNetCanvas active={statActive} />
             {/* fade overlay */}
             <div
               aria-hidden
@@ -1245,64 +1235,22 @@ export default function HomeClient() {
                 inset: 0,
                 zIndex: 2,
                 pointerEvents: "none",
-                background:
-                  statMode === "globe"
-                    ? "radial-gradient(58% 58% at 50% 46%,transparent 34%,rgba(18,8,10,.9) 86%)"
-                    : "linear-gradient(180deg,#FFFFFF 0%,rgba(255,255,255,0) 26%)",
+                background: "linear-gradient(180deg,#160A0C 0%,rgba(18,8,10,0) 32%)",
               }}
             />
-            {/* toggle */}
-            <div
-              style={{
-                position: "absolute",
-                top: 18,
-                right: 18,
-                zIndex: 6,
-                display: "inline-flex",
-                borderRadius: 100,
-                padding: 3,
-                gap: 2,
-                background: statMode === "globe" ? "rgba(255,255,255,.10)" : "rgba(120,90,92,.10)",
-              }}
-            >
-              {(["rays", "globe"] as const).map((m) => {
-                const on = statMode === m;
-                return (
-                  <button
-                    key={m}
-                    onClick={() => setStatMode(m)}
-                    style={{
-                      border: "none",
-                      background: on ? "#F23F44" : "transparent",
-                      fontFamily: "inherit",
-                      fontSize: 12,
-                      fontWeight: 600,
-                      padding: "6px 14px",
-                      borderRadius: 100,
-                      cursor: "pointer",
-                      transition: "color .2s, background .2s",
-                      color: on ? "#fff" : statMode === "globe" ? "rgba(255,255,255,.72)" : "#7A6669",
-                    }}
-                  >
-                    {m === "rays" ? "Light rays" : "Globe"}
-                  </button>
-                );
-              })}
-            </div>
 
-            <div style={{ position: "relative", zIndex: 3, textAlign: "center", maxWidth: 1180, margin: "0 auto" }}>
+            <div style={{ position: "relative", zIndex: 3, textAlign: "center", maxWidth: 1180, margin: "0 auto", pointerEvents: "none" }}>
               <Reveal
                 as="p"
                 className="text-[14px] font-bold tracking-[1px] uppercase m-0 mb-3.5"
-                style={{ color: statMode === "globe" ? "#B5A4A7" : "#9A878A" }}
+                style={{ color: "#B5A4A7" }}
               >
                 Global reach<span style={{ color: "#F23F44" }}>.</span>
               </Reveal>
               <Reveal
                 as="h2"
                 delay={0.06}
-                className="text-[42px] leading-[1.1] font-extrabold tracking-[-1.3px] mx-auto mb-3 max-w-[1000px]"
-                style={{ color: statMode === "globe" ? "#fff" : "#1A1014" }}
+                className="text-[42px] leading-[1.1] font-extrabold tracking-[-1.3px] mx-auto mb-3 max-w-[1000px] text-white"
               >
                 Find the best talent anywhere in the world
               </Reveal>
@@ -1310,17 +1258,22 @@ export default function HomeClient() {
                 as="p"
                 delay={0.1}
                 className="text-[16.5px] leading-[1.6] mx-auto mb-[50px] max-w-[540px]"
-                style={{ color: statMode === "globe" ? "rgba(255,255,255,.66)" : "#6E5B5E" }}
+                style={{ color: "rgba(255,255,255,.66)" }}
               >
                 A smooth, simple hiring experience that candidates and hiring teams love every step of the way.
               </Reveal>
               <Reveal delay={0.14} className="grid grid-cols-4 gap-6 text-center max-[900px]:grid-cols-2">
-                {STATS.map((s) => (
-                  <div key={s.label}>
-                    <div className="text-[52px] font-extrabold tracking-[-2px] leading-none" style={{ color: statMode === "globe" ? "#fff" : "#1A1014" }}>
+                {STATS.map((s, i) => (
+                  <div
+                    key={s.label}
+                    onMouseEnter={() => setStatActive(i)}
+                    className={`gr2stat${statActive === i ? " active" : ""}`}
+                    style={{ pointerEvents: "auto", cursor: "pointer" }}
+                  >
+                    <div className="text-[52px] font-extrabold tracking-[-2px] leading-none text-white">
                       <CountUp target={s.count} suffix={s.suffix} />
                     </div>
-                    <div className="text-[14.5px] font-medium mt-2.5" style={{ color: statMode === "globe" ? "rgba(255,255,255,.6)" : "#8A7A7D" }}>
+                    <div className="text-[14.5px] font-medium mt-2.5" style={{ color: "rgba(255,255,255,.6)" }}>
                       {s.label}
                     </div>
                   </div>
@@ -1596,50 +1549,6 @@ function GlobeSvg() {
   );
 }
 
-/* Stats band — light-rays backdrop (CSS) */
-function RaysBackdrop() {
-  return (
-    <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-      <div
-        style={{
-          position: "absolute",
-          bottom: -2,
-          left: "50%",
-          width: 1320,
-          maxWidth: "120%",
-          height: 680,
-          transform: "translateX(-50%)",
-          background:
-            "conic-gradient(from 270deg at 50% 100%, rgba(242,63,68,0) 0deg, rgba(242,63,68,0.18) 12deg, rgba(247,106,110,0.05) 24deg, rgba(242,63,68,0.18) 36deg, rgba(242,63,68,0) 48deg, rgba(242,63,68,0.16) 60deg, rgba(247,106,110,0.04) 72deg, rgba(242,63,68,0.18) 84deg, rgba(242,63,68,0) 96deg, rgba(242,63,68,0.16) 108deg, rgba(242,63,68,0) 120deg, rgba(242,63,68,0.18) 132deg, rgba(242,63,68,0) 144deg, rgba(242,63,68,0.16) 156deg, rgba(242,63,68,0) 168deg, rgba(242,63,68,0.18) 180deg, rgba(242,63,68,0) 200deg, rgba(242,63,68,0) 360deg)",
-          opacity: 0.9,
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: -120,
-          left: "50%",
-          width: 760,
-          height: 380,
-          transform: "translateX(-50%)",
-          background: "radial-gradient(50% 100% at 50% 100%,rgba(242,63,68,0.26),rgba(247,106,110,0.10) 40%,rgba(242,63,68,0) 100%)",
-        }}
-      />
-    </div>
-  );
-}
-
-/* Stats band — dark globe backdrop (animated SVG) */
-function GlobeBackdrop() {
-  return (
-    <div style={{ position: "absolute", top: "48%", left: "50%", width: 680, height: 680, maxWidth: "100%", transform: "translate(-50%,-50%)" }}>
-      <div className="tl-globe-spin" style={{ width: "100%", height: "100%" }}>
-        <GlobeSvg />
-      </div>
-    </div>
-  );
-}
-
 /* ---------- scoped keyframes / classes ---------- */
 
 const KEYFRAMES = `
@@ -1652,6 +1561,8 @@ const KEYFRAMES = `
 @keyframes tl-fadein{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:none}}
 @keyframes tl-globespin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 .tl-globe-spin{animation:tl-globespin 60s linear infinite;}
+.gr2stat{position:relative;transition:opacity .3s;}
+.gr2stat.active::after{content:'';position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);width:30px;height:3px;border-radius:2px;background:#F23F44;box-shadow:0 0 10px rgba(242,63,68,.7);}
 .tl-shimmer{background:linear-gradient(100deg,#F23F44 0%,#FF7A52 30%,#A91E23 52%,#FF7A52 74%,#F23F44 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:tl-shimmer 5s linear infinite;display:inline-block;}
 
 /* screening scan beam */
