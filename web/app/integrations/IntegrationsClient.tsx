@@ -125,7 +125,7 @@ export default function IntegrationsClient() {
             {shown.map((it) => (
               <div
                 key={it.name}
-                className="flex flex-col bg-white border border-[#EFE2E3] rounded-[18px] p-[22px] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_42px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
+                className="flex flex-col bg-white border border-[#EFE2E3] rounded-[18px] p-[22px] transition-[transform,box-shadow,border-color] duration-[220ms] hover:-translate-y-1 hover:shadow-[0_20px_42px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
               >
                 <span className="w-[46px] h-[46px] rounded-[12px] bg-sand flex items-center justify-center font-extrabold text-[18px] text-[#C0242B] mb-3.5">
                   {it.mark}
@@ -181,11 +181,11 @@ export default function IntegrationsClient() {
             Our API connects Testlify to anything. Tell us what you use and we&apos;ll help you wire it up.
           </Reveal>
           <Reveal delay={0.08} className="flex gap-3.5 justify-center flex-wrap">
-            <a className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white text-[#C0242B] transition-all duration-[250ms] hover:-translate-y-0.5" href="#">
+            <a className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white text-[#C0242B] transition-[transform,box-shadow] duration-[250ms]" href="#">
               Read API docs
               <ArrowRight />
             </a>
-            <a className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white/[0.14] text-white border-[1.5px] border-white/40 transition-all duration-[250ms] hover:-translate-y-0.5" href="#">
+            <a className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white/[0.14] text-white border-[1.5px] border-white/40 transition-[transform,box-shadow] duration-[250ms]" href="#">
               Request an integration
             </a>
           </Reveal>

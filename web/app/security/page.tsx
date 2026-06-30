@@ -158,7 +158,7 @@ export default function Page() {
       </section>
 
       {/* Security at every layer */}
-      <section id="security" className="px-7 pt-[84px] pb-[104px] bg-white">
+      <section id="security" className="px-7 pt-[84px] pb-[104px] bg-white max-[920px]:px-[22px] max-[920px]:pt-[72px] max-[920px]:pb-[72px]">
         <div className="max-w-[1240px] mx-auto">
           <div className="max-w-[640px] mx-auto mb-11 text-center">
             <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-muted m-0 mb-[18px]">
@@ -177,7 +177,7 @@ export default function Page() {
               <Reveal
                 key={c.title}
                 delay={c.delay}
-                className="bg-white border border-[#EFE2E3] rounded-[20px] p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
+                className="bg-white border border-[#EFE2E3] rounded-[20px] p-7 transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
               >
                 <span className="w-[46px] h-[46px] rounded-[13px] bg-[#FFF0F0] text-coral flex items-center justify-center mb-[18px]">
                   <svg
@@ -204,7 +204,7 @@ export default function Page() {
       </section>
 
       {/* Privacy & compliance */}
-      <section className="px-7 py-[104px] bg-sand">
+      <section className="px-7 py-[104px] bg-sand max-[920px]:px-[22px] max-[920px]:py-[72px]">
         <div className="max-w-[980px] mx-auto">
           <div className="text-center mx-auto mb-11">
             <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-muted m-0 mb-[18px]">
@@ -248,7 +248,7 @@ export default function Page() {
       </section>
 
       {/* Trust Center CTA */}
-      <section className="px-7 py-[104px] bg-ink text-white text-center">
+      <section className="px-7 py-[104px] bg-ink text-white text-center max-[920px]:px-[22px] max-[920px]:py-[72px]">
         <div className="max-w-[720px] mx-auto">
           <Reveal as="h2" className="text-[43px] leading-[1.08] font-extrabold tracking-[-1.4px] m-0 text-white max-[920px]:text-[32px] max-[920px]:tracking-[-1px]">
             Need our security documentation?
@@ -266,7 +266,7 @@ export default function Page() {
           >
             <a
               href="#"
-              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] py-3.5 px-[26px] rounded-[13px] transition-all duration-250 cursor-pointer bg-white text-[#C0242B] hover:-translate-y-0.5"
+              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] py-3.5 px-[26px] rounded-[13px] transition-all duration-[250ms] cursor-pointer bg-white text-[#C0242B]"
             >
               Visit Trust Center
               <svg
@@ -284,7 +284,7 @@ export default function Page() {
             </a>
             <a
               href="#"
-              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] py-3.5 px-[26px] rounded-[13px] transition-all duration-250 cursor-pointer bg-white/[0.14] text-white border-[1.5px] border-white/40 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] py-3.5 px-[26px] rounded-[13px] transition-all duration-[250ms] cursor-pointer bg-white/[0.14] text-white border-[1.5px] border-white/40"
             >
               Contact security team
             </a>

@@ -59,9 +59,9 @@ export default function TestLibraryClient() {
 
       {/* hero */}
       <section className="px-7 pt-[66px] pb-10 bg-[radial-gradient(1100px_540px_at_82%_-10%,#FCE0DE_0%,rgba(252,224,222,0)_56%),linear-gradient(180deg,#FFF8F7,#fff)]">
-        <div className="max-w-[1240px] mx-auto">
+        <div className="max-w-[1240px] mx-auto px-7">
           <p className="text-[13px] font-bold tracking-[0.16em] uppercase text-coral mb-4">
-            Test library<span className="text-faint2">.</span>
+            Test library<span className="text-[#CBB6B9]">.</span>
           </p>
           <h1 className="text-[52px] leading-[1.05] font-extrabold tracking-[-1.4px] m-0 max-w-[780px] max-[760px]:text-[36px]">
             3,184+ skills tests, <em className="not-italic text-coral">validated by experts</em>
@@ -120,7 +120,7 @@ export default function TestLibraryClient() {
 
       {/* category tiles */}
       <section className="px-7 pt-[62px] pb-2">
-        <div className="max-w-[1240px] mx-auto">
+        <div className="max-w-[1240px] mx-auto px-7">
           <div className="flex items-end justify-between gap-5 flex-wrap mb-[26px]">
             <div>
               <h2 className="text-[30px] font-extrabold tracking-[-0.8px] m-0 max-[760px]:text-[25px]">Browse by category</h2>
@@ -156,7 +156,7 @@ export default function TestLibraryClient() {
 
       {/* results */}
       <section className="px-7 pt-10 pb-[30px]">
-        <div className="max-w-[1240px] mx-auto">
+        <div className="max-w-[1240px] mx-auto px-7">
           {/* toolbar */}
           <div className="flex items-center justify-between gap-[18px] flex-wrap pb-[22px] border-b border-warm3 mb-[30px] max-[760px]:flex-col max-[760px]:items-start">
             <div className="flex items-center gap-3.5 flex-wrap">

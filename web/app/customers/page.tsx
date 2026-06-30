@@ -200,7 +200,7 @@ export default function CustomersPage() {
       </section>
 
       {/* Success stories grid */}
-      <section className="px-7 py-[104px] max-[920px]:py-[72px]">
+      <section className="px-7 py-[104px] max-[920px]:py-[72px] max-[920px]:px-[22px]">
         <div className="max-w-[1240px] mx-auto px-7">
           <div className="max-w-[640px] mx-auto mb-11 text-center">
             <Reveal
@@ -259,7 +259,7 @@ export default function CustomersPage() {
       </section>
 
       {/* Dark CTA */}
-      <section className="px-7 py-[104px] bg-ink text-white text-center max-[920px]:py-[72px]">
+      <section className="px-7 py-[104px] bg-ink text-white text-center max-[920px]:py-[72px] max-[920px]:px-[22px]">
         <div className="max-w-[720px] mx-auto px-7">
           <Reveal
             as="h2"

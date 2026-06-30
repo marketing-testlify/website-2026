@@ -187,6 +187,8 @@ export default function HomeClient() {
   const [statActive, setStatActive] = useState(0);
   const [hovering, setHovering] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
+  const howCardRef = useRef<HTMLDivElement>(null);
+  const howStepsRef = useRef<HTMLDivElement>(null);
 
   /* hero word swap */
   const wordRef = useRef<HTMLSpanElement>(null);
@@ -224,18 +226,51 @@ export default function HomeClient() {
     return () => clearInterval(id);
   }, []);
 
-  /* "how it works" auto-cycle */
+  /* "how it works" auto-cycle — restarts whenever the user picks a step, so a
+     manual selection isn't immediately overridden (mirrors prototype setStage). */
+  const [stageBump, setStageBump] = useState(0);
+  const pickStage = (i: number) => {
+    setStage(i);
+    setStageBump((b) => b + 1);
+  };
   useEffect(() => {
     const id = setInterval(() => setStage((s) => (s + 1) % STEPS.length), 3200);
     return () => clearInterval(id);
+  }, [stageBump]);
+
+  /* "how it works" — match the visual card height to the steps column (ported
+     from the prototype's syncHowHeight); fixed 600px on small screens. */
+  useEffect(() => {
+    const sync = () => {
+      const card = howCardRef.current;
+      const steps = howStepsRef.current;
+      if (!card || !steps) return;
+      if (window.innerWidth <= 860) {
+        card.style.height = "600px";
+        return;
+      }
+      const h = Math.round(steps.getBoundingClientRect().height);
+      if (h > 200) card.style.height = h + "px";
+    };
+    sync();
+    const t1 = setTimeout(sync, 400);
+    const t2 = setTimeout(sync, 1200);
+    window.addEventListener("resize", sync, { passive: true });
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("resize", sync);
+    };
   }, []);
 
-  /* testimonial carousel — advance with seamless loop via clone */
+  /* testimonial carousel — advance with seamless loop via clone.
+     Restarts the timer on manual navigation (prototype go(i, user) behaviour). */
+  const [slideBump, setSlideBump] = useState(0);
   useEffect(() => {
     if (hovering) return;
     const id = setInterval(() => setSlide((s) => s + 1), 4800);
     return () => clearInterval(id);
-  }, [hovering]);
+  }, [hovering, slideBump]);
 
   // seamless loop: when we land on the clone (index === length), snap back to 0 without transition
   const realCount = TESTIMONIALS.length;
@@ -254,10 +289,76 @@ export default function HomeClient() {
     }
   }, [slide, realCount, noTransition]);
 
-  const goPrev = () =>
+  const goPrev = () => {
     setSlide((s) => (s <= 0 ? realCount - 1 : s - 1));
-  const goNext = () => setSlide((s) => s + 1);
+    setSlideBump((b) => b + 1);
+  };
+  const goNext = () => {
+    setSlide((s) => s + 1);
+    setSlideBump((b) => b + 1);
+  };
   const activeDot = slide % realCount;
+
+  /* testimonial drag — ported from prototype initCarouselDrag():
+     grab the track, follow the pointer, then snap next/prev/stay on release. */
+  const [dragging, setDragging] = useState(false);
+  const dragState = useRef({ down: false, startX: 0, moved: 0, w: 1 });
+  const dragStart = (clientX: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    dragState.current.down = true;
+    dragState.current.moved = 0;
+    dragState.current.startX = clientX;
+    dragState.current.w = track.getBoundingClientRect().width || 1;
+    setDragging(true);
+  };
+  const dragMove = (clientX: number, e?: { cancelable: boolean; preventDefault: () => void }) => {
+    const st = dragState.current;
+    if (!st.down) return;
+    const track = trackRef.current;
+    if (!track) return;
+    const dx = clientX - st.startX;
+    st.moved = dx;
+    track.style.transition = "none";
+    track.style.transform = `translateX(calc(-${slide * 100}% + ${dx}px))`;
+    if (Math.abs(dx) > 6 && e && e.cancelable) e.preventDefault();
+  };
+  const dragEnd = () => {
+    const st = dragState.current;
+    if (!st.down) return;
+    st.down = false;
+    setDragging(false);
+    const track = trackRef.current;
+    const threshold = st.w * 0.18;
+    let target = slide;
+    if (st.moved < -threshold) target = slide + 1;
+    else if (st.moved > threshold) target = slide <= 0 ? realCount - 1 : slide - 1;
+    // animate to the resolved slide; restore the transition that drag turned off
+    if (track) {
+      track.style.transition = "transform .62s cubic-bezier(.22,.61,.36,1)";
+      track.style.transform = `translateX(-${target * 100}%)`;
+    }
+    // commit to state so React stays in sync (and so the dots/clone-loop update),
+    // and restart the autoplay timer (matches prototype go(i, user)).
+    setSlide(target);
+    setSlideBump((b) => b + 1);
+  };
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => dragMove(e.clientX, e);
+    const onUp = () => dragEnd();
+    const onTouchMove = (e: TouchEvent) => dragMove(e.touches[0].clientX, e);
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("touchend", onUp);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", onUp);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onUp);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slide]);
 
   return (
     <div style={{ position: "relative", overflowX: "hidden" }}>
@@ -692,6 +793,7 @@ export default function HomeClient() {
           >
             <div className="how-visual max-[900px]:static!" style={{ position: "sticky", top: 110 }}>
               <div
+                ref={howCardRef}
                 style={{
                   position: "relative",
                   height: 600,
@@ -762,14 +864,14 @@ export default function HomeClient() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-4">
+            <div ref={howStepsRef} className="flex flex-col gap-4">
               {STEPS.map((s, i) => {
                 const on = stage === i;
                 return (
                   <div
                     key={s.n}
-                    onClick={() => setStage(i)}
-                    onMouseEnter={() => setStage(i)}
+                    onClick={() => pickStage(i)}
+                    onMouseEnter={() => pickStage(i)}
                     style={{
                       cursor: "pointer",
                       background: on ? "#fff" : "#FFF9F9",
@@ -1056,9 +1158,13 @@ export default function HomeClient() {
               <div
                 ref={trackRef}
                 className="flex"
+                onMouseDown={(e) => dragStart(e.clientX)}
+                onTouchStart={(e) => dragStart(e.touches[0].clientX)}
                 style={{
                   transform: `translateX(-${slide * 100}%)`,
                   transition: noTransition ? "none" : "transform .62s cubic-bezier(.22,.61,.36,1)",
+                  cursor: dragging ? "grabbing" : "grab",
+                  touchAction: "pan-y",
                 }}
               >
                 {[...TESTIMONIALS, TESTIMONIALS[0]].map((t, i) => (
@@ -1090,7 +1196,10 @@ export default function HomeClient() {
             {TESTIMONIALS.map((_, i) => (
               <span
                 key={i}
-                onClick={() => setSlide(i)}
+                onClick={() => {
+                  setSlide(i);
+                  setSlideBump((b) => b + 1);
+                }}
                 style={{
                   width: activeDot === i ? 26 : 9,
                   height: 9,
@@ -1562,6 +1671,7 @@ const KEYFRAMES = `
 @keyframes tl-globespin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 .tl-globe-spin{animation:tl-globespin 60s linear infinite;}
 .gr2stat{position:relative;transition:opacity .3s;}
+.gr2stat.active{text-shadow:0 0 16px rgba(242,63,68,.5);}
 .gr2stat.active::after{content:'';position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);width:30px;height:3px;border-radius:2px;background:#F23F44;box-shadow:0 0 10px rgba(242,63,68,.7);}
 .tl-shimmer{background:linear-gradient(100deg,#F23F44 0%,#FF7A52 30%,#A91E23 52%,#FF7A52 74%,#F23F44 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:tl-shimmer 5s linear infinite;display:inline-block;}
 

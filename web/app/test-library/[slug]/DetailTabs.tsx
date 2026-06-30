@@ -24,7 +24,7 @@ export default function DetailTabs({ content }: { content: DetailTabContent }) {
       className={`border-0 bg-none font-[inherit] text-[15px] font-semibold px-1.5 py-3.5 -mb-px border-b-2 cursor-pointer transition-all duration-200 ${
         tab === key
           ? "text-coral border-coral"
-          : "text-muted2 border-transparent hover:text-[#6A585B]"
+          : "text-[#9A878A] border-transparent"
       }`}
     >
       {label}
@@ -72,7 +72,7 @@ export default function DetailTabs({ content }: { content: DetailTabContent }) {
                 </span>
                 <div>
                   <div className="font-bold text-[14.5px] text-ink">{s.title}</div>
-                  <div className="text-[12.5px] text-muted2">{s.sub}</div>
+                  <div className="text-[12.5px] text-[#9A878A]">{s.sub}</div>
                 </div>
               </div>
             ))}

@@ -235,25 +235,25 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
                 predict on-the-job performance.
               </p>
               <div className="flex gap-7 flex-wrap mt-[26px]">
-                <div className="text-[13px] text-muted2 font-semibold">
+                <div className="text-[13px] text-[#9A878A] font-semibold">
                   Duration
                   <b className="block text-[20px] text-ink font-extrabold tracking-[-0.5px] mt-0.5">
                     {test.dur} min
                   </b>
                 </div>
-                <div className="text-[13px] text-muted2 font-semibold">
+                <div className="text-[13px] text-[#9A878A] font-semibold">
                   Questions
                   <b className="block text-[20px] text-ink font-extrabold tracking-[-0.5px] mt-0.5">
                     {test.questions}
                   </b>
                 </div>
-                <div className="text-[13px] text-muted2 font-semibold">
+                <div className="text-[13px] text-[#9A878A] font-semibold">
                   Level
                   <b className="block text-[20px] text-ink font-extrabold tracking-[-0.5px] mt-0.5">
                     {test.level}
                   </b>
                 </div>
-                <div className="text-[13px] text-muted2 font-semibold">
+                <div className="text-[13px] text-[#9A878A] font-semibold">
                   Type
                   <b className="block text-[20px] text-ink font-extrabold tracking-[-0.5px] mt-0.5">
                     {TYPE_LABEL[test.type]}
@@ -264,7 +264,7 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
 
             {/* buybox */}
             <div className="sticky top-[130px] bg-white border border-[#EFE2E3] rounded-[22px] p-7 shadow-[0_24px_60px_rgba(110,11,14,0.10)] max-[920px]:static">
-              <p className="text-[13px] text-muted2 font-semibold m-0">Included on</p>
+              <p className="text-[13px] text-[#9A878A] font-semibold m-0">Included on</p>
               <p className="text-[20px] leading-[1.25] font-bold tracking-[-0.3px] text-ink mt-1 mb-0">
                 Starter, Scale &amp; Enterprise
               </p>

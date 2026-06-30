@@ -599,7 +599,7 @@ export default function ProductClient() {
       <section className="px-7 py-24">
         <div className="max-w-[1240px] mx-auto">
           <Reveal className="relative overflow-hidden rounded-[30px] px-14 py-[72px] text-center text-white bg-[radial-gradient(900px_420px_at_80%_0%,#FFE3DD_0%,rgba(255,227,221,0)_60%),linear-gradient(135deg,#F23F44,#C0242B)]">
-            <h2 className="text-[46px] leading-[1.08] font-extrabold tracking-[-1.4px] text-white m-0 mb-[18px] max-[920px]:text-[33px]">
+            <h2 className="text-[46px] leading-[1.08] font-extrabold tracking-[-1.4px] text-white m-0 mb-[18px]">
               Stop reading résumés.
               <br />
               Start meeting your best people.

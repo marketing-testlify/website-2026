@@ -198,7 +198,7 @@ export default function BlogClient() {
       </section>
 
       {/* post grid */}
-      <section className="px-7 py-20 max-[920px]:py-[60px]">
+      <section className="px-7 py-20 max-[920px]:px-[22px] max-[920px]:py-[60px]">
         <div className="mx-auto max-w-[1240px]">
           <div className="grid grid-cols-3 gap-[22px] max-[920px]:grid-cols-1">
             {posts.map((p) => (
@@ -235,7 +235,7 @@ export default function BlogClient() {
       </section>
 
       {/* newsletter */}
-      <section className="bg-ink px-7 py-20 text-center text-white max-[920px]:py-[60px]">
+      <section className="bg-ink px-7 py-20 text-center text-white max-[920px]:px-[22px] max-[920px]:py-[60px]">
         <div className="mx-auto max-w-[640px]">
           <Reveal
             as="h2"

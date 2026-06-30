@@ -213,7 +213,7 @@ export default function PricingClient() {
           </Reveal>
           <Reveal delay={0.12}>
             <div className="mt-[30px]">
-              <div className="inline-flex items-center gap-1 bg-[#F4ECE9] border border-[#EADFDB] rounded-full p-[5px]">
+              <div className="inline-flex items-center gap-1 bg-[#F4ECE9] border border-[#EADFDB] rounded-full p-[5px] mt-2.5">
                 <button
                   type="button"
                   onClick={() => {
