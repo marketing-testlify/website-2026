@@ -359,6 +359,7 @@ export default function HomeClient() {
             >
               <a
                 href="#"
+                style={{ color: "#fff" }}
                 className="btn-sheen inline-flex items-center gap-[9px] bg-coral text-white font-semibold text-[17px] px-[30px] py-4 rounded-[15px] shadow-[0_14px_30px_rgba(242,63,68,0.35)] transition-all duration-300 hover:-translate-y-[3px] hover:shadow-[0_20px_40px_rgba(242,63,68,0.45)]"
               >
                 Try for free
