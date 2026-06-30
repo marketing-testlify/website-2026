@@ -33,8 +33,9 @@ export default function Reveal({
     const reveal = () => el.classList.add("is-in");
 
     // Above-the-fold elements reveal right away.
+    // Threshold mirrors the prototype's inView(): r.top < vh * 0.94.
     const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.92) {
+    if (rect.top < window.innerHeight * 0.94) {
       reveal();
       return;
     }
