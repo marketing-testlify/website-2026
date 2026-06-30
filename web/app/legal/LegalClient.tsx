@@ -28,18 +28,18 @@ export default function LegalClient() {
 
   return (
     <>
-      <SiteHeader />
+      <SiteHeader announcement="Testlify AI is here — screen, interview & score candidates automatically." />
 
       {/* Hero */}
       <section className="bg-[radial-gradient(1000px_440px_at_50%_-10%,#FFF0EE_0%,rgba(255,240,238,0)_60%),#fff] px-7 pt-[54px] pb-[30px] text-center">
         <div className="max-w-[760px] mx-auto">
-          <p className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-muted m-0 mb-3.5">
-            Legal<b className="text-coral font-semibold">.</b>
+          <p className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-[#8A7A7D] m-0 mb-[14px]">
+            Legal<b className="text-[#F23F44] font-semibold">.</b>
           </p>
-          <h1 className="text-[46px] leading-[1.06] font-extrabold tracking-[-1.6px] my-[6px] mb-3 text-ink max-[920px]:text-[34px] max-[920px]:tracking-[-1px]">
+          <h1 className="text-[46px] leading-[1.06] font-extrabold tracking-[-1.6px] mt-[6px] mb-3 text-[#1A1014] max-[920px]:text-[34px] max-[920px]:tracking-[-1px]">
             {TITLES[doc]}
           </h1>
-          <p className="text-[13.5px] text-[#9A878A] font-semibold">
+          <p className="text-[13.5px] text-[#9A878A] font-semibold m-0">
             Last updated · June 1, 2026
           </p>
         </div>
@@ -54,10 +54,10 @@ export default function LegalClient() {
               <button
                 key={n.key}
                 onClick={() => select(n.key)}
-                className={`text-left border-none font-[inherit] text-[15px] font-semibold py-[11px] px-3.5 rounded-[11px] cursor-pointer transition-all duration-200 ${
+                className={`text-left border-none font-[inherit] text-[15px] font-semibold py-[11px] px-[14px] rounded-[11px] cursor-pointer transition-all duration-200 ${
                   on
-                    ? "bg-[#FFF0F0] text-coral"
-                    : "bg-transparent text-[#6A5A5D] hover:bg-sand"
+                    ? "bg-[#FFF0F0] text-[#F23F44]"
+                    : "bg-transparent text-[#6A5A5D] hover:bg-[#FBF3EE]"
                 }`}
               >
                 {n.label}
@@ -165,17 +165,17 @@ export default function LegalClient() {
       </div>
 
       {/* Questions CTA */}
-      <section className="bg-ink text-white text-center px-7 py-[72px]">
+      <section style={{ background: "#1A1014", color: "#fff", textAlign: "center", padding: "72px 28px" }}>
         <div className="max-w-[640px] mx-auto">
-          <h2 className="text-[32px] font-extrabold tracking-[-1px] text-white m-0 mb-3.5">
+          <h2 style={{ fontSize: "32px", fontWeight: 800, letterSpacing: "-1px", color: "#fff", margin: "0 0 14px" }}>
             Questions about our policies?
           </h2>
-          <p className="text-[18px] text-white/[0.78] m-0 mb-[26px]">
+          <p style={{ fontSize: "18px", color: "rgba(255,255,255,.78)", margin: "0 0 26px" }}>
             Our team is happy to help. Reach us at legal@testlify.com.
           </p>
           <a
             href="#"
-            className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] py-3.5 px-[26px] rounded-[13px] transition-all duration-250 cursor-pointer bg-coral text-white shadow-[0_12px_26px_rgba(242,63,68,0.30)] hover:-translate-y-0.5"
+            className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] py-[14px] px-[26px] rounded-[13px] transition-all duration-[250ms] cursor-pointer bg-[#F23F44] text-white shadow-[0_12px_26px_rgba(242,63,68,0.30)] hover:-translate-y-0.5"
           >
             Contact us
             <svg

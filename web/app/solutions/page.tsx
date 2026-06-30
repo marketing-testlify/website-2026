@@ -9,8 +9,18 @@ export const metadata: Metadata = {
     "However you hire — high volume, fully remote, straight off campus — Testlify adapts to your workflow and surfaces the right people, faster.",
 };
 
-const ArrowRight = ({ w = 17, sw = 2.4 }: { w?: number; sw?: number }) => (
-  <svg width={w} height={w} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+const ArrowRight = () => (
+  <svg
+    width="17"
+    height="17"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2.4}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden
+  >
     <path d="M5 12h14M13 6l6 6-6 6" />
   </svg>
 );
@@ -98,7 +108,13 @@ const USE_CASES: UseCase[] = [
   },
 ];
 
-const INDUSTRIES: { label: string; delay: number; icon: React.ReactNode }[] = [
+type Industry = {
+  label: string;
+  delay: number;
+  icon: React.ReactNode;
+};
+
+const INDUSTRIES: Industry[] = [
   {
     label: "IT & technology",
     delay: 0,
@@ -153,7 +169,13 @@ const INDUSTRIES: { label: string; delay: number; icon: React.ReactNode }[] = [
   },
 ];
 
-const SIZES: { title: string; desc: string; delay: number }[] = [
+type Size = {
+  title: string;
+  desc: string;
+  delay: number;
+};
+
+const SIZES: Size[] = [
   {
     title: "Startups",
     desc: "Hire your first ten people right. Get a fair, structured process in place from day one — without a recruiting team.",
@@ -171,7 +193,13 @@ const SIZES: { title: string; desc: string; delay: number }[] = [
   },
 ];
 
-const OUTCOMES: { stat: string; label: string; delay: number }[] = [
+type Outcome = {
+  stat: string;
+  label: string;
+  delay: number;
+};
+
+const OUTCOMES: Outcome[] = [
   { stat: "68%", label: "faster time-to-hire", delay: 0 },
   { stat: "3.2×", label: "more qualified shortlists", delay: 0.05 },
   { stat: "91%", label: "candidate completion rate", delay: 0.1 },
@@ -186,87 +214,148 @@ export default function Page() {
         announcementCta="Book a demo"
       />
 
-      {/* hero */}
-      <section className="px-7 pt-16 pb-10 text-center bg-[radial-gradient(1100px_520px_at_50%_-10%,#FFF0EE_0%,rgba(255,240,238,0)_62%),#fff]">
-        <div className="max-w-[820px] mx-auto">
-          <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-muted mb-[18px]">
-            Solutions<b className="text-coral font-semibold">.</b>
+      {/* Hero */}
+      <section
+        className="text-center"
+        style={{
+          padding: "64px 28px 40px",
+          background:
+            "radial-gradient(1100px 520px at 50% -10%,#FFF0EE 0%,rgba(255,240,238,0) 62%),#fff",
+        }}
+      >
+        <div className="mx-auto" style={{ maxWidth: 820 }}>
+          <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-[#8A7A7D] m-0 mb-[18px]">
+            Solutions<b className="text-[#F23F44] font-semibold">.</b>
           </Reveal>
-          <Reveal as="h1" delay={0.04} className="text-[62px] leading-[1.04] font-extrabold tracking-[-2px] m-0 text-ink max-[920px]:text-[42px] max-[920px]:tracking-[-1.4px]">
+          <Reveal
+            as="h1"
+            delay={0.04}
+            className="text-[62px] leading-[1.04] font-extrabold tracking-[-2px] m-0 text-[#1A1014] max-[920px]:text-[42px] max-[920px]:tracking-[-1.4px]"
+          >
             A hiring solution for
             <br />
             every kind of team
           </Reveal>
-          <Reveal as="p" delay={0.08} className="text-[19px] leading-[1.6] text-body font-normal mx-auto mt-[22px] max-w-[600px]">
+          <Reveal
+            as="p"
+            delay={0.08}
+            className="text-[19px] leading-[1.6] text-[#5A4B4E] font-normal mx-auto m-0 max-w-[600px]"
+            style={{ marginTop: 22 }}
+          >
             However you hire — high volume, fully remote, straight off campus — Testlify adapts to your workflow and surfaces the right people, faster.
           </Reveal>
-          <Reveal delay={0.12} className="mt-[30px] flex gap-3.5 justify-center flex-wrap">
-            <a className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-coral text-white shadow-[0_12px_26px_rgba(242,63,68,0.30)] transition-all duration-[250ms] hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(242,63,68,0.40)]" href="#">
+          <Reveal
+            delay={0.12}
+            className="flex gap-[14px] justify-center flex-wrap"
+            style={{ marginTop: 30 }}
+          >
+            <a
+              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] bg-[#F23F44] text-white shadow-[0_12px_26px_rgba(242,63,68,0.30)] transition-all duration-[250ms] hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(242,63,68,0.40)]"
+              href="#"
+            >
               Start free
               <ArrowRight />
             </a>
-            <a className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white text-ink border-[1.5px] border-warm2 transition-all duration-[250ms] hover:-translate-y-0.5 hover:border-[#F2B7B9] hover:shadow-[0_10px_24px_rgba(110,11,14,0.08)]" href="#">
+            <a
+              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] bg-white text-[#1A1014] border-[1.5px] border-[#EADDDE] transition-all duration-[250ms] hover:-translate-y-0.5 hover:border-[#F2B7B9] hover:shadow-[0_10px_24px_rgba(110,11,14,0.08)]"
+              href="#"
+            >
               Book a demo
             </a>
           </Reveal>
         </div>
       </section>
 
-      {/* by use case */}
-      <section id="usecases" className="px-7 pt-14 pb-[104px]">
+      {/* By Use Case */}
+      <section
+        id="usecases"
+        style={{ padding: "56px 28px 104px" }}
+      >
         <div className="max-w-[1240px] mx-auto">
-          <div className="max-w-[640px] mx-auto mb-12 text-center">
-            <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-muted mb-[18px]">
-              By use case<b className="text-coral font-semibold">.</b>
+          <div className="max-w-[640px] mx-auto text-center" style={{ marginBottom: 48 }}>
+            <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-[#8A7A7D] m-0 mb-[18px]">
+              By use case<b className="text-[#F23F44] font-semibold">.</b>
             </Reveal>
-            <Reveal as="h2" delay={0.04} className="text-[43px] leading-[1.08] font-extrabold tracking-[-1.4px] m-0 text-ink max-[920px]:text-[32px] max-[920px]:tracking-[-1px]">
+            <Reveal
+              as="h2"
+              delay={0.04}
+              className="text-[43px] leading-[1.08] font-extrabold tracking-[-1.4px] m-0 text-[#1A1014] max-[920px]:text-[32px] max-[920px]:tracking-[-1px]"
+            >
               Built for the way you hire
             </Reveal>
           </div>
+
           <div className="grid grid-cols-3 gap-[18px] max-[920px]:grid-cols-1">
-            {USE_CASES.map((u) => (
+            {USE_CASES.map((uc) => (
+              <div key={uc.id} id={uc.id} style={{ scrollMarginTop: 120 }}>
               <Reveal
-                key={u.id}
-                delay={u.delay}
-                className="group relative flex flex-col bg-white border border-[#EFE2E3] rounded-[20px] p-7 transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
+                delay={uc.delay}
+                className="flex flex-col bg-white border border-[#EFE2E3] rounded-[20px] p-7 transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
               >
-                <span id={u.id} className="absolute -top-[120px]" aria-hidden />
-                <span className="w-12 h-12 rounded-[14px] bg-[#FFF0F0] text-coral flex items-center justify-center mb-[18px]">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    {u.icon}
+                <span className="w-12 h-12 rounded-[14px] bg-[#FFF0F0] text-[#F23F44] flex items-center justify-center mb-[18px]">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    {uc.icon}
                   </svg>
                 </span>
-                <h3 className="text-[18px] font-bold tracking-[-0.3px] m-0 mb-2">{u.title}</h3>
-                <p className="text-[14px] leading-[1.6] text-[#6A5A5D] m-0 mb-4">{u.desc}</p>
-                <span className="text-[13.5px] font-bold text-coral mt-auto inline-flex items-center gap-1.5">
+                <h3 className="text-[18px] font-bold tracking-[-0.3px] m-0 mb-2 text-[#1A1014]">
+                  {uc.title}
+                </h3>
+                <p className="text-[14px] leading-[1.6] text-[#6A5A5D] m-0 mb-4">{uc.desc}</p>
+                <span className="text-[13.5px] font-bold text-[#F23F44] mt-auto inline-flex items-center gap-[6px]">
                   Learn more →
                 </span>
               </Reveal>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* by industry */}
-      <section className="px-7 py-[104px] bg-sand">
+      {/* By Industry */}
+      <section className="px-7 py-[104px] bg-[#FBF3EE]">
         <div className="max-w-[1240px] mx-auto">
-          <div className="max-w-[640px] mx-auto mb-11 text-center">
-            <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-muted mb-[18px]">
-              By industry<b className="text-coral font-semibold">.</b>
+          <div className="max-w-[640px] mx-auto text-center" style={{ marginBottom: 44 }}>
+            <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-[#8A7A7D] m-0 mb-[18px]">
+              By industry<b className="text-[#F23F44] font-semibold">.</b>
             </Reveal>
-            <Reveal as="h2" delay={0.04} className="text-[43px] leading-[1.08] font-extrabold tracking-[-1.4px] m-0 text-ink max-[920px]:text-[32px] max-[920px]:tracking-[-1px]">
+            <Reveal
+              as="h2"
+              delay={0.04}
+              className="text-[43px] leading-[1.08] font-extrabold tracking-[-1.4px] m-0 text-[#1A1014] max-[920px]:text-[32px] max-[920px]:tracking-[-1px]"
+            >
               Tuned to your field
             </Reveal>
           </div>
-          <div className="grid grid-cols-3 gap-3.5 max-[920px]:grid-cols-1">
+
+          <div className="grid grid-cols-3 gap-[14px] max-[920px]:grid-cols-1">
             {INDUSTRIES.map((ind) => (
               <Reveal
                 key={ind.label}
                 delay={ind.delay}
-                className="flex items-center gap-[13px] bg-white border border-[#EFE2E3] rounded-[15px] px-5 py-[18px] font-semibold text-[15px] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_16px_34px_rgba(110,11,14,0.08)] hover:border-[#F4D2D3]"
+                className="flex items-center gap-[13px] bg-white border border-[#EFE2E3] rounded-[15px] px-5 py-[18px] font-semibold text-[15px] text-[#1A1014] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_16px_34px_rgba(110,11,14,0.08)] hover:border-[#F4D2D3]"
               >
-                <span className="w-10 h-10 rounded-[11px] bg-sand text-[#C0242B] flex items-center justify-center flex-none">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <span className="w-10 h-10 rounded-[11px] bg-[#FBF3EE] text-[#C0242B] flex items-center justify-center flex-none">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
                     {ind.icon}
                   </svg>
                 </span>
@@ -277,17 +366,22 @@ export default function Page() {
         </div>
       </section>
 
-      {/* by company size */}
+      {/* By Company Size */}
       <section className="px-7 py-[104px]">
         <div className="max-w-[1240px] mx-auto">
-          <div className="max-w-[640px] mx-auto mb-11 text-center">
-            <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-muted mb-[18px]">
-              By company size<b className="text-coral font-semibold">.</b>
+          <div className="max-w-[640px] mx-auto text-center" style={{ marginBottom: 44 }}>
+            <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-[#8A7A7D] m-0 mb-[18px]">
+              By company size<b className="text-[#F23F44] font-semibold">.</b>
             </Reveal>
-            <Reveal as="h2" delay={0.04} className="text-[43px] leading-[1.08] font-extrabold tracking-[-1.4px] m-0 text-ink max-[920px]:text-[32px] max-[920px]:tracking-[-1px]">
+            <Reveal
+              as="h2"
+              delay={0.04}
+              className="text-[43px] leading-[1.08] font-extrabold tracking-[-1.4px] m-0 text-[#1A1014] max-[920px]:text-[32px] max-[920px]:tracking-[-1px]"
+            >
               From first hire to ten-thousandth
             </Reveal>
           </div>
+
           <div className="grid grid-cols-3 gap-[18px] max-[920px]:grid-cols-1">
             {SIZES.map((s) => (
               <Reveal
@@ -295,51 +389,82 @@ export default function Page() {
                 delay={s.delay}
                 className="bg-white border border-[#EFE2E3] rounded-[20px] px-7 py-8 transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
               >
-                <h3 className="text-[22px] leading-[1.25] font-bold tracking-[-0.4px] m-0 mb-2.5 text-ink">{s.title}</h3>
-                <p className="text-[14.5px] leading-[1.66] text-body">{s.desc}</p>
+                <h3 className="text-[22px] leading-[1.25] font-bold tracking-[-0.4px] m-0 text-[#1A1014]" style={{ marginBottom: 10 }}>
+                  {s.title}
+                </h3>
+                <p className="text-[14.5px] leading-[1.66] text-[#5A4B4E] m-0">{s.desc}</p>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* outcomes */}
-      <section className="px-7 py-[104px] bg-ink text-white">
+      {/* Outcomes */}
+      <section className="px-7 py-[104px] bg-[#1A1014] text-white">
         <div className="max-w-[1240px] mx-auto">
-          <div className="text-center max-w-[640px] mx-auto mb-[50px]">
-            <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase mb-[18px] text-[#C9A9AB]">
-              The outcomes<b className="text-coral-bright font-semibold">.</b>
+          <div className="text-center max-w-[640px] mx-auto" style={{ marginBottom: 50 }}>
+            <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase m-0 mb-[18px] text-[#C9A9AB]">
+              The outcomes<b className="text-[#FF7A52] font-semibold">.</b>
             </Reveal>
-            <Reveal as="h2" delay={0.04} className="text-[43px] leading-[1.08] font-extrabold tracking-[-1.4px] m-0 text-white max-[920px]:text-[32px] max-[920px]:tracking-[-1px]">
+            <Reveal
+              as="h2"
+              delay={0.04}
+              className="text-[43px] leading-[1.08] font-extrabold tracking-[-1.4px] m-0 text-white max-[920px]:text-[32px] max-[920px]:tracking-[-1px]"
+            >
               Results across every team
             </Reveal>
           </div>
-          <div className="grid grid-cols-4 gap-5 text-center max-[920px]:grid-cols-2">
+
+          <div
+            className="grid gap-5 text-center max-[920px]:grid-cols-2"
+            style={{ gridTemplateColumns: "repeat(4,1fr)" }}
+          >
             {OUTCOMES.map((o) => (
               <Reveal key={o.label} delay={o.delay}>
-                <div className="text-[50px] font-extrabold tracking-[-2px] text-coral leading-none">{o.stat}</div>
-                <p className="text-[14px] mt-2.5 text-white/70">{o.label}</p>
+                <div className="text-[50px] font-extrabold tracking-[-2px] text-[#F23F44] leading-none">
+                  {o.stat}
+                </div>
+                <p className="text-[14px] m-0 text-white/70" style={{ marginTop: 10 }}>
+                  {o.label}
+                </p>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* final CTA */}
+      {/* Final CTA */}
       <section className="px-7 py-[104px] text-center">
-        <div className="max-w-[720px] mx-auto">
-          <Reveal as="h2" className="text-[43px] leading-[1.08] font-extrabold tracking-[-1.4px] m-0 text-ink max-[920px]:text-[32px] max-[920px]:tracking-[-1px]">
+        <div className="mx-auto" style={{ maxWidth: 720 }}>
+          <Reveal
+            as="h2"
+            className="text-[43px] leading-[1.08] font-extrabold tracking-[-1.4px] m-0 text-[#1A1014] max-[920px]:text-[32px] max-[920px]:tracking-[-1px]"
+          >
             Find your hiring solution
           </Reveal>
-          <Reveal as="p" delay={0.04} className="text-[19px] leading-[1.6] text-body mx-auto mt-[18px] mb-[30px]">
+          <Reveal
+            as="p"
+            delay={0.04}
+            className="text-[19px] leading-[1.6] text-[#5A4B4E]"
+            style={{ margin: "18px auto 30px" }}
+          >
             Tell us how you hire and we&apos;ll show you the fastest path to better shortlists.
           </Reveal>
-          <Reveal delay={0.08} className="flex gap-3.5 justify-center flex-wrap">
-            <a className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-coral text-white shadow-[0_12px_26px_rgba(242,63,68,0.30)] transition-all duration-[250ms] hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(242,63,68,0.40)]" href="#">
+          <Reveal
+            delay={0.08}
+            className="flex gap-[14px] justify-center flex-wrap"
+          >
+            <a
+              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] bg-[#F23F44] text-white shadow-[0_12px_26px_rgba(242,63,68,0.30)] transition-all duration-[250ms] hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(242,63,68,0.40)]"
+              href="#"
+            >
               Start free
               <ArrowRight />
             </a>
-            <a className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white text-ink border-[1.5px] border-warm2 transition-all duration-[250ms] hover:-translate-y-0.5 hover:border-[#F2B7B9] hover:shadow-[0_10px_24px_rgba(110,11,14,0.08)]" href="#">
+            <a
+              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] bg-white text-[#1A1014] border-[1.5px] border-[#EADDDE] transition-all duration-[250ms] hover:-translate-y-0.5 hover:border-[#F2B7B9] hover:shadow-[0_10px_24px_rgba(110,11,14,0.08)]"
+              href="#"
+            >
               Book a demo
             </a>
           </Reveal>

@@ -6,7 +6,7 @@ import Reveal from "@/components/Reveal";
 import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = {
-  title: "Resources — everything you need to hire better",
+  title: "Resources",
   description:
     "Guides, glossaries, templates and tools — free, practical and built by hiring people for hiring people.",
 };

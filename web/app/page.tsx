@@ -3,7 +3,7 @@ import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Testlify — Hire on skill, not on a hunch",
+    absolute: "Testlify — Hire on skill, not on a résumé",
   },
   description:
     "Your next great hire is already in your pipeline. Testlify surfaces them in 30 minutes with validated assessments — no resume bias, no gut-check interviews, no bad-hire regret.",

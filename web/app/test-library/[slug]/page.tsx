@@ -3,7 +3,6 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
-import FAQ from "@/components/FAQ";
 import TestIcon from "@/components/TestIcon";
 import { routes } from "@/lib/routes";
 import {
@@ -20,7 +19,7 @@ const LEVEL_SHORT: Record<TestEntry["level"], string> = {
   Advanced: "Advanced",
 };
 
-/** Default test, used when a slug doesn't resolve to a real entry. */
+/** Default test, used when a slug does not resolve to a real entry. */
 const DEFAULT_TEST: TestEntry =
   TESTS.find((t) => t.name === "Attention to Detail (Textual)") ?? TESTS[0];
 
@@ -71,29 +70,29 @@ const ArrowRight = ({ size = 17 }: { size?: number }) => (
   </svg>
 );
 
-/** Tab content, structured after the prototype's Overview / Skills / Sample copy. */
+/** Tab content, structured after the prototype Overview / Skills / Sample copy. */
 function buildTabContent(test: TestEntry): DetailTabContent {
   const label = TYPE_LABEL[test.type].toLowerCase();
   return {
     measures: [
-      `This ${LEVEL_SHORT[test.level].toLowerCase()} ${test.name} assessment evaluates whether a candidate can apply ${label} skills to real, on-the-job situations — not just recall facts. It blends focused questions with applied scenarios to give a rounded picture of ability.`,
-      `Candidates work through ${test.questions} questions across roughly ${test.dur} minutes. Each item is calibrated on real candidate data and graded objectively, so scoring is consistent and instant for every applicant.`,
+      `This ${LEVEL_SHORT[test.level].toLowerCase()} ${test.name} assessment evaluates whether a candidate can write, debug and reason about real-world ${label} — not just recite syntax. It blends short coding challenges with applied multiple-choice questions to give a rounded picture of ability.`,
+      `Candidates work through ${test.questions} questions across roughly ${test.dur} minutes. Each item runs against a hidden test suite, so scoring is objective and instant for every applicant.`,
     ],
-    whoFor: `Ideal for screening candidates where ${label} ability genuinely predicts performance. Pair it with a cognitive ability test or a culture-add assessment for a complete, skills-first first round.`,
+    whoFor: `Ideal for hiring candidates with practical ${label} experience. Pair it with a cognitive ability test or a culture-add assessment for a complete, skills-first first round.`,
     skills: [
       {
-        title: "Applied accuracy",
-        sub: "Spotting errors and inconsistencies",
+        title: "Closures & scope",
+        sub: "Lexical scope, hoisting, this",
         icon: (
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-            <path d="M9 11l3 3L22 4" />
-            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
           </svg>
         ),
       },
       {
-        title: "Speed under pressure",
-        sub: "Holding quality against the clock",
+        title: "Async & promises",
+        sub: "async/await, event loop",
         icon: (
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <circle cx="12" cy="12" r="10" />
@@ -102,8 +101,8 @@ function buildTabContent(test: TestEntry): DetailTabContent {
         ),
       },
       {
-        title: "Structured reasoning",
-        sub: "Breaking problems into steps",
+        title: "Arrays & objects",
+        sub: "map, reduce, destructuring",
         icon: (
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M4 7V4h16v3" />
@@ -112,8 +111,8 @@ function buildTabContent(test: TestEntry): DetailTabContent {
         ),
       },
       {
-        title: "Real-world judgement",
-        sub: "Choosing the right response",
+        title: "DOM manipulation",
+        sub: "Events, selectors, updates",
         icon: (
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -122,8 +121,8 @@ function buildTabContent(test: TestEntry): DetailTabContent {
         ),
       },
       {
-        title: "Attention to detail",
-        sub: "Catching what others miss",
+        title: "Modern ES features",
+        sub: "Spread, optional chaining",
         icon: (
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6z" />
@@ -131,8 +130,8 @@ function buildTabContent(test: TestEntry): DetailTabContent {
         ),
       },
       {
-        title: "Consistency",
-        sub: "Reliable performance across items",
+        title: "Error handling",
+        sub: "try/catch, edge cases",
         icon: (
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M9 11l3 3L22 4" />
@@ -146,51 +145,44 @@ function buildTabContent(test: TestEntry): DetailTabContent {
         num: "QUESTION 01 · MULTIPLE CHOICE",
         q: (
           <>
-            Which of the four records below contains a value that is{" "}
+            What does{" "}
             <code className="bg-sand px-1.5 py-0.5 rounded-[5px] text-[15px]">
-              inconsistent
+              Array.prototype.reduce
             </code>{" "}
-            with the rest of the row?
+            return when called on an empty array with no initial value?
           </>
         ),
-        a: "Tests the candidate's ability to cross-check data and spot the single field that doesn't reconcile.",
+        a: "Tests understanding of reduce semantics and common runtime errors.",
       },
       {
-        num: "QUESTION 02 · MATCHING",
-        q: "Match each entry to its corrected version",
-        a: "Candidates pair flawed records with the version that fixes every error — graded against an exact key.",
+        num: "QUESTION 02 · CODING",
+        q: "Implement a debounce function",
+        a: (
+          <>
+            Write a{" "}
+            <code className="bg-sand px-1.5 py-0.5 rounded-[5px] text-[15px]">
+              debounce(fn, delay)
+            </code>{" "}
+            that delays invocation until calls stop. Graded against a hidden test suite.
+          </>
+        ),
       },
       {
-        num: "QUESTION 03 · SCENARIO",
-        q: "Identify every discrepancy before the deadline",
-        a: "An applied scenario that scores both accuracy and the number of issues caught within the time limit.",
+        num: "QUESTION 03 · CODING",
+        q: "Flatten a nested array",
+        a: (
+          <>
+            Return a single-level array from an arbitrarily nested one, without using{" "}
+            <code className="bg-sand px-1.5 py-0.5 rounded-[5px] text-[15px]">
+              Array.flat
+            </code>
+            .
+          </>
+        ),
       },
     ],
   };
 }
-
-const FAQ_ITEMS = [
-  {
-    q: "How is this test scored?",
-    a: "Every question is auto-graded against a calibrated key, so candidates receive an objective score instantly. There is no manual marking and no reviewer bias — the same standard is applied to every applicant.",
-  },
-  {
-    q: "Can I customise or combine it with other tests?",
-    a: "Yes. Mix this test with any of our 3,500+ assessments to build a single, role-specific evaluation. You can add your own questions, set the pass mark and reorder sections in minutes.",
-  },
-  {
-    q: "Is the test protected against cheating?",
-    a: "Full-screen detection, copy-paste monitoring, webcam proctoring and randomised question pools are all available. Anti-cheat is included on every paid plan, not sold as an add-on.",
-  },
-  {
-    q: "How do you know the test is valid?",
-    a: "Each test is built and peer-reviewed by subject-matter experts, then calibrated on real candidate data and monitored for adverse impact. Tests are revalidated on a recurring schedule to keep them defensible.",
-  },
-  {
-    q: "Which plans include this test?",
-    a: "This test is available on Starter, Scale and Enterprise. Your plan covers unlimited assessments, so you can run it for as many candidates as you need.",
-  },
-];
 
 export default async function Page(props: PageProps<"/test-library/[slug]">) {
   const { slug } = await props.params;
@@ -281,7 +273,7 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
                   "Auto-graded with instant scoring",
                   "Anti-cheat & full-screen proctoring",
                   "Customize or mix with other tests",
-                  "Calibrated on real candidate data",
+                  "Code playback & plagiarism checks",
                 ].map((li) => (
                   <li
                     key={li}
@@ -317,45 +309,15 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
         <DetailTabs content={tabContent} />
       </section>
 
-      {/* validation / SME note */}
-      <section className="px-7 py-[88px] bg-white">
-        <div className="max-w-[840px] mx-auto bg-[#FFF8F7] border border-warm rounded-[22px] p-9 max-[760px]:p-6">
-          <Reveal
-            as="p"
-            className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-coral m-0 mb-[18px]"
-          >
-            How we build tests<span className="text-faint2">.</span>
-          </Reveal>
-          <Reveal
-            as="h2"
-            delay={0.04}
-            className="text-[34px] leading-[1.1] font-extrabold tracking-[-1.2px] text-ink m-0 mb-3.5 max-[920px]:text-[27px]"
-          >
-            Peer-reviewed by subject-matter experts
-          </Reveal>
-          <Reveal
-            as="p"
-            delay={0.08}
-            className="text-[16px] leading-[1.66] text-body m-0"
-          >
-            Every Testlify test is authored by practitioners in the field, then
-            independently reviewed by a second expert before it ships. Items are
-            calibrated on real candidate data, screened for adverse impact and
-            revalidated on a recurring schedule — so the scores you act on are
-            objective, fair and EEOC-defensible.
-          </Reveal>
-        </div>
-      </section>
-
       {/* related tests */}
       <section className="px-7 py-[88px] bg-sand">
         <div className="max-w-[1240px] mx-auto">
           <div className="max-w-[640px] mx-auto mb-10 text-center">
             <Reveal
               as="p"
-              className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-coral m-0 mb-[18px]"
+              className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-muted m-0 mb-[18px]"
             >
-              Related tests<span className="text-faint2">.</span>
+              Related tests<b className="text-coral font-semibold">.</b>
             </Reveal>
             <Reveal
               as="h2"
@@ -388,29 +350,7 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="px-7 py-[88px] bg-white">
-        <div className="max-w-[840px] mx-auto">
-          <div className="mb-10">
-            <Reveal
-              as="p"
-              className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-coral m-0 mb-[18px]"
-            >
-              Questions<span className="text-faint2">.</span>
-            </Reveal>
-            <Reveal
-              as="h2"
-              delay={0.04}
-              className="text-[34px] leading-[1.1] font-extrabold tracking-[-1.2px] text-ink m-0 max-[920px]:text-[27px]"
-            >
-              Everything you need to know
-            </Reveal>
-          </div>
-          <FAQ items={FAQ_ITEMS} />
-        </div>
-      </section>
-
-      {/* page CTA — distinct dark band (not the coral footer band) */}
+      {/* page CTA — dark band */}
       <section className="px-7 py-[88px] bg-[#1A1014] text-white text-center">
         <div className="max-w-[720px] mx-auto">
           <Reveal

@@ -33,7 +33,7 @@ const RELATED = [
 ];
 
 export default async function Page(props: PageProps<"/blog/[slug]">) {
-  // The slug only makes the route dynamic; the single designed article is rendered.
+  // The slug makes the route dynamic; the single designed article is rendered.
   await props.params;
 
   return (
@@ -44,19 +44,19 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
         announcementHref={routes.blogArticle}
       />
 
-      {/* article head */}
+      {/* Article head — above-fold, no reveal needed */}
       <article className="mx-auto max-w-[740px] px-7">
-        <p className="my-0 mb-[22px] mt-9 text-[13px] font-semibold text-[#9A878A]">
+        <p className="m-0 mb-[22px] mt-9 text-[13px] font-semibold text-[#9A878A]">
           <Link href={routes.blog} className="text-coral">
             Blog
-          </Link>{" "}
-          &nbsp;·&nbsp; Hiring strategy
+          </Link>
+          {" "}&nbsp;·&nbsp; Hiring strategy
         </p>
         <h1 className="m-0 mb-[22px] text-[46px] font-extrabold leading-[1.08] tracking-[-1.6px] text-ink max-[920px]:text-[34px] max-[920px]:tracking-[-1px]">
           The 2026 skills-based hiring playbook
         </h1>
         <div className="mb-[30px] flex items-center gap-3 text-[13.5px] text-[#9A878A]">
-          <span className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-coral text-[15px] font-bold text-white">
+          <span className="flex h-[42px] w-[42px] flex-none items-center justify-center rounded-full bg-coral text-[15px] font-bold text-white">
             SK
           </span>
           <div>
@@ -70,7 +70,7 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
         </div>
       </article>
 
-      {/* hero band */}
+      {/* Hero band */}
       <div className="mx-auto max-w-[740px] px-7">
         <div
           className="mb-11 h-[380px] rounded-[22px] max-[920px]:h-[220px]"
@@ -78,14 +78,14 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
         />
       </div>
 
-      {/* prose */}
+      {/* Prose body */}
       <div className="mx-auto max-w-[740px] px-7">
         <Reveal as="p" className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
-          For most of the last century, the résumé was the hiring world&apos;s
-          currency. A degree, a job title, a recognizable logo — these were the
-          proxies we used to guess who could do the work. The problem is that
-          proxies are exactly that: guesses. And they systematically miss great
-          people.
+          For most of the last century, the r&eacute;sum&eacute; was the hiring
+          world&apos;s currency. A degree, a job title, a recognizable logo —
+          these were the proxies we used to guess who could do the work. The
+          problem is that proxies are exactly that: guesses. And they
+          systematically miss great people.
         </Reveal>
         <Reveal as="p" className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
           Skills-based hiring flips the model. Instead of asking &quot;who looks
@@ -94,6 +94,7 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
           that into practice, step by step.
         </Reveal>
 
+        {/* Pull quote */}
         <Reveal className="my-8 border-l-4 border-coral py-[6px] pl-6 text-[24px] font-semibold leading-[1.45] tracking-[-0.4px] text-ink">
           &quot;The best predictor of job performance isn&apos;t where someone
           worked — it&apos;s whether they can do the work in front of them.&quot;
@@ -119,7 +120,7 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
           people through for the right ones. Replace them with structured
           signals:
         </Reveal>
-        <Reveal as="ul" className="mb-6 mt-0 list-disc pl-6">
+        <Reveal as="ul" className="m-0 mb-6 pl-6">
           <li className="mb-[10px] text-[18px] leading-[1.7] text-[#3A2C30] max-[920px]:text-[16.5px]">
             <strong className="font-bold text-ink">Work-sample tests</strong>{" "}
             that mirror real tasks from the role.
@@ -148,11 +149,13 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
           your employer brand — depend on it.
         </Reveal>
 
-        <Reveal className="my-9 rounded-[18px] border border-[#F4E1D6] bg-sand px-[30px] py-7">
+        {/* Callout */}
+        <Reveal className="my-9 rounded-[18px] border border-[#F4E1D6] bg-[#FBF3EE] px-[30px] py-7">
           <p className="m-0 text-[16px] leading-[1.65] text-[#3A2C30]">
             <strong className="font-bold text-ink">Rule of thumb:</strong> if
             your assessment takes longer than the first interview would have,
-            it&apos;s too long. Aim for high signal per minute of candidate time.
+            it&apos;s too long. Aim for high signal per minute of candidate
+            time.
           </p>
         </Reveal>
 
@@ -172,11 +175,12 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
           measured the right thing.
         </Reveal>
 
+        {/* Share bar */}
         <Reveal className="my-12 flex items-center gap-[10px] border-y border-[#F1E6E7] py-6">
           <span className="mr-[6px] text-[13.5px] font-bold text-[#6A5A5D]">
             Share
           </span>
-          {["in", "X", "f", "↗"].map((s) => (
+          {(["in", "X", "f", "↗"] as const).map((s) => (
             <a
               key={s}
               href="#"
@@ -188,8 +192,8 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
         </Reveal>
       </div>
 
-      {/* related */}
-      <section className="mt-14 bg-sand px-7 py-[72px]">
+      {/* Related articles */}
+      <section className="mt-14 bg-[#FBF3EE] px-7 py-[72px]">
         <div className="mx-auto mb-9 max-w-[640px] text-center">
           <Reveal
             as="p"
@@ -209,7 +213,7 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
             <Reveal key={r.title} delay={r.delay}>
               <Link
                 href={routes.blogArticle}
-                className="group block overflow-hidden rounded-[18px] border border-[#EFE2E3] bg-white transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)]"
+                className="block overflow-hidden rounded-[18px] border border-[#EFE2E3] bg-white transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)]"
               >
                 <div className="h-[140px]" style={{ background: r.bg }} />
                 <div className="p-5">
@@ -224,8 +228,11 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
         </div>
       </section>
 
-      {/* page CTA (distinct from the global coral band) */}
-      <section className="bg-ink px-7 py-20 text-center text-white">
+      {/* Page-level dark CTA (distinct from global coral band in SiteFooter) */}
+      <section
+        className="px-7 py-20 text-center text-white"
+        style={{ background: "#1A1014" }}
+      >
         <div className="mx-auto max-w-[640px]">
           <Reveal
             as="h2"
@@ -236,7 +243,7 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
           <Reveal
             as="p"
             delay={0.04}
-            className="mx-auto mb-7 mt-4 text-[19px] text-white/[0.78]"
+            className="mx-auto mb-7 mt-4 text-[19px] leading-[1.6] text-white/[0.78]"
           >
             Run your first skills-based assessment free — set up in minutes.
           </Reveal>
@@ -255,7 +262,7 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
                 strokeWidth="2.4"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                aria-hidden
+                aria-hidden="true"
               >
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>

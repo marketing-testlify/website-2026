@@ -53,7 +53,7 @@ const Tick = () => (
 
 const QMark = ({ ml = true }: { ml?: boolean }) => (
   <span
-    className={`inline-flex items-center justify-center w-[15px] h-[15px] border-[1.3px] border-[#DACDCE] rounded-full text-faint text-[9.5px] font-bold ${
+    className={`inline-flex items-center justify-center w-[15px] h-[15px] border-[1.3px] border-[#DACDCE] rounded-full text-[#A9999C] text-[9.5px] font-bold ${
       ml ? "ml-1.5" : ""
     } align-middle`}
   >
@@ -204,11 +204,11 @@ export default function PricingClient() {
           <Reveal delay={0.08}>
             <div className="inline-flex items-center flex-nowrap whitespace-nowrap justify-center gap-2.5 bg-[#FFF1F0] border border-[#F8D6D5] rounded-full px-6 py-[11px] mt-[26px] text-[14px] text-body font-medium">
               <b className="text-ink font-bold mr-1">How credits work</b>
-              <span className="font-light">Used only when a candidate starts an assessment</span>
+              <span style={{ fontWeight: 300 }}>Used only when a candidate starts an assessment</span>
               <span className="text-[#E69A9C] font-bold">•</span>
-              <span className="font-light">One credit per candidate</span>
+              <span style={{ fontWeight: 300 }}>One credit per candidate</span>
               <span className="text-[#E69A9C] font-bold">•</span>
-              <span className="font-light">Credits reset each cycle</span>
+              <span style={{ fontWeight: 300 }}>Credits reset each cycle</span>
             </div>
           </Reveal>
           <Reveal delay={0.12}>
@@ -422,8 +422,66 @@ export default function PricingClient() {
         </div>
       </section>
 
-      {/* ===== COMPARISON TABLE ===== */}
-      <section className="px-7 py-[104px] pt-[84px]">
+      {/* ===== GUARANTEE (sand bg, before comparison table) ===== */}
+      <section className="px-7 py-[74px] bg-[#FBF3EE]">
+        <div className="max-w-[1240px] mx-auto">
+          <Reveal className="relative max-w-[1180px] mx-auto">
+            {/* floating glows */}
+            <div
+              className="absolute pointer-events-none overflow-hidden z-0"
+              style={{ inset: "-56px -12px" }}
+              aria-hidden="true"
+            >
+              <span className="gx-glow gx-g1 absolute rounded-full" />
+              <span className="gx-glow gx-g2 absolute rounded-full" />
+              <span className="gx-rings absolute rounded-full" />
+            </div>
+            {/* row */}
+            <div className="relative z-[1] flex items-center gap-10 px-1.5 py-2 max-[920px]:flex-col-reverse max-[920px]:items-start max-[920px]:gap-6">
+              <div className="flex-1">
+                <span className="inline-flex items-center gap-[7px] text-[11.5px] font-bold tracking-[0.1em] uppercase text-coral bg-[#FFF0F0] border border-[#FBD0D1] px-[13px] py-1.5 rounded-full mb-4">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                  Risk-free
+                </span>
+                <h2 className="text-[31px] font-extrabold tracking-[-1px] m-0 text-ink leading-[1.06]">
+                  Try Testlify risk-free for 30 days
+                </h2>
+                <p className="text-[16px] leading-[1.62] text-body mt-3.5 max-w-[560px]">
+                  Run real assessments, shortlist real candidates, and see the
+                  hiring-quality difference for yourself. If Testlify isn&apos;t
+                  right for your team, we&apos;ll refund your first 30 days in full.
+                </p>
+                <p className="mt-[18px] text-[14.5px] font-semibold text-ink">
+                  No questions asked. Cancel anytime.
+                </p>
+              </div>
+              <div
+                className="flex-none w-[158px] h-[158px] rounded-full text-white flex flex-col items-center justify-center relative"
+                style={{
+                  background: "radial-gradient(circle at 50% 32%,#F76A6E,#C0242B)",
+                  boxShadow: "0 22px 46px rgba(192,36,43,.34)",
+                }}
+              >
+                <span
+                  className="absolute rounded-full"
+                  style={{ inset: 9, border: "2px dashed rgba(255,255,255,.5)" }}
+                  aria-hidden="true"
+                />
+                <b className="text-[52px] font-extrabold leading-[.9] tracking-[-2.5px]">30</b>
+                <span className="text-[13px] font-bold tracking-[0.22em] mt-0.5">DAYS</span>
+                <i className="not-italic text-[11px] font-semibold opacity-[.88] mt-[5px] tracking-[0.04em]">
+                  money-back
+                </i>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===== COMPARISON TABLE (white bg) ===== */}
+      <section className="px-7 pt-[84px] pb-[104px]">
         <div className="max-w-[1240px] mx-auto">
           <div className="text-center max-w-[640px] mx-auto mb-12">
             <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-muted m-0 mb-[18px]">
@@ -448,37 +506,37 @@ export default function PricingClient() {
                 <Row label="Tests & custom questions per assessment" std="Unlimited" custom="Unlimited" />
                 <Row label="AI resume screening" std="Free" custom="Free" />
                 <Row label="Multilingual support" std="15+ languages" custom="15+ languages" />
-                <Row label="White labeling" std={<Tag>Add-on</Tag>} custom={<Chk>✓ Included</Chk>} />
-                <Row label="100+ ATS integrations" std={<Tag>Add-on</Tag>} custom={<Chk>✓ Included</Chk>} />
-                <Row label="SAML SSO & 2FA" std={<Tag>Add-on</Tag>} custom={<Chk>✓ Included</Chk>} />
-                <Row label="Additional user seats" std="$15 / seat" custom={<Chk>✓ Included</Chk>} />
+                <Row label="White labeling" std={<Tag>Add-on</Tag>} custom={<Chk>&#x2713; Included</Chk>} />
+                <Row label="100+ ATS integrations" std={<Tag>Add-on</Tag>} custom={<Chk>&#x2713; Included</Chk>} />
+                <Row label="SAML SSO & 2FA" std={<Tag>Add-on</Tag>} custom={<Chk>&#x2713; Included</Chk>} />
+                <Row label="Additional user seats" std="$15 / seat" custom={<Chk>&#x2713; Included</Chk>} />
 
                 <GroupRow>Interviews &amp; simulations</GroupRow>
-                <Row label="One-way video & audio interviews" std={<Chk>✓</Chk>} custom={<Chk>✓</Chk>} />
-                <Row label="Two-way video, audio & chat AI interviews" std={<Chk>✓</Chk>} custom={<Chk>✓</Chk>} />
-                <Row label="MS Office & Google Workspace simulations" std={<Chk>✓</Chk>} custom={<Chk>✓</Chk>} />
-                <Row label="Live coding & typing simulations" std={<Chk>✓</Chk>} custom={<Chk>✓</Chk>} />
+                <Row label="One-way video & audio interviews" std={<Chk>&#x2713;</Chk>} custom={<Chk>&#x2713;</Chk>} />
+                <Row label="Two-way video, audio & chat AI interviews" std={<Chk>&#x2713;</Chk>} custom={<Chk>&#x2713;</Chk>} />
+                <Row label="MS Office & Google Workspace simulations" std={<Chk>&#x2713;</Chk>} custom={<Chk>&#x2713;</Chk>} />
+                <Row label="Live coding & typing simulations" std={<Chk>&#x2713;</Chk>} custom={<Chk>&#x2713;</Chk>} />
 
                 <GroupRow>Proctoring &amp; anti-cheat</GroupRow>
-                <Row label="Tab tracking, face detection & AI-assist detection" std={<Chk>✓</Chk>} custom={<Chk>✓</Chk>} />
+                <Row label="Tab tracking, face detection & AI-assist detection" std={<Chk>&#x2713;</Chk>} custom={<Chk>&#x2713;</Chk>} />
                 <Row label="Photo ID verification" std="$0.50 / attempt" custom="$0.50 / attempt" />
                 <Row label="Live video proctoring & screen recording" std="$5 / attempt" custom="$5 / attempt" />
 
                 <GroupRow>Security &amp; compliance</GroupRow>
-                <Row label="SOC 2 Type II · ISO 27001 · GDPR · CCPA" std={<Chk>✓</Chk>} custom={<Chk>✓</Chk>} />
-                <Row label="Role-based access control" std={<Chk>✓</Chk>} custom={<Chk>✓</Chk>} />
+                <Row label="SOC 2 Type II · ISO 27001 · GDPR · CCPA" std={<Chk>&#x2713;</Chk>} custom={<Chk>&#x2713;</Chk>} />
+                <Row label="Role-based access control" std={<Chk>&#x2713;</Chk>} custom={<Chk>&#x2713;</Chk>} />
 
                 <GroupRow>Support</GroupRow>
-                <Row label="Help center, chat, email & call support" std={<Chk>✓</Chk>} custom={<Chk>✓</Chk>} />
-                <Row label="Personalized onboarding" std={<Dash>—</Dash>} custom={<Chk>✓</Chk>} />
-                <Row label="Dedicated customer success manager" std={<Dash>—</Dash>} custom={<Chk>✓</Chk>} />
+                <Row label="Help center, chat, email & call support" std={<Chk>&#x2713;</Chk>} custom={<Chk>&#x2713;</Chk>} />
+                <Row label="Personalized onboarding" std={<Dash>&#x2014;</Dash>} custom={<Chk>&#x2713;</Chk>} />
+                <Row label="Dedicated customer success manager" std={<Dash>&#x2014;</Dash>} custom={<Chk>&#x2713;</Chk>} />
               </tbody>
             </table>
           </Reveal>
         </div>
       </section>
 
-      {/* scoped styles: running conic border + button base + table */}
+      {/* scoped styles: running conic border + button base + table + glows */}
       <style>{`
         @property --bang{syntax:"<angle>";initial-value:0deg;inherits:false;}
         @keyframes runborder{to{--bang:360deg;}}
@@ -493,6 +551,15 @@ export default function PricingClient() {
         .ctbl thead .feat{color:#F23F44;}
         .ctbl .grp td{background:#FBF3EE;font-weight:700;color:#8A4A2A;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-align:left;}
         .ctbl .feat{color:#1A1014;}
+        @keyframes gxfloat{0%,100%{transform:translate(0,0)}50%{transform:translate(22px,-16px)}}
+        @keyframes gxfloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(-24px,16px)}}
+        @keyframes gxspin{to{transform:rotate(360deg)}}
+        .gx-g1{width:360px;height:360px;left:-70px;top:-50px;background:radial-gradient(circle,rgba(242,63,68,.13),transparent 68%);animation:gxfloat 14s ease-in-out infinite;}
+        .gx-g2{width:320px;height:320px;right:1%;bottom:-90px;background:radial-gradient(circle,rgba(255,122,82,.14),transparent 70%);animation:gxfloat2 17s ease-in-out infinite;}
+        .gx-rings{right:6%;top:50%;width:380px;height:380px;margin-top:-190px;border:1.6px dashed rgba(242,63,68,.15);animation:gxspin 75s linear infinite;}
+        .gx-rings::before{content:"";position:absolute;inset:40px;border-radius:50%;border:1.4px dashed rgba(255,122,82,.13);}
+        .gx-rings::after{content:"";position:absolute;inset:84px;border-radius:50%;border:1.2px dashed rgba(242,63,68,.1);}
+        @media(prefers-reduced-motion:reduce){.gx-g1,.gx-g2,.gx-rings{animation:none!important;}}
         @media(max-width:920px){.ctbl th,.ctbl td{padding:13px 12px;font-size:13px;}}
       `}</style>
     </>

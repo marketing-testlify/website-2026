@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
@@ -285,7 +286,7 @@ export default function AboutPage() {
             We&apos;d love to meet you.
           </Reveal>
           <Reveal delay={0.08} className="flex gap-3.5 justify-center flex-wrap">
-            <a
+            <Link
               href={routes.careers}
               className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white text-[#C0242B] cursor-pointer transition-[transform,box-shadow] duration-[250ms]"
             >
@@ -302,7 +303,7 @@ export default function AboutPage() {
               >
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
-            </a>
+            </Link>
             <a
               href="#"
               className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white/[0.14] text-white border-[1.5px] border-white/40 cursor-pointer transition-[transform,box-shadow] duration-[250ms]"

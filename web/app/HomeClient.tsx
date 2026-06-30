@@ -10,7 +10,7 @@ import SecuritySection from "@/components/SecuritySection";
 
 /* ---------- data ---------- */
 
-const HERO_WORDS = ["a hunch", "a résumé", "gut feel", "a maybe"];
+const HERO_WORDS = ["skill", "talent", "ability", "proof", "potential", "fit"];
 
 const MARQUEE = [
   "Solvay",
@@ -336,15 +336,16 @@ export default function HomeClient() {
               delay={0.08}
               className="h1-big text-[74px] leading-[1.0] font-extrabold tracking-[-2.4px] mt-[22px] mb-0 text-ink max-[900px]:text-[50px]! max-[900px]:leading-[1.04]!"
             >
-              Hire on skill,
-              <br />
-              not on{" "}
+              Hire on{" "}
               <span style={{ color: "#F23F44", position: "relative", whiteSpace: "nowrap", display: "inline-block" }}>
                 <span ref={wordRef} className="tl-shimmer">
-                  a hunch
+                  skill
                 </span>
+                <span aria-hidden style={{ position: "absolute", left: 0, right: 0, bottom: 7, height: 13, background: "#FDD5D6", zIndex: -1, borderRadius: 7 }} />
               </span>
-              .
+              ,
+              <br />
+              not on <span style={{ color: "#1A1014" }}>a r&eacute;sum&eacute;</span>.
             </Reveal>
             <Reveal
               as="p"

@@ -519,7 +519,7 @@ export default function ProductClient() {
                 </div>
                 <div className="grid grid-cols-4 gap-[14px] max-[920px]:grid-cols-2">
                   {g.cards.map((c) => (
-                    <div key={c.num} className="p-[18px] border border-warm3 rounded-[14px] bg-[#FCFAFA] transition-all duration-200 hover:border-[#FBC9CB] hover:-translate-y-[3px] hover:shadow-[0_14px_28px_rgba(242,63,68,0.10)]">
+                    <div key={c.num} className="p-[18px] border border-[#F4ECEC] rounded-[14px] bg-[#FCFAFA] transition-all duration-200 hover:border-[#FBC9CB] hover:-translate-y-[3px] hover:shadow-[0_14px_28px_rgba(242,63,68,0.10)]">
                       <p className="text-[11px] font-bold tracking-[0.1em] text-[#D98A8D] m-0 mb-2.5">{c.num}</p>
                       <p className="text-[15.5px] font-bold text-ink m-0 mb-1 tracking-[-0.2px]">{c.t}</p>
                       <p className="text-[13px] text-muted m-0 leading-[1.45]">{c.d}</p>
@@ -534,7 +534,7 @@ export default function ProductClient() {
       </section>
 
       {/* STATS (dark) */}
-      <section id="stats" className="px-7 py-[104px] bg-ink text-white">
+      <section className="px-7 py-[104px] bg-ink text-white">
         <div className="max-w-[1240px] mx-auto">
           <div className="text-center max-w-[640px] mx-auto mb-[54px]">
             <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-[#C9A9AB] m-0 mb-[18px]">
