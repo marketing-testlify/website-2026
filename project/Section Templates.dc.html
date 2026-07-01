@@ -1260,7 +1260,7 @@ class Component extends DCLogic {
     if(best !== this._stage) this.setStage(best, false);
   }
   initMagnetic(root){
-    const btns = root.querySelectorAll('.btnsheen, [data-magnetic]');
+    const btns = root.querySelectorAll('.hero-cta');
     btns.forEach(btn=>{
       if(btn.__mag) return; btn.__mag = 1;
       const strength = 0.32, lift = -2;

@@ -474,7 +474,6 @@ export default function HomeClient() {
               </a>
               <a
                 href="#"
-                data-magnetic
                 className="inline-flex items-center gap-2.5 bg-white text-ink font-semibold text-[17px] px-7 py-4 rounded-[15px] border-[1.5px] border-[#F0D9DA] transition-all duration-300 hover:border-coral"
               >
                 <span className="w-[30px] h-[30px] rounded-full bg-[#FFF0F0] inline-flex items-center justify-center text-coral text-[11px]">
@@ -1251,6 +1250,21 @@ export default function HomeClient() {
               ))}
             </Reveal>
           </div>
+          <Reveal
+            delay={0.16}
+            className="flex flex-wrap items-center justify-center gap-5 mt-[46px] text-center"
+          >
+            <a
+              href="#"
+              className="btn-sheen inline-flex items-center gap-[9px] bg-coral text-white font-semibold text-[16.5px] px-[30px] py-[15px] rounded-[14px] shadow-[0_14px_30px_rgba(242,63,68,0.32)]"
+            >
+              Try for free
+              <span className="text-[18px]">→</span>
+            </a>
+            <span className="text-[14.5px] font-medium text-muted">
+              See a proof-based shortlist in 30 minutes. No credit card.
+            </span>
+          </Reveal>
         </div>
       </section>
 

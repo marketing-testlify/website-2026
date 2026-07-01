@@ -76,11 +76,16 @@ export default function SiteFooter() {
         <div className="absolute -top-[100px] -left-[60px] w-[340px] h-[340px] rounded-full bg-white/10" />
         <div className="absolute -bottom-[130px] -right-[50px] w-[320px] h-[320px] rounded-full bg-white/[0.08]" />
         <div className="relative z-[2] max-w-[1180px] mx-auto">
+          <p className="text-[13px] font-bold tracking-[0.16em] uppercase text-white/[0.82] m-0 mb-4">
+            Start hiring on skill<span className="text-white">.</span>
+          </p>
           <h2 className="text-[48px] leading-[1.08] font-extrabold tracking-[-1.6px] text-white m-0 mx-auto max-w-[1010px] max-[600px]:text-[34px]">
-            Replace gut instinct with verified skills
+            Your next great hire is already in
+            <br />
+            your pipeline
           </h2>
           <p className="text-[19px] text-[#FFE2E3] mt-5 mx-auto max-w-[560px] leading-[1.6]">
-            Your next great hire is in your pipeline right now. Start surfacing them today — free for 7 days.
+            Build your first assessment in about two minutes and start surfacing proven talent today — free for 7 days.
           </p>
           <div className="flex justify-center flex-wrap gap-3.5 mt-9">
             <a href="#" className="inline-flex items-center gap-2.5 bg-white text-coral font-bold text-[17px] px-8 py-4 rounded-[15px] shadow-[0_16px_34px_rgba(0,0,0,0.2)] hover:-translate-y-[3px] transition-transform">
@@ -91,9 +96,9 @@ export default function SiteFooter() {
             </a>
           </div>
           <div className="flex justify-center flex-wrap gap-[26px] mt-[30px] text-[#FFD2D3] text-[14.5px] font-medium">
-            <span>✓ Cancel anytime</span>
-            <span>✓ No long-term contract</span>
             <span>✓ Full feature access</span>
+            <span>✓ No credit card required</span>
+            <span>✓ Cancel anytime</span>
           </div>
         </div>
       </section>

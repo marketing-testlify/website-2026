@@ -73,7 +73,7 @@
 .btnsheen::after{content:"";position:absolute;top:0;left:0;width:38%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:translateX(-130%) skewX(-18deg);}
 .btnsheen:hover::after{animation:shsheen 1.05s ease;}
 @keyframes shsheen{0%{transform:translateX(-130%) skewX(-18deg)}55%,100%{transform:translateX(260%) skewX(-18deg)}}
-.hdr-cta{display:inline-flex;align-items:center;gap:7px;background:#F23F44;color:#fff;font-weight:600;font-size:15px;padding:11px 22px;border-radius:13px;box-shadow:0 10px 22px rgba(242,63,68,.32);transition:transform .25s ease, box-shadow .25s ease;}
+.hdr-cta{display:inline-flex;align-items:center;gap:7px;background:#F23F44 !important;color:#fff !important;font-weight:600;font-size:15px;padding:11px 22px;border-radius:13px;box-shadow:0 10px 22px rgba(242,63,68,.32);transition:transform .25s ease, box-shadow .25s ease;}
 .hdr-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(242,63,68,.42);}
 .navtoggle{display:none;width:44px;height:44px;border:1px solid #F0E0E1;border-radius:12px;background:#fff;align-items:center;justify-content:center;cursor:pointer;color:#1A1014;flex:none;}
 .mobscrim{position:fixed;inset:0;background:rgba(20,8,10,.44);z-index:1190;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;}
@@ -84,7 +84,7 @@
 .moblink:hover{color:#F23F44;}
 .mobclose{position:absolute;top:20px;right:22px;width:42px;height:42px;border:none;background:#FAF0F0;border-radius:11px;font-size:20px;color:#1A1014;cursor:pointer;line-height:1;}
 .mobsub{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#B59A9D;margin:22px 6px 4px;}
-.mobcta{display:block;text-align:center;background:#F23F44;color:#fff;font-weight:700;font-size:16px;padding:15px;border-radius:13px;margin-top:22px;box-shadow:0 12px 26px rgba(242,63,68,.3);}
+.mobcta{display:block;text-align:center;background:#F23F44 !important;color:#fff !important;font-weight:700;font-size:16px;padding:15px;border-radius:13px;margin-top:22px;box-shadow:0 12px 26px rgba(242,63,68,.3);}
 @media(max-width:1080px){.ribann p{display:none;}}
 @media(max-width:900px){.nav-links{display:none;}.navtoggle{display:inline-flex;}}
 @media(min-width:901px){.mobnav,.mobscrim{display:none;}}
@@ -141,7 +141,7 @@
     </nav>
     <div class="sh-right">
       <a href="{{ loginHref }}" class="nl hdr-login">Login</a>
-      <a href="{{ ctaHref }}" class="btnsheen hdr-cta">{{ ctaLabel }}<span style="font-size:18px;line-height:1;">→</span></a>
+      <a href="{{ ctaHref }}" class="btnsheen hdr-cta" style="color:#fff;">{{ ctaLabel }}<span style="font-size:18px;line-height:1;color:#fff;">→</span></a>
       <button class="navtoggle" onClick="{{ toggleMob }}" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
     </div>
   </div>

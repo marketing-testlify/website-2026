@@ -6,6 +6,7 @@
 <script src="./support.js"></script>
 </head>
 <body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#FFF0EF"/><circle cx="50" cy="42" r="20" fill="#F23F44"/><text x="50" y="50" font-family="Poppins,sans-serif" font-size="22" font-weight="800" fill="#fff" text-anchor="middle">T</text><text x="50" y="80" font-family="Poppins,sans-serif" font-size="11" font-weight="700" fill="#1A1014" text-anchor="middle">Testlify</text></svg></template>
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -336,8 +337,8 @@ a{text-decoration:none;}
       <h1 data-reveal data-delay="0.08" class="h1-big" style="opacity:0;transform:translateY(28px);font-size:74px;line-height:1.0;font-weight:800;letter-spacing:-2.4px;margin:22px 0 0;color:#1A1014;">Hire on skill,<br>not on <span style="color:#F23F44;position:relative;white-space:nowrap;display:inline-block;"><span data-words="a hunch|a résumé|gut feel|a maybe" class="shimmer-word">a hunch</span><span style="position:absolute;left:0;right:0;bottom:7px;height:13px;background:#FDD5D6;z-index:-1;border-radius:7px;"></span></span>.</h1>
       <p data-reveal data-delay="0.16" style="opacity:0;transform:translateY(28px);font-size:19px;line-height:1.6;color:#5A4B4E;max-width:500px;margin:24px 0 0;font-weight:400;">Your next great hire is already in your pipeline. Testlify surfaces them in 30 minutes with validated assessments — no resume bias, no gut-check interviews, no bad-hire regret.</p>
       <div data-reveal data-delay="0.24" style="opacity:0;transform:translateY(28px);display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;">
-        <a href="#" class="btnsheen" style="display:inline-flex;align-items:center;gap:9px;background:#F23F44;color:#fff;font-weight:600;font-size:17px;padding:16px 30px;border-radius:15px;box-shadow:0 14px 30px rgba(242,63,68,.35);transition:transform .25s ease, box-shadow .25s ease;" style-hover="transform:translateY(-3px);box-shadow:0 20px 40px rgba(242,63,68,.45);">Try for free<span style="font-size:19px;">→</span></a>
-        <a href="#" data-magnetic style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#1A1014;font-weight:600;font-size:17px;padding:16px 28px;border-radius:15px;border:1.5px solid #F0D9DA;transition:transform .25s ease, border-color .25s;" style-hover="transform:translateY(-3px);border-color:#F23F44;">
+        <a href="#" class="btnsheen hero-cta" style="display:inline-flex;align-items:center;gap:9px;background:#F23F44;color:#fff;font-weight:600;font-size:17px;padding:16px 30px;border-radius:15px;box-shadow:0 14px 30px rgba(242,63,68,.35);transition:transform .25s ease, box-shadow .25s ease;" style-hover="transform:translateY(-3px);box-shadow:0 20px 40px rgba(242,63,68,.45);">Try for free<span style="font-size:19px;color:#fff;">→</span></a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#1A1014;font-weight:600;font-size:17px;padding:16px 28px;border-radius:15px;border:1.5px solid #F0D9DA;transition:transform .25s ease, border-color .25s;" style-hover="transform:translateY(-3px);border-color:#F23F44;">
           <span style="width:30px;height:30px;border-radius:50%;background:#FFF0F0;display:inline-flex;align-items:center;justify-content:center;color:#F23F44;font-size:11px;">▶</span>Book a demo</a>
       </div>
       <div data-reveal data-delay="0.28" style="opacity:0;transform:translateY(28px);display:flex;align-items:center;gap:14px;margin-top:18px;flex-wrap:wrap;font-size:13.5px;color:#8A7A7D;font-weight:600;letter-spacing:.2px;">
@@ -697,6 +698,10 @@ a{text-decoration:none;}
         <div class="vsrow"><span class="vsmark" style="background:#F23F44;color:#fff;">✓</span><span style="color:#1A1014;font-weight:500;">Every decision scored, documented and fair</span></div>
       </div>
     </div>
+    <div data-reveal data-delay="0.16" style="opacity:0;transform:translateY(24px);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px;margin-top:46px;text-align:center;">
+      <a href="#" class="btnsheen" style="display:inline-flex;align-items:center;gap:9px;background:#F23F44;color:#fff;font-weight:600;font-size:16.5px;padding:15px 30px;border-radius:14px;box-shadow:0 14px 30px rgba(242,63,68,.32);">Try for free<span style="font-size:18px;color:#fff;">→</span></a>
+      <span style="font-size:14.5px;color:#8A7A7D;font-weight:500;">See a proof-based shortlist in 30 minutes. No credit card.</span>
+    </div>
   </div>
 </section>
 
@@ -851,7 +856,7 @@ class Component extends DCLogic {
       statsGlobeRef2: this.statsGlobeRef2,
       statBandGlobeRef2: this.statBandGlobeRef2,
       netRef: this.netRef,
-      sbModeClass2: ((m)=>{ if(m==='globe') return 'dark show-globe'; if(m==='darkrays') return 'dark show-rays'; return 'light show-rays'; })((this.state && this.state.statMode2) || 'globe'),
+      sbModeClass2: 'dark',
       raysOn2: (this.state && this.state.statMode2 === 'rays') ? 'on' : '',
       darkraysOn2: (this.state && this.state.statMode2 === 'darkrays') ? 'on' : '',
       globeOn2: (this.state && this.state.statMode2 === 'globe') ? 'on' : '',
@@ -1674,7 +1679,7 @@ class Component extends DCLogic {
     if(best !== this._stage) this.setStage(best, false);
   }
   initMagnetic(root){
-    const btns = root.querySelectorAll('.btnsheen, [data-magnetic]');
+    const btns = root.querySelectorAll('.hero-cta');
     btns.forEach(btn=>{
       if(btn.__mag) return; btn.__mag = 1;
       const strength = 0.32, lift = -2;
