@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
+import { routes } from "@/lib/routes";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
@@ -122,13 +124,74 @@ const INTEGRATIONS: [string, string][] = [
   ["https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png?wsr", "JazzHR"],
 ];
 
-const MEDALS: [string, string][] = [
-  ["https://testlify.com/wp-content/uploads/2026/03/TalentAssessment_Leader_Leader.png", "G2 Leader"],
-  ["https://testlify.com/wp-content/uploads/2026/03/TalentAssessment_HighPerformer_Enterprise_HighPerformer.png", "G2 High Performer Enterprise"],
-  ["https://testlify.com/wp-content/uploads/2026/03/TalentAssessment_HighPerformer_Mid-Market_HighPerformer.png", "G2 High Performer Mid-Market"],
-  ["https://testlify.com/wp-content/uploads/2026/03/TechnicalSkillsScreening_BestRelationship_Total.png", "G2 Best Relationship"],
-  ["https://testlify.com/wp-content/uploads/2026/03/TechnicalSkillsScreening_BestMeetsRequirements_Mid-Market_MeetsRequirements.png", "G2 Best Meets Requirements"],
-  ["https://testlify.com/wp-content/uploads/2026/03/TechnicalSkillsScreening_UsersMostLikelyToRecommend_Mid-Market_Nps.png", "G2 Most Likely to Recommend"],
+/* ---------- homepage test-library preview (search + filter) ---------- */
+
+const LIB_CATS: [string, string][] = [
+  ["all", "All tests"],
+  ["engineering", "Engineering"],
+  ["sales", "Sales & Revenue"],
+  ["data", "Data & Analytics"],
+  ["support", "Customer Support"],
+  ["cognitive", "Cognitive"],
+  ["language", "Language"],
+  ["marketing", "Marketing"],
+];
+
+const LIB_LABEL: Record<string, string> = {
+  engineering: "Engineering",
+  sales: "Sales & Revenue",
+  data: "Data & Analytics",
+  support: "Customer Support",
+  cognitive: "Cognitive ability",
+  language: "Language & Comms",
+  marketing: "Marketing",
+};
+
+type LibTest = { n: string; c: string; f: string; q: number; m: number; k: string };
+const LIB_TESTS: LibTest[] = [
+  { n: "JavaScript (Coding)", c: "engineering", f: "Live coding", q: 18, m: 25, k: "js es6 frontend" },
+  { n: "React", c: "engineering", f: "MCQ + coding", q: 16, m: 20, k: "jsx hooks frontend" },
+  { n: "Python (Coding)", c: "engineering", f: "Live coding", q: 20, m: 30, k: "backend django" },
+  { n: "Java", c: "engineering", f: "MCQ + coding", q: 15, m: 25, k: "spring backend" },
+  { n: "TypeScript", c: "engineering", f: "MCQ", q: 14, m: 18, k: "ts types frontend" },
+  { n: "Node.js", c: "engineering", f: "MCQ", q: 14, m: 18, k: "backend express" },
+  { n: "SQL", c: "engineering", f: "Live coding", q: 16, m: 20, k: "database query" },
+  { n: "Data Structures & Algorithms", c: "engineering", f: "Live coding", q: 12, m: 35, k: "dsa leetcode" },
+  { n: "HTML & CSS", c: "engineering", f: "MCQ + task", q: 18, m: 15, k: "frontend markup" },
+  { n: "DevOps (CI/CD)", c: "engineering", f: "MCQ", q: 15, m: 20, k: "docker kubernetes pipeline" },
+  { n: "AWS Cloud", c: "engineering", f: "MCQ", q: 16, m: 22, k: "cloud devops amazon" },
+  { n: "Sales Aptitude", c: "sales", f: "MCQ", q: 20, m: 15, k: "selling" },
+  { n: "SDR / BDR", c: "sales", f: "Scenario", q: 12, m: 18, k: "prospecting outbound" },
+  { n: "Account Executive", c: "sales", f: "Scenario", q: 10, m: 20, k: "closing quota" },
+  { n: "Negotiation", c: "sales", f: "Scenario", q: 8, m: 15, k: "deal" },
+  { n: "Salesforce CRM", c: "sales", f: "MCQ", q: 15, m: 18, k: "crm pipeline" },
+  { n: "Cold Calling", c: "sales", f: "Audio response", q: 6, m: 12, k: "outbound phone" },
+  { n: "SQL for Analysts", c: "data", f: "Live coding", q: 16, m: 20, k: "query database" },
+  { n: "Microsoft Excel", c: "data", f: "MCQ + task", q: 18, m: 25, k: "spreadsheet formulas" },
+  { n: "Power BI", c: "data", f: "MCQ", q: 15, m: 20, k: "dashboard bi" },
+  { n: "Tableau", c: "data", f: "MCQ", q: 14, m: 18, k: "dashboard viz" },
+  { n: "Data Analysis", c: "data", f: "MCQ", q: 16, m: 22, k: "analytics insights" },
+  { n: "Statistics", c: "data", f: "MCQ", q: 15, m: 20, k: "probability stats" },
+  { n: "Customer Service", c: "support", f: "Scenario", q: 14, m: 15, k: "cs help" },
+  { n: "Email Etiquette", c: "support", f: "Work sample", q: 8, m: 12, k: "writing tone" },
+  { n: "Zendesk", c: "support", f: "MCQ", q: 12, m: 15, k: "ticketing helpdesk" },
+  { n: "Live Chat Support", c: "support", f: "Work sample", q: 8, m: 12, k: "chat tone" },
+  { n: "Conflict Resolution", c: "support", f: "Scenario", q: 10, m: 15, k: "de-escalation" },
+  { n: "Numerical Reasoning", c: "cognitive", f: "Aptitude", q: 15, m: 18, k: "maths logic" },
+  { n: "Verbal Reasoning", c: "cognitive", f: "Aptitude", q: 15, m: 18, k: "comprehension logic" },
+  { n: "Logical Reasoning", c: "cognitive", f: "Aptitude", q: 15, m: 18, k: "deductive logic" },
+  { n: "Abstract Reasoning", c: "cognitive", f: "Aptitude", q: 12, m: 15, k: "pattern logic" },
+  { n: "Attention to Detail", c: "cognitive", f: "Aptitude", q: 20, m: 12, k: "accuracy" },
+  { n: "English Proficiency", c: "language", f: "Proficiency", q: 20, m: 20, k: "comms grammar" },
+  { n: "Business Communication", c: "language", f: "MCQ", q: 15, m: 18, k: "writing comms" },
+  { n: "Spanish", c: "language", f: "Proficiency", q: 20, m: 20, k: "language" },
+  { n: "French", c: "language", f: "Proficiency", q: 20, m: 20, k: "language" },
+  { n: "German", c: "language", f: "Proficiency", q: 20, m: 20, k: "language" },
+  { n: "SEO", c: "marketing", f: "MCQ", q: 16, m: 18, k: "search organic" },
+  { n: "Content Marketing", c: "marketing", f: "MCQ", q: 14, m: 18, k: "copy blog" },
+  { n: "Google Ads", c: "marketing", f: "MCQ", q: 15, m: 20, k: "ppc sem ads" },
+  { n: "Social Media Marketing", c: "marketing", f: "MCQ", q: 14, m: 18, k: "smm social" },
+  { n: "Digital Marketing", c: "marketing", f: "MCQ", q: 18, m: 22, k: "growth funnel" },
 ];
 
 const FAQ_ITEMS = [
@@ -187,6 +250,25 @@ export default function HomeClient() {
   const [slide, setSlide] = useState(0);
   const [statActive, setStatActive] = useState(0);
   const [hovering, setHovering] = useState(false);
+  const [libQuery, setLibQuery] = useState("");
+  const [libCat, setLibCat] = useState("all");
+
+  const libResults = useMemo(() => {
+    const q = libQuery.trim().toLowerCase();
+    const cat = libCat || "all";
+    return LIB_TESTS.filter(
+      (t) =>
+        (cat === "all" || t.c === cat) &&
+        (!q ||
+          t.n.toLowerCase().includes(q) ||
+          (LIB_LABEL[t.c] || "").toLowerCase().includes(q) ||
+          (t.f || "").toLowerCase().includes(q) ||
+          (t.k || "").toLowerCase().includes(q))
+    );
+  }, [libQuery, libCat]);
+  const libCount = libResults.length
+    ? `Showing ${Math.min(libResults.length, 6)}${libResults.length > 6 ? "+" : ""} of 3,500+ validated tests`
+    : "No tests match — try another role or skill.";
   const trackRef = useRef<HTMLDivElement>(null);
   const howCardRef = useRef<HTMLDivElement>(null);
   const howStepsRef = useRef<HTMLDivElement>(null);
@@ -390,7 +472,7 @@ export default function HomeClient() {
       <section
         ref={heroRef}
         id="top"
-        className="px-7"
+        className="px-7 tl-hero-grad"
         style={{
           position: "relative",
           padding: "206px 28px 92px",
@@ -772,6 +854,64 @@ export default function HomeClient() {
         </div>
       </section>
 
+      {/* ============ WHY / PROOF vs RESUMES ============ */}
+      <section id="why" className="px-7" style={{ padding: "96px 28px", background: "transparent" }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto" }}>
+          <div style={{ maxWidth: 720, margin: "0 0 8px" }}>
+            <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
+              Why Testlify<span className="text-coral">.</span>
+            </Reveal>
+            <Reveal as="h2" delay={0.06} className="text-[42px] leading-[1.1] font-extrabold tracking-[-1.3px] m-0 mb-3.5 text-ink">
+              Stop screening on resumes. Start hiring on proof.
+            </Reveal>
+            <Reveal as="p" delay={0.12} className="text-[17px] leading-[1.6] text-body m-0">
+              Resumes tell you where someone has been — not what they can actually do. Testlify replaces guesswork with verified, job-relevant evidence.
+            </Reveal>
+          </div>
+          <div className="vs grid grid-cols-2 gap-[18px] mt-[46px] max-[900px]:grid-cols-1">
+            <Reveal className="rounded-[24px] px-8 py-9 bg-[#FBF4F4] border border-[#F0E4E5]">
+              <div className="flex items-center gap-3 mb-[22px]">
+                <span className="w-[34px] h-[34px] rounded-[10px] flex items-center justify-center text-[16px] font-bold bg-[#F0E4E5] text-muted">✕</span>
+                <span className="text-[13px] font-bold tracking-[0.04em] uppercase text-muted">Resume-first hiring</span>
+              </div>
+              {VS_OLD.map((t) => (
+                <div key={t} className="flex items-start gap-[13px] py-[13px] text-[15.5px] leading-[1.45] border-t border-[#F1E2E3] first-of-type:border-t-0 text-[#46383C]">
+                  <span className="w-[22px] h-[22px] rounded-full flex items-center justify-center text-[12px] shrink-0 mt-px bg-[#EADDDE] text-muted">✕</span>
+                  <span>{t}</span>
+                </div>
+              ))}
+            </Reveal>
+            <Reveal delay={0.1} className="rounded-[24px] px-8 py-9 border border-[#FBD0D1]" style={{ background: "linear-gradient(160deg,#FFF0F0,#FFF8F6)" }}>
+              <div className="flex items-center gap-3 mb-[22px]">
+                <span className="w-[34px] h-[34px] rounded-[10px] flex items-center justify-center text-[16px] font-bold bg-coral text-white">✓</span>
+                <span className="text-[13px] font-bold tracking-[0.04em] uppercase text-coral">Skills-first with Testlify</span>
+              </div>
+              {VS_NEW.map((t) => (
+                <div key={t} className="flex items-start gap-[13px] py-[13px] text-[15.5px] leading-[1.45] border-t border-[#F1E2E3] first-of-type:border-t-0">
+                  <span className="w-[22px] h-[22px] rounded-full flex items-center justify-center text-[12px] shrink-0 mt-px bg-coral text-white">✓</span>
+                  <span className="text-ink font-medium">{t}</span>
+                </div>
+              ))}
+            </Reveal>
+          </div>
+          <Reveal
+            delay={0.16}
+            className="flex flex-wrap items-center justify-center gap-5 mt-[46px] text-center"
+          >
+            <a
+              href="#"
+              className="btn-sheen inline-flex items-center gap-[9px] bg-coral text-white font-semibold text-[16.5px] px-[30px] py-[15px] rounded-[14px] shadow-[0_14px_30px_rgba(242,63,68,0.32)]"
+            >
+              Try for free
+              <span className="text-[18px]">→</span>
+            </a>
+            <span className="text-[14.5px] font-medium text-muted">
+              See a proof-based shortlist in 30 minutes. No credit card.
+            </span>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ============ HOW IT WORKS ============ */}
       <section id="how" className="px-7" style={{ padding: "96px 28px", background: "#fff" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto" }}>
@@ -910,6 +1050,103 @@ export default function HomeClient() {
           </div>
         </div>
       </section>
+
+      {/* ============ TEST LIBRARY PREVIEW ============ */}
+      <section id="library" className="px-7" style={{ padding: "96px 28px", background: "#fff" }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto" }}>
+          <div style={{ maxWidth: 720, margin: "0 0 30px" }}>
+            <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
+              The test library<span className="text-coral">.</span>
+            </Reveal>
+            <Reveal as="h2" delay={0.06} className="text-[42px] leading-[1.1] font-extrabold tracking-[-1.3px] m-0 mb-3.5 text-ink">
+              3,500+ validated tests. A match for every role you hire.
+            </Reveal>
+            <Reveal as="p" delay={0.12} className="text-[17px] leading-[1.6] text-body m-0">
+              Search by role, skill or language — Testlify pulls a job-ready assessment in minutes, every test expert-validated and bias-checked.
+            </Reveal>
+          </div>
+
+          <Reveal delay={0.16}>
+            <div className="flex items-center gap-3 bg-white border-[1.5px] border-[#F0E2E3] rounded-2xl px-5 py-4 shadow-[0_16px_30px_rgba(110,11,14,0.08)] max-w-[620px] mb-4 text-[#A9999C]">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+              <input
+                type="text"
+                value={libQuery}
+                onChange={(e) => setLibQuery(e.target.value)}
+                placeholder="Search tests by role, skill or language…"
+                className="flex-1 min-w-0 border-none outline-none bg-transparent font-[inherit] text-[15.5px] text-ink font-medium placeholder:text-[#A9999C] placeholder:font-medium"
+              />
+            </div>
+            <div className="flex flex-wrap gap-[9px] mb-9">
+              {LIB_CATS.map(([key, label]) => {
+                const on = libCat === key;
+                return (
+                  <span
+                    key={key}
+                    onClick={() => setLibCat(key)}
+                    className={`text-[13.5px] font-semibold rounded-full px-[15px] py-2 border-[1.5px] cursor-pointer transition-colors duration-200 ${
+                      on
+                        ? "bg-ink text-white border-ink"
+                        : "bg-white text-[#6C5A5D] border-[#F0E2E3] hover:border-coral hover:text-coral"
+                    }`}
+                  >
+                    {label}
+                  </span>
+                );
+              })}
+            </div>
+          </Reveal>
+
+          <p className="text-[13.5px] font-semibold text-muted m-0 mb-4">{libCount}</p>
+
+          {libResults.length > 0 ? (
+            <div className="grid grid-cols-3 gap-[18px] max-[860px]:grid-cols-1">
+              {libResults.slice(0, 6).map((t) => (
+                <Link
+                  key={t.n}
+                  href={routes.testLibrary}
+                  className="tlib-card2 relative flex flex-col bg-white border border-[#F0E2E3] rounded-2xl p-5 transition-all duration-[250ms] hover:-translate-y-1 hover:border-coral hover:shadow-[0_22px_46px_rgba(110,11,14,0.12)]"
+                >
+                  <div className="flex items-center justify-between gap-2.5 mb-3">
+                    <span className="text-[10.5px] font-bold tracking-[0.05em] uppercase text-coral bg-[#FFF0F0] border border-[#FBD0D1] px-2.5 py-1 rounded-full whitespace-nowrap">
+                      {LIB_LABEL[t.c] || t.c}
+                    </span>
+                    <span className="text-[12px] font-semibold text-muted whitespace-nowrap">{t.f}</span>
+                  </div>
+                  <p className="text-[17px] font-bold tracking-[-0.3px] text-ink m-0 mb-4 leading-[1.3]">{t.n}</p>
+                  <div className="text-[12.5px] font-semibold text-muted mt-auto">
+                    {t.q} questions · {t.m} min
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-11 px-5 text-muted text-[15px] font-semibold bg-white border border-dashed border-[#F0E2E3] rounded-2xl">
+              No tests match — try another role or skill.
+            </div>
+          )}
+
+          <Reveal className="flex items-center justify-between flex-wrap gap-5 mt-9">
+            <div className="flex flex-wrap gap-6 text-[14px] text-[#6C5A5D] font-semibold">
+              <span><b className="text-ink">3,500+</b> tests</span>
+              <span><b className="text-ink">4,500+</b> roles</span>
+              <span><b className="text-ink">45+</b> coding languages</span>
+              <span><b className="text-ink">13+</b> question formats</span>
+            </div>
+            <Link
+              href={routes.testLibrary}
+              className="btn-sheen inline-flex items-center gap-[9px] bg-coral text-white font-semibold text-[16px] px-[26px] py-[14px] rounded-2xl shadow-[0_14px_30px_rgba(242,63,68,0.32)] whitespace-nowrap"
+            >
+              Browse the full library
+              <span className="text-[18px]">→</span>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
 
       {/* ============ SKILLS INTELLIGENCE ============ */}
       <section id="intelligence" className="px-7" style={{ padding: "96px 28px", background: "transparent" }}>
@@ -1136,6 +1373,30 @@ export default function HomeClient() {
         </div>
       </section>
 
+      {/* ============ USE CASES ============ */}
+      <section id="usecases" className="px-7" style={{ padding: "96px 28px", background: "#fff" }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto" }}>
+          <div style={{ maxWidth: 720, margin: "0 0 8px" }}>
+            <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
+              Built for every hiring scenario<span className="text-coral">.</span>
+            </Reveal>
+            <Reveal as="h2" delay={0.06} className="text-[42px] leading-[1.1] font-extrabold tracking-[-1.3px] m-0 mb-3.5 text-ink">
+              One platform, every way you hire
+            </Reveal>
+            <Reveal as="p" delay={0.12} className="text-[17px] leading-[1.6] text-body m-0">
+              From high-volume frontline roles to senior leadership, teams use Testlify to hire fairly and fast across every function and region.
+            </Reveal>
+          </div>
+          <div className="grid grid-cols-4 gap-4 mt-[46px] max-[900px]:grid-cols-2 max-[560px]:grid-cols-1">
+            {USE_CASES.map((u, i) => (
+              <Reveal key={u.title} delay={(i % 4) * 0.06}>
+                <UseCaseCard icon={u.icon} title={u.title} desc={u.desc} href="#" tint={u.tint} ink={u.ink} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ============ TESTIMONIALS ============ */}
       <section id="voices" className="px-7" style={{ padding: "96px 28px", background: "#FBF3EE" }}>
         <div style={{ maxWidth: 920, margin: "0 auto", textAlign: "center" }}>
@@ -1208,127 +1469,6 @@ export default function HomeClient() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* ============ WHY / PROOF vs RESUMES ============ */}
-      <section id="why" className="px-7" style={{ padding: "96px 28px", background: "transparent" }}>
-        <div style={{ maxWidth: 1180, margin: "0 auto" }}>
-          <div style={{ maxWidth: 720, margin: "0 0 8px" }}>
-            <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
-              Why Testlify<span className="text-coral">.</span>
-            </Reveal>
-            <Reveal as="h2" delay={0.06} className="text-[42px] leading-[1.1] font-extrabold tracking-[-1.3px] m-0 mb-3.5 text-ink">
-              Stop screening on resumes. Start hiring on proof.
-            </Reveal>
-            <Reveal as="p" delay={0.12} className="text-[17px] leading-[1.6] text-body m-0">
-              Resumes tell you where someone has been — not what they can actually do. Testlify replaces guesswork with verified, job-relevant evidence.
-            </Reveal>
-          </div>
-          <div className="vs grid grid-cols-2 gap-[18px] mt-[46px] max-[900px]:grid-cols-1">
-            <Reveal className="rounded-[24px] px-8 py-9 bg-[#FBF4F4] border border-[#F0E4E5]">
-              <div className="flex items-center gap-3 mb-[22px]">
-                <span className="w-[34px] h-[34px] rounded-[10px] flex items-center justify-center text-[16px] font-bold bg-[#F0E4E5] text-muted">✕</span>
-                <span className="text-[13px] font-bold tracking-[0.04em] uppercase text-muted">Resume-first hiring</span>
-              </div>
-              {VS_OLD.map((t) => (
-                <div key={t} className="flex items-start gap-[13px] py-[13px] text-[15.5px] leading-[1.45] border-t border-[#F1E2E3] first-of-type:border-t-0 text-[#46383C]">
-                  <span className="w-[22px] h-[22px] rounded-full flex items-center justify-center text-[12px] shrink-0 mt-px bg-[#EADDDE] text-muted">✕</span>
-                  <span>{t}</span>
-                </div>
-              ))}
-            </Reveal>
-            <Reveal delay={0.1} className="rounded-[24px] px-8 py-9 border border-[#FBD0D1]" style={{ background: "linear-gradient(160deg,#FFF0F0,#FFF8F6)" }}>
-              <div className="flex items-center gap-3 mb-[22px]">
-                <span className="w-[34px] h-[34px] rounded-[10px] flex items-center justify-center text-[16px] font-bold bg-coral text-white">✓</span>
-                <span className="text-[13px] font-bold tracking-[0.04em] uppercase text-coral">Skills-first with Testlify</span>
-              </div>
-              {VS_NEW.map((t) => (
-                <div key={t} className="flex items-start gap-[13px] py-[13px] text-[15.5px] leading-[1.45] border-t border-[#F1E2E3] first-of-type:border-t-0">
-                  <span className="w-[22px] h-[22px] rounded-full flex items-center justify-center text-[12px] shrink-0 mt-px bg-coral text-white">✓</span>
-                  <span className="text-ink font-medium">{t}</span>
-                </div>
-              ))}
-            </Reveal>
-          </div>
-          <Reveal
-            delay={0.16}
-            className="flex flex-wrap items-center justify-center gap-5 mt-[46px] text-center"
-          >
-            <a
-              href="#"
-              className="btn-sheen inline-flex items-center gap-[9px] bg-coral text-white font-semibold text-[16.5px] px-[30px] py-[15px] rounded-[14px] shadow-[0_14px_30px_rgba(242,63,68,0.32)]"
-            >
-              Try for free
-              <span className="text-[18px]">→</span>
-            </a>
-            <span className="text-[14.5px] font-medium text-muted">
-              See a proof-based shortlist in 30 minutes. No credit card.
-            </span>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============ USE CASES ============ */}
-      <section id="usecases" className="px-7" style={{ padding: "96px 28px", background: "#fff" }}>
-        <div style={{ maxWidth: 1180, margin: "0 auto" }}>
-          <div style={{ maxWidth: 720, margin: "0 0 8px" }}>
-            <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
-              Built for every hiring scenario<span className="text-coral">.</span>
-            </Reveal>
-            <Reveal as="h2" delay={0.06} className="text-[42px] leading-[1.1] font-extrabold tracking-[-1.3px] m-0 mb-3.5 text-ink">
-              One platform, every way you hire
-            </Reveal>
-            <Reveal as="p" delay={0.12} className="text-[17px] leading-[1.6] text-body m-0">
-              From high-volume frontline roles to senior leadership, teams use Testlify to hire fairly and fast across every function and region.
-            </Reveal>
-          </div>
-          <div className="grid grid-cols-4 gap-4 mt-[46px] max-[900px]:grid-cols-2 max-[560px]:grid-cols-1">
-            {USE_CASES.map((u, i) => (
-              <Reveal key={u.title} delay={(i % 4) * 0.06}>
-                <UseCaseCard icon={u.icon} title={u.title} desc={u.desc} href="#" tint={u.tint} ink={u.ink} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ INTEGRATIONS ============ */}
-      <section id="integrations" className="px-7" style={{ padding: "96px 28px", background: "transparent" }}>
-        <div style={{ maxWidth: 1180, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", maxWidth: 680, margin: "0 auto 44px" }}>
-            <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
-              Integrations<span className="text-coral">.</span>
-            </Reveal>
-            <Reveal as="h2" delay={0.06} className="text-[42px] leading-[1.1] font-extrabold tracking-[-1.3px] m-0 mb-3.5 text-ink">
-              Connected to 100+ ATS tools
-            </Reveal>
-            <Reveal as="p" delay={0.12} className="text-[17px] leading-[1.6] text-body m-0">
-              Native two-way sync with Workday, Greenhouse, Lever and 97 more — no middleware, no data mapping.
-            </Reveal>
-          </div>
-          <Reveal delay={0.16} className="grid grid-cols-5 gap-3.5 max-[900px]:grid-cols-3">
-            {INTEGRATIONS.map(([src, alt]) => (
-              <div key={alt} className="tl-intg-tile">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt={alt} />
-              </div>
-            ))}
-          </Reveal>
-          <Reveal delay={0.2} className="text-center mt-[26px]">
-            <a href="#" className="inline-flex items-center gap-2 text-coral font-semibold text-[16px]">
-              View all integrations<span>→</span>
-            </a>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============ SECURITY ============ */}
-      <section id="security">
-        <SecuritySection
-          eyebrow="Security & compliance"
-          heading="Built to keep your organization secure"
-          sub="Audited controls, strong data governance and privacy protections — every assessment validated and EEOC-defensible."
-        />
       </section>
 
       {/* ============ STATS BAND ============ */}
@@ -1404,22 +1544,43 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ============ AWARDS ============ */}
-      <section id="awards" className="px-7" style={{ padding: "96px 28px", background: "#fff" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
-          <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
-            Awards &amp; recognition<span className="text-coral">.</span>
-          </Reveal>
-          <Reveal as="h2" delay={0.06} className="text-[42px] leading-[1.1] font-extrabold tracking-[-1.3px] m-0 mb-11 text-ink">
-            Recognized by the people who use it
-          </Reveal>
-          <Reveal delay={0.12} className="flex items-center justify-center flex-wrap gap-6">
-            {MEDALS.map(([src, alt]) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={alt} className="tl-medal" src={src} alt={alt} />
+      {/* ============ INTEGRATIONS ============ */}
+      <section id="integrations" className="px-7" style={{ padding: "96px 28px", background: "transparent" }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", maxWidth: 680, margin: "0 auto 44px" }}>
+            <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
+              Integrations<span className="text-coral">.</span>
+            </Reveal>
+            <Reveal as="h2" delay={0.06} className="text-[42px] leading-[1.1] font-extrabold tracking-[-1.3px] m-0 mb-3.5 text-ink">
+              Connected to 100+ ATS tools
+            </Reveal>
+            <Reveal as="p" delay={0.12} className="text-[17px] leading-[1.6] text-body m-0">
+              Native two-way sync with Workday, Greenhouse, Lever and 97 more — no middleware, no data mapping.
+            </Reveal>
+          </div>
+          <Reveal delay={0.16} className="grid grid-cols-5 gap-3.5 max-[900px]:grid-cols-3">
+            {INTEGRATIONS.map(([src, alt]) => (
+              <div key={alt} className="tl-intg-tile">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={src} alt={alt} />
+              </div>
             ))}
           </Reveal>
+          <Reveal delay={0.2} className="text-center mt-[26px]">
+            <a href="#" className="inline-flex items-center gap-2 text-coral font-semibold text-[16px]">
+              View all integrations<span>→</span>
+            </a>
+          </Reveal>
         </div>
+      </section>
+
+      {/* ============ SECURITY ============ */}
+      <section id="security">
+        <SecuritySection
+          eyebrow="Security & compliance"
+          heading="Built to keep your organization secure"
+          sub="Audited controls, strong data governance and privacy protections — every assessment validated and EEOC-defensible."
+        />
       </section>
 
       {/* ============ FAQ ============ */}
@@ -1662,6 +1823,10 @@ const KEYFRAMES = `
 .gr2stat.active{text-shadow:0 0 16px rgba(242,63,68,.5);}
 .gr2stat.active::after{content:'';position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);width:30px;height:3px;border-radius:2px;background:#F23F44;box-shadow:0 0 10px rgba(242,63,68,.7);}
 .tl-shimmer{background:linear-gradient(100deg,#F23F44 0%,#FF7A52 30%,#A91E23 52%,#FF7A52 74%,#F23F44 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:tl-shimmer 5s linear infinite;display:inline-block;}
+@keyframes tl-libin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.tlib-card2{animation:tl-libin .35s ease both;}
+@keyframes tl-herograd{0%{background-position:0% 0%}50%{background-position:100% 100%}100%{background-position:0% 0%}}
+.tl-hero-grad{background-size:170% 170%;animation:tl-herograd 30s ease-in-out infinite;}
 
 /* screening scan beam */
 .tl-screencre{position:relative;overflow:hidden;border-radius:14px;}
