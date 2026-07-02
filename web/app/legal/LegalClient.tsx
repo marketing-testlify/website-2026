@@ -3,6 +3,7 @@
 import { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import CtaButton from "@/components/CtaButton";
 
 type DocKey = "privacy" | "terms" | "gdpr";
 
@@ -173,24 +174,7 @@ export default function LegalClient() {
           <p style={{ fontSize: "18px", color: "rgba(255,255,255,.78)", margin: "0 0 26px" }}>
             Our team is happy to help. Reach us at legal@testlify.com.
           </p>
-          <a
-            href="#"
-            className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] py-[14px] px-[26px] rounded-[13px] transition-all duration-[250ms] cursor-pointer bg-[#F23F44] text-white shadow-[0_12px_26px_rgba(242,63,68,0.30)] hover:-translate-y-0.5"
-          >
-            Contact us
-            <svg
-              width="17"
-              height="17"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </a>
+          <CtaButton label="Contact us" href="#" variant="light" size="md" icon="arrow" />
         </div>
       </section>
 

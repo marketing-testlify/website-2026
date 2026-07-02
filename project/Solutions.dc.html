@@ -64,8 +64,8 @@ a{text-decoration:none;color:inherit;}
   <h1 class="h1 reveal" style="transition-delay:.04s">A hiring solution for<br>every kind of team</h1>
   <p class="lead reveal" style="margin:22px auto 0;max-width:600px;transition-delay:.08s">However you hire — high volume, fully remote, straight off campus — Testlify adapts to your workflow and surfaces the right people, faster.</p>
   <div class="reveal" style="margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;transition-delay:.12s;">
-    <a class="btn btn-primary" href="#">Start free<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-    <a class="btn btn-ghost" href="#">Book a demo</a>
+    <dc-import name="CTA Button" label="Start free" href="Pricing.dc.html" variant="primary" size="md" icon="arrow" magnetic="true" hint-size="150px,52px"></dc-import>
+    <dc-import name="CTA Button" label="Book a demo" href="#" variant="secondary" size="md" icon="none" hint-size="150px,52px"></dc-import>
   </div>
 </div></section>
 <section class="sec" id="usecases" style="padding-top:56px;"><div class="wrap">
@@ -123,8 +123,8 @@ a{text-decoration:none;color:inherit;}
   <h2 class="h2 reveal">Find your hiring solution</h2>
   <p class="lead reveal" style="margin:18px auto 30px;transition-delay:.04s;">Tell us how you hire and we'll show you the fastest path to better shortlists.</p>
   <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;transition-delay:.08s;">
-    <a class="btn btn-primary" href="#">Start free<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-    <a class="btn btn-ghost" href="#">Book a demo</a>
+    <dc-import name="CTA Button" label="Start free" href="Pricing.dc.html" variant="primary" size="md" icon="arrow" hint-size="150px,52px"></dc-import>
+    <dc-import name="CTA Button" label="Book a demo" href="#" variant="secondary" size="md" icon="none" hint-size="150px,52px"></dc-import>
   </div>
 </div></section>
 <dc-import name="Site Footer" home-href="Homepage.dc.html" hint-size="100%,560px"></dc-import>
@@ -135,7 +135,14 @@ class Component extends DCLogic {
     const sweep = ()=>{
       const vh = window.innerHeight || document.documentElement.clientHeight;
       document.querySelectorAll('.reveal:not(.in)').forEach(n=>{
-        if(n.getBoundingClientRect().top < vh + 600) n.classList.add('in');
+        if(n.getBoundingClientRect().top < vh + 600){
+          n.classList.add('in');
+          const _d=(parseFloat(n.style.transitionDelay||'0')||0)*1000;
+          n.style.transition='none';
+          const _dur=700,_sy=26; let _st=null;
+          const _tick=(t)=>{ if(_st===null)_st=t; const p=Math.min(1,(t-_st)/_dur); const e=1-Math.pow(1-p,3); n.style.opacity=String(e); n.style.transform='translateY('+(_sy*(1-e)).toFixed(2)+'px)'; if(p<1) requestAnimationFrame(_tick); else { n.style.opacity='1'; n.style.transform='none'; } };
+          setTimeout(()=>requestAnimationFrame(_tick), _d);
+        }
       });
     };
     this._sweep = sweep;

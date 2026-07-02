@@ -143,15 +143,11 @@ a{text-decoration:none;color:inherit;}
 .accg.on .accx{transform:rotate(180deg);color:#F23F44;}
 .accb{padding:2px 24px 26px;}
 .card{display:flex;flex-direction:column;background:#fff;border:1.4px solid #EFE1E2;border-radius:16px;padding:22px 22px 18px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;position:relative;overflow:hidden;}
-.card::after{content:"";position:absolute;inset:0;border-radius:16px;padding:1.8px;background:conic-gradient(from var(--cardbang),transparent 0deg,var(--cbc,#F23F44) 55deg,transparent 150deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:1;}
-.cbc-beg{--cbc:#8FD9AE;}
-.cbc-int{--cbc:#F4C36A;}
-.cbc-adv{--cbc:#F39BA0;}
+.card::after{content:"";position:absolute;inset:0;border-radius:16px;padding:1.8px;background:conic-gradient(from var(--cardbang),transparent 0deg,#FF7A52 35deg,#F23F44 80deg,transparent 150deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:1;}
 .card:hover{border-color:transparent;box-shadow:0 22px 46px rgba(110,11,14,.12);transform:translateY(-4px);}
 .card:hover::after{opacity:1;animation:cardrun 2.4s linear infinite;}
 .card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px;}
-.tbadge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#7A686B;white-space:nowrap;min-width:0;}
-.tbadge>span:last-child{overflow:hidden;text-overflow:ellipsis;}
+.tbadge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#7A686B;}
 .tbico{width:30px;height:30px;border-radius:8px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;flex:none;}
 .lvtag{font-size:11px;font-weight:700;letter-spacing:.03em;padding:4px 10px;border-radius:100px;flex:none;}
 .lv-beg{background:#E8F6EE;color:#1B7F4B;}
@@ -189,63 +185,8 @@ a{text-decoration:none;color:inherit;}
 .cta-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
 .cta-mini{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:24px;font-size:13.5px;color:#B7A4A7;}
 .cta-mini span{display:inline-flex;align-items:center;gap:7px;}
-/* faceted layout (v2) */
-.fx-sec{padding:56px 28px 8px;}
-.fx-head{margin-bottom:22px;}
-.fx-head .sec-p{margin:6px 0 0;}
-.fx-mainhead{display:flex;align-items:center;justify-content:flex-end;gap:14px 20px;flex-wrap:wrap;margin-bottom:20px;}
-.fx-search{position:relative;max-width:none;width:100%;flex:none;min-width:0;margin:0 0 26px;}
-.fx-layout{display:grid;grid-template-columns:264px 1fr;gap:34px;align-items:start;}
-.fx-rail{position:sticky;top:96px;display:flex;flex-direction:column;gap:8px;background:#fff;border:1.4px solid #F0E2E3;border-radius:18px;padding:20px 18px;box-shadow:0 16px 34px rgba(110,11,14,.06);}
-.fx-railhead{display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A767A;padding:0 6px 4px;}
-.fx-rh-title{display:inline-flex;align-items:center;}
-.fx-badge{margin-left:9px;font-size:11px;font-weight:700;letter-spacing:0;text-transform:none;color:#F23F44;background:#FFF0EF;border:1px solid #F8CFD0;padding:2px 9px;border-radius:100px;}
-.fradio .fdot{flex:none;width:18px;height:18px;border-radius:50%;border:1.7px solid #E2D0D2;position:relative;transition:all .14s;}
-.fradio.on .fdot{border-color:#F23F44;}
-.fradio.on .fdot::after{content:"";position:absolute;inset:3.5px;border-radius:50%;background:#F23F44;}
-.fx-clear{font-size:12px;font-weight:600;letter-spacing:0;text-transform:none;color:#F23F44;background:none;border:0;cursor:pointer;font-family:inherit;}
-.fx-clear:hover{text-decoration:underline;}
-.facet{border-top:1px solid #F4E7E8;padding-top:12px;margin-top:4px;}
-.facet:first-of-type{border-top:0;padding-top:8px;margin-top:0;}
-.facet-t{font-size:13.5px;font-weight:700;color:#1A1014;padding:0 6px 6px;}
-.facet-body{display:flex;flex-direction:column;gap:1px;}
-.facet-scroll{max-height:250px;overflow-y:auto;}
-.facet-scroll::-webkit-scrollbar{width:6px;}
-.facet-scroll::-webkit-scrollbar-thumb{background:#EAD7D9;border-radius:100px;}
-.fopt{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:0;font-family:inherit;padding:7px 8px;border-radius:9px;cursor:pointer;transition:background .14s;}
-.fopt:hover{background:#FFF6F5;}
-.fbox{flex:none;width:18px;height:18px;border-radius:6px;border:1.7px solid #E2D0D2;display:flex;align-items:center;justify-content:center;color:#fff;transition:all .14s;}
-.fopt.on .fbox{background:#F23F44;border-color:#F23F44;}
-.fbox svg{opacity:0;transition:opacity .12s;}
-.fopt.on .fbox svg{opacity:1;}
-.flab{font-size:14px;font-weight:500;color:#3C2C2F;line-height:1.2;}
-.fopt.on .flab{font-weight:600;color:#1A1014;}
-.fcount{margin-left:auto;font-size:12px;font-weight:600;color:#B29A9E;}
-.fopt.on .fcount{color:#F23F44;}
-.fx-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px;}
-.fx-mainhead{display:flex;align-items:center;justify-content:flex-end;gap:14px 20px;flex-wrap:wrap;margin-bottom:20px;}
-.fx-mainhead .srtsel{margin-top:0;}
-.fx-mainhead>div:first-child{flex:1;min-width:240px;}
-.fx-mhright{display:flex;align-items:center;gap:16px;margin-top:0;flex:1;min-width:220px;justify-content:flex-end;}
-.fx-hsearch{max-width:420px;width:100%;min-width:180px;flex:1;margin:0;}
-.fx-hsearch input{padding-top:15px;padding-bottom:15px;box-shadow:none;font-size:15px;}
-.fx-count{font-size:13px;color:#9A868A;font-weight:500;}
-.fx-count b{color:#6A585B;font-weight:700;}
-.fx-mainhead .sec-p{margin:5px 0 0;}
-.srtsel{position:relative;display:inline-flex;align-items:center;gap:10px;}
-.srt-lbl{font-size:13px;font-weight:600;color:#8A767A;}
-.srtsel .lvbtn{gap:16px;padding:15px 16px;font-size:15px;box-shadow:none;min-width:172px;justify-content:space-between;flex:none;}
-.srtsel .lvbtn>span:first-child{text-align:left;}
-@media(max-width:860px){.srtsel,.srtsel .lvbtn{min-width:0;width:100%;}}
-.fx-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
-.fx-chip{display:inline-flex;align-items:center;gap:7px;font-family:inherit;font-size:13px;font-weight:600;color:#C0242B;background:#FFF0EF;border:1px solid #F8CFD0;padding:6px 8px 6px 13px;border-radius:100px;cursor:pointer;transition:all .14s;}
-.fx-chip:hover{background:#FCE0DE;}
-.fx-chipx{display:flex;width:17px;height:17px;border-radius:50%;background:#F23F44;color:#fff;align-items:center;justify-content:center;}
-.fx-grid{grid-template-columns:repeat(3,1fr);}
-@media(max-width:1080px){.fx-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:860px){.fx-layout{grid-template-columns:1fr;gap:22px;}.fx-rail{position:static;flex-direction:row;flex-wrap:wrap;gap:18px 26px;}.facet{border-top:0;padding-top:0;margin-top:0;flex:1;min-width:160px;}.fx-railhead{width:100%;}.facet-scroll{max-height:none;}.fx-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:960px){.catgrid{grid-template-columns:repeat(3,1fr);}.grid{grid-template-columns:repeat(2,1fr);}.tl-hgrid{grid-template-columns:1fr;gap:44px;}.tl-vis{max-width:460px;}}
-@media(max-width:760px){.tl-h1{font-size:36px;}.tl-hero{padding:44px 22px 30px;}.catgrid{grid-template-columns:repeat(2,1fr);}.grid{grid-template-columns:1fr;}.fx-grid{grid-template-columns:1fr;}.tl-stats{gap:20px;}.tl-sdiv{display:none;}.toolbar{flex-direction:column;align-items:flex-start;}.reqcard{padding:30px 26px;}.ctaband h2{font-size:30px;}.sec-h2{font-size:25px;}}
+@media(max-width:760px){.tl-h1{font-size:36px;}.tl-hero{padding:44px 22px 30px;}.catgrid{grid-template-columns:repeat(2,1fr);}.grid{grid-template-columns:1fr;}.tl-stats{gap:20px;}.tl-sdiv{display:none;}.toolbar{flex-direction:column;align-items:flex-start;}.reqcard{padding:30px 26px;}.ctaband h2{font-size:30px;}.sec-h2{font-size:25px;}}
 </style>
 </helmet>
 <dc-import name="Site Header" announcement="3,500+ skills tests — every one validated by subject-matter experts" announcement-cta="Browse library" home-href="Homepage.dc.html" hint-size="100%,110px"></dc-import>
@@ -274,22 +215,14 @@ a{text-decoration:none;color:inherit;}
 <div class="tl-float tl-f2"><span style="width:38px;height:38px;border-radius:50%;background:#E7F6EE;display:flex;align-items:center;justify-content:center;color:#1F9D6B;font-weight:700;">✓</span><div><div class="fl">Every test</div><div class="fv">Expert-validated</div></div></div>
 </div>
 </div></div></section>
-<section class="fx-sec"><div class="tl-wrap">
-<div class="fx-head" data-reveal=""><h2 class="sec-h2">Browse the library</h2><p class="sec-p">Filter 3,500+ expert-validated tests to build your perfect assessment.</p></div>
-<div class="fx-layout" data-reveal="" data-delay="130">
-<aside class="fx-rail">
-<div class="fx-railhead"><span class="fx-rh-title">Filters<span class="fx-badge">{{ count }}</span></span><sc-if value="{{ hasActive }}" hint-placeholder-val="{{ false }}"><button class="fx-clear" onClick="{{ clearAll }}">Clear all</button></sc-if></div>
-<div class="facet"><div class="facet-t">Category</div><div class="facet-body facet-scroll"><sc-for list="{{ catFacets }}" as="f" hint-placeholder-count="8"><button type="button" class="fopt {{ f.cls }}" onClick="{{ f.onToggle }}"><span class="fbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"></path></svg></span><span class="flab">{{ f.label }}</span><span class="fcount">{{ f.count }}</span></button></sc-for></div></div>
-<div class="facet"><div class="facet-t">Difficulty</div><div class="facet-body"><sc-for list="{{ levelFacets }}" as="f" hint-placeholder-count="3"><button type="button" class="fopt {{ f.cls }}" onClick="{{ f.onToggle }}"><span class="fbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"></path></svg></span><span class="flab">{{ f.label }}</span><span class="fcount">{{ f.count }}</span></button></sc-for></div></div>
-<div class="facet"><div class="facet-t">Duration</div><div class="facet-body"><sc-for list="{{ durFacets }}" as="f" hint-placeholder-count="3"><button type="button" class="fopt {{ f.cls }}" onClick="{{ f.onToggle }}"><span class="fbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"></path></svg></span><span class="flab">{{ f.label }}</span><span class="fcount">{{ f.count }}</span></button></sc-for></div></div>
-</aside>
-<div class="fx-main">
-<div class="fx-mainhead"><div class="fx-mhright"><div class="tl-search fx-hsearch"><span class="si"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span><input type="text" value="{{ query }}" onInput="{{ onSearch }}" placeholder="Search tests…"></div><div class="srtsel {{ srtOpenCls }}"><button type="button" class="lvbtn" onClick="{{ toggleSrt }}"><span>{{ sortLabel }}</span><span class="lvcaret"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></span></button><sc-if value="{{ srtOpen }}" hint-placeholder-val="{{ false }}"><div class="lvback" onClick="{{ closeSrt }}"></div><div class="lvmenu"><sc-for list="{{ sortOpts }}" as="o" hint-placeholder-count="3"><button type="button" class="lvopt {{ o.cls }}" onClick="{{ o.onSelect }}">{{ o.label }}</button></sc-for></div></sc-if></div></div>
-<sc-if value="{{ hasChips }}" hint-placeholder-val="{{ false }}"><div class="fx-chips"><sc-for list="{{ chips }}" as="c" hint-placeholder-count="0"><button type="button" class="fx-chip" onClick="{{ c.onRemove }}">{{ c.label }}<span class="fx-chipx"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span></button></sc-for></div></sc-if>
-<sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}"><div class="grid fx-grid"><sc-for list="{{ cards }}" as="c" hint-placeholder-count="9"><a class="card {{ c.cbcCls }}" href="{{ c.href }}"><div class="card-top"><span class="tbadge"><span class="tbico">{{ c.icon }}</span>{{ c.typeLabel }}</span><span class="lvtag {{ c.lvCls }}">{{ c.level }}</span></div><h3 class="card-title">{{ c.name }}</h3><p class="card-desc">{{ c.desc }}</p><div class="card-meta"><span class="mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>{{ c.q }} questions</span><span class="mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>{{ c.dur }} min</span><span class="card-cta">View<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div></a></sc-for></div></sc-if>
-<sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}"><div class="empty"><span class="eico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span><h3>No tests matched your filters</h3><p>Try a different keyword or clear your filters to see the full library.</p><button class="btn btn-g" onClick="{{ clearAll }}">Clear filters</button></div></sc-if>
-</div>
-</div>
+<section class="tl-cats"><div class="tl-wrap">
+<div class="sec-head"><div><h2 class="sec-h2">Browse the library</h2><p class="sec-p">Search 3,500+ tests, then expand a category to explore.</p></div>
+<div class="sh-tools"><div class="tl-search"><span class="si"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span><input type="text" value="{{ query }}" onInput="{{ onSearch }}" placeholder="Search tests by skill, role or topic"></div><div class="lvsel {{ lvOpenCls }}"><button type="button" class="lvbtn" onClick="{{ toggleLv }}"><span>{{ levelLabel }}</span><span class="lvcaret"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></span></button><sc-if value="{{ lvOpen }}" hint-placeholder-val="{{ false }}"><div class="lvback" onClick="{{ closeLv }}"></div><div class="lvmenu"><sc-for list="{{ levelOpts }}" as="o" hint-placeholder-count="4"><button type="button" class="lvopt {{ o.cls }}" onClick="{{ o.onSelect }}">{{ o.label }}</button></sc-for></div></sc-if></div></div></div>
+</div></section>
+<section class="tl-res"><div class="tl-wrap">
+<div class="toolbar"><sc-if value="{{ hasActive }}" hint-placeholder-val="{{ false }}"><button class="clearbtn" onClick="{{ clearAll }}">Clear all</button></sc-if></div>
+<sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}"><div class="acc"><sc-for list="{{ groups }}" as="g" hint-placeholder-count="4"><div class="accg {{ g.openCls }}"><button class="acch" onClick="{{ g.onToggle }}"><span class="acci">{{ g.icon }}</span><span class="accl">{{ g.label }}</span><span class="accc">{{ g.count }}</span><span class="accx"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></span></button><sc-if value="{{ g.open }}" hint-placeholder-val="{{ true }}"><div class="accb"><div class="grid"><sc-for list="{{ g.cards }}" as="c" hint-placeholder-count="6"><a class="card" href="{{ c.href }}"><div class="card-top"><span class="tbadge"><span class="tbico">{{ c.icon }}</span>{{ c.typeLabel }}</span><span class="lvtag {{ c.lvCls }}">{{ c.level }}</span></div><h3 class="card-title">{{ c.name }}</h3><p class="card-desc">{{ c.desc }}</p><div class="card-meta"><span class="mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>{{ c.q }} questions</span><span class="mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>{{ c.dur }} min</span><span class="card-cta">View<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div></a></sc-for></div></div></sc-if></div></sc-for></div></sc-if>
+<sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}"><div class="empty"><span class="eico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span><h3>No tests matched your search</h3><p>Try a different keyword or clear your filters to see the full library.</p><button class="btn btn-g" onClick="{{ clearAll }}">Clear filters</button></div></sc-if>
 </div></section>
 <section class="reqband"><div class="reqcard"><div><h3>Can't find the test you need?</h3><p>Request a custom assessment and our subject-matter experts will build it for your role — peer-reviewed and validated before it ships.</p></div><a class="btn btn-p" href="#">Request a test<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div></section>
 <dc-import name="Site Footer" home-href="Homepage.dc.html" hint-size="100%,560px"></dc-import>
@@ -297,9 +230,7 @@ a{text-decoration:none;color:inherit;}
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   rootRef = React.createRef();
-  state = { query: '', cats: [], levels: [], durs: [], sort: 'popular', srtOpen: false };
-  durBucket(m) { return m <= 10 ? 'short' : (m <= 20 ? 'mid' : 'long'); }
-  toggleIn(key, val) { this.setState(s => { const a = s[key]; return { [key]: a.includes(val) ? a.filter(x => x !== val) : a.concat(val) }; }); }
+  state = { query: '', type: null, level: null, openKey: undefined, lvOpen: false };
 
   componentDidMount() {
     const base = this.rootRef.current;
@@ -426,73 +357,66 @@ class Component extends DCLogic {
 
   renderVals() {
     const q = (this.state.query || '').trim().toLowerCase();
-    const selCats = this.state.cats, selLvls = this.state.levels, selDurs = this.state.durs, sort = this.state.sort;
+    const type = this.state.type, level = this.state.level;
     const lab = this.tlab;
-    const lvClass = { Beginner: 'lv-beg', Intermediate: 'lv-int', Advanced: 'lv-adv' };
-    const cbcClass = { Beginner: 'cbc-beg', Intermediate: 'cbc-int', Advanced: 'cbc-adv' };
-    const durDefs = [['short', 'Under 10 min'], ['mid', '10–20 min'], ['long', '20+ min']];
-    const durLab = {}; durDefs.forEach(d => { durLab[d[0]] = d[1]; });
-    // match a test, optionally ignoring one facet dimension (for facet counts)
-    const matches = (t, ignore) => {
-      if (ignore !== 'cat' && selCats.length && !selCats.includes(t[1])) return false;
-      if (ignore !== 'lvl' && selLvls.length && !selLvls.includes(t[2])) return false;
-      if (ignore !== 'dur' && selDurs.length && !selDurs.includes(this.durBucket(t[3]))) return false;
+    const filtered = this.tests.filter(t => {
+      if (type && t[1] !== type) return false;
+      if (level && t[2] !== level) return false;
       if (q) { const hay = (t[0] + ' ' + t[5] + ' ' + lab[t[1]]).toLowerCase(); if (!hay.includes(q)) return false; }
       return true;
-    };
-    let filtered = this.tests.filter(t => matches(t, null));
-    if (sort === 'az') filtered = filtered.slice().sort((a, b) => a[0].localeCompare(b[0]));
-    else if (sort === 'dur') filtered = filtered.slice().sort((a, b) => a[3] - b[3]);
+    });
+    const lvClass = { Beginner: 'lv-beg', Intermediate: 'lv-int', Advanced: 'lv-adv' };
     const cards = filtered.map((t, i) => ({
       key: t[0] + i, name: t[0], typeLabel: lab[t[1]], icon: this.mkIcon(t[1]), typeKey: t[1],
-      level: t[2], lvCls: lvClass[t[2]], cbcCls: cbcClass[t[2]], dur: t[3], q: t[4], desc: t[5], href: 'Test Detail.dc.html'
+      level: t[2], lvCls: lvClass[t[2]], dur: t[3], q: t[4], desc: t[5], href: 'Test Detail.dc.html'
     }));
-    const catFacets = this.types.map(ty => ({
-      key: ty[0], label: ty[1],
-      count: this.tests.filter(t => t[1] === ty[0] && matches(t, 'cat')).length,
-      cls: selCats.includes(ty[0]) ? 'on' : '',
-      onToggle: () => this.toggleIn('cats', ty[0])
+    const visibleTypes = this.types.filter(ty => cards.some(c => c.typeKey === ty[0]));
+    let openKey = this.state.openKey;
+    if (openKey === undefined) openKey = visibleTypes.length ? visibleTypes[0][0] : null;
+    else if (openKey !== null && !visibleTypes.some(ty => ty[0] === openKey)) openKey = visibleTypes.length ? visibleTypes[0][0] : null;
+    const groups = visibleTypes.map(ty => {
+      const gc = cards.filter(c => c.typeKey === ty[0]);
+      const isOpen = openKey === ty[0];
+      return {
+        key: ty[0], label: ty[1], icon: this.mkIcon(ty[0]), count: gc.length + (gc.length === 1 ? ' test' : ' tests'),
+        cards: gc, open: isOpen, openCls: isOpen ? 'on' : '',
+        onToggle: () => this.setState({ openKey: openKey === ty[0] ? null : ty[0] })
+      };
+    });
+    const cats = this.types.map(ty => ({
+      key: ty[0], label: ty[1], count: ty[2].toLocaleString(), icon: this.mkIcon(ty[0]),
+      cls: type === ty[0] ? 'on' : '',
+      onSelect: () => this.setState({ type: type === ty[0] ? null : ty[0] })
     }));
-    const levelFacets = ['Beginner', 'Intermediate', 'Advanced'].map(lv => ({
-      key: lv, label: lv,
-      count: this.tests.filter(t => t[2] === lv && matches(t, 'lvl')).length,
-      cls: selLvls.includes(lv) ? 'on' : '',
-      onToggle: () => this.toggleIn('levels', lv)
+    const levels = ['Beginner', 'Intermediate', 'Advanced'].map(lv => ({
+      key: lv, label: lv, cls: level === lv ? 'on' : '',
+      onSelect: () => this.setState({ level: level === lv ? null : lv })
     }));
-    const durFacets = durDefs.map(([k, l]) => ({
-      key: k, label: l,
-      count: this.tests.filter(t => this.durBucket(t[3]) === k && matches(t, 'dur')).length,
-      cls: selDurs.includes(k) ? 'on' : '',
-      onToggle: () => this.toggleIn('durs', k)
+    const popular = ['Attention to Detail', 'JavaScript', 'Excel', 'English', 'Leadership'].map(name => ({
+      key: name, label: name, onSelect: () => this.setState({ query: name })
     }));
-    const chips = [].concat(
-      selCats.map(c => ({ key: 'c' + c, label: lab[c], onRemove: () => this.toggleIn('cats', c) })),
-      selLvls.map(l => ({ key: 'l' + l, label: l, onRemove: () => this.toggleIn('levels', l) })),
-      selDurs.map(d => ({ key: 'd' + d, label: durLab[d], onRemove: () => this.toggleIn('durs', d) }))
-    );
-    const sortDefs = [['popular', 'Most popular'], ['az', 'Name (A–Z)'], ['dur', 'Shortest first']];
-    const sortLabMap = {}; sortDefs.forEach(s => { sortLabMap[s[0]] = s[1]; });
-    const sortOpts = sortDefs.map(([v, l]) => ({
-      key: v, label: l, cls: sort === v ? 'on' : '',
-      onSelect: () => this.setState({ sort: v, srtOpen: false })
+    const levelOpts = [['', 'All levels'], ['Beginner', 'Beginner'], ['Intermediate', 'Intermediate'], ['Advanced', 'Advanced']].map(([v, l]) => ({
+      key: v || 'all', label: l, cls: (this.state.level || '') === v ? 'on' : '',
+      onSelect: () => this.setState({ level: v || null, lvOpen: false })
     }));
-    const active = !!(q || selCats.length || selLvls.length || selDurs.length);
     return {
-      cards, catFacets, levelFacets, durFacets, chips, sortOpts, rootRef: this.rootRef,
+      cards, cats, levels, popular, groups, rootRef: this.rootRef,
+      levelOpts,
+      levelLabel: this.state.level || 'All levels',
+      lvOpen: !!this.state.lvOpen,
+      lvOpenCls: this.state.lvOpen ? 'open' : '',
+      toggleLv: () => this.setState(s => ({ lvOpen: !s.lvOpen })),
+      closeLv: () => this.setState({ lvOpen: false }),
       count: cards.length,
-      countWord: cards.length === 1 ? 'test' : 'tests',
       query: this.state.query || '',
       onSearch: (e) => this.setState({ query: e.target.value }),
-      sortLabel: sortLabMap[sort],
-      srtOpen: !!this.state.srtOpen,
-      srtOpenCls: this.state.srtOpen ? 'open' : '',
-      toggleSrt: () => this.setState(s => ({ srtOpen: !s.srtOpen })),
-      closeSrt: () => this.setState({ srtOpen: false }),
-      hasChips: chips.length > 0,
-      hasActive: active,
+      hasActive: !!(type || level || q),
       hasResults: cards.length > 0,
       noResults: cards.length === 0,
-      clearAll: () => this.setState({ query: '', cats: [], levels: [], durs: [] }),
+      showActiveType: !!type,
+      activeType: type ? lab[type] : '',
+      clearAll: () => this.setState({ query: '', type: null, level: null, openKey: undefined }),
+      clearType: () => this.setState({ type: null }),
     };
   }
 }

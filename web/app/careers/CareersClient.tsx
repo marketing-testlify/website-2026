@@ -4,6 +4,7 @@ import { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
+import CtaButton from "@/components/CtaButton";
 import { routes } from "@/lib/routes";
 
 type Job = {
@@ -70,14 +71,6 @@ const PERKS = [
   },
 ];
 
-function ArrowIcon() {
-  return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M5 12h14M13 6l6 6-6 6" />
-    </svg>
-  );
-}
-
 export default function CareersClient() {
   const [dept, setDept] = useState<"all" | "eng" | "prod" | "gtm">("all");
   const jobs = dept === "all" ? JOBS : JOBS.filter((j) => j.group === dept);
@@ -113,13 +106,14 @@ export default function CareersClient() {
             fair for everyone. Big problems, real ownership, and people who care.
           </Reveal>
           <Reveal className="mt-[30px]" delay={0.12}>
-            <a
-              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] cursor-pointer border-none bg-coral text-white shadow-[0_12px_26px_rgba(242,63,68,0.30)] transition-all duration-[250ms] hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(242,63,68,0.40)]"
+            <CtaButton
+              label="See open roles"
               href="#openings"
-            >
-              See open roles
-              <ArrowIcon />
-            </a>
+              variant="primary"
+              size="md"
+              icon="arrow"
+              magnetic
+            />
           </Reveal>
         </div>
       </section>
@@ -234,19 +228,20 @@ export default function CareersClient() {
             product as a candidate.
           </Reveal>
           <Reveal delay={0.08} className="flex gap-3.5 justify-center flex-wrap">
-            <a
+            <CtaButton
+              label="Browse roles"
               href="#openings"
-              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] cursor-pointer border-none bg-white text-[#C0242B] transition-all duration-[250ms] hover:-translate-y-0.5"
-            >
-              Browse roles
-              <ArrowIcon />
-            </a>
-            <a
+              variant="light"
+              size="md"
+              icon="arrow"
+            />
+            <CtaButton
+              label="About Testlify"
               href={routes.about}
-              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] cursor-pointer bg-white/[0.14] text-white border-[1.5px] border-white/40 transition-all duration-[250ms] hover:-translate-y-0.5"
-            >
-              About Testlify
-            </a>
+              variant="outline-light"
+              size="md"
+              icon="none"
+            />
           </Reveal>
         </div>
       </section>

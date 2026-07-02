@@ -49,14 +49,6 @@ export const DIFFICULTIES: Difficulty[] = [
   "Advanced",
 ];
 
-export const POPULAR = [
-  "Attention to Detail",
-  "JavaScript",
-  "Excel",
-  "English",
-  "Leadership",
-];
-
 /** 48 representative test cards, ported 1:1 from the prototype. */
 export const TESTS: TestEntry[] = [
   ["Attention to Detail (Textual)", "cognitive", "Intermediate", 15, 10, "Spot inconsistencies and errors across written information under time pressure."],

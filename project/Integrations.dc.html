@@ -92,8 +92,8 @@ a{text-decoration:none;color:inherit;}
   <h2 class="h2 reveal" style="color:#fff;">Don't see your tool?</h2>
   <p class="lead reveal" style="color:rgba(255,255,255,.78);margin:18px auto 30px;transition-delay:.04s;">Our API connects Testlify to anything. Tell us what you use and we'll help you wire it up.</p>
   <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;transition-delay:.08s;">
-    <a class="btn" href="#" style="background:#fff;color:#C0242B;">Read API docs<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-    <a class="btn" href="#" style="background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.4);">Request an integration</a>
+    <dc-import name="CTA Button" label="Read API docs" href="#" variant="light" size="md" icon="arrow" hint-size="160px,52px"></dc-import>
+    <dc-import name="CTA Button" label="Request an integration" href="#" variant="outline-light" size="md" icon="none" hint-size="200px,52px"></dc-import>
   </div>
 </div></section>
 <dc-import name="Site Footer" home-href="Homepage.dc.html" hint-size="100%,560px"></dc-import>
@@ -105,7 +105,14 @@ class Component extends DCLogic {
     const sweep = ()=>{
       const vh = window.innerHeight || document.documentElement.clientHeight;
       document.querySelectorAll('.reveal:not(.in)').forEach(n=>{
-        if(n.getBoundingClientRect().top < vh + 600) n.classList.add('in');
+        if(n.getBoundingClientRect().top < vh + 600){
+          n.classList.add('in');
+          const _d=(parseFloat(n.style.transitionDelay||'0')||0)*1000;
+          n.style.transition='none';
+          const _dur=700,_sy=26; let _st=null;
+          const _tick=(t)=>{ if(_st===null)_st=t; const p=Math.min(1,(t-_st)/_dur); const e=1-Math.pow(1-p,3); n.style.opacity=String(e); n.style.transform='translateY('+(_sy*(1-e)).toFixed(2)+'px)'; if(p<1) requestAnimationFrame(_tick); else { n.style.opacity='1'; n.style.transform='none'; } };
+          setTimeout(()=>requestAnimationFrame(_tick), _d);
+        }
       });
     };
     this._sweep = sweep;

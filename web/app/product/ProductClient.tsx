@@ -4,6 +4,8 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
 import FAQ from "@/components/FAQ";
+import CtaButton from "@/components/CtaButton";
+import { routes } from "@/lib/routes";
 
 const faqItems = [
   {
@@ -27,12 +29,6 @@ const faqItems = [
     a: "Testlify is SOC 2 Type II certified, GDPR and CCPA compliant, with encryption in transit and at rest. Your data is never used to train shared models.",
   },
 ];
-
-const ArrowRight = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <path d="M5 12h14M13 6l6 6-6 6" />
-  </svg>
-);
 
 const Check = () => (
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -167,13 +163,8 @@ export default function ProductClient() {
                 Testlify&apos;s AI reads every application the moment it lands — scoring skills, experience and intent against your role, then handing you a ranked shortlist you can trust. No keyword filters. No bias. No backlog.
               </Reveal>
               <Reveal delay={0.14} className="flex items-center gap-[14px] flex-wrap mt-[30px]">
-                <a href="#" className="btn-sheen inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] bg-coral text-white shadow-[0_12px_26px_rgba(242,63,68,0.30)] transition-all duration-[250ms] hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(242,63,68,0.40)]">
-                  Start free — screen 50 résumés
-                  <ArrowRight />
-                </a>
-                <a href="#" className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] bg-white text-ink border-[1.5px] border-warm2 transition-all duration-[250ms] hover:-translate-y-0.5 hover:border-[#F2B7B9] hover:shadow-[0_10px_24px_rgba(110,11,14,0.08)]">
-                  Book a demo
-                </a>
+                <CtaButton label="Start free — screen 50 résumés" href={routes.pricing} variant="primary" size="md" icon="arrow" magnetic />
+                <CtaButton label="Book a demo" href="#" variant="secondary" size="md" icon="none" />
               </Reveal>
               <Reveal delay={0.18} className="flex items-center gap-[14px] flex-wrap mt-[26px] text-[13.5px] text-muted font-semibold">
                 <span>No credit card</span>
@@ -608,13 +599,8 @@ export default function ProductClient() {
               Screen your first 50 résumés free — no credit card, no setup call. See a ranked shortlist for your real role in minutes.
             </p>
             <div className="flex items-center justify-center gap-[14px] flex-wrap">
-              <a href="#" className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] bg-white text-[#C0242B] transition-transform duration-[250ms] hover:-translate-y-0.5">
-                Start free
-                <ArrowRight />
-              </a>
-              <a href="#" className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] bg-white/[0.14] text-white border-[1.5px] border-white/40 transition-transform duration-[250ms] hover:-translate-y-0.5">
-                Book a demo
-              </a>
+              <CtaButton label="Start free" href={routes.pricing} variant="light" size="md" icon="arrow" />
+              <CtaButton label="Book a demo" href="#" variant="outline-light" size="md" icon="none" />
             </div>
             <div className="flex items-center justify-center gap-[14px] flex-wrap mt-[26px] text-[13.5px] text-white/85 font-semibold">
               <span>SOC 2 Type II</span>

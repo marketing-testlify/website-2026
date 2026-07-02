@@ -100,7 +100,7 @@ a{text-decoration:none;color:inherit;}
     <div class="reveal" style="transition-delay:.02s"><span class="pill"><span class="pilltag">AI SCREENING</span> Shortlist in minutes, not weeks</span></div>
     <h1 class="h1 reveal" style="margin-top:22px;transition-delay:.06s">Screen every résumé.<br>Surface the best <span style="color:#F23F44;">automatically.</span></h1>
     <p class="lead reveal" style="margin-top:22px;max-width:520px;transition-delay:.1s">Testlify's AI reads every application the moment it lands — scoring skills, experience and intent against your role, then handing you a ranked shortlist you can trust. No keyword filters. No bias. No backlog.</p>
-    <div class="heroctas reveal" style="transition-delay:.14s"><a class="btn btn-primary" href="#">Start free — screen 50 résumés<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a class="btn btn-ghost" href="#">Book a demo</a></div>
+    <div class="heroctas reveal" style="transition-delay:.14s"><dc-import name="CTA Button" label="Start free — screen 50 résumés" href="Pricing.dc.html" variant="primary" size="md" icon="arrow" magnetic="true" hint-size="250px,52px"></dc-import><dc-import name="CTA Button" label="Book a demo" href="#" variant="secondary" size="md" icon="none" hint-size="150px,52px"></dc-import></div>
     <div class="trust reveal" style="margin-top:26px;transition-delay:.18s"><span>No credit card</span><span class="dot"></span><span>7-day free trial</span><span class="dot"></span><span>SOC 2 · GDPR</span></div>
   </div>
   <div class="reveal" style="position:relative;transition-delay:.12s">
@@ -245,8 +245,8 @@ a{text-decoration:none;color:inherit;}
   <h2 class="h2" style="color:#fff;font-size:46px;margin:0 0 18px;">Stop reading résumés.<br>Start meeting your best people.</h2>
   <p style="font-size:19px;line-height:1.55;color:rgba(255,255,255,.9);max-width:560px;margin:0 auto 34px;">Screen your first 50 résumés free — no credit card, no setup call. See a ranked shortlist for your real role in minutes.</p>
   <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;">
-    <a class="btn" href="#" style="background:#fff;color:#C0242B;">Start free<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-    <a class="btn" href="#" style="background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.4);">Book a demo</a>
+    <dc-import name="CTA Button" label="Start free" href="Pricing.dc.html" variant="light" size="md" icon="arrow" hint-size="150px,52px"></dc-import>
+    <dc-import name="CTA Button" label="Book a demo" href="#" variant="outline-light" size="md" icon="none" hint-size="150px,52px"></dc-import>
   </div>
   <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:26px;font-size:13.5px;color:rgba(255,255,255,.85);font-weight:600;"><span>SOC 2 Type II</span><span style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5);"></span><span>GDPR &amp; CCPA</span><span style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5);"></span><span>Cancel anytime</span></div>
 </div></div></section>
@@ -261,7 +261,14 @@ class Component extends DCLogic {
     const sweep = ()=>{
       const vh = window.innerHeight || document.documentElement.clientHeight;
       document.querySelectorAll('.reveal:not(.in)').forEach(n=>{
-        if(n.getBoundingClientRect().top < vh + 600) n.classList.add('in');
+        if(n.getBoundingClientRect().top < vh + 600){
+          n.classList.add('in');
+          const _d=(parseFloat(n.style.transitionDelay||'0')||0)*1000;
+          n.style.transition='none';
+          const _dur=700,_sy=26; let _st=null;
+          const _tick=(t)=>{ if(_st===null)_st=t; const p=Math.min(1,(t-_st)/_dur); const e=1-Math.pow(1-p,3); n.style.opacity=String(e); n.style.transform='translateY('+(_sy*(1-e)).toFixed(2)+'px)'; if(p<1) requestAnimationFrame(_tick); else { n.style.opacity='1'; n.style.transform='none'; } };
+          setTimeout(()=>requestAnimationFrame(_tick), _d);
+        }
       });
     };
     this._sweep = sweep;

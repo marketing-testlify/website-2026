@@ -123,6 +123,15 @@
 .btn-sheen:hover::after {
   animation: btnsheen 1.05s ease;
 }
+/* CtaButton "light" variant: red-tinted shine instead of white */
+.btn-sheen-light::after {
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(242, 63, 68, 0.18),
+    transparent
+  );
+}
 @keyframes btnsheen {
   0% {
     transform: translateX(-130%) skewX(-18deg);

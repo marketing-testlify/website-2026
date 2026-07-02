@@ -78,49 +78,50 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
         />
       </div>
 
-      {/* Prose body */}
+      {/* Prose body — statically visible in the source (baked-in "reveal in"),
+          not scroll-gated like the Related/CTA sections below. */}
       <div className="mx-auto max-w-[740px] px-7">
-        <Reveal as="p" className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
+        <p className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
           For most of the last century, the r&eacute;sum&eacute; was the hiring
           world&apos;s currency. A degree, a job title, a recognizable logo —
           these were the proxies we used to guess who could do the work. The
           problem is that proxies are exactly that: guesses. And they
           systematically miss great people.
-        </Reveal>
-        <Reveal as="p" className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
+        </p>
+        <p className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
           Skills-based hiring flips the model. Instead of asking &quot;who looks
           qualified?&quot;, it asks &quot;who can actually do this job?&quot; —
           and then measures it directly. This playbook walks through how to put
           that into practice, step by step.
-        </Reveal>
+        </p>
 
         {/* Pull quote */}
-        <Reveal className="my-8 border-l-4 border-coral py-[6px] pl-6 text-[24px] font-semibold leading-[1.45] tracking-[-0.4px] text-ink">
+        <div className="my-8 border-l-4 border-coral py-[6px] pl-6 text-[24px] font-semibold leading-[1.45] tracking-[-0.4px] text-ink">
           &quot;The best predictor of job performance isn&apos;t where someone
           worked — it&apos;s whether they can do the work in front of them.&quot;
-        </Reveal>
+        </div>
 
-        <Reveal as="h2" className="mb-[18px] mt-[46px] text-[30px] font-extrabold tracking-[-0.8px] text-ink">
+        <h2 className="mb-[18px] mt-[46px] text-[30px] font-extrabold tracking-[-0.8px] text-ink">
           1. Start with the work, not the wishlist
-        </Reveal>
-        <Reveal as="p" className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
+        </h2>
+        <p className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
           Before you write a single requirement, define the three to five
           outcomes this role must deliver in its first year. Every assessment
           you design should map back to one of them. If a &quot;requirement&quot;
           doesn&apos;t connect to an outcome, cut it — it&apos;s almost certainly
           filtering on background, not ability.
-        </Reveal>
+        </p>
 
-        <Reveal as="h2" className="mb-[18px] mt-[46px] text-[30px] font-extrabold tracking-[-0.8px] text-ink">
+        <h2 className="mb-[18px] mt-[46px] text-[30px] font-extrabold tracking-[-0.8px] text-ink">
           2. Replace screening filters with signals
-        </Reveal>
-        <Reveal as="p" className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
+        </h2>
+        <p className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
           Keyword filters and degree requirements are blunt instruments. They
           reject qualified people for the wrong reasons and let unqualified
           people through for the right ones. Replace them with structured
           signals:
-        </Reveal>
-        <Reveal as="ul" className="m-0 mb-6 pl-6">
+        </p>
+        <ul className="m-0 mb-6 pl-6">
           <li className="mb-[10px] text-[18px] leading-[1.7] text-[#3A2C30] max-[920px]:text-[16.5px]">
             <strong className="font-bold text-ink">Work-sample tests</strong>{" "}
             that mirror real tasks from the role.
@@ -137,46 +138,46 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
             </strong>{" "}
             using the same rubric for every candidate.
           </li>
-        </Reveal>
+        </ul>
 
-        <Reveal as="h2" className="mb-[18px] mt-[46px] text-[30px] font-extrabold tracking-[-0.8px] text-ink">
+        <h2 className="mb-[18px] mt-[46px] text-[30px] font-extrabold tracking-[-0.8px] text-ink">
           3. Make the candidate experience worth it
-        </Reveal>
-        <Reveal as="p" className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
+        </h2>
+        <p className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
           A skills-first process asks more of candidates, so it has to give more
           back. Keep assessments under 30 minutes, explain why each step
           matters, and give every applicant a result. Completion rates — and
           your employer brand — depend on it.
-        </Reveal>
+        </p>
 
         {/* Callout */}
-        <Reveal className="my-9 rounded-[18px] border border-[#F4E1D6] bg-[#FBF3EE] px-[30px] py-7">
+        <div className="my-9 rounded-[18px] border border-[#F4E1D6] bg-[#FBF3EE] px-[30px] py-7">
           <p className="m-0 text-[16px] leading-[1.65] text-[#3A2C30]">
             <strong className="font-bold text-ink">Rule of thumb:</strong> if
             your assessment takes longer than the first interview would have,
             it&apos;s too long. Aim for high signal per minute of candidate
             time.
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal as="h2" className="mb-[18px] mt-[46px] text-[30px] font-extrabold tracking-[-0.8px] text-ink">
+        <h2 className="mb-[18px] mt-[46px] text-[30px] font-extrabold tracking-[-0.8px] text-ink">
           4. Score consistently, decide together
-        </Reveal>
-        <Reveal as="p" className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
+        </h2>
+        <p className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
           The whole point of structure is comparability. Use the same rubric and
           the same scale for every candidate, collect scores independently
           before discussion, and let the evidence — not the loudest voice in the
           room — drive the decision.
-        </Reveal>
-        <Reveal as="p" className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
+        </p>
+        <p className="m-0 mb-6 text-[18px] leading-[1.75] text-[#3A2C30] max-[920px]:text-[16.5px]">
           Teams that adopt this approach consistently report faster hiring,
           stronger performance from new hires, and noticeably more diverse
           pipelines. Not because they lowered the bar — but because they finally
           measured the right thing.
-        </Reveal>
+        </p>
 
         {/* Share bar */}
-        <Reveal className="my-12 flex items-center gap-[10px] border-y border-[#F1E6E7] py-6">
+        <div className="my-12 flex items-center gap-[10px] border-y border-[#F1E6E7] py-6">
           <span className="mr-[6px] text-[13.5px] font-bold text-[#6A5A5D]">
             Share
           </span>
@@ -189,7 +190,7 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
               {s}
             </a>
           ))}
-        </Reveal>
+        </div>
       </div>
 
       {/* Related articles */}

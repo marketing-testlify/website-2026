@@ -2,105 +2,95 @@
 
 import { useState, type ReactNode } from "react";
 
-type Skill = { title: string; sub: string; icon: ReactNode };
-type Sample = { num: string; q: ReactNode; a: ReactNode };
-
-export type DetailTabContent = {
-  measures: string[];
-  whoFor: string;
-  skills: Skill[];
-  samples: Sample[];
+export type AccordionItem = {
+  /** heading / question text */
+  q: ReactNode;
+  /** expanded body content */
+  content: ReactNode;
+  /** "01" style number badge; omit for a flush (FAQ-style) row with no badge */
+  num?: string;
 };
 
-type Tab = "over" | "skills" | "sample";
+const ChevronDown = ({ size = 20 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2.2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden
+  >
+    <path d="M6 9l6 6 6-6" />
+  </svg>
+);
 
-export default function DetailTabs({ content }: { content: DetailTabContent }) {
-  const [tab, setTab] = useState<Tab>("over");
-
-  const tabBtn = (key: Tab, label: string) => (
-    <button
-      type="button"
-      onClick={() => setTab(key)}
-      className={`border-0 bg-none font-[inherit] text-[15px] font-semibold px-1.5 py-3.5 -mb-px border-b-2 cursor-pointer transition-all duration-200 ${
-        tab === key
-          ? "text-coral border-coral"
-          : "text-[#9A878A] border-transparent"
-      }`}
-    >
-      {label}
-    </button>
-  );
+/**
+ * Accordion — powers the Skills measured, Interview kit and FAQ sections
+ * on the test detail page. Ported from the prototype's `.acc`/`.ai`/`.ah`/`.ab`
+ * pattern (numbered rows with a badge, or flush rows without one for FAQs).
+ */
+export default function Accordion({
+  items,
+  iconSize = 20,
+}: {
+  items: AccordionItem[];
+  iconSize?: number;
+}) {
+  const [open, setOpen] = useState<Record<number, boolean>>({});
 
   return (
-    <div className="max-w-[840px] mx-auto">
-      <div className="flex gap-2 border-b border-[#F1E6E7] mb-[30px] flex-wrap">
-        {tabBtn("over", "Overview")}
-        {tabBtn("skills", "Skills covered")}
-        {tabBtn("sample", "Sample questions")}
-      </div>
-
-      {tab === "over" && (
-        <div>
-          <h2 className="text-[34px] leading-[1.1] font-extrabold tracking-[-1.2px] text-ink m-0 mb-4 max-[920px]:text-[27px]">
-            What this test measures
-          </h2>
-          {content.measures.map((p, i) => (
-            <p key={i} className="text-[16px] leading-[1.66] text-body mb-3.5">
-              {p}
-            </p>
-          ))}
-          <h2 className="text-[34px] leading-[1.1] font-extrabold tracking-[-1.2px] text-ink mt-9 mb-4 max-[920px]:text-[27px]">
-            Who it&apos;s for
-          </h2>
-          <p className="text-[16px] leading-[1.66] text-body m-0">{content.whoFor}</p>
-        </div>
-      )}
-
-      {tab === "skills" && (
-        <div>
-          <h2 className="text-[34px] leading-[1.1] font-extrabold tracking-[-1.2px] text-ink m-0 mb-[22px] max-[920px]:text-[27px]">
-            Skills covered
-          </h2>
-          <div className="grid grid-cols-2 gap-3.5 max-[920px]:grid-cols-1">
-            {content.skills.map((s) => (
-              <div
-                key={s.title}
-                className="flex items-center gap-3 bg-white border border-[#EFE2E3] rounded-[14px] px-[18px] py-4"
-              >
-                <span className="shrink-0 w-[38px] h-[38px] rounded-[10px] bg-sand text-[#C0242B] flex items-center justify-center">
-                  {s.icon}
-                </span>
-                <div>
-                  <div className="font-bold text-[14.5px] text-ink">{s.title}</div>
-                  <div className="text-[12.5px] text-[#9A878A]">{s.sub}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {tab === "sample" && (
-        <div>
-          <h2 className="text-[34px] leading-[1.1] font-extrabold tracking-[-1.2px] text-ink m-0 mb-[22px] max-[920px]:text-[27px]">
-            Sample questions
-          </h2>
-          {content.samples.map((s, i) => (
-            <div
-              key={i}
-              className="bg-white border border-[#EFE2E3] rounded-2xl p-6 mb-3.5"
+    <div className="flex flex-col gap-3">
+      {items.map((it, i) => {
+        const isOpen = !!open[i];
+        return (
+          <div
+            key={i}
+            className={`bg-white border-[1.4px] rounded-2xl overflow-hidden transition-[box-shadow,border-color] duration-200 ${
+              isOpen
+                ? "border-[#F4C7C8] shadow-[0_14px_30px_rgba(110,11,14,0.07)]"
+                : "border-[#EFE1E2]"
+            }`}
+          >
+            <button
+              type="button"
+              onClick={() => setOpen((s) => ({ ...s, [i]: !s[i] }))}
+              className="flex items-center gap-[15px] w-full bg-transparent border-0 font-[inherit] cursor-pointer px-[22px] py-5 text-left transition-colors duration-150 hover:bg-[#FFFAF9]"
             >
-              <p className="text-[12px] font-bold tracking-[0.08em] text-[#D98A8D] m-0 mb-2">
-                {s.num}
-              </p>
-              <p className="text-[18px] leading-[1.25] font-bold tracking-[-0.3px] text-ink m-0 mb-1.5">
-                {s.q}
-              </p>
-              <p className="text-[14px] leading-[1.66] text-body m-0">{s.a}</p>
-            </div>
-          ))}
-        </div>
-      )}
+              {it.num && (
+                <span className="shrink-0 w-[30px] h-[30px] rounded-lg bg-[#FFF0EF] text-coral text-[12.5px] font-bold flex items-center justify-center">
+                  {it.num}
+                </span>
+              )}
+              <span
+                className={`font-bold text-ink tracking-[-0.2px] ${
+                  it.num ? "text-[16.5px]" : "text-[15px]"
+                }`}
+              >
+                {it.q}
+              </span>
+              <span
+                className={`ml-auto flex shrink-0 transition-transform duration-[240ms] ease-[cubic-bezier(.2,.7,.3,1)] ${
+                  isOpen ? "rotate-180 text-coral" : "text-[#C0989B]"
+                }`}
+              >
+                <ChevronDown size={iconSize} />
+              </span>
+            </button>
+            {isOpen && (
+              <div
+                className={`${
+                  it.num ? "pl-[67px] pr-[22px] pb-[22px]" : "px-[22px] pb-[22px]"
+                }`}
+              >
+                {it.content}
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }

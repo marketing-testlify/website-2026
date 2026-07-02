@@ -855,7 +855,7 @@ export default function HomeClient() {
       </section>
 
       {/* ============ WHY / PROOF vs RESUMES ============ */}
-      <section id="why" className="px-7" style={{ padding: "96px 28px", background: "transparent" }}>
+      <section id="why" className="px-7" style={{ padding: "96px 28px", background: "#fff" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto" }}>
           <div style={{ maxWidth: 720, margin: "0 0 8px" }}>
             <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
@@ -869,28 +869,40 @@ export default function HomeClient() {
             </Reveal>
           </div>
           <div className="vs grid grid-cols-2 gap-[18px] mt-[46px] max-[900px]:grid-cols-1">
-            <Reveal className="rounded-[24px] px-8 py-9 bg-[#FBF4F4] border border-[#F0E4E5]">
+            <Reveal className="rounded-[24px] px-8 py-9 bg-transparent border border-transparent">
               <div className="flex items-center gap-3 mb-[22px]">
                 <span className="w-[34px] h-[34px] rounded-[10px] flex items-center justify-center text-[16px] font-bold bg-[#F0E4E5] text-muted">✕</span>
                 <span className="text-[13px] font-bold tracking-[0.04em] uppercase text-muted">Resume-first hiring</span>
               </div>
-              {VS_OLD.map((t) => (
-                <div key={t} className="flex items-start gap-[13px] py-[13px] text-[15.5px] leading-[1.45] border-t border-[#F1E2E3] first-of-type:border-t-0 text-[#46383C]">
+              {VS_OLD.map((t, i) => (
+                <Reveal
+                  key={t}
+                  delay={0.06 * (i + 1)}
+                  className="flex items-start gap-[13px] py-[13px] text-[15.5px] leading-[1.45] border-t border-[#F1E2E3] first-of-type:border-t-0 text-[#46383C]"
+                >
                   <span className="w-[22px] h-[22px] rounded-full flex items-center justify-center text-[12px] shrink-0 mt-px bg-[#EADDDE] text-muted">✕</span>
                   <span>{t}</span>
-                </div>
+                </Reveal>
               ))}
             </Reveal>
-            <Reveal delay={0.1} className="rounded-[24px] px-8 py-9 border border-[#FBD0D1]" style={{ background: "linear-gradient(160deg,#FFF0F0,#FFF8F6)" }}>
+            <Reveal
+              delay={0.1}
+              className="relative rounded-[24px] px-8 py-9 border-[1.5px] border-[#F7B4B6] shadow-[0_24px_50px_rgba(242,63,68,0.18),0_0_0_4px_rgba(242,63,68,0.06)]"
+              style={{ background: "linear-gradient(160deg,#FFF0F0,#FFF8F6)" }}
+            >
               <div className="flex items-center gap-3 mb-[22px]">
                 <span className="w-[34px] h-[34px] rounded-[10px] flex items-center justify-center text-[16px] font-bold bg-coral text-white">✓</span>
                 <span className="text-[13px] font-bold tracking-[0.04em] uppercase text-coral">Skills-first with Testlify</span>
               </div>
-              {VS_NEW.map((t) => (
-                <div key={t} className="flex items-start gap-[13px] py-[13px] text-[15.5px] leading-[1.45] border-t border-[#F1E2E3] first-of-type:border-t-0">
+              {VS_NEW.map((t, i) => (
+                <Reveal
+                  key={t}
+                  delay={0.16 + 0.06 * i}
+                  className="flex items-start gap-[13px] py-[13px] text-[15.5px] leading-[1.45] border-t border-[#F1E2E3] first-of-type:border-t-0"
+                >
                   <span className="w-[22px] h-[22px] rounded-full flex items-center justify-center text-[12px] shrink-0 mt-px bg-coral text-white">✓</span>
                   <span className="text-ink font-medium">{t}</span>
-                </div>
+                </Reveal>
               ))}
             </Reveal>
           </div>
@@ -900,7 +912,7 @@ export default function HomeClient() {
           >
             <a
               href="#"
-              className="btn-sheen inline-flex items-center gap-[9px] bg-coral text-white font-semibold text-[16.5px] px-[30px] py-[15px] rounded-[14px] shadow-[0_14px_30px_rgba(242,63,68,0.32)]"
+              className="btn-sheen inline-flex items-center gap-[9px] bg-coral text-white font-semibold text-[16.5px] px-[30px] py-[15px] rounded-[14px] shadow-[0_14px_30px_rgba(242,63,68,0.32)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_38px_rgba(242,63,68,0.42)]"
             >
               Try for free
               <span className="text-[18px]">→</span>
@@ -1138,7 +1150,7 @@ export default function HomeClient() {
             </div>
             <Link
               href={routes.testLibrary}
-              className="btn-sheen inline-flex items-center gap-[9px] bg-coral text-white font-semibold text-[16px] px-[26px] py-[14px] rounded-2xl shadow-[0_14px_30px_rgba(242,63,68,0.32)] whitespace-nowrap"
+              className="btn-sheen inline-flex items-center gap-[9px] bg-coral text-white font-semibold text-[16px] px-[26px] py-[14px] rounded-2xl shadow-[0_14px_30px_rgba(242,63,68,0.32)] whitespace-nowrap transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_38px_rgba(242,63,68,0.42)]"
             >
               Browse the full library
               <span className="text-[18px]">→</span>

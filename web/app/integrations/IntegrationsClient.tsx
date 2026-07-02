@@ -4,12 +4,7 @@ import { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
-
-const ArrowRight = ({ w = 17, sw = 2.4 }: { w?: number; sw?: number }) => (
-  <svg width={w} height={w} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <path d="M5 12h14M13 6l6 6-6 6" />
-  </svg>
-);
+import CtaButton from "@/components/CtaButton";
 
 type Integration = {
   name: string;
@@ -181,13 +176,8 @@ export default function IntegrationsClient() {
             Our API connects Testlify to anything. Tell us what you use and we&apos;ll help you wire it up.
           </Reveal>
           <Reveal delay={0.08} className="flex gap-3.5 justify-center flex-wrap">
-            <a className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white text-[#C0242B] transition-[transform,box-shadow] duration-[250ms]" href="#">
-              Read API docs
-              <ArrowRight />
-            </a>
-            <a className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white/[0.14] text-white border-[1.5px] border-white/40 transition-[transform,box-shadow] duration-[250ms]" href="#">
-              Request an integration
-            </a>
+            <CtaButton label="Read API docs" href="#" variant="light" size="md" icon="arrow" />
+            <CtaButton label="Request an integration" href="#" variant="outline-light" size="md" icon="none" />
           </Reveal>
         </div>
       </section>

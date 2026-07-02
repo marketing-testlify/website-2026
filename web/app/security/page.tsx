@@ -158,7 +158,7 @@ export default function Page() {
       </section>
 
       {/* Security at every layer */}
-      <section id="security" className="px-7 pt-[84px] pb-[104px] bg-white max-[920px]:px-[22px] max-[920px]:pt-[72px] max-[920px]:pb-[72px]">
+      <section id="security" className="px-7 pt-[84px] pb-[104px] bg-white max-[920px]:px-[22px] max-[920px]:pb-[72px]">
         <div className="max-w-[1240px] mx-auto">
           <div className="max-w-[640px] mx-auto mb-11 text-center">
             <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-muted m-0 mb-[18px]">

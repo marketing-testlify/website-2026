@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
+import CtaButton from "@/components/CtaButton";
+import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = {
   title: "Customers",
@@ -134,7 +136,7 @@ export default function CustomersPage() {
               <div className="font-extrabold text-[22px] text-[#C0242B] mb-4">
                 Northwind
               </div>
-              <p className="text-[27px] leading-[1.4] font-semibold tracking-[-0.5px] text-ink m-0 mb-6">
+              <p className="text-[27px] leading-[1.4] font-semibold tracking-[-0.5px] text-ink m-0 mb-6 max-[920px]:text-[22px]">
                 &quot;We went from{" "}
                 <span className="text-coral">
                   drowning in 4,000 applications
@@ -279,30 +281,20 @@ export default function CustomersPage() {
             delay={0.08}
             className="flex gap-3.5 justify-center flex-wrap"
           >
-            <a
+            <CtaButton
+              label="Start free"
+              href={routes.pricing}
+              variant="light"
+              size="md"
+              icon="arrow"
+            />
+            <CtaButton
+              label="Book a demo"
               href="#"
-              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white text-[#C0242B] cursor-pointer transition-[transform,box-shadow] duration-[250ms]"
-            >
-              Start free
-              <svg
-                width="17"
-                height="17"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white/[0.14] text-white border-[1.5px] border-white/40 cursor-pointer transition-[transform,box-shadow] duration-[250ms]"
-            >
-              Book a demo
-            </a>
+              variant="outline-light"
+              size="md"
+              icon="none"
+            />
           </Reveal>
         </div>
       </section>

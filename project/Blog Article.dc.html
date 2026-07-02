@@ -106,7 +106,14 @@ class Component extends DCLogic {
     const sweep = ()=>{
       const vh = window.innerHeight || document.documentElement.clientHeight;
       document.querySelectorAll('.reveal:not(.in)').forEach(n=>{
-        if(n.getBoundingClientRect().top < vh + 600) n.classList.add('in');
+        if(n.getBoundingClientRect().top < vh + 600){
+          n.classList.add('in');
+          const _d=(parseFloat(n.style.transitionDelay||'0')||0)*1000;
+          n.style.transition='none';
+          const _dur=700,_sy=26; let _st=null;
+          const _tick=(t)=>{ if(_st===null)_st=t; const p=Math.min(1,(t-_st)/_dur); const e=1-Math.pow(1-p,3); n.style.opacity=String(e); n.style.transform='translateY('+(_sy*(1-e)).toFixed(2)+'px)'; if(p<1) requestAnimationFrame(_tick); else { n.style.opacity='1'; n.style.transform='none'; } };
+          setTimeout(()=>requestAnimationFrame(_tick), _d);
+        }
       });
     };
     this._sweep = sweep;

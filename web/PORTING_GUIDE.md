@@ -64,6 +64,12 @@ import SiteFooter from "@/components/SiteFooter";
 - `@/components/Reveal` — scroll reveal wrapper: `<Reveal as="h2" delay={0.06}
   className="…">…</Reveal>`. Stagger with delay (seconds). Don't gate the hero.
 - `@/components/TestIcon` — the test-type line-icon set.
+- `@/components/CtaButton` — `<CtaButton label href variant size icon magnetic />`.
+  variant ∈ primary|secondary|light|outline-light, size ∈ lg|md|sm, icon ∈
+  arrow|play|none. Set `magnetic` only where the source's `dc-import name="CTA
+  Button"` passes `magnetic="true"` — it's an explicit per-button opt-in, not a
+  page-wide default. Use this wherever the prototype imports "CTA Button"
+  instead of hand-rolling the button markup.
 
 ## Links
 `import { routes } from "@/lib/routes"` and use `next/link` `<Link href={…}>`. Map:

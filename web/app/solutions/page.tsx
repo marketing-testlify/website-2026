@@ -2,28 +2,14 @@ import type { Metadata } from "next";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
+import CtaButton from "@/components/CtaButton";
+import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = {
   title: "Solutions — a hiring solution for every kind of team",
   description:
     "However you hire — high volume, fully remote, straight off campus — Testlify adapts to your workflow and surfaces the right people, faster.",
 };
-
-const ArrowRight = () => (
-  <svg
-    width="17"
-    height="17"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2.4}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden
-  >
-    <path d="M5 12h14M13 6l6 6-6 6" />
-  </svg>
-);
 
 type UseCase = {
   id: string;
@@ -249,19 +235,21 @@ export default function Page() {
             className="flex gap-[14px] justify-center flex-wrap"
             style={{ marginTop: 30 }}
           >
-            <a
-              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] bg-[#F23F44] text-white shadow-[0_12px_26px_rgba(242,63,68,0.30)] transition-all duration-[250ms] hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(242,63,68,0.40)]"
+            <CtaButton
+              label="Start free"
+              href={routes.pricing}
+              variant="primary"
+              size="md"
+              icon="arrow"
+              magnetic
+            />
+            <CtaButton
+              label="Book a demo"
               href="#"
-            >
-              Start free
-              <ArrowRight />
-            </a>
-            <a
-              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] bg-white text-[#1A1014] border-[1.5px] border-[#EADDDE] transition-all duration-[250ms] hover:-translate-y-0.5 hover:border-[#F2B7B9] hover:shadow-[0_10px_24px_rgba(110,11,14,0.08)]"
-              href="#"
-            >
-              Book a demo
-            </a>
+              variant="secondary"
+              size="md"
+              icon="none"
+            />
           </Reveal>
         </div>
       </section>
@@ -454,19 +442,20 @@ export default function Page() {
             delay={0.08}
             className="flex gap-[14px] justify-center flex-wrap"
           >
-            <a
-              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] bg-[#F23F44] text-white shadow-[0_12px_26px_rgba(242,63,68,0.30)] transition-all duration-[250ms] hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(242,63,68,0.40)]"
+            <CtaButton
+              label="Start free"
+              href={routes.pricing}
+              variant="primary"
+              size="md"
+              icon="arrow"
+            />
+            <CtaButton
+              label="Book a demo"
               href="#"
-            >
-              Start free
-              <ArrowRight />
-            </a>
-            <a
-              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-[14px] rounded-[13px] bg-white text-[#1A1014] border-[1.5px] border-[#EADDDE] transition-all duration-[250ms] hover:-translate-y-0.5 hover:border-[#F2B7B9] hover:shadow-[0_10px_24px_rgba(110,11,14,0.08)]"
-              href="#"
-            >
-              Book a demo
-            </a>
+              variant="secondary"
+              size="md"
+              icon="none"
+            />
           </Reveal>
         </div>
       </section>

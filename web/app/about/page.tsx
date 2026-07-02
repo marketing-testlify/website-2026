@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
+import CtaButton from "@/components/CtaButton";
 import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = {
@@ -133,7 +133,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="px-7 py-[104px] max-[920px]:py-[72px]">
+      <section className="px-7 py-[104px] max-[920px]:px-[22px] max-[920px]:py-[72px]">
         <div className="max-w-[1240px] mx-auto px-7 grid grid-cols-2 gap-[60px] items-center max-[920px]:grid-cols-1">
           <Reveal>
             <p className={eyebrow}>
@@ -170,7 +170,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="px-7 py-[104px] bg-sand max-[920px]:py-[72px]">
+      <section className="px-7 py-[104px] bg-sand max-[920px]:px-[22px] max-[920px]:py-[72px]">
         <div className="max-w-[1240px] mx-auto px-7">
           <div className="max-w-[640px] mx-auto mb-11 text-center">
             <Reveal as="p" className={eyebrow}>
@@ -214,7 +214,7 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership */}
-      <section className="px-7 py-[104px] max-[920px]:py-[72px]">
+      <section className="px-7 py-[104px] max-[920px]:px-[22px] max-[920px]:py-[72px]">
         <div className="max-w-[1240px] mx-auto px-7">
           <div className="max-w-[640px] mx-auto mb-11 text-center">
             <Reveal as="p" className={eyebrow}>
@@ -242,7 +242,7 @@ export default function AboutPage() {
       </section>
 
       {/* Journey */}
-      <section className="px-7 py-[104px] bg-sand max-[920px]:py-[72px]">
+      <section className="px-7 py-[104px] bg-sand max-[920px]:px-[22px] max-[920px]:py-[72px]">
         <div className="max-w-[760px] mx-auto px-7">
           <div className="mx-auto mb-11 text-center">
             <Reveal as="p" className={eyebrow}>
@@ -269,7 +269,7 @@ export default function AboutPage() {
       </section>
 
       {/* Dark CTA */}
-      <section className="px-7 py-[104px] bg-ink text-white text-center max-[920px]:py-[72px]">
+      <section className="px-7 py-[104px] bg-ink text-white text-center max-[920px]:px-[22px] max-[920px]:py-[72px]">
         <div className="max-w-[720px] mx-auto px-7">
           <Reveal
             as="h2"
@@ -286,30 +286,20 @@ export default function AboutPage() {
             We&apos;d love to meet you.
           </Reveal>
           <Reveal delay={0.08} className="flex gap-3.5 justify-center flex-wrap">
-            <Link
+            <CtaButton
+              label="View open roles"
               href={routes.careers}
-              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white text-[#C0242B] cursor-pointer transition-[transform,box-shadow] duration-[250ms]"
-            >
-              View open roles
-              <svg
-                width="17"
-                height="17"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </Link>
-            <a
+              variant="light"
+              size="md"
+              icon="arrow"
+            />
+            <CtaButton
+              label="Contact us"
               href="#"
-              className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] px-[26px] py-3.5 rounded-[13px] bg-white/[0.14] text-white border-[1.5px] border-white/40 cursor-pointer transition-[transform,box-shadow] duration-[250ms]"
-            >
-              Contact us
-            </a>
+              variant="outline-light"
+              size="md"
+              icon="none"
+            />
           </Reveal>
         </div>
       </section>
