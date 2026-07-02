@@ -237,12 +237,6 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
   const interview = buildInterview(test);
   const faqTest = buildFaqTest(test, roles);
 
-  const skillItems: AccordionItem[] = skills.map((s, i) => ({
-    num: String(i + 1).padStart(2, "0"),
-    q: s.name,
-    content: <p className="m-0 text-[15px] leading-[1.64] text-body">{s.desc}</p>,
-  }));
-
   const interviewItems: AccordionItem[] = interview.map((q, i) => ({
     num: String(i + 1).padStart(2, "0"),
     q: q.q,
@@ -351,9 +345,14 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
                 <CtaButton label="Try for free" href="#" variant="primary" size="lg" icon="arrow" magnetic />
                 <CtaButton label="View sample questions" href="#" variant="secondary" size="lg" icon="none" />
               </div>
-              <p className="text-[12px] text-[#9A878A] text-left mt-[14px] mb-0">
-                No credit card required &middot; 7-day free trial
-              </p>
+              <div className="flex items-center gap-[26px] flex-wrap mt-[18px] text-[14.5px] text-[#8A7A7D] font-medium">
+                <span className="inline-flex items-center gap-[7px]">
+                  <b className="text-coral font-bold">✓</b>7-day free trial
+                </span>
+                <span className="inline-flex items-center gap-[7px]">
+                  <b className="text-coral font-bold">✓</b>No credit card required
+                </span>
+              </div>
             </div>
 
             {/* card */}
@@ -364,10 +363,7 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
                   {test.level}
                 </span>
               </div>
-              <p className="text-[20px] leading-[1.25] font-bold tracking-[-0.3px] text-ink m-0">
-                Add to your assessment
-              </p>
-              <ul className="list-none my-4 mb-[22px] p-0">
+              <ul className="list-none mt-0 mb-[22px] p-0">
                 <li className="flex items-center justify-between gap-3 py-3 border-b border-[#F4E7E8] text-sm">
                   <span className="text-[#8A7A7D] font-medium inline-flex items-center gap-[9px]">
                     <span className="text-[#C0989B] shrink-0"><CalendarIcon /></span>
@@ -427,7 +423,23 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
               {skills.length} skills, each scored independently
             </Reveal>
           </div>
-          <Accordion items={skillItems} />
+          <div className="grid grid-cols-3 gap-4 max-[960px]:grid-cols-2 max-[640px]:grid-cols-1">
+            {skills.map((s, i) => (
+              <Reveal
+                key={s.name}
+                delay={(i % 3) * 0.06}
+                className="bg-white border-[1.4px] border-[#EFE1E2] rounded-2xl px-6 pt-6 pb-[22px] shadow-[0_16px_30px_rgba(110,11,14,0.05)] transition-[translate,transform,box-shadow,border-color] duration-[250ms] ease-[cubic-bezier(.2,.7,.3,1)] hover:-translate-y-1 hover:border-[#F4C7C8] hover:shadow-[0_16px_30px_rgba(110,11,14,0.10)]"
+              >
+                <div className="flex items-center gap-3 mb-2.5">
+                  <span className="inline-flex items-center justify-center w-[34px] h-[34px] rounded-[10px] bg-[#FFF0EF] text-coral text-[13px] font-bold">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-[17px] font-bold text-ink m-0 tracking-[-0.3px]">{s.name}</h3>
+                </div>
+                <p className="text-[13.5px] leading-[1.6] text-[#6C5A5D] m-0">{s.desc}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -469,38 +481,6 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
                 </span>
               ))}
             </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* stats band */}
-      <section className="px-7 py-[84px] text-white bg-[radial-gradient(900px_460px_at_50%_-20%,#2A1417_0%,#1A1014_62%)]">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="max-w-[680px] mx-auto mb-9 text-center">
-            <Reveal as="p" className="text-[12.5px] font-bold tracking-[0.16em] uppercase text-[#E0A9AC] m-0 mb-4">
-              Proven at scale<b className="text-coral-bright font-bold">.</b>
-            </Reveal>
-            <Reveal as="h2" delay={0.04} className="text-[34px] leading-[1.12] font-extrabold tracking-[-1.2px] text-white m-0 max-[920px]:text-[27px]">
-              Hire better, faster, globally
-            </Reveal>
-            <Reveal as="p" delay={0.08} className="text-[16px] leading-[1.66] text-[#D8C5C8] mt-3.5">
-              Testlify helps you find the best talent anywhere with a smooth,
-              skills-first hiring experience.
-            </Reveal>
-          </div>
-          <div className="flex justify-center gap-16 flex-wrap text-center max-[920px]:gap-9">
-            {[
-              ["94%", "Candidate satisfaction", 0],
-              ["6x", "Recruiter efficiency", 0.06],
-              ["55%", "Less time to hire", 0.12],
-            ].map(([val, label, d]) => (
-              <Reveal key={label as string} delay={d as number}>
-                <b className="block text-[54px] font-extrabold tracking-[-2px] text-coral-bright leading-none max-[920px]:text-[44px]">
-                  {val}
-                </b>
-                <span className="text-[15px] text-[#D8C5C8] mt-[9px] block">{label}</span>
-              </Reveal>
-            ))}
           </div>
         </div>
       </section>

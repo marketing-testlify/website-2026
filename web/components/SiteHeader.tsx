@@ -111,6 +111,139 @@ const PLAT = [
   },
 ];
 
+type MenuTab = {
+  name: string;
+  tabDesc: string;
+  cta: string;
+  ctaHref: string;
+  icon: React.ReactNode;
+  subs: { label: string; d: string; href: string }[];
+};
+
+const SOL: MenuTab[] = [
+  {
+    name: "By use case",
+    tabDesc: "Volume, remote, campus, technical & more",
+    cta: "Explore all solutions →",
+    ctaHref: routes.solutions,
+    icon: (
+      <>
+        <path d="M12 2l10 5-10 5L2 7z" />
+        <path d="M2 12l10 5 10-5" />
+        <path d="M2 17l10 5 10-5" />
+      </>
+    ),
+    subs: [
+      { label: "Volume hiring", d: "Screen thousands of applicants in hours", href: `${routes.solutions}#volume-hiring` },
+      { label: "Remote hiring", d: "Hire anywhere with proctored assessments", href: `${routes.solutions}#remote-hiring` },
+      { label: "Campus hiring", d: "Rank fresh graduates without resumes", href: `${routes.solutions}#campus-hiring` },
+      { label: "Diversity & inclusion", d: "Bias-free, EEOC-defensible screening", href: `${routes.solutions}#diversity-hiring` },
+      { label: "Technical hiring", d: "45+ coding languages with a live IDE", href: `${routes.solutions}#technical-hiring` },
+      { label: "Staffing & agencies", d: "Vet candidates before you submit them", href: `${routes.solutions}#agency-hiring` },
+    ],
+  },
+  {
+    name: "By industry",
+    tabDesc: "IT, SaaS, finance, healthcare & more",
+    cta: "See industry solutions →",
+    ctaHref: routes.solutions,
+    icon: (
+      <>
+        <path d="M3 21h18" />
+        <path d="M5 21V7l8-4v18" />
+        <path d="M19 21V11l-6-4" />
+      </>
+    ),
+    subs: [
+      { label: "IT & technology", d: "Developers, DevOps, data & security", href: routes.solutions },
+      { label: "SaaS", d: "GTM, product and engineering roles", href: routes.solutions },
+      { label: "Financial services", d: "Analysts, ops and compliance-heavy roles", href: routes.solutions },
+      { label: "Healthcare", d: "Clinical & administrative screening", href: routes.solutions },
+      { label: "Retail & hospitality", d: "High-volume frontline hiring", href: routes.solutions },
+    ],
+  },
+  {
+    name: "By company size",
+    tabDesc: "Startup to enterprise & public sector",
+    cta: "Find your fit →",
+    ctaHref: routes.solutions,
+    icon: (
+      <>
+        <line x1="12" y1="20" x2="12" y2="10" />
+        <line x1="18" y1="20" x2="18" y2="4" />
+        <line x1="6" y1="20" x2="6" y2="16" />
+      </>
+    ),
+    subs: [
+      { label: "Startups", d: "Hire fast without a TA team", href: routes.solutions },
+      { label: "SMBs", d: "Standardize hiring as you scale", href: routes.solutions },
+      { label: "Enterprise", d: "SSO, compliance and audit trails", href: routes.solutions },
+      { label: "Non-profits & public sector", d: "Fair, defensible selection", href: routes.solutions },
+    ],
+  },
+];
+
+const RES: MenuTab[] = [
+  {
+    name: "Learn",
+    tabDesc: "Blog, ebooks, glossary & podcast",
+    cta: "Browse all resources →",
+    ctaHref: routes.resources,
+    icon: (
+      <>
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+      </>
+    ),
+    subs: [
+      { label: "Blog", d: "Hiring science, playbooks and product news", href: routes.blog },
+      { label: "Ebooks & guides", d: "Deep dives on skills-based hiring", href: `${routes.resources}#guides` },
+      { label: "HR & tech glossary", d: "Every hiring term, defined", href: `${routes.resources}#glossary` },
+      { label: "Podcast", d: "Conversations with talent leaders", href: routes.resources },
+      { label: "FAQ", d: "Quick answers on plans and platform", href: `${routes.home}#faq` },
+    ],
+  },
+  {
+    name: "Templates & tools",
+    tabDesc: "Ready-to-use hiring assets",
+    cta: "Get free HR tools →",
+    ctaHref: `${routes.resources}#tools`,
+    icon: (
+      <>
+        <rect x="3" y="3" width="7" height="7" />
+        <rect x="14" y="3" width="7" height="7" />
+        <rect x="14" y="14" width="7" height="7" />
+        <rect x="3" y="14" width="7" height="7" />
+      </>
+    ),
+    subs: [
+      { label: "Test library", d: "3,500+ validated tests across roles", href: routes.testLibrary },
+      { label: "Job description templates", d: "Role-ready JDs in minutes", href: `${routes.resources}#tools` },
+      { label: "Interview question kits", d: "Structured, scorable prompts", href: `${routes.resources}#tools` },
+      { label: "Skills mapping", d: "Map roles to measurable skills", href: `${routes.resources}#tools` },
+    ],
+  },
+  {
+    name: "Company",
+    tabDesc: "Customers, trust, careers & about",
+    cta: "Read success stories →",
+    ctaHref: routes.customers,
+    icon: (
+      <>
+        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+        <line x1="4" y1="22" x2="4" y2="15" />
+      </>
+    ),
+    subs: [
+      { label: "Success stories", d: "How 1,500+ teams hire on proof", href: routes.customers },
+      { label: "Integrations", d: "100+ native ATS connections", href: routes.integrations },
+      { label: "Trust center", d: "SOC 2, ISO 27001, GDPR", href: routes.security },
+      { label: "About us", d: "Why we built Testlify", href: routes.about },
+      { label: "Careers", d: "Join the team behind Testlify", href: routes.careers },
+    ],
+  },
+];
+
 function MegaIcon({ children }: { children: React.ReactNode }) {
   return (
     <svg
@@ -142,6 +275,8 @@ export default function SiteHeader({
   const [scrolled, setScrolled] = useState(false);
   const [mobOpen, setMobOpen] = useState(false);
   const [prodActive, setProdActive] = useState(0);
+  const [solActive, setSolActive] = useState(0);
+  const [resActive, setResActive] = useState(0);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
@@ -153,11 +288,16 @@ export default function SiteHeader({
   const isSolid = !overlay || scrolled;
   const collapsed = scrolled;
   const A = PLAT[prodActive] ?? PLAT[0];
+  const S = SOL[solActive] ?? SOL[0];
+  const R = RES[resActive] ?? RES[0];
 
   const navLink =
     "text-[15px] font-medium text-[#46383C] hover:text-coral transition-colors";
   const megaPanel =
     "absolute top-[calc(100%+14px)] left-0 bg-white border border-[#F4E4E5] rounded-[18px] p-[18px] shadow-[0_30px_70px_rgba(110,11,14,0.16)] opacity-0 invisible translate-y-2 transition-all duration-200 z-[60] group-hover:opacity-100 group-hover:visible group-hover:translate-y-0";
+  // centered under its trigger (prototype .mega.mctr) — used by Resources
+  const megaPanelCentered =
+    "absolute top-[calc(100%+14px)] left-1/2 -translate-x-1/2 bg-white border border-[#F4E4E5] rounded-[18px] p-[18px] shadow-[0_30px_70px_rgba(110,11,14,0.16)] opacity-0 invisible translate-y-2 transition-all duration-200 z-[60] group-hover:opacity-100 group-hover:visible group-hover:translate-y-0";
 
   return (
     <>
@@ -273,31 +413,41 @@ export default function SiteHeader({
               </button>
               <div className={megaPanel}>
                 <span className="absolute -top-[14px] left-0 right-0 h-[14px]" />
-                <div className="flex gap-5">
-                  <div className="min-w-[178px]">
-                    <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mt-0.5 mb-2 px-2.5">By use case</p>
-                    {[
-                      ["Volume hiring", "#volume-hiring"],
-                      ["Remote hiring", "#remote-hiring"],
-                      ["Campus hiring", "#campus-hiring"],
-                      ["Diversity & inclusion", "#diversity-hiring"],
-                      ["Technical hiring", "#technical-hiring"],
-                      ["Staffing & agencies", "#agency-hiring"],
-                    ].map(([label, hash]) => (
-                      <Link key={label} href={`${routes.solutions}${hash}`} className="block text-[14px] font-medium text-[#2A1A1D] py-[9px] px-2.5 rounded-[9px] whitespace-nowrap hover:bg-rose-100 hover:text-coral transition-colors">{label}</Link>
+                <div className="flex">
+                  <div className="flex flex-col gap-0.5 min-w-[268px] border-r border-[#F4E4E5] pr-3 mr-3.5">
+                    {SOL.map((g, i) => (
+                      <Link
+                        key={g.name}
+                        href={routes.solutions}
+                        onMouseEnter={() => setSolActive(i)}
+                        className={`flex items-start gap-[11px] py-[9px] px-2.5 rounded-[11px] transition-colors ${
+                          solActive === i ? "bg-[#FFF4F3]" : "hover:bg-[#FFF4F3]"
+                        }`}
+                      >
+                        <span className="shrink-0 w-[34px] h-[34px] rounded-[9px] bg-rose-100 text-coral flex items-center justify-center mt-px">
+                          <MegaIcon>{g.icon}</MegaIcon>
+                        </span>
+                        <span>
+                          <span className="block text-[14px] font-semibold text-ink leading-[1.25]">{g.name}</span>
+                          <span className="block text-[12px] text-[#9A878A] leading-[1.35] mt-0.5">{g.tabDesc}</span>
+                        </span>
+                      </Link>
                     ))}
                   </div>
-                  <div className="min-w-[178px]">
-                    <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mt-0.5 mb-2 px-2.5">By industry</p>
-                    {["IT & technology", "SaaS", "Financial", "Healthcare", "Retail", "Hospitality"].map((label) => (
-                      <Link key={label} href={routes.solutions} className="block text-[14px] font-medium text-[#2A1A1D] py-[9px] px-2.5 rounded-[9px] whitespace-nowrap hover:bg-rose-100 hover:text-coral transition-colors">{label}</Link>
+                  <div className="flex flex-col gap-0.5 w-[290px] min-w-[290px] pt-0.5 mr-1.5">
+                    <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mb-2 px-2.5 mt-0.5">{S.name}</p>
+                    {S.subs.map((s) => (
+                      <Link key={s.label} href={s.href} className="flex flex-col gap-px py-[9px] px-3 rounded-[10px] hover:bg-rose-100 transition-colors">
+                        <span className="text-[14px] font-semibold text-ink leading-[1.25]">{s.label}</span>
+                        <span className="text-[12px] text-[#9A878A] leading-[1.35]">{s.d}</span>
+                      </Link>
                     ))}
+                    <Link href={S.ctaHref} className="mt-1.5 text-[13px] font-bold text-coral px-3 py-2 hover:text-coral-deep">{S.cta}</Link>
                   </div>
-                  <div className="min-w-[178px]">
-                    <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mt-0.5 mb-2 px-2.5">By company size</p>
-                    {["Startups", "SMBs", "Enterprise", "Non-profits", "Public sector"].map((label) => (
-                      <Link key={label} href={routes.solutions} className="block text-[14px] font-medium text-[#2A1A1D] py-[9px] px-2.5 rounded-[9px] whitespace-nowrap hover:bg-rose-100 hover:text-coral transition-colors">{label}</Link>
-                    ))}
+                  <div className="w-[216px] bg-gradient-to-br from-[#FFF1F0] to-[#FFE7E4] rounded-[14px] p-[18px] flex flex-col justify-center gap-[7px]">
+                    <p className="text-[15px] font-bold text-[#1A0E10] m-0">Not sure where to start?</p>
+                    <p className="text-[12.5px] text-[#6B4F52] m-0 leading-[1.45]">Tell us how you hire — we&apos;ll map the right assessments to every role.</p>
+                    <a href={contactHref} className="text-[13px] font-bold text-coral mt-1">Talk to sales →</a>
                   </div>
                 </div>
               </div>
@@ -311,57 +461,43 @@ export default function SiteHeader({
               <button className="inline-flex items-center gap-1.5 text-[15px] font-medium text-[#46383C] group-hover:text-coral transition-colors cursor-pointer bg-transparent border-0 py-1.5">
                 Resources<span className="text-[8px] opacity-60 transition-transform duration-200 group-hover:rotate-180">▼</span>
               </button>
-              <div className={megaPanel}>
+              <div className={megaPanelCentered}>
                 <span className="absolute -top-[14px] left-0 right-0 h-[14px]" />
-                <div className="flex gap-5">
-                  <div className="min-w-[178px]">
-                    <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mt-0.5 mb-2 px-2.5">Learn</p>
-                    {[
-                      ["Blog", routes.blog],
-                      ["HR glossary", `${routes.resources}#glossary`],
-                      ["Tech glossary", `${routes.resources}#glossary`],
-                      ["Ebooks", `${routes.resources}#guides`],
-                      ["Podcast", routes.resources],
-                      ["FAQ", routes.resources],
-                    ].map(([label, href]) => (
-                      <Link key={label} href={href} className="block text-[14px] font-medium text-[#2A1A1D] py-[9px] px-2.5 rounded-[9px] whitespace-nowrap hover:bg-rose-100 hover:text-coral transition-colors">{label}</Link>
+                <div className="flex">
+                  <div className="flex flex-col gap-0.5 min-w-[268px] border-r border-[#F4E4E5] pr-3 mr-3.5">
+                    {RES.map((g, i) => (
+                      <Link
+                        key={g.name}
+                        href={routes.resources}
+                        onMouseEnter={() => setResActive(i)}
+                        className={`flex items-start gap-[11px] py-[9px] px-2.5 rounded-[11px] transition-colors ${
+                          resActive === i ? "bg-[#FFF4F3]" : "hover:bg-[#FFF4F3]"
+                        }`}
+                      >
+                        <span className="shrink-0 w-[34px] h-[34px] rounded-[9px] bg-rose-100 text-coral flex items-center justify-center mt-px">
+                          <MegaIcon>{g.icon}</MegaIcon>
+                        </span>
+                        <span>
+                          <span className="block text-[14px] font-semibold text-ink leading-[1.25]">{g.name}</span>
+                          <span className="block text-[12px] text-[#9A878A] leading-[1.35] mt-0.5">{g.tabDesc}</span>
+                        </span>
+                      </Link>
                     ))}
                   </div>
-                  <div className="min-w-[178px]">
-                    <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mt-0.5 mb-2 px-2.5">Templates & tools</p>
-                    {[
-                      ["Test library", routes.testLibrary],
-                      ["Job description templates", `${routes.resources}#tools`],
-                      ["Interview question templates", `${routes.resources}#tools`],
-                      ["Skills mapping", `${routes.resources}#tools`],
-                      ["Free HR tools →", `${routes.resources}#tools`],
-                    ].map(([label, href]) => (
-                      <Link key={label} href={href} className="block text-[14px] font-medium text-[#2A1A1D] py-[9px] px-2.5 rounded-[9px] whitespace-nowrap hover:bg-rose-100 hover:text-coral transition-colors">{label}</Link>
+                  <div className="flex flex-col gap-0.5 w-[290px] min-w-[290px] pt-0.5 mr-1.5">
+                    <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mb-2 px-2.5 mt-0.5">{R.name}</p>
+                    {R.subs.map((s) => (
+                      <Link key={s.label} href={s.href} className="flex flex-col gap-px py-[9px] px-3 rounded-[10px] hover:bg-rose-100 transition-colors">
+                        <span className="text-[14px] font-semibold text-ink leading-[1.25]">{s.label}</span>
+                        <span className="text-[12px] text-[#9A878A] leading-[1.35]">{s.d}</span>
+                      </Link>
                     ))}
+                    <Link href={R.ctaHref} className="mt-1.5 text-[13px] font-bold text-coral px-3 py-2 hover:text-coral-deep">{R.cta}</Link>
                   </div>
-                  <div className="min-w-[178px]">
-                    <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mt-0.5 mb-2 px-2.5">Customers</p>
-                    {[
-                      ["Success stories", routes.customers],
-                      ["Integrations", routes.integrations],
-                      ["Certifications", routes.security],
-                      ["Why Testlify", routes.about],
-                    ].map(([label, href]) => (
-                      <Link key={label} href={href} className="block text-[14px] font-medium text-[#2A1A1D] py-[9px] px-2.5 rounded-[9px] whitespace-nowrap hover:bg-rose-100 hover:text-coral transition-colors">{label}</Link>
-                    ))}
-                  </div>
-                  <div className="min-w-[178px]">
-                    <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mt-0.5 mb-2 px-2.5">Company</p>
-                    {[
-                      ["Partner program", routes.about],
-                      ["Careers", routes.careers],
-                      ["Referral program", routes.about],
-                      ["About us", routes.about],
-                      ["Trust center", routes.security],
-                    ].map(([label, href]) => (
-                      <Link key={label} href={href} className="block text-[14px] font-medium text-[#2A1A1D] py-[9px] px-2.5 rounded-[9px] whitespace-nowrap hover:bg-rose-100 hover:text-coral transition-colors">{label}</Link>
-                    ))}
-                    <Link href={routes.sectionTemplates} className="block text-[14px] font-bold text-coral py-[9px] px-2.5 rounded-[9px] whitespace-nowrap hover:bg-rose-100 transition-colors">Design templates →</Link>
+                  <div className="w-[216px] bg-gradient-to-br from-[#FFF1F0] to-[#FFE7E4] rounded-[14px] p-[18px] flex flex-col justify-center gap-[7px]">
+                    <p className="text-[15px] font-bold text-[#1A0E10] m-0">Free HR toolkit</p>
+                    <p className="text-[12.5px] text-[#6B4F52] m-0 leading-[1.45]">Job descriptions, interview kits and skills maps — ready to use.</p>
+                    <Link href={`${routes.resources}#tools`} className="text-[13px] font-bold text-coral mt-1">Browse free tools →</Link>
                   </div>
                 </div>
               </div>

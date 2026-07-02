@@ -388,9 +388,9 @@ export default function TestLibraryClient() {
 
             {/* main */}
             <div>
-              <div className="flex items-center justify-end gap-x-5 gap-y-3.5 flex-wrap mb-5">
+              <div className="sticky top-[84px] z-50 bg-white flex items-center justify-end gap-x-5 gap-y-3.5 flex-wrap mb-1.5 pt-3 pb-3.5 max-[860px]:static">
                 <div className="flex items-center gap-4 flex-1 min-w-[220px] justify-end max-[860px]:min-w-0 max-[860px]:w-full">
-                  <div className="relative max-w-[420px] w-full min-w-[180px] flex-1">
+                  <div className="relative w-full min-w-[180px] flex-1">
                     <span className="absolute left-[17px] top-1/2 -translate-y-1/2 text-[#C0989B] flex">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></svg>
                     </span>
