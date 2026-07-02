@@ -533,7 +533,7 @@ export default function SectionTemplatesClient() {
               <Reveal
                 key={s.old}
                 delay={i * 0.08}
-                className="bg-white border border-[#F4E4E5] rounded-[20px] px-7 pt-7 pb-[26px] shadow-[0_14px_38px_rgba(110,11,14,0.05)] transition-[transform,box-shadow,border-color] duration-[250ms] hover:border-[#FBD0D1] hover:shadow-[0_22px_50px_rgba(110,11,14,0.10)]"
+                className="bg-white border border-[#F4E4E5] rounded-[20px] px-7 pt-7 pb-[26px] shadow-[0_14px_38px_rgba(110,11,14,0.05)] transition-[translate,transform,box-shadow,border-color] duration-[250ms] hover:border-[#FBD0D1] hover:shadow-[0_22px_50px_rgba(110,11,14,0.10)]"
               >
                 <span className="block text-[16px] text-[#A1908F] line-through decoration-[#E6CCCE]">
                   {s.old}
@@ -653,7 +653,7 @@ export default function SectionTemplatesClient() {
                   <Reveal
                     key={t.label}
                     delay={i * 0.05}
-                    className="tt-tile bg-white border border-warm rounded-[13px] px-[10px] py-4 text-center transition-[transform,box-shadow,border-color] duration-[260ms] hover:-translate-y-[5px] hover:shadow-[0_16px_30px_rgba(110,11,14,0.10)] hover:border-[#E7D7D9]"
+                    className="tt-tile bg-white border border-warm rounded-[13px] px-[10px] py-4 text-center transition-[translate,transform,box-shadow,border-color] duration-[260ms] hover:-translate-y-[5px] hover:shadow-[0_16px_30px_rgba(110,11,14,0.10)] hover:border-[#E7D7D9]"
                   >
                     <span
                       className="st-ticyc inline-flex items-center justify-center w-[38px] h-[38px] rounded-[11px] mb-[9px]"
@@ -811,7 +811,7 @@ export default function SectionTemplatesClient() {
               <Reveal key={l.title} delay={0.06 + i * 0.06} className="flex">
                 <Link
                   href={`${routes.home}#demo`}
-                  className="relative flex flex-col items-start gap-[13px] w-full bg-white border border-[#F4E4E5] rounded-[22px] px-[30px] pt-[30px] pb-[26px] no-underline shadow-[0_12px_36px_rgba(110,11,14,0.05)] transition-[transform,box-shadow,border-color] duration-[250ms] hover:border-[#FBD0D1] hover:shadow-[0_22px_50px_rgba(110,11,14,0.11)]"
+                  className="relative flex flex-col items-start gap-[13px] w-full bg-white border border-[#F4E4E5] rounded-[22px] px-[30px] pt-[30px] pb-[26px] no-underline shadow-[0_12px_36px_rgba(110,11,14,0.05)] transition-[translate,transform,box-shadow,border-color] duration-[250ms] hover:border-[#FBD0D1] hover:shadow-[0_22px_50px_rgba(110,11,14,0.11)]"
                 >
                   <span className="absolute top-[22px] right-[22px] text-[10.5px] font-bold tracking-[0.07em] uppercase text-coral bg-[#FFF0F0] px-[11px] py-[5px] rounded-full">
                     {l.badge}
@@ -873,7 +873,7 @@ export default function SectionTemplatesClient() {
               <Reveal
                 key={f.title}
                 delay={(i % 3) * 0.06}
-                className="bg-white border border-[#F4E4E5] rounded-[20px] px-[26px] py-7 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-2 hover:shadow-[0_24px_50px_rgba(110,11,14,0.13)] hover:border-[#FBD0D1]"
+                className="bg-white border border-[#F4E4E5] rounded-[20px] px-[26px] py-7 transition-[translate,transform,box-shadow,border-color] duration-300 hover:-translate-y-2 hover:shadow-[0_24px_50px_rgba(110,11,14,0.13)] hover:border-[#FBD0D1]"
               >
                 <div className="w-[52px] h-[52px] rounded-[15px] bg-[#FFF0F0] flex items-center justify-center mb-[18px]">
                   <svg

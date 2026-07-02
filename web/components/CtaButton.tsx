@@ -26,11 +26,11 @@ const SIZE_CLASSES: Record<CtaSize, string> = {
 
 const VARIANT_CLASSES: Record<CtaVariant, string> = {
   primary:
-    "btn-sheen bg-coral text-white shadow-[0_14px_30px_rgba(242,63,68,0.35)] transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(.2,.7,.3,1)] hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(242,63,68,0.45)]",
+    "btn-sheen bg-coral text-white shadow-[0_14px_30px_rgba(242,63,68,0.35)] transition-[translate,transform,box-shadow] duration-200 ease-[cubic-bezier(.2,.7,.3,1)] hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(242,63,68,0.45)]",
   secondary:
     "bg-white text-ink border-[1.5px] border-[#F0D9DA] transition-all duration-300 hover:-translate-y-[3px] hover:border-coral",
   light:
-    "btn-sheen btn-sheen-light bg-white text-[#C0242B] shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(.2,.7,.3,1)] hover:-translate-y-0.5 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]",
+    "btn-sheen btn-sheen-light bg-white text-[#C0242B] shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-[translate,transform,box-shadow] duration-200 ease-[cubic-bezier(.2,.7,.3,1)] hover:-translate-y-0.5 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]",
   "outline-light":
     "bg-white/[0.14] text-white border-[1.5px] border-white/40 transition-all duration-300 hover:-translate-y-[3px] hover:bg-white/[0.22] hover:border-white",
 };

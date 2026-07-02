@@ -185,7 +185,7 @@ export default function AboutPage() {
               <Reveal
                 key={v.title}
                 delay={v.delay}
-                className="bg-white border border-[#EFE2E3] rounded-[20px] px-[26px] py-[30px] transition-[transform,box-shadow,border-color] duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
+                className="bg-white border border-[#EFE2E3] rounded-[20px] px-[26px] py-[30px] transition-[translate,transform,box-shadow,border-color] duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
               >
                 <span className="w-[46px] h-[46px] rounded-[13px] bg-[#FFF0F0] text-coral flex items-center justify-center mb-[18px]">
                   <svg

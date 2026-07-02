@@ -120,7 +120,7 @@ export default function IntegrationsClient() {
             {shown.map((it) => (
               <div
                 key={it.name}
-                className="flex flex-col bg-white border border-[#EFE2E3] rounded-[18px] p-[22px] transition-[transform,box-shadow,border-color] duration-[220ms] hover:-translate-y-1 hover:shadow-[0_20px_42px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
+                className="flex flex-col bg-white border border-[#EFE2E3] rounded-[18px] p-[22px] transition-[translate,transform,box-shadow,border-color] duration-[220ms] hover:-translate-y-1 hover:shadow-[0_20px_42px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
               >
                 <span className="w-[46px] h-[46px] rounded-[12px] bg-sand flex items-center justify-center font-extrabold text-[18px] text-[#C0242B] mb-3.5">
                   {it.mark}

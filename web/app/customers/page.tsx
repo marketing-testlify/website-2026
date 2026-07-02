@@ -224,7 +224,7 @@ export default function CustomersPage() {
               <Reveal
                 key={s.name}
                 delay={s.delay}
-                className="relative flex flex-col bg-white border border-[#EFE2E3] rounded-[20px] p-7 transition-[transform,box-shadow,border-color] duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
+                className="relative flex flex-col bg-white border border-[#EFE2E3] rounded-[20px] p-7 transition-[translate,transform,box-shadow,border-color] duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
               >
                 {s.id && (
                   <span
