@@ -16,10 +16,23 @@ type HeaderProps = {
   overlay?: boolean;
 };
 
-const PLAT = [
+type PlatGroup = {
+  name: string;
+  id: string;
+  cta: string;
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+  subs: { label: string; d: string }[];
+  /** dedicated page route; falls back to /product#<id> */
+  href?: string;
+};
+
+const PLAT: PlatGroup[] = [
   {
     name: "Testlify AI",
     id: "testlify-ai",
+    href: routes.productTestlifyAi,
     cta: "Explore Testlify AI →",
     icon: (
       <path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6z" />
@@ -55,6 +68,7 @@ const PLAT = [
   {
     name: "AI resume screener",
     id: "ai-resume-screener",
+    href: routes.aiResumeScreener,
     cta: "See the screener →",
     icon: (
       <>
@@ -134,7 +148,7 @@ const SOL: MenuTab[] = [
       </>
     ),
     subs: [
-      { label: "Volume hiring", d: "Screen thousands of applicants in hours", href: `${routes.solutions}#volume-hiring` },
+      { label: "Volume hiring", d: "Screen thousands of applicants in hours", href: "/solutions/volume-hiring" },
       { label: "Remote hiring", d: "Hire anywhere with proctored assessments", href: `${routes.solutions}#remote-hiring` },
       { label: "Campus hiring", d: "Rank fresh graduates without resumes", href: `${routes.solutions}#campus-hiring` },
       { label: "Diversity & inclusion", d: "Bias-free, EEOC-defensible screening", href: `${routes.solutions}#diversity-hiring` },
@@ -155,7 +169,7 @@ const SOL: MenuTab[] = [
       </>
     ),
     subs: [
-      { label: "IT & technology", d: "Developers, DevOps, data & security", href: routes.solutions },
+      { label: "IT & technology", d: "Developers, DevOps, data & security", href: "/solutions/it-technology" },
       { label: "SaaS", d: "GTM, product and engineering roles", href: routes.solutions },
       { label: "Financial services", d: "Analysts, ops and compliance-heavy roles", href: routes.solutions },
       { label: "Healthcare", d: "Clinical & administrative screening", href: routes.solutions },
@@ -177,7 +191,7 @@ const SOL: MenuTab[] = [
     subs: [
       { label: "Startups", d: "Hire fast without a TA team", href: routes.solutions },
       { label: "SMBs", d: "Standardize hiring as you scale", href: routes.solutions },
-      { label: "Enterprise", d: "SSO, compliance and audit trails", href: routes.solutions },
+      { label: "Enterprise", d: "SSO, compliance and audit trails", href: "/solutions/enterprise" },
       { label: "Non-profits & public sector", d: "Fair, defensible selection", href: routes.solutions },
     ],
   },
@@ -371,7 +385,7 @@ export default function SiteHeader({
                     {PLAT.map((g, i) => (
                       <Link
                         key={g.id}
-                        href={`${routes.product}#${g.id}`}
+                        href={g.href ?? `${routes.product}#${g.id}`}
                         onMouseEnter={() => setProdActive(i)}
                         className={`flex items-start gap-[11px] py-[9px] px-2.5 rounded-[11px] transition-colors ${
                           prodActive === i ? "bg-[#FFF4F3]" : "hover:bg-[#FFF4F3]"
@@ -390,17 +404,17 @@ export default function SiteHeader({
                   <div className="flex flex-col gap-0.5 min-w-[230px] pt-0.5 mr-1.5">
                     <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mb-2 px-2.5 mt-0.5">{A.name}</p>
                     {A.subs.map((s) => (
-                      <Link key={s.label} href={`${routes.product}#${A.id}`} className="flex flex-col gap-px py-[9px] px-3 rounded-[10px] hover:bg-rose-100 transition-colors">
+                      <Link key={s.label} href={A.href ?? `${routes.product}#${A.id}`} className="flex flex-col gap-px py-[9px] px-3 rounded-[10px] hover:bg-rose-100 transition-colors">
                         <span className="text-[14px] font-semibold text-ink leading-[1.25]">{s.label}</span>
                         <span className="text-[12px] text-[#9A878A] leading-[1.35]">{s.d}</span>
                       </Link>
                     ))}
-                    <Link href={`${routes.product}#${A.id}`} className="mt-1.5 text-[13px] font-bold text-coral px-3 py-2 hover:text-coral-deep">{A.cta}</Link>
+                    <Link href={A.href ?? `${routes.product}#${A.id}`} className="mt-1.5 text-[13px] font-bold text-coral px-3 py-2 hover:text-coral-deep">{A.cta}</Link>
                   </div>
                   <div className="w-[216px] bg-gradient-to-br from-[#FFF1F0] to-[#FFE7E4] rounded-[14px] p-[18px] flex flex-col justify-center gap-[7px]">
                     <p className="text-[15px] font-bold text-[#1A0E10] m-0">New · Testlify AI</p>
                     <p className="text-[12.5px] text-[#6B4F52] m-0 leading-[1.45]">Screen, interview and score candidates automatically with conversational AI.</p>
-                    <Link href={`${routes.product}#testlify-ai`} className="text-[13px] font-bold text-coral mt-1">Explore Testlify AI →</Link>
+                    <Link href={routes.productTestlifyAi} className="text-[13px] font-bold text-coral mt-1">Explore Testlify AI →</Link>
                   </div>
                 </div>
               </div>

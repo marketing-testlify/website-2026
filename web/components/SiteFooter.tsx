@@ -5,7 +5,7 @@ const FOOTER_COLS: { heading: string; links: [string, string][] }[] = [
   {
     heading: "Product",
     links: [
-      ["Testlify AI", routes.product],
+      ["Testlify AI", routes.productTestlifyAi],
       ["Test library", routes.testLibrary],
       ["Video interviewing", `${routes.sectionTemplates}#watch`],
       ["ATS integrations", routes.integrations],
@@ -29,11 +29,11 @@ const FOOTER_COLS: { heading: string; links: [string, string][] }[] = [
   {
     heading: "Solutions",
     links: [
-      ["Volume hiring", `${routes.solutions}#volume-hiring`],
+      ["Volume hiring", "/solutions/volume-hiring"],
       ["Remote hiring", `${routes.solutions}#remote-hiring`],
       ["Campus hiring", `${routes.solutions}#campus-hiring`],
       ["Diversity & inclusion", `${routes.solutions}#diversity-hiring`],
-      ["For enterprise", routes.solutions],
+      ["For enterprise", "/solutions/enterprise"],
       ["For startups", routes.solutions],
     ],
   },
