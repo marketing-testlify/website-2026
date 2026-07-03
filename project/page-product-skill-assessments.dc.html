@@ -123,9 +123,9 @@ a{text-decoration:none;color:inherit;}
 <dc-import name="component-site-header" announcement="New — AI résumé screening now syncs match scores straight back to your ATS." announcement-cta="See how" home-href="page-index.dc.html" hint-size="100%,110px"></dc-import>
 <section class="hero"><div class="wrap"><div class="herogrid">
   <div>
-    <div class="reveal" style="transition-delay:.02s"><span class="pill"><span class="pilltag">AI SCREENING</span> Job-fit scoring, on autopilot</span></div>
-    <h1 class="h1 reveal" style="margin-top:22px;transition-delay:.06s">Intelligent résumé<br>screening <span class="acc">at scale.</span></h1>
-    <p class="lead reveal" style="margin-top:22px;max-width:520px;transition-delay:.1s">Stop wasting hours on résumé screening. Standardise how you shortlist across every role with AI-driven job-fit scoring — and only ever open the candidates who truly match.</p>
+    <div class="reveal" style="transition-delay:.02s"><span class="pill"><span class="pilltag">SKILL ASSESSMENTS</span> 3,500+ validated tests</span></div>
+    <h1 class="h1 reveal" style="margin-top:22px;transition-delay:.06s">Assess real skills,<br>not <span class="acc">résumés.</span></h1>
+    <p class="lead reveal" style="margin-top:22px;max-width:520px;transition-delay:.1s">Measure what candidates can actually do with 3,500+ expert-validated tests across every role — from coding and cognitive ability to personality and role-specific skills.</p>
     <div class="heroctas reveal" style="transition-delay:.14s"><dc-import name="component-cta-button" label="Try for free" href="page-pricing.dc.html" variant="primary" size="md" icon="arrow" magnetic="true" hint-size="150px,52px"></dc-import><dc-import name="component-cta-button" label="Book a demo" href="#" variant="secondary" size="md" icon="play" hint-size="150px,52px"></dc-import></div>
     <div class="trust reveal" style="transition-delay:.18s"><span>No credit card</span><span class="dot"></span><span>7-day free trial</span><span class="dot"></span><span>SOC 2 · ISO 27001 · GDPR</span></div>
   </div>
@@ -300,16 +300,12 @@ class Component extends DCLogic {
   componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); }
   renderVals(){ return {
     faqItems: [
-      {q:"What is Testlify's AI Resume Screener?", a:"It automatically analyses résumés pulled from your ATS and scores each candidate on how well they fit the job — so you can quickly find and shortlist the best talent without reading every application by hand."},
-      {q:"How does the AI determine candidate fit?", a:"The AI evaluates each candidate against the role-specific criteria you set, then returns clear match scores and fit labels — High, Medium or Low — with the evidence behind every call."},
-      {q:"Can I automate candidate shortlisting and assessments?", a:"Yes. Set thresholds to automatically shortlist or reject candidates, and trigger skill assessments for everyone who meets your bar."},
-      {q:"Does your résumé screening tool integrate with my ATS?", a:"Absolutely. Testlify pulls résumés from your ATS and pushes back both match scores and assessment results for a seamless, two-way workflow — natively, across 100+ ATS platforms."},
-      {q:"Can I customise screening criteria for different roles?", a:"Yes. Define role-specific requirements, set cut-off scores and adjust thresholds to match the exact needs of every role you hire for."},
-      {q:"How does Testlify ensure fairness and reduce bias?", a:"The AI applies consistent, role-based criteria across all résumés, standardising evaluation and reducing human bias in shortlisting — with a defensible audit trail for every decision."},
-      {q:"How secure is candidate data?", a:"Testlify meets enterprise-grade standards: SOC 2 Type II and ISO 27001, with GDPR, CCPA and NY Bias Law compliance, and encryption in transit and at rest. Your data is never used to train shared models."},
-      {q:"How many candidates can Testlify screen?", a:"Testlify scales effortlessly, screening thousands of résumés every month without slowing your recruitment process down."},
-      {q:"Can I see the scores and fit labels before making a decision?", a:"Yes. Every match score and fit label is transparent and explainable, giving you complete visibility before you advance any candidate."},
-      {q:"How quickly can we start using the AI Resume Screener?", a:"You can get started in days, not weeks. Our team helps set up integrations, thresholds and workflows to get your screening running fast."}
+      {q:"What is a Testlify skill assessment?", a:"Testlify assessments measure what candidates can actually do — with 3,500+ expert-validated tests across coding, cognitive ability, personality, language and role-specific skills."},
+      {q:"How many tests are in the library?", a:"3,500+ validated tests across 4,500+ job roles and 50+ industries, each built and reviewed by subject-matter experts."},
+      {q:"Can I combine multiple tests in one assessment?", a:"Yes. Mix cognitive, role-specific, coding and personality tests into a single assessment, set duration and passing scores, and weight sections to match the role."},
+      {q:"Are the tests validated and bias-free?", a:"Every test is expert-validated for reliability and fairness, and assessments apply the same criteria to every candidate for consistent, EEOC-defensible results."},
+      {q:"Can candidates take assessments in their language?", a:"Yes. The candidate experience is available in 9 languages, so assessments can be delivered in your candidates\u2019 language."},
+      {q:"How long does a typical assessment take?", a:"Most assessments run about 30 minutes, with a 94% candidate satisfaction rate."}
     ]
   }; }
 }

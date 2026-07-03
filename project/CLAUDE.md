@@ -42,6 +42,25 @@ DC files import shared chrome — `<dc-import name="Site Header" …>` + `<dc-im
 
 Built (don't rebuild): Testlify Home v3, Product - AI Resume Screener (gold-standard template), Test Library, Section Templates, Site Header, Site Footer, Pricing, AI Resume Screener (faithful recreation of live /ai-resume-screener/), product-testlify-ai (faithful recreation of live /ai-powered-talent-assessment-platform/).
 
+## File naming & structure convention (ALL files flat at root — folders break DC imports)
+DC imports resolve as same-folder siblings (`./<name>.dc.html`, name can't hold a path), and the preview serves under a `/…/serve/` prefix so root-absolute links fail. So every DC stays FLAT at project root; group is encoded as a **`page-<group>-<name>` filename prefix**, all lowercase-hyphenated (URL-friendly):
+- `page-index` — homepage. Standalone pages keep bare `page-`: `page-pricing`, `page-test-library`, `page-test-detail`.
+- `page-product-*` — product pages: `page-product-testlify-ai`, `page-product-skill-assessments`, `page-product-ai-resume-screener` (standalone screener), `page-product-video-interviewing`, `page-product-integrations`, `page-product-platform` (multi-product hub / gold-standard).
+- `page-solution-*` — `page-solution-index` (Solutions hub). Solution sub-pages are built from the `template-solution-details-*` templates.
+- `page-resource-*` — `page-resource-index`, `page-resource-blog`, `page-resource-blog-article`.
+- `page-company-*` — `page-company-about`, `page-company-careers`, `page-company-customers`, `page-company-trust` (security), `page-company-legal`.
+- `component-*` — shared imported components: `component-site-header`, `component-site-footer`, `component-cta-button`, `component-faq`, `component-security-section`, `component-use-case-card`.
+- `template-*` — reusable scaffolds instantiated during dev (carry example content): `template-section-templates`, `template-solution-details-{use-case,industry,company,test-type}`, `template-resource-index` (filterable list, from blog layout), `template-resource-detail` (article/reading layout), `template-tool` (working calculator — Cost-per-hire example; duplicate + swap inputs/formula/copy for the other calculators).
+When renaming, rewrite every `dc-import name="…"` and every `<a href>`/`home-href` (encoded AND raw, both quote styles) in one pass, then delete old files. `export/` = clean developer handoff folder (all DC files + support.js + brand/ + handover/ + CLAUDE.md; omits screenshots/backups/research/uploads/logos).
+
+## Mega-menu wiring (component-site-header)
+- **Product** = 7 main pages, each sub-feature is an on-page `#section`: Testlify AI→page-product-testlify-ai, Skill assessments→page-product-skill-assessments, AI resume screener→page-product-ai-resume-screener, Video interviewing→page-product-video-interviewing, ATS integrations→page-product-integrations, Science behind tests→page-product-science, Live product demo→page-product-live-demo. (`PMAP` in renderVals maps group id→page; `PROD` fallback→page-product-platform.)
+- **Solutions** = 4 category tabs (use case / industry / company size / test type); every item links to that category's TEMPLATE for reuse (`template-solution-details-{use-case,industry,company,test-type}`). Hub = page-solution-index.
+- **Resources** = list items→`template-resource-index`, HR tools & calculators→`template-tool`, Blog→page-resource-blog (+page-resource-blog-article), FAQ→component-faq, Test Library→page-test-library, Customers→page-company-customers, Integrations→page-product-integrations, Trust→page-company-trust, About→page-company-about, Careers→page-company-careers.
+
+## Still pending (real content build)
+page-product-{skill-assessments,video-interviewing,science,live-demo} are retitled clones (real hero + FAQ where done) but still carry the source page's body sections — need real body copy + sub-features as on-page `#section`s. Solution/resource/tool templates carry example content until instantiated. Still to build: remaining live industries/use-cases/test-types/company + resource items (instantiate from templates with real copy fetched from testlify.com).
+
 ## Card hover conventions (memorize — apply to every card, all pages)
 - **Gold standard lives on the homepage + pricing page** (user hand-built these). Before building any hover, scan those.
 - **Cards WITHOUT a link → lift + shadow.** Rest: white bg, `1px solid #F2E6E7` border, NO resting shadow (flat). Hover: `transform:translateY(-4px); border-color:#FBD0D1; box-shadow:0 16px 34px rgba(110,11,14,.10)`. Transition: `transform .3s cubic-bezier(.2,.7,.3,1), border-color .3s, box-shadow .3s`. (This is the homepage Security Section `.ss-tile` hover — the canonical non-link card hover.)

@@ -49,6 +49,7 @@ const PLAT: PlatGroup[] = [
   {
     name: "Skill assessments",
     id: "skill-assessments",
+    href: routes.productSkillAssessments,
     cta: "Browse skill assessments →",
     icon: (
       <>
@@ -88,6 +89,7 @@ const PLAT: PlatGroup[] = [
   {
     name: "Video interviewing",
     id: "video-interviewing",
+    href: routes.productVideoInterviewing,
     cta: "Watch a demo →",
     icon: (
       <>
@@ -107,6 +109,7 @@ const PLAT: PlatGroup[] = [
   {
     name: "ATS integrations",
     id: "ats-integrations",
+    href: routes.integrations,
     cta: "View integrations →",
     icon: (
       <>
@@ -121,6 +124,46 @@ const PLAT: PlatGroup[] = [
       { label: "Two-way sync", d: "Keep both systems in step" },
       { label: "API & webhooks", d: "Build your own flows" },
       { label: "Zapier", d: "No-code automations" },
+    ],
+  },
+  {
+    name: "Science behind tests",
+    id: "science",
+    href: routes.productScience,
+    cta: "See the science →",
+    icon: (
+      <>
+        <path d="M9 3v6l-5 9a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-9V3" />
+        <path d="M8 3h8" />
+      </>
+    ),
+    title: "Science behind tests",
+    desc: "Validity, reliability and bias testing",
+    subs: [
+      { label: "Validity & reliability", d: "Psychometrically sound tests" },
+      { label: "Bias testing", d: "Fair, EEOC-defensible by design" },
+      { label: "Expert-built", d: "Reviewed by subject-matter experts" },
+      { label: "Continuous QA", d: "Item analysis keeps tests sharp" },
+    ],
+  },
+  {
+    name: "Live product demo",
+    id: "live-demo",
+    href: routes.productLiveDemo,
+    cta: "Watch the demo →",
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="10" />
+        <polygon points="10 8 16 12 10 16 10 8" />
+      </>
+    ),
+    title: "Live product demo",
+    desc: "The full workflow, end to end",
+    subs: [
+      { label: "Guided walkthrough", d: "The full workflow, end to end" },
+      { label: "Screen & rank", d: "From application to shortlist" },
+      { label: "Interview & score", d: "Auto-scored, rubric-based" },
+      { label: "Book a live demo", d: "See it on your roles" },
     ],
   },
 ];
@@ -195,6 +238,20 @@ const SOL: MenuTab[] = [
       { label: "Non-profits & public sector", d: "Fair, defensible selection", href: routes.solutions },
     ],
   },
+  {
+    name: "By test type",
+    tabDesc: "Coding, cognitive, personality & more",
+    cta: "See all test types →",
+    ctaHref: routes.solutions,
+    icon: <path d="M4 6h16M4 12h10M4 18h7" />,
+    subs: [
+      { label: "Coding tests", d: "45+ languages, live IDE", href: "/solutions/coding-tests" },
+      { label: "Cognitive ability", d: "Aptitude & reasoning", href: routes.testLibrary },
+      { label: "Personality & culture", d: "Behavioural fit", href: routes.testLibrary },
+      { label: "Language & typing", d: "CEFR, typing & more", href: routes.testLibrary },
+      { label: "Role-specific", d: "Skills mapped to the job", href: routes.testLibrary },
+    ],
+  },
 ];
 
 const RES: MenuTab[] = [
@@ -232,6 +289,7 @@ const RES: MenuTab[] = [
     ),
     subs: [
       { label: "Test library", d: "3,500+ validated tests across roles", href: routes.testLibrary },
+      { label: "HR tools & calculators", d: "Cost per hire, time to hire & more", href: `${routes.resources}#tools` },
       { label: "Job description templates", d: "Role-ready JDs in minutes", href: `${routes.resources}#tools` },
       { label: "Interview question kits", d: "Structured, scorable prompts", href: `${routes.resources}#tools` },
       { label: "Skills mapping", d: "Map roles to measurable skills", href: `${routes.resources}#tools` },
