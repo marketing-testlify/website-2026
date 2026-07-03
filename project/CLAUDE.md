@@ -31,8 +31,27 @@ Confident challenger. Lead with the pain, then the solution. Specific > general 
 - Motion: scroll-reveal (rise 28px + fade, staggered, above-fold reveals immediately) — use the rAF `data-reveal`/animateReveal mechanism the other pages use; button sheen on hover; card tilt. NOTE: pure CSS reveal transitions/animations gated by a class are unreliable in this runtime — drive reveal with rAF JS.
 - **No emoji, ever.** SVG line icons only (1.8–2px stroke).
 
+## Consistency rules (apply to every page)
+- **Every new page must match the existing site** — theme/tokens (Poppins, coral system, background rhythm, warm shadows), UI patterns (buttons, cards, eyebrows, sections), and brand voice/tone for all copy (see Voice & tone above). A new page should look and read like it was always part of the site.
+- **Reuse before you build.** Always check `Section Templates`, the gold-standard `Product - AI Resume Screener`, and other built pages FIRST — if an existing section/component (hero, split feature, stat band, FAQ, CTA, logo strip, etc.) can accommodate the content, adapt it rather than authoring a fresh layout. Only build new when nothing fits.
+- **Hero buttons must be consistent across pages** — same primary/secondary pairing, same styling, same hover/interaction (coral primary `.btn-primary` + sheen, ghost secondary `.btn-ghost`; hover = translateY(-2px) + warm shadow). Match the gold-standard `Product - AI Resume Screener` hero exactly; don't invent new button treatments per page.
+
 ## Architecture
 DC files import shared chrome — `<dc-import name="Site Header" …>` + `<dc-import name="Site Footer" …>`; never copy chrome. `overlay="true"` header only on homepage; all other pages solid sticky (default). Only `announcement` changes per page.
 - Helmet `<style>` is GLOBAL across all DCs on the page — avoid generic class names that collide with Site Header/Footer (e.g. `.plist`, `.psub` collided). Prefix page-specific classes.
 
-Built (don't rebuild): Testlify Home v3, Product - AI Resume Screener (gold-standard template), Test Library, Section Templates, Site Header, Site Footer, Pricing.
+Built (don't rebuild): Testlify Home v3, Product - AI Resume Screener (gold-standard template), Test Library, Section Templates, Site Header, Site Footer, Pricing, AI Resume Screener (faithful recreation of live /ai-resume-screener/), product-testlify-ai (faithful recreation of live /ai-powered-talent-assessment-platform/).
+
+## Card hover conventions (memorize — apply to every card, all pages)
+- **Gold standard lives on the homepage + pricing page** (user hand-built these). Before building any hover, scan those.
+- **Cards WITHOUT a link → lift + shadow.** Rest: white bg, `1px solid #F2E6E7` border, NO resting shadow (flat). Hover: `transform:translateY(-4px); border-color:#FBD0D1; box-shadow:0 16px 34px rgba(110,11,14,.10)`. Transition: `transform .3s cubic-bezier(.2,.7,.3,1), border-color .3s, box-shadow .3s`. (This is the homepage Security Section `.ss-tile` hover — the canonical non-link card hover.)
+- **Cards WITH a whole-card link → running conic-gradient border** (NOT lift). Recipe from Pricing `.pcard`: `@property --bang{syntax:"<angle>";initial-value:0deg;inherits:false;}` + `@keyframes runborder{to{--bang:360deg;}}` + a `::before` with `padding:1.8px;background:conic-gradient(from var(--bang),transparent 0deg,#FF7A52 35deg,#F23F44 80deg,transparent 150deg,transparent 360deg)` masked with `-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0` and `.card:hover::before{opacity:1;animation:runborder 2.4s linear infinite;}`.
+- Shadows are ALWAYS warm brown `rgba(110,11,14,…)`, never red `rgba(242,63,68,…)` and never cool grey.
+
+## Gotchas learned this session
+- **Reveal vs hover conflict:** the `.reveal` rAF mechanism sets inline `transform:none` on completion, and inline styles override CSS `:hover{transform:…}` — so a card that is BOTH `.reveal` and hover-lift will never lift. Fix: put `.reveal` on the CONTAINER (grid/row), not on each hover card. (Existing groups like Security `.ss-grid`, atsgrid, val3 already reveal via container.)
+- **CTA Button height matching:** `icon="play"` renders a 30px `.cta-play` circle that makes the button ~7px taller than an arrow/none button → mismatched pairs. To keep the play icon AND match heights, override on the page: `.ctabtn .cta-play{width:24px!important;height:24px!important;}` and give the borderless variants a transparent border `.ctabtn.v-primary,.ctabtn.v-light{border:1.5px solid transparent!important;}` so both share the same box (→ both 55px at `sz-md`).
+- **Reuse before building (reinforced):** for a live-page recreation, pull the site's own section — Security = `<dc-import name="Security Section" eyebrow heading sub>`; Integration grid = homepage `.intg-grid`/`.intg-tile` centered layout (full-color logos, "View all integrations →" text link, NOT a split with buttons). Adapt homepage `data-reveal` markup to this page's `.reveal` class so it animates.
+- **Trust/logo marquee** (`Trusted by 1,500+ talent teams worldwide` + scrolling wordmarks) is HOMEPAGE-ONLY — it reads as a hero extension there. Don't add it to interior product pages.
+- **Don't duplicate the footer CTA:** the Site Footer already contains the "Replace gut instinct with verified skills" CTA — do NOT add a standalone CTA section above the footer on interior pages.
+- **Background rhythm across a full page** (recreations): white hero → sand → white → dark → sand → white(Security Section is `#fff`) → sand(FAQ). Never two adjacent same-bg sections; the Security Section component is always white, so the section before it must be sand/dark.

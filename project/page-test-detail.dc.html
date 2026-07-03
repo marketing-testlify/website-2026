@@ -137,10 +137,10 @@ a{text-decoration:none;color:inherit;}
 </style>
 <script src="./image-slot.js"></script>
 </helmet>
-<dc-import name="Site Header" announcement="Every test peer-reviewed by subject-matter experts" announcement-cta="How we build tests" home-href="Homepage.dc.html" hint-size="100%,110px"></dc-import>
+<dc-import name="component-site-header" announcement="Every test peer-reviewed by subject-matter experts" announcement-cta="How we build tests" home-href="page-index.dc.html" hint-size="100%,110px"></dc-import>
 
 <section class="dhero"><div class="wrap">
-  <p class="crumb reveal in"><a href="Test Library.dc.html">Test library</a><span class="sep">›</span><span>{{ category }}</span><span class="sep">›</span><span>{{ title }}</span></p>
+  <p class="crumb reveal in"><a href="page-test-library.dc.html">Test library</a><span class="sep">›</span><span>{{ category }}</span><span class="sep">›</span><span>{{ title }}</span></p>
   <div class="dgrid">
     <div>
       <span class="dtag reveal in"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>{{ tag }}</span>
@@ -148,7 +148,7 @@ a{text-decoration:none;color:inherit;}
       <p class="dlede reveal in">{{ lede }}</p>
       <div class="td-langs reveal in"><span class="lab">Available in</span><sc-for list="{{ languages }}" as="l" hint-placeholder-count="5"><span class="td-lang">{{ l }}</span></sc-for></div>
       <sc-if value="{{ showAiSummary }}" hint-placeholder-val="{{ true }}"><div class="td-ai reveal in"><span class="lab">Summarize this test with</span><sc-for list="{{ aiTools }}" as="a" hint-placeholder-count="5"><image-slot id="{{ a.slotId }}" style="width:24px;height:24px;flex:none;background:#fff;border:1px solid #EFDDDE;" shape="rounded" radius="6" fit="contain" src="{{ a.src }}" placeholder="{{ a.name }}"></image-slot></sc-for></div></sc-if>
-      <div class="td-cta reveal in"><dc-import name="CTA Button" label="Try for free" href="#" variant="primary" size="lg" icon="arrow" magnetic="true" hint-size="170px,56px"></dc-import><dc-import name="CTA Button" label="View sample questions" href="#" variant="secondary" size="lg" icon="none" hint-size="215px,56px"></dc-import></div>
+      <div class="td-cta reveal in"><dc-import name="component-cta-button" label="Try for free" href="#" variant="primary" size="lg" icon="arrow" magnetic="true" hint-size="170px,56px"></dc-import><dc-import name="component-cta-button" label="View sample questions" href="#" variant="secondary" size="lg" icon="none" hint-size="215px,56px"></dc-import></div>
       <div class="td-ticks"><span class="tick"><b class="tk">✓</b>7-day free trial</span><span class="tick"><b class="tk">✓</b>No credit card required</span></div>
     </div>
     <div class="card reveal in">
@@ -197,7 +197,7 @@ a{text-decoration:none;color:inherit;}
       <p class="eyebrow reveal">Built by experts<b>.</b></p>
       <h2 class="h2 reveal" style="transition-delay:.04s">Every test is written and peer-reviewed by subject-matter experts</h2>
       <p class="body reveal" style="transition-delay:.08s;margin-top:16px;max-width:520px;">Testlify's skill tests are designed by experienced SMEs, evaluated on expertise, capability and market reputation. Before publishing, each test is peer-reviewed by other experts and calibrated against a large pool of skilled test-takers — then continuously refined by built-in feedback systems.</p>
-      <a class="smelink reveal" style="transition-delay:.12s" href="Security.dc.html">See the science behind our tests<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      <a class="smelink reveal" style="transition-delay:.12s" href="page-security.dc.html">See the science behind our tests<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
     </div>
     <div class="smecard reveal" style="transition-delay:.06s">
       <span class="smebadge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="9"></circle></svg>Validity assured</span>
@@ -237,12 +237,12 @@ a{text-decoration:none;color:inherit;}
   <div class="td-sh ctr"><p class="eyebrow reveal">Related tests<b>.</b></p><h2 class="h2 reveal" style="transition-delay:.04s">Build a complete assessment</h2></div>
   <div class="relgrid">
     <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">
-      <a class="relcard reveal" href="Test Detail.dc.html"><div class="reltop"><span class="relic">{{ r.icon }}</span><span class="reltag">{{ r.tag }}</span></div><h3 class="h3" style="font-size:17px;margin-bottom:6px;">{{ r.name }}</h3><p class="body" style="font-size:13.5px;">{{ r.meta }}</p></a>
+      <a class="relcard reveal" href="page-test-detail.dc.html"><div class="reltop"><span class="relic">{{ r.icon }}</span><span class="reltag">{{ r.tag }}</span></div><h3 class="h3" style="font-size:17px;margin-bottom:6px;">{{ r.name }}</h3><p class="body" style="font-size:13.5px;">{{ r.meta }}</p></a>
     </sc-for>
   </div>
 </div></section></sc-if>
 
-<dc-import name="Site Footer" home-href="Homepage.dc.html" hint-size="100%,560px"></dc-import>
+<dc-import name="component-site-footer" home-href="page-index.dc.html" hint-size="100%,560px"></dc-import>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900},&quot;showAiSummary&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showInterview&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showRelated&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">

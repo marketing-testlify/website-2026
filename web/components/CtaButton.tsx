@@ -89,8 +89,10 @@ export default function CtaButton({
       className={`relative overflow-hidden inline-flex items-center gap-[9px] font-semibold whitespace-nowrap ${SIZE_CLASSES[size]} ${VARIANT_CLASSES[variant]} ${className}`.trim()}
     >
       {icon === "play" && (
-        <span className="w-[30px] h-[30px] rounded-full bg-[#FFF0F0] inline-flex items-center justify-center text-coral text-[11px]">
-          ▶
+        <span className="w-[30px] h-[30px] rounded-full bg-[#FFF0F0] inline-flex items-center justify-center text-coral">
+          <svg width="9" height="11" viewBox="0 0 9 11" fill="currentColor" className="block ml-px" aria-hidden>
+            <path d="M0 0.6v9.8l9-4.9z" />
+          </svg>
         </span>
       )}
       {label}

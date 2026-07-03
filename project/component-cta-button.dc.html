@@ -29,12 +29,13 @@
 .ctabtn.v-outline-light{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.4);transition:transform .25s ease,background .25s ease,border-color .25s ease;}
 .ctabtn.v-outline-light:hover{transform:translateY(-3px);background:rgba(255,255,255,.22);border-color:#fff;}
 .ctabtn .cta-arrow{font-size:19px;line-height:1;}
-.ctabtn .cta-play{width:30px;height:30px;border-radius:50%;background:#FFF0F0;display:inline-flex;align-items:center;justify-content:center;color:#F23F44;font-size:11px;}
+.ctabtn .cta-play{width:30px;height:30px;border-radius:50%;background:#FFF0F0;display:inline-flex;align-items:center;justify-content:center;color:#F23F44;}
+.ctabtn .cta-play svg{display:block;margin-left:1px;}
 @keyframes ctashine{0%{transform:translateX(-130%) skewX(-18deg)}55%,100%{transform:translateX(260%) skewX(-18deg)}}
 </style>
 </helmet>
 <a class="ctabtn v-{{ variant }} sz-{{ size }}" href="{{ href }}" ref="{{ btnRef }}">
-  <sc-if value="{{ isPlay }}" hint-placeholder-val="{{ false }}"><span class="cta-play">▶</span></sc-if>
+  <sc-if value="{{ isPlay }}" hint-placeholder-val="{{ false }}"><span class="cta-play"><svg width="9" height="11" viewBox="0 0 9 11" fill="currentColor"><path d="M0 0.6v9.8l9-4.9z"></path></svg></span></sc-if>
   {{ label }}
   <sc-if value="{{ isArrow }}" hint-placeholder-val="{{ true }}"><span class="cta-arrow">→</span></sc-if>
 </a>

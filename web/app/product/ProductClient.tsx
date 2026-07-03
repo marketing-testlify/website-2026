@@ -600,7 +600,7 @@ export default function ProductClient() {
             </p>
             <div className="flex items-center justify-center gap-[14px] flex-wrap">
               <CtaButton label="Start free" href={routes.pricing} variant="light" size="md" icon="arrow" />
-              <CtaButton label="Book a demo" href="#" variant="outline-light" size="md" icon="none" />
+              <CtaButton label="Book a demo" href="#" variant="outline-light" size="md" icon="play" />
             </div>
             <div className="flex items-center justify-center gap-[14px] flex-wrap mt-[26px] text-[13.5px] text-white/85 font-semibold">
               <span>SOC 2 Type II</span>

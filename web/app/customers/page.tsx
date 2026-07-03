@@ -293,7 +293,7 @@ export default function CustomersPage() {
               href="#"
               variant="outline-light"
               size="md"
-              icon="none"
+              icon="play"
             />
           </Reveal>
         </div>

@@ -54,7 +54,7 @@ a{text-decoration:none;color:inherit;}
 }
 </style>
 </helmet>
-<dc-import name="Site Header" announcement="New guide · The 2026 skills-based hiring playbook" announcement-cta="Read now" home-href="Homepage.dc.html" hint-size="100%,110px"></dc-import>
+<dc-import name="component-site-header" announcement="New guide · The 2026 skills-based hiring playbook" announcement-cta="Read now" home-href="page-index.dc.html" hint-size="100%,110px"></dc-import>
 <section class="bhero"><div class="wrap" style="max-width:820px;">
   <p class="eyebrow reveal">The Testlify blog<b>.</b></p>
   <h1 class="h1 reveal" style="transition-delay:.04s">Ideas for hiring on skill</h1>
@@ -68,7 +68,7 @@ a{text-decoration:none;color:inherit;}
   </div>
 </div></section>
 <section style="padding:24px 28px 0;"><div class="wrap">
-  <a class="feat reveal" href="Blog Article.dc.html">
+  <a class="feat reveal" href="page-blog-article.dc.html">
     <div class="featimg" style="background:linear-gradient(150deg,#F23F44,#7A1418);"><span class="postcat">Featured · Hiring strategy</span></div>
     <div class="featbody">
       <h2 class="h2" style="font-size:30px;margin-bottom:14px;">The 2026 skills-based hiring playbook</h2>
@@ -80,7 +80,7 @@ a{text-decoration:none;color:inherit;}
 <section class="sec"><div class="wrap">
   <div class="bgrid">
     <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
-      <a class="post" href="Blog Article.dc.html">
+      <a class="post" href="page-blog-article.dc.html">
         <div class="postimg" style="{{ p.bg }}"><span class="postcat">{{ p.cat }}</span></div>
         <div class="postbody"><h3 class="posttitle">{{ p.title }}</h3><p class="postexc">{{ p.excerpt }}</p><div class="postmeta"><span>{{ p.author }}</span><span>·</span><span>{{ p.read }}</span></div></div>
       </a>
@@ -95,7 +95,7 @@ a{text-decoration:none;color:inherit;}
     <button class="btn btn-primary" type="submit">Subscribe</button>
   </form>
 </div></section>
-<dc-import name="Site Footer" home-href="Homepage.dc.html" hint-size="100%,560px"></dc-import>
+<dc-import name="component-site-footer" home-href="page-index.dc.html" hint-size="100%,560px"></dc-import>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
 class Component extends DCLogic {

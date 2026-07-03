@@ -248,14 +248,14 @@ a{text-decoration:none;color:inherit;}
 @media(max-width:760px){.tl-h1{font-size:36px;}.tl-hero{padding:44px 22px 30px;}.catgrid{grid-template-columns:repeat(2,1fr);}.grid{grid-template-columns:1fr;}.fx-grid{grid-template-columns:1fr;}.tl-stats{gap:20px;}.tl-sdiv{display:none;}.toolbar{flex-direction:column;align-items:flex-start;}.reqcard{padding:30px 26px;}.ctaband h2{font-size:30px;}.sec-h2{font-size:25px;}}
 </style>
 </helmet>
-<dc-import name="Site Header" announcement="3,500+ skills tests — every one validated by subject-matter experts" announcement-cta="Browse library" home-href="Homepage.dc.html" hint-size="100%,110px"></dc-import>
+<dc-import name="component-site-header" announcement="3,500+ skills tests — every one validated by subject-matter experts" announcement-cta="Browse library" home-href="page-index.dc.html" hint-size="100%,110px"></dc-import>
 <section class="tl-hero" ref="{{ rootRef }}"><div class="tl-blob"></div><div class="tl-wrap"><div class="tl-hgrid">
 <div>
 <div class="tl-badge" data-reveal=""><span class="d"></span><span class="t">The largest library of validated skills tests</span></div>
 <h1 class="tl-h1" data-reveal="" data-delay="80" style="margin-top:22px;">3,500+ tests for&nbsp;<br><em>every role you hire.</em></h1>
 <p class="tl-sub" data-reveal="" data-delay="150">The widest catalog of expert-validated assessments anywhere — coding, cognitive, role-specific, language and personality. Combine any of them into one job-ready test in minutes.</p>
 <div class="tl-hstats" data-reveal="" data-delay="190"><div class="tl-hstat"><b>3,500+</b><span>Validated tests</span></div><div class="tl-hstat"><b>4,500+</b><span>Job roles</span></div><div class="tl-hstat"><b>50+</b><span>Industries</span></div></div>
-<div class="tl-hbtns" data-reveal="" data-delay="230"><dc-import name="CTA Button" label="Try for free" href="Pricing.dc.html" variant="primary" size="lg" icon="arrow" magnetic="true" hint-size="180px,56px"></dc-import><dc-import name="CTA Button" label="Book a demo" href="#" variant="secondary" size="lg" icon="play" hint-size="190px,56px"></dc-import></div>
+<div class="tl-hbtns" data-reveal="" data-delay="230"><dc-import name="component-cta-button" label="Try for free" href="page-pricing.dc.html" variant="primary" size="lg" icon="arrow" magnetic="true" hint-size="180px,56px"></dc-import><dc-import name="component-cta-button" label="Book a demo" href="#" variant="secondary" size="lg" icon="play" hint-size="190px,56px"></dc-import></div>
 <div class="tl-trust" data-reveal="" data-delay="270"><span><b>✓</b> 7-day free trial</span><span><b>✓</b> No credit card required</span></div>
 </div>
 <div class="tl-vis" data-reveal="" data-delay="180">
@@ -292,7 +292,7 @@ a{text-decoration:none;color:inherit;}
 </div>
 </div></section>
 <section class="reqband"><div class="reqcard"><div><h3>Can't find the test you need?</h3><p>Request a custom assessment and our subject-matter experts will build it for your role — peer-reviewed and validated before it ships.</p></div><a class="btn btn-p" href="#">Request a test<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div></section>
-<dc-import name="Site Footer" home-href="Homepage.dc.html" hint-size="100%,560px"></dc-import>
+<dc-import name="component-site-footer" home-href="page-index.dc.html" hint-size="100%,560px"></dc-import>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
@@ -445,7 +445,7 @@ class Component extends DCLogic {
     else if (sort === 'dur') filtered = filtered.slice().sort((a, b) => a[3] - b[3]);
     const cards = filtered.map((t, i) => ({
       key: t[0] + i, name: t[0], typeLabel: lab[t[1]], icon: this.mkIcon(t[1]), typeKey: t[1],
-      level: t[2], lvCls: lvClass[t[2]], cbcCls: cbcClass[t[2]], dur: t[3], q: t[4], desc: t[5], href: 'Test Detail.dc.html'
+      level: t[2], lvCls: lvClass[t[2]], cbcCls: cbcClass[t[2]], dur: t[3], q: t[4], desc: t[5], href: 'page-test-detail.dc.html'
     }));
     const catFacets = this.types.map(ty => ({
       key: ty[0], label: ty[1],

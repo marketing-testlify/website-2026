@@ -6,6 +6,8 @@
 export const routes = {
   home: "/",
   product: "/product",
+  productTestlifyAi: "/product/testlify-ai",
+  aiResumeScreener: "/product/ai-resume-screener",
   testLibrary: "/test-library",
   testDetail: "/test-library/attention-to-detail-textual",
   pricing: "/pricing",

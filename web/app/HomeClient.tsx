@@ -558,8 +558,10 @@ export default function HomeClient() {
                 href="#"
                 className="inline-flex items-center gap-2.5 bg-white text-ink font-semibold text-[17px] px-7 py-4 rounded-[15px] border-[1.5px] border-[#F0D9DA] transition-all duration-300 hover:border-coral"
               >
-                <span className="w-[30px] h-[30px] rounded-full bg-[#FFF0F0] inline-flex items-center justify-center text-coral text-[11px]">
-                  ▶
+                <span className="w-[30px] h-[30px] rounded-full bg-[#FFF0F0] inline-flex items-center justify-center text-coral">
+                  <svg width="9" height="11" viewBox="0 0 9 11" fill="currentColor" className="block ml-px" aria-hidden>
+                    <path d="M0 0.6v9.8l9-4.9z" />
+                  </svg>
                 </span>
                 Book a demo
               </a>

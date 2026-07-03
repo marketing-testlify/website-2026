@@ -248,7 +248,7 @@ export default function Page() {
               href="#"
               variant="secondary"
               size="md"
-              icon="none"
+              icon="play"
             />
           </Reveal>
         </div>
@@ -454,7 +454,7 @@ export default function Page() {
               href="#"
               variant="secondary"
               size="md"
-              icon="none"
+              icon="play"
             />
           </Reveal>
         </div>
