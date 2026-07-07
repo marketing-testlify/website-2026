@@ -89,7 +89,7 @@ const PLAT: PlatGroup[] = [
   {
     name: "AI interviews",
     id: "ai-interviews",
-    href: routes.testLibrary, // TODO(phase2): library-interviews (AI interview library)
+    href: routes.libraryInterviews,
     cta: "Browse interviews →",
     icon: (
       <>
@@ -170,7 +170,7 @@ const PLAT: PlatGroup[] = [
   {
     name: "Features",
     id: "features",
-    href: routes.product, // TODO(phase2): product-features hub
+    href: routes.productFeatures,
     cta: "See all features →",
     icon: (
       <>
@@ -228,7 +228,7 @@ const LIBRARY: LibraryRow[] = [
   {
     label: "Interview library",
     d: "AI video, audio & chat interviews by role",
-    href: routes.testLibrary, // TODO(phase2): library-interviews (interview library)
+    href: routes.libraryInterviews,
     icon: (
       <>
         <polygon points="23 7 16 12 23 17 23 7" />
@@ -239,7 +239,7 @@ const LIBRARY: LibraryRow[] = [
   {
     label: "Build your own",
     d: "Custom tests & questions, SME-reviewed",
-    href: routes.testLibrary, // TODO(phase2): library-build-your-own
+    href: routes.libraryBuildYourOwn,
     icon: <path d="M12 5v14M5 12h14" />,
   },
 ];
@@ -346,7 +346,7 @@ const RES: MenuTab[] = [
     subs: [
       { label: "Blog", d: "Hiring science, playbooks and product news", href: routes.blog },
       { label: "Ebooks & guides", d: "Deep dives on skills-based hiring", href: routes.resources }, // TODO(phase2): resource-list-template (ebooks & guides)
-      { label: "HR glossary", d: "500+ hiring terms, defined", href: routes.resources }, // TODO(phase2): resource-glossary
+      { label: "HR glossary", d: "500+ hiring terms, defined", href: routes.resourcesGlossary },
       { label: "Podcast", d: "Conversations with talent leaders", href: routes.resources }, // TODO(phase2): podcast
       { label: "FAQ", d: "Quick answers on plans and platform", href: routes.resources }, // TODO(phase2): FAQ
     ],
@@ -366,7 +366,7 @@ const RES: MenuTab[] = [
     ),
     subs: [
       { label: "Test library", d: "3,500+ validated tests across roles", href: routes.testLibrary },
-      { label: "HR tools & calculators", d: "Cost per hire, time to hire & more", href: routes.resources }, // TODO(phase2): resource-tools-detail
+      { label: "HR tools & calculators", d: "Cost per hire, time to hire & more", href: routes.resourcesTools },
       { label: "Job description templates", d: "Role-ready JDs in minutes", href: routes.resources }, // TODO(phase2): job description templates
       { label: "Interview question kits", d: "Structured, scorable prompts", href: routes.resources }, // TODO(phase2): interview question kits
       { label: "Skills mapping", d: "Map roles to measurable skills", href: routes.resources }, // TODO(phase2): skills mapping
@@ -387,7 +387,7 @@ const RES: MenuTab[] = [
       { label: "Success stories", d: "How 1,500+ teams hire on proof", href: routes.customers },
       { label: "Integrations", d: "100+ native ATS connections", href: routes.integrations },
       { label: "Trust center", d: "SOC 2, ISO 27001, GDPR", href: routes.security },
-      { label: "Partners", d: "Refer, resell or build with us", href: routes.about }, // TODO(phase2): resource-partners
+      { label: "Partners", d: "Refer, resell or build with us", href: routes.partners },
       { label: "About us", d: "Why we built Testlify", href: routes.about },
       { label: "Careers", d: "Join the team behind Testlify", href: routes.careers },
     ],

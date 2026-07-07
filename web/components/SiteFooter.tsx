@@ -8,19 +8,19 @@ const FOOTER_COLS: { heading: string; links: [string, string][] }[] = [
       ["Testlify AI", routes.productTestlifyAi],
       ["AI resume screener", routes.aiResumeScreener],
       ["Skill assessments", routes.productSkillAssessments],
-      ["AI interviews", routes.testLibrary], // TODO(phase2): library-interviews (AI interviews)
-      ["Features", routes.product], // TODO(phase2): product-features hub
+      ["AI interviews", routes.libraryInterviews],
+      ["Features", routes.productFeatures],
       ["ATS integrations", routes.integrations],
       ["Pricing", routes.pricing],
-      ["Compare plans", routes.pricing], // TODO(phase2): core-compare (compare plans)
+      ["Compare plans", routes.compare],
     ],
   },
   {
     heading: "Library",
     links: [
       ["Test library", routes.testLibrary],
-      ["Interview library", routes.testLibrary], // TODO(phase2): library-interviews
-      ["Build your own", routes.testLibrary], // TODO(phase2): library-build-your-own
+      ["Interview library", routes.libraryInterviews],
+      ["Build your own", routes.libraryBuildYourOwn],
       ["Coding tests", routes.testLibrary],
       ["Cognitive ability", routes.testLibrary],
       ["Personality & culture", routes.testLibrary],
@@ -42,9 +42,9 @@ const FOOTER_COLS: { heading: string; links: [string, string][] }[] = [
     heading: "Resources",
     links: [
       ["Blog", routes.blog],
-      ["HR tools", routes.resources], // TODO(phase2): resource-tools-detail (HR tools)
-      ["Hiring guides", routes.resources], // TODO(phase2): resource-list-template (hiring guides)
-      ["HR glossary", routes.resources], // TODO(phase2): resource-glossary
+      ["HR tools", routes.resourcesTools],
+      ["Hiring guides", routes.resourcesHiringGuides],
+      ["HR glossary", routes.resourcesGlossary],
       ["Success stories", routes.customers],
       ["Compare alternatives", routes.pricing], // TODO(phase2): resource-competitors-detail (compare alternatives)
     ],
@@ -55,9 +55,9 @@ const FOOTER_COLS: { heading: string; links: [string, string][] }[] = [
       ["About us", routes.about],
       ["Careers", routes.careers],
       ["Clients", routes.customers],
-      ["Partners", routes.about], // TODO(phase2): resource-partners
+      ["Partners", routes.partners],
       ["Trust center", routes.security],
-      ["Contact us", routes.about], // TODO(phase2): company-contact
+      ["Contact us", routes.contact],
     ],
   },
 ];
