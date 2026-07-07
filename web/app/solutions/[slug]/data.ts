@@ -38,7 +38,19 @@ export type ChipsSection = {
   chips: string[];
 };
 
-export type Section = SplitSection | CardsSection | GridSection | ChipsSection;
+export type StepsSection = {
+  kind: "steps";
+  eyebrow: string;
+  h2: string;
+  steps: { title: string; desc: string }[];
+};
+
+export type Section =
+  | SplitSection
+  | CardsSection
+  | GridSection
+  | ChipsSection
+  | StepsSection;
 
 export type SolutionData = {
   crumb: string;
@@ -395,145 +407,140 @@ export const SOLUTIONS: Record<string, SolutionData> = {
   /* ── Test type / Coding tests ─────────────────────────────── */
   "coding-tests": {
     crumb: "Test type / Coding tests",
-    eyebrow: "Coding tests",
-    title: "Identify top developers with live coding and programming tests",
-    lead: "Run live coding assessments in 45+ languages with real-world tasks in a secure, fully proctored environment — and hire engineers who actually deliver.",
+    eyebrow: "Coding & programming tests",
+    title: "Hire developers on proof of skill, not a resume",
+    lead: "Put real code in front of candidates. Testlify's coding tests measure how developers actually build, debug and reason across 45+ languages — auto-scored, proctored and ready in minutes.",
     ctaLabel: "Try for free",
     ctaHref: routes.pricing,
     stats: [
-      { t: "45+ coding languages" },
-      { t: "Live VS Code environment" },
-      { t: "Fully proctored" },
+      { t: "45+ programming languages" },
+      { t: "Live IDE & real test cases" },
+      { t: "Auto-scored in minutes" },
     ],
     sections: [
       {
-        kind: "cards",
-        eyebrow: "Key features",
-        h2: "Everything you need in a coding test",
-        intro: "Real tasks, real environments, real proof of ability.",
-        cards: [
-          {
-            title: "Single & multi-file questions",
-            desc: "45+ languages, with multi-file projects in Node.js, Python and Java.",
-          },
-          {
-            title: "Proctoring built in",
-            desc: "Video, screen recording, snapshots, mouse tracking and copy-paste prevention.",
-          },
-          {
-            title: "Flexible test duration",
-            desc: "Choose 30, 60 or 90 minutes — or set a custom limit per role.",
-          },
-        ],
-      },
-      {
         kind: "split",
         num: "1",
-        h2: "Coding projects in a proctored VS Code environment",
+        h2: "Real coding challenges, not multiple-choice trivia",
         body: [
-          "Candidates write, run and debug real code in a live VS Code editor on the platform. Multi-file projects in Node.js, Python and Java let you test how they actually build, not just solve puzzles.",
+          "Candidates write and run code in a full in-browser IDE against hidden test cases — so you see working solutions, not memorized definitions. Every submission is scored on correctness, efficiency and code quality.",
         ],
         bullets: [
-          { label: "Real-time evaluation with hidden test cases" },
-          { label: "Scored on quality, efficiency and logic" },
-          { label: "Comprehensive reporting and analytics" },
+          { label: "45+ languages & frameworks" },
+          { label: "Live IDE with real test cases" },
+          { label: "Debugging & code-review tasks" },
+          { label: "Auto-scored on correctness & efficiency" },
         ],
+        cta: { label: "Browse coding tests", href: routes.testLibrary },
       },
       {
-        kind: "grid",
-        eyebrow: "What we offer",
-        h2: "What does Testlify have to offer?",
-        intro: "A complete coding-assessment toolkit for teams that can't afford a mis-hire.",
+        kind: "cards",
+        eyebrow: "Beyond syntax",
+        h2: "Assess the full engineering skill set",
+        intro:
+          "One test type, every developer competency — from fundamentals to real-world problem solving.",
         cards: [
           {
-            title: "Extensive test library",
-            desc: "350+ ready-to-use coding and programming tests.",
+            title: "Language & framework fluency",
+            desc: "Python, Java, JavaScript, Go, C#, SQL and 40+ more — test the exact stack of the role.",
           },
           {
-            title: "Live coding tests",
-            desc: "Interactive editor with run, debug and hidden test cases.",
+            title: "Problem solving & DSA",
+            desc: "Algorithmic challenges reveal how candidates reason, optimize and handle edge cases.",
           },
           {
-            title: "White labeling",
-            desc: "Brand the candidate experience end to end.",
+            title: "Live coding & debugging",
+            desc: "Pair on a live challenge, or have candidates fix broken code the way they would on the job.",
           },
-          {
-            title: "Customizable assessments",
-            desc: "Combine questions, set difficulty and time limits.",
-          },
-          {
-            title: "Advanced analytics",
-            desc: "Section-wise breakdowns and global benchmarking.",
-          },
-          {
-            title: "User-friendly interface",
-            desc: "Effortless for recruiters and candidates alike.",
-          },
-        ],
-      },
-      {
-        kind: "chips",
-        h2: "Languages and technologies Testlify supports",
-        chips: [
-          "JavaScript",
-          "TypeScript",
-          "Python",
-          "Java",
-          "C",
-          "C++",
-          "C#",
-          "Go",
-          "Ruby",
-          "Swift",
-          "Kotlin",
-          "PHP",
-          "Rust",
-          "Scala",
-          "SQL",
-          "R",
-          "Bash",
-          "Perl",
-          "Haskell",
-          "Elixir",
         ],
       },
       {
         kind: "split",
         num: "2",
-        h2: "Effortless integration with your workflow",
+        h2: "Fair, cheat-resistant, and defensible",
         body: [
-          "Push results straight into your HR tech stack. Testlify connects to 100+ ATS platforms so coding scores land where your team already works.",
+          "Every coding test is proctored by default — webcam snapshots, tab-switch detection and plagiarism checks keep scores trustworthy. Standardized challenges mean every developer is measured against the same bar.",
         ],
-        cta: { label: "See all integrations", href: routes.integrations },
+        bullets: [
+          { label: "Webcam & tab-switch proctoring" },
+          { label: "Plagiarism & AI-answer detection" },
+          { label: "EEOC-defensible, standardized scoring" },
+        ],
+        cta: { label: "See how it works", href: routes.productScience },
+      },
+      {
+        kind: "steps",
+        eyebrow: "How it works",
+        h2: "From role to ranked shortlist in four steps",
+        steps: [
+          {
+            title: "Pick your challenges",
+            desc: "Choose from validated coding tests or add your own questions and languages.",
+          },
+          {
+            title: "Invite developers",
+            desc: "Share a link or sync to your ATS — candidates code on their own schedule.",
+          },
+          {
+            title: "Auto-score submissions",
+            desc: "Hidden test cases grade correctness, efficiency and quality instantly.",
+          },
+          {
+            title: "Shortlist with confidence",
+            desc: "Compare ranked results side by side and advance the strongest builders.",
+          },
+        ],
+      },
+      {
+        kind: "chips",
+        h2: "45+ languages and frameworks supported",
+        chips: [
+          "Python",
+          "JavaScript",
+          "TypeScript",
+          "Java",
+          "C#",
+          "C++",
+          "Go",
+          "Ruby",
+          "PHP",
+          "Swift",
+          "Kotlin",
+          "Rust",
+          "SQL",
+          "React",
+          "Node.js",
+          "Django",
+        ],
       },
     ],
     faqs: [
       {
-        q: "How are coding tests evaluated?",
-        a: "Submissions run against hidden test cases and are scored automatically on correctness, efficiency and edge-case handling, with the option for manual code review.",
+        q: "What are coding tests used for?",
+        a: "Coding tests measure a developer's real programming ability — writing, running and debugging code — so you can screen for on-the-job skill instead of relying on resumes or trivia questions.",
       },
       {
-        q: "Will this help me make better hiring decisions?",
-        a: "Yes. You see how candidates actually write and debug code, not just whether they can answer trivia — a far stronger signal than a resume.",
+        q: "Which programming languages does Testlify support?",
+        a: "Testlify supports 45+ languages and frameworks including Python, Java, JavaScript, Go, C#, SQL, React and Node.js, with a full in-browser IDE for every candidate.",
       },
       {
-        q: "Do you support multi-file projects?",
-        a: "Yes. Multi-file coding projects are supported in Node.js, Python and Java within a live VS Code environment.",
+        q: "How are coding tests scored?",
+        a: "Submissions run against hidden test cases and are auto-scored on correctness and efficiency in minutes, with code available for manual review when you want a closer look.",
       },
       {
-        q: "Can coding tests be time-limited?",
-        a: "Yes — choose 30, 60 or 90 minutes, or set a custom duration per assessment.",
+        q: "Can I create my own coding challenges?",
+        a: "Yes. Add your own questions, set languages, time limits and passing scores, or send custom challenges for expert review before going live.",
       },
       {
-        q: "Which languages support multi-file questions?",
-        a: "Node.js, Python and Java currently support full multi-file projects, with 45+ languages available for single-file questions.",
+        q: "How do you prevent cheating on coding tests?",
+        a: "Every test is proctored by default with webcam snapshots, tab-switch detection and plagiarism plus AI-answer detection, so scores stay defensible.",
       },
     ],
     ctaEyebrow: "Get started",
-    ctaTitle: "Cut through the noise. Hire with clarity.",
+    ctaTitle: "Stop guessing who can code. Start proving it.",
     ctaBody:
-      "Resumes don't tell you who can code. Give every developer a real task and hire on proof — start in minutes.",
-    ctaTicks: ["7-day free trial", "Unlimited assessments", "Cancel anytime"],
+      "Resumes don't compile. Put real challenges in front of every developer and hire the ones who can actually build.",
+    ctaTicks: ["7-day free trial", "45+ languages", "Cancel anytime"],
   },
 };
 

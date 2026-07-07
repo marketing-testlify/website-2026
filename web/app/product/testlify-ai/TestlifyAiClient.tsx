@@ -61,10 +61,9 @@ const AWARDS = [
   "Best Meets Requirements",
 ];
 
-/* audio wave bars: [height px, bright?] — exact heights/colors from the prototype */
+/* scoring-feed audio wave bars: [height px, bright?] — exact heights/colors from the prototype */
 const WAVE: [number, boolean][] = [
-  [10, false], [22, false], [14, true], [30, true], [18, false], [26, true],
-  [12, false], [20, false], [8, false], [16, true], [24, false], [10, false],
+  [9, false], [20, true], [13, false], [26, true], [11, false], [18, true],
 ];
 
 /* ---------- shared class strings (colour left to each call site to avoid utility clashes) ---------- */
@@ -78,11 +77,6 @@ const SEC = "px-7 py-24 max-[960px]:px-[22px] max-[960px]:py-[72px]";
 const WRAP = "max-w-[1240px] mx-auto px-7";
 const SPLIT =
   "grid grid-cols-1 min-[961px]:grid-cols-[1.02fr_1fr] gap-11 min-[961px]:gap-16 items-center";
-const DCARD =
-  "h-full bg-[#241417] border border-[#3A2529] rounded-[18px] p-[26px] transition-[translate,border-color] duration-300 ease-[cubic-bezier(.2,.7,.3,1)] hover:-translate-y-[5px] hover:border-coral";
-const DSICON =
-  "w-[46px] h-[46px] rounded-xl bg-[rgba(242,63,68,0.14)] text-coral-bright flex items-center justify-center mb-5";
-const DBODY = "text-[16px] leading-[1.66] text-[#C2B1B4] m-0 mb-[18px]";
 
 /* ---------- small shared pieces ---------- */
 
@@ -414,106 +408,99 @@ export default function TestlifyAiClient() {
       {/* 4 · AUTOMATED SCORING (dark) */}
       <section className={`bg-ink text-[#F1E7E8] ${SEC}`}>
         <div className={WRAP}>
-          <div className="max-w-[660px] mx-auto mb-[52px] text-center">
-            <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.16em] uppercase text-[#C9A9AB] m-0 mb-[18px]">
-              Automated scoring<b className="text-coral-bright font-semibold">.</b>
-            </Reveal>
-            <Reveal as="h2" delay={0.04} className={`${H2} text-white`}>
-              Score every answer format — automatically
-            </Reveal>
-            <Reveal as="p" delay={0.08} className={`${LEAD} text-[#D3C3C6] mt-4 mb-0`}>
-              AI-driven analysis eliminates tedious manual scoring. Consistent, objective, bias-free results across
-              text, video and audio — with manual override whenever you want it.
-            </Reveal>
-          </div>
-          <div className="grid grid-cols-1 min-[961px]:grid-cols-3 gap-5">
-            {/* open-ended */}
-            <Reveal delay={0.04}>
-              <div className={DCARD}>
-                <div className={DSICON}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <path d="M4 6h16M4 12h16M4 18h11" />
-                  </svg>
-                </div>
-                <h3 className={`${H3} text-white mb-2.5`}>Open-ended questions</h3>
-                <p className={DBODY}>
-                  Say goodbye to manual scoring. Get consistent, objective results and deeper insight on written
-                  responses.
-                </p>
-                <div className="bg-ink border border-[#3A2529] rounded-xl p-3.5">
-                  <div className="h-1.5 rounded-full bg-[#3A2529] mb-2 overflow-hidden">
-                    <div className="w-[88%] h-full bg-coral-bright" />
-                  </div>
-                  <div className="h-1.5 rounded-full bg-[#3A2529] w-[70%] overflow-hidden">
-                    <div className="w-[76%] h-full bg-coral" />
-                  </div>
-                  <div className="flex justify-between mt-3">
-                    <span className={`${PLABEL} tracking-[0.1em] text-[#8A6A6E]`}>Scored</span>
-                    <span className="text-[15px] font-extrabold text-coral-bright">8.6</span>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-            {/* video */}
-            <Reveal delay={0.1}>
-              <div className={DCARD}>
-                <div className={DSICON}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <polygon points="23 7 16 12 23 17 23 7" />
-                    <rect x="1" y="5" width="15" height="14" rx="2" />
-                  </svg>
-                </div>
-                <h3 className={`${H3} text-white mb-2.5`}>Video interviews</h3>
-                <p className={DBODY}>
-                  Auto-scored one-way and live interviews for instant, unbiased results — with manual scoring on tap.
-                </p>
-                <div className="bg-ink border border-[#3A2529] rounded-xl overflow-hidden">
-                  <div
-                    className="relative h-[74px] flex items-center justify-center"
-                    style={{ background: "linear-gradient(135deg, #2C181C, #3A2529)" }}
-                  >
-                    <span className="w-9 h-9 rounded-full bg-[rgba(242,63,68,0.18)] flex items-center justify-center">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="#FF7A52" aria-hidden>
-                        <polygon points="5 3 19 12 5 21 5 3" />
+          <div className={`${SPLIT} items-center`}>
+            <Reveal>
+              <p className="text-[12.5px] font-semibold tracking-[0.16em] uppercase text-[#C9A9AB] m-0 mb-[18px]">
+                Automated scoring<b className="text-coral-bright font-semibold">.</b>
+              </p>
+              <h2 className={`${H2} text-white mb-[18px]`}>Score every answer format — automatically</h2>
+              <p className={`${LEAD} text-[#D3C3C6] mt-0 mb-[26px] max-w-[460px]`}>
+                AI-driven analysis eliminates tedious manual scoring — consistent, objective, bias-free results across
+                text, video and audio, with manual override whenever you want it.
+              </p>
+              <div className="flex flex-col gap-4 max-w-[440px]">
+                {(
+                  [
+                    ["Open-ended & written", " — deep, consistent insight on free-text responses, no manual reading."],
+                    ["Video interviews", " — one-way and live, auto-scored instantly with manual scoring on tap."],
+                    ["Audio questions", " — clarity, fluency and linguistic proficiency, scored objectively."],
+                  ] as [string, string][]
+                ).map(([bold, rest]) => (
+                  <div key={bold} className="flex gap-[13px] items-start">
+                    <span className="flex-none w-[26px] h-[26px] rounded-lg bg-[rgba(242,63,68,0.16)] text-coral-bright flex items-center justify-center mt-px">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </span>
-                    <span className="absolute bottom-2 left-2.5 text-[10px] font-semibold text-[#C2B1B4]">02:14</span>
+                    <p className="text-[16px] leading-[1.66] text-[#C2B1B4] m-0">
+                      <b className="text-white">{bold}</b>
+                      {rest}
+                    </p>
                   </div>
-                  <div className="flex justify-between py-2.5 px-3.5">
-                    <span className={`${PLABEL} tracking-[0.1em] text-[#8A6A6E]`}>Auto-scored</span>
-                    <span className="text-[15px] font-extrabold text-coral-bright">9.0</span>
-                  </div>
-                </div>
+                ))}
               </div>
             </Reveal>
-            {/* audio */}
-            <Reveal delay={0.16}>
-              <div className={DCARD}>
-                <div className={DSICON}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
-                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                    <line x1="12" y1="19" x2="12" y2="23" />
-                  </svg>
+            <Reveal delay={0.1}>
+              <div className="bg-[#241417] border border-[#3A2529] rounded-[18px] overflow-hidden transition-[translate,border-color] duration-300 ease-[cubic-bezier(.2,.7,.3,1)] hover:-translate-y-[5px] hover:border-coral">
+                {/* header */}
+                <div className="flex items-center justify-between py-4 px-5 border-b border-[#3A2529]">
+                  <span className="text-[13.5px] font-bold text-white">Scoring feed · Marketing Lead</span>
+                  <span className="inline-flex items-center gap-[7px] text-[11px] font-bold tracking-[0.04em] text-[#FF9E7A]">
+                    <span className="w-[7px] h-[7px] rounded-full bg-[#3DDC84] shadow-[0_0_0_4px_rgba(61,220,132,0.18)]" />
+                    AUTO-SCORING
+                  </span>
                 </div>
-                <h3 className={`${H3} text-white mb-2.5`}>Audio questions</h3>
-                <p className={DBODY}>
-                  Evaluate verbal communication, clarity and linguistic proficiency with AI-driven audio scoring.
-                </p>
-                <div className="bg-ink border border-[#3A2529] rounded-xl py-4 px-3.5">
-                  <div className="flex items-center gap-[3px] h-[34px] mb-3">
+                {/* open-ended row */}
+                <div className="flex items-center gap-[15px] py-[18px] px-5 border-b border-[#2C181C]">
+                  <span className="flex-none w-10 h-10 rounded-xl bg-[rgba(242,63,68,0.14)] text-coral-bright flex items-center justify-center">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M4 6h16M4 12h16M4 18h11" />
+                    </svg>
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[13.5px] font-bold text-white mb-[7px]">Open-ended question</div>
+                    <div className="h-[5px] rounded-full bg-[#3A2529] mb-1.5 overflow-hidden">
+                      <div className="w-[88%] h-full bg-coral-bright" />
+                    </div>
+                    <div className="h-[5px] rounded-full bg-[#3A2529] w-[70%] overflow-hidden">
+                      <div className="w-[76%] h-full bg-coral" />
+                    </div>
+                  </div>
+                  <span className="flex-none text-[20px] font-extrabold text-coral-bright tracking-[-0.5px]">8.6</span>
+                </div>
+                {/* video row */}
+                <div className="flex items-center gap-[15px] py-[18px] px-5 border-b border-[#2C181C]">
+                  <span className="flex-none w-14 h-10 rounded-[9px] flex items-center justify-center relative" style={{ background: "linear-gradient(135deg,#2C181C,#3A2529)" }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF7A52" aria-hidden>
+                      <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[13.5px] font-bold text-white mb-[3px]">Video interview</div>
+                    <div className="text-[11px] font-bold uppercase tracking-[0.04em] text-[#8A6A6E]">02:14 · communication &amp; structure</div>
+                  </div>
+                  <span className="flex-none text-[20px] font-extrabold text-coral-bright tracking-[-0.5px]">9.0</span>
+                </div>
+                {/* audio row */}
+                <div className="flex items-center gap-[15px] py-[18px] px-5">
+                  <div className="flex-none w-14 flex items-center gap-[3px] h-[34px]">
                     {WAVE.map(([h, bright], i) => (
-                      <div
-                        key={i}
-                        className={`w-[3px] rounded-[2px] ${bright ? "bg-coral-bright" : "bg-[#5A3A3E]"}`}
-                        style={{ height: h }}
-                      />
+                      <div key={i} className={`w-[3px] rounded-[2px] ${bright ? "bg-coral-bright" : "bg-[#5A3A3E]"}`} style={{ height: h }} />
                     ))}
                   </div>
-                  <div className="flex justify-between">
-                    <span className={`${PLABEL} tracking-[0.1em] text-[#8A6A6E]`}>Clarity · Fluency</span>
-                    <span className="text-[15px] font-extrabold text-coral-bright">8.4</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[13.5px] font-bold text-white mb-[3px]">Audio question</div>
+                    <div className="text-[11px] font-bold uppercase tracking-[0.04em] text-[#8A6A6E]">Clarity · fluency · pronunciation</div>
                   </div>
+                  <span className="flex-none text-[20px] font-extrabold text-coral-bright tracking-[-0.5px]">8.4</span>
+                </div>
+                {/* overall footer */}
+                <div className="flex items-center justify-between py-3.5 px-5 bg-ink border-t border-[#3A2529]">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.04em] text-[#8A6A6E]">Overall · weighted</span>
+                  <span className="flex items-center gap-2.5">
+                    <span className="text-[11px] font-bold text-[#8A6A6E]">Manual override available</span>
+                    <span className="text-[15px] font-extrabold text-white bg-[rgba(242,63,68,0.18)] rounded-lg py-1 px-[11px]">8.7</span>
+                  </span>
                 </div>
               </div>
             </Reveal>

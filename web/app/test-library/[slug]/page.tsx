@@ -15,6 +15,7 @@ import {
   type TestEntry,
 } from "@/lib/testLibraryData";
 import Accordion, { type AccordionItem } from "./DetailTabs";
+import SampleCarousel, { type SampleQ } from "./SampleCarousel";
 
 const LEVEL_SHORT: Record<TestEntry["level"], string> = {
   Beginner: "Beginner",
@@ -193,6 +194,80 @@ function buildInterview(test: TestEntry): { q: string; why: string; listen: stri
   ];
 }
 
+/** Sample questions — illustrative, type-agnostic items with the correct answer marked. */
+function buildSamples(test: TestEntry): SampleQ[] {
+  const n = test.name;
+  const label = TYPE_LABEL[test.type].toLowerCase();
+  return [
+    {
+      title: "Fundamentals",
+      multi: false,
+      ask: `Which statement best reflects a strong grasp of ${n} fundamentals?`,
+      opts: [
+        { text: "Memorizing terminology without applying it" },
+        { text: "Understanding core concepts and when to apply them", correct: true },
+        { text: "Avoiding fundamentals to move faster" },
+        { text: "Relying only on tools to do the thinking" },
+      ],
+    },
+    {
+      title: "Applied problem solving",
+      multi: false,
+      ask: `A realistic ${label} task isn't producing the expected result. What is the best first step?`,
+      opts: [
+        { text: "Change things at random until it works" },
+        { text: "Isolate the problem and test one hypothesis at a time", correct: true },
+        { text: "Start over from scratch immediately" },
+        { text: "Ignore it and submit anyway" },
+      ],
+    },
+    {
+      title: "Best practices",
+      multi: true,
+      ask: `Which of these are good practices when working with ${n}? Select all that apply.`,
+      opts: [
+        { text: "Follow established conventions", correct: true },
+        { text: "Validate your work against the requirements", correct: true },
+        { text: "Skip edge cases to save time" },
+        { text: "Document the decisions you make", correct: true },
+      ],
+    },
+    {
+      title: "Tooling & workflow",
+      multi: false,
+      ask: `What most improves day-to-day efficiency in ${label} work?`,
+      opts: [
+        { text: "Avoiding any tooling or shortcuts" },
+        { text: "Knowing the right tools and using them well", correct: true },
+        { text: "Doing everything manually every time" },
+        { text: "Guessing instead of checking documentation" },
+      ],
+    },
+    {
+      title: "Accuracy under pressure",
+      multi: false,
+      ask: `How do strong candidates stay accurate within a ${test.dur}-minute limit?`,
+      opts: [
+        { text: "Rush and skip verification" },
+        { text: "Prioritize, then verify the important parts", correct: true },
+        { text: "Leave everything to the last minute" },
+        { text: "Skip reading the question in full" },
+      ],
+    },
+    {
+      title: "Communicating results",
+      multi: true,
+      ask: `Which help you communicate ${n} results clearly to stakeholders? Select all that apply.`,
+      opts: [
+        { text: "Explain the reasoning behind your decisions", correct: true },
+        { text: "Use jargon that hides the detail" },
+        { text: "Summarize outcomes and trade-offs", correct: true },
+        { text: "Back your claims with evidence", correct: true },
+      ],
+    },
+  ];
+}
+
 function buildFaqTest(test: TestEntry, roles: string[]): { q: string; a: string }[] {
   const label = TYPE_LABEL[test.type].toLowerCase();
   return [
@@ -234,6 +309,7 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
 
   const roles = buildRoles(test);
   const skills = buildSkills(test);
+  const samples = buildSamples(test);
   const interview = buildInterview(test);
   const faqTest = buildFaqTest(test, roles);
 
@@ -343,7 +419,7 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
 
               <div className="reveal is-in flex gap-3 flex-wrap mt-9">
                 <CtaButton label="Try for free" href="#" variant="primary" size="lg" icon="arrow" magnetic />
-                <CtaButton label="View sample questions" href="#" variant="secondary" size="lg" icon="none" />
+                <CtaButton label="View sample questions" href="#sample-questions" variant="secondary" size="lg" icon="none" />
               </div>
               <div className="flex items-center gap-[26px] flex-wrap mt-[18px] text-[14.5px] text-[#8A7A7D] font-medium">
                 <span className="inline-flex items-center gap-[7px]">
@@ -440,6 +516,30 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* sample questions */}
+      <section id="sample-questions" className="px-7 py-[84px] scroll-mt-[92px] bg-[#FFF0EF]">
+        <div className="max-w-[1240px] mx-auto">
+          <div className="max-w-[680px] mb-9">
+            <Reveal as="p" className="text-[12.5px] font-bold tracking-[0.16em] uppercase text-muted m-0 mb-4">
+              Sample questions<b className="text-coral font-bold">.</b>
+            </Reveal>
+            <Reveal as="h2" delay={0.04} className="text-[34px] leading-[1.12] font-extrabold tracking-[-1.2px] text-ink m-0 max-[920px]:text-[27px]">
+              See the kind of questions candidates face
+            </Reveal>
+            <Reveal as="p" delay={0.08} className="text-[16px] leading-[1.66] text-body mt-3 max-w-[640px]">
+              A sample of real items from this assessment, with the correct
+              answer marked. In the live test they&apos;re shuffled, timed and
+              auto-graded.
+            </Reveal>
+          </div>
+          <SampleCarousel samples={samples} />
+          <Reveal as="p" className="text-center text-[13.5px] text-[#9A868A] mt-[26px]">
+            A small sample — the full test contains {test.questions} questions
+            across {skills.length} skills.
+          </Reveal>
         </div>
       </section>
 

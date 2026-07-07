@@ -38,12 +38,12 @@ const PLAT: PlatGroup[] = [
       <path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6z" />
     ),
     title: "Testlify AI",
-    desc: "Screen, interview & score with conversational AI",
+    desc: "The full hiring platform, end to end",
     subs: [
       { label: "AI screening", d: "Auto-screen every applicant" },
       { label: "AI interviewer", d: "Conversational, adaptive interviews" },
       { label: "Auto-scoring", d: "Objective scores in seconds" },
-      { label: "Candidate summaries", d: "One-glance fit reports" },
+      { label: "The full workflow", d: "Screen → assess → interview → hire" },
     ],
   },
   {
@@ -87,23 +87,44 @@ const PLAT: PlatGroup[] = [
     ],
   },
   {
-    name: "Video interviewing",
-    id: "video-interviewing",
-    href: routes.productVideoInterviewing,
-    cta: "Watch a demo →",
+    name: "AI interviews",
+    id: "ai-interviews",
+    href: routes.testLibrary, // TODO(phase2): library-interviews (AI interview library)
+    cta: "Browse interviews →",
     icon: (
       <>
         <polygon points="23 7 16 12 23 17 23 7" />
         <rect x="1" y="5" width="15" height="14" rx="2" />
       </>
     ),
-    title: "Video interviewing",
-    desc: "One-way & live, auto-scored interviews",
+    title: "AI interviews",
+    desc: "Video, audio & chat — AI-scored, structured",
     subs: [
-      { label: "One-way interviews", d: "Async, on candidates’ time" },
-      { label: "Live interviews", d: "Scheduled & scored in-app" },
-      { label: "Interview scoring", d: "Rubric-based evaluations" },
-      { label: "Question library", d: "Role-ready prompts" },
+      { label: "Video interviews", d: "Async & live, AI-scored" },
+      { label: "Audio interviews", d: "Voice-first, structured" },
+      { label: "Chat interviews", d: "Written scenario scoring" },
+      { label: "Interview library", d: "Role-ready, AI-scored interviews" },
+    ],
+  },
+  {
+    name: "Video interviewing",
+    id: "video-interviewing",
+    href: routes.productVideoInterviewing,
+    cta: "See video interviewing →",
+    icon: (
+      <>
+        <rect x="2" y="3" width="20" height="14" rx="2" />
+        <line x1="8" y1="21" x2="16" y2="21" />
+        <line x1="12" y1="17" x2="12" y2="21" />
+      </>
+    ),
+    title: "Video interviewing",
+    desc: "One-way & live interviews, auto-scored",
+    subs: [
+      { label: "One-way async", d: "Recorded on the candidate’s time" },
+      { label: "Live two-way", d: "Real-time calls in-platform" },
+      { label: "Auto-scoring", d: "Relevance & verbal-cue scores" },
+      { label: "Recordings & transcripts", d: "Download, review & share" },
     ],
   },
   {
@@ -127,23 +148,45 @@ const PLAT: PlatGroup[] = [
     ],
   },
   {
-    name: "Science behind tests",
+    name: "Why it works",
     id: "science",
     href: routes.productScience,
-    cta: "See the science →",
+    cta: "See the proof →",
     icon: (
       <>
         <path d="M9 3v6l-5 9a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-9V3" />
         <path d="M8 3h8" />
       </>
     ),
-    title: "Science behind tests",
-    desc: "Validity, reliability and bias testing",
+    title: "Why it works",
+    desc: "Science, validity, fairness & security",
     subs: [
       { label: "Validity & reliability", d: "Psychometrically sound tests" },
       { label: "Bias testing", d: "Fair, EEOC-defensible by design" },
       { label: "Expert-built", d: "Reviewed by subject-matter experts" },
-      { label: "Continuous QA", d: "Item analysis keeps tests sharp" },
+      { label: "Security & trust", d: "SOC 2, ISO 27001, GDPR" },
+    ],
+  },
+  {
+    name: "Features",
+    id: "features",
+    href: routes.product, // TODO(phase2): product-features hub
+    cta: "See all features →",
+    icon: (
+      <>
+        <rect x="3" y="3" width="7" height="7" />
+        <rect x="14" y="3" width="7" height="7" />
+        <rect x="14" y="14" width="7" height="7" />
+        <rect x="3" y="14" width="7" height="7" />
+      </>
+    ),
+    title: "Features",
+    desc: "Question types, proctoring, analytics & API",
+    subs: [
+      { label: "Question types", d: "19 formats, from coding to video" },
+      { label: "Anti-cheating & proctoring", d: "Webcam, tab & plagiarism checks" },
+      { label: "Reporting & analytics", d: "Benchmarks and score insights" },
+      { label: "API & white label", d: "Build it into your own flow" },
     ],
   },
   {
@@ -158,13 +201,46 @@ const PLAT: PlatGroup[] = [
       </>
     ),
     title: "Live product demo",
-    desc: "The full workflow, end to end",
+    desc: "See the full workflow, end to end",
     subs: [
       { label: "Guided walkthrough", d: "The full workflow, end to end" },
       { label: "Screen & rank", d: "From application to shortlist" },
       { label: "Interview & score", d: "Auto-scored, rubric-based" },
       { label: "Book a live demo", d: "See it on your roles" },
     ],
+  },
+];
+
+type LibraryRow = { label: string; d: string; href: string; icon: React.ReactNode };
+
+const LIBRARY: LibraryRow[] = [
+  {
+    label: "Test library",
+    d: "3,500+ validated tests across every role",
+    href: routes.testLibrary,
+    icon: (
+      <>
+        <path d="M9 11l3 3L22 4" />
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+      </>
+    ),
+  },
+  {
+    label: "Interview library",
+    d: "AI video, audio & chat interviews by role",
+    href: routes.testLibrary, // TODO(phase2): library-interviews (interview library)
+    icon: (
+      <>
+        <polygon points="23 7 16 12 23 17 23 7" />
+        <rect x="1" y="5" width="15" height="14" rx="2" />
+      </>
+    ),
+  },
+  {
+    label: "Build your own",
+    d: "Custom tests & questions, SME-reviewed",
+    href: routes.testLibrary, // TODO(phase2): library-build-your-own
+    icon: <path d="M12 5v14M5 12h14" />,
   },
 ];
 
@@ -213,10 +289,11 @@ const SOL: MenuTab[] = [
     ),
     subs: [
       { label: "IT & technology", d: "Developers, DevOps, data & security", href: "/solutions/it-technology" },
-      { label: "SaaS", d: "GTM, product and engineering roles", href: routes.solutions },
+      { label: "SaaS & software", d: "GTM, product and engineering roles", href: routes.solutions },
       { label: "Financial services", d: "Analysts, ops and compliance-heavy roles", href: routes.solutions },
       { label: "Healthcare", d: "Clinical & administrative screening", href: routes.solutions },
-      { label: "Retail & hospitality", d: "High-volume frontline hiring", href: routes.solutions },
+      { label: "Retail & e-commerce", d: "High-volume frontline hiring", href: routes.solutions },
+      { label: "BPO & services", d: "Multilingual, high-ramp hiring", href: routes.solutions },
     ],
   },
   {
@@ -233,7 +310,7 @@ const SOL: MenuTab[] = [
     ),
     subs: [
       { label: "Startups", d: "Hire fast without a TA team", href: routes.solutions },
-      { label: "SMBs", d: "Standardize hiring as you scale", href: routes.solutions },
+      { label: "Mid-market", d: "Standardize hiring as you scale", href: routes.solutions },
       { label: "Enterprise", d: "SSO, compliance and audit trails", href: "/solutions/enterprise" },
       { label: "Non-profits & public sector", d: "Fair, defensible selection", href: routes.solutions },
     ],
@@ -241,15 +318,15 @@ const SOL: MenuTab[] = [
   {
     name: "By test type",
     tabDesc: "Coding, cognitive, personality & more",
-    cta: "See all test types →",
-    ctaHref: routes.solutions,
+    cta: "Browse the test library →",
+    ctaHref: routes.testLibrary,
     icon: <path d="M4 6h16M4 12h10M4 18h7" />,
     subs: [
-      { label: "Coding tests", d: "45+ languages, live IDE", href: "/solutions/coding-tests" },
-      { label: "Cognitive ability", d: "Aptitude & reasoning", href: routes.testLibrary },
-      { label: "Personality & culture", d: "Behavioural fit", href: routes.testLibrary },
-      { label: "Language & typing", d: "CEFR, typing & more", href: routes.testLibrary },
-      { label: "Role-specific", d: "Skills mapped to the job", href: routes.testLibrary },
+      { label: "Coding tests", d: "Real-world dev challenges, 45+ languages", href: "/solutions/coding-tests" },
+      { label: "Cognitive ability", d: "Reasoning & problem-solving", href: routes.testLibrary },
+      { label: "Personality & behavioral", d: "Work style and culture fit", href: routes.testLibrary },
+      { label: "Language & communication", d: "Proficiency across 16+ languages", href: routes.testLibrary },
+      { label: "Role-based tests", d: "4,500+ job-specific assessments", href: routes.testLibrary },
     ],
   },
 ];
@@ -259,7 +336,7 @@ const RES: MenuTab[] = [
     name: "Learn",
     tabDesc: "Blog, ebooks, glossary & podcast",
     cta: "Browse all resources →",
-    ctaHref: routes.resources,
+    ctaHref: routes.blog,
     icon: (
       <>
         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
@@ -268,17 +345,17 @@ const RES: MenuTab[] = [
     ),
     subs: [
       { label: "Blog", d: "Hiring science, playbooks and product news", href: routes.blog },
-      { label: "Ebooks & guides", d: "Deep dives on skills-based hiring", href: `${routes.resources}#guides` },
-      { label: "HR & tech glossary", d: "Every hiring term, defined", href: `${routes.resources}#glossary` },
-      { label: "Podcast", d: "Conversations with talent leaders", href: routes.resources },
-      { label: "FAQ", d: "Quick answers on plans and platform", href: `${routes.home}#faq` },
+      { label: "Ebooks & guides", d: "Deep dives on skills-based hiring", href: routes.resources }, // TODO(phase2): resource-list-template (ebooks & guides)
+      { label: "HR glossary", d: "500+ hiring terms, defined", href: routes.resources }, // TODO(phase2): resource-glossary
+      { label: "Podcast", d: "Conversations with talent leaders", href: routes.resources }, // TODO(phase2): podcast
+      { label: "FAQ", d: "Quick answers on plans and platform", href: routes.resources }, // TODO(phase2): FAQ
     ],
   },
   {
     name: "Templates & tools",
     tabDesc: "Ready-to-use hiring assets",
     cta: "Get free HR tools →",
-    ctaHref: `${routes.resources}#tools`,
+    ctaHref: routes.resources,
     icon: (
       <>
         <rect x="3" y="3" width="7" height="7" />
@@ -289,10 +366,10 @@ const RES: MenuTab[] = [
     ),
     subs: [
       { label: "Test library", d: "3,500+ validated tests across roles", href: routes.testLibrary },
-      { label: "HR tools & calculators", d: "Cost per hire, time to hire & more", href: `${routes.resources}#tools` },
-      { label: "Job description templates", d: "Role-ready JDs in minutes", href: `${routes.resources}#tools` },
-      { label: "Interview question kits", d: "Structured, scorable prompts", href: `${routes.resources}#tools` },
-      { label: "Skills mapping", d: "Map roles to measurable skills", href: `${routes.resources}#tools` },
+      { label: "HR tools & calculators", d: "Cost per hire, time to hire & more", href: routes.resources }, // TODO(phase2): resource-tools-detail
+      { label: "Job description templates", d: "Role-ready JDs in minutes", href: routes.resources }, // TODO(phase2): job description templates
+      { label: "Interview question kits", d: "Structured, scorable prompts", href: routes.resources }, // TODO(phase2): interview question kits
+      { label: "Skills mapping", d: "Map roles to measurable skills", href: routes.resources }, // TODO(phase2): skills mapping
     ],
   },
   {
@@ -310,6 +387,7 @@ const RES: MenuTab[] = [
       { label: "Success stories", d: "How 1,500+ teams hire on proof", href: routes.customers },
       { label: "Integrations", d: "100+ native ATS connections", href: routes.integrations },
       { label: "Trust center", d: "SOC 2, ISO 27001, GDPR", href: routes.security },
+      { label: "Partners", d: "Refer, resell or build with us", href: routes.about }, // TODO(phase2): resource-partners
       { label: "About us", d: "Why we built Testlify", href: routes.about },
       { label: "Careers", d: "Join the team behind Testlify", href: routes.careers },
     ],
@@ -429,8 +507,6 @@ export default function SiteHeader({
           </Link>
 
           <nav className="hidden min-[901px]:flex items-center gap-5 ml-1.5" aria-label="Primary">
-            <Link href={routes.home} className={navLink}>Home</Link>
-
             {/* Product mega */}
             <div className="relative group">
               <button className="inline-flex items-center gap-1.5 text-[15px] font-medium text-[#46383C] group-hover:text-coral transition-colors cursor-pointer bg-transparent border-0 py-1.5">
@@ -473,6 +549,41 @@ export default function SiteHeader({
                     <p className="text-[15px] font-bold text-[#1A0E10] m-0">New · Testlify AI</p>
                     <p className="text-[12.5px] text-[#6B4F52] m-0 leading-[1.45]">Screen, interview and score candidates automatically with conversational AI.</p>
                     <Link href={routes.productTestlifyAi} className="text-[13px] font-bold text-coral mt-1">Explore Testlify AI →</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Library mega */}
+            <div className="relative group">
+              <button className="inline-flex items-center gap-1.5 text-[15px] font-medium text-[#46383C] group-hover:text-coral transition-colors cursor-pointer bg-transparent border-0 py-1.5">
+                Library<span className="text-[8px] opacity-60 transition-transform duration-200 group-hover:rotate-180">▼</span>
+              </button>
+              <div className={megaPanel}>
+                <span className="absolute -top-[14px] left-0 right-0 h-[14px]" />
+                <div className="flex">
+                  <div className="flex flex-col gap-0.5 min-w-[300px] pt-0.5 mr-3.5">
+                    <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mb-2 px-2.5 mt-0.5">Browse the library</p>
+                    {LIBRARY.map((g) => (
+                      <Link
+                        key={g.label}
+                        href={g.href}
+                        className="flex items-start gap-[11px] py-[9px] px-2.5 rounded-[11px] transition-colors hover:bg-[#FFF4F3]"
+                      >
+                        <span className="shrink-0 w-[34px] h-[34px] rounded-[9px] bg-rose-100 text-coral flex items-center justify-center mt-px">
+                          <MegaIcon>{g.icon}</MegaIcon>
+                        </span>
+                        <span>
+                          <span className="block text-[14px] font-semibold text-ink leading-[1.25]">{g.label}</span>
+                          <span className="block text-[12px] text-[#9A878A] leading-[1.35] mt-0.5">{g.d}</span>
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="w-[216px] bg-gradient-to-br from-[#FFF1F0] to-[#FFE7E4] rounded-[14px] p-[18px] flex flex-col justify-center gap-[7px]">
+                    <p className="text-[15px] font-bold text-[#1A0E10] m-0">One test, tests + interviews</p>
+                    <p className="text-[12.5px] text-[#6B4F52] m-0 leading-[1.45]">Mix any assessment with an AI interview to build one job-ready evaluation.</p>
+                    <Link href={routes.testLibrary} className="text-[13px] font-bold text-coral mt-1">Browse the library →</Link>
                   </div>
                 </div>
               </div>
@@ -525,7 +636,6 @@ export default function SiteHeader({
               </div>
             </div>
 
-            <Link href={routes.testLibrary} className={navLink}>Test Library</Link>
             <Link href={routes.pricing} className={navLink}>Pricing</Link>
 
             {/* Resources mega */}
@@ -569,7 +679,7 @@ export default function SiteHeader({
                   <div className="w-[216px] bg-gradient-to-br from-[#FFF1F0] to-[#FFE7E4] rounded-[14px] p-[18px] flex flex-col justify-center gap-[7px]">
                     <p className="text-[15px] font-bold text-[#1A0E10] m-0">Free HR toolkit</p>
                     <p className="text-[12.5px] text-[#6B4F52] m-0 leading-[1.45]">Job descriptions, interview kits and skills maps — ready to use.</p>
-                    <Link href={`${routes.resources}#tools`} className="text-[13px] font-bold text-coral mt-1">Browse free tools →</Link>
+                    <Link href={routes.resources} className="text-[13px] font-bold text-coral mt-1">Browse free tools →</Link>
                   </div>
                 </div>
               </div>
@@ -611,12 +721,11 @@ export default function SiteHeader({
         <button onClick={() => setMobOpen(false)} aria-label="Close menu" className="absolute top-5 right-[22px] w-[42px] h-[42px] border-0 bg-[#FAF0F0] rounded-[11px] text-[20px] text-ink cursor-pointer leading-none">✕</button>
         {[
           ["Home", routes.home],
-          ["Product", routes.product],
-          ["Test Library", routes.testLibrary],
+          ["Product", routes.productTestlifyAi],
+          ["Library", routes.testLibrary],
           ["Solutions", routes.solutions],
           ["Pricing", routes.pricing],
-          ["Customers", routes.customers],
-          ["Resources", routes.resources],
+          ["Resources", routes.blog],
         ].map(([label, href]) => (
           <Link key={label} href={href} onClick={() => setMobOpen(false)} className="block text-[18px] font-semibold text-ink py-[15px] px-1.5 border-b border-[#F4E8E9] hover:text-coral">{label}</Link>
         ))}

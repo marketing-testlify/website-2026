@@ -8,6 +8,7 @@ import type {
   GridSection,
   Section,
   SplitSection,
+  StepsSection,
 } from "./data";
 
 /* Shared class strings, matching the template CSS exactly. */
@@ -259,6 +260,30 @@ function GridBlock({ s }: { s: GridSection }) {
   );
 }
 
+/* .tsd-steps — numbered process steps (coral number chip), 4-up. */
+function StepsBlock({ s }: { s: StepsSection }) {
+  return (
+    <>
+      <SHead eyebrow={s.eyebrow} h2={s.h2} />
+      <div className="grid grid-cols-4 gap-5 mt-[46px] max-[960px]:grid-cols-2">
+        {s.steps.map((st, i) => (
+          <Reveal
+            key={st.title}
+            delay={(i % 4) * 0.06}
+            className="bg-white border border-warm rounded-[18px] py-[26px] px-[22px] shadow-[0_16px_30px_rgba(110,11,14,0.10)]"
+          >
+            <div className="w-[34px] h-[34px] rounded-full bg-coral text-white flex items-center justify-center text-[14px] font-extrabold mb-[14px]">
+              {i + 1}
+            </div>
+            <p className="text-[17px] font-bold m-0">{st.title}</p>
+            <p className="text-[14px] leading-[1.6] text-body2 mt-2 mb-0">{st.desc}</p>
+          </Reveal>
+        ))}
+      </div>
+    </>
+  );
+}
+
 /* .tsd-chips — centered pill cloud. */
 function ChipsBlock({ s }: { s: ChipsSection }) {
   return (
@@ -298,6 +323,8 @@ export function SolutionSections({ sections }: { sections: Section[] }) {
       content = <CardsBlock s={s} />;
     } else if (s.kind === "grid") {
       content = <GridBlock s={s} />;
+    } else if (s.kind === "steps") {
+      content = <StepsBlock s={s} />;
     } else {
       content = <ChipsBlock s={s} />;
     }

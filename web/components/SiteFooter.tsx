@@ -6,24 +6,25 @@ const FOOTER_COLS: { heading: string; links: [string, string][] }[] = [
     heading: "Product",
     links: [
       ["Testlify AI", routes.productTestlifyAi],
-      ["Test library", routes.testLibrary],
-      ["Video interviewing", `${routes.sectionTemplates}#watch`],
+      ["AI resume screener", routes.aiResumeScreener],
+      ["Skill assessments", routes.productSkillAssessments],
+      ["AI interviews", routes.testLibrary], // TODO(phase2): library-interviews (AI interviews)
+      ["Features", routes.product], // TODO(phase2): product-features hub
       ["ATS integrations", routes.integrations],
-      ["Analytics", `${routes.product}#stats`],
-      ["White label", routes.pricing],
       ["Pricing", routes.pricing],
+      ["Compare plans", routes.pricing], // TODO(phase2): core-compare (compare plans)
     ],
   },
   {
-    heading: "Test types",
+    heading: "Library",
     links: [
-      ["Role-specific", routes.testLibrary],
-      ["Coding", routes.testLibrary],
+      ["Test library", routes.testLibrary],
+      ["Interview library", routes.testLibrary], // TODO(phase2): library-interviews
+      ["Build your own", routes.testLibrary], // TODO(phase2): library-build-your-own
+      ["Coding tests", routes.testLibrary],
       ["Cognitive ability", routes.testLibrary],
-      ["Psychometric", routes.testLibrary],
-      ["Language", routes.testLibrary],
-      ["Situational judgment", routes.testLibrary],
-      ["Typing", routes.testLibrary],
+      ["Personality & culture", routes.testLibrary],
+      ["Language & typing", routes.testLibrary],
     ],
   },
   {
@@ -41,11 +42,11 @@ const FOOTER_COLS: { heading: string; links: [string, string][] }[] = [
     heading: "Resources",
     links: [
       ["Blog", routes.blog],
-      ["HR tools", `${routes.resources}#tools`],
-      ["Hiring guides", `${routes.resources}#guides`],
-      ["HR glossary", `${routes.resources}#glossary`],
+      ["HR tools", routes.resources], // TODO(phase2): resource-tools-detail (HR tools)
+      ["Hiring guides", routes.resources], // TODO(phase2): resource-list-template (hiring guides)
+      ["HR glossary", routes.resources], // TODO(phase2): resource-glossary
       ["Success stories", routes.customers],
-      ["Help center", routes.resources],
+      ["Compare alternatives", routes.pricing], // TODO(phase2): resource-competitors-detail (compare alternatives)
     ],
   },
   {
@@ -54,9 +55,9 @@ const FOOTER_COLS: { heading: string; links: [string, string][] }[] = [
       ["About us", routes.about],
       ["Careers", routes.careers],
       ["Clients", routes.customers],
-      ["Partners", routes.about],
+      ["Partners", routes.about], // TODO(phase2): resource-partners
       ["Trust center", routes.security],
-      ["Contact us", routes.about],
+      ["Contact us", routes.about], // TODO(phase2): company-contact
     ],
   },
 ];
