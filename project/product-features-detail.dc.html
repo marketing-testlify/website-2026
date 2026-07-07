@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+a{text-decoration:none;color:#F23F44;}
+a:hover{color:#DC3137;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+.sec{padding:96px 28px;}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 16px;}
+.eyebrow b{color:#F23F44;font-weight:700;}
+.h2{font-size:34px;line-height:1.12;font-weight:800;letter-spacing:-1.2px;margin:0;color:#1A1014;}
+.h3{font-size:20px;line-height:1.25;font-weight:700;letter-spacing:-.3px;margin:0;color:#1A1014;}
+.lead{font-size:18px;line-height:1.62;color:#5A4B4E;margin:0;}
+.body{font-size:16px;line-height:1.66;color:#5A4B4E;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:600;font-size:15.5px;font-family:inherit;padding:15px 26px;border-radius:13px;transition:transform .25s ease, box-shadow .25s ease, border-color .2s;cursor:pointer;border:none;}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.ft-hero{background:radial-gradient(1000px 520px at 82% -12%,#FFF0EE 0%,rgba(255,240,238,0) 62%),#fff;padding:46px 28px 80px;}
+.ft-crumb{font-size:13px;color:#9A878A;font-weight:600;margin:0 0 26px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.ft-crumb .sep{color:#D6C4C7;}
+.ft-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;}
+.ft-tag{display:inline-flex;align-items:center;gap:7px;background:#FFF0F0;color:#C0242B;font-size:12px;font-weight:700;letter-spacing:.04em;padding:6px 13px;border-radius:999px;}
+.ft-title{font-size:50px;line-height:1.04;font-weight:800;letter-spacing:-2px;margin:17px 0 18px;}
+.ft-lede{font-size:18.5px;line-height:1.6;color:#5A4B4E;margin:0;max-width:560px;}
+.ft-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px;}
+.ft-ticks{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:22px;font-size:14.5px;color:#8A7A7D;font-weight:500;}
+.ft-ticks .tick{display:inline-flex;align-items:center;gap:7px;}
+.ft-ticks .tk{color:#F23F44;font-weight:700;}
+.ft-mock{background:#fff;border:1px solid #EFE2E3;border-radius:22px;box-shadow:0 30px 70px rgba(110,11,14,.14);overflow:hidden;}
+.ft-mocktop{display:flex;align-items:center;gap:7px;padding:14px 18px;border-bottom:1px solid #F4ECEC;background:#FDFAF9;}
+.ft-mc{width:11px;height:11px;border-radius:50%;}
+.ft-mockslot{aspect-ratio:4/3;background:#FBF3EE;}
+.ft-sh{max-width:680px;margin:0 0 40px;}
+.ft-sh.ctr{margin-left:auto;margin-right:auto;text-align:center;}
+.ft-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.ft-card{background:#fff;border:1.4px solid #EFE1E2;border-radius:18px;padding:28px 26px;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s,border-color .3s;}
+.ft-card:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
+.ft-cic{width:46px;height:46px;border-radius:12px;background:#FFF0F0;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.ft-card h3{font-size:17.5px;font-weight:700;color:#1A1014;margin:0 0 8px;letter-spacing:-.3px;}
+.ft-card p{font-size:14px;line-height:1.6;color:#6C5A5D;margin:0;}
+.ft-split{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:center;}
+.ft-split.rev .ft-splitcopy{order:2;}
+.ft-chks{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:24px;}
+.chk{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;line-height:1.45;color:#46383C;font-weight:500;}
+.chki{flex:none;width:22px;height:22px;border-radius:7px;background:#F23F44;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.ft-panel{background:#fff;border:1px solid #EFE2E3;border-radius:20px;box-shadow:0 22px 50px rgba(110,11,14,.09);overflow:hidden;}
+.ft-panelslot{aspect-ratio:5/4;background:#FBF3EE;}
+.ft-statband{background:radial-gradient(900px 480px at 50% -10%,#2A1417 0%,#1A1014 62%);color:#fff;}
+.ft-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.ft-stat .n{font-size:44px;font-weight:800;letter-spacing:-1.5px;color:#FF7A52;line-height:1;}
+.ft-stat .l{font-size:14px;color:rgba(255,255,255,.72);margin-top:12px;line-height:1.45;}
+.ft-relgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.ft-relcard{background:#fff;border:1px solid #EFE2E3;border-radius:18px;padding:26px;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s,border-color .3s;display:block;}
+.ft-relcard:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
+.ft-relic{width:44px;height:44px;border-radius:11px;background:#FFF0F0;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.ft-relcard h3{font-size:16.5px;font-weight:700;color:#1A1014;margin:0 0 6px;letter-spacing:-.2px;}
+.ft-relcard p{font-size:13.5px;line-height:1.55;color:#6C5A5D;margin:0;}
+.ft-acc{display:flex;flex-direction:column;gap:12px;max-width:860px;margin:0 auto;}
+.ft-ai{background:#fff;border:1.4px solid #EFE1E2;border-radius:16px;overflow:hidden;transition:box-shadow .2s,border-color .2s;}
+.ft-ai.on{border-color:#F4C7C8;box-shadow:0 14px 30px rgba(110,11,14,.07);}
+.ft-ah{display:flex;align-items:center;gap:15px;width:100%;background:none;border:0;font-family:inherit;cursor:pointer;padding:20px 22px;text-align:left;}
+.ft-ah:hover{background:#FFFAF9;}
+.ft-at{font-size:16px;font-weight:700;color:#1A1014;letter-spacing:-.2px;}
+.ft-acar{margin-left:auto;color:#C0989B;display:flex;transition:transform .24s cubic-bezier(.2,.7,.3,1);}
+.ft-ai.on .ft-acar{transform:rotate(180deg);color:#F23F44;}
+.ft-ab{padding:0 22px 22px 22px;}
+.ft-ab p{margin:0;font-size:15px;line-height:1.64;color:#5A4B4E;}
+@media(max-width:920px){
+  .ft-title{font-size:36px;letter-spacing:-1.2px;}
+  .h2{font-size:27px;}
+  .sec{padding:64px 22px;}
+  .ft-grid,.ft-split{grid-template-columns:1fr;gap:38px;}
+  .ft-split.rev .ft-splitcopy{order:0;}
+  .ft-cards,.ft-relgrid{grid-template-columns:1fr;}
+  .ft-stats{grid-template-columns:1fr 1fr;gap:32px 20px;}
+  .ft-chks{grid-template-columns:1fr;}
+}
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+<dc-import name="component-site-header" announcement="{{ announcement }}" announcement-cta="See all features" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+
+<section class="ft-hero"><div class="wrap">
+  <p class="ft-crumb reveal in"><a href="product-features.dc.html">Features</a><span class="sep">›</span><span>{{ category }}</span><span class="sep">›</span><span>{{ title }}</span></p>
+  <div class="ft-grid">
+    <div>
+      <span class="ft-tag reveal in"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>{{ tag }}</span>
+      <h1 class="ft-title reveal in">{{ title }}</h1>
+      <p class="ft-lede reveal in">{{ lede }}</p>
+      <div class="ft-cta reveal in"><dc-import name="component-cta-button" label="Try for free" href="#" variant="primary" size="lg" icon="arrow" magnetic="true" hint-size="170px,56px"></dc-import><dc-import name="component-cta-button" label="Book a demo" href="company-contact.dc.html" variant="secondary" size="lg" icon="none" hint-size="165px,56px"></dc-import></div>
+      <div class="ft-ticks reveal in"><span class="tick"><b class="tk">✓</b>Free 7-day trial</span><span class="tick"><b class="tk">✓</b>No credit card required</span></div>
+    </div>
+    <div class="ft-mock reveal in">
+      <div class="ft-mocktop"><span class="ft-mc" style="background:#FF5F57"></span><span class="ft-mc" style="background:#FEBC2E"></span><span class="ft-mc" style="background:#28C840"></span></div>
+      <div class="ft-mockslot"><image-slot id="ft-hero-shot" style="width:100%;height:100%;" shape="rect" fit="cover" placeholder="{{ heroShot }}"></image-slot></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" style="background:#FBF3EE;"><div class="wrap">
+  <div class="ft-sh"><p class="eyebrow reveal">{{ capsEyebrow }}<b>.</b></p><h2 class="h2 reveal" style="transition-delay:.04s">{{ capsHeading }}</h2></div>
+  <div class="ft-cards">
+    <sc-for list="{{ capabilities }}" as="c" hint-placeholder-count="6">
+      <div class="ft-card reveal"><span class="ft-cic">{{ c.icon }}</span><h3>{{ c.name }}</h3><p>{{ c.desc }}</p></div>
+    </sc-for>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="ft-split">
+    <div class="ft-splitcopy">
+      <p class="eyebrow reveal">{{ splitAEyebrow }}<b>.</b></p>
+      <h2 class="h2 reveal" style="transition-delay:.04s">{{ splitAHeading }}</h2>
+      <p class="lead reveal" style="transition-delay:.08s;margin-top:18px;">{{ splitABody }}</p>
+      <div class="ft-chks reveal" style="transition-delay:.12s">
+        <sc-for list="{{ splitAPoints }}" as="p" hint-placeholder-count="4"><div class="chk"><span class="chki"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>{{ p }}</div></sc-for>
+      </div>
+    </div>
+    <div class="ft-panel reveal" style="transition-delay:.06s"><div class="ft-panelslot"><image-slot id="ft-split-a" style="width:100%;height:100%;" shape="rect" fit="cover" placeholder="{{ splitAShot }}"></image-slot></div></div>
+  </div>
+</div></section>
+
+<section class="sec ft-statband"><div class="wrap">
+  <div class="ft-sh ctr" style="max-width:640px;"><p class="eyebrow reveal" style="color:#FF9C7A;">{{ statEyebrow }}<b style="color:#FF7A52;">.</b></p><h2 class="h2 reveal" style="color:#fff;transition-delay:.04s">{{ statHeading }}</h2></div>
+  <div class="ft-stats">
+    <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+      <div class="ft-stat reveal"><div class="n">{{ s.n }}</div><div class="l">{{ s.l }}</div></div>
+    </sc-for>
+  </div>
+</div></section>
+
+<section class="sec" style="background:#FBF3EE;"><div class="wrap">
+  <div class="ft-split rev">
+    <div class="ft-splitcopy">
+      <p class="eyebrow reveal">{{ splitBEyebrow }}<b>.</b></p>
+      <h2 class="h2 reveal" style="transition-delay:.04s">{{ splitBHeading }}</h2>
+      <p class="lead reveal" style="transition-delay:.08s;margin-top:18px;">{{ splitBBody }}</p>
+      <div class="ft-chks reveal" style="transition-delay:.12s">
+        <sc-for list="{{ splitBPoints }}" as="p" hint-placeholder-count="4"><div class="chk"><span class="chki"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>{{ p }}</div></sc-for>
+      </div>
+    </div>
+    <div class="ft-panel reveal" style="transition-delay:.06s"><div class="ft-panelslot"><image-slot id="ft-split-b" style="width:100%;height:100%;" shape="rect" fit="cover" placeholder="{{ splitBShot }}"></image-slot></div></div>
+  </div>
+</div></section>
+
+<dc-import name="component-security-section" eyebrow="Security &amp; compliance" heading="Enterprise-grade security by default" sub="SOC 2 Type II, ISO 27001 and GDPR compliance, granular admin controls and a full audit trail — so every assessment is defensible." home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+
+<sc-if value="{{ showFaq }}" hint-placeholder-val="{{ true }}"><section class="sec" style="background:#FBF3EE;"><div class="wrap">
+  <div class="ft-sh ctr"><p class="eyebrow reveal">FAQ<b>.</b></p><h2 class="h2 reveal" style="transition-delay:.04s">Frequently asked questions</h2></div>
+  <div class="ft-acc">
+    <sc-for list="{{ faq }}" as="f" hint-placeholder-count="5">
+      <div class="ft-ai {{ f.openCls }} reveal"><button class="ft-ah" onClick="{{ f.onToggle }}"><span class="ft-at">{{ f.q }}</span><span class="ft-acar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></span></button><sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}"><div class="ft-ab"><p>{{ f.a }}</p></div></sc-if></div>
+    </sc-for>
+  </div>
+</div></section></sc-if>
+
+<sc-if value="{{ showRelated }}" hint-placeholder-val="{{ true }}"><section class="sec"><div class="wrap">
+  <div class="ft-sh ctr"><p class="eyebrow reveal">More features<b>.</b></p><h2 class="h2 reveal" style="transition-delay:.04s">Explore the rest of the platform</h2></div>
+  <div class="ft-relgrid">
+    <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">
+      <a class="ft-relcard reveal" href="product-features-detail.dc.html"><span class="ft-relic">{{ r.icon }}</span><h3>{{ r.name }}</h3><p>{{ r.desc }}</p></a>
+    </sc-for>
+  </div>
+</div></section></sc-if>
+
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900},&quot;pageData&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;object&quot;},&quot;showFaq&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showRelated&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  state = { open: {} };
+
+  data = {
+    announcement: 'New — real-time proctoring flags on every assessment',
+    category: 'Assessment integrity',
+    tag: 'Integrity & proctoring',
+    title: 'Anti-cheating & proctoring',
+    lede: "Keep every assessment fair and defensible. Full-screen detection, webcam snapshots, plagiarism checks and IP logging catch dishonesty in real time — so the scores you shortlist on are the scores you can trust.",
+    heroShot: 'Proctoring dashboard — live candidate flags',
+    capsEyebrow: 'What you get',
+    capsHeading: 'Six layers of integrity, on by default',
+    capabilities: [
+      { ic: 'monitor', name: 'Full-screen detection', desc: 'Candidates are locked to the assessment window. Every tab switch or exit is timestamped and surfaced in the report.' },
+      { ic: 'camera', name: 'Webcam snapshots', desc: 'Periodic image capture verifies the person taking the test is the person you invited — no intrusive video streaming required.' },
+      { ic: 'copy', name: 'Copy-paste blocking', desc: 'Paste is disabled on open-ended and coding questions, and pasted content is flagged when it does slip through.' },
+      { ic: 'search', name: 'Plagiarism detection', desc: 'Free-text and code answers are compared against a large corpus and each other to catch copied or AI-generated work.' },
+      { ic: 'globe', name: 'IP & location logging', desc: 'Multiple candidates from one IP, or unexpected locations, are highlighted so you can investigate volume fraud.' },
+      { ic: 'clock', name: 'Question timers', desc: 'Per-question and full-test limits keep everyone on a level field and make lookup-heavy answers obvious.' }
+    ],
+    splitAEyebrow: 'In the report',
+    splitAHeading: 'Every flag, in plain English',
+    splitABody: "You don't get a wall of raw logs. Testlify rolls proctoring signals into a single integrity summary per candidate — green, amber or red — with the evidence one click away, so recruiters act fast and defensibly.",
+    splitAPoints: ['Single integrity score per candidate', 'Timestamped event timeline', 'Snapshot gallery inline', 'Exportable for compliance review'],
+    splitAShot: 'Candidate integrity summary card',
+    statEyebrow: 'Proven at scale',
+    statHeading: 'Integrity you can defend to legal',
+    stats: [
+      { n: '5M+', l: 'candidates assessed under proctoring' },
+      { n: 'SOC 2', l: 'Type II certified data handling' },
+      { n: '13+', l: 'question formats, all proctorable' },
+      { n: 'EEOC', l: 'defensible, consistent criteria' }
+    ],
+    splitBEyebrow: 'Candidate-friendly',
+    splitBHeading: 'Fair without feeling like surveillance',
+    splitBBody: "Heavy-handed proctoring wrecks completion rates. Testlify keeps integrity lightweight — no downloads, no screen-share demands — so candidates finish and you keep a 94% satisfaction score while still catching bad actors.",
+    splitBPoints: ['No plugin or download to install', 'Works on any modern browser', 'Clear consent before the test', '94% candidate satisfaction'],
+    splitBShot: 'Candidate assessment start screen',
+    faq: [
+      { q: 'Does proctoring slow candidates down?', a: 'No. Detection runs quietly in the browser with no plugin or download. Candidates take the test as normal; the signals are collected in the background and surfaced only to you.' },
+      { q: 'Is webcam monitoring required?', a: 'It is optional and configurable per assessment. You can run snapshot-based verification, disable the camera entirely, or require it only for high-stakes roles.' },
+      { q: 'How does plagiarism detection work?', a: 'Open-ended and coding answers are compared against a large reference corpus and against other candidates in your pipeline, with likely AI-generated text flagged for review.' },
+      { q: 'Is this compliant with hiring regulations?', a: 'Yes. Proctoring applies the same criteria to every candidate and produces an exportable audit trail, keeping decisions EEOC-defensible and GDPR-compliant.' },
+      { q: 'Can I turn specific checks off?', a: 'Every layer — full-screen lock, snapshots, copy-paste blocking, IP logging and timers — is toggled independently per assessment so integrity matches the stakes of the role.' }
+    ],
+    related: [
+      { ic: 'file', name: 'Custom question types', desc: '13+ formats from coding to video, so every skill is measured the right way.' },
+      { ic: 'chart', name: 'Reporting & analytics', desc: 'Benchmarked scorecards and pipeline insights that make shortlisting objective.' },
+      { ic: 'plug', name: 'ATS integrations', desc: '100+ native connections so results flow straight into your existing workflow.' }
+    ]
+  };
+
+  mkIcon(key) {
+    const S = (...ch) => React.createElement('svg', { width: 22, height: 22, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.9, strokeLinecap: 'round', strokeLinejoin: 'round' }, ch);
+    const P = (d, i) => React.createElement('path', { key: 'p' + (i || 0), d });
+    const R = (x, y, w, h, rx, i) => React.createElement('rect', { key: 'r' + (i || 0), x, y, width: w, height: h, rx });
+    const C = (cx, cy, r, i) => React.createElement('circle', { key: 'c' + (i || 0), cx, cy, r });
+    switch (key) {
+      case 'monitor': return S(R(2, 3, 20, 14, 2, 1), P('M8 21h8M12 17v4', 2));
+      case 'camera': return S(P('M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z', 1), C(12, 13, 4, 2));
+      case 'copy': return S(R(9, 9, 13, 13, 2, 1), P('M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1', 2));
+      case 'search': return S(C(11, 11, 8, 1), P('M21 21l-4.3-4.3', 2));
+      case 'globe': return S(C(12, 12, 10, 1), P('M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20', 2));
+      case 'clock': return S(C(12, 12, 9, 1), P('M12 7v5l3 2', 2));
+      case 'file': return S(P('M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z', 1), P('M14 2v6h6M8 13h8M8 17h8', 2));
+      case 'chart': return S(P('M3 3v18h18', 1), P('M7 14l4-4 3 3 5-6', 2));
+      case 'plug': return S(P('M9 2v6M15 2v6M6 8h12v3a6 6 0 0 1-12 0zM12 17v5', 1));
+      default: return S(C(12, 12, 9, 1));
+    }
+  }
+
+  mkAcc(arr, prefix) {
+    const open = this.state.open || {};
+    return arr.map((it, i) => {
+      const id = prefix + i;
+      const isOpen = !!open[id];
+      return Object.assign({}, it, {
+        key: id, open: isOpen, openCls: isOpen ? 'on' : '',
+        onToggle: () => this.setState(s => ({ open: Object.assign({}, s.open, { [id]: !s.open[id] }) }))
+      });
+    });
+  }
+
+  componentDidMount() {
+    const sweep = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.reveal:not(.in)').forEach(n => {
+        if (n.getBoundingClientRect().top < vh + 600) {
+          n.classList.add('in');
+          const _d = (parseFloat(n.style.transitionDelay || '0') || 0) * 1000;
+          n.style.transition = 'none';
+          const _dur = 700, _sy = 26; let _st = null;
+          const _tick = (t) => { if (_st === null) _st = t; const p = Math.min(1, (t - _st) / _dur); const e = 1 - Math.pow(1 - p, 3); n.style.opacity = String(e); n.style.transform = 'translateY(' + (_sy * (1 - e)).toFixed(2) + 'px)'; if (p < 1) requestAnimationFrame(_tick); else { n.style.opacity = '1'; n.style.transform = 'none'; } };
+          setTimeout(() => requestAnimationFrame(_tick), _d);
+        }
+      });
+    };
+    this._sweep = sweep;
+    window.addEventListener('scroll', sweep, { passive: true });
+    window.addEventListener('resize', sweep);
+    [0, 150, 400, 800, 1500].forEach(t => setTimeout(sweep, t));
+    requestAnimationFrame(sweep);
+    try { this._mo = new MutationObserver(() => requestAnimationFrame(sweep)); this._mo.observe(document.body, { childList: true, subtree: true }); } catch (e) {}
+  }
+  componentWillUnmount() { if (this._sweep) { window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep); } if (this._mo) this._mo.disconnect(); }
+
+  renderVals() {
+    const d = Object.assign({}, this.data, this.props.pageData || {});
+    return {
+      announcement: d.announcement,
+      category: d.category, tag: d.tag, title: d.title, lede: d.lede, heroShot: d.heroShot,
+      capsEyebrow: d.capsEyebrow, capsHeading: d.capsHeading,
+      capabilities: d.capabilities.map((c, i) => ({ key: 'cap' + i, name: c.name, desc: c.desc, icon: this.mkIcon(c.ic) })),
+      splitAEyebrow: d.splitAEyebrow, splitAHeading: d.splitAHeading, splitABody: d.splitABody, splitAPoints: d.splitAPoints, splitAShot: d.splitAShot,
+      statEyebrow: d.statEyebrow, statHeading: d.statHeading, stats: d.stats.map((s, i) => ({ key: 'st' + i, n: s.n, l: s.l })),
+      splitBEyebrow: d.splitBEyebrow, splitBHeading: d.splitBHeading, splitBBody: d.splitBBody, splitBPoints: d.splitBPoints, splitBShot: d.splitBShot,
+      faq: this.mkAcc(d.faq, 'fq'),
+      related: d.related.map((r, i) => ({ key: 'rel' + i, name: r.name, desc: r.desc, icon: this.mkIcon(r.ic) })),
+      showFaq: this.props.showFaq ?? true,
+      showRelated: this.props.showRelated ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

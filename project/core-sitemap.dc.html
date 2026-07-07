@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FDF8F4;}
+.chip{display:inline-flex;align-items:center;gap:6px;background:#FDFAF8;border:1px solid #F0E2E3;border-radius:999px;padding:3px 12px 3px 9px;font-size:12.5px;color:#1A1014;white-space:nowrap;}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.d-b{background:#2A6FDB;}.d-r{background:#8A5A3C;}.d-t{background:#E14B50;}.d-a{background:#22A05B;}
+.grp{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+.glabel{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A7A7D;margin:12px 0 6px;}
+.card{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:22px 24px;}
+.card h2{font-size:16px;font-weight:700;margin:0 0 4px;color:#F23F44;}
+.card .sub{font-size:12px;color:#A9999C;margin-bottom:12px;}
+a.chip{text-decoration:none;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s;}
+a.chip:hover{border-color:#FBD0D1;box-shadow:0 6px 16px rgba(110,11,14,.08);transform:translateY(-1px);}
+</style>
+</helmet>
+<div style="font-family:'Poppins',sans-serif;color:#1A1014;min-height:100vh">
+  <div style="max-width:1200px;margin:0 auto;padding:56px 40px 80px">
+
+    <div style="margin-bottom:24px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.16em;color:#8A7A7D;text-transform:uppercase;margin-bottom:8px">Site structure · restructured IA<span style="color:#F23F44">.</span></div>
+      <h1 style="font-size:34px;font-weight:800;margin:0 0 8px;line-height:1.1;letter-spacing:-1px">Testlify sitemap</h1>
+      <p style="font-size:15px;color:#5A4B4E;margin:0 0 4px;max-width:720px">Adopted the restructured IA (Option 2): 5-item nav — <b>Product · Library · Solutions · Pricing · Resources</b>. Company pages live in the footer. Big merges collapse ~120 live pages into ~60 designed pages.</p>
+    </div>
+
+    <div style="display:flex;gap:24px;flex-wrap:wrap;margin:14px 0 26px">
+      <div><span style="font-size:22px;font-weight:800;color:#1A1014">31</span><span style="font-size:12px;color:#5A4B4E;margin-left:6px">pages built</span></div>
+      <div><span style="font-size:22px;font-weight:800;color:#B9A7AA">15</span><span style="font-size:12px;color:#5A4B4E;margin-left:6px">templates (data-driven)</span></div>
+    </div>
+
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;font-size:12.5px;color:#5A4B4E;align-items:center">
+      <span style="display:inline-flex;align-items:center;gap:6px"><span class="dot d-b"></span>Built</span>
+      <span style="display:inline-flex;align-items:center;gap:6px"><span class="dot d-r"></span>Template (data-driven)</span>
+      <span style="display:inline-flex;align-items:center;gap:6px"><span class="dot d-t"></span>Pending</span>
+      <span style="display:inline-flex;align-items:center;gap:6px"><span class="dot d-a"></span>Audited</span>
+      <span style="color:#8A7A7D">— every chip links to its live page</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:16px;align-items:start">
+
+      <div class="card">
+        <h2>Core &amp; nav</h2>
+        <div class="sub">Top level: Product · Library · Solutions · Pricing · Resources</div>
+        <div class="grp">
+          <a class="chip" href="core-home.dc.html"><span class="dot d-a"></span>Home</a>
+          <a class="chip" href="core-pricing.dc.html"><span class="dot d-a"></span>Pricing</a>
+          <a class="chip" href="core-compare.dc.html"><span class="dot d-b"></span>Compare plans</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Product</h2>
+        <div class="sub">The product story: screen → assess → interview → hire</div>
+        <div class="grp">
+          <a class="chip" href="product-testlify-ai.dc.html"><span class="dot d-b"></span>Testlify AI <span style="color:#A9999C">(+platform hub)</span></a>
+          <a class="chip" href="product-ai-resume-screener.dc.html"><span class="dot d-b"></span>AI resume screener</a>
+          <a class="chip" href="product-skill-assessments.dc.html"><span class="dot d-b"></span>Skill assessments</a>
+          <a class="chip" href="library-interviews.dc.html"><span class="dot d-b"></span>AI interviews</a>
+          <a class="chip" href="product-video-interviewing.dc.html"><span class="dot d-b"></span>Video interviewing <span style="color:#A9999C">(distinct page)</span></a>
+          <a class="chip" href="product-features.dc.html"><span class="dot d-b"></span>Features <span style="color:#A9999C">(1 page ← 27)</span></a>
+          <a class="chip" href="product-features-detail.dc.html"><span class="dot d-r"></span>Features detail <span style="color:#A9999C">(1 template → all features)</span></a>
+          <a class="chip" href="product-integrations.dc.html"><span class="dot d-b"></span>ATS integrations</a>
+          <a class="chip" href="product-why-it-works.dc.html"><span class="dot d-b"></span>Why it works <span style="color:#A9999C">(science + trust)</span></a>
+          <a class="chip" href="product-live-demo.dc.html"><span class="dot d-b"></span>Live product demo</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Library</h2>
+        <div class="sub">Tests + interviews in one catalogue; test-type solution pages fold into filters</div>
+        <div class="grp">
+          <a class="chip" href="library-tests.dc.html"><span class="dot d-b"></span>Test library</a>
+          <a class="chip" href="library-tests-detail.dc.html"><span class="dot d-r"></span>Test library detail</a>
+          <a class="chip" href="library-interviews.dc.html"><span class="dot d-b"></span>Interview library</a>
+          <a class="chip" href="library-interviews-detail.dc.html"><span class="dot d-r"></span>Interview library detail</a>
+          <a class="chip" href="library-build-your-own.dc.html"><span class="dot d-b"></span>Build your own</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Solutions</h2>
+        <div class="sub">Hub + pages, 4 groups (test-type retained)</div>
+        <div class="grp"><a class="chip" href="solution-index.dc.html"><span class="dot d-b"></span>Solutions hub</a></div>
+        <div class="glabel">By use case (10)</div>
+        <div class="grp"><a class="chip" href="solution-usecase-template.dc.html"><span class="dot d-b"></span>Use-case page <span style="color:#A9999C">(1 template → Volume, Remote, Campus…)</span></a></div>
+        <div class="glabel">By industry (13)</div>
+        <div class="grp"><a class="chip" href="solution-industry-template.dc.html"><span class="dot d-b"></span>Industry page <span style="color:#A9999C">(1 template → IT, SaaS, Healthcare…)</span></a></div>
+        <div class="glabel">By company size (5)</div>
+        <div class="grp"><a class="chip" href="solution-company-template.dc.html"><span class="dot d-b"></span>Company-size page <span style="color:#A9999C">(1 template → Startups, Mid-market…)</span></a></div>
+        <div class="glabel">By test type (retained)</div>
+        <div class="grp"><a class="chip" href="solution-testtype-template.dc.html"><span class="dot d-b"></span>Test-type page <span style="color:#A9999C">(1 template → Coding, Cognitive…)</span></a></div>
+      </div>
+
+      <div class="card">
+        <h2>Resources</h2>
+        <div class="sub">Content &amp; tools only; programs merged; ebooks/podcasts fold into Blog</div>
+        <div class="grp">
+          <a class="chip" href="resource-blog.dc.html"><span class="dot d-b"></span>Blog</a>
+          <a class="chip" href="resource-blog-detail.dc.html"><span class="dot d-r"></span>Blog detail</a>
+        </div>
+        <div class="glabel">Tools</div>
+        <div class="grp">
+          <a class="chip" href="resource-tools.dc.html"><span class="dot d-b"></span>HR tools landing</a>
+          <a class="chip" href="resource-tools-detail.dc.html"><span class="dot d-r"></span>HR tools detail <span style="color:#A9999C">(1 template → all calculators)</span></a>
+          <a class="chip" href="resource-jd-templates.dc.html"><span class="dot d-b"></span>JD templates</a>
+        </div>
+        <div class="glabel">Learn &amp; decide</div>
+        <div class="grp">
+          <a class="chip" href="resource-hiring-guides.dc.html"><span class="dot d-b"></span>Hiring guides landing</a>
+          <a class="chip" href="resource-hiring-guides-detail.dc.html"><span class="dot d-r"></span>Hiring guides detail <span style="color:#A9999C">(1 template → ~90 role guides)</span></a>
+          <a class="chip" href="resource-glossary.dc.html"><span class="dot d-b"></span>HR glossary archive <span style="color:#A9999C">(500+ terms)</span></a>
+          <a class="chip" href="resource-glossary-detail.dc.html"><span class="dot d-r"></span>Glossary detail <span style="color:#A9999C">(1 template → all terms)</span></a>
+          <a class="chip" href="resource-competitors.dc.html"><span class="dot d-b"></span>Competitors landing</a>
+          <a class="chip" href="resource-competitors-detail.dc.html"><span class="dot d-r"></span>Competitors detail</a>
+          <a class="chip" href="resource-partners.dc.html"><span class="dot d-b"></span>Partners <span style="color:#A9999C">(3 programs merged)</span></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Company <span style="font-weight:500;font-size:12px;color:#A9999C">· footer only</span></h2>
+        <div class="sub">Not in top nav \u2014 destinations from the footer</div>
+        <div class="grp">
+          <a class="chip" href="company-about.dc.html"><span class="dot d-b"></span>About <span style="color:#A9999C">(+leadership, 1 page)</span></a>
+          <a class="chip" href="company-customers.dc.html"><span class="dot d-b"></span>Customers</a>
+          <a class="chip" href="company-customers-detail.dc.html"><span class="dot d-r"></span>Case study detail <span style="color:#A9999C">(1 template → all stories)</span></a>
+          <a class="chip" href="company-careers.dc.html"><span class="dot d-b"></span>Careers</a>
+          <a class="chip" href="company-contact.dc.html"><span class="dot d-b"></span>Contact <span style="color:#A9999C">(+book a demo)</span></a>
+        </div>
+        <div class="glabel">Trust center \u2014 subpages become tabs</div>
+        <div class="grp">
+          <a class="chip" href="company-trust.dc.html"><span class="dot d-b"></span>Trust landing</a>
+          <a class="chip" href="company-trust-compliances.dc.html"><span class="dot d-b"></span>Compliances</a>
+          <a class="chip" href="company-trust-center.dc.html"><span class="dot d-b"></span>Trust center <span style="color:#A9999C">(Data · Privacy · Security tabs)</span></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Legal &amp; policy</h2>
+        <div class="sub">All 13 policies covered by one legal hub</div>
+        <div class="grp"><a class="chip" href="company-legal.dc.html"><span class="dot d-b"></span>Legal hub</a></div>
+      </div>
+
+      <div class="card">
+        <h2>Shared components <span style="font-weight:500;font-size:12px;color:#A9999C">· imported, not copied</span></h2>
+        <div class="sub">Reusable building blocks imported across pages via dc-import</div>
+        <div class="grp">
+          <a class="chip" href="component-site-header.dc.html"><span class="dot d-b"></span>Site header <span style="color:#A9999C">(mega-menu)</span></a>
+          <a class="chip" href="component-site-footer.dc.html"><span class="dot d-b"></span>Site footer</a>
+          <a class="chip" href="component-cta-button.dc.html"><span class="dot d-b"></span>CTA button</a>
+          <a class="chip" href="component-faq.dc.html"><span class="dot d-b"></span>FAQ accordion</a>
+          <a class="chip" href="component-security-section.dc.html"><span class="dot d-b"></span>Security section</a>
+          <a class="chip" href="component-use-case-card.dc.html"><span class="dot d-b"></span>Use-case card</a>
+          <a class="chip" href="component-section-templates.dc.html"><span class="dot d-b"></span>Section templates <span style="color:#A9999C">(dev reference)</span></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Page templates <span style="font-weight:500;font-size:12px;color:#A9999C">· data-driven</span></h2>
+        <div class="sub">One template renders every instance in its family — edit data, not layout</div>
+        <div class="glabel">Product</div>
+        <div class="grp">
+          <a class="chip" href="product-features-detail.dc.html"><span class="dot d-r"></span>Feature detail</a>
+        </div>
+        <div class="glabel">Company</div>
+        <div class="grp">
+          <a class="chip" href="company-customers-detail.dc.html"><span class="dot d-r"></span>Case study</a>
+        </div>
+        <div class="glabel">Solutions</div>
+        <div class="grp">
+          <a class="chip" href="solution-usecase-template.dc.html"><span class="dot d-r"></span>Use-case</a>
+          <a class="chip" href="solution-industry-template.dc.html"><span class="dot d-r"></span>Industry</a>
+          <a class="chip" href="solution-company-template.dc.html"><span class="dot d-r"></span>Company size</a>
+          <a class="chip" href="solution-testtype-template.dc.html"><span class="dot d-r"></span>Test type</a>
+        </div>
+        <div class="glabel">Resources</div>
+        <div class="grp">
+          <a class="chip" href="resource-list-template.dc.html"><span class="dot d-r"></span>List / index</a>
+          <a class="chip" href="resource-detail-template.dc.html"><span class="dot d-r"></span>Article / detail</a>
+          <a class="chip" href="resource-hiring-guides-detail.dc.html"><span class="dot d-r"></span>Hiring guide detail</a>
+          <a class="chip" href="resource-tools-detail.dc.html"><span class="dot d-r"></span>Tool / calculator</a>
+          <a class="chip" href="resource-competitors-detail.dc.html"><span class="dot d-r"></span>Competitor</a>
+          <a class="chip" href="resource-glossary-detail.dc.html"><span class="dot d-r"></span>Glossary term</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:26px;background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:22px 24px;font-size:13px;color:#5A4B4E;line-height:1.8">
+      <b style="color:#1A1014">Merges applied to the IA:</b>
+      Testlify AI + platform hub · AI interviews + video interviewing · Science + Trust → “Why it works” · 27 feature pages → 1 Features page · About + leadership (13 → 1) · Trust subpages → tabs · 3 programs → Partners · ebooks + podcasts → Blog · contact + book-a-demo → 1.
+      <br><br>
+      <b style="color:#1A1014">Header &amp; footer now match this IA.</b> Pre-change versions saved to <code>backup pages/Site Header -pre-IA-.dc.html</code> and <code>Site Footer -pre-IA-.dc.html</code>.
+      <br><br>
+      <b style="color:#1A1014">Naming convention.</b> Every detail/template page keeps its landing's full name + <code>-detail</code> — <code>library-tests</code> → <code>library-tests-detail</code>, <code>product-features</code> → <code>product-features-detail</code>, <code>company-customers</code> → <code>company-customers-detail</code>, and so on — so the parent-child relation reads at a glance. The multi-category <code>solution-*-template</code> pages and the generic <code>resource-list-template</code> / <code>resource-detail-template</code> keep their own names (they aren't single-landing details).
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+a{text-decoration:none;color:#F23F44;}
+a:hover{color:#DC3137;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+.sec{padding:88px 28px;}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 16px;}
+.eyebrow b{color:#F23F44;font-weight:700;}
+.h2{font-size:32px;line-height:1.14;font-weight:800;letter-spacing:-1px;margin:0;color:#1A1014;}
+.lead{font-size:18px;line-height:1.62;color:#5A4B4E;margin:0;}
+.cs-hero{background:radial-gradient(1000px 520px at 80% -14%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff;padding:46px 28px 0;}
+.cs-crumb{font-size:13px;color:#9A878A;font-weight:600;margin:0 0 30px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.cs-crumb .sep{color:#D6C4C7;}
+.cs-logo{width:150px;height:52px;margin-bottom:24px;}
+.cs-h1{font-size:44px;line-height:1.1;font-weight:800;letter-spacing:-1.6px;margin:0;max-width:820px;}
+.cs-sub{font-size:19px;line-height:1.55;color:#5A4B4E;margin:20px 0 0;max-width:680px;}
+.cs-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:48px;border:1px solid #F0E2E3;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 20px 46px rgba(110,11,14,.08);}
+.cs-metric{padding:30px 30px;border-right:1px solid #F4E7E8;}
+.cs-metric:last-child{border-right:0;}
+.cs-metric .n{font-size:40px;font-weight:800;letter-spacing:-1.4px;color:#F23F44;line-height:1;}
+.cs-metric .l{font-size:14px;color:#6C5A5D;margin-top:11px;line-height:1.45;}
+.cs-body{display:grid;grid-template-columns:1fr 336px;gap:64px;align-items:start;}
+.cs-block{margin-bottom:44px;}
+.cs-block:last-child{margin-bottom:0;}
+.cs-block h2{font-size:24px;font-weight:800;letter-spacing:-.6px;color:#1A1014;margin:0 0 16px;}
+.cs-block p{font-size:16.5px;line-height:1.72;color:#5A4B4E;margin:0 0 15px;}
+.cs-block p:last-child{margin-bottom:0;}
+.cs-quote{background:#FBF3EE;border-radius:20px;padding:38px 40px;margin:8px 0 44px;}
+.cs-quote p{font-size:23px;line-height:1.42;font-weight:600;letter-spacing:-.4px;color:#1A1014;margin:0 0 22px;}
+.cs-qby{display:flex;align-items:center;gap:14px;}
+.cs-qav{width:48px;height:48px;border-radius:50%;overflow:hidden;flex:none;background:#F0E2E3;}
+.cs-qn{font-size:15px;font-weight:700;color:#1A1014;}
+.cs-qr{font-size:13.5px;color:#8A7A7D;}
+.cs-card{position:sticky;top:120px;background:#fff;border:1px solid #EFE2E3;border-radius:20px;padding:28px;box-shadow:0 22px 50px rgba(110,11,14,.09);}
+.cs-card h3{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8A7A7D;margin:0 0 18px;}
+.cs-facts{list-style:none;margin:0 0 22px;padding:0;}
+.cs-facts li{padding:13px 0;border-bottom:1px solid #F4E7E8;}
+.cs-facts li:last-child{border-bottom:0;}
+.cs-facts .k{font-size:12.5px;color:#9A878A;font-weight:500;margin-bottom:3px;}
+.cs-facts .v{font-size:15px;color:#1A1014;font-weight:700;}
+.cs-prod{display:flex;flex-wrap:wrap;gap:8px;}
+.cs-prodchip{font-size:12.5px;font-weight:600;color:#46383C;background:#FFF0EF;border:1px solid #FCE0DE;padding:6px 12px;border-radius:100px;}
+.cs-card .btn{margin-top:22px;}
+.cs-relgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.cs-relcard{background:#fff;border:1px solid #EFE2E3;border-radius:18px;padding:26px;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s,border-color .3s;display:block;}
+.cs-relcard:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
+.cs-relmetric{font-size:22px;font-weight:800;letter-spacing:-.6px;color:#F23F44;margin-bottom:12px;}
+.cs-rellogo{font-size:14px;font-weight:700;color:#1A1014;margin-bottom:8px;}
+.cs-relcard p{font-size:13.5px;line-height:1.55;color:#6C5A5D;margin:0;}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.cs-sh{max-width:640px;margin:0 auto 40px;text-align:center;}
+@media(max-width:920px){
+  .cs-h1{font-size:33px;letter-spacing:-1px;}
+  .h2{font-size:26px;}
+  .sec{padding:60px 22px;}
+  .cs-metrics{grid-template-columns:1fr;}
+  .cs-metric{border-right:0;border-bottom:1px solid #F4E7E8;}
+  .cs-metric:last-child{border-bottom:0;}
+  .cs-body{grid-template-columns:1fr;gap:40px;}
+  .cs-card{position:static;}
+  .cs-relgrid{grid-template-columns:1fr;}
+}
+</style>
+</helmet>
+<dc-import name="component-site-header" announcement="{{ announcement }}" announcement-cta="Read customer stories" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+
+<section class="cs-hero"><div class="wrap">
+  <p class="cs-crumb reveal in"><a href="company-customers.dc.html">Customers</a><span class="sep">›</span><span>{{ industry }}</span><span class="sep">›</span><span>{{ company }}</span></p>
+  <div class="cs-logo reveal in"><image-slot id="cs-logo" style="width:100%;height:100%;" shape="rect" fit="contain" placeholder="{{ company }} logo"></image-slot></div>
+  <h1 class="cs-h1 reveal in">{{ headline }}</h1>
+  <p class="cs-sub reveal in">{{ subhead }}</p>
+  <div class="cs-metrics reveal in">
+    <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="3">
+      <div class="cs-metric"><div class="n">{{ m.n }}</div><div class="l">{{ m.l }}</div></div>
+    </sc-for>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="cs-body">
+    <div>
+      <sc-for list="{{ story }}" as="b" hint-placeholder-count="3">
+        <div class="cs-block reveal"><h2>{{ b.heading }}</h2><sc-for list="{{ b.paras }}" as="p" hint-placeholder-count="2"><p>{{ p }}</p></sc-for></div>
+      </sc-for>
+      <div class="cs-quote reveal">
+        <p>{{ quote }}</p>
+        <div class="cs-qby"><span class="cs-qav"><image-slot id="cs-quote-av" style="width:100%;height:100%;" shape="circle" fit="cover" placeholder="Photo"></image-slot></span><span><span class="cs-qn">{{ quoteName }}</span><br><span class="cs-qr">{{ quoteRole }}</span></span></div>
+      </div>
+      <sc-for list="{{ storyAfter }}" as="b" hint-placeholder-count="1">
+        <div class="cs-block reveal"><h2>{{ b.heading }}</h2><sc-for list="{{ b.paras }}" as="p" hint-placeholder-count="2"><p>{{ p }}</p></sc-for></div>
+      </sc-for>
+    </div>
+    <aside class="cs-card reveal">
+      <h3>Company snapshot</h3>
+      <ul class="cs-facts">
+        <sc-for list="{{ facts }}" as="f" hint-placeholder-count="4"><li><div class="k">{{ f.k }}</div><div class="v">{{ f.v }}</div></li></sc-for>
+      </ul>
+      <div class="k" style="font-size:12.5px;color:#9A878A;font-weight:500;margin-bottom:10px;">Products used</div>
+      <div class="cs-prod"><sc-for list="{{ products }}" as="p" hint-placeholder-count="3"><span class="cs-prodchip">{{ p }}</span></sc-for></div>
+      <dc-import name="component-cta-button" label="Start your free trial" href="#" variant="primary" size="md" icon="arrow" hint-size="100%,52px"></dc-import>
+    </aside>
+  </div>
+</div></section>
+
+<sc-if value="{{ showRelated }}" hint-placeholder-val="{{ true }}"><section class="sec" style="background:#FBF3EE;"><div class="wrap">
+  <div class="cs-sh"><p class="eyebrow reveal">More stories<b>.</b></p><h2 class="h2 reveal" style="transition-delay:.04s">Teams hiring smarter with Testlify</h2></div>
+  <div class="cs-relgrid">
+    <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">
+      <a class="cs-relcard reveal" href="company-customers-detail.dc.html"><div class="cs-relmetric">{{ r.metric }}</div><div class="cs-rellogo">{{ r.company }}</div><p>{{ r.quote }}</p></a>
+    </sc-for>
+  </div>
+</div></section></sc-if>
+
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900},&quot;pageData&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;object&quot;},&quot;showRelated&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  data = {
+    announcement: 'See how Arch Advisory Group cut time-to-hire by 58%',
+    company: 'Arch Advisory Group',
+    industry: 'Professional services',
+    headline: 'How Arch Advisory Group replaced gut-feel screening with verified skills',
+    subhead: "A lean advisory team was spending days on phone screens and still mis-hiring. With Testlify, they built a skills-first shortlist in hours — and made every hire defensible.",
+    metrics: [
+      { n: '58%', l: 'less time-to-hire' },
+      { n: '3.4×', l: 'more qualified candidates shortlisted' },
+      { n: '92%', l: 'assessment completion rate' }
+    ],
+    facts: [
+      { k: 'Industry', v: 'Professional services' },
+      { k: 'Company size', v: '50–200 employees' },
+      { k: 'Location', v: 'Cape Town, South Africa' },
+      { k: 'Use case', v: 'Volume + specialist hiring' }
+    ],
+    products: ['Skill assessments', 'AI resume screener', 'Video interviews'],
+    story: [
+      { heading: 'The challenge', paras: [
+        "Arch Advisory Group hires across finance, consulting and operations, where a single wrong hire costs months of billable momentum. Their recruiters were manually reading hundreds of résumés per role, then running back-to-back phone screens to sort the pile.",
+        "The process was slow, subjective and impossible to defend. Two recruiters could rank the same candidate completely differently, and there was no consistent record of why anyone advanced." ] },
+      { heading: 'The solution', paras: [
+        "The team moved screening to the front of the funnel. Every applicant now takes a role-specific Testlify assessment before a human ever reads a résumé, and the AI resume screener ranks the rest against the same structured skill profile.",
+        "Recruiters review a single ranked shortlist with the evidence attached — scores, skill breakdowns and integrity flags — instead of a stack of PDFs. High-stakes roles add a short async video interview, scored against the same rubric." ] }
+    ],
+    quote: "\u201CWe replaced three rounds of gut-feel screening with one Testlify assessment. The AI shortlist is genuinely better than what we were producing by hand — and now every decision has evidence behind it.\u201D",
+    quoteName: 'Chrissie Blom',
+    quoteRole: 'Head of Talent, Arch Advisory Group',
+    storyAfter: [
+      { heading: 'The results', paras: [
+        "Within a quarter, time-to-hire dropped 58% and recruiters were shortlisting 3.4× more candidates who actually cleared later stages. Completion rates held at 92% because the assessments stayed short and candidate-friendly.",
+        "Most importantly, hiring managers stopped second-guessing the pipeline. Consistent, EEOC-defensible scoring meant every shortlist could be explained — to a hiring manager, to legal, or to the candidate." ] }
+    ],
+    related: [
+      { metric: '↓ 44% cost per hire', company: 'Finovo', quote: 'Structured assessments removed bias from our first round and widened our funnel.' },
+      { metric: '91% completion rate', company: 'Orbit Retail', quote: 'We hire seasonal staff at huge volume — Testlify keeps quality high without slowing us down.' },
+      { metric: '3.4× qualified hires', company: 'Vela Health', quote: 'Compliance loved the audit trail; recruiters loved the time it gave back.' }
+    ]
+  };
+
+  componentDidMount() {
+    const sweep = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.reveal:not(.in)').forEach(n => {
+        if (n.getBoundingClientRect().top < vh + 600) {
+          n.classList.add('in');
+          const _d = (parseFloat(n.style.transitionDelay || '0') || 0) * 1000;
+          n.style.transition = 'none';
+          const _dur = 700, _sy = 26; let _st = null;
+          const _tick = (t) => { if (_st === null) _st = t; const p = Math.min(1, (t - _st) / _dur); const e = 1 - Math.pow(1 - p, 3); n.style.opacity = String(e); n.style.transform = 'translateY(' + (_sy * (1 - e)).toFixed(2) + 'px)'; if (p < 1) requestAnimationFrame(_tick); else { n.style.opacity = '1'; n.style.transform = 'none'; } };
+          setTimeout(() => requestAnimationFrame(_tick), _d);
+        }
+      });
+    };
+    this._sweep = sweep;
+    window.addEventListener('scroll', sweep, { passive: true });
+    window.addEventListener('resize', sweep);
+    [0, 150, 400, 800, 1500].forEach(t => setTimeout(sweep, t));
+    requestAnimationFrame(sweep);
+    try { this._mo = new MutationObserver(() => requestAnimationFrame(sweep)); this._mo.observe(document.body, { childList: true, subtree: true }); } catch (e) {}
+  }
+  componentWillUnmount() { if (this._sweep) { window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep); } if (this._mo) this._mo.disconnect(); }
+
+  renderVals() {
+    const d = Object.assign({}, this.data, this.props.pageData || {});
+    return {
+      announcement: d.announcement,
+      company: d.company, industry: d.industry, headline: d.headline, subhead: d.subhead,
+      metrics: d.metrics.map((m, i) => ({ key: 'm' + i, n: m.n, l: m.l })),
+      facts: d.facts.map((f, i) => ({ key: 'f' + i, k: f.k, v: f.v })),
+      products: d.products,
+      story: d.story.map((b, i) => ({ key: 'b' + i, heading: b.heading, paras: b.paras })),
+      storyAfter: d.storyAfter.map((b, i) => ({ key: 'ba' + i, heading: b.heading, paras: b.paras })),
+      quote: d.quote, quoteName: d.quoteName, quoteRole: d.quoteRole,
+      related: d.related.map((r, i) => ({ key: 'r' + i, metric: r.metric, company: r.company, quote: r.quote })),
+      showRelated: this.props.showRelated ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>
