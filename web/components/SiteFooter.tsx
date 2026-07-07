@@ -46,7 +46,7 @@ const FOOTER_COLS: { heading: string; links: [string, string][] }[] = [
       ["Hiring guides", routes.resourcesHiringGuides],
       ["HR glossary", routes.resourcesGlossary],
       ["Success stories", routes.customers],
-      ["Compare alternatives", routes.pricing], // TODO(phase2): resource-competitors-detail (compare alternatives)
+      ["Compare alternatives", routes.resourcesCompetitors],
     ],
   },
   {

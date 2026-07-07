@@ -367,7 +367,7 @@ const RES: MenuTab[] = [
     subs: [
       { label: "Test library", d: "3,500+ validated tests across roles", href: routes.testLibrary },
       { label: "HR tools & calculators", d: "Cost per hire, time to hire & more", href: routes.resourcesTools },
-      { label: "Job description templates", d: "Role-ready JDs in minutes", href: routes.resources }, // TODO(phase2): job description templates
+      { label: "Job description templates", d: "Role-ready JDs in minutes", href: routes.resourcesJdTemplates },
       { label: "Interview question kits", d: "Structured, scorable prompts", href: routes.resources }, // TODO(phase2): interview question kits
       { label: "Skills mapping", d: "Map roles to measurable skills", href: routes.resources }, // TODO(phase2): skills mapping
     ],
