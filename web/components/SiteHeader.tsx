@@ -315,6 +315,25 @@ const SOL: MenuTab[] = [
       { label: "Non-profits & public sector", d: "Fair, defensible selection", href: routes.solutions },
     ],
   },
+  {
+    name: "By test type",
+    tabDesc: "Coding, cognitive, personality & more",
+    cta: "Browse the test library →",
+    ctaHref: routes.testLibrary,
+    icon: (
+      <>
+        <path d="M9 11l3 3L22 4" />
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+      </>
+    ),
+    subs: [
+      { label: "Coding tests", d: "Real-world dev challenges, 45+ languages", href: "/solutions/coding-tests" },
+      { label: "Cognitive ability", d: "Reasoning & problem-solving", href: "/solutions/coding-tests" },
+      { label: "Personality & behavioral", d: "Work style and culture fit", href: "/solutions/coding-tests" },
+      { label: "Language & communication", d: "Proficiency across 16+ languages", href: "/solutions/coding-tests" },
+      { label: "Role-based tests", d: "4,500+ job-specific assessments", href: "/solutions/coding-tests" },
+    ],
+  },
 ];
 
 const RES: MenuTab[] = [
