@@ -198,7 +198,7 @@ const CARDS: Card[] = [
       {
         glabel: "Resources",
         chips: [
-          { label: "List / index", href: routes.resources, status: "template" },
+          { label: "List / index", href: routes.blog, status: "template" },
           { label: "Article / detail", href: routes.blog, status: "template" },
           { label: "Hiring guide detail", href: routes.resourcesHiringGuides, status: "template" },
           { label: "Tool / calculator", href: routes.resourcesTools, status: "template" },

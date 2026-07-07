@@ -331,17 +331,17 @@ const RES: MenuTab[] = [
     ),
     subs: [
       { label: "Blog", d: "Hiring science, playbooks and product news", href: routes.blog },
-      { label: "Ebooks & guides", d: "Deep dives on skills-based hiring", href: routes.resources }, // TODO(phase2): resource-list-template (ebooks & guides)
+      { label: "Ebooks & guides", d: "Deep dives on skills-based hiring", href: routes.blog },
       { label: "HR glossary", d: "500+ hiring terms, defined", href: routes.resourcesGlossary },
-      { label: "Podcast", d: "Conversations with talent leaders", href: routes.resources }, // TODO(phase2): podcast
-      { label: "FAQ", d: "Quick answers on plans and platform", href: routes.resources }, // TODO(phase2): FAQ
+      { label: "Podcast", d: "Conversations with talent leaders", href: routes.blog },
+      { label: "FAQ", d: "Quick answers on plans and platform", href: routes.blog },
     ],
   },
   {
     name: "Templates & tools",
     tabDesc: "Ready-to-use hiring assets",
     cta: "Get free HR tools →",
-    ctaHref: routes.resources,
+    ctaHref: routes.resourcesTools,
     icon: (
       <>
         <rect x="3" y="3" width="7" height="7" />
@@ -354,8 +354,8 @@ const RES: MenuTab[] = [
       { label: "Test library", d: "3,500+ validated tests across roles", href: routes.testLibrary },
       { label: "HR tools & calculators", d: "Cost per hire, time to hire & more", href: routes.resourcesTools },
       { label: "Job description templates", d: "Role-ready JDs in minutes", href: routes.resourcesJdTemplates },
-      { label: "Interview question kits", d: "Structured, scorable prompts", href: routes.resources }, // TODO(phase2): interview question kits
-      { label: "Skills mapping", d: "Map roles to measurable skills", href: routes.resources }, // TODO(phase2): skills mapping
+      { label: "Interview question kits", d: "Structured, scorable prompts", href: routes.resourcesTools },
+      { label: "Skills mapping", d: "Map roles to measurable skills", href: routes.resourcesTools },
     ],
   },
   {
@@ -512,7 +512,7 @@ export default function SiteHeader({
                         return (
                           <Link
                             key={g.id}
-                            href={g.href ?? `${routes.product}#${g.id}`}
+                            href={g.href ?? routes.productFeatures}
                             className="flex items-start gap-[11px] py-[9px] px-2.5 rounded-[11px] transition-colors hover:bg-[#FFF4F3]"
                           >
                             <span className="shrink-0 w-[34px] h-[34px] rounded-[9px] bg-rose-100 text-coral flex items-center justify-center mt-px">
@@ -632,7 +632,7 @@ export default function SiteHeader({
                     {RES.map((g, i) => (
                       <Link
                         key={g.name}
-                        href={routes.resources}
+                        href={g.ctaHref}
                         onMouseEnter={() => setResActive(i)}
                         className={`flex items-start gap-[11px] py-[9px] px-2.5 rounded-[11px] transition-colors ${
                           resActive === i ? "bg-[#FFF4F3]" : "hover:bg-[#FFF4F3]"
@@ -661,7 +661,7 @@ export default function SiteHeader({
                   <div className="w-[216px] bg-gradient-to-br from-[#FFF1F0] to-[#FFE7E4] rounded-[14px] p-[18px] flex flex-col justify-center gap-[7px]">
                     <p className="text-[15px] font-bold text-[#1A0E10] m-0">Free HR toolkit</p>
                     <p className="text-[12.5px] text-[#6B4F52] m-0 leading-[1.45]">Job descriptions, interview kits and skills maps — ready to use.</p>
-                    <Link href={routes.resources} className="text-[13px] font-bold text-coral mt-1">Browse free tools →</Link>
+                    <Link href={routes.resourcesTools} className="text-[13px] font-bold text-coral mt-1">Browse free tools →</Link>
                   </div>
                 </div>
               </div>

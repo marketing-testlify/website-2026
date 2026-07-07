@@ -107,7 +107,7 @@ export default function GlossaryClient() {
       >
         <div className="mx-auto max-w-[820px]">
           <div className="mb-[18px] flex items-center justify-center gap-2 text-[13px] text-[#8A7A7D]">
-            <Link href={routes.resources} className="transition-colors hover:text-coral">
+            <Link href={routes.blog} className="transition-colors hover:text-coral">
               Resources
             </Link>
             <span>/</span>

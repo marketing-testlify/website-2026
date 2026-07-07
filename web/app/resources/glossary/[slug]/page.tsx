@@ -82,7 +82,7 @@ export default async function Page(
       >
         <div className="mx-auto max-w-[1180px]">
           <div className="mb-[18px] flex flex-wrap items-center gap-2 text-[13px] text-[#8A7A7D]">
-            <Link href={routes.resources} className="transition-colors hover:text-coral">
+            <Link href={routes.blog} className="transition-colors hover:text-coral">
               Resources
             </Link>
             <span>/</span>

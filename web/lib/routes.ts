@@ -5,7 +5,6 @@
  */
 export const routes = {
   home: "/",
-  product: "/product",
   productTestlifyAi: "/product/testlify-ai",
   aiResumeScreener: "/product/ai-resume-screener",
   productSkillAssessments: "/product/skill-assessments",
@@ -23,7 +22,6 @@ export const routes = {
   customers: "/customers",
   blog: "/blog",
   blogArticle: "/blog/skills-based-hiring-guide",
-  resources: "/resources",
   resourcesGlossary: "/resources/glossary",
   resourcesTools: "/resources/tools",
   resourcesHiringGuides: "/resources/hiring-guides",
