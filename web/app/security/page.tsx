@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
+import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = {
   title: "Security & trust — enterprise-grade security by default",
@@ -264,8 +266,8 @@ export default function Page() {
             delay={0.08}
             className="flex gap-3.5 justify-center flex-wrap"
           >
-            <a
-              href="#"
+            <Link
+              href={routes.trustCenter}
               className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] py-3.5 px-[26px] rounded-[13px] transition-all duration-[250ms] cursor-pointer bg-white text-[#C0242B]"
             >
               Visit Trust Center
@@ -281,7 +283,7 @@ export default function Page() {
               >
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
-            </a>
+            </Link>
             <a
               href="#"
               className="inline-flex items-center gap-[9px] font-semibold text-[15.5px] py-3.5 px-[26px] rounded-[13px] transition-all duration-[250ms] cursor-pointer bg-white/[0.14] text-white border-[1.5px] border-white/40"

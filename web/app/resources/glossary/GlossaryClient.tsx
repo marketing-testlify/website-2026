@@ -273,7 +273,6 @@ export default function GlossaryClient() {
               variant="primary"
               size="md"
               icon="arrow"
-              magnetic
             />
           </Reveal>
         </div>

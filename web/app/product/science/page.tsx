@@ -210,7 +210,6 @@ export default function Page() {
                   variant="primary"
                   size="md"
                   icon="arrow"
-                  magnetic
                   className="border-[1.5px] border-transparent"
                 />
                 {/* prototype shrinks the play circle to 24px so both hero buttons share the same 55px box */}

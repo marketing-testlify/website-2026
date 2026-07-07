@@ -164,7 +164,7 @@ const CARDS: Card[] = [
   {
     title: "Shared components",
     tag: "· imported, not copied",
-    sub: "Reusable building blocks imported across pages",
+    sub: "Reusable building blocks imported across pages via dc-import",
     blocks: [
       {
         chips: [
@@ -254,16 +254,16 @@ export default function SitemapPage() {
           {/* Intro */}
           <Reveal className="mb-6">
             <p className="text-[12px] font-bold tracking-[0.16em] uppercase text-muted mb-2">
-              Site structure<b className="text-coral font-bold">.</b>
+              Site structure · restructured IA<b className="text-coral font-bold">.</b>
             </p>
             <h1 className="text-[34px] leading-[1.1] font-extrabold tracking-[-1px] text-ink m-0 mb-2">
               Testlify sitemap
             </h1>
             <p className="text-[15px] leading-[1.6] text-body m-0 max-w-[720px]">
-              Every section and page on the site, grouped the way the navigation
-              is organised. A five-item nav — <b>Product · Library · Solutions ·
-              Pricing · Resources</b> — with company, trust and legal pages
-              living in the footer.
+              Adopted the restructured IA (Option 2): 5-item nav —{" "}
+              <b>Product · Library · Solutions · Pricing · Resources</b>. Company
+              pages live in the footer. Big merges collapse ~120 live pages into
+              ~60 designed pages.
             </p>
           </Reveal>
 
@@ -289,7 +289,7 @@ export default function SitemapPage() {
                 {l.label}
               </span>
             ))}
-            <span className="text-muted">— every chip links to its page</span>
+            <span className="text-muted">— every chip links to its live page</span>
           </Reveal>
 
           {/* Card grid */}
@@ -330,16 +330,38 @@ export default function SitemapPage() {
 
           {/* IA note */}
           <Reveal className="mt-7 bg-white border border-warm rounded-2xl px-6 py-[22px] text-[13px] leading-[1.8] text-body">
-            <b className="text-ink">Naming convention.</b> Every detail or
-            template page keeps its landing&apos;s full name plus{" "}
-            <code className="text-[12px]">-detail</code> — so{" "}
-            <code className="text-[12px]">library-tests</code> becomes{" "}
+            <b className="text-ink">Merges applied to the IA:</b> Testlify AI +
+            platform hub · AI interviews + video interviewing · Science + Trust →
+            &quot;Why it works&quot; · 27 feature pages → 1 Features page · About
+            + leadership (13 → 1) · Trust subpages → tabs · 3 programs → Partners
+            · ebooks + podcasts → Blog · contact + book-a-demo → 1.
+            <br />
+            <br />
+            <b className="text-ink">Header &amp; footer now match this IA.</b>{" "}
+            Pre-change versions saved to{" "}
+            <code className="text-[12px]">
+              backup pages/Site Header -pre-IA-.dc.html
+            </code>{" "}
+            and{" "}
+            <code className="text-[12px]">Site Footer -pre-IA-.dc.html</code>.
+            <br />
+            <br />
+            <b className="text-ink">Naming convention.</b> Every detail/template
+            page keeps its landing&apos;s full name +{" "}
+            <code className="text-[12px]">-detail</code> —{" "}
+            <code className="text-[12px]">library-tests</code> →{" "}
             <code className="text-[12px]">library-tests-detail</code>,{" "}
-            <code className="text-[12px]">company-customers</code> becomes{" "}
-            <code className="text-[12px]">company-customers-detail</code>, and
-            the parent-child relation reads at a glance. Multi-category solution
-            templates and the generic resource list/detail templates keep their
-            own names.
+            <code className="text-[12px]">product-features</code> →{" "}
+            <code className="text-[12px]">product-features-detail</code>,{" "}
+            <code className="text-[12px]">company-customers</code> →{" "}
+            <code className="text-[12px]">company-customers-detail</code>, and so
+            on — so the parent-child relation reads at a glance. The
+            multi-category{" "}
+            <code className="text-[12px]">solution-*-template</code> pages and the
+            generic{" "}
+            <code className="text-[12px]">resource-list-template</code> /{" "}
+            <code className="text-[12px]">resource-detail-template</code> keep
+            their own names (they aren&apos;t single-landing details).
           </Reveal>
         </div>
       </section>

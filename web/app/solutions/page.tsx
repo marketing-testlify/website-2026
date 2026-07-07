@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
@@ -241,7 +242,6 @@ export default function Page() {
               variant="primary"
               size="md"
               icon="arrow"
-              magnetic
             />
             <CtaButton
               label="Book a demo"
@@ -275,10 +275,11 @@ export default function Page() {
 
           <div className="grid grid-cols-3 gap-[18px] max-[920px]:grid-cols-1">
             {USE_CASES.map((uc) => (
-              <div key={uc.id} id={uc.id} style={{ scrollMarginTop: 120 }}>
-              <Reveal
-                delay={uc.delay}
-                className="flex flex-col bg-white border border-[#EFE2E3] rounded-[20px] p-7 transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
+              <Reveal key={uc.id} delay={uc.delay} className="h-full">
+              <Link
+                href={`${routes.solutions}/volume-hiring`}
+                id={uc.id}
+                className="scroll-mt-[120px] h-full flex flex-col bg-white border border-[#EFE2E3] rounded-[20px] p-7 transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
               >
                 <span className="w-12 h-12 rounded-[14px] bg-[#FFF0F0] text-[#F23F44] flex items-center justify-center mb-[18px]">
                   <svg
@@ -302,8 +303,8 @@ export default function Page() {
                 <span className="text-[13.5px] font-bold text-[#F23F44] mt-auto inline-flex items-center gap-[6px]">
                   Learn more →
                 </span>
+              </Link>
               </Reveal>
-              </div>
             ))}
           </div>
         </div>
@@ -327,10 +328,10 @@ export default function Page() {
 
           <div className="grid grid-cols-3 gap-[14px] max-[920px]:grid-cols-1">
             {INDUSTRIES.map((ind) => (
-              <Reveal
-                key={ind.label}
-                delay={ind.delay}
-                className="flex items-center gap-[13px] bg-white border border-[#EFE2E3] rounded-[15px] px-5 py-[18px] font-semibold text-[15px] text-[#1A1014] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_16px_34px_rgba(110,11,14,0.08)] hover:border-[#F4D2D3]"
+              <Reveal key={ind.label} delay={ind.delay} className="h-full">
+              <Link
+                href={`${routes.solutions}/it-technology`}
+                className="h-full flex items-center gap-[13px] bg-white border border-[#EFE2E3] rounded-[15px] px-5 py-[18px] font-semibold text-[15px] text-[#1A1014] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_16px_34px_rgba(110,11,14,0.08)] hover:border-[#F4D2D3]"
               >
                 <span className="w-10 h-10 rounded-[11px] bg-[#FBF3EE] text-[#C0242B] flex items-center justify-center flex-none">
                   <svg
@@ -348,6 +349,7 @@ export default function Page() {
                   </svg>
                 </span>
                 {ind.label}
+              </Link>
               </Reveal>
             ))}
           </div>
@@ -372,15 +374,16 @@ export default function Page() {
 
           <div className="grid grid-cols-3 gap-[18px] max-[920px]:grid-cols-1">
             {SIZES.map((s) => (
-              <Reveal
-                key={s.title}
-                delay={s.delay}
-                className="bg-white border border-[#EFE2E3] rounded-[20px] px-7 py-8 transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
+              <Reveal key={s.title} delay={s.delay} className="h-full">
+              <Link
+                href={`${routes.solutions}/enterprise`}
+                className="block h-full bg-white border border-[#EFE2E3] rounded-[20px] px-7 py-8 transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
               >
                 <h3 className="text-[22px] leading-[1.25] font-bold tracking-[-0.4px] m-0 text-[#1A1014]" style={{ marginBottom: 10 }}>
                   {s.title}
                 </h3>
                 <p className="text-[14.5px] leading-[1.66] text-[#5A4B4E] m-0">{s.desc}</p>
+              </Link>
               </Reveal>
             ))}
           </div>

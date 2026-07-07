@@ -233,7 +233,6 @@ export default async function Page(
               variant="light"
               size="md"
               icon="arrow"
-              magnetic
             />
           </Reveal>
         </aside>

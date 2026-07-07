@@ -315,27 +315,23 @@ export default function Page() {
       {SECTIONS.map((sec) => (
         <section
           key={sec.heading}
-          className={`px-7 pt-[56px] pb-[88px] max-[920px]:px-[22px] max-[920px]:pb-16 ${
+          className={`px-7 pt-[56px] pb-[88px] max-[920px]:px-[22px] max-[920px]:pt-16 max-[920px]:pb-16 ${
             sec.sand ? "bg-sand" : "bg-white"
           }`}
         >
           <div className="max-w-[1240px] mx-auto">
-            <div className="max-w-[660px] mx-auto mb-[42px] text-center">
-              <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-muted m-0 mb-[18px]">
+            <Reveal className="max-w-[660px] mx-auto mb-[42px] text-center">
+              <p className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-muted m-0 mb-[18px]">
                 {sec.eyebrow}
                 <b className="text-coral font-semibold">.</b>
-              </Reveal>
-              <Reveal
-                as="h2"
-                delay={0.04}
-                className="text-[38px] leading-[1.08] font-extrabold tracking-[-1.2px] m-0 text-ink max-[920px]:text-[30px] max-[920px]:tracking-[-0.8px]"
-              >
+              </p>
+              <h2 className="text-[38px] leading-[1.08] font-extrabold tracking-[-1.2px] m-0 text-ink max-[920px]:text-[30px] max-[920px]:tracking-[-0.8px]">
                 {sec.heading}
-              </Reveal>
-              <Reveal as="p" delay={0.08} className="text-[16px] leading-[1.62] text-body mt-3.5">
+              </h2>
+              <p className="text-[16px] leading-[1.62] text-body mt-3.5">
                 {sec.sub}
-              </Reveal>
-            </div>
+              </p>
+            </Reveal>
             <div className="grid grid-cols-3 gap-[18px] max-[920px]:grid-cols-1">
               {sec.cards.map((c, i) => (
                 <Reveal

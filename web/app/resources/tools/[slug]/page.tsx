@@ -84,9 +84,7 @@ export default async function Page(
               Resources
             </Link>
             <span>/</span>
-            <Link href={routes.resourcesTools} className="text-coral">
-              HR tools
-            </Link>
+            <span>HR tools</span>
             <span>/</span>
             <span>{cfg.toolName}</span>
           </Reveal>
@@ -142,7 +140,7 @@ export default async function Page(
                 <div className="w-[34px] h-[34px] rounded-[10px] bg-rose-100 text-coral font-extrabold flex items-center justify-center mb-[14px]">
                   {i + 1}
                 </div>
-                <h3 className="text-[19px] font-extrabold tracking-[-0.4px] text-ink m-0 mb-2">
+                <h3 className="text-[19px] leading-[1.12] font-extrabold tracking-[-1px] text-ink m-0 mb-2">
                   {step.h}
                 </h3>
                 <p className="text-[14.5px] leading-[1.66] text-body m-0">
@@ -209,13 +207,13 @@ export default async function Page(
       <section className="pb-[88px] px-7 max-[900px]:pb-16 max-[900px]:px-[22px]">
         <div className="max-w-[1180px] mx-auto">
           <Reveal
-            className="rounded-[28px] px-12 py-16 text-center text-white max-[900px]:px-7 max-[900px]:py-12"
+            className="rounded-[28px] px-12 py-16 text-center text-white"
             style={{
               background:
                 "radial-gradient(900px 420px at 80% 0%,#FFE3DD 0%,rgba(255,227,221,0) 60%),linear-gradient(135deg,#F23F44,#C0242B)",
             }}
           >
-            <h2 className="text-[38px] leading-[1.12] font-extrabold tracking-[-1px] text-white m-0 mx-auto mb-[14px] max-w-[560px] max-[900px]:text-[28px]">
+            <h2 className="text-[38px] leading-[1.12] font-extrabold tracking-[-1px] text-white m-0 mx-auto mb-[14px] max-w-[560px]">
               {cfg.cta.heading}
             </h2>
             <p className="text-[18px] leading-[1.55] text-white/[0.92] max-w-[520px] mx-auto mb-[30px]">
@@ -228,7 +226,6 @@ export default async function Page(
                 variant="light"
                 size="lg"
                 icon="arrow"
-                magnetic
               />
               <CtaButton
                 label="Book a demo"

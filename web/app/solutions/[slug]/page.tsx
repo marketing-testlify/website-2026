@@ -6,9 +6,12 @@ import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
 import CtaButton from "@/components/CtaButton";
 import { routes } from "@/lib/routes";
-import { SOLUTIONS, SOLUTION_SLUGS } from "./data";
+import { SOLUTIONS, SOLUTION_SLUGS, DEFAULT_TESTIMONIALS } from "./data";
 import {
   SolutionSections,
+  TestimonialsBand,
+  AtsBand,
+  AwardsBand,
   Shot,
   Tick,
   EYEBROW_CLASS,
@@ -88,7 +91,6 @@ export default async function Page(props: PageProps<"/solutions/[slug]">) {
                 variant="primary"
                 size="md"
                 icon="arrow"
-                magnetic
               />
               <CtaButton
                 label="Book a demo"
@@ -133,6 +135,12 @@ export default async function Page(props: PageProps<"/solutions/[slug]">) {
       {/* DATA-DRIVEN SECTIONS (split / cards / grid / chips) */}
       <SolutionSections sections={d.sections} />
 
+      {/* TESTIMONIALS */}
+      <TestimonialsBand items={d.testimonials ?? DEFAULT_TESTIMONIALS} />
+
+      {/* ATS INTEGRATIONS */}
+      <AtsBand />
+
       {/* TRUST BAND */}
       <section className="border-t border-b border-warm py-10 bg-white">
         <Reveal className="max-w-[1240px] mx-auto px-7 flex items-center justify-between gap-[30px] flex-wrap">
@@ -159,8 +167,11 @@ export default async function Page(props: PageProps<"/solutions/[slug]">) {
         </Reveal>
       </section>
 
+      {/* AWARDS & RECOGNITION */}
+      <AwardsBand />
+
       {/* FAQ */}
-      <section className="py-24 max-[960px]:py-16 bg-sand">
+      <section className="py-24 max-[960px]:py-16">
         <div className="max-w-[1240px] mx-auto px-7">
           <Reveal className="text-center max-w-[720px] mx-auto">
             <p className={EYEBROW_CLASS}>
@@ -194,7 +205,6 @@ export default async function Page(props: PageProps<"/solutions/[slug]">) {
               variant="primary"
               size="lg"
               icon="arrow"
-              magnetic
             />
             <CtaButton
               label="Book a demo"

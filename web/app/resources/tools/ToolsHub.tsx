@@ -136,14 +136,14 @@ export default function ToolsHub() {
       {/* GRID */}
       <section className="pt-14 pb-10 px-7 max-[640px]:px-[22px]">
         <div className="max-w-[1240px] mx-auto">
-          <div className="max-w-[760px] mb-[30px]">
+          <Reveal className="max-w-[760px] mb-[30px]">
             <h2 className="text-[27px] font-extrabold tracking-[-0.6px] text-ink m-0">
               {TITLE_MAP[filter]}
             </h2>
             <p className="text-[15.5px] leading-[1.55] text-body2 mt-[10px] mb-0">
               {INTRO_MAP[filter]}
             </p>
-          </div>
+          </Reveal>
           <div className="grid grid-cols-3 gap-[18px] max-[1000px]:grid-cols-2 max-[640px]:grid-cols-1">
             {tools.map((t, i) => {
               const live = t.kind === "calc";

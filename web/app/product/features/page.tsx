@@ -196,10 +196,8 @@ const QUESTION_TYPES: QCard[] = [
 ];
 
 /* ---------------------------------------------------------------- */
-/* Feature-category cards — links into the platform. The Anti-      */
-/* cheating card links to the [slug] feature-detail route.          */
+/* Shared 22px line-icon helper for the platform capability cards.  */
 /* ---------------------------------------------------------------- */
-type Cat = { name: string; desc: string; href: string; icon: ReactNode };
 function csvg(children: ReactNode) {
   return (
     <svg
@@ -217,70 +215,6 @@ function csvg(children: ReactNode) {
     </svg>
   );
 }
-const CATEGORIES: Cat[] = [
-  {
-    name: "Question types",
-    desc: "19 formats — coding, video, audio, file upload and more, all combinable in one assessment.",
-    href: "#question-types",
-    icon: csvg(
-      <>
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-      </>
-    ),
-  },
-  {
-    name: "Anti-cheating & proctoring",
-    desc: "Full-screen detection, webcam snapshots, plagiarism and IP logging catch dishonesty in real time.",
-    href: `${routes.productFeatures}/anti-cheating-proctoring`,
-    icon: csvg(<path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z" />),
-  },
-  {
-    name: "Reporting & analytics",
-    desc: "Benchmarked scores, per-skill breakdowns and time-to-complete analytics, synced to your ATS.",
-    href: "#analytics",
-    icon: csvg(
-      <>
-        <path d="M3 3v18h18" />
-        <path d="M7 14l4-4 3 3 5-6" />
-      </>
-    ),
-  },
-  {
-    name: "Platform & experience",
-    desc: "Multilingual delivery, a branded candidate journey, custom question types and bias controls.",
-    href: "#platform",
-    icon: csvg(
-      <>
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M3 9h18M9 21V9" />
-      </>
-    ),
-  },
-  {
-    name: "API & white label",
-    desc: "A full REST API, webhooks, SSO and white-label branding for developers and enterprise.",
-    href: "#developers",
-    icon: csvg(
-      <>
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-      </>
-    ),
-  },
-  {
-    name: "ATS integrations",
-    desc: "Native two-way sync with 100+ ATS tools including Greenhouse, Lever and Workday.",
-    href: routes.integrations,
-    icon: csvg(
-      <>
-        <path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5" />
-        <path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7L12 19" />
-      </>
-    ),
-  },
-];
-
 /* Platform capability cards (6) — copy + icons verbatim. */
 type BCard = { name: string; body: ReactNode; icon: ReactNode };
 const PLATFORM: BCard[] = [
@@ -448,7 +382,6 @@ export default function Page() {
               variant="primary"
               size="md"
               icon="arrow"
-              magnetic
             />
             <CtaButton
               label="Book a demo"
@@ -491,48 +424,6 @@ export default function Page() {
           ))}
         </div>
       </nav>
-
-      {/* FEATURE CATEGORIES */}
-      <section className="px-7 py-24 max-[960px]:py-16 bg-sand">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="max-w-[660px] mx-auto text-center mb-12">
-            <Reveal as="p" className={`${EYEBROW} flex justify-center`}>
-              Explore by category<b className="text-coral font-semibold">.</b>
-            </Reveal>
-            <Reveal as="h2" delay={0.04} className={`${H2} mt-4`}>
-              Every capability, one place
-            </Reveal>
-          </div>
-          <Reveal className="grid grid-cols-3 gap-5 max-[960px]:grid-cols-1">
-            {CATEGORIES.map((c) => {
-              const inner = (
-                <>
-                  <span className="w-12 h-12 rounded-[14px] bg-rose-100 text-coral flex items-center justify-center mb-5">
-                    {c.icon}
-                  </span>
-                  <h3 className="text-[18px] font-bold text-ink m-0 mb-[9px] tracking-[-0.3px]">
-                    {c.name}
-                  </h3>
-                  <p className="text-[14.5px] leading-[1.6] text-body m-0">
-                    {c.desc}
-                  </p>
-                </>
-              );
-              const cls =
-                "block bg-white border border-warm rounded-[18px] px-6 py-7 transition-[translate,border-color,box-shadow] duration-300 ease-[cubic-bezier(.2,.7,.3,1)] hover:-translate-y-1 hover:border-[#FBD0D1] hover:shadow-[0_16px_34px_rgba(110,11,14,0.10)]";
-              return c.href.startsWith("#") ? (
-                <a key={c.name} href={c.href} className={cls}>
-                  {inner}
-                </a>
-              ) : (
-                <Link key={c.name} href={c.href} className={cls}>
-                  {inner}
-                </Link>
-              );
-            })}
-          </Reveal>
-        </div>
-      </section>
 
       {/* QUESTION TYPES */}
       <section id="question-types" className="px-7 py-24 max-[960px]:py-16 bg-white scroll-mt-[120px]">

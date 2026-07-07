@@ -122,10 +122,10 @@ const COMMITMENTS = [
 
 const TABS: { label: string; href?: string }[] = [
   { label: "Compliances" },
-  { label: "Security", href: routes.trustCenter },
-  { label: "Data management", href: routes.trustCenter },
-  { label: "Data requests", href: routes.trustCenter },
-  { label: "Privacy", href: routes.trustCenter },
+  { label: "Security", href: routes.security },
+  { label: "Data management", href: routes.security },
+  { label: "Data requests", href: routes.security },
+  { label: "Privacy", href: routes.security },
 ];
 
 function CertIcon({ children, size }: { children: IconNode; size: number }) {
@@ -340,7 +340,7 @@ export default function Page() {
             signed DPA through the Testlify Trust Center.
           </Reveal>
           <Reveal delay={0.12} className="flex gap-3.5 justify-center flex-wrap mt-[30px]">
-            <CtaButton label="Visit Trust Center" href={routes.trustCenter} variant="light" size="md" icon="arrow" />
+            <CtaButton label="Visit Trust Center" href={routes.security} variant="light" size="md" icon="arrow" />
             <CtaButton label="Contact security team" href={routes.contact} variant="outline-light" size="md" icon="none" />
           </Reveal>
         </div>

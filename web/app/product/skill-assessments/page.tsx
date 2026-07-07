@@ -244,7 +244,6 @@ export default function Page() {
                   variant="primary"
                   size="md"
                   icon="arrow"
-                  magnetic
                   className="border-[1.5px] border-transparent"
                 />
                 <CtaButton label="Book a demo" href="#" variant="secondary" size="md" icon="play" className="ska-demo" />

@@ -418,7 +418,7 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
               </div>
 
               <div className="reveal is-in flex gap-3 flex-wrap mt-9">
-                <CtaButton label="Try for free" href="#" variant="primary" size="lg" icon="arrow" magnetic />
+                <CtaButton label="Try for free" href="#" variant="primary" size="lg" icon="arrow" />
                 <CtaButton label="View sample questions" href="#sample-questions" variant="secondary" size="lg" icon="none" />
               </div>
               <div className="flex items-center gap-[26px] flex-wrap mt-[18px] text-[14.5px] text-[#8A7A7D] font-medium">
@@ -439,7 +439,7 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
                   {test.level}
                 </span>
               </div>
-              <ul className="list-none mt-0 mb-[22px] p-0">
+              <ul className="list-none mt-0 mb-0 p-0">
                 <li className="flex items-center justify-between gap-3 py-3 border-b border-[#F4E7E8] text-sm">
                   <span className="text-[#8A7A7D] font-medium inline-flex items-center gap-[9px]">
                     <span className="text-[#C0989B] shrink-0"><CalendarIcon /></span>
@@ -469,7 +469,7 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
                   <span className="text-ink font-bold text-right">{skills.length}</span>
                 </li>
               </ul>
-              <ul className="list-none mt-5 mb-0 pt-4 border-t border-[#F4E7E8] flex flex-col gap-[10px]">
+              <ul className="list-none mt-0 mb-0 pt-4 border-t border-[#F4E7E8] flex flex-col gap-[10px]">
                 {[
                   "Auto-graded with instant, objective scoring",
                   "Anti-cheat & full-screen proctoring",
@@ -504,15 +504,15 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
               <Reveal
                 key={s.name}
                 delay={(i % 3) * 0.06}
-                className="bg-white border-[1.4px] border-[#EFE1E2] rounded-2xl px-6 pt-6 pb-[22px] shadow-[0_16px_30px_rgba(110,11,14,0.05)] transition-[translate,transform,box-shadow,border-color] duration-[250ms] ease-[cubic-bezier(.2,.7,.3,1)] hover:-translate-y-1 hover:border-[#F4C7C8] hover:shadow-[0_16px_30px_rgba(110,11,14,0.10)]"
+                className="bg-white border-[1.4px] border-[#EFE1E2] rounded-2xl px-6 py-[26px] shadow-[0_16px_30px_rgba(110,11,14,0.05)] transition-[translate,transform,box-shadow,border-color] duration-[280ms] ease-[cubic-bezier(.2,.7,.3,1)] hover:-translate-y-1 hover:border-[#FBD0D1] hover:shadow-[0_18px_36px_rgba(110,11,14,0.10)]"
               >
-                <div className="flex items-center gap-3 mb-2.5">
-                  <span className="inline-flex items-center justify-center w-[34px] h-[34px] rounded-[10px] bg-[#FFF0EF] text-coral text-[13px] font-bold">
+                <div className="flex items-center gap-3 mb-[13px]">
+                  <span className="shrink-0 inline-flex items-center justify-center w-11 h-11 rounded-[12px] bg-[#FFF0EF] text-coral text-[15px] font-bold">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="text-[17px] font-bold text-ink m-0 tracking-[-0.3px]">{s.name}</h3>
                 </div>
-                <p className="text-[13.5px] leading-[1.6] text-[#6C5A5D] m-0">{s.desc}</p>
+                <p className="text-[13.5px] leading-[1.62] text-[#6C5A5D] m-0">{s.desc}</p>
               </Reveal>
             ))}
           </div>
@@ -604,7 +604,7 @@ export default async function Page(props: PageProps<"/test-library/[slug]">) {
             </Reveal>
             <Reveal delay={0.12}>
               <Link
-                href={routes.security}
+                href={routes.trustCenter}
                 className="group inline-flex items-center gap-[7px] mt-[22px] text-[15px] font-bold text-coral"
               >
                 See the science behind our tests

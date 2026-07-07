@@ -530,6 +530,10 @@ export default function HomeClient() {
                 <span ref={wordRef} className="tl-shimmer">
                   skill
                 </span>
+                <span
+                  aria-hidden
+                  style={{ position: "absolute", left: 0, right: 0, bottom: 7, height: 13, background: "#FDD5D6", zIndex: -1, borderRadius: 7 }}
+                />
               </span>
               ,
               <br />
@@ -568,49 +572,14 @@ export default function HomeClient() {
             </Reveal>
             <Reveal
               delay={0.28}
-              className="flex items-center gap-3.5 mt-[18px] flex-wrap text-[13.5px] text-muted font-semibold tracking-[0.2px]"
+              className="flex items-center gap-[26px] mt-[18px] flex-wrap text-[14.5px] text-muted font-medium"
             >
-              <span>No credit card required</span>
-              <span className="w-1 h-1 rounded-full bg-[#D9C7C9]" />
-              <span>Free 7-day trial</span>
-            </Reveal>
-            <Reveal
-              delay={0.32}
-              className="flex items-center gap-[22px] mt-[30px] flex-wrap"
-            >
-              <div className="flex items-center">
-                {[
-                  { t: "AK", g: "linear-gradient(135deg,#F76A6E,#F23F44)", ml: 0 },
-                  { t: "RM", g: "linear-gradient(135deg,#FBA3A5,#F76A6E)", ml: -12 },
-                  { t: "SJ", g: "linear-gradient(135deg,#A91E23,#F23F44)", ml: -12 },
-                  { t: "+", g: "linear-gradient(135deg,#6E0B0E,#A91E23)", ml: -12 },
-                ].map((a, i) => (
-                  <span
-                    key={i}
-                    style={{
-                      width: 38,
-                      height: 38,
-                      borderRadius: "50%",
-                      background: a.g,
-                      border: "2.5px solid #fff",
-                      marginLeft: a.ml,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "#fff",
-                      fontSize: 13,
-                      fontWeight: 600,
-                    }}
-                  >
-                    {a.t}
-                  </span>
-                ))}
-              </div>
-              <div className="text-[14px] text-body leading-[1.4]">
-                <strong className="text-ink">1,500+ talent teams</strong>
-                <br />
-                hire faster with Testlify
-              </div>
+              <span className="inline-flex items-center gap-[7px]">
+                <span className="text-coral font-bold">✓</span>7-day free trial
+              </span>
+              <span className="inline-flex items-center gap-[7px]">
+                <span className="text-coral font-bold">✓</span>No credit card required
+              </span>
             </Reveal>
           </div>
 
@@ -927,7 +896,7 @@ export default function HomeClient() {
       </section>
 
       {/* ============ HOW IT WORKS ============ */}
-      <section id="how" className="px-7" style={{ padding: "96px 28px", background: "#fff" }}>
+      <section id="how" className="px-7" style={{ padding: "96px 28px", background: "#FBF3EE" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto" }}>
           <div style={{ textAlign: "center", maxWidth: 860, margin: "0 auto 56px" }}>
             <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
@@ -955,36 +924,80 @@ export default function HomeClient() {
                 }}
               >
                 <HowStage active={stage === 0}>
-                  <div className="text-[12px] font-bold text-muted tracking-[0.4px] mb-[18px]">AI ASSESSMENT BUILDER</div>
-                  <div className="flex items-center gap-[11px] bg-[#FFF8F8] border border-[#F4E4E5] rounded-[13px] p-3.5 mb-3.5">
-                    <span className="w-[34px] h-[34px] rounded-[9px] bg-[#FFF0F0] flex items-center justify-center text-coral">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6z" /><circle cx="18.5" cy="17.5" r="1.5" /><circle cx="5" cy="16" r="1" /></svg>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-[9px]">
+                      <span style={{ width: 26, height: 26, borderRadius: 8, background: "linear-gradient(135deg,#FF8A6B,#F23F44)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff" }}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6z" /></svg>
+                      </span>
+                      <span className="text-[11.5px] font-bold text-muted tracking-[0.4px]">AI ASSESSMENT BUILDER</span>
+                    </div>
+                    <span className="flex items-center gap-1.5 text-[11px] font-bold text-coral bg-[#FFF0F0] px-2.5 py-[5px] rounded-full">
+                      <span className="tl-pulsedot inline-block w-1.5 h-1.5 rounded-full bg-coral" />Generating
                     </span>
-                    <div className="text-[14px] text-body">Generating from <strong className="text-ink">&quot;Senior Frontend Engineer&quot;</strong>…</div>
                   </div>
-                  <div className="flex flex-wrap gap-[9px] mb-[18px]">
-                    {["React", "TypeScript", "CSS systems", "Problem solving", "Accessibility"].map((t) => (
-                      <span key={t} className="text-[13px] font-semibold text-coral-deep bg-[#FFF0F0] border border-[#FBD0D1] px-[13px] py-[7px] rounded-full">{t}</span>
+                  <div className="flex items-center gap-2.5 bg-[#FFF8F8] border border-[#F4E4E5] rounded-xl px-3.5 py-[11px] mb-3.5">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A9999C" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
+                    <div className="text-[13.5px] text-body">From <strong className="text-ink">&quot;Senior Frontend Engineer&quot;</strong></div>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {["React", "TypeScript", "CSS systems", "Accessibility"].map((t) => (
+                      <span key={t} className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-coral-deep bg-[#FFF0F0] border border-[#FBD0D1] px-3 py-1.5 rounded-full">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>{t}
+                      </span>
                     ))}
                   </div>
-                  <div className="text-[12.5px] font-semibold text-muted mb-2">Building 18 questions…</div>
-                  <div className="h-[9px] bg-[#F4EBEC] rounded-md overflow-hidden">
-                    <div style={{ width: "72%", height: "100%", background: "linear-gradient(90deg,#F76A6E,#F23F44)", borderRadius: 6 }} />
+                  <div className="bg-white border border-[#F2E6E7] rounded-[14px] px-[15px] py-3.5 shadow-[0_10px_24px_rgba(110,11,14,0.07)] mb-4">
+                    <div className="flex justify-between items-center mb-[9px]">
+                      <span className="text-[11px] font-bold text-coral tracking-[0.3px]">Q3 · MULTIPLE CHOICE</span>
+                      <span className="text-[11px] font-semibold text-muted">React · Hooks</span>
+                    </div>
+                    <div className="text-[13.5px] font-semibold text-ink leading-[1.45] mb-[11px]">Which hook memoizes a value so it isn&apos;t recomputed on every render?</div>
+                    <div className="flex flex-col gap-[7px]">
+                      <div className="flex items-center gap-[9px] bg-[#FFF8F8] border border-[#F4E4E5] rounded-[9px] px-[11px] py-2 text-[12.5px] text-[#6C5A5D]"><span className="w-4 h-4 rounded-full border-[1.5px] border-[#E6D2D3]" />useState()</div>
+                      <div className="flex items-center gap-[9px] bg-[#F0FBF4] border-[1.5px] border-[#BFE9CF] rounded-[9px] px-[11px] py-2 text-[12.5px] font-semibold text-[#1B7A4B]"><span className="w-4 h-4 rounded-full bg-[#22A35B] flex items-center justify-center"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>useMemo()</div>
+                      <div className="flex items-center gap-[9px] bg-[#FFF8F8] border border-[#F4E4E5] rounded-[9px] px-[11px] py-2 text-[12.5px] text-[#6C5A5D]"><span className="w-4 h-4 rounded-full border-[1.5px] border-[#E6D2D3]" />useEffect()</div>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center mb-[7px]">
+                    <span className="text-[12px] font-semibold text-muted">Building questions</span>
+                    <span className="text-[12px] font-bold text-ink">14 / 18</span>
+                  </div>
+                  <div className="h-2 bg-[#F4EBEC] rounded-md overflow-hidden">
+                    <div style={{ width: "78%", height: "100%", background: "linear-gradient(90deg,#FF8A6B,#F23F44)", borderRadius: 6 }} />
                   </div>
                 </HowStage>
 
                 <HowStage active={stage === 1}>
-                  <div className="text-[12px] font-bold text-muted tracking-[0.4px] mb-[18px]">CANDIDATES INVITED · 248</div>
-                  <div className="flex flex-col gap-[11px]">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[11.5px] font-bold text-muted tracking-[0.4px]">CANDIDATES</span>
+                    <span className="flex items-center gap-1.5 text-[11px] font-bold text-[#1B8A5A] bg-[#E7F6EF] px-2.5 py-[5px] rounded-full">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1B8A5A" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><path d="M22 4 12 14.01l-3-3" /></svg>Two-way ATS sync
+                    </span>
+                  </div>
+                  <div className="flex gap-[9px] mb-3.5">
+                    <div className="flex-1 bg-[#FFF8F8] border border-[#F4E4E5] rounded-xl px-[13px] py-3">
+                      <div className="text-[21px] font-extrabold text-ink tracking-[-0.5px]">248</div>
+                      <div className="text-[11px] font-semibold text-muted">Invited</div>
+                    </div>
+                    <div className="flex-1 bg-[#FFF8F8] border border-[#F4E4E5] rounded-xl px-[13px] py-3">
+                      <div className="text-[21px] font-extrabold text-ink tracking-[-0.5px]">176</div>
+                      <div className="text-[11px] font-semibold text-muted">Completed</div>
+                    </div>
+                    <div className="flex-1 bg-[#FFF0F0] border border-[#FBD0D1] rounded-xl px-[13px] py-3">
+                      <div className="text-[21px] font-extrabold text-coral tracking-[-0.5px]">71%</div>
+                      <div className="text-[11px] font-semibold text-[#C0696C]">Response</div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-[9px]">
                     {[
-                      { av: "JL", g: "linear-gradient(135deg,#F76A6E,#F23F44)", name: "Jordan L.", st: "Completed", c: "#1B8A5A", bg: "#E7F6EF", inkAv: false },
-                      { av: "AM", g: "linear-gradient(135deg,#FBA3A5,#F76A6E)", name: "Aisha M.", st: "In progress", c: "#A36A00", bg: "#FBEFD9", inkAv: false },
-                      { av: "RK", g: "linear-gradient(135deg,#FDD5D6,#FBA3A5)", name: "Rahul K.", st: "Invited", c: "#8A7A7D", bg: "#F1ECED", inkAv: true },
-                      { av: "SN", g: "linear-gradient(135deg,#F23F44,#A91E23)", name: "Sana N.", st: "Completed", c: "#1B8A5A", bg: "#E7F6EF", inkAv: false },
+                      { av: "JL", g: "linear-gradient(135deg,#F76A6E,#F23F44)", name: "Jordan L.", st: "Completed", c: "#1B8A5A", bg: "#E7F6EF" },
+                      { av: "AM", g: "linear-gradient(135deg,#FBA3A5,#F76A6E)", name: "Aisha M.", st: "In progress", c: "#A36A00", bg: "#FBEFD9" },
+                      { av: "RK", g: "linear-gradient(135deg,#FDD5D6,#FBA3A5)", name: "Rahul K.", st: "Invited", c: "#8A7A7D", bg: "#F1ECED" },
+                      { av: "SN", g: "linear-gradient(135deg,#F23F44,#A91E23)", name: "Sana N.", st: "Completed", c: "#1B8A5A", bg: "#E7F6EF" },
                     ].map((r) => (
-                      <div key={r.av} className="flex items-center gap-3 bg-[#FFF8F8] border border-[#F4E4E5] rounded-[13px] px-[15px] py-[13px]">
-                        <span style={{ width: 36, height: 36, borderRadius: 10, background: r.g, color: r.inkAv ? "#A91E23" : "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: 13 }}>{r.av}</span>
-                        <div className="flex-1 font-semibold text-[14.5px]">{r.name}</div>
+                      <div key={r.av} className="flex items-center gap-3 bg-[#FFF8F8] border border-[#F4E4E5] rounded-[13px] px-[15px] py-3">
+                        <span style={{ width: 36, height: 36, borderRadius: 10, background: r.g, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: 13 }}>{r.av}</span>
+                        <div className="flex-1 font-semibold text-[14.5px] text-ink">{r.name}</div>
                         <span className="text-[12px] font-semibold px-[11px] py-[5px] rounded-lg" style={{ color: r.c, background: r.bg }}>{r.st}</span>
                       </div>
                     ))}
@@ -992,23 +1005,42 @@ export default function HomeClient() {
                 </HowStage>
 
                 <HowStage active={stage === 2}>
-                  <div className="flex justify-between items-center mb-[18px]">
-                    <span className="text-[12px] font-bold text-muted tracking-[0.4px]">RANKED LEADERBOARD</span>
-                    <span className="text-[12px] font-bold text-white bg-coral px-3 py-[5px] rounded-lg">Shortlist top 5</span>
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="text-[11.5px] font-bold text-muted tracking-[0.4px]">RANKED LEADERBOARD</span>
+                    <span className="text-[11.5px] font-bold text-white bg-coral px-3 py-[5px] rounded-lg">Shortlist top 5</span>
                   </div>
                   <div className="flex flex-col gap-[11px]">
-                    {[
-                      { rank: "1", rc: "#F23F44", av: "JL", g: "linear-gradient(135deg,#F76A6E,#F23F44)", name: "Jordan L.", sc: "94", sel: true },
-                      { rank: "2", rc: "#A91E23", av: "SN", g: "linear-gradient(135deg,#F23F44,#A91E23)", name: "Sana N.", sc: "91", sel: false },
-                      { rank: "3", rc: "#C13238", av: "AM", g: "linear-gradient(135deg,#FBA3A5,#F76A6E)", name: "Aisha M.", sc: "88", sel: false },
-                    ].map((r) => (
-                      <div key={r.rank} className="flex items-center gap-[13px] rounded-[14px] px-[15px] py-[13px]" style={{ background: r.sel ? "#FFF6F6" : "#fff", border: r.sel ? "1.5px solid #FBD0D1" : "1px solid #F2E6E7" }}>
-                        <span className="font-extrabold text-[15px] w-[18px]" style={{ color: r.rc }}>{r.rank}</span>
-                        <span style={{ width: 38, height: 38, borderRadius: 11, background: r.g, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: 13 }}>{r.av}</span>
-                        <div className="flex-1 font-semibold text-[14.5px]">{r.name}</div>
-                        <span className="font-extrabold text-[17px]" style={{ color: r.rc }}>{r.sc}</span>
+                    <div className="bg-[#FFF6F6] border-[1.5px] border-[#FBD0D1] rounded-[14px] px-[15px] py-[13px] shadow-[0_10px_22px_rgba(242,63,68,0.12)]">
+                      <div className="flex items-center gap-[13px]">
+                        <span className="font-extrabold text-coral text-[15px] w-[18px]">1</span>
+                        <span style={{ width: 38, height: 38, borderRadius: 11, background: "linear-gradient(135deg,#F76A6E,#F23F44)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: 13 }}>JL</span>
+                        <div className="flex-1">
+                          <div className="font-semibold text-[14.5px] text-ink">Jordan L.</div>
+                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#1B8A5A]">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1B8A5A" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>Shortlisted
+                          </span>
+                        </div>
+                        <span className="font-extrabold text-coral text-[19px]">94</span>
                       </div>
-                    ))}
+                      <div className="flex gap-[5px] mt-[11px] pl-[31px]">
+                        <span className="flex-1 h-[5px] rounded-[3px]" style={{ background: "#F23F44" }} />
+                        <span className="flex-1 h-[5px] rounded-[3px]" style={{ background: "#F76A6E" }} />
+                        <span className="flex-1 h-[5px] rounded-[3px]" style={{ background: "#FBA3A5" }} />
+                        <span className="flex-1 h-[5px] rounded-[3px]" style={{ background: "#F23F44" }} />
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-[13px] bg-white border border-[#F2E6E7] rounded-[14px] px-[15px] py-[13px]">
+                      <span className="font-extrabold text-[15px] w-[18px]" style={{ color: "#A91E23" }}>2</span>
+                      <span style={{ width: 38, height: 38, borderRadius: 11, background: "linear-gradient(135deg,#F23F44,#A91E23)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: 13 }}>SN</span>
+                      <div className="flex-1 font-semibold text-[14.5px] text-ink">Sana N.</div>
+                      <span className="font-extrabold text-[17px]" style={{ color: "#A91E23" }}>91</span>
+                    </div>
+                    <div className="flex items-center gap-[13px] bg-white border border-[#F2E6E7] rounded-[14px] px-[15px] py-[13px]">
+                      <span className="font-extrabold text-[15px] w-[18px]" style={{ color: "#C13238" }}>3</span>
+                      <span style={{ width: 38, height: 38, borderRadius: 11, background: "linear-gradient(135deg,#FBA3A5,#F76A6E)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: 13 }}>AM</span>
+                      <div className="flex-1 font-semibold text-[14.5px] text-ink">Aisha M.</div>
+                      <span className="font-extrabold text-[17px]" style={{ color: "#C13238" }}>88</span>
+                    </div>
                   </div>
                 </HowStage>
               </div>
@@ -1163,7 +1195,7 @@ export default function HomeClient() {
 
 
       {/* ============ SKILLS INTELLIGENCE ============ */}
-      <section id="intelligence" className="px-7" style={{ padding: "96px 28px", background: "transparent" }}>
+      <section id="intelligence" className="px-7" style={{ padding: "96px 28px", background: "#FBF3EE" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto" }}>
           <div
             className="dwrap max-[900px]:grid-cols-1!"
@@ -1388,7 +1420,7 @@ export default function HomeClient() {
       </section>
 
       {/* ============ USE CASES ============ */}
-      <section id="usecases" className="px-7" style={{ padding: "96px 28px", background: "#fff" }}>
+      <section id="usecases" className="px-7" style={{ padding: "96px 28px", background: "#FBF3EE" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto" }}>
           <div style={{ maxWidth: 720, margin: "0 0 8px" }}>
             <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
@@ -1412,7 +1444,7 @@ export default function HomeClient() {
       </section>
 
       {/* ============ TESTIMONIALS ============ */}
-      <section id="voices" className="px-7" style={{ padding: "96px 28px", background: "#FBF3EE" }}>
+      <section id="voices" className="px-7" style={{ padding: "96px 28px", background: "#fff" }}>
         <div style={{ maxWidth: 920, margin: "0 auto", textAlign: "center" }}>
           <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
             Loved by HR teams<span className="text-coral">.</span>
@@ -1598,7 +1630,7 @@ export default function HomeClient() {
       </section>
 
       {/* ============ FAQ ============ */}
-      <section id="faq" className="px-7" style={{ padding: "96px 28px", background: "transparent" }}>
+      <section id="faq" className="px-7" style={{ padding: "96px 28px", background: "#FBF3EE" }}>
         <div style={{ maxWidth: 840, margin: "0 auto" }}>
           <div style={{ textAlign: "center", margin: "0 auto 38px" }}>
             <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
@@ -1627,7 +1659,7 @@ function HowStage({ active, children }: { active: boolean; children: React.React
       style={{
         position: "absolute",
         inset: 0,
-        padding: 34,
+        padding: 30,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -1831,6 +1863,8 @@ const KEYFRAMES = `
 @keyframes tl-pulsering{0%{transform:scale(.75);opacity:.65}100%{transform:scale(1.7);opacity:0}}
 @keyframes tl-shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 @keyframes tl-fadein{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:none}}
+.tl-pulsedot{animation:tl-pulsedot 1.4s ease-in-out infinite;}
+@keyframes tl-pulsedot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 @keyframes tl-globespin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 .tl-globe-spin{animation:tl-globespin 60s linear infinite;}
 .gr2stat{position:relative;transition:opacity .3s;}

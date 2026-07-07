@@ -238,7 +238,6 @@ export default async function Page({
               variant="primary"
               size="lg"
               icon="arrow"
-              magnetic
             />
             <CtaButton
               label="Book a demo"

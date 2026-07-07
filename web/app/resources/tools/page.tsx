@@ -56,7 +56,6 @@ export default function Page() {
               variant="light"
               size="lg"
               icon="arrow"
-              magnetic
             />
             <CtaButton
               label="Book a demo"

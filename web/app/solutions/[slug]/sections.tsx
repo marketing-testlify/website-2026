@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import Reveal from "@/components/Reveal";
+import { routes } from "@/lib/routes";
+import { ATS_LOGOS, AWARDS } from "./data";
 import type {
   Bullet,
   CardsSection,
@@ -9,6 +11,7 @@ import type {
   Section,
   SplitSection,
   StepsSection,
+  Testimonial,
 } from "./data";
 
 /* Shared class strings, matching the template CSS exactly. */
@@ -338,4 +341,142 @@ export function SolutionSections({ sections }: { sections: Section[] }) {
     );
   }
   return <>{rendered}</>;
+}
+
+/* Initials from a full name, e.g. "Priya Nair" → "PN". */
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((w) => w[0] || "")
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
+const STAR = (
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+    <path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 18.6 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z" />
+  </svg>
+);
+
+/* .tsd-sec testimonials band — three review cards on white. */
+export function TestimonialsBand({ items }: { items: Testimonial[] }) {
+  return (
+    <section className="py-24 max-[960px]:py-16">
+      <div className="max-w-[1240px] mx-auto px-7">
+        <Reveal className="text-center max-w-[720px] mx-auto">
+          <p className={EYEBROW_CLASS}>
+            Loved by hiring teams<b className="text-coral">.</b>
+          </p>
+          <h2 className={H2_CLASS}>Recruiters who hire on proof</h2>
+        </Reveal>
+        <div className="grid grid-cols-3 gap-[22px] mt-[46px] max-[960px]:grid-cols-1">
+          {items.map((t, i) => (
+            <Reveal
+              key={t.name}
+              delay={(i % 3) * 0.06}
+              className="flex flex-col bg-white border border-warm rounded-[18px] py-7 px-[26px] shadow-[0_16px_30px_rgba(110,11,14,0.10)]"
+            >
+              <div className="flex gap-[3px] text-coral mb-[14px]">
+                {STAR}
+                {STAR}
+                {STAR}
+                {STAR}
+                {STAR}
+              </div>
+              <p className="text-[15.5px] leading-[1.6] text-[#3A2C30] m-0 mb-5">
+                {t.quote}
+              </p>
+              <div className="flex items-center gap-3 mt-auto">
+                <span className="w-[42px] h-[42px] rounded-full bg-rose-200 text-coral-deep flex items-center justify-center font-extrabold text-[15px] flex-none">
+                  {initials(t.name)}
+                </span>
+                <span>
+                  <span className="block text-[14.5px] font-bold text-ink">
+                    {t.name}
+                  </span>
+                  <span className="block text-[12.5px] text-muted">{t.role}</span>
+                </span>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* .tsd-sec.tsd-sand ATS band — logo pills + "+100 more". */
+export function AtsBand() {
+  return (
+    <section className="py-24 max-[960px]:py-16 bg-sand">
+      <div className="max-w-[1240px] mx-auto px-7">
+        <SHead
+          eyebrow="Fits your stack"
+          h2="Works with the ATS you already use"
+          intro="Push assessment results straight into your workflow with 100+ native, two-way integrations."
+        />
+        <Reveal className="flex gap-3 flex-wrap justify-center mt-10">
+          {ATS_LOGOS.map((a) => (
+            <span
+              key={a}
+              className="bg-white border border-warm rounded-[12px] px-[22px] py-[14px] text-[15px] font-bold text-body2 shadow-[0_8px_18px_rgba(110,11,14,0.06)]"
+            >
+              {a}
+            </span>
+          ))}
+          <Link
+            href={routes.integrations}
+            className="bg-rose-100 border border-rose-200 text-coral rounded-[12px] px-[22px] py-[14px] text-[15px] font-bold inline-flex items-center gap-[6px] transition-colors hover:bg-rose-200"
+          >
+            +100 more
+            {ARROW}
+          </Link>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* .tsd-sec.tsd-sand awards band — recognition cards. */
+export function AwardsBand() {
+  return (
+    <section className="py-24 max-[960px]:py-16 bg-sand">
+      <div className="max-w-[1240px] mx-auto px-7">
+        <SHead
+          eyebrow="Awards & recognition"
+          h2="Recognized by the people who use it"
+        />
+        <Reveal className="flex gap-4 flex-wrap justify-center mt-10">
+          {AWARDS.map((aw) => (
+            <div
+              key={aw.t}
+              className="flex flex-col items-center gap-[10px] bg-white border border-warm rounded-[16px] py-[22px] px-[26px] min-w-[150px] shadow-[0_12px_26px_rgba(110,11,14,0.08)]"
+            >
+              <span className="w-11 h-11 rounded-full bg-rose-100 text-coral flex items-center justify-center">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                >
+                  <circle cx="12" cy="8" r="6" />
+                  <path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5" />
+                </svg>
+              </span>
+              <span className="text-[13.5px] font-bold text-ink text-center">
+                {aw.t}
+              </span>
+              <span className="text-[11.5px] text-muted">{aw.s}</span>
+            </div>
+          ))}
+        </Reveal>
+      </div>
+    </section>
+  );
 }

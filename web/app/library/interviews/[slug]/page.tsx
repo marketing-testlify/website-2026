@@ -181,7 +181,7 @@ export default async function Page(props: PageProps<"/library/interviews/[slug]"
               </div>
 
               <div className="reveal is-in flex gap-3 flex-wrap mt-9">
-                <CtaButton label="Try for free" href="#" variant="primary" size="lg" icon="arrow" magnetic />
+                <CtaButton label="Try for free" href="#" variant="primary" size="lg" icon="arrow" />
                 <CtaButton label="View sample questions" href="#inside-the-interview" variant="secondary" size="lg" icon="none" />
               </div>
               <div className="flex items-center gap-[26px] flex-wrap mt-[18px] text-[14.5px] text-[#8A7A7D] font-medium">
@@ -196,7 +196,7 @@ export default async function Page(props: PageProps<"/library/interviews/[slug]"
                 <span className="text-[13px] text-[#9A878A] font-semibold">Ready to use</span>
                 <span className="text-[11px] font-bold tracking-[0.05em] uppercase px-[11px] py-1 rounded-full bg-[#FFF3E0] text-[#B5740F]">{t.level}</span>
               </div>
-              <ul className="list-none mt-0 mb-[22px] p-0">
+              <ul className="list-none mt-0 mb-0 p-0">
                 <li className="flex items-center justify-between gap-3 py-3 border-b border-[#F4E7E8] text-sm">
                   <span className="text-[#8A7A7D] font-medium inline-flex items-center gap-[9px]">
                     <span className="text-[#C0989B] shrink-0"><ModeIcon /></span>
@@ -226,7 +226,7 @@ export default async function Page(props: PageProps<"/library/interviews/[slug]"
                   <span className="text-ink font-bold text-right">{t.skills.length}</span>
                 </li>
               </ul>
-              <ul className="list-none mt-5 mb-0 pt-4 border-t border-[#F4E7E8] flex flex-col gap-[10px]">
+              <ul className="list-none mt-0 mb-0 pt-4 border-t border-[#F4E7E8] flex flex-col gap-[10px]">
                 {["AI-scored with full transcript & recording", "Anti-cheat & full-screen proctoring", "Combine with any of 3,500+ skills tests"].map((li) => (
                   <li key={li} className="flex items-start gap-[9px] text-[13px] text-[#46383C] leading-[1.4]">
                     <span className="shrink-0 mt-px text-[#1FA463]">

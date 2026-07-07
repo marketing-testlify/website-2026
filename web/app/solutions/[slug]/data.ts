@@ -7,6 +7,8 @@ import { routes } from "@/lib/routes";
 
 export type Bullet = { label: string; href?: string; desc?: string };
 
+export type Testimonial = { quote: string; name: string; role: string };
+
 export type SplitSection = {
   kind: "split";
   num?: string;
@@ -62,6 +64,8 @@ export type SolutionData = {
   stats: { t: string }[];
   logos?: string[];
   sections: Section[];
+  /** Per-variant testimonials; falls back to DEFAULT_TESTIMONIALS when omitted. */
+  testimonials?: Testimonial[];
   faqs: { q: string; a: string }[];
   faqTitle?: string;
   ctaEyebrow: string;
@@ -141,6 +145,26 @@ export const SOLUTIONS: Record<string, SolutionData> = {
           { label: "Improve time-to-hire" },
           { label: "Benchmark against a global pool" },
         ],
+      },
+    ],
+    testimonials: [
+      {
+        quote:
+          "We cut first-round screening from days to hours. The shortlist Testlify hands us is genuinely job-ready.",
+        name: "Priya Nair",
+        role: "Head of TA, Fintech scale-up",
+      },
+      {
+        quote:
+          "Auto-advancement means every applicant gets a fair, identical evaluation — no matter how many apply.",
+        name: "Marcus Bell",
+        role: "Talent Partner, SaaS",
+      },
+      {
+        quote:
+          "The proctoring and reporting gave our hiring managers confidence to trust scores over gut feel.",
+        name: "Sofia Ramirez",
+        role: "Recruiting Lead, Retail",
       },
     ],
     faqs: [
@@ -545,3 +569,48 @@ export const SOLUTIONS: Record<string, SolutionData> = {
 };
 
 export const SOLUTION_SLUGS = Object.keys(SOLUTIONS);
+
+/* ============================================================
+   Shared always-on bands — every solution page shows the same
+   testimonials (unless a variant overrides), ATS logos and awards,
+   matching the prototypes' TEST_D / ATS_D / AWARDS_D defaults.
+   ============================================================ */
+
+export const DEFAULT_TESTIMONIALS: Testimonial[] = [
+  {
+    quote:
+      "We cut first-round screening from days to hours. The shortlist Testlify hands us is genuinely job-ready.",
+    name: "Priya Nair",
+    role: "Head of TA, Fintech scale-up",
+  },
+  {
+    quote:
+      "Every applicant gets a fair, identical evaluation — no matter how many apply.",
+    name: "Marcus Bell",
+    role: "Talent Partner, SaaS",
+  },
+  {
+    quote:
+      "The proctoring and reporting gave our hiring managers confidence to trust scores over gut feel.",
+    name: "Sofia Ramirez",
+    role: "Recruiting Lead, Retail",
+  },
+];
+
+export const ATS_LOGOS = [
+  "Greenhouse",
+  "Lever",
+  "Workday",
+  "BambooHR",
+  "Zoho Recruit",
+  "SAP SuccessFactors",
+  "Ashby",
+  "JazzHR",
+];
+
+export const AWARDS: { t: string; s: string }[] = [
+  { t: "High Performer", s: "G2 · 2026" },
+  { t: "Easiest To Use", s: "G2 · 2026" },
+  { t: "Best Support", s: "G2 · 2026" },
+  { t: "Momentum Leader", s: "G2 · 2026" },
+];

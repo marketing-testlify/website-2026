@@ -372,7 +372,6 @@ export default function Page() {
                   variant="primary"
                   size="lg"
                   icon="arrow"
-                  magnetic
                   className="border-[1.5px] border-transparent"
                 />
                 <CtaButton label="Book a demo" href={routes.contact} variant="secondary" size="lg" icon="play" className="by-demo" />

@@ -194,7 +194,6 @@ export default function LiveDemoClient() {
                   variant="primary"
                   size="md"
                   icon="arrow"
-                  magnetic
                   className="border-[1.5px] border-transparent"
                 />
                 {/* prototype shrinks the play circle to 24px so both hero buttons are 55px tall */}

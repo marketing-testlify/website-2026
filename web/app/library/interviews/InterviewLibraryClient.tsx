@@ -260,7 +260,7 @@ export default function InterviewLibraryClient() {
                 ))}
               </Reveal>
               <Reveal delay={0.23} className="flex flex-wrap gap-[14px] mt-[34px]">
-                <CtaButton label="Try for free" href={routes.pricing} variant="primary" size="lg" icon="arrow" magnetic />
+                <CtaButton label="Try for free" href={routes.pricing} variant="primary" size="lg" icon="arrow" />
                 <CtaButton label="Book a demo" href="#" variant="secondary" size="lg" icon="play" />
               </Reveal>
               <Reveal delay={0.27} className="flex items-center gap-[26px] flex-wrap mt-[18px] text-[14.5px] text-muted font-medium">
