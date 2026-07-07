@@ -315,20 +315,6 @@ const SOL: MenuTab[] = [
       { label: "Non-profits & public sector", d: "Fair, defensible selection", href: routes.solutions },
     ],
   },
-  {
-    name: "By test type",
-    tabDesc: "Coding, cognitive, personality & more",
-    cta: "Browse the test library →",
-    ctaHref: routes.testLibrary,
-    icon: <path d="M4 6h16M4 12h10M4 18h7" />,
-    subs: [
-      { label: "Coding tests", d: "Real-world dev challenges, 45+ languages", href: "/solutions/coding-tests" },
-      { label: "Cognitive ability", d: "Reasoning & problem-solving", href: routes.testLibrary },
-      { label: "Personality & behavioral", d: "Work style and culture fit", href: routes.testLibrary },
-      { label: "Language & communication", d: "Proficiency across 16+ languages", href: routes.testLibrary },
-      { label: "Role-based tests", d: "4,500+ job-specific assessments", href: routes.testLibrary },
-    ],
-  },
 ];
 
 const RES: MenuTab[] = [
@@ -424,7 +410,6 @@ export default function SiteHeader({
 }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobOpen, setMobOpen] = useState(false);
-  const [prodActive, setProdActive] = useState(0);
   const [solActive, setSolActive] = useState(0);
   const [resActive, setResActive] = useState(0);
 
@@ -437,7 +422,6 @@ export default function SiteHeader({
 
   const isSolid = !overlay || scrolled;
   const collapsed = scrolled;
-  const A = PLAT[prodActive] ?? PLAT[0];
   const S = SOL[solActive] ?? SOL[0];
   const R = RES[resActive] ?? RES[0];
 
@@ -515,36 +499,34 @@ export default function SiteHeader({
               <div className={megaPanel}>
                 <span className="absolute -top-[14px] left-0 right-0 h-[14px]" />
                 <div className="flex">
-                  <div className="flex flex-col gap-0.5 min-w-[268px] border-r border-[#F4E4E5] pr-3 mr-3.5">
-                    {PLAT.map((g, i) => (
-                      <Link
-                        key={g.id}
-                        href={g.href ?? `${routes.product}#${g.id}`}
-                        onMouseEnter={() => setProdActive(i)}
-                        className={`flex items-start gap-[11px] py-[9px] px-2.5 rounded-[11px] transition-colors ${
-                          prodActive === i ? "bg-[#FFF4F3]" : "hover:bg-[#FFF4F3]"
-                        }`}
-                      >
-                        <span className="shrink-0 w-[34px] h-[34px] rounded-[9px] bg-rose-100 text-coral flex items-center justify-center mt-px">
-                          <MegaIcon>{g.icon}</MegaIcon>
-                        </span>
-                        <span>
-                          <span className="block text-[14px] font-semibold text-ink leading-[1.25]">{g.title}</span>
-                          <span className="block text-[12px] text-[#9A878A] leading-[1.35] mt-0.5">{g.desc}</span>
-                        </span>
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="flex flex-col gap-0.5 min-w-[230px] pt-0.5 mr-1.5">
-                    <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mb-2 px-2.5 mt-0.5">{A.name}</p>
-                    {A.subs.map((s) => (
-                      <Link key={s.label} href={A.href ?? `${routes.product}#${A.id}`} className="flex flex-col gap-px py-[9px] px-3 rounded-[10px] hover:bg-rose-100 transition-colors">
-                        <span className="text-[14px] font-semibold text-ink leading-[1.25]">{s.label}</span>
-                        <span className="text-[12px] text-[#9A878A] leading-[1.35]">{s.d}</span>
-                      </Link>
-                    ))}
-                    <Link href={A.href ?? `${routes.product}#${A.id}`} className="mt-1.5 text-[13px] font-bold text-coral px-3 py-2 hover:text-coral-deep">{A.cta}</Link>
-                  </div>
+                  {[
+                    ["testlify-ai", "ai-resume-screener", "skill-assessments", "ai-interviews"],
+                    ["features", "ats-integrations", "science", "live-demo"],
+                  ].map((col, ci) => (
+                    <div
+                      key={ci}
+                      className={`flex flex-col gap-0.5 min-w-[268px] ${ci === 0 ? "border-r border-[#F4E4E5] pr-3.5 mr-3.5" : "mr-3.5"}`}
+                    >
+                      {col.map((id) => {
+                        const g = PLAT.find((x) => x.id === id)!;
+                        return (
+                          <Link
+                            key={g.id}
+                            href={g.href ?? `${routes.product}#${g.id}`}
+                            className="flex items-start gap-[11px] py-[9px] px-2.5 rounded-[11px] transition-colors hover:bg-[#FFF4F3]"
+                          >
+                            <span className="shrink-0 w-[34px] h-[34px] rounded-[9px] bg-rose-100 text-coral flex items-center justify-center mt-px">
+                              <MegaIcon>{g.icon}</MegaIcon>
+                            </span>
+                            <span>
+                              <span className="block text-[14px] font-semibold text-ink leading-[1.25]">{g.title}</span>
+                              <span className="block text-[12px] text-[#9A878A] leading-[1.35] mt-0.5">{g.desc}</span>
+                            </span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ))}
                   <div className="w-[216px] bg-gradient-to-br from-[#FFF1F0] to-[#FFE7E4] rounded-[14px] p-[18px] flex flex-col justify-center gap-[7px]">
                     <p className="text-[15px] font-bold text-[#1A0E10] m-0">New · Testlify AI</p>
                     <p className="text-[12.5px] text-[#6B4F52] m-0 leading-[1.45]">Screen, interview and score candidates automatically with conversational AI.</p>
