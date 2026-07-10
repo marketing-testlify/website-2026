@@ -77,14 +77,14 @@ a{text-decoration:none;color:inherit;}
 }
 </style>
 </helmet>
-<dc-import name="component-site-header" announcement="19 question types, AI proctoring and full analytics — all in one platform." announcement-cta="Explore features" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+<dc-import name="component-site-header" announcement="13+ question types, AI proctoring and full analytics — all in one platform." announcement-cta="Explore features" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
 
 <section class="hero"><div class="wrap">
   <div class="reveal" style="display:flex;justify-content:center;transition-delay:.02s"><span class="pill"><span class="pilltag">FEATURES</span> Everything you need to assess</span></div>
   <h1 class="h1 reveal" style="margin:22px auto 0;max-width:900px;transition-delay:.06s">One platform for every<br>way you <span class="acc">assess talent.</span></h1>
-  <p class="lead reveal" style="margin:22px auto 0;max-width:620px;transition-delay:.1s">From 19 question types and AI proctoring to deep analytics, multilingual delivery and a full API — Testlify gives you every tool to run fair, rigorous assessments at scale.</p>
+  <p class="lead reveal" style="margin:22px auto 0;max-width:620px;transition-delay:.1s">From 13+ question types and AI proctoring to deep analytics, multilingual delivery and a full API — Testlify gives you every tool to run fair, rigorous assessments at scale.</p>
   <div class="heroctas reveal" style="justify-content:center;transition-delay:.14s"><dc-import name="component-cta-button" label="Try for free" href="core-pricing.dc.html" variant="primary" size="md" icon="arrow" magnetic="true" hint-size="150px,52px"></dc-import><dc-import name="component-cta-button" label="Book a demo" href="#" variant="secondary" size="md" icon="play" hint-size="150px,52px"></dc-import></div>
-  <div class="trust reveal" style="justify-content:center;transition-delay:.18s"><span>19 question types</span><span class="dot"></span><span>9 candidate languages</span><span class="dot"></span><span>SOC 2 · ISO 27001 · GDPR</span></div>
+  <div class="trust reveal" style="justify-content:center;transition-delay:.18s"><span>13+ question types</span><span class="dot"></span><span>9 candidate languages</span><span class="dot"></span><span>SOC 2 · ISO 27001 · GDPR</span></div>
 </div></section>
 
 <nav class="jumpnav"><div class="jumpnav-in">
@@ -97,7 +97,7 @@ a{text-decoration:none;color:inherit;}
 
 <section class="sec" id="question-types"><div class="wrap">
   <div style="max-width:660px;margin:0 auto 48px;text-align:center;">
-    <p class="eyebrow reveal" style="justify-content:center;">19 question types<b>.</b></p>
+    <p class="eyebrow reveal" style="justify-content:center;">13+ question types<b>.</b></p>
     <h2 class="h2 reveal" style="transition-delay:.04s;">Ask anything, score everything</h2>
     <p class="lead reveal" style="margin-top:16px;transition-delay:.08s;">Mix and match formats in a single assessment — from live coding and video responses to file uploads and Google-doc tasks — all auto-scored where it counts.</p>
   </div>
@@ -238,7 +238,7 @@ class Component extends DCLogic {
   componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); }
   renderVals(){ return {
     faqItems: [
-      {q:"How many question types does Testlify support?", a:"19 question types — including coding, video, audio, file upload, multiple choice, essay, ranking, rating, fill-in-the-blank, Google Doc/Sheet/Slides tasks, qualifiers and more — all combinable in one assessment."},
+      {q:"How many question types does Testlify support?", a:"13+ question formats — including coding, video, audio, file upload, multiple choice, essay, ranking, rating, fill-in-the-blank, Google Doc/Sheet/Slides tasks, qualifiers and more — all combinable in one assessment."},
       {q:"How does anti-cheating work?", a:"Testlify combines webcam snapshots, full-screen enforcement, tab-switch and copy-paste detection, IP tracking, and plagiarism plus AI-answer detection. Every flag is transparent and reviewable."},
       {q:"Can I integrate Testlify with my ATS?", a:"Yes — native two-way sync with 100+ ATS tools including Greenhouse, Lever and Workday, plus a full REST API and webhooks for custom flows."},
       {q:"Is the platform available in other languages?", a:"The candidate experience is available in 9 languages, so assessments measure ability rather than English fluency."},

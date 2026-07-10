@@ -12,7 +12,7 @@ import { routes } from "@/lib/routes";
 export const metadata: Metadata = {
   title: "Features — one platform for every way you assess talent",
   description:
-    "From 19 question types and AI proctoring to deep analytics, multilingual delivery and a full API — Testlify gives you every tool to run fair, rigorous assessments at scale.",
+    "From 13+ question types and AI proctoring to deep analytics, multilingual delivery and a full API — Testlify gives you every tool to run fair, rigorous assessments at scale.",
 };
 
 /* ---------------------------------------------------------------- */
@@ -30,7 +30,7 @@ const LEAD = "text-[19px] leading-[1.6] text-body font-normal";
 const FAQ_ITEMS = [
   {
     q: "How many question types does Testlify support?",
-    a: "19 question types — including coding, video, audio, file upload, multiple choice, essay, ranking, rating, fill-in-the-blank, Google Doc/Sheet/Slides tasks, qualifiers and more — all combinable in one assessment.",
+    a: "13+ question formats — including coding, video, audio, file upload, multiple choice, essay, ranking, rating, fill-in-the-blank, Google Doc/Sheet/Slides tasks, qualifiers and more — all combinable in one assessment.",
   },
   {
     q: "How does anti-cheating work?",
@@ -338,7 +338,7 @@ export default function Page() {
   return (
     <>
       <SiteHeader
-        announcement="19 question types, AI proctoring and full analytics — all in one platform."
+        announcement="13+ question types, AI proctoring and full analytics — all in one platform."
         announcementCta="Explore features"
         announcementHref="#question-types"
       />
@@ -368,7 +368,7 @@ export default function Page() {
             delay={0.1}
             className={`${LEAD} mt-[22px] mx-auto max-w-[620px]`}
           >
-            From 19 question types and AI proctoring to deep analytics,
+            From 13+ question types and AI proctoring to deep analytics,
             multilingual delivery and a full API — Testlify gives you every tool
             to run fair, rigorous assessments at scale.
           </Reveal>
@@ -395,7 +395,7 @@ export default function Page() {
             delay={0.18}
             className="flex items-center gap-[13px] flex-wrap justify-center mt-[26px] text-[13.5px] text-muted font-semibold"
           >
-            <span>19 question types</span>
+            <span>13+ question types</span>
             <span className="w-1 h-1 rounded-full bg-[#D9C7C9]" />
             <span>9 candidate languages</span>
             <span className="w-1 h-1 rounded-full bg-[#D9C7C9]" />
@@ -430,7 +430,7 @@ export default function Page() {
         <div className="max-w-[1240px] mx-auto">
           <div className="max-w-[660px] mx-auto mb-12 text-center">
             <Reveal as="p" className={`${EYEBROW} flex justify-center`}>
-              19 question types<b className="text-coral font-semibold">.</b>
+              13+ question types<b className="text-coral font-semibold">.</b>
             </Reveal>
             <Reveal as="h2" delay={0.04} className={`${H2} mt-4`}>
               Ask anything, score everything

@@ -14,28 +14,28 @@ import { routes } from "@/lib/routes";
 
 const faqItems = [
   {
-    q: "What types of questions can I use with this feature?",
-    a: "You can input any open-ended, single-select and video questions relevant to your hiring needs, allowing candidates to provide detailed responses for evaluation.",
+    q: "What does the live demo cover?",
+    a: "An end-to-end walkthrough of Testlify — building an assessment with AI, running a chat simulation, auto-scoring answers across formats, and applying bias controls — using real product screens.",
   },
   {
-    q: "What customisation options are available for skills assessments?",
-    a: "Choose from a range of question types, select the number of questions, and save valuable time and resources in the assessment-creation process.",
+    q: "Do I need to book a call to see it?",
+    a: "No. You can explore the guided walkthrough here any time, or book a live demo with our team if you'd like a tailored session for your roles.",
   },
   {
-    q: "In which languages is the AI-powered custom assessment available?",
-    a: "The feature is available in 9 languages: English, Arabic, French, Dutch, Spanish, Japanese, Italian and Portuguese.",
+    q: "Can I try Testlify myself instead?",
+    a: "Yes. Every plan starts with a 7-day free trial — no credit card required — so you can run real assessments on your own before deciding.",
   },
   {
-    q: "How does the AI chat-simulation feature transform recruitment?",
-    a: "Chat simulation streamlines recruitment by facilitating lifelike conversations and auto-evaluating candidate responses, ensuring consistent and objective assessments.",
+    q: "How long is a live demo with your team?",
+    a: "A guided demo typically runs 30 minutes, focused on your hiring workflow and the roles you're assessing for.",
   },
   {
-    q: "How does AI-driven assessment creation cater to specific roles?",
-    a: "By providing key information such as preferred skills, experience level and desired question types, our AI crafts assessments tailored to the specific needs of the role you're hiring for.",
+    q: "Will the demo use my roles and questions?",
+    a: "In a booked demo, yes — we tailor the walkthrough to your roles and can show how AI generates assessments for the exact skills you hire for.",
   },
   {
-    q: "How accurate is the AI evaluation of candidate responses?",
-    a: "Our AI is trained to accurately evaluate candidate responses, providing consistent and objective assessments to help you make informed, defensible hiring decisions.",
+    q: "What happens after the demo?",
+    a: "You can start a free trial immediately, invite your first candidates, and sync results to your ATS — our team helps with setup and adoption.",
   },
 ];
 
@@ -286,8 +286,8 @@ export default function LiveDemoClient() {
         <div className={WRAP}>
           <div className={SPLIT}>
             <Reveal>
-              <Eyebrow>Custom assessments</Eyebrow>
-              <h2 className={`${H2} text-ink mb-5`}>Effortlessly build custom assessments with AI</h2>
+              <Eyebrow>Walkthrough · Step 1</Eyebrow>
+              <h2 className={`${H2} text-ink mb-5`}>Build an assessment with AI in seconds</h2>
               <p className={`${LEAD} text-body mt-0 mb-[22px]`}>
                 Create AI-driven assessments tailored to the exact role you&apos;re hiring for. Give it the skills,
                 experience level and question types you want — and let Testlify handle the rest.
@@ -355,8 +355,8 @@ export default function LiveDemoClient() {
         <div className={WRAP}>
           <div className={SPLIT}>
             <Reveal className="order-2">
-              <Eyebrow>Chat simulation</Eyebrow>
-              <h2 className={`${H2} text-ink mb-5`}>Go beyond conventional tests with chat simulation</h2>
+              <Eyebrow>Walkthrough · Step 2</Eyebrow>
+              <h2 className={`${H2} text-ink mb-5`}>Watch a candidate handle a live simulation</h2>
               <p className={`${LEAD} text-body mt-0 mb-[22px]`}>
                 Create lifelike scenarios and virtual interviews by inputting questions and prompts. Testlify engages
                 candidates in realistic conversations and auto-evaluates their responses — consistent, objective, at
@@ -413,10 +413,10 @@ export default function LiveDemoClient() {
         <div className={WRAP}>
           <div className="max-w-[660px] mx-auto mb-[52px] text-center">
             <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.16em] uppercase text-[#C9A9AB] m-0 mb-[18px]">
-              Automated scoring<b className="text-coral-bright font-semibold">.</b>
+              Walkthrough · Step 3<b className="text-coral-bright font-semibold">.</b>
             </Reveal>
             <Reveal as="h2" delay={0.04} className={`${H2} text-white`}>
-              Score every answer format — automatically
+              See every answer auto-scored
             </Reveal>
             <Reveal as="p" delay={0.08} className={`${LEAD} text-[#D3C3C6] mt-4 mb-0`}>
               AI-driven analysis eliminates tedious manual scoring. Consistent, objective, bias-free results across
@@ -580,8 +580,8 @@ export default function LiveDemoClient() {
               </Mock>
             </Reveal>
             <Reveal className="order-2">
-              <Eyebrow>Fair by design</Eyebrow>
-              <h2 className={`${H2} text-ink mb-5`}>Reduce bias with AI-driven assessments</h2>
+              <Eyebrow>Walkthrough · Step 4</Eyebrow>
+              <h2 className={`${H2} text-ink mb-5`}>Apply bias controls across the pipeline</h2>
               <p className={`${LEAD} text-body mt-0 mb-[22px]`}>
                 Mitigate bias to create equitable opportunity for every candidate. Attract diverse top talent that
                 aligns with your culture — and prove it with a defensible audit trail.

@@ -51,12 +51,12 @@ const TEAM = [
 
 const TIMELINE = [
   {
-    year: "2019",
+    year: "2021",
     text: "Testlify is founded with a simple test library and a big belief: skills should come first.",
   },
   {
-    year: "2021",
-    text: "We cross 1,000 customers and launch coding assessments and anti-cheat proctoring.",
+    year: "2022",
+    text: "We cross 1,000 hiring teams and launch coding assessments and anti-cheat proctoring.",
   },
   {
     year: "2023",

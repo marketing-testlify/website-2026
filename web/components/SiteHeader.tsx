@@ -183,7 +183,7 @@ const PLAT: PlatGroup[] = [
     title: "Features",
     desc: "Question types, proctoring, analytics & API",
     subs: [
-      { label: "Question types", d: "19 formats, from coding to video" },
+      { label: "Question types", d: "13+ formats, from coding to video" },
       { label: "Anti-cheating & proctoring", d: "Webcam, tab & plagiarism checks" },
       { label: "Reporting & analytics", d: "Benchmarks and score insights" },
       { label: "API & white label", d: "Build it into your own flow" },

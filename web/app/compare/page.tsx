@@ -7,35 +7,35 @@ import Reveal from "@/components/Reveal";
 import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = {
-  title: "Compare plans — find the plan that fits how you hire",
+  title: "Compare plans — find a perfect plan that suits your need",
   description:
-    "A detailed comparison of every Testlify plan — features, credits and limits side by side. All plans include a 7-day free trial, no credit card required.",
+    "Go through the detailed plan comparison to find the perfect fit for your organization's talent assessment needs. All plans include a 7-day free trial, no credit card required.",
 };
 
 const FAQ_ITEMS = [
   {
-    q: "How does Testlify's credit-based pricing work?",
-    a: "You pick a plan by the number of credits and user seats you need. One credit is spent only when a candidate actually starts an assessment — so you pay for real usage, not seats.",
+    q: "What is Testlify's pricing model?",
+    a: "Testlify offers a fixed monthly subscription model for its pricing. You can choose between yearly or monthly billing.",
   },
   {
-    q: "Can I switch plans later?",
-    a: "Yes. You can upgrade or downgrade at any time; billing is prorated automatically so you only pay for what you use.",
+    q: "Is there a free trial available?",
+    a: "Yes, Testlify provides a 7-day free trial for users to explore and experience the platform. No credit card is required during the trial period.",
   },
   {
-    q: "Do credits roll over?",
-    a: "Credits do not roll over and expire at the end of the billing cycle. If you expect lower usage, you can adjust your plan to match.",
+    q: "Can I upgrade or downgrade my subscription plan?",
+    a: "Yes, you can upgrade or downgrade your subscription plan at any time based on your changing needs. Testlify offers flexibility in adjusting your plan according to your requirements.",
   },
   {
-    q: "Can I pay monthly or annually?",
-    a: "Both. Every plan supports monthly or annual billing, and annual billing saves roughly 20% versus paying month to month.",
+    q: "Can I pay monthly or yearly?",
+    a: "Yes, you can pay both monthly or annually for all the available plans.",
   },
   {
-    q: "What add-ons are available?",
-    a: "Integrations and white-label features, extra user seats ($15/seat/month), advanced analytics, and proctoring options like ID verification and live video proctoring.",
+    q: "Does Testlify offer customer support for pricing-related queries?",
+    a: "Yes, Testlify provides customer support to address any pricing-related queries or concerns you may have. You can reach out to our support team for assistance.",
   },
   {
-    q: "How can I pay?",
-    a: "By credit or debit card on file, or by wire transfer. Additional candidate usage is billed monthly to the card on file.",
+    q: "What is the usage policy for unlimited candidate invites?",
+    a: "Testlify's usage policy for unlimited candidate invites includes 1,000 invitations for the monthly plan and 10,000 invitations for the annual plan as part of the fair platform usage policy. Thereafter, every additional invite would cost $1.",
   },
 ];
 
@@ -60,8 +60,8 @@ const SCOPED_CSS = `
 .cmproot table.cmp tbody tr.grp:hover td{background:#1A1014;}
 .cmproot td.rowlabel{font-weight:600;color:#2A1A1D;background:#FDFAF8;}
 .cmproot tr.grp td{background:#1A1014;color:#fff;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;}
-.cmproot .chk{color:#1F9D6B;font-weight:700;display:inline-flex;}
-.cmproot .no{color:#C9B9BC;display:inline-flex;}
+.cmproot .chk{color:#1F9D6B;font-weight:700;display:inline-flex;align-items:center;}
+.cmproot .no{color:#C9B9BC;display:inline-flex;align-items:center;}
 .cmproot .cell-hot{background:#FFF8F8;}
 .cmproot .mini{font-size:12px;color:#8A7A7D;}
 .cmproot .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:3px 8px;border-radius:99px;background:#FFF4E6;color:#C7791B;}
@@ -85,22 +85,7 @@ const Chk = () => (
   </span>
 );
 
-const Dash = () => (
-  <span className="no">
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2.4}
-      strokeLinecap="round"
-      aria-hidden
-    >
-      <line x1="6" y1="12" x2="18" y2="12" />
-    </svg>
-  </span>
-);
+const Included = () => <span className="chk">Included</span>;
 
 const Tag = ({ children }: { children: React.ReactNode }) => (
   <span className="tag">{children}</span>
@@ -108,31 +93,29 @@ const Tag = ({ children }: { children: React.ReactNode }) => (
 
 type CellVal = React.ReactNode;
 
-function FourRow({
+/** Standard row: Features label + Standard cell + highlighted Custom cell. */
+function Row({
   label,
-  a,
-  b,
-  c,
-  d,
+  std,
+  custom,
+  stdClassName,
 }: {
   label: React.ReactNode;
-  a: CellVal;
-  b: CellVal;
-  c: CellVal;
-  d: CellVal;
+  std: CellVal;
+  custom: CellVal;
+  stdClassName?: string;
 }) {
   return (
     <tr>
       <td className="rowlabel">{label}</td>
-      <td>{a}</td>
-      <td>{b}</td>
-      <td className="cell-hot">{c}</td>
-      <td>{d}</td>
+      <td className={stdClassName}>{std}</td>
+      <td className="cell-hot">{custom}</td>
     </tr>
   );
 }
 
-function NoteRow({
+/** Price row: label + a single note cell spanning both plan columns. */
+function PriceRow({
   label,
   note,
 }: {
@@ -142,7 +125,7 @@ function NoteRow({
   return (
     <tr>
       <td className="rowlabel">{label}</td>
-      <td colSpan={4}>{note}</td>
+      <td colSpan={2}>{note}</td>
     </tr>
   );
 }
@@ -150,9 +133,19 @@ function NoteRow({
 function GroupRow({ children }: { children: React.ReactNode }) {
   return (
     <tr className="grp">
-      <td colSpan={5}>{children}</td>
+      <td colSpan={3}>{children}</td>
     </tr>
   );
+}
+
+/** All-checkmark row (both plans). */
+function CheckRow({ label }: { label: React.ReactNode }) {
+  return <Row label={label} std={<Chk />} custom={<Chk />} />;
+}
+
+/** Add-on (Standard) vs Included (Custom) row. */
+function AddonRow({ label }: { label: React.ReactNode }) {
+  return <Row label={label} std={<Tag>Add-on</Tag>} custom={<Included />} />;
 }
 
 export default function Page() {
@@ -179,19 +172,28 @@ export default function Page() {
               delay={0.04}
               className="text-[52px] leading-[1.06] font-extrabold tracking-[-1.8px] m-0 text-ink max-[960px]:text-[38px] max-[960px]:tracking-[-1.2px]"
             >
-              Find the plan that fits
+              Compare and find a perfect
               <br />
-              how you <span className="text-coral">hire.</span>
+              plan that <span className="text-coral">suits your need.</span>
             </Reveal>
             <Reveal
               as="p"
               delay={0.08}
-              className="text-[19px] leading-[1.6] text-body mt-5 mx-auto max-w-[640px]"
+              className="text-[19px] leading-[1.6] text-body mt-5 mx-auto max-w-[660px]"
             >
-              A detailed comparison of every Testlify plan — features, credits
-              and limits side by side — so you can choose the right fit for your
-              team. All plans include a 7-day free trial, no credit card
-              required.
+              Go through the detailed plan comparison to find the perfect fit for
+              your organization&apos;s talent assessment needs. Discover key features,
+              pricing structures, and benefits to make an informed decision in
+              unleashing your team&apos;s full potential.
+            </Reveal>
+            <Reveal delay={0.12}>
+              <Link
+                className="pl-cta cta-primary"
+                style={{ marginTop: 24, fontSize: 15, padding: "14px 28px" }}
+                href={routes.pricing}
+              >
+                View plans
+              </Link>
             </Reveal>
           </div>
         </section>
@@ -203,211 +205,150 @@ export default function Page() {
               <table className="cmp">
                 <thead>
                   <tr>
-                    <th style={{ minWidth: 230 }}>
-                      <span className="mini">Billed annually · save ~20%</span>
+                    <th style={{ minWidth: 340 }}>
+                      <span className="mini">Features</span>
                     </th>
                     <th>
-                      <div className="pl-name">Starter</div>
-                      <div className="pl-price">
-                        $139<span className="pl-per">/mo</span>
+                      <div className="pl-name">Standard Plan</div>
+                      <div className="pl-bill">
+                        Everything you need to start hiring on skills
                       </div>
-                      <div className="pl-bill">$1,663 / year</div>
                       <Link className="pl-cta cta-ghost" href={routes.pricing}>
-                        Start free trial
-                      </Link>
-                    </th>
-                    <th>
-                      <div className="pl-name">Basic</div>
-                      <div className="pl-price">
-                        $279<span className="pl-per">/mo</span>
-                      </div>
-                      <div className="pl-bill">$3,343 / year</div>
-                      <Link className="pl-cta cta-ghost" href={routes.pricing}>
-                        Start free trial
+                        View plans
                       </Link>
                     </th>
                     <th className="cell-hot">
-                      <div className="pl-name hot">
-                        Business <Tag>Popular</Tag>
+                      <div className="pl-name hot">Custom Plan</div>
+                      <div className="pl-bill">
+                        Tailored for scale, security &amp; compliance
                       </div>
-                      <div className="pl-price">
-                        $699<span className="pl-per">/mo</span>
-                      </div>
-                      <div className="pl-bill">$8,383 / year</div>
-                      <Link className="pl-cta cta-primary" href={routes.pricing}>
-                        Start free trial
-                      </Link>
-                    </th>
-                    <th>
-                      <div className="pl-name">Premium</div>
-                      <div className="pl-price">Custom</div>
-                      <div className="pl-bill">Volume pricing</div>
-                      <Link className="pl-cta cta-ghost" href={routes.contact}>
+                      <Link className="pl-cta cta-primary" href={routes.contact}>
                         Contact sales
                       </Link>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <GroupRow>Plan basics</GroupRow>
-                  <FourRow
-                    label="Candidate credits / year"
-                    a="100"
-                    b="300"
-                    c="1,000"
-                    d="3,000+"
+                  <GroupRow>Workspace features</GroupRow>
+                  <Row label="Test library" std="3,500+" custom="3,500+" />
+                  <Row
+                    label="Tests per assessment"
+                    std="Unlimited"
+                    custom="Unlimited"
                   />
-                  <FourRow
-                    label="User seats included"
-                    a="3"
-                    b="5"
-                    c="10"
-                    d="20+"
+                  <Row label="AI resume screening" std="Free" custom="Free" />
+                  <Row
+                    label="Custom questions per assessment"
+                    std="Unlimited"
+                    custom="Unlimited"
                   />
-                  <FourRow
-                    label="Additional credit price"
-                    a="$21"
-                    b="$11"
-                    c="$10"
-                    d="Volume-based"
-                  />
-                  <NoteRow
-                    label="Additional user seat"
-                    note="$15 / seat / month on every plan"
-                  />
-                  <FourRow
-                    label="Free trial"
-                    a="7 days"
-                    b="7 days"
-                    c="7 days"
-                    d="7 days"
-                  />
+                  <CheckRow label="Qualifying questions" />
+                  <CheckRow label="Test recommendations based on job roles" />
+                  <CheckRow label="Assessment templates based on job role" />
+                  <CheckRow label="Build your own tests from scratch" />
+                  <CheckRow label="Customize invitation and rejection emails" />
+                  <Row label="Multilingual support" std="16+" custom="16+" />
+                  <AddonRow label="White labeling" />
+                  <AddonRow label="100+ ATS integrations" />
+                  <AddonRow label="Additional user seats" />
+                  <AddonRow label="SAML SSO & 2FA" />
 
-                  <GroupRow>Assessments</GroupRow>
-                  <FourRow
-                    label="3,500+ test library"
-                    a={<Chk />}
-                    b={<Chk />}
-                    c={<Chk />}
-                    d={<Chk />}
-                  />
-                  <FourRow
-                    label="Unlimited assessments & questions"
-                    a={<Chk />}
-                    b={<Chk />}
-                    c={<Chk />}
-                    d={<Chk />}
-                  />
-                  <FourRow
-                    label="All 19 question types"
-                    a={<Chk />}
-                    b={<Chk />}
-                    c={<Chk />}
-                    d={<Chk />}
-                  />
-                  <FourRow
-                    label="Custom questions & tests"
-                    a={<Chk />}
-                    b={<Chk />}
-                    c={<Chk />}
-                    d={<Chk />}
-                  />
-                  <FourRow
-                    label="Role-based job simulations"
-                    a={<Chk />}
-                    b={<Chk />}
-                    c={<Chk />}
-                    d={<Chk />}
-                  />
+                  <GroupRow>Testlify assessments</GroupRow>
+                  <CheckRow label="Role-specific skill tests" />
+                  <CheckRow label="Software skills tests" />
+                  <CheckRow label="Programming skills tests" />
+                  <CheckRow label="Situational judgment tests (SJTs)" />
+                  <CheckRow label="Cognitive ability tests" />
+                  <CheckRow label="Language proficiency tests" />
+                  <CheckRow label="Engineering skills tests" />
+                  <CheckRow label="Blue-collar tests" />
+                  <CheckRow label="Personality & culture tests" />
+                  <CheckRow label="Typing tests" />
 
-                  <GroupRow>Interviews & AI</GroupRow>
-                  <FourRow
-                    label="AI video, audio & chat interviews"
-                    a={<Chk />}
-                    b={<Chk />}
-                    c={<Chk />}
-                    d={<Chk />}
-                  />
-                  <FourRow
-                    label="AI resume screening"
-                    a={<Dash />}
-                    b={<Chk />}
-                    c={<Chk />}
-                    d={<Chk />}
-                  />
-                  <NoteRow
-                    label="Phone interviews"
-                    note="$0.18 / minute on every plan"
-                  />
+                  <GroupRow>Testlify interviews</GroupRow>
+                  <CheckRow label="One-way video interviews" />
+                  <CheckRow label="One-way audio interviews" />
+                  <CheckRow label="Two-way video interviews (Video AI)" />
+                  <CheckRow label="Two-way audio interviews (Audio AI)" />
+                  <CheckRow label="Two-way chat interviews (Chat AI)" />
 
-                  <GroupRow>Proctoring & anti-cheat</GroupRow>
-                  <FourRow
-                    label="Tab tracking, face & AI-assist detection"
-                    a={<Chk />}
-                    b={<Chk />}
-                    c={<Chk />}
-                    d={<Chk />}
+                  <GroupRow>Testlify simulations</GroupRow>
+                  <CheckRow label="MS Office (Excel, Word, PowerPoint)" />
+                  <CheckRow label="Google Workspace (Sheets, Docs, Slides)" />
+                  <CheckRow label="Live coding platform" />
+                  <CheckRow label="Typing simulations" />
+                  <CheckRow label="Conversational AI interviews" />
+
+                  <GroupRow>Anti-cheating &amp; proctoring</GroupRow>
+                  <CheckRow label="Full-screen mode" />
+                  <CheckRow label="Live environment check" />
+                  <CheckRow label="Mouse out tracking" />
+                  <CheckRow label="Restrict multiple monitors" />
+                  <CheckRow label="Session recording" />
+                  <CheckRow label="Snapshot proctoring" />
+                  <CheckRow label="Tab proctoring" />
+                  <CheckRow label="Internet speed enforcement check" />
+                  <CheckRow label="Face detection" />
+                  <CheckRow label="Talking prohibition detection" />
+                  <CheckRow label="AI assistance detection" />
+                  <CheckRow label="Copy/paste tracking" />
+                  <CheckRow label="Question-level activity logs" />
+                  <CheckRow label="Focus Guard (Anti-Cheat Mode)" />
+                  <CheckRow label="IP proctoring" />
+                  <PriceRow
+                    label="System requirement check"
+                    note="$0.25 per system check"
                   />
-                  <NoteRow
+                  <PriceRow
                     label="Photo ID verification"
-                    note="$0.50 / attempt on every plan"
+                    note="$0.50 per attempt"
                   />
-                  <NoteRow
+                  <PriceRow
                     label="Live video proctoring & screen recording"
-                    note="$5 / attempt on every plan"
+                    note="$5 per attempt"
                   />
 
-                  <GroupRow>Integrations & branding</GroupRow>
-                  <FourRow
-                    label="100+ ATS integrations"
-                    a={<Tag>Add-on</Tag>}
-                    b={<Tag>Add-on</Tag>}
-                    c={<Chk />}
-                    d={<Chk />}
-                  />
-                  <FourRow
-                    label="White-label & custom branding"
-                    a={<Chk />}
-                    b={<Chk />}
-                    c={<Chk />}
-                    d={<Chk />}
-                  />
-                  <FourRow
-                    label="API & webhooks"
-                    a={<Dash />}
-                    b={<Chk />}
-                    c={<Chk />}
-                    d={<Chk />}
-                  />
+                  <GroupRow>White label</GroupRow>
+                  <AddonRow label="Hide Testlify branding" />
+                  <AddonRow label="Set up your SMTP" />
+                  <AddonRow label="Use your custom domain" />
+                  <AddonRow label="Custom support email and links" />
 
-                  <GroupRow>Security & support</GroupRow>
-                  <FourRow
-                    label="SOC 2 · ISO 27001 · GDPR · CCPA"
-                    a={<Chk />}
-                    b={<Chk />}
-                    c={<Chk />}
-                    d={<Chk />}
+                  <GroupRow>Integrations</GroupRow>
+                  <AddonRow label="API access" />
+                  <AddonRow label="100+ ATS integrations" />
+                  <AddonRow label="Webhooks" />
+
+                  <GroupRow>Security, privacy &amp; compliance</GroupRow>
+                  <CheckRow label="ISO 27001" />
+                  <CheckRow label="SOC 2 Type II" />
+                  <CheckRow label="GDPR compliant" />
+                  <CheckRow label="CCPA compliant" />
+                  <CheckRow label="Role-based access control" />
+
+                  <GroupRow>Reporting &amp; analytics</GroupRow>
+                  <CheckRow label="CSV and PDF downloads" />
+                  <CheckRow label="Automated scoring" />
+                  <CheckRow label="Global benchmarking" />
+                  <CheckRow label="Assessment-level benchmarking" />
+                  <CheckRow label="Shareable public link for candidate reports" />
+
+                  <GroupRow>Customer support</GroupRow>
+                  <CheckRow label="Help center" />
+                  <CheckRow label="Chat support" />
+                  <CheckRow label="Email support" />
+                  <CheckRow label="Call support" />
+                  <Row
+                    label="Personalized onboarding"
+                    std="Business & Premium only"
+                    stdClassName="mini"
+                    custom={<Chk />}
                   />
-                  <FourRow
-                    label="SAML SSO & 2FA"
-                    a={<Tag>Add-on</Tag>}
-                    b={<Tag>Add-on</Tag>}
-                    c={<Chk />}
-                    d={<Chk />}
-                  />
-                  <FourRow
-                    label="Regional data storage"
-                    a={<Dash />}
-                    b={<Dash />}
-                    c={<Chk />}
-                    d={<Chk />}
-                  />
-                  <FourRow
-                    label="Support"
-                    a="Email & chat"
-                    b="Email & chat"
-                    c="Priority"
-                    d="Dedicated CSM"
+                  <Row
+                    label="Dedicated customer success manager"
+                    std="Business & Premium only"
+                    stdClassName="mini"
+                    custom={<Chk />}
                   />
                 </tbody>
               </table>
@@ -415,8 +356,7 @@ export default function Page() {
 
             <Reveal className="text-center mt-[22px]">
               <p className="mini">
-                Base plan pricing locked for 24 months · 25% off for non-profits
-                with code TESTLIFYCARES25 ·{" "}
+                All plans include a 7-day free trial — no credit card required ·{" "}
                 <Link
                   href={routes.pricing}
                   className="text-coral font-semibold"

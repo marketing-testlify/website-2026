@@ -273,6 +273,79 @@ export default function HomeClient() {
   const howCardRef = useRef<HTMLDivElement>(null);
   const howStepsRef = useRef<HTMLDivElement>(null);
 
+  /* root wrapper — scope for the scroll-parallax querySelectorAll */
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  /* scroll parallax on decorative blobs + hero visual (ported from the
+     prototype's initParallax/measureParallax/updateParallax). Each
+     [data-parallax] element is translated on Y by (viewportMid - elementMid)
+     * speed, composed on top of any base transform. Progressive enhancement:
+     skipped entirely when the user prefers reduced motion. */
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    if (
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+    const els = Array.from(
+      root.querySelectorAll<HTMLElement>("[data-parallax]")
+    );
+    if (!els.length) return;
+
+    const bases = new Map<HTMLElement, string>();
+    const centers = new Map<HTMLElement, number>();
+    els.forEach((el) => bases.set(el, el.style.transform || ""));
+
+    const measure = () => {
+      els.forEach((el) => {
+        const prev = el.style.transform;
+        el.style.transform = bases.get(el) || "";
+        const r = el.getBoundingClientRect();
+        centers.set(el, r.top + window.scrollY + r.height / 2);
+        el.style.transform = prev;
+      });
+    };
+    const update = () => {
+      const vh = window.innerHeight || 800;
+      const mid = window.scrollY + vh / 2;
+      els.forEach((el) => {
+        const py = centers.get(el);
+        if (py == null) return;
+        const speed = parseFloat(el.getAttribute("data-parallax") || "") || 0.12;
+        const shift = (mid - py) * speed;
+        const base = bases.get(el);
+        el.style.transform =
+          (base ? base + " " : "") + "translate3d(0," + shift.toFixed(1) + "px,0)";
+      });
+    };
+
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        update();
+      });
+    };
+    const onResize = () => {
+      measure();
+      update();
+    };
+
+    measure();
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   /* hero word swap */
   const wordRef = useRef<HTMLSpanElement>(null);
   const heroRef = useRef<HTMLElement>(null);
@@ -444,7 +517,7 @@ export default function HomeClient() {
   }, [slide]);
 
   return (
-    <div style={{ position: "relative", overflowX: "hidden" }}>
+    <div ref={rootRef} style={{ position: "relative", overflowX: "hidden" }}>
       <style>{KEYFRAMES}</style>
 
       {/* fixed background wash */}
@@ -495,6 +568,39 @@ export default function HomeClient() {
             filter: "blur(30px)",
             opacity: 0.16,
             animation: "tl-blob 22s ease-in-out infinite reverse",
+          }}
+        />
+        {/* scroll-parallax blobs */}
+        <div
+          aria-hidden
+          data-parallax="-0.22"
+          style={{
+            position: "absolute",
+            top: 80,
+            right: -40,
+            width: 230,
+            height: 230,
+            borderRadius: "50%",
+            background: "radial-gradient(circle at 40% 40%,#FFE1E1,#FBA3A5)",
+            filter: "blur(26px)",
+            opacity: 0.22,
+            pointerEvents: "none",
+          }}
+        />
+        <div
+          aria-hidden
+          data-parallax="0.28"
+          style={{
+            position: "absolute",
+            top: 340,
+            left: "8%",
+            width: 120,
+            height: 120,
+            borderRadius: "50%",
+            background: "radial-gradient(circle at 50% 40%,#FFD4D5,#FFB4B6)",
+            filter: "blur(18px)",
+            opacity: 0.2,
+            pointerEvents: "none",
           }}
         />
 
@@ -587,6 +693,7 @@ export default function HomeClient() {
           <Reveal delay={0.18} className="relative">
             <div
               aria-hidden
+              data-parallax="-0.12"
               style={{
                 position: "absolute",
                 top: "48%",
@@ -603,6 +710,7 @@ export default function HomeClient() {
             </div>
             <div
               aria-hidden
+              data-parallax="0.18"
               style={{
                 position: "absolute",
                 inset: -30,
@@ -612,6 +720,7 @@ export default function HomeClient() {
               }}
             />
             <div
+              data-parallax="0.06"
               style={{
                 position: "relative",
                 background: "#fff",
@@ -896,8 +1005,45 @@ export default function HomeClient() {
       </section>
 
       {/* ============ HOW IT WORKS ============ */}
-      <section id="how" className="px-7" style={{ padding: "96px 28px", background: "#FBF3EE" }}>
-        <div style={{ maxWidth: 1180, margin: "0 auto" }}>
+      <section
+        id="how"
+        className="px-7"
+        style={{ padding: "96px 28px", background: "#FBF3EE", position: "relative", overflow: "hidden" }}
+      >
+        {/* scroll-parallax blobs */}
+        <div
+          aria-hidden
+          data-parallax="0.2"
+          style={{
+            position: "absolute",
+            top: -40,
+            right: "6%",
+            width: 200,
+            height: 200,
+            borderRadius: "50%",
+            background: "radial-gradient(circle at 45% 40%,#FFE1E1,#FBB6B8)",
+            filter: "blur(30px)",
+            opacity: 0.28,
+            pointerEvents: "none",
+          }}
+        />
+        <div
+          aria-hidden
+          data-parallax="-0.16"
+          style={{
+            position: "absolute",
+            bottom: -30,
+            left: -30,
+            width: 160,
+            height: 160,
+            borderRadius: "50%",
+            background: "radial-gradient(circle at 50% 40%,#FFEDED,#FDD5D6)",
+            filter: "blur(26px)",
+            opacity: 0.34,
+            pointerEvents: "none",
+          }}
+        />
+        <div style={{ maxWidth: 1180, margin: "0 auto", position: "relative" }}>
           <div style={{ textAlign: "center", maxWidth: 860, margin: "0 auto 56px" }}>
             <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
               How it works<span className="text-coral">.</span>
@@ -1420,8 +1566,45 @@ export default function HomeClient() {
       </section>
 
       {/* ============ USE CASES ============ */}
-      <section id="usecases" className="px-7" style={{ padding: "96px 28px", background: "#FBF3EE" }}>
-        <div style={{ maxWidth: 1180, margin: "0 auto" }}>
+      <section
+        id="usecases"
+        className="px-7"
+        style={{ padding: "96px 28px", background: "#FBF3EE", position: "relative", overflow: "hidden" }}
+      >
+        {/* scroll-parallax blobs */}
+        <div
+          aria-hidden
+          data-parallax="-0.24"
+          style={{
+            position: "absolute",
+            top: 20,
+            left: -50,
+            width: 220,
+            height: 220,
+            borderRadius: "50%",
+            background: "radial-gradient(circle at 55% 40%,#FFE1E1,#FBB6B8)",
+            filter: "blur(32px)",
+            opacity: 0.26,
+            pointerEvents: "none",
+          }}
+        />
+        <div
+          aria-hidden
+          data-parallax="0.18"
+          style={{
+            position: "absolute",
+            bottom: -60,
+            right: "4%",
+            width: 180,
+            height: 180,
+            borderRadius: "50%",
+            background: "radial-gradient(circle at 45% 40%,#FFEDED,#FDD5D6)",
+            filter: "blur(28px)",
+            opacity: 0.32,
+            pointerEvents: "none",
+          }}
+        />
+        <div style={{ maxWidth: 1180, margin: "0 auto", position: "relative" }}>
           <div style={{ maxWidth: 720, margin: "0 0 8px" }}>
             <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
               Built for every hiring scenario<span className="text-coral">.</span>

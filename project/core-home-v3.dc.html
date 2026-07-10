@@ -12,9 +12,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
 <style>
 *{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
 body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
 a{text-decoration:none;}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
@@ -443,7 +445,7 @@ a{text-decoration:none;}
 <section style="padding:44px 28px 54px;background:transparent;">
   <p style="text-align:center;font-size:13.5px;font-weight:600;letter-spacing:1.5px;color:#A9999C;text-transform:uppercase;margin:0 0 30px;">Trusted by <strong style="color:#F23F44;font-weight:800;">1,500+</strong> talent teams worldwide</p>
   <div style="position:relative;max-width:1100px;margin:0 auto;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);">
-    <div style="display:flex;width:max-content;gap:64px;animation:marquee 28s linear infinite;align-items:center;">
+    <div data-marquee style="display:flex;width:max-content;gap:64px;animation:marquee 28s linear infinite;align-items:center;">
       <span style="font-size:24px;font-weight:700;color:#C9B9BC;letter-spacing:-.5px;">Solvay</span>
       <span style="font-size:24px;font-weight:700;color:#C9B9BC;letter-spacing:-.5px;">Airtel</span>
       <span style="font-size:24px;font-weight:700;color:#C9B9BC;letter-spacing:-.5px;">inDrive</span>
@@ -1174,6 +1176,9 @@ class Component extends DCLogic {
     this.initParallax();
     window.addEventListener('resize', ()=>{ this.measureParallax(); this.updateParallax(); }, { passive: true });
 
+    // --- heavy GSAP + Lenis motion layer (v3) ---
+    this.initHeavyMotion();
+
     // --- nav shadow on scroll ---
     this.onScroll = ()=>{
       const pb = this.progRef && this.progRef.current;
@@ -1268,6 +1273,14 @@ class Component extends DCLogic {
     if(this._globeCleanups) this._globeCleanups.forEach(fn=>fn());
     if(this._dashRAF) cancelAnimationFrame(this._dashRAF);
     if(this._dragCleanup) this._dragCleanup();
+    if(this._gsapPoll) clearInterval(this._gsapPoll);
+    if(this._gsapRefresh) clearTimeout(this._gsapRefresh);
+    if(this._sts) this._sts.forEach(st=>{ if(st && st.kill) try{ st.kill(); }catch(e){} });
+    if(this._marqLoop && this._marqLoop.kill){ try{ this._marqLoop.kill(); }catch(e){} }
+    if(this._tick && typeof gsap !== 'undefined'){ try{ gsap.ticker.remove(this._tick); }catch(e){} }
+    if(this._skewTick && typeof gsap !== 'undefined'){ try{ gsap.ticker.remove(this._skewTick); }catch(e){} }
+    if(this._marqTick && typeof gsap !== 'undefined'){ try{ gsap.ticker.remove(this._marqTick); }catch(e){} }
+    if(window.__homeV3Lenis && window.__homeV3Lenis.destroy){ try{ window.__homeV3Lenis.destroy(); }catch(e){} window.__homeV3Lenis = null; }
   }
   initGlobe(canvas, interactive){
     const ctx = canvas.getContext('2d');
@@ -1848,6 +1861,108 @@ class Component extends DCLogic {
       const shift = (mid - el._py) * speed;
       el.style.transform = (el._baseT ? el._baseT + ' ' : '') + 'translate3d(0,' + shift.toFixed(1) + 'px,0)';
     });
+  }
+  initHeavyMotion(){
+    if(typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined'){ this._runGSAP(); return; }
+    let n = 0;
+    this._gsapPoll = setInterval(()=>{
+      if((typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') || n++ > 60){
+        clearInterval(this._gsapPoll);
+        if(typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') this._runGSAP();
+      }
+    }, 80);
+  }
+  _runGSAP(){
+    if(this._gsapRan) return; this._gsapRan = true;
+    const root = this._root || document;
+    gsap.registerPlugin(ScrollTrigger);
+    this._sts = [];
+
+    // --- take over entrance animations with a bold, staggered GSAP reveal ---
+    // disable the built-in rAF reveal (keep bars/counts/grows running) and let GSAP own [data-reveal]
+    this.animateReveal = function(){};
+    const reveals = [].slice.call(root.querySelectorAll('[data-reveal]'));
+    reveals.forEach(el=>{ el.style.transition = 'none'; });
+    gsap.set(reveals, { opacity: 0, y: 70 });
+    this._revBatch = ScrollTrigger.batch(reveals, {
+      start: 'top 92%',
+      onEnter: (batch)=> gsap.to(batch, { opacity: 1, y: 0, duration: 1.0, ease: 'power3.out', stagger: 0.09, overwrite: true }),
+      onEnterBack: (batch)=> gsap.to(batch, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.06, overwrite: true })
+    });
+    if(Array.isArray(this._revBatch)) this._revBatch.forEach(st=> this._sts.push(st));
+
+    // --- Lenis smooth scrolling, driven by GSAP's ticker and synced to ScrollTrigger ---
+    if(typeof Lenis !== 'undefined' && this.props.smoothScroll !== false){
+      if(window.__homeV3Lenis && window.__homeV3Lenis.destroy){ try{ window.__homeV3Lenis.destroy(); }catch(e){} }
+      const lenis = new Lenis({ duration: 1.1, easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
+      window.__homeV3Lenis = lenis; this._lenis = lenis;
+      lenis.on('scroll', ScrollTrigger.update);
+      this._tick = (time)=> lenis.raf(time * 1000);
+      gsap.ticker.add(this._tick);
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    // --- hero parallax exit: content drifts up faster and fades as you leave the fold ---
+    const hero = root.querySelector('#top');
+    const heroGrid = hero && hero.querySelector('.hero-grid');
+    if(hero && heroGrid){
+      this._sts.push(gsap.to(heroGrid, {
+        yPercent: -16, opacity: 0.32, ease: 'none',
+        scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true }
+      }).scrollTrigger);
+    }
+
+    // --- per-section depth parallax on safe (state-free) containers ---
+    [].slice.call(root.querySelectorAll('section')).forEach((sec)=>{
+      if(sec.id === 'top') return;
+      if(sec.querySelector('[data-track],[data-stage],canvas')) return; // skip carousel / how-it-works / globe sections
+      const box = sec.querySelector(':scope > div');
+      if(!box) return;
+      const st = (box.getAttribute('style') || '');
+      if(/transform|opacity/i.test(st)) return; // don't fight React-managed inline transforms
+      this._sts.push(gsap.fromTo(box, { yPercent: 5.5 }, {
+        yPercent: -5.5, ease: 'none',
+        scrollTrigger: { trigger: sec, start: 'top bottom', end: 'bottom top', scrub: 1 }
+      }).scrollTrigger);
+    });
+
+    // --- scroll-velocity skew for a kinetic feel on tagged elements ---
+    const skewEls = [].slice.call(root.querySelectorAll('[data-skew]'));
+    if(skewEls.length){
+      const clamp = gsap.utils.clamp(-7, 7);
+      const setters = skewEls.map(el=> gsap.quickSetter(el, 'skewY', 'deg'));
+      const st = ScrollTrigger.create({
+        onUpdate: (self)=>{ const v = clamp(self.getVelocity() / -260); setters.forEach(s=> s(v)); },
+        onRefresh: ()=> setters.forEach(s=> s(0))
+      });
+      // spring skew back toward 0 each frame
+      this._skewTick = ()=>{ setters.forEach((s, i)=>{ const cur = gsap.getProperty(skewEls[i], 'skewY'); s(cur * 0.86); }); };
+      gsap.ticker.add(this._skewTick);
+      this._sts.push(st);
+    }
+
+    // --- scroll-velocity marquee: brand wordmarks speed up and change direction with scroll ---
+    const marq = root.querySelector('[data-marquee]');
+    if(marq){
+      marq.style.animation = 'none';
+      const loop = gsap.to(marq, { xPercent: -50, duration: 26, ease: 'none', repeat: -1 });
+      this._marqLoop = loop;
+      const stM = ScrollTrigger.create({
+        onUpdate: (self)=>{
+          const v = self.getVelocity();
+          loop.timeScale(gsap.utils.clamp(-6, 6, 1 + v / 320));
+        }
+      });
+      // ease timeScale back to a calm 1 when scrolling stops
+      this._marqTick = ()=>{ if(this._marqLoop){ const ts = this._marqLoop.timeScale(); this._marqLoop.timeScale(ts + (1 - ts) * 0.05); } };
+      gsap.ticker.add(this._marqTick);
+      this._sts.push(stM);
+    }
+
+    // late refresh + re-scan after async dc-import sections (header / security / footer) render
+    this._gsapRefresh = setTimeout(()=>{ try{ ScrollTrigger.refresh(); }catch(e){} }, 900);
+
+    ScrollTrigger.refresh();
   }
   updateBgWash(){
     const wash = this._root && this._root.querySelector('[data-bgwash]');

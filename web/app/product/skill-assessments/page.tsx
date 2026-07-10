@@ -320,14 +320,14 @@ export default function Page() {
         <div className={WRAP}>
           <div className="max-w-[660px] mx-auto mb-[52px] text-center">
             <Reveal as="p" className={EYEBROW}>
-              Faster screening. Better hires<b className="text-coral font-semibold">.</b>
+              Why skills-based<b className="text-coral font-semibold">.</b>
             </Reveal>
             <Reveal as="h2" delay={0.04} className={`${H2} text-ink`}>
-              Focus only on the candidates who truly match
+              Hire on proven ability, not guesswork
             </Reveal>
             <Reveal as="p" delay={0.08} className={`${LEAD} text-body m-0 mt-4`}>
-              Reduce screening effort, standardise evaluation and make faster, data-driven hiring decisions — without
-              adding a single step to your workflow.
+              Measure the skills the role actually needs, standardise evaluation and make faster, evidence-based
+              hiring decisions — across every role you hire for.
             </Reveal>
           </div>
           {/* reveal on the container so per-card hover lifts aren't blocked */}
@@ -352,7 +352,7 @@ export default function Page() {
                   </>
                 ),
                 title: "Hire the right candidates",
-                desc: "AI-driven job-fit scoring advances only the most qualified candidates, improving the quality of your talent pool.",
+                desc: "Objective, skills-based scoring surfaces the candidates who can actually do the job — improving the quality of every shortlist.",
               },
               {
                 icon: (
@@ -396,14 +396,14 @@ export default function Page() {
         <div className={WRAP}>
           <div className="max-w-[640px] mx-auto mb-14 text-center">
             <Reveal as="p" className={EYEBROW}>
-              From r&eacute;sum&eacute;s to top talent<b className="text-coral font-semibold">.</b>
+              How it works<b className="text-coral font-semibold">.</b>
             </Reveal>
             <Reveal as="h2" delay={0.04} className={`${H2} text-ink`}>
-              Three steps from inbox to shortlist
+              From test to shortlist in three steps
             </Reveal>
             <Reveal as="p" delay={0.08} className={`${LEAD} text-body m-0 mt-4`}>
-              Testlify turns r&eacute;sum&eacute; screening into a quick, accurate, automated process — so you only
-              spend time on the candidates that matter.
+              Testlify turns skills testing into a quick, accurate, automated process — so you rank candidates on real
+              ability, fast.
             </Reveal>
           </div>
 
@@ -415,16 +415,15 @@ export default function Page() {
                   <span className="flex-none inline-flex items-center justify-center w-[34px] h-[34px] rounded-[10px] bg-coral text-white font-extrabold text-[15px]">
                     1
                   </span>
-                  <h3 className={H3}>Pull &amp; evaluate r&eacute;sum&eacute;s</h3>
+                  <h3 className={H3}>Pick or build your assessment</h3>
                 </div>
                 <p className={"text-[17px] leading-[1.6] font-normal text-body m-0"}>
-                  Testlify securely fetches r&eacute;sum&eacute;s from your ATS and evaluates every candidate against
-                  your role-specific criteria — returning explainable match scores and clear fit labels: High, Medium
-                  or Low.
+                  Choose from 3,500+ expert-validated tests across 4,500+ roles, or generate a custom assessment with
+                  AI. Combine tests, set weights, timing and passing scores in minutes.
                 </p>
               </Reveal>
               <Reveal delay={0.08}>
-                <MockWindow bar="Evaluating · Senior Frontend Engineer">
+                <MockWindow bar="Assessment results · Senior Frontend">
                   <CandidateRow
                     top
                     initials="AR"
@@ -472,11 +471,11 @@ export default function Page() {
                   <span className="flex-none inline-flex items-center justify-center w-[34px] h-[34px] rounded-[10px] bg-coral text-white font-extrabold text-[15px]">
                     2
                   </span>
-                  <h3 className={H3}>Auto-shortlist &amp; assess</h3>
+                  <h3 className={H3}>Invite candidates at any scale</h3>
                 </div>
                 <p className={"text-[17px] leading-[1.6] font-normal text-body m-0"}>
-                  Candidates who meet your bar move to assessment automatically; those who don&apos;t fit are rejected
-                  automatically. Set the thresholds once and reclaim hours of manual screening.
+                  Send a branded assessment link to one candidate or your whole pipeline. They take it on any device,
+                  with proctoring and anti-cheating built in — no scheduling required.
                 </p>
               </Reveal>
               <Reveal delay={0.08} className="order-1">
@@ -501,11 +500,12 @@ export default function Page() {
                   <span className="flex-none inline-flex items-center justify-center w-[34px] h-[34px] rounded-[10px] bg-coral text-white font-extrabold text-[15px]">
                     3
                   </span>
-                  <h3 className={H3}>Sync results to your ATS</h3>
+                  <h3 className={H3}>Auto-scored results, synced to your ATS</h3>
                 </div>
                 <p className={"text-[17px] leading-[1.6] font-normal text-body m-0"}>
-                  Both r&eacute;sum&eacute; match scores and assessment results flow back to your ATS automatically —
-                  giving you a complete, single view of candidate fit in the tools your team already lives in.
+                  Every submission is scored instantly with per-skill breakdowns and benchmarks. Ranked results and
+                  reports flow back to your ATS automatically — a single view of candidate ability where your team
+                  already works.
                 </p>
               </Reveal>
               <Reveal delay={0.08}>
@@ -517,8 +517,8 @@ export default function Page() {
                         <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
                       </svg>
                     }
-                    title="Match scores pushed to Greenhouse"
-                    sub="412 candidates · 09:16"
+                    title="Assessment scores pushed to Greenhouse"
+                    sub="318 candidates · 09:16"
                     tag="SYNCED"
                   />
                   <SyncRow
@@ -559,10 +559,10 @@ export default function Page() {
               <p className="text-[12.5px] font-semibold tracking-[0.16em] uppercase text-[#C9A9AB] m-0 mb-[18px]">
                 Built for your workflow<b className="text-coral-bright font-semibold">.</b>
               </p>
-              <h2 className={`${H2} text-white mb-5`}>Need a scalable r&eacute;sum&eacute; screening tool?</h2>
+              <h2 className={`${H2} text-white mb-5`}>Need a custom assessment for your roles?</h2>
               <p className={`${LEAD} text-[#D3C3C6] m-0 mb-7`}>
-                Talk to our team to build a custom AI screening process that plugs into your ATS and grows with your
-                hiring needs.
+                Talk to our team to build role-specific assessments mapped to the exact skills you hire for — backed
+                by expert validation and built to scale with your team.
               </p>
               <CtaButton label="Talk to sales" href="#" variant="light" size="md" icon="arrow" className="border-[1.5px] border-transparent" />
             </Reveal>
@@ -575,8 +575,8 @@ export default function Page() {
                       <path d="M17 7h4v4" />
                     </>
                   ),
-                  title: "Streamlined screening",
-                  desc: "Automate shortlisting with AI job-fit scoring and free recruiters to focus on top candidates.",
+                  title: "Validated test library",
+                  desc: "3,500+ expert-built tests across 4,500+ roles — or create your own with AI.",
                 },
                 {
                   icon: (

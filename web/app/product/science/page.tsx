@@ -19,28 +19,24 @@ export const metadata: Metadata = {
 
 const FAQ_ITEMS = [
   {
-    q: "What types of questions can I use with this feature?",
-    a: "You can input any open-ended, single-select and video questions relevant to your hiring needs, allowing candidates to provide detailed responses for evaluation.",
+    q: "What is the purpose of talent assessments?",
+    a: "Talent assessments help organisations find the best people by providing objective insight into candidates' skills and aptitudes, predicting their chances of success in a role far better than a resume alone.",
   },
   {
-    q: "What customisation options are available for skills assessments?",
-    a: "Choose from a range of question types, select the number of questions, and save valuable time and resources in the assessment-creation process.",
+    q: "Are Testlify's assessments reliable?",
+    a: "Yes. Our tests are developed by subject-matter experts using proven psychometric frameworks and are continuously monitored for effectiveness, making them reliable and trustworthy.",
   },
   {
-    q: "In which languages is the AI-powered custom assessment available?",
-    a: "The feature is available in 9 languages: English, Arabic, French, Dutch, Spanish, Japanese, Italian and Portuguese.",
+    q: "How are the assessments designed for diversity?",
+    a: "The platform is engineered with diversity in mind and lets you hide details like name, gender, age or school, so every candidate is evaluated purely on merit with an equal opportunity.",
   },
   {
-    q: "How does the AI chat-simulation feature transform recruitment?",
-    a: "Chat simulation streamlines recruitment by facilitating lifelike conversations and auto-evaluating candidate responses, ensuring consistent and objective assessments.",
+    q: "What kind of insights do the assessments provide?",
+    a: "After candidates complete an assessment, Testlify generates reports and insights that help you understand each individual's strengths and gaps by skill, benchmark them and shortlist the best talent.",
   },
   {
-    q: "How does AI-driven assessment creation cater to specific roles?",
-    a: "By providing key information such as preferred skills, experience level and desired question types, our AI crafts assessments tailored to the specific needs of the role you're hiring for.",
-  },
-  {
-    q: "How accurate is the AI evaluation of candidate responses?",
-    a: "Our AI is trained to accurately evaluate candidate responses, providing consistent and objective assessments to help you make informed, defensible hiring decisions.",
+    q: "How do talent assessments benefit recruiters?",
+    a: "They give recruiters objective, comparable data on every candidate's skills and aptitudes, making it faster and fairer to evaluate, compare and select the best fit for a role.",
   },
 ];
 
@@ -293,32 +289,32 @@ export default function Page() {
         </div>
       </section>
 
-      {/* 2 · CUSTOM ASSESSMENTS (sand) */}
+      {/* 2 · DEVELOPED BY EXPERTS (sand) */}
       <section className={`bg-sand ${SEC}`}>
         <div className={WRAP}>
           <div className={SPLIT}>
             <Reveal>
-              <Eyebrow>Custom assessments</Eyebrow>
-              <h2 className={`${H2} text-ink mb-5`}>Effortlessly build custom assessments with AI</h2>
+              <Eyebrow>Developed by experts</Eyebrow>
+              <h2 className={`${H2} text-ink mb-5`}>Every test is built and reviewed by experts</h2>
               <p className={`${LEAD} text-body mt-0 mb-[22px]`}>
-                Create AI-driven assessments tailored to the exact role you&apos;re hiring for. Give it the skills,
-                experience level and question types you want — and let Testlify handle the rest.
+                Our tests are guided by proven psychometric frameworks that shape how every question is written,
+                reviewed and approved. Subject-matter experts author each area of expertise, and every test is
+                independently reviewed before it goes live.
               </p>
               <div className="flex flex-col gap-[15px]">
                 <Chk>
-                  <b className="text-ink">Intuitive prompts</b> — describe the role, get a ready assessment in seconds.
+                  <b className="text-ink">Proven frameworks</b> — consistent standards guide how every test is written.
                 </Chk>
                 <Chk>
-                  <b className="text-ink">Smart suggestions</b> — question types and difficulty matched to the job.
+                  <b className="text-ink">Subject-matter experts</b> — questions authored by specialists in each field.
                 </Chk>
                 <Chk>
-                  <b className="text-ink">9 languages</b> — build and deliver assessments in your candidates&apos;
-                  language.
+                  <b className="text-ink">Independent review</b> — every test validated by experts before publication.
                 </Chk>
               </div>
             </Reveal>
             <Reveal delay={0.08}>
-              <Mock bar="AI assessment builder">
+              <Mock bar="Test authoring & expert review">
                 <div className="p-5">
                   <div className="bg-[#FCFAFA] border border-[#F1E6E7] rounded-[13px] py-3.5 px-4 flex gap-[11px] items-start mb-4">
                     <span className="flex-none w-7 h-7 rounded-lg bg-coral flex items-center justify-center">
@@ -362,29 +358,29 @@ export default function Page() {
         </div>
       </section>
 
-      {/* 3 · CHAT SIMULATION (white) */}
+      {/* 3 · INTELLIGENT MONITORING (white) */}
       <section id="chat" className={`bg-white ${SEC}`}>
         <div className={WRAP}>
           <div className={SPLIT}>
             <Reveal className="order-2">
-              <Eyebrow>Chat simulation</Eyebrow>
-              <h2 className={`${H2} text-ink mb-5`}>Go beyond conventional tests with chat simulation</h2>
+              <Eyebrow>Intelligent monitoring</Eyebrow>
+              <h2 className={`${H2} text-ink mb-5`}>We monitor every test&apos;s performance — continuously</h2>
               <p className={`${LEAD} text-body mt-0 mb-[22px]`}>
-                Create lifelike scenarios and virtual interviews by inputting questions and prompts. Testlify engages
-                candidates in realistic conversations and auto-evaluates their responses — consistent, objective, at
-                any scale.
+                Even after a test is published, we track its effectiveness with intelligent data monitoring —
+                gathering real hiring outcomes from customers and refining questions so every assessment stays
+                accurate and dependable.
               </p>
               <div className="flex flex-col gap-[15px]">
                 <Chk>
-                  <b className="text-ink">Realistic role-play</b> — simulate on-the-job situations, not trivia.
+                  <b className="text-ink">Live performance tracking</b> — flag items that drift or underperform.
                 </Chk>
                 <Chk>
-                  <b className="text-ink">Auto-evaluated</b> — every response scored against a consistent rubric.
+                  <b className="text-ink">Outcome feedback</b> — real hiring results feed back into every test.
                 </Chk>
               </div>
             </Reveal>
             <Reveal delay={0.08} className="order-1">
-              <Mock bar="Chat simulation · Customer Success">
+              <Mock bar="Item performance · test health">
                 <div className="p-5 flex flex-col gap-3">
                   <div className="flex gap-2.5 items-start">
                     <span className="flex-none w-[30px] h-[30px] rounded-[9px] bg-coral flex items-center justify-center">
@@ -420,19 +416,19 @@ export default function Page() {
         </div>
       </section>
 
-      {/* 4 · AUTOMATED SCORING (dark) */}
+      {/* 4 · INSIGHTS THAT COUNT (dark) */}
       <section className={`bg-ink text-[#F1E7E8] ${SEC}`}>
         <div className={WRAP}>
           <div className="max-w-[660px] mx-auto mb-[52px] text-center">
             <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.16em] uppercase text-[#C9A9AB] m-0 mb-[18px]">
-              Automated scoring<b className="text-coral-bright font-semibold">.</b>
+              Insights that count<b className="text-coral-bright font-semibold">.</b>
             </Reveal>
             <Reveal as="h2" delay={0.04} className={`${H2} text-white`}>
-              Score every answer format — automatically
+              Insights you can act on
             </Reveal>
             <Reveal as="p" delay={0.08} className={`${LEAD} text-[#D3C3C6] mt-4 mb-0`}>
-              AI-driven analysis eliminates tedious manual scoring. Consistent, objective, bias-free results across
-              text, video and audio — with manual override whenever you want it.
+              After every assessment, Testlify generates accurate, reliable reports — clear strengths and gaps by
+              skill, benchmarked and ready to compare — so you can confidently shortlist the best talent.
             </Reveal>
           </div>
           <div className="grid grid-cols-1 min-[961px]:grid-cols-3 gap-5">
@@ -530,7 +526,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* 5 · FAIR BY DESIGN (white) */}
+      {/* 5 · DESIGNED FOR DIVERSITY (white) */}
       <section className={`bg-white ${SEC}`}>
         <div className={WRAP}>
           <div className={SPLIT}>
@@ -578,8 +574,8 @@ export default function Page() {
               </Mock>
             </Reveal>
             <Reveal className="order-2">
-              <Eyebrow>Fair by design</Eyebrow>
-              <h2 className={`${H2} text-ink mb-5`}>Reduce bias with AI-driven assessments</h2>
+              <Eyebrow>Designed for diversity</Eyebrow>
+              <h2 className={`${H2} text-ink mb-5`}>Engineered for fair, bias-tested hiring</h2>
               <p className={`${LEAD} text-body mt-0 mb-[22px]`}>
                 Mitigate bias to create equitable opportunity for every candidate. Attract diverse top talent that
                 aligns with your culture — and prove it with a defensible audit trail.

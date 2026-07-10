@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
-import CtaButton from "@/components/CtaButton";
-import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = {
   title: "Customers",
@@ -25,68 +23,68 @@ type Story = {
 
 const STORIES: Story[] = [
   {
-    metric: "↓ 58% time-to-hire",
-    logo: "Lumen SaaS",
+    metric: "↓ 41% time to activation",
+    logo: "Xneelo",
     quote:
-      "“Our engineering shortlists are night-and-day better. Real coding challenges replaced gut-feel résumé reviews entirely.”",
-    initials: "JK",
+      "“We filled key sales and marketing roles in under a month and cut time to activation by 41% with Testlify.”",
+    initials: "CB",
     avBg: "#2A6FDB",
-    name: "Jonas Klein",
-    role: "Head of Eng, Lumen",
+    name: "Chrissie Blom",
+    role: "Head of Talent, Xneelo",
     id: "voices",
   },
   {
-    metric: "3.4× more qualified hires",
-    logo: "Vela Health",
+    metric: "96% hiring effectiveness",
+    logo: "Virtual Gurus",
     quote:
-      "“Compliance loved the audit trail, candidates loved the experience, and we filled 40 clinical roles in a quarter.”",
-    initials: "MA",
+      "“White-label assessments cut our phone-interview time by 93% and pushed hiring effectiveness to 96%.”",
+    initials: "AB",
     avBg: "#1F8A5B",
-    name: "Maria Alvarez",
-    role: "Talent Director, Vela",
+    name: "Abby Belin",
+    role: "Virtual Gurus",
     delay: 0.06,
   },
   {
-    metric: "91% completion rate",
-    logo: "Orbit Retail",
+    metric: "↓ 35% poor hiring fits",
+    logo: "Kimp",
     quote:
-      "“We hire seasonal staff at huge volume. Testlify scaled with us instantly — no extra recruiters needed.”",
-    initials: "DC",
+      "“Skill-based assessments reduced poor hiring fits by 35% and cut turnover by 20%.”",
+    initials: "SV",
     avBg: "#B8521A",
-    name: "Derek Cho",
-    role: "People Ops, Orbit",
+    name: "Senthu Velnayagam",
+    role: "Kimp",
     delay: 0.12,
   },
   {
-    metric: "↓ 44% cost per hire",
-    logo: "Finovo",
+    metric: "83% hiring effectiveness",
+    logo: "Endiprev",
     quote:
-      "“Structured assessments removed bias from our first round and widened our candidate pool dramatically.”",
-    initials: "SN",
+      "“Skills assessments cut our blue-collar turnover and improved hiring effectiveness by 83%.”",
+    initials: "DS",
     avBg: "#6B3FA0",
-    name: "Sara Neeson",
-    role: "CHRO, Finovo",
+    name: "Daniela Santos",
+    role: "Endiprev",
   },
   {
-    metric: "8-day average fill",
-    logo: "Kestrel",
+    metric: "116 hires in 45 days",
+    logo: "Gorin Systems",
     quote:
-      "“From job post to signed offer in a week. The ranked shortlist means we never waste an interview slot.”",
-    initials: "AB",
+      "“We hired 116 fresh graduates in 45 days using Testlify's campus recruitment assessments.”",
+    initials: "GS",
     avBg: "#C0242B",
-    name: "Amir Banerjee",
-    role: "Recruiting Lead, Kestrel",
+    name: "Gorin Systems",
+    role: "Software Development",
     delay: 0.06,
   },
   {
-    metric: "12 hrs saved / role",
-    logo: "Atlas Agency",
+    metric: "↓ 75% candidate drop-offs",
+    logo: "Unity Communications",
     quote:
-      "“White-labeled assessments make us look great to clients, and the scorecards close placements faster.”",
-    initials: "LT",
+      "“Testlify cut candidate drop-offs by 75% and improved new-hire retention by 30%.”",
+    initials: "UC",
     avBg: "#16607A",
-    name: "Lena Tomas",
-    role: "Founder, Atlas",
+    name: "Unity Communications",
+    role: "Outsourcing & Offshoring",
     delay: 0.12,
   },
 ];
@@ -95,7 +93,7 @@ export default function CustomersPage() {
   return (
     <>
       <SiteHeader
-        announcement="Read how Northwind cut time-to-hire by 71%"
+        announcement="Read how inDrive cut time-to-hire from 3 weeks to 1 week"
         announcementCta="Read story"
       />
 
@@ -131,70 +129,71 @@ export default function CustomersPage() {
       {/* Featured story */}
       <section className="px-7 pt-5">
         <div className="max-w-[1240px] mx-auto px-7">
-          <Reveal className="grid grid-cols-[1.05fr_0.95fr] gap-[46px] items-center bg-white border border-[#EFE2E3] rounded-[26px] p-11 shadow-[0_24px_60px_rgba(110,11,14,0.08)] max-[920px]:grid-cols-1 max-[920px]:p-[30px] max-[920px]:gap-7">
+          <Reveal className="grid grid-cols-[1.05fr_0.95fr] gap-[46px] items-start bg-white border border-[#EFE2E3] rounded-[26px] p-11 shadow-[0_24px_60px_rgba(110,11,14,0.08)] max-[920px]:grid-cols-1 max-[920px]:p-[30px] max-[920px]:gap-7">
             <div>
               <div className="font-extrabold text-[22px] text-[#C0242B] mb-4">
-                Northwind
+                inDrive
               </div>
               <p className="text-[27px] leading-[1.4] font-semibold tracking-[-0.5px] text-ink m-0 mb-6 max-[920px]:text-[22px]">
-                &quot;We went from{" "}
-                <span className="text-coral">
-                  drowning in 4,000 applications
-                </span>{" "}
-                to a ranked shortlist of 30 in a single afternoon. Testlify gave
-                us our hiring quarter back.&quot;
+                &quot;The biggest change was moving from a process we were
+                managing to a{" "}
+                <span className="text-coral">system we could trust</span>. Now we
+                hire faster, develop smarter, and make decisions backed by real
+                data.&quot;
               </p>
               <div className="flex items-center gap-[11px] mt-auto">
                 <span className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-[14px] shrink-0 bg-coral">
-                  RP
+                  AI
                 </span>
                 <div className="text-[13px] leading-[1.3]">
-                  <div className="font-bold text-ink">Rhea Patel</div>
-                  <div className="text-[#9A878A]">VP Talent, Northwind</div>
+                  <div className="font-bold text-ink">Andrei Ivanov</div>
+                  <div className="text-[#9A878A]">
+                    Training Co-ordinator, inDrive
+                  </div>
                 </div>
               </div>
-              <div className="flex gap-[34px] flex-wrap mt-[30px]">
+              <div className="grid grid-cols-3 gap-[18px] mt-[30px]">
                 <div>
-                  <div className="text-[40px] font-extrabold tracking-[-1.5px] text-coral leading-none">
-                    71%
+                  <div className="text-[36px] font-extrabold tracking-[-1.5px] text-coral leading-none">
+                    67%
                   </div>
                   <p className="text-[13.5px] leading-[1.66] text-[#5A4B4E] mt-1.5 mb-0">
                     faster time-to-hire
                   </p>
                 </div>
                 <div>
-                  <div className="text-[40px] font-extrabold tracking-[-1.5px] text-coral leading-none">
-                    4,000
+                  <div className="text-[36px] font-extrabold tracking-[-1.5px] text-coral leading-none">
+                    82%
                   </div>
                   <p className="text-[13.5px] leading-[1.66] text-[#5A4B4E] mt-1.5 mb-0">
-                    applicants screened
+                    more L&amp;D participation
                   </p>
                 </div>
                 <div>
-                  <div className="text-[40px] font-extrabold tracking-[-1.5px] text-coral leading-none">
-                    12 hrs
+                  <div className="text-[36px] font-extrabold tracking-[-1.5px] text-coral leading-none">
+                    4×
                   </div>
                   <p className="text-[13.5px] leading-[1.66] text-[#5A4B4E] mt-1.5 mb-0">
-                    saved per role
+                    recruiter efficiency
                   </p>
                 </div>
               </div>
             </div>
             <div className="bg-[linear-gradient(160deg,#FFF4F3,#FBE9E9)] rounded-[20px] p-[34px] border border-[#F6DCDD]">
-              <p className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-[#8A7A7D] mb-3.5">
-                The challenge<b className="text-coral font-semibold">.</b>
+              <p className="text-[12.5px] font-bold tracking-[0.14em] uppercase text-[#C0242B] mb-3">
+                The challenge
               </p>
               <p className="text-[14.5px] leading-[1.66] text-[#5A4B4E] m-0 mb-[22px]">
-                A viral job post buried the recruiting team. Manual screening
-                would have taken three weeks they didn&apos;t have.
+                Hiring was mostly manual, and assessing English and role skills
+                consistently across global teams was a constant challenge.
               </p>
-              <p className="text-[12.5px] font-semibold tracking-[0.14em] uppercase text-[#8A7A7D] mb-3.5">
-                The result<b className="text-coral font-semibold">.</b>
+              <p className="text-[12.5px] font-bold tracking-[0.14em] uppercase text-[#C0242B] mt-[22px] mb-3">
+                The result
               </p>
               <p className="text-[14.5px] leading-[1.66] text-[#5A4B4E] m-0">
-                Skills-first assessments ranked every applicant overnight. The
-                team interviewed only the top 30 and closed the role in eight
-                days.
+                Skills assessments and AI interviews brought consistency to
+                hiring, cut time-to-hire from three weeks to one, and lifted L&amp;D
+                participation by 82%.
               </p>
             </div>
           </Reveal>
@@ -257,45 +256,6 @@ export default function CustomersPage() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Dark CTA */}
-      <section className="px-7 py-[104px] bg-ink text-white text-center max-[920px]:py-[72px] max-[920px]:px-[22px]">
-        <div className="max-w-[720px] mx-auto px-7">
-          <Reveal
-            as="h2"
-            className="text-[43px] leading-[1.08] font-extrabold tracking-[-1.4px] text-white m-0 max-[920px]:text-[32px] max-[920px]:tracking-[-1px]"
-          >
-            Become the next success story
-          </Reveal>
-          <Reveal
-            as="p"
-            delay={0.04}
-            className="text-[19px] leading-[1.6] text-white/[0.78] mx-auto mt-[18px] mb-[30px] font-normal"
-          >
-            Join thousands of teams hiring on skill with Testlify. Start free or
-            talk to our team.
-          </Reveal>
-          <Reveal
-            delay={0.08}
-            className="flex gap-3.5 justify-center flex-wrap"
-          >
-            <CtaButton
-              label="Start free"
-              href={routes.pricing}
-              variant="light"
-              size="md"
-              icon="arrow"
-            />
-            <CtaButton
-              label="Book a demo"
-              href="#"
-              variant="outline-light"
-              size="md"
-              icon="play"
-            />
-          </Reveal>
         </div>
       </section>
 

@@ -138,8 +138,8 @@ a{text-decoration:none;color:inherit;}
 </div></div></section>
 <section class="sec" style="background:#FBF3EE;"><div class="wrap"><div class="split">
   <div class="reveal">
-    <p class="eyebrow">Custom assessments<b>.</b></p>
-    <h2 class="h2" style="margin-bottom:20px;">Effortlessly build custom assessments with AI</h2>
+    <p class="eyebrow">Walkthrough · Step 1<b>.</b></p>
+    <h2 class="h2" style="margin-bottom:20px;">Build an assessment with AI in seconds</h2>
     <p class="lead" style="margin-bottom:22px;">Create AI-driven assessments tailored to the exact role you're hiring for. Give it the skills, experience level and question types you want — and let Testlify handle the rest.</p>
     <div style="display:flex;flex-direction:column;gap:15px;">
       <div class="chk"><span class="chki"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><p class="body" style="margin:0;"><b style="color:#1A1014;">Intuitive prompts</b> — describe the role, get a ready assessment in seconds.</p></div>
@@ -164,8 +164,8 @@ a{text-decoration:none;color:inherit;}
 </div></div></section>
 <section class="sec" id="chat"><div class="wrap"><div class="split">
   <div class="reveal" style="order:2;">
-    <p class="eyebrow">Chat simulation<b>.</b></p>
-    <h2 class="h2" style="margin-bottom:20px;">Go beyond conventional tests with chat simulation</h2>
+    <p class="eyebrow">Walkthrough · Step 2<b>.</b></p>
+    <h2 class="h2" style="margin-bottom:20px;">Watch a candidate handle a live simulation</h2>
     <p class="lead" style="margin-bottom:22px;">Create lifelike scenarios and virtual interviews by inputting questions and prompts. Testlify engages candidates in realistic conversations and auto-evaluates their responses — consistent, objective, at any scale.</p>
     <div style="display:flex;flex-direction:column;gap:15px;">
       <div class="chk"><span class="chki"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><p class="body" style="margin:0;"><b style="color:#1A1014;">Realistic role-play</b> — simulate on-the-job situations, not trivia.</p></div>
@@ -185,8 +185,8 @@ a{text-decoration:none;color:inherit;}
 </div></div></section>
 <section class="sec dark"><div class="wrap">
   <div style="max-width:660px;margin:0 auto 52px;text-align:center;">
-    <p class="eyebrow reveal" style="justify-content:center;">Automated scoring<b>.</b></p>
-    <h2 class="h2 reveal" style="transition-delay:.04s;">Score every answer format — automatically</h2>
+    <p class="eyebrow reveal" style="justify-content:center;">Walkthrough · Step 3<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s;">See every answer auto-scored</h2>
     <p class="lead reveal" style="margin-top:16px;transition-delay:.08s;">AI-driven analysis eliminates tedious manual scoring. Consistent, objective, bias-free results across text, video and audio — with manual override whenever you want it.</p>
   </div>
   <div class="cards3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
@@ -222,8 +222,8 @@ a{text-decoration:none;color:inherit;}
     </div>
   </div>
   <div class="reveal" style="order:2;">
-    <p class="eyebrow">Fair by design<b>.</b></p>
-    <h2 class="h2" style="margin-bottom:20px;">Reduce bias with AI-driven assessments</h2>
+    <p class="eyebrow">Walkthrough · Step 4<b>.</b></p>
+    <h2 class="h2" style="margin-bottom:20px;">Apply bias controls across the pipeline</h2>
     <p class="lead" style="margin-bottom:22px;">Mitigate bias to create equitable opportunity for every candidate. Attract diverse top talent that aligns with your culture — and prove it with a defensible audit trail.</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:13px;">
       <div class="chk"><span class="chki"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><p class="body" style="margin:0;font-size:14.5px;">Identify &amp; address bias effectively</p></div>
@@ -310,12 +310,12 @@ class Component extends DCLogic {
   componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); }
   renderVals(){ return {
     faqItems: [
-      {q:"What types of questions can I use with this feature?", a:"You can input any open-ended, single-select and video questions relevant to your hiring needs, allowing candidates to provide detailed responses for evaluation."},
-      {q:"What customisation options are available for skills assessments?", a:"Choose from a range of question types, select the number of questions, and save valuable time and resources in the assessment-creation process."},
-      {q:"In which languages is the AI-powered custom assessment available?", a:"The feature is available in 9 languages: English, Arabic, French, Dutch, Spanish, Japanese, Italian and Portuguese."},
-      {q:"How does the AI chat-simulation feature transform recruitment?", a:"Chat simulation streamlines recruitment by facilitating lifelike conversations and auto-evaluating candidate responses, ensuring consistent and objective assessments."},
-      {q:"How does AI-driven assessment creation cater to specific roles?", a:"By providing key information such as preferred skills, experience level and desired question types, our AI crafts assessments tailored to the specific needs of the role you're hiring for."},
-      {q:"How accurate is the AI evaluation of candidate responses?", a:"Our AI is trained to accurately evaluate candidate responses, providing consistent and objective assessments to help you make informed, defensible hiring decisions."}
+      {q:"What does the live demo cover?", a:"An end-to-end walkthrough of Testlify — building an assessment with AI, running a chat simulation, auto-scoring answers across formats, and applying bias controls — using real product screens."},
+      {q:"Do I need to book a call to see it?", a:"No. You can explore the guided walkthrough here any time, or book a live demo with our team if you'd like a tailored session for your roles."},
+      {q:"Can I try Testlify myself instead?", a:"Yes. Every plan starts with a 7-day free trial — no credit card required — so you can run real assessments on your own before deciding."},
+      {q:"How long is a live demo with your team?", a:"A guided demo typically runs 30 minutes, focused on your hiring workflow and the roles you're assessing for."},
+      {q:"Will the demo use my roles and questions?", a:"In a booked demo, yes — we tailor the walkthrough to your roles and can show how AI generates assessments for the exact skills you hire for."},
+      {q:"What happens after the demo?", a:"You can start a free trial immediately, invite your first candidates, and sync results to your ATS — our team helps with setup and adoption."}
     ]
   }; }
 }
