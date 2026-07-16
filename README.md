@@ -27,9 +27,21 @@ Other scripts: `npm run build` (production build), `npm run start` (serve the bu
 
 ## Pages
 
-`/` home · `/product` · `/test-library` (+ `/test-library/[slug]` test detail) ·
-`/pricing` · `/solutions` · `/integrations` · `/customers` · `/blog` (+ `/blog/[slug]`) ·
-`/resources` · `/about` · `/careers` · `/security` · `/legal` · `/section-templates`
+Product: `/ai-powered-talent-assessment-platform` · `/ai-resume-screener` ·
+`/product/skill-assessments` · `/product/video-interviewing` · `/product/features`
+(+ `/product/features/[slug]`) · `/product/science` · `/product/live-demo` · `/integrations`
+Library: `/test-library` (+ `/test-library/[slug]`) · `/library/interviews`
+(+ `/library/interviews/[slug]`) · `/library/build-your-own`
+Solutions: `/solutions` (+ `/solutions/[slug]`)
+Resources: `/blog` (+ `/blog/[slug]`) · `/resources/tools` (+ `/[slug]`) ·
+`/resources/glossary` (+ `/[slug]`) · `/resources/hiring-guides` (+ `/[slug]`) ·
+`/resources/jd-templates` · `/resources/competitors` (+ `/[slug]`) · `/resources/partners`
+Core / company: `/` home · `/pricing` · `/compare` · `/customers` (+ `/[slug]`) ·
+`/about` · `/careers` · `/contact` · `/security` · `/trust-center` · `/compliance` ·
+`/legal` · `/sitemap` · `/section-templates`
+
+> Note: `/product` and `/resources` hub pages were removed (no prototype); the blog is
+> the Resources landing. See `HANDOFF.md` for route decisions.
 
 ## Architecture
 
