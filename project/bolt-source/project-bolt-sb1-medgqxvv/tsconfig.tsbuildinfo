@@ -1,1 +1,0 @@
-{"root":["./src/App.tsx","./src/main.tsx","./src/components/features-section.tsx","./src/components/hero-section.tsx","./src/components/how-it-works.tsx","./src/components/navbar.tsx","./src/components/new-sections.tsx","./src/components/sections.tsx","./src/components/ui/button.tsx","./src/hooks/use-mobile.ts","./src/lib/motion.ts","./src/lib/utils.ts"],"version":"5.9.3"}
