@@ -12,7 +12,7 @@ import { routes } from "@/lib/routes";
 export const metadata: Metadata = {
   title: "AI Resume Screener — intelligent résumé screening at scale",
   description:
-    "Stop wasting hours on résumé screening. Standardise how you shortlist across every role with AI-driven job-fit scoring — and only ever open the candidates who truly match.",
+    "Stop wasting hours on resume screening. Standardize resume screening across roles with AI-driven job-fit scoring.",
 };
 
 /* ---------------------------------------------------------------- */
@@ -250,8 +250,8 @@ export default function Page() {
                 screening <span className="text-coral">at scale.</span>
               </Reveal>
               <Reveal as="p" delay={0.1} className={`${LEAD} text-body m-0 mt-[22px] max-w-[520px]`}>
-                Stop wasting hours on r&eacute;sum&eacute; screening. Standardise how you shortlist across every role
-                with AI-driven job-fit scoring — and only ever open the candidates who truly match.
+                Stop wasting hours on resume screening. Standardize resume screening across roles with AI-driven
+                job-fit scoring.
               </Reveal>
               <Reveal delay={0.14} className="flex items-center gap-3.5 flex-wrap mt-[30px]">
                 <CtaButton
@@ -265,11 +265,12 @@ export default function Page() {
                 <CtaButton label="Book a demo" href="#" variant="secondary" size="md" icon="play" className="ars-demo" />
               </Reveal>
               <Reveal delay={0.18} className="flex items-center gap-[13px] flex-wrap text-[13.5px] text-muted font-semibold mt-[26px]">
-                <span>No credit card</span>
-                <span className="w-1 h-1 rounded-full bg-[#D9C7C9]" />
-                <span>7-day free trial</span>
-                <span className="w-1 h-1 rounded-full bg-[#D9C7C9]" />
-                <span>SOC 2 &middot; ISO 27001 &middot; GDPR</span>
+                <span className="inline-flex items-center gap-[7px]">
+                  <span className="text-coral font-bold">&#10003;</span>7-day free trial
+                </span>
+                <span className="inline-flex items-center gap-[7px]">
+                  <span className="text-coral font-bold">&#10003;</span>No credit card required
+                </span>
               </Reveal>
             </div>
 
@@ -339,11 +340,12 @@ export default function Page() {
               Faster screening. Better hires<b className="text-coral font-semibold">.</b>
             </Reveal>
             <Reveal as="h2" delay={0.04} className={`${H2} text-ink`}>
-              Focus only on the candidates who truly match
+              Faster Screening. Better Hires
             </Reveal>
             <Reveal as="p" delay={0.08} className={`${LEAD} text-body m-0 mt-4`}>
-              Reduce screening effort, standardise evaluation and make faster, data-driven hiring decisions — without
-              adding a single step to your workflow.
+              Testlify&rsquo;s AI resume screening tool helps you focus only on the candidates who truly match your
+              hiring requirements. Reduce screening effort, standardize evaluation, and make faster, data-driven hiring
+              decisions.
             </Reveal>
           </div>
           {/* reveal on the container so per-card hover lifts aren't blocked */}
@@ -357,7 +359,7 @@ export default function Page() {
                   </>
                 ),
                 title: "Save time & effort",
-                desc: "Automate screening and cut manual shortlisting by up to 70% — freeing recruiters for high-value hiring work.",
+                desc: "Automate resume screening and reduce manual shortlisting by up to 70%, freeing recruiters to focus on high-value hiring activities.",
               },
               {
                 icon: (
@@ -368,7 +370,7 @@ export default function Page() {
                   </>
                 ),
                 title: "Hire the right candidates",
-                desc: "AI-driven job-fit scoring advances only the most qualified candidates, improving the quality of your talent pool.",
+                desc: "AI-driven job-fit scoring ensures only the most qualified candidates advance, improving the quality of your talent pool.",
               },
               {
                 icon: (
@@ -390,7 +392,7 @@ export default function Page() {
                   </>
                 ),
                 title: "Seamless ATS integration",
-                desc: "Match scores and assessment results sync straight back to your ATS for a fully automated workflow.",
+                desc: "Resume match scores and assessment results sync directly back to your ATS for a fully automated workflow.",
               },
             ].map((b) => (
               <div key={b.title} className={`bg-white border border-[#F2E6E7] rounded-[18px] py-7 px-6 ${BCARD_HOVER}`}>
@@ -418,8 +420,8 @@ export default function Page() {
               Three steps from inbox to shortlist
             </Reveal>
             <Reveal as="p" delay={0.08} className={`${LEAD} text-body m-0 mt-4`}>
-              Testlify turns r&eacute;sum&eacute; screening into a quick, accurate, automated process — so you only
-              spend time on the candidates that matter.
+              Testlify makes hiring easier by turning resume screening into a quick, accurate, and automated process.
+              This lets you focus on the candidates that truly matter.
             </Reveal>
           </div>
 

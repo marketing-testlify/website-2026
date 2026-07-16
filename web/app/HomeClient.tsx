@@ -11,11 +11,8 @@ import UseCaseCard from "@/components/UseCaseCard";
 import SecuritySection from "@/components/SecuritySection";
 import MagneticButtons from "@/components/MagneticButtons";
 import StatsNetCanvas from "@/components/StatsNetCanvas";
-import HeroGlobe from "@/components/HeroGlobe";
 
 /* ---------- data ---------- */
-
-const HERO_WORDS = ["skill", "talent", "ability", "proof", "potential", "fit"];
 
 const MARQUEE = [
   "Solvay",
@@ -26,24 +23,6 @@ const MARQUEE = [
   "Agilisium",
   "Netconomy",
   "Xneelo",
-];
-
-const STEPS = [
-  {
-    n: "1",
-    title: "Build the assessment",
-    desc: "Pick from 3,500+ ready tests or let AI generate a custom one from your job description in under a minute.",
-  },
-  {
-    n: "2",
-    title: "Invite candidates",
-    desc: "Share one link or sync from your ATS. Candidates complete a fair, proctored experience on any device.",
-  },
-  {
-    n: "3",
-    title: "Compare & shortlist",
-    desc: "Get an objective, ranked leaderboard. Move the strongest people forward in 30 minutes — bias left behind.",
-  },
 ];
 
 type DemoTab = { id: number; label: string };
@@ -122,6 +101,15 @@ const INTEGRATIONS: [string, string][] = [
   ["https://testlify.com/wp-content/uploads/2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png?wsr", "Recruitee"],
   ["https://testlify.com/wp-content/uploads/2024/08/zoho-recruit-logo-1.png", "Zoho Recruit"],
   ["https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png?wsr", "JazzHR"],
+];
+
+const RECOGNITION: [string, string][] = [
+  ["https://testlify.com/wp-content/uploads/2026/03/TalentAssessment_HighPerformer_Enterprise_HighPerformer.png", "G2 High Performer Enterprise"],
+  ["https://testlify.com/wp-content/uploads/2026/03/TalentAssessment_HighPerformer_Mid-Market_HighPerformer.png", "G2 High Performer Mid-Market"],
+  ["https://testlify.com/wp-content/uploads/2026/03/TalentAssessment_Leader_Leader.png", "G2 Leader"],
+  ["https://testlify.com/wp-content/uploads/2026/03/TechnicalSkillsScreening_BestMeetsRequirements_Mid-Market_MeetsRequirements.png", "G2 Best Meets Requirements"],
+  ["https://testlify.com/wp-content/uploads/2026/03/TechnicalSkillsScreening_BestRelationship_Total.png", "G2 Best Relationship"],
+  ["https://testlify.com/wp-content/uploads/2026/03/TechnicalSkillsScreening_UsersMostLikelyToRecommend_Mid-Market_Nps.png", "G2 Users Most Likely To Recommend"],
 ];
 
 /* ---------- homepage test-library preview (search + filter) ---------- */
@@ -246,32 +234,19 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
 
 export default function HomeClient() {
   const [tab, setTab] = useState(1);
-  const [stage, setStage] = useState(0);
   const [slide, setSlide] = useState(0);
   const [statActive, setStatActive] = useState(0);
   const [hovering, setHovering] = useState(false);
-  const [libQuery, setLibQuery] = useState("");
   const [libCat, setLibCat] = useState("all");
 
   const libResults = useMemo(() => {
-    const q = libQuery.trim().toLowerCase();
     const cat = libCat || "all";
-    return LIB_TESTS.filter(
-      (t) =>
-        (cat === "all" || t.c === cat) &&
-        (!q ||
-          t.n.toLowerCase().includes(q) ||
-          (LIB_LABEL[t.c] || "").toLowerCase().includes(q) ||
-          (t.f || "").toLowerCase().includes(q) ||
-          (t.k || "").toLowerCase().includes(q))
-    );
-  }, [libQuery, libCat]);
+    return LIB_TESTS.filter((t) => cat === "all" || t.c === cat);
+  }, [libCat]);
   const libCount = libResults.length
     ? `Showing ${Math.min(libResults.length, 6)}${libResults.length > 6 ? "+" : ""} of 3,500+ validated tests`
     : "No tests match — try another role or skill.";
   const trackRef = useRef<HTMLDivElement>(null);
-  const howCardRef = useRef<HTMLDivElement>(null);
-  const howStepsRef = useRef<HTMLDivElement>(null);
 
   /* root wrapper — scope for the scroll-parallax querySelectorAll */
   const rootRef = useRef<HTMLDivElement>(null);
@@ -346,76 +321,117 @@ export default function HomeClient() {
     };
   }, []);
 
-  /* hero word swap */
-  const wordRef = useRef<HTMLSpanElement>(null);
+  /* bolt hero — staggered line-rise + scramble-in text + floating particles.
+     Ported from the prototype's two hero <script> blocks using rAF/timers only
+     (no GSAP). Reduced-motion shows the final state and skips the animation. */
   const heroRef = useRef<HTMLElement>(null);
   useEffect(() => {
-    const el = wordRef.current;
-    if (!el) return;
-    let i = 0;
-    const id = setInterval(() => {
-      i = (i + 1) % HERO_WORDS.length;
-      const start = performance.now();
-      const out = (t: number) => {
-        const p = Math.min((t - start) / 180, 1);
-        el.style.opacity = String(1 - p);
-        el.style.transform = `translateY(${(-6 * p).toFixed(1)}px)`;
-        if (p < 1) requestAnimationFrame(out);
-        else {
-          el.textContent = HERO_WORDS[i];
-          const s2 = performance.now();
-          const inn = (t2: number) => {
-            const q = Math.min((t2 - s2) / 240, 1);
-            el.style.opacity = String(q);
-            el.style.transform = `translateY(${(6 * (1 - q)).toFixed(1)}px)`;
-            if (q < 1) requestAnimationFrame(inn);
-            else {
-              el.style.opacity = "1";
-              el.style.transform = "none";
-            }
-          };
-          requestAnimationFrame(inn);
+    const hero = heroRef.current;
+    if (!hero) return;
+    const reduced =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const timers: number[] = [];
+    const intervals: number[] = [];
+
+    // 24 deterministically-positioned floating particles
+    const pl = hero.querySelector<HTMLElement>("[data-bh-particles]");
+    if (pl && pl.childElementCount === 0) {
+      for (let i = 0; i < 24; i++) {
+        const d = document.createElement("div");
+        const left = (i * 137.5) % 100;
+        const top = (i * 79.3) % 100;
+        const size = 1.5 + (i % 3) * 0.8;
+        const dur = 6 + (i % 5) * 2;
+        d.style.cssText =
+          `position:absolute;left:${left}%;top:${top}%;width:${size}px;height:${size}px;` +
+          `border-radius:50%;background:rgba(242,63,68,.4);` +
+          (reduced
+            ? ""
+            : `animation:tl-partfloat ${dur}s ease-in-out infinite;animation-delay:${i * 0.4}s;`);
+        pl.appendChild(d);
+      }
+    }
+
+    const lines = Array.from(hero.querySelectorAll<HTMLElement>(".tl-hero-line"));
+
+    if (reduced) {
+      lines.forEach((l) => l.classList.add("is-in"));
+      return () => {};
+    }
+
+    const CH =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%";
+    const scramble = (el: HTMLElement) => {
+      const text = el.getAttribute("data-bh-text") || "";
+      let frame = 0;
+      const total = text.length * 3;
+      const iv = window.setInterval(() => {
+        el.textContent = text
+          .split("")
+          .map((c, i) =>
+            c === " "
+              ? " "
+              : i < Math.floor(frame / 3)
+                ? c
+                : CH[Math.floor(Math.random() * CH.length)]
+          )
+          .join("");
+        frame++;
+        if (frame > total) {
+          clearInterval(iv);
+          el.textContent = text;
         }
-      };
-      requestAnimationFrame(out);
-    }, 2400);
-    return () => clearInterval(id);
+      }, 30);
+      intervals.push(iv);
+    };
+
+    lines.forEach((l) => {
+      const rise = +(l.getAttribute("data-bh-rise") || 0);
+      timers.push(window.setTimeout(() => l.classList.add("is-in"), rise));
+      const sc = l.querySelector<HTMLElement>("[data-bh-text]");
+      if (sc) {
+        const delay = +(sc.getAttribute("data-bh-delay") || 0);
+        timers.push(window.setTimeout(() => scramble(sc), delay));
+      }
+    });
+
+    return () => {
+      timers.forEach(clearTimeout);
+      intervals.forEach(clearInterval);
+    };
   }, []);
 
-  /* "how it works" auto-cycle — restarts whenever the user picks a step, so a
-     manual selection isn't immediately overridden (mirrors prototype setStage). */
-  const [stageBump, setStageBump] = useState(0);
-  const pickStage = (i: number) => {
-    setStage(i);
-    setStageBump((b) => b + 1);
-  };
+  /* #bolthow — vertical axis fill tracks scroll progress through the timeline.
+     Ported from the prototype's data-bhow-fill script (scroll + rAF, no GSAP). */
+  const bhowRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const id = setInterval(() => setStage((s) => (s + 1) % STEPS.length), 3200);
-    return () => clearInterval(id);
-  }, [stageBump]);
-
-  /* "how it works" — match the visual card height to the steps column (ported
-     from the prototype's syncHowHeight); fixed 600px on small screens. */
-  useEffect(() => {
-    const sync = () => {
-      const card = howCardRef.current;
-      const steps = howStepsRef.current;
-      if (!card || !steps) return;
-      if (window.innerWidth <= 860) {
-        card.style.height = "600px";
-        return;
-      }
-      const h = Math.round(steps.getBoundingClientRect().height);
-      if (h > 200) card.style.height = h + "px";
+    const tl = bhowRef.current;
+    if (!tl) return;
+    const fill = tl.querySelector<HTMLElement>("[data-bhow-fill]");
+    if (!fill) return;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const r = tl.getBoundingClientRect();
+      const vh = window.innerHeight || 800;
+      const span = r.height + vh * 0.6;
+      let p = (vh * 0.8 - r.top) / span;
+      p = Math.max(0, Math.min(1, p));
+      fill.style.height = p * 100 + "%";
     };
-    sync();
-    const t1 = setTimeout(sync, 400);
-    const t2 = setTimeout(sync, 1200);
-    window.addEventListener("resize", sync, { passive: true });
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      window.removeEventListener("resize", sync);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
     };
   }, []);
 
@@ -540,342 +556,133 @@ export default function HomeClient() {
         announcementHref="#demo"
       />
 
-      {/* ============ HERO ============ */}
+      {/* ============ HERO (bolt centered) ============ */}
       <MagneticButtons scopeRef={heroRef} />
       <section
         ref={heroRef}
-        id="top"
-        className="px-7 tl-hero-grad"
+        id="bolthero"
         style={{
           position: "relative",
-          padding: "206px 28px 92px",
-          background:
-            "radial-gradient(1100px 520px at 78% 8%,#FCE0E1 0%,rgba(252,224,225,0) 58%),radial-gradient(900px 540px at 6% 60%,#FFEDED 0%,rgba(255,237,237,0) 52%),linear-gradient(180deg,#FFF8F7 0%,#FFFBFA 70%,#ffffff 100%)",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
           overflow: "hidden",
+          padding: "150px 28px 72px",
+          background: "linear-gradient(180deg,#FFF8F7 0%,#FFF0EF 60%,#FFF8F7 100%)",
+          textAlign: "center",
         }}
       >
-        <div
-          aria-hidden
-          style={{
-            position: "absolute",
-            bottom: -130,
-            left: -90,
-            width: 380,
-            height: 380,
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle at 60% 40%,#FDD5D6,#FBA3A5)",
-            filter: "blur(30px)",
-            opacity: 0.16,
-            animation: "tl-blob 22s ease-in-out infinite reverse",
-          }}
-        />
-        {/* scroll-parallax blobs */}
-        <div
-          aria-hidden
-          data-parallax="-0.22"
-          style={{
-            position: "absolute",
-            top: 80,
-            right: -40,
-            width: 230,
-            height: 230,
-            borderRadius: "50%",
-            background: "radial-gradient(circle at 40% 40%,#FFE1E1,#FBA3A5)",
-            filter: "blur(26px)",
-            opacity: 0.22,
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          aria-hidden
-          data-parallax="0.28"
-          style={{
-            position: "absolute",
-            top: 340,
-            left: "8%",
-            width: 120,
-            height: 120,
-            borderRadius: "50%",
-            background: "radial-gradient(circle at 50% 40%,#FFD4D5,#FFB4B6)",
-            filter: "blur(18px)",
-            opacity: 0.2,
-            pointerEvents: "none",
-          }}
-        />
+        <div aria-hidden className="tl-grid-bg" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }} />
+        <div aria-hidden className="tl-orb-red" style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: 900, height: 600, pointerEvents: "none", opacity: 0.7, zIndex: 0 }} />
+        <div aria-hidden className="tl-orb-orange" style={{ position: "absolute", top: "33%", left: 0, width: 500, height: 500, pointerEvents: "none", opacity: 0.5, zIndex: 0 }} />
+        <div aria-hidden className="tl-orb-rose" style={{ position: "absolute", top: "50%", right: 0, width: 400, height: 400, pointerEvents: "none", opacity: 0.4, zIndex: 0 }} />
+        <div aria-hidden data-bh-particles style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden", zIndex: 0 }} />
 
-        <div
-          className="max-[900px]:grid-cols-1! max-[900px]:gap-12!"
-          style={{
-            position: "relative",
-            maxWidth: 1240,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1.05fr .95fr",
-            gap: 56,
-            alignItems: "center",
-          }}
-        >
-          {/* left */}
-          <div>
-            <Reveal
-              className="inline-flex items-center gap-[9px] bg-white border border-[#FBD0D1] px-4 py-2 rounded-full shadow-[0_6px_18px_rgba(242,63,68,0.10)]"
-            >
-              <span className="w-2 h-2 rounded-full bg-coral inline-block" />
-              <span className="text-[13.5px] font-semibold text-coral-deep tracking-[0.2px]">
-                AI-powered skills assessment
-              </span>
-            </Reveal>
-            <Reveal
-              as="h1"
-              delay={0.08}
-              className="h1-big text-[74px] leading-[1.0] font-extrabold tracking-[-2.4px] mt-[22px] mb-0 text-ink max-[900px]:text-[50px]! max-[900px]:leading-[1.04]!"
-            >
-              Hire on{" "}
-              <span style={{ color: "#F23F44", position: "relative", whiteSpace: "nowrap", display: "inline-block" }}>
-                <span ref={wordRef} className="tl-shimmer">
-                  skill
-                </span>
-                <span
-                  aria-hidden
-                  style={{ position: "absolute", left: 0, right: 0, bottom: 7, height: 13, background: "#FDD5D6", zIndex: -1, borderRadius: 7 }}
-                />
-              </span>
-              ,
-              <br />
-              not on <span style={{ color: "#1A1014" }}>a r&eacute;sum&eacute;</span>.
-            </Reveal>
-            <Reveal
-              as="p"
-              delay={0.16}
-              className="text-[19px] leading-[1.6] text-body max-w-[500px] mt-6 font-normal"
-            >
-              Your next great hire is already in your pipeline. Testlify surfaces them in 30 minutes with validated assessments — no resume bias, no gut-check interviews, no bad-hire regret.
-            </Reveal>
-            <Reveal
-              delay={0.24}
-              className="flex flex-wrap gap-3.5 mt-[34px]"
-            >
-              <a
-                href="#"
-                data-magnetic
-                className="btn-sheen inline-flex items-center gap-[9px] bg-coral text-white font-semibold text-[17px] px-[30px] py-4 rounded-[15px] shadow-[0_14px_30px_rgba(242,63,68,0.35)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(242,63,68,0.45)]"
-              >
-                Try for free
-                <span className="text-[19px]">→</span>
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2.5 bg-white text-ink font-semibold text-[17px] px-7 py-4 rounded-[15px] border-[1.5px] border-[#F0D9DA] transition-all duration-300 hover:border-coral"
-              >
-                <span className="w-[30px] h-[30px] rounded-full bg-[#FFF0F0] inline-flex items-center justify-center text-coral">
-                  <svg width="9" height="11" viewBox="0 0 9 11" fill="currentColor" className="block ml-px" aria-hidden>
-                    <path d="M0 0.6v9.8l9-4.9z" />
-                  </svg>
-                </span>
-                Book a demo
-              </a>
-            </Reveal>
-            <Reveal
-              delay={0.28}
-              className="flex items-center gap-[26px] mt-[18px] flex-wrap text-[14.5px] text-muted font-medium"
-            >
-              <span className="inline-flex items-center gap-[7px]">
-                <span className="text-coral font-bold">✓</span>7-day free trial
-              </span>
-              <span className="inline-flex items-center gap-[7px]">
-                <span className="text-coral font-bold">✓</span>No credit card required
-              </span>
-            </Reveal>
-          </div>
-
-          {/* right — ranked shortlist card with wireframe globe behind it */}
-          <Reveal delay={0.18} className="relative">
-            <div
-              aria-hidden
-              data-parallax="-0.12"
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 860, margin: "0 auto" }}>
+          <Reveal className="inline-flex items-center gap-[9px] bg-white border border-[#FBD0D1] px-4 py-[9px] rounded-full shadow-[0_6px_18px_rgba(242,63,68,0.10)] mb-8">
+            <span
               style={{
-                position: "absolute",
-                top: "48%",
-                left: "52%",
-                width: 660,
-                height: 660,
-                maxWidth: "none",
-                transform: "translate(-50%,-50%)",
-                zIndex: 0,
-                pointerEvents: "none",
-              }}
-            >
-              <HeroGlobe />
-            </div>
-            <div
-              aria-hidden
-              data-parallax="0.18"
-              style={{
-                position: "absolute",
-                inset: -30,
+                width: 7,
+                height: 7,
                 borderRadius: "50%",
-                background:
-                  "radial-gradient(circle,rgba(242,63,68,.10),transparent 70%)",
+                background: "#F23F44",
+                display: "inline-block",
+                animation: "tl-pulsedot-kf 2s ease-in-out infinite",
               }}
             />
-            <div
-              data-parallax="0.06"
+            <span className="text-[13.5px] font-semibold text-coral-deep tracking-[0.2px]">
+              AI-powered skills assessment
+            </span>
+          </Reveal>
+
+          <h1
+            style={{
+              fontSize: "clamp(48px,7.5vw,92px)",
+              lineHeight: 1.0,
+              fontWeight: 800,
+              letterSpacing: "-3px",
+              margin: "0 0 28px",
+            }}
+          >
+            <span className="tl-hero-line" data-bh-rise="350" style={{ color: "#1A1014" }}>
+              <span data-bh-text="Hire on skill," data-bh-delay="600">Hire on skill,</span>
+            </span>
+            <span className="tl-hero-line tl-gradient-text tl-glow-text" data-bh-rise="500">
+              <span data-bh-text="not on" data-bh-delay="900">not on</span>
+            </span>
+            <span className="tl-hero-line" data-bh-rise="650" style={{ color: "#1A1014" }}>
+              <span data-bh-text="a résumé." data-bh-delay="1200">a r&eacute;sum&eacute;.</span>
+            </span>
+          </h1>
+
+          <Reveal
+            as="p"
+            delay={0.9}
+            style={{ fontSize: 20, lineHeight: 1.65, color: "#6C5A5D", maxWidth: 700, margin: "0 auto 40px", fontWeight: 400 }}
+          >
+            Your next great hire is already in your pipeline. Testlify surfaces them in 30 minutes with validated assessments — no resume bias, no gut-check interviews, no bad-hire regret.
+          </Reveal>
+
+          <Reveal delay={1.05} className="flex flex-wrap gap-4 justify-center mb-6">
+            <Link
+              href={routes.pricing}
+              data-magnetic
+              className="btn-sheen inline-flex items-center gap-[9px] text-white font-semibold text-[17px] rounded-2xl"
               style={{
-                position: "relative",
-                background: "#fff",
-                borderRadius: 24,
-                boxShadow: "0 30px 70px rgba(110,11,14,.18)",
-                padding: 22,
-                border: "1px solid #FBE4E5",
+                background: "#F23F44",
+                padding: "17px 34px",
+                boxShadow: "0 4px 30px rgba(212,9,36,.18),0 0 60px rgba(212,9,36,.08)",
+                transition: "all .3s",
               }}
             >
-              <div className="flex items-center gap-2 mb-[18px]">
-                <span className="w-[11px] h-[11px] rounded-full bg-[#FBA3A5]" />
-                <span className="w-[11px] h-[11px] rounded-full bg-[#FDD5D6]" />
-                <span className="w-[11px] h-[11px] rounded-full bg-[#FFE9EA]" />
-              </div>
-              <div className="text-[13px] font-semibold text-muted mb-3.5 tracking-[0.3px]">
-                SENIOR FRONTEND ENGINEER · 248 ASSESSED
-              </div>
-              <div className="flex flex-col gap-[11px]">
-                {[
-                  { av: "PA", g: "linear-gradient(135deg,#F76A6E,#F23F44)", name: "Priya A.", pct: "96%", pc: "#F23F44", w: 96, sel: true, bar: "linear-gradient(90deg,#F76A6E,#F23F44)", track: "#FDE3E4" },
-                  { av: "DT", g: "linear-gradient(135deg,#FBA3A5,#F76A6E)", name: "David T.", pct: "89%", pc: "#A91E23", w: 89, sel: false, bar: "linear-gradient(90deg,#FBA3A5,#F76A6E)", track: "#F4EBEC" },
-                  { av: "MK", g: "linear-gradient(135deg,#FDD5D6,#FBA3A5)", name: "Maya K.", pct: "82%", pc: "#C13238", w: 82, sel: false, bar: "linear-gradient(90deg,#FDD5D6,#FBA3A5)", track: "#F4EBEC", inkAv: true },
-                ].map((r) => (
-                  <div
-                    key={r.av}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 13,
-                      background: r.sel ? "#FFF6F6" : "#fff",
-                      border: r.sel ? "1.5px solid #FBD0D1" : "1.5px solid #F2E6E7",
-                      borderRadius: 15,
-                      padding: "13px 15px",
-                    }}
-                  >
-                    <span
-                      style={{
-                        width: 42,
-                        height: 42,
-                        borderRadius: 12,
-                        background: r.g,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: r.inkAv ? "#A91E23" : "#fff",
-                        fontWeight: 600,
-                        fontSize: 15,
-                        flexShrink: 0,
-                      }}
-                    >
-                      {r.av}
-                    </span>
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div className="flex justify-between items-center mb-[7px]">
-                        <span className="font-semibold text-[15px] text-ink">{r.name}</span>
-                        <span className="font-bold text-[15px]" style={{ color: r.pc }}>{r.pct}</span>
-                      </div>
-                      <div style={{ height: 7, background: r.track, borderRadius: 6, overflow: "hidden" }}>
-                        <div
-                          style={{
-                            width: `${r.w}%`,
-                            height: "100%",
-                            background: r.bar,
-                            borderRadius: 6,
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            {/* float card top */}
-            <div
-              style={{
-                position: "absolute",
-                top: -30,
-                right: 20,
-                background: "#fff",
-                borderRadius: 16,
-                boxShadow: "0 18px 40px rgba(110,11,14,.16)",
-                padding: "14px 18px",
-                display: "flex",
-                alignItems: "center",
-                gap: 12,
-                animation: "tl-floaty 6s ease-in-out infinite",
-                border: "1px solid #FBE4E5",
-              }}
+              Try for free
+              <span style={{ fontSize: 18, lineHeight: 1 }}>→</span>
+            </Link>
+            <Link
+              href={routes.contact}
+              className="inline-flex items-center gap-3 bg-white text-ink font-semibold text-[17px] rounded-2xl border-[1.5px] border-[#F0D9DA]"
+              style={{ padding: "17px 30px", transition: "all .3s" }}
             >
-              <span
-                style={{
-                  position: "relative",
-                  width: 40,
-                  height: 40,
-                  borderRadius: "50%",
-                  background: "#E7F6EE",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <span
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    borderRadius: "50%",
-                    border: "2px solid #1F9D6B",
-                    animation: "tl-pulsering 2s ease-out infinite",
-                  }}
-                />
-                <span style={{ fontWeight: 700, color: "#1F9D6B", fontSize: 15 }}>✓</span>
+              <span className="w-[30px] h-[30px] rounded-full bg-[#FFF0F0] inline-flex items-center justify-center text-coral shrink-0">
+                <svg width="9" height="11" viewBox="0 0 9 11" fill="currentColor" aria-hidden>
+                  <path d="M0 0.6v9.8l9-4.9z" />
+                </svg>
               </span>
-              <div>
-                <div className="text-[12px] text-muted font-medium">Top match found</div>
-                <div className="text-[16px] font-bold text-ink">96% skill fit</div>
-              </div>
-            </div>
-            {/* float card bottom */}
-            <div
-              style={{
-                position: "absolute",
-                bottom: -24,
-                left: -30,
-                background: "#fff",
-                borderRadius: 16,
-                boxShadow: "0 18px 40px rgba(110,11,14,.16)",
-                padding: "14px 18px",
-                display: "flex",
-                alignItems: "center",
-                gap: 12,
-                animation: "tl-floaty2 7s ease-in-out infinite",
-                border: "1px solid #FBE4E5",
-              }}
-            >
-              <span
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 11,
-                  background: "linear-gradient(135deg,#F76A6E,#F23F44)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "#fff",
-                  fontWeight: 700,
-                  fontSize: 14,
-                }}
+              Book a demo
+            </Link>
+          </Reveal>
+
+          <Reveal delay={1.2} className="flex items-center justify-center gap-6 flex-wrap">
+            <span className="inline-flex items-center gap-[7px] text-[14px] text-muted font-medium">
+              <span className="text-coral font-bold text-[15px]">✓</span>7-day free trial
+            </span>
+            <span aria-hidden style={{ width: 1, height: 16, background: "#E8D8DA" }} />
+            <span className="inline-flex items-center gap-[7px] text-[14px] text-muted font-medium">
+              <span className="text-coral font-bold text-[15px]">✓</span>No credit card required
+            </span>
+            <span aria-hidden style={{ width: 1, height: 16, background: "#E8D8DA" }} />
+            <span className="inline-flex items-center gap-[7px] text-[14px] text-muted font-medium">
+              <span className="text-coral font-bold text-[15px]">✓</span>Setup in under 5 minutes
+            </span>
+          </Reveal>
+
+          <Reveal delay={1.34} className="flex flex-wrap items-center justify-center gap-3 mt-10">
+            {[
+              ["1,500+", "talent teams"],
+              ["3,500+", "validated tests"],
+              ["94%", "candidate satisfaction"],
+              ["55%", "faster hiring"],
+            ].map(([n, l]) => (
+              <div
+                key={l}
+                className="inline-flex items-center gap-2 bg-white border border-[#F0D9DA] rounded-full px-5 py-2.5 shadow-[0_4px_14px_rgba(242,63,68,0.07)]"
               >
-                28′
-              </span>
-              <div>
-                <div className="text-[12px] text-muted font-medium">Time to shortlist</div>
-                <div className="text-[16px] font-bold text-ink">28 minutes</div>
+                <span className="text-[15px] font-extrabold text-coral tracking-[-0.5px]">{n}</span>
+                <span className="text-[13px] font-medium text-muted">{l}</span>
               </div>
-            </div>
+            ))}
           </Reveal>
         </div>
       </section>
@@ -1004,240 +811,171 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ============ HOW IT WORKS ============ */}
+      {/* ============ HOW IT WORKS (bolt scroll-axis) ============ */}
       <section
-        id="how"
+        id="bolthow"
         className="px-7"
-        style={{ padding: "96px 28px", background: "#FBF3EE", position: "relative", overflow: "hidden" }}
+        style={{ padding: "112px 28px", background: "#FFF8F7", position: "relative", overflow: "hidden" }}
       >
-        {/* scroll-parallax blobs */}
-        <div
-          aria-hidden
-          data-parallax="0.2"
-          style={{
-            position: "absolute",
-            top: -40,
-            right: "6%",
-            width: 200,
-            height: 200,
-            borderRadius: "50%",
-            background: "radial-gradient(circle at 45% 40%,#FFE1E1,#FBB6B8)",
-            filter: "blur(30px)",
-            opacity: 0.28,
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          aria-hidden
-          data-parallax="-0.16"
-          style={{
-            position: "absolute",
-            bottom: -30,
-            left: -30,
-            width: 160,
-            height: 160,
-            borderRadius: "50%",
-            background: "radial-gradient(circle at 50% 40%,#FFEDED,#FDD5D6)",
-            filter: "blur(26px)",
-            opacity: 0.34,
-            pointerEvents: "none",
-          }}
-        />
-        <div style={{ maxWidth: 1180, margin: "0 auto", position: "relative" }}>
-          <div style={{ textAlign: "center", maxWidth: 860, margin: "0 auto 56px" }}>
-            <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
+        <div className="tl-grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.15, pointerEvents: "none", zIndex: 0 }} />
+        <div style={{ position: "relative", zIndex: 1, maxWidth: 1120, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 88 }}>
+            <Reveal as="p" className="text-[13px] font-bold tracking-[0.16em] text-coral uppercase m-0 mb-3.5">
               How it works<span className="text-coral">.</span>
             </Reveal>
-            <Reveal as="h2" delay={0.06} className="text-[46px] leading-[1.08] font-extrabold tracking-[-1.4px] m-0 text-ink">
-              From open role to offer, watch it build
+            <Reveal
+              as="h2"
+              delay={0.06}
+              className="font-extrabold leading-[1.1] tracking-[-1.4px] m-0 text-ink"
+              style={{ fontSize: "clamp(32px,4.5vw,52px)" }}
+            >
+              From open role to offer, <span className="tl-gradient-text">watch it build</span>
             </Reveal>
           </div>
-          <div
-            className="how-grid max-[900px]:grid-cols-1!"
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "start" }}
-          >
-            <div className="how-visual max-[900px]:static!" style={{ position: "sticky", top: 110 }}>
-              <div
-                ref={howCardRef}
-                style={{
-                  position: "relative",
-                  height: 600,
-                  background: "#fff",
-                  border: "1px solid #F4E4E5",
-                  borderRadius: 24,
-                  boxShadow: "0 26px 60px rgba(110,11,14,.12)",
-                  overflow: "hidden",
-                }}
-              >
-                <HowStage active={stage === 0}>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-[9px]">
-                      <span style={{ width: 26, height: 26, borderRadius: 8, background: "linear-gradient(135deg,#FF8A6B,#F23F44)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff" }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6z" /></svg>
-                      </span>
-                      <span className="text-[11.5px] font-bold text-muted tracking-[0.4px]">AI ASSESSMENT BUILDER</span>
-                    </div>
-                    <span className="flex items-center gap-1.5 text-[11px] font-bold text-coral bg-[#FFF0F0] px-2.5 py-[5px] rounded-full">
-                      <span className="tl-pulsedot inline-block w-1.5 h-1.5 rounded-full bg-coral" />Generating
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2.5 bg-[#FFF8F8] border border-[#F4E4E5] rounded-xl px-3.5 py-[11px] mb-3.5">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A9999C" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
-                    <div className="text-[13.5px] text-body">From <strong className="text-ink">&quot;Senior Frontend Engineer&quot;</strong></div>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {["React", "TypeScript", "CSS systems", "Accessibility"].map((t) => (
-                      <span key={t} className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-coral-deep bg-[#FFF0F0] border border-[#FBD0D1] px-3 py-1.5 rounded-full">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>{t}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="bg-white border border-[#F2E6E7] rounded-[14px] px-[15px] py-3.5 shadow-[0_10px_24px_rgba(110,11,14,0.07)] mb-4">
-                    <div className="flex justify-between items-center mb-[9px]">
-                      <span className="text-[11px] font-bold text-coral tracking-[0.3px]">Q3 · MULTIPLE CHOICE</span>
-                      <span className="text-[11px] font-semibold text-muted">React · Hooks</span>
-                    </div>
-                    <div className="text-[13.5px] font-semibold text-ink leading-[1.45] mb-[11px]">Which hook memoizes a value so it isn&apos;t recomputed on every render?</div>
-                    <div className="flex flex-col gap-[7px]">
-                      <div className="flex items-center gap-[9px] bg-[#FFF8F8] border border-[#F4E4E5] rounded-[9px] px-[11px] py-2 text-[12.5px] text-[#6C5A5D]"><span className="w-4 h-4 rounded-full border-[1.5px] border-[#E6D2D3]" />useState()</div>
-                      <div className="flex items-center gap-[9px] bg-[#F0FBF4] border-[1.5px] border-[#BFE9CF] rounded-[9px] px-[11px] py-2 text-[12.5px] font-semibold text-[#1B7A4B]"><span className="w-4 h-4 rounded-full bg-[#22A35B] flex items-center justify-center"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>useMemo()</div>
-                      <div className="flex items-center gap-[9px] bg-[#FFF8F8] border border-[#F4E4E5] rounded-[9px] px-[11px] py-2 text-[12.5px] text-[#6C5A5D]"><span className="w-4 h-4 rounded-full border-[1.5px] border-[#E6D2D3]" />useEffect()</div>
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center mb-[7px]">
-                    <span className="text-[12px] font-semibold text-muted">Building questions</span>
-                    <span className="text-[12px] font-bold text-ink">14 / 18</span>
-                  </div>
-                  <div className="h-2 bg-[#F4EBEC] rounded-md overflow-hidden">
-                    <div style={{ width: "78%", height: "100%", background: "linear-gradient(90deg,#FF8A6B,#F23F44)", borderRadius: 6 }} />
-                  </div>
-                </HowStage>
 
-                <HowStage active={stage === 1}>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[11.5px] font-bold text-muted tracking-[0.4px]">CANDIDATES</span>
-                    <span className="flex items-center gap-1.5 text-[11px] font-bold text-[#1B8A5A] bg-[#E7F6EF] px-2.5 py-[5px] rounded-full">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1B8A5A" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><path d="M22 4 12 14.01l-3-3" /></svg>Two-way ATS sync
-                    </span>
-                  </div>
-                  <div className="flex gap-[9px] mb-3.5">
-                    <div className="flex-1 bg-[#FFF8F8] border border-[#F4E4E5] rounded-xl px-[13px] py-3">
-                      <div className="text-[21px] font-extrabold text-ink tracking-[-0.5px]">248</div>
-                      <div className="text-[11px] font-semibold text-muted">Invited</div>
-                    </div>
-                    <div className="flex-1 bg-[#FFF8F8] border border-[#F4E4E5] rounded-xl px-[13px] py-3">
-                      <div className="text-[21px] font-extrabold text-ink tracking-[-0.5px]">176</div>
-                      <div className="text-[11px] font-semibold text-muted">Completed</div>
-                    </div>
-                    <div className="flex-1 bg-[#FFF0F0] border border-[#FBD0D1] rounded-xl px-[13px] py-3">
-                      <div className="text-[21px] font-extrabold text-coral tracking-[-0.5px]">71%</div>
-                      <div className="text-[11px] font-semibold text-[#C0696C]">Response</div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-[9px]">
-                    {[
-                      { av: "JL", g: "linear-gradient(135deg,#F76A6E,#F23F44)", name: "Jordan L.", st: "Completed", c: "#1B8A5A", bg: "#E7F6EF" },
-                      { av: "AM", g: "linear-gradient(135deg,#FBA3A5,#F76A6E)", name: "Aisha M.", st: "In progress", c: "#A36A00", bg: "#FBEFD9" },
-                      { av: "RK", g: "linear-gradient(135deg,#FDD5D6,#FBA3A5)", name: "Rahul K.", st: "Invited", c: "#8A7A7D", bg: "#F1ECED" },
-                      { av: "SN", g: "linear-gradient(135deg,#F23F44,#A91E23)", name: "Sana N.", st: "Completed", c: "#1B8A5A", bg: "#E7F6EF" },
-                    ].map((r) => (
-                      <div key={r.av} className="flex items-center gap-3 bg-[#FFF8F8] border border-[#F4E4E5] rounded-[13px] px-[15px] py-3">
-                        <span style={{ width: 36, height: 36, borderRadius: 10, background: r.g, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: 13 }}>{r.av}</span>
-                        <div className="flex-1 font-semibold text-[14.5px] text-ink">{r.name}</div>
-                        <span className="text-[12px] font-semibold px-[11px] py-[5px] rounded-lg" style={{ color: r.c, background: r.bg }}>{r.st}</span>
-                      </div>
-                    ))}
-                  </div>
-                </HowStage>
-
-                <HowStage active={stage === 2}>
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="text-[11.5px] font-bold text-muted tracking-[0.4px]">RANKED LEADERBOARD</span>
-                    <span className="text-[11.5px] font-bold text-white bg-coral px-3 py-[5px] rounded-lg">Shortlist top 5</span>
-                  </div>
-                  <div className="flex flex-col gap-[11px]">
-                    <div className="bg-[#FFF6F6] border-[1.5px] border-[#FBD0D1] rounded-[14px] px-[15px] py-[13px] shadow-[0_10px_22px_rgba(242,63,68,0.12)]">
-                      <div className="flex items-center gap-[13px]">
-                        <span className="font-extrabold text-coral text-[15px] w-[18px]">1</span>
-                        <span style={{ width: 38, height: 38, borderRadius: 11, background: "linear-gradient(135deg,#F76A6E,#F23F44)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: 13 }}>JL</span>
-                        <div className="flex-1">
-                          <div className="font-semibold text-[14.5px] text-ink">Jordan L.</div>
-                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#1B8A5A]">
-                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1B8A5A" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>Shortlisted
-                          </span>
-                        </div>
-                        <span className="font-extrabold text-coral text-[19px]">94</span>
-                      </div>
-                      <div className="flex gap-[5px] mt-[11px] pl-[31px]">
-                        <span className="flex-1 h-[5px] rounded-[3px]" style={{ background: "#F23F44" }} />
-                        <span className="flex-1 h-[5px] rounded-[3px]" style={{ background: "#F76A6E" }} />
-                        <span className="flex-1 h-[5px] rounded-[3px]" style={{ background: "#FBA3A5" }} />
-                        <span className="flex-1 h-[5px] rounded-[3px]" style={{ background: "#F23F44" }} />
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-[13px] bg-white border border-[#F2E6E7] rounded-[14px] px-[15px] py-[13px]">
-                      <span className="font-extrabold text-[15px] w-[18px]" style={{ color: "#A91E23" }}>2</span>
-                      <span style={{ width: 38, height: 38, borderRadius: 11, background: "linear-gradient(135deg,#F23F44,#A91E23)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: 13 }}>SN</span>
-                      <div className="flex-1 font-semibold text-[14.5px] text-ink">Sana N.</div>
-                      <span className="font-extrabold text-[17px]" style={{ color: "#A91E23" }}>91</span>
-                    </div>
-                    <div className="flex items-center gap-[13px] bg-white border border-[#F2E6E7] rounded-[14px] px-[15px] py-[13px]">
-                      <span className="font-extrabold text-[15px] w-[18px]" style={{ color: "#C13238" }}>3</span>
-                      <span style={{ width: 38, height: 38, borderRadius: 11, background: "linear-gradient(135deg,#FBA3A5,#F76A6E)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: 13 }}>AM</span>
-                      <div className="flex-1 font-semibold text-[14.5px] text-ink">Aisha M.</div>
-                      <span className="font-extrabold text-[17px]" style={{ color: "#C13238" }}>88</span>
-                    </div>
-                  </div>
-                </HowStage>
-              </div>
+          <div ref={bhowRef} style={{ position: "relative" }}>
+            <div className="bhow-axis" style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", top: 0, bottom: 0, width: 1, background: "#F0E2E3", zIndex: 0 }}>
+              <div data-bhow-fill style={{ position: "absolute", top: 0, left: 0, right: 0, height: 0, background: "linear-gradient(to bottom,rgba(242,63,68,.6),rgba(242,63,68,.2))", borderRadius: 100 }} />
             </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 96, position: "relative", zIndex: 1 }}>
 
-            <div ref={howStepsRef} className="flex flex-col gap-4">
-              {STEPS.map((s, i) => {
-                const on = stage === i;
-                return (
-                  <div
-                    key={s.n}
-                    onClick={() => pickStage(i)}
-                    onMouseEnter={() => pickStage(i)}
-                    style={{
-                      cursor: "pointer",
-                      background: on ? "#fff" : "#FFF9F9",
-                      border: on ? "1.5px solid #F23F44" : "1.5px solid #F2E6E7",
-                      borderRadius: 18,
-                      padding: "24px 26px",
-                      boxShadow: on ? "0 16px 40px rgba(110,11,14,.12)" : "none",
-                      transition: "border-color .3s ease, box-shadow .3s ease, background .3s ease",
-                    }}
-                  >
-                    <div className="flex items-center gap-3.5 mb-2.5">
-                      <span
-                        style={{
-                          width: 40,
-                          height: 40,
-                          borderRadius: 12,
-                          background: on ? "#F23F44" : "#FDD5D6",
-                          color: on ? "#fff" : "#A91E23",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontWeight: 800,
-                          fontSize: 18,
-                          transition: "all .3s ease",
-                          transform: on ? "scale(1.12)" : "scale(1)",
-                        }}
-                      >
-                        {s.n}
-                      </span>
-                      <h3 className="text-[21px] font-bold m-0 text-ink tracking-[-0.4px]">{s.title}</h3>
+              {/* Row 01 — Build the assessment */}
+              <Reveal className="bhow-row" delay={0.05}>
+                <div>
+                  <div style={{ fontSize: 88, fontWeight: 900, lineHeight: 1, marginBottom: 10, color: "rgba(242,63,68,.16)", letterSpacing: "-3px", userSelect: "none" }}>01</div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <span style={{ width: 48, height: 48, borderRadius: 16, display: "inline-flex", alignItems: "center", justifyContent: "center", background: "rgba(242,63,68,.14)", color: "#F23F44", flexShrink: 0 }}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><rect x="8" y="2" width="8" height="4" rx="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><path d="M12 11h4" /><path d="M12 16h4" /><path d="M8 11h.01" /><path d="M8 16h.01" /></svg>
+                    </span>
+                    <h3 className="font-bold text-ink m-0" style={{ fontSize: "clamp(22px,2.4vw,30px)", letterSpacing: "-.5px" }}>Build the assessment</h3>
+                  </div>
+                  <p className="text-[16px] leading-[1.6] m-0" style={{ color: "#5A4B4E", maxWidth: 440 }}>Pick from 3,500+ ready tests or let AI generate a custom one from your job description in under a minute.</p>
+                </div>
+                <div>
+                  <div style={{ background: "#fff", borderRadius: 18, border: "1px solid #F0E2E3", padding: 20, boxShadow: "0 16px 34px rgba(110,11,14,.08)" }}>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-[12.5px] font-bold text-ink">Assessment Builder</span>
+                      <span className="text-[11px] text-coral font-semibold">4 modules selected</span>
                     </div>
-                    <p className="text-[15.5px] leading-[1.6] text-body m-0 mb-3 pl-[54px]">{s.desc}</p>
-                    <div className="h-[3px] bg-[#F4EBEC] rounded-[3px] ml-[54px] overflow-hidden">
-                      <div style={{ width: on ? "100%" : "0%", height: "100%", background: "#F23F44", borderRadius: 3, transition: "width .4s ease" }} />
+                    {[
+                      "JavaScript Fundamentals",
+                      "React & State Management",
+                      "System Design",
+                      "Problem Solving",
+                    ].map((m) => (
+                      <div key={m} className="flex items-center gap-3 mb-[9px]" style={{ padding: "10px 12px", borderRadius: 12, background: "#FFF8F8", border: "1px solid #F4E4E5" }}>
+                        <span style={{ width: 16, height: 16, borderRadius: 6, border: "1px solid rgba(242,63,68,.6)", background: "rgba(242,63,68,.2)", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <span style={{ width: 8, height: 8, borderRadius: 3, background: "#F23F44" }} />
+                        </span>
+                        <span className="text-[12.5px] font-medium text-ink">{m}</span>
+                        <span className="ml-auto text-[11px] text-muted">~10 min</span>
+                      </div>
+                    ))}
+                    <div className="flex justify-between items-center pt-2">
+                      <span className="text-[11px] text-muted">Est. time: 40 min</span>
+                      <span className="text-white text-[11.5px] font-semibold" style={{ padding: "7px 16px", borderRadius: 10, background: "#F23F44" }}>Generate Assessment →</span>
                     </div>
                   </div>
-                );
-              })}
+                </div>
+              </Reveal>
+
+              {/* Row 02 — Invite candidates (visual left, text right) */}
+              <Reveal className="bhow-row" delay={0.05}>
+                <div>
+                  <div style={{ background: "#fff", borderRadius: 18, border: "1px solid #F0E2E3", padding: 20, boxShadow: "0 16px 34px rgba(110,11,14,.08)" }}>
+                    <div className="text-[12.5px] font-bold text-ink mb-4">Invite Candidates</div>
+                    <div style={{ background: "#FFF8F8", borderRadius: 12, border: "1px solid #F4E4E5", padding: 12, marginBottom: 16 }}>
+                      <div className="text-[9px] text-muted mb-1.5" style={{ textTransform: "uppercase", letterSpacing: ".14em" }}>Shareable Link</div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[11px] flex-1" style={{ color: "#6C5A5D", fontFamily: "monospace", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>testlify.com/a/sr-eng-2024</span>
+                        <span className="text-[10px] text-coral font-semibold" style={{ border: "1px solid rgba(242,63,68,.3)", padding: "2px 9px", borderRadius: 7 }}>Copy</span>
+                      </div>
+                    </div>
+                    <div className="grid gap-2 text-center mb-4" style={{ gridTemplateColumns: "repeat(3,1fr)" }}>
+                      {[
+                        ["247", "Sent"],
+                        ["184", "Started"],
+                        ["156", "Completed"],
+                      ].map(([n, l]) => (
+                        <div key={l} style={{ background: "#FFF8F8", borderRadius: 12, padding: 10, border: "1px solid #F4E4E5" }}>
+                          <div className="text-[16px] font-extrabold text-ink">{n}</div>
+                          <div className="text-[9px] text-muted mt-0.5">{l}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      {[
+                        { dot: "#22A35B", email: "sarah.chen@company.com", st: "Completed", stc: "#22A35B", time: "32 min" },
+                        { dot: "#D69100", email: "marcus.webb@startup.io", st: "In Progress", stc: "#D69100", time: "18 min" },
+                        { dot: "#A9999C", email: "priya.sharma@corp.com", st: "Pending", stc: "#A9999C", time: "—" },
+                      ].map((r) => (
+                        <div key={r.email} className="flex items-center gap-2 text-[10px]" style={{ padding: "6px 8px", borderRadius: 9, background: "#FFF8F8", border: "1px solid #F4E4E5" }}>
+                          <span style={{ width: 6, height: 6, borderRadius: "50%", background: r.dot, flexShrink: 0 }} />
+                          <span className="flex-1" style={{ color: "#8A7A7D", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.email}</span>
+                          <span className="font-semibold" style={{ color: r.stc }}>{r.st}</span>
+                          <span style={{ color: "#A9999C" }}>{r.time}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div style={{ fontSize: 88, fontWeight: 900, lineHeight: 1, marginBottom: 10, color: "rgba(217,112,30,.16)", letterSpacing: "-3px", userSelect: "none" }}>02</div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <span style={{ width: 48, height: 48, borderRadius: 16, display: "inline-flex", alignItems: "center", justifyContent: "center", background: "rgba(217,112,30,.14)", color: "#D9701E", flexShrink: 0 }}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z" /><path d="M22 2 11 13" /></svg>
+                    </span>
+                    <h3 className="font-bold text-ink m-0" style={{ fontSize: "clamp(22px,2.4vw,30px)", letterSpacing: "-.5px" }}>Invite candidates</h3>
+                  </div>
+                  <p className="text-[16px] leading-[1.6] m-0" style={{ color: "#5A4B4E", maxWidth: 440 }}>Share one link or sync from your ATS. Candidates complete a fair, proctored experience on any device.</p>
+                </div>
+              </Reveal>
+
+              {/* Row 03 — Compare & shortlist */}
+              <Reveal className="bhow-row" delay={0.05}>
+                <div>
+                  <div style={{ fontSize: 88, fontWeight: 900, lineHeight: 1, marginBottom: 10, color: "rgba(247,106,110,.18)", letterSpacing: "-3px", userSelect: "none" }}>03</div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <span style={{ width: 48, height: 48, borderRadius: 16, display: "inline-flex", alignItems: "center", justifyContent: "center", background: "rgba(247,106,110,.16)", color: "#F76A6E", flexShrink: 0 }}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18" /><path d="M18 17V9" /><path d="M13 17V5" /><path d="M8 17v-3" /></svg>
+                    </span>
+                    <h3 className="font-bold text-ink m-0" style={{ fontSize: "clamp(22px,2.4vw,30px)", letterSpacing: "-.5px" }}>Compare &amp; shortlist</h3>
+                  </div>
+                  <p className="text-[16px] leading-[1.6] m-0" style={{ color: "#5A4B4E", maxWidth: 440 }}>Get an objective, ranked leaderboard. Move the strongest people forward in 30 minutes — bias left behind.</p>
+                </div>
+                <div>
+                  <div style={{ background: "#fff", borderRadius: 18, border: "1px solid #F0E2E3", padding: 20, boxShadow: "0 16px 34px rgba(110,11,14,.08)" }}>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-[12.5px] font-bold text-ink">Ranked Results</span>
+                      <span className="text-[10px] text-muted">156 candidates</span>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      {[
+                        { rank: "#1", name: "Sarah C.", tag: "Top Match", tagBg: "rgba(34,163,91,.15)", tagC: "#22A35B", score: "94", border: "1px solid rgba(242,63,68,.3)", bg: "rgba(242,63,68,.05)", bars: ["92%", "96%", "88%", "98%"] },
+                        { rank: "#2", name: "Marcus W.", tag: "Strong Fit", tagBg: "rgba(217,112,30,.15)", tagC: "#D9701E", score: "87", border: "1px solid #F4E4E5", bg: "#FFF8F8", bars: ["85%", "90%", "82%", "91%"] },
+                        { rank: "#3", name: "Priya S.", tag: "Good Fit", tagBg: "#F1ECED", tagC: "#8A7A7D", score: "79", border: "1px solid #F4E4E5", bg: "#FFF8F8", bars: ["76%", "82%", "74%", "84%"] },
+                      ].map((r) => (
+                        <div key={r.rank} style={{ padding: 12, borderRadius: 12, border: r.border, background: r.bg }}>
+                          <div className="flex items-center gap-3 mb-2">
+                            <span style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(242,63,68,.2)", color: "#F23F44", fontSize: 10, fontWeight: 800, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{r.rank}</span>
+                            <span className="text-[12.5px] font-bold text-ink flex-1">{r.name}</span>
+                            <span style={{ fontSize: 9, fontWeight: 800, padding: "2px 9px", borderRadius: 100, background: r.tagBg, color: r.tagC }}>{r.tag}</span>
+                            <span className="text-[15px] font-black text-ink">{r.score}</span>
+                          </div>
+                          <div className="flex gap-1">
+                            {r.bars.map((w, bi) => (
+                              <div key={bi} style={{ flex: 1, height: 4, borderRadius: 100, background: "#F1ECED", overflow: "hidden" }}>
+                                <div style={{ height: "100%", borderRadius: 100, background: "rgba(242,63,68,.7)", width: w }} />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+
             </div>
           </div>
         </div>
@@ -1259,19 +997,6 @@ export default function HomeClient() {
           </div>
 
           <Reveal delay={0.16}>
-            <div className="flex items-center gap-3 bg-white border-[1.5px] border-[#F0E2E3] rounded-2xl px-5 py-4 shadow-[0_16px_30px_rgba(110,11,14,0.08)] max-w-[620px] mb-4 text-[#A9999C]">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="7" />
-                <path d="m21 21-4.3-4.3" />
-              </svg>
-              <input
-                type="text"
-                value={libQuery}
-                onChange={(e) => setLibQuery(e.target.value)}
-                placeholder="Search tests by role, skill or language…"
-                className="flex-1 min-w-0 border-none outline-none bg-transparent font-[inherit] text-[15.5px] text-ink font-medium placeholder:text-[#A9999C] placeholder:font-medium"
-              />
-            </div>
             <div className="flex flex-wrap gap-[9px] mb-9">
               {LIB_CATS.map(([key, label]) => {
                 const on = libCat === key;
@@ -1803,6 +1528,24 @@ export default function HomeClient() {
         </div>
       </section>
 
+      {/* ============ AWARDS / RECOGNITION ============ */}
+      <section id="awards" className="px-7" style={{ padding: "96px 28px", background: "#FBF3EE" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
+          <Reveal as="p" className="text-[14px] font-bold tracking-[1px] text-[#9A878A] uppercase m-0 mb-3.5">
+            Awards &amp; recognition<span className="text-coral">.</span>
+          </Reveal>
+          <Reveal as="h2" delay={0.06} className="text-[42px] leading-[1.1] font-extrabold tracking-[-1.3px] m-0 mb-11 text-ink max-[720px]:text-[30px]">
+            Recognized by the people who use it
+          </Reveal>
+          <Reveal delay={0.12} className="flex items-center justify-center flex-wrap gap-6">
+            {RECOGNITION.map(([src, alt]) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={alt} className="tl-medal" src={src} alt={alt} />
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
       {/* ============ SECURITY ============ */}
       <section id="security">
         <SecuritySection
@@ -1835,27 +1578,6 @@ export default function HomeClient() {
 }
 
 /* ---------- sub-components ---------- */
-
-function HowStage({ active, children }: { active: boolean; children: React.ReactNode }) {
-  return (
-    <div
-      style={{
-        position: "absolute",
-        inset: 0,
-        padding: 30,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        opacity: active ? 1 : 0,
-        transition: "opacity .4s ease, transform .4s ease",
-        transform: active ? "translateY(0)" : "translateY(10px)",
-        pointerEvents: active ? "auto" : "none",
-      }}
-    >
-      {children}
-    </div>
-  );
-}
 
 function PanelGrid({ children }: { children: React.ReactNode }) {
   return (
@@ -2058,6 +1780,23 @@ const KEYFRAMES = `
 .tlib-card2{animation:tl-libin .35s ease both;}
 @keyframes tl-herograd{0%{background-position:0% 0%}50%{background-position:100% 100%}100%{background-position:0% 0%}}
 .tl-hero-grad{background-size:170% 170%;animation:tl-herograd 30s ease-in-out infinite;}
+
+/* ---- bolt centered hero ---- */
+.tl-grid-bg{background-image:linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px);background-size:64px 64px;}
+.tl-orb-red{background:radial-gradient(rgba(212,9,36,.12),transparent 65%);}
+.tl-orb-orange{background:radial-gradient(rgba(222,104,0,.1),transparent 65%);}
+.tl-orb-rose{background:radial-gradient(rgba(229,39,84,.08),transparent 65%);}
+.tl-gradient-text{-webkit-text-fill-color:transparent;background:linear-gradient(135deg,#df202e,#db0c26,#d50022 22.5%,#c6001e 45%,#d1000b 58.75%,#d40c00,#d52400 72.5%,#d74b00);-webkit-background-clip:text;background-clip:text;}
+.tl-glow-text{text-shadow:0 0 28px rgba(242,63,68,.35);}
+.tl-hero-line{display:block;opacity:0;transform:translateY(50px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1);will-change:opacity,transform;}
+.tl-hero-line.is-in{opacity:1;transform:translateY(0);}
+@keyframes tl-pulsedot-kf{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.45);opacity:.7;}}
+@keyframes tl-partfloat{0%,100%{transform:translateY(-10px);opacity:.3;}50%{transform:translateY(10px);opacity:.8;}}
+@media(prefers-reduced-motion:reduce){.tl-hero-line{opacity:1;transform:none;}}
+
+/* ---- bolt how-it-works scroll axis ---- */
+.bhow-row{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+@media(max-width:860px){#bolthow .bhow-row{grid-template-columns:1fr!important;gap:32px!important;}#bolthow .bhow-axis{display:none!important;}}
 
 /* screening scan beam */
 .tl-screencre{position:relative;overflow:hidden;border-radius:14px;}

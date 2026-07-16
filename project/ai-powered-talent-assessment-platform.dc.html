@@ -9,7 +9,7 @@
 <x-dc>
 <helmet>
 <meta name="design_doc_mode" content="page">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -106,6 +106,23 @@ a{text-decoration:none;color:inherit;}
   .hero{padding:44px 22px 64px;}
   .atsgrid,.intg-grid{grid-template-columns:repeat(3,1fr);}
   .cards3{grid-template-columns:1fr !important;}
+  /* center the hero + collapsed columns on tablet/mobile */
+  .herogrid{text-align:center;}
+  .herogrid > div{display:flex;flex-direction:column;align-items:center;}
+  .h1,.lead{margin-left:auto;margin-right:auto;}
+  .lead{max-width:560px !important;}
+  .heroctas,.trust{justify-content:center;}
+  .pill{flex-wrap:wrap;justify-content:center;border-radius:14px;padding:7px 12px 7px 8px;line-height:1.35;}
+  /* floating chips must flow, not overlap the mock */
+  .matchtag,.floattag{position:static !important;display:inline-flex;top:auto;bottom:auto;left:auto;right:auto;margin:0 auto 14px;}
+  .floattag{margin:14px auto 0;}
+  .mock{margin:0 auto;}
+}
+@media(max-width:640px){
+  .hero{padding:34px 20px 52px;}
+  .herogrid{gap:34px;}
+  .h1{font-size:32px !important;letter-spacing:-.8px !important;}
+  .heroctas{gap:10px;flex-wrap:wrap;}
 }
 </style>
 </helmet>
@@ -113,12 +130,12 @@ a{text-decoration:none;color:inherit;}
 <section class="hero"><div class="wrap"><div class="herogrid">
   <div>
     <div class="reveal" style="transition-delay:.02s"><span class="pill"><span class="pilltag">AI ASSESSMENT</span> Skills-based hiring, proven</span></div>
-    <h1 class="h1 reveal" style="margin-top:22px;transition-delay:.06s">The AI talent<br>assessment platform<br>for <span class="acc">smarter hiring.</span></h1>
+    <h1 class="h1 reveal" data-scramble="" style="margin-top:22px;transition-delay:.06s">The AI talent<br>assessment platform<br>for <span class="acc">smarter hiring.</span></h1>
     <p class="lead reveal" style="margin-top:22px;max-width:520px;transition-delay:.1s">Finding the right skills in a competitive market — bias-free and fast — is hard. Testlify gives you the tools and insight to make data-driven hiring decisions, every time.</p>
     <div class="heroctas reveal" style="transition-delay:.14s"><dc-import name="component-cta-button" label="Try for free" href="core-pricing.dc.html" variant="primary" size="md" icon="arrow" magnetic="true" hint-size="150px,52px"></dc-import><dc-import name="component-cta-button" label="Book a demo" href="#" variant="secondary" size="md" icon="play" hint-size="150px,52px"></dc-import></div>
-    <div class="trust reveal" style="transition-delay:.18s"><span>No credit card</span><span class="dot"></span><span>7-day free trial</span><span class="dot"></span><span>SOC 2 · ISO 27001 · GDPR</span></div>
+    <div class="trust reveal" style="transition-delay:.18s"><span style="display:inline-flex;align-items:center;gap:7px;"><span style="color:#F23F44;font-weight:700;">✓</span>7-day free trial</span><span style="display:inline-flex;align-items:center;gap:7px;"><span style="color:#F23F44;font-weight:700;">✓</span>No credit card required</span></div>
   </div>
-  <div class="reveal" style="position:relative;transition-delay:.12s">
+  <div class="reveal" style="position: relative; transition-delay: .12s; top: 20px">
     <div class="matchtag"><i></i> Auto-scored — 0 manual review</div>
     <div class="mock">
       <div class="mocktop"><span class="mc" style="background:#FF5F57"></span><span class="mc" style="background:#FEBC2E"></span><span class="mc" style="background:#28C840"></span><span class="mockbar">app.testlify.com/report/senior-pm</span></div>
@@ -183,57 +200,57 @@ a{text-decoration:none;color:inherit;}
     </div>
   </div>
 </div></div></section>
-<section class="sec dark"><div class="wrap"><div class="split" style="align-items:center;">
+<section class="sec" style="background:#FBF3EE;"><div class="wrap"><div class="split" style="align-items:center;">
   <div class="reveal">
     <p class="eyebrow">Automated scoring<b>.</b></p>
     <h2 class="h2" style="margin-bottom:18px;">Score every answer format — automatically</h2>
     <p class="lead" style="margin-bottom:26px;max-width:460px;">AI-driven analysis eliminates tedious manual scoring — consistent, objective, bias-free results across text, video and audio, with manual override whenever you want it.</p>
     <div style="display:flex;flex-direction:column;gap:16px;max-width:440px;">
-      <div style="display:flex;gap:13px;align-items:flex-start;"><span style="flex:none;width:26px;height:26px;border-radius:8px;background:rgba(242,63,68,.16);color:#FF7A52;display:flex;align-items:center;justify-content:center;margin-top:1px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><p class="body" style="margin:0;"><b style="color:#fff;">Open-ended &amp; written</b> — deep, consistent insight on free-text responses, no manual reading.</p></div>
-      <div style="display:flex;gap:13px;align-items:flex-start;"><span style="flex:none;width:26px;height:26px;border-radius:8px;background:rgba(242,63,68,.16);color:#FF7A52;display:flex;align-items:center;justify-content:center;margin-top:1px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><p class="body" style="margin:0;"><b style="color:#fff;">Video interviews</b> — one-way and live, auto-scored instantly with manual scoring on tap.</p></div>
-      <div style="display:flex;gap:13px;align-items:flex-start;"><span style="flex:none;width:26px;height:26px;border-radius:8px;background:rgba(242,63,68,.16);color:#FF7A52;display:flex;align-items:center;justify-content:center;margin-top:1px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><p class="body" style="margin:0;"><b style="color:#fff;">Audio questions</b> — clarity, fluency and linguistic proficiency, scored objectively.</p></div>
+      <div style="display:flex;gap:13px;align-items:flex-start;"><span style="flex:none;width:26px;height:26px;border-radius:8px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-top:1px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><p class="body" style="margin:0;"><b style="color:#1A1014;">Open-ended &amp; written</b> — deep, consistent insight on free-text responses, no manual reading.</p></div>
+      <div style="display:flex;gap:13px;align-items:flex-start;"><span style="flex:none;width:26px;height:26px;border-radius:8px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-top:1px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><p class="body" style="margin:0;"><b style="color:#1A1014;">Video interviews</b> — one-way and live, auto-scored instantly with manual scoring on tap.</p></div>
+      <div style="display:flex;gap:13px;align-items:flex-start;"><span style="flex:none;width:26px;height:26px;border-radius:8px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-top:1px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><p class="body" style="margin:0;"><b style="color:#1A1014;">Audio questions</b> — clarity, fluency and linguistic proficiency, scored objectively.</p></div>
     </div>
   </div>
   <div class="reveal" style="transition-delay:.1s;">
-    <div class="dcard" style="padding:0;overflow:hidden;">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #3A2529;">
-        <span style="font-size:13.5px;font-weight:700;color:#fff;">Scoring feed · Marketing Lead</span>
-        <span style="display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.04em;color:#FF9E7A;"><span style="width:7px;height:7px;border-radius:50%;background:#3DDC84;box-shadow:0 0 0 4px rgba(61,220,132,.18);"></span>AUTO-SCORING</span>
+    <div style="background:#fff;border:1px solid #F0E2E3;border-radius:18px;box-shadow:0 16px 30px rgba(110,11,14,.10);padding:0;overflow:hidden;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #F0E2E3;">
+        <span style="font-size:13.5px;font-weight:700;color:#1A1014;">Scoring feed · Marketing Lead</span>
+        <span style="display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.04em;color:#F23F44;"><span style="width:7px;height:7px;border-radius:50%;background:#3DDC84;box-shadow:0 0 0 4px rgba(61,220,132,.18);"></span>AUTO-SCORING</span>
       </div>
 
-      <div style="display:flex;align-items:center;gap:15px;padding:18px 20px;border-bottom:1px solid #2C181C;">
-        <span class="dsicon" style="margin:0;width:40px;height:40px;flex:none;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h11"></path></svg></span>
+      <div style="display:flex;align-items:center;gap:15px;padding:18px 20px;border-bottom:1px solid #F4ECEC;">
+        <span style="margin:0;width:40px;height:40px;flex:none;border-radius:12px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h11"></path></svg></span>
         <div style="flex:1;min-width:0;">
-          <div style="font-size:13.5px;font-weight:700;color:#fff;margin-bottom:7px;">Open-ended question</div>
-          <div style="height:5px;border-radius:99px;background:#3A2529;margin-bottom:6px;overflow:hidden;"><div style="width:88%;height:100%;background:#FF7A52;"></div></div>
-          <div style="height:5px;border-radius:99px;background:#3A2529;width:70%;overflow:hidden;"><div style="width:76%;height:100%;background:#F23F44;"></div></div>
+          <div style="font-size:13.5px;font-weight:700;color:#1A1014;margin-bottom:7px;">Open-ended question</div>
+          <div style="height:5px;border-radius:99px;background:#F4E7E8;margin-bottom:6px;overflow:hidden;"><div style="width:88%;height:100%;background:#FF7A52;"></div></div>
+          <div style="height:5px;border-radius:99px;background:#F4E7E8;width:70%;overflow:hidden;"><div style="width:76%;height:100%;background:#F23F44;"></div></div>
         </div>
-        <span style="flex:none;font-size:20px;font-weight:800;color:#FF7A52;letter-spacing:-.5px;">8.6</span>
+        <span style="flex:none;font-size:20px;font-weight:800;color:#F23F44;letter-spacing:-.5px;">8.6</span>
       </div>
 
-      <div style="display:flex;align-items:center;gap:15px;padding:18px 20px;border-bottom:1px solid #2C181C;">
-        <span style="flex:none;width:56px;height:40px;border-radius:9px;background:linear-gradient(135deg,#2C181C,#3A2529);display:flex;align-items:center;justify-content:center;position:relative;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FF7A52"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></span>
+      <div style="display:flex;align-items:center;gap:15px;padding:18px 20px;border-bottom:1px solid #F4ECEC;">
+        <span style="flex:none;width:56px;height:40px;border-radius:9px;background:linear-gradient(135deg,#FFF0EF,#FCE0DE);display:flex;align-items:center;justify-content:center;position:relative;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#F23F44"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></span>
         <div style="flex:1;min-width:0;">
-          <div style="font-size:13.5px;font-weight:700;color:#fff;margin-bottom:3px;">Video interview</div>
-          <div class="plabel" style="color:#8A6A6E;letter-spacing:.04em;">02:14 · communication &amp; structure</div>
+          <div style="font-size:13.5px;font-weight:700;color:#1A1014;margin-bottom:3px;">Video interview</div>
+          <div class="plabel" style="color:#8A7A7D;letter-spacing:.04em;">02:14 · communication &amp; structure</div>
         </div>
-        <span style="flex:none;font-size:20px;font-weight:800;color:#FF7A52;letter-spacing:-.5px;">9.0</span>
+        <span style="flex:none;font-size:20px;font-weight:800;color:#F23F44;letter-spacing:-.5px;">9.0</span>
       </div>
 
       <div style="display:flex;align-items:center;gap:15px;padding:18px 20px;">
         <div class="wave" style="flex:none;width:56px;">
-          <div class="wbar" style="height:9px;"></div><div class="wbar" style="height:20px;background:#FF7A52;"></div><div class="wbar" style="height:13px;"></div><div class="wbar" style="height:26px;background:#FF7A52;"></div><div class="wbar" style="height:11px;"></div><div class="wbar" style="height:18px;background:#FF7A52;"></div>
+          <div class="wbar" style="height:9px;background:#E7D3D5;"></div><div class="wbar" style="height:20px;background:#FF7A52;"></div><div class="wbar" style="height:13px;background:#E7D3D5;"></div><div class="wbar" style="height:26px;background:#FF7A52;"></div><div class="wbar" style="height:11px;background:#E7D3D5;"></div><div class="wbar" style="height:18px;background:#FF7A52;"></div>
         </div>
         <div style="flex:1;min-width:0;">
-          <div style="font-size:13.5px;font-weight:700;color:#fff;margin-bottom:3px;">Audio question</div>
-          <div class="plabel" style="color:#8A6A6E;letter-spacing:.04em;">Clarity · fluency · pronunciation</div>
+          <div style="font-size:13.5px;font-weight:700;color:#1A1014;margin-bottom:3px;">Audio question</div>
+          <div class="plabel" style="color:#8A7A7D;letter-spacing:.04em;">Clarity · fluency · pronunciation</div>
         </div>
-        <span style="flex:none;font-size:20px;font-weight:800;color:#FF7A52;letter-spacing:-.5px;">8.4</span>
+        <span style="flex:none;font-size:20px;font-weight:800;color:#F23F44;letter-spacing:-.5px;">8.4</span>
       </div>
 
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#1A1014;border-top:1px solid #3A2529;">
-        <span class="plabel" style="color:#8A6A6E;letter-spacing:.04em;">Overall · weighted</span>
-        <span style="display:flex;align-items:center;gap:10px;"><span style="font-size:11px;font-weight:700;color:#8A6A6E;">Manual override available</span><span style="font-size:15px;font-weight:800;color:#fff;background:rgba(242,63,68,.18);border-radius:8px;padding:4px 11px;">8.7</span></span>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#FBF3EE;border-top:1px solid #F0E2E3;">
+        <span class="plabel" style="color:#8A7A7D;letter-spacing:.04em;">Overall · weighted</span>
+        <span style="display:flex;align-items:center;gap:10px;"><span style="font-size:11px;font-weight:700;color:#8A7A7D;">Manual override available</span><span style="font-size:15px;font-weight:800;color:#F23F44;background:#FFE7E6;border-radius:8px;padding:4px 11px;">8.7</span></span>
       </div>
     </div>
   </div>
@@ -282,11 +299,7 @@ a{text-decoration:none;color:inherit;}
   <div class="reveal" style="text-align:center;margin-top:26px;transition-delay:.2s;"><a href="product-integrations.dc.html" class="intglink">View all integrations<span>→</span></a></div>
 </div></section>
 <dc-import name="component-security-section" eyebrow="Security &amp; compliance" heading="Built to keep your organisation secure" sub="Top-tier admin controls, strong data governance and comprehensive compliance audits — every assessment protected and EEOC-defensible." hint-size="100%,560px"></dc-import>
-<section class="sec" style="background:#FBF3EE;"><div class="wrap reveal" style="max-width:900px;text-align:center;">
-  <div style="font-size:13px;font-weight:700;letter-spacing:.1em;color:#F23F44;margin-bottom:24px;">★★★★★ &nbsp;G2 · 4.7 / 5</div>
-  <p style="font-size:31px;line-height:1.38;font-weight:600;letter-spacing:-.6px;color:#1A1014;margin:0 0 30px;">"We replaced three rounds of gut-feel screening with one Testlify assessment. The AI scoring is consistent, the audit trail keeps us defensible, and our shortlists are measurably stronger."</p>
-  <div style="display:inline-flex;align-items:center;gap:13px;"><img src="https://testlify.com/wp-content/uploads/2026/03/Xneelo-Chrissie-Blom.png" alt="Chrissie Blom" style="width:52px;height:52px;border-radius:50%;object-fit:cover;"><div style="text-align:left;"><div style="font-weight:700;font-size:15px;">Chrissie Blom</div><div class="muted" style="font-size:13.5px;margin-top:2px;">Head of Talent · Xneelo</div></div></div>
-</div></section>
+<dc-import name="component-testimonials" hint-size="100%,560px"></dc-import>
 <section class="sec"><div class="wrap">
   <div style="text-align:center;max-width:640px;margin:0 auto 44px;">
     <p class="eyebrow reveal" style="justify-content:center;">Recognition<b>.</b></p>
@@ -311,6 +324,7 @@ a{text-decoration:none;color:inherit;}
     <dc-import name="component-faq" items="{{ faqItems }}" hint-size="100%,460px"></dc-import>
   </div>
 </div></section>
+<dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
 <dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
@@ -334,6 +348,37 @@ class Component extends DCLogic {
     [0,150,400,800,1500].forEach(t=>setTimeout(sweep, t));
     requestAnimationFrame(sweep);
     try{ this._mo = new MutationObserver(()=>requestAnimationFrame(sweep)); this._mo.observe(document.body,{childList:true,subtree:true}); }catch(e){}
+    this._scramble();
+  }
+  _scramble(){
+    const el = document.querySelector('[data-scramble]');
+    if(!el || el._scrambled) return; el._scrambled = true;
+    const chars = '!<>-_\\/[]{}=+*^?#________';
+    const nodes = [];
+    const walk = (n)=>{ n.childNodes.forEach(c=>{ if(c.nodeType===3){ if(c.textContent.trim().length) nodes.push({node:c, text:c.textContent}); } else walk(c); }); };
+    walk(el);
+    const total = nodes.reduce((a,n)=>a+n.text.length,0);
+    let revealed = 0, frame = 0;
+    const rnd = ()=>chars[Math.floor(Math.random()*chars.length)];
+    const run = ()=>{
+      frame++;
+      revealed = Math.min(total, revealed + total/26);
+      let acc = 0;
+      nodes.forEach(({node,text})=>{
+        let out = '';
+        for(let i=0;i<text.length;i++){
+          const gi = acc + i;
+          if(text[i]===' ') out += ' ';
+          else if(gi < revealed) out += text[i];
+          else if(frame % 2 === 0 && Math.random() < .55) out += rnd();
+          else out += (node._prev && node._prev[i]) || rnd();
+        }
+        node._prev = out; node.textContent = out; acc += text.length;
+      });
+      if(revealed < total) requestAnimationFrame(run);
+      else nodes.forEach(({node,text})=>{ node.textContent = text; });
+    };
+    setTimeout(()=>requestAnimationFrame(run), 260);
   }
   componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); }
   renderVals(){ return {

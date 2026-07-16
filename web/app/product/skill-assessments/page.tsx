@@ -195,6 +195,86 @@ const BCARD_HOVER =
 const TILE_HOVER =
   "[transition:translate_.28s_ease,box-shadow_.28s_ease,border-color_.28s_ease] hover:-translate-y-1 hover:border-[#FBD0D1] hover:shadow-[0_16px_34px_rgba(110,11,14,0.10)]";
 
+/* coral-check chip + body text — the .chk / .chki pattern used in split lists */
+function CheckItem({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex gap-3 items-start">
+      <span className="flex-none w-6 h-6 rounded-[7px] bg-coral flex items-center justify-center mt-px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+      </span>
+      <span className="text-[16px] leading-[1.66] text-body">{children}</span>
+    </div>
+  );
+}
+
+/* Browser-chrome mock whose body is a sand image-slot placeholder */
+function FeatureMock({ bar, label }: { bar: string; label: string }) {
+  return (
+    <div className="bg-white border border-warm rounded-[20px] shadow-[0_30px_70px_rgba(110,11,14,0.14)] overflow-hidden">
+      <div className="flex items-center gap-2 px-4 py-[13px] border-b border-[#F4ECEC] bg-[#FCFAFA]">
+        <span className="w-[11px] h-[11px] rounded-full bg-[#FF5F57]" />
+        <span className="w-[11px] h-[11px] rounded-full bg-[#FEBC2E]" />
+        <span className="w-[11px] h-[11px] rounded-full bg-[#28C840]" />
+        <span className="ml-3 flex-1 h-[26px] rounded-lg bg-[#F3EAEA] flex items-center px-3 text-[11.5px] text-faint font-medium">
+          {bar}
+        </span>
+      </div>
+      <div className="bg-sand w-full h-[340px] flex items-center justify-center p-6">
+        <span className="text-[13px] font-semibold text-faint text-center max-w-[70%] leading-[1.5]">{label}</span>
+      </div>
+    </div>
+  );
+}
+
+/* Split feature: eyebrow + h2 + lead + coral-check list beside a mock panel.
+   `sand` toggles the band bg; `reverse` puts the mock on the left (desktop). */
+function SplitFeature({
+  sand = false,
+  reverse = false,
+  eyebrow,
+  heading,
+  lead,
+  points,
+  bar,
+  slotLabel,
+}: {
+  sand?: boolean;
+  reverse?: boolean;
+  eyebrow: string;
+  heading: string;
+  lead: string;
+  points: string[];
+  bar: string;
+  slotLabel: string;
+}) {
+  return (
+    <section className={`${SEC}${sand ? " bg-sand" : ""}`}>
+      <div className={WRAP}>
+        <div className={SPLIT}>
+          <Reveal className={reverse ? "order-2" : undefined}>
+            <p className={EYEBROW}>
+              {eyebrow}
+              <b className="text-coral font-semibold">.</b>
+            </p>
+            <h2 className={`${H2} text-ink mb-5`}>{heading}</h2>
+            <p className={`${LEAD} text-body m-0 mb-[26px]`}>{lead}</p>
+            <div className="flex flex-col gap-3.5">
+              {points.map((p) => (
+                <CheckItem key={p}>{p}</CheckItem>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={0.08} className={reverse ? "order-1" : undefined}>
+            <FeatureMock bar={bar} label={slotLabel} />
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------------------------------------------------------- */
 /* Page                                                              */
 /* ---------------------------------------------------------------- */
@@ -249,11 +329,12 @@ export default function Page() {
                 <CtaButton label="Book a demo" href="#" variant="secondary" size="md" icon="play" className="ska-demo" />
               </Reveal>
               <Reveal delay={0.18} className="flex items-center gap-[13px] flex-wrap text-[13.5px] text-muted font-semibold mt-[26px]">
-                <span>No credit card</span>
-                <span className="w-1 h-1 rounded-full bg-[#D9C7C9]" />
-                <span>7-day free trial</span>
-                <span className="w-1 h-1 rounded-full bg-[#D9C7C9]" />
-                <span>SOC 2 &middot; ISO 27001 &middot; GDPR</span>
+                <span className="inline-flex items-center gap-[7px]">
+                  <span className="text-coral font-bold">&#10003;</span>7-day free trial
+                </span>
+                <span className="inline-flex items-center gap-[7px]">
+                  <span className="text-coral font-bold">&#10003;</span>No credit card required
+                </span>
               </Reveal>
             </div>
 
@@ -315,7 +396,75 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ============ 2. BENEFITS (sand) ============ */}
+      {/* ============ 2. THE OLD WAY (white) ============ */}
+      <section className={SEC}>
+        <div className={WRAP}>
+          <div className="max-w-[660px] mx-auto mb-[52px] text-center">
+            <Reveal as="p" className={EYEBROW}>
+              The old way<b className="text-coral font-semibold">.</b>
+            </Reveal>
+            <Reveal as="h2" delay={0.04} className={`${H2} text-ink`}>
+              R&eacute;sum&eacute;s are broken. Gut-feel hiring is outdated.
+            </Reveal>
+          </div>
+          <div className="grid grid-cols-[1.02fr_1.05fr] gap-16 items-stretch max-[960px]:grid-cols-1 max-[960px]:gap-11">
+            {/* Left — sand card: the pain */}
+            <Reveal className="bg-sand border border-warm rounded-[20px] py-[38px] px-9">
+              <p className="text-[16px] leading-[1.66] text-body m-0 mb-3.5">
+                R&eacute;sum&eacute;s tell half the story, interviews are inconsistent, and manual screening slows
+                everything down.
+              </p>
+              <p className="text-[16px] leading-[1.66] text-body m-0 mb-3.5">
+                Recruiters waste hours screening r&eacute;sum&eacute;s that don&rsquo;t reflect actual skills — leading
+                to mis-hires and overlooked top performers.
+              </p>
+              <p className="text-[16px] leading-[1.66] text-body m-0 mb-[26px]">
+                Most platforms lean on generic, one-size-fits-all quizzes that never reflect real on-the-job scenarios.
+              </p>
+              <div className="flex flex-col gap-3">
+                {["Biased hiring", "Lengthy interview process", "Lack of hiring data"].map((t) => (
+                  <div key={t} className="flex gap-3 items-start">
+                    <span className="flex-none w-6 h-6 rounded-[7px] bg-warm2 flex items-center justify-center mt-px">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9A878A" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                      </svg>
+                    </span>
+                    <span className="text-[16px] leading-[1.66] text-muted font-semibold">{t}</span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+            {/* Right — dark card: the Testlify way */}
+            <Reveal delay={0.08} className="bg-ink rounded-[20px] py-[38px] px-9">
+              <h3 className="text-[22px] leading-[1.25] font-bold tracking-[-0.4px] text-white m-0 mb-[22px]">
+                Hire smarter with Testlify&rsquo;s assessment &amp; interview tools
+              </h3>
+              <div className="flex flex-col gap-3.5">
+                {[
+                  "Identify top talent",
+                  "Reduce mis-hires",
+                  "Shorten time-to-hire by 55%",
+                  "Bias-free, data-backed hiring decisions",
+                  "Improve recruiter efficiency by 6x",
+                  "Boost candidate satisfaction to 94%",
+                ].map((t) => (
+                  <div key={t} className="flex gap-3 items-start">
+                    <span className="flex-none w-6 h-6 rounded-[7px] bg-[rgba(242,63,68,0.16)] flex items-center justify-center mt-px">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FF7A52" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    <span className="text-[16px] leading-[1.66] text-[#F1E7E8]">{t}</span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ 3. BENEFITS (sand) ============ */}
       <section className={`${SEC} bg-sand`}>
         <div className={WRAP}>
           <div className="max-w-[660px] mx-auto mb-[52px] text-center">
@@ -391,7 +540,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ============ 3. THREE STEPS (white) ============ */}
+      {/* ============ 4. THREE STEPS (white) ============ */}
       <section className={SEC}>
         <div className={WRAP}>
           <div className="max-w-[640px] mx-auto mb-14 text-center">
@@ -551,7 +700,58 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ============ 4. DARK BAND ============ */}
+      {/* ============ 5. TEST LIBRARY (sand) ============ */}
+      <SplitFeature
+        sand
+        eyebrow="Test library"
+        heading="Test real-world skills, not résumés"
+        lead="Build role-specific assessments in minutes from our validated library, or customise your own to fit any role — from engineering to sales and beyond."
+        points={[
+          "3,500+ ready-to-use tests across 4,500+ job roles",
+          "Audio and video interview tools built in",
+          "Scientifically designed and validated by subject-matter experts",
+          "Multi-language support in 16+ languages with custom branding",
+          "13+ advanced anti-cheating and proctoring features",
+        ]}
+        bar="Assessment library"
+        slotLabel="Test library / assessment builder screenshot"
+      />
+
+      {/* ============ 6. REAL-WORLD SIMULATIONS (white) ============ */}
+      <SplitFeature
+        reverse
+        eyebrow="Real-world simulations"
+        heading="Test both hard and soft skills in real-world scenarios"
+        lead="With Testlify's job-specific simulations, you see how candidates actually perform before you make a hire."
+        points={[
+          "Interactive, role-based tasks that mirror real job responsibilities",
+          "Live coding tests in 45+ programming languages",
+          "Simulations using Microsoft Excel, Google Sheets, Word and G-Suite tools",
+          "Communication and problem-solving evaluations tailored to each role",
+          "Instant scoring and detailed reports to benchmark performance",
+        ]}
+        bar="Live coding simulation"
+        slotLabel="Coding / Excel simulation screenshot"
+      />
+
+      {/* ============ 7. AI INTERVIEWS (sand) ============ */}
+      <SplitFeature
+        sand
+        eyebrow="AI interviews"
+        heading="Smarter interviews. Less effort. More insight."
+        lead="Testlify offers one-way and two-way interviewing powered by AI — assess communication, confidence and critical thinking at scale."
+        points={[
+          "AI video interviews with dynamic, job-relevant questions",
+          "Two-way live interviews to connect with candidates in-platform",
+          "Bulk audio screening to evaluate large candidate volumes fast",
+          "One-way async responses to screen candidates without scheduling",
+          "Recordings and insights auto-saved and shareable for collaborative decisions",
+        ]}
+        bar="AI interview · review"
+        slotLabel="AI video interview screenshot"
+      />
+
+      {/* ============ 8. DARK BAND ============ */}
       <section className={`${SEC} bg-ink text-[#F1E7E8]`}>
         <div className={WRAP}>
           <div className={SPLIT}>
@@ -623,7 +823,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ============ 5. INTEGRATIONS (sand) ============ */}
+      {/* ============ 9. INTEGRATIONS (sand) ============ */}
       <section className={`${SEC} bg-sand`}>
         <div className={WRAP}>
           <div className="text-center max-w-[680px] mx-auto mb-11">
@@ -656,7 +856,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ============ 6. SECURITY + FAQ ============ */}
+      {/* ============ 10. SECURITY + FAQ ============ */}
       <SecuritySection
         eyebrow="Security & compliance"
         heading="Built to keep your organisation secure"

@@ -40,37 +40,34 @@
 .sf-legal .flink{color:#8A7A7D;}
 @media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;gap:30px;}.sf-backed{justify-content:flex-start;}}
 @media(max-width:520px){.foot-grid{grid-template-columns:1fr 1fr;}}
-/* Global CTA band (sits directly above the footer on every page) */
-.sfcta{position:relative;overflow:hidden;background:linear-gradient(135deg,#F23F44 0%,#A91E23 60%,#6E0B0E 100%);padding:96px 28px;text-align:center;}
-.sfcta-c1{position:absolute;top:-100px;left:-60px;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.10);}
-.sfcta-c2{position:absolute;bottom:-130px;right:-50px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.08);}
-.sfcta-in{position:relative;z-index:2;max-width:1180px;margin:0 auto;}
-.sfcta-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.82);margin:0 0 16px;}
-.sfcta-h{font-size:48px;line-height:1.08;font-weight:800;letter-spacing:-1.6px;color:#fff;margin:0 auto;max-width:1010px;}
-.sfcta-p{font-size:19px;color:#FFE2E3;margin:20px auto 0;max-width:560px;line-height:1.6;}
-.sfcta-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:36px;}
-.sfcta-b1{display:inline-flex;align-items:center;gap:9px;background:#fff;color:#F23F44;font-weight:700;font-size:17px;padding:16px 32px;border-radius:15px;box-shadow:0 16px 34px rgba(0,0,0,.2);transition:transform .25s ease;}
-.sfcta-b1:hover{transform:translateY(-3px);}
-.sfcta-b2{display:inline-flex;align-items:center;background:rgba(255,255,255,.14);color:#fff;font-weight:600;font-size:17px;padding:16px 30px;border-radius:15px;border:1.5px solid rgba(255,255,255,.35);transition:background .25s ease;}
-.sfcta-b2:hover{background:rgba(255,255,255,.24);}
-.sfcta-trust{display:flex;justify-content:center;flex-wrap:wrap;gap:26px;margin-top:30px;color:#FFD2D3;font-size:14.5px;font-weight:500;}
-@media(max-width:600px){.sfcta-h{font-size:34px;}}
+
+/* ===== GLOBAL phone-tier responsive safety net (applies to every page via footer) ===== */
+html,body{max-width:100%;}
+body{overflow-x:hidden;}
+img,svg,video,table{max-width:100%;height:auto;}
+@media(max-width:640px){
+  /* shared heading + section vocabulary used across recreated pages */
+  .h1{font-size:34px !important;line-height:1.08 !important;letter-spacing:-1px !important;}
+  .h2{font-size:27px !important;line-height:1.14 !important;letter-spacing:-.6px !important;}
+  .sec{padding:56px 20px !important;}
+  .wrap{padding-left:20px !important;padding-right:20px !important;}
+  .lead{font-size:16px !important;}
+  /* collapse common multi-column layouts */
+  .split,.herogrid,.ptwo,.dwrap,.dashbody,.vs{grid-template-columns:1fr !important;}
+  .cards3,.cards2,.val3,.stats,.atsgrid,.intg-grid,.ss-grid,.tsd-cards,.tsd-fgrid,.tsd-tgrid,.tsd-hgrid,.tsd-grid2,.skgrid,.foot-grid{grid-template-columns:1fr !important;}
+  .atsgrid,.intg-grid,.stats,.ss-grid{grid-template-columns:repeat(2,1fr) !important;}
+  .heroctas,.by-hbtns,.vi-hbtns,.tsd-ctas{flex-wrap:wrap !important;}
+  .heroctas > *,.heroctas a{width:auto !important;}
+  /* keep wide data tables scrollable rather than overflowing */
+  .tblwrap{overflow-x:auto !important;-webkit-overflow-scrolling:touch;}
+}
+@media(max-width:400px){
+  .h1{font-size:29px !important;}
+  .atsgrid,.intg-grid,.stats,.ss-grid,.foot-grid{grid-template-columns:1fr !important;}
+}
 </style>
 </helmet>
-<section class="sfcta">
-  <div class="sfcta-c1"></div>
-  <div class="sfcta-c2"></div>
-  <div class="sfcta-in">
-    <p class="sfcta-eyebrow">Start hiring on skill<span style="color:#fff;">.</span></p>
-    <h2 class="sfcta-h">Your next great hire is already in <br>your pipeline</h2>
-    <p class="sfcta-p">Build your first assessment in about two minutes and start surfacing proven talent today — free for 7 days.</p>
-    <div class="sfcta-btns">
-      <a href="#" class="sfcta-b1">Try for free<span>→</span></a>
-      <a href="#" class="sfcta-b2">Book a demo</a>
-    </div>
-    <div class="sfcta-trust"><span>✓ Full feature access</span><span>✓ No credit card required</span><span>✓ Cancel anytime</span></div>
-  </div>
-</section>
+
 <footer ref="{{ rootRef }}" class="sf" style="padding-top: 48px; padding-bottom: 24px"><div class="sf-in">
   
   <div class="foot-grid">
@@ -80,8 +77,8 @@
       <div class="sf-soc"><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="X">X</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="YouTube">▶</a></div>
     </div>
     <div><div class="sf-h">Product</div><div class="sf-col">
-      <a href="product-testlify-ai.dc.html" class="flink">Testlify AI</a>
-      <a href="product-ai-resume-screener.dc.html" class="flink">AI resume screener</a>
+      <a href="ai-powered-talent-assessment-platform.dc.html" class="flink">Testlify AI</a>
+      <a href="ai-resume-screener.dc.html" class="flink">AI resume screener</a>
       <a href="product-skill-assessments.dc.html" class="flink">Skill assessments</a>
       <a href="library-interviews.dc.html" class="flink">AI interviews</a>
       <a href="product-features.dc.html" class="flink">Features</a>
@@ -127,6 +124,97 @@ class Component extends DCLogic {
       if(!document.getElementById(id)){ e.preventDefault(); window.location.href = home + '#' + id; }
     };
     const root = this.rootRef.current; if(root) root.addEventListener('click', this._onClick);
+    this._initParallax();
+    this._initAppear();
+  }
+  _initAppear(){
+    if(window.__tlAppear) return; window.__tlAppear = true;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const animate = (el, delay)=>{
+      if(el.__appeared) return; el.__appeared = true;
+      const dur=680, sy=26; let st=null;
+      const tick=(t)=>{ if(st===null)st=t; const p=Math.min(1,(t-st)/dur); const e=1-Math.pow(1-p,3);
+        el.style.opacity=String(e); el.style.transform='translateY('+(sy*(1-e)).toFixed(2)+'px)';
+        if(p<1) requestAnimationFrame(tick); else { el.style.opacity='1'; el.style.transform='none'; } };
+      setTimeout(()=>requestAnimationFrame(tick), delay||0);
+    };
+    const hidden = (el)=>{ const cs=getComputedStyle(el); return parseFloat(cs.opacity) < 0.05; };
+    const sel = '.reveal, [data-reveal], [data-appear]';
+    let io = null;
+    if('IntersectionObserver' in window){
+      io = new IntersectionObserver((ents)=>{
+        ents.forEach(en=>{ if(en.isIntersecting){ const el=en.target;
+          const d = el.hasAttribute('data-delay') ? parseFloat(el.getAttribute('data-delay'))*1000 : 0;
+          animate(el, d); io.unobserve(el); } });
+      }, { rootMargin:'0px 0px -8% 0px', threshold:0.01 });
+    }
+    // 1) Block-appear for EVERY page section that has no per-element reveal of its own.
+    //    Runs immediately so unmarked (already-visible) sections get hidden before flash.
+    const blockAppear = ()=>{
+      document.querySelectorAll('section').forEach(sec=>{
+        if(sec.__appeared || sec.closest('.sf, .sh')) return;            // skip header/footer chrome
+        if(sec.querySelector(sel)) return;                                // page handles its own children
+        if(getComputedStyle(sec).opacity < 0.05) return;                  // already hidden/handled
+        sec.style.opacity='0'; sec.style.transform='translateY(26px)'; sec.style.willChange='opacity,transform';
+        if(io){ io.observe(sec); } else { animate(sec, 0); }
+      });
+    };
+    blockAppear();
+    requestAnimationFrame(blockAppear);
+    [200,600,1300].forEach(t=>setTimeout(blockAppear, t));
+    // run AFTER each page's own reveal system had its turn — only pick up orphans still hidden
+    const claim = ()=>{
+      document.querySelectorAll(sel).forEach(el=>{
+        if(el.__appeared || !hidden(el)) return;
+        if(io){ io.observe(el); } else { animate(el, 0); }
+      });
+    };
+    setTimeout(claim, 1300);
+    // safety net: force anything still hidden well after load (e.g. below-fold never scrolled)
+    this._appearFallback = setTimeout(()=>{
+      document.querySelectorAll(sel).forEach(el=>{ if(!el.__appeared && hidden(el)){
+        const r = el.getBoundingClientRect(); const vh = window.innerHeight||800;
+        if(r.top < vh) animate(el, 0);
+      }});
+    }, 2600);
+  }
+  _initParallax(){
+    if(window.__tlParallax) return; window.__tlParallax = true;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const pick = ()=>{
+      const set = new Set();
+      document.querySelectorAll('[data-parallax]').forEach(n=>set.add(n));
+      // hero visual columns across page families
+      ['.hero .herogrid > div:last-child','.vi-vis','.by-vis','.tl-vis','.ss-hero-vis','.hero-visual']
+        .forEach(sel=>document.querySelectorAll(sel).forEach(n=>set.add(n)));
+      return [...set].map(n=>{
+        const f = parseFloat(n.getAttribute('data-parallax')) || 0.08;
+        return { n, f };
+      });
+    };
+    let items = [];
+    let ticking = false;
+    const apply = ()=>{
+      ticking = false;
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      items.forEach(({n,f})=>{
+        const r = n.getBoundingClientRect();
+        const centre = r.top + r.height/2;
+        const off = (centre - vh/2) * -f;
+        n.style.willChange = 'transform';
+        n.style.transform = 'translate3d(0,'+off.toFixed(1)+'px,0)';
+      });
+    };
+    const onScroll = ()=>{ if(!ticking){ ticking = true; requestAnimationFrame(apply); } };
+    // activate after entrance reveals have settled so we don't fight them
+    setTimeout(()=>{
+      items = pick();
+      if(!items.length) return;
+      window.addEventListener('scroll', onScroll, { passive:true });
+      window.addEventListener('resize', onScroll);
+      apply();
+    }, 1200);
+    this._parallaxScroll = onScroll;
   }
   componentWillUnmount(){ const root=this.rootRef.current; if(root) root.removeEventListener('click', this._onClick); }
   renderVals(){ return { rootRef: this.rootRef }; }

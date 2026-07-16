@@ -89,12 +89,12 @@ export default function SiteFooter() {
             Build your first assessment in about two minutes and start surfacing proven talent today — free for 7 days.
           </p>
           <div className="flex justify-center flex-wrap gap-3.5 mt-9">
-            <a href="#" className="inline-flex items-center gap-2.5 bg-white text-coral font-bold text-[17px] px-8 py-4 rounded-[15px] shadow-[0_16px_34px_rgba(0,0,0,0.2)] hover:-translate-y-[3px] transition-transform">
+            <Link href={routes.pricing} className="inline-flex items-center gap-2.5 bg-white text-coral font-bold text-[17px] px-8 py-4 rounded-[15px] shadow-[0_16px_34px_rgba(0,0,0,0.2)] hover:-translate-y-[3px] transition-transform">
               Try for free<span>→</span>
-            </a>
-            <a href="#" className="inline-flex items-center bg-white/15 text-white font-semibold text-[17px] px-[30px] py-4 rounded-[15px] border-[1.5px] border-white/35 hover:bg-white/25 transition-colors">
+            </Link>
+            <Link href={routes.contact} className="inline-flex items-center bg-white/15 text-white font-semibold text-[17px] px-[30px] py-4 rounded-[15px] border-[1.5px] border-white/35 hover:bg-white/25 transition-colors">
               Book a demo
-            </a>
+            </Link>
           </div>
           <div className="flex justify-center flex-wrap gap-[26px] mt-[30px] text-[#FFD2D3] text-[14.5px] font-medium">
             <span>✓ Full feature access</span>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { routes } from "@/lib/routes";
 
@@ -17,60 +17,28 @@ type HeaderProps = {
 };
 
 type PlatGroup = {
-  name: string;
   id: string;
-  cta: string;
+  /** dedicated page route (or external URL when `external`) */
+  href: string;
+  external?: boolean;
   icon: React.ReactNode;
   title: string;
   desc: string;
-  subs: { label: string; d: string }[];
-  /** dedicated page route; falls back to /product#<id> */
-  href?: string;
 };
 
 const PLAT: PlatGroup[] = [
   {
-    name: "Testlify AI",
     id: "testlify-ai",
     href: routes.productTestlifyAi,
-    cta: "Explore Testlify AI →",
     icon: (
       <path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6z" />
     ),
     title: "Testlify AI",
     desc: "The full hiring platform, end to end",
-    subs: [
-      { label: "AI screening", d: "Auto-screen every applicant" },
-      { label: "AI interviewer", d: "Conversational, adaptive interviews" },
-      { label: "Auto-scoring", d: "Objective scores in seconds" },
-      { label: "The full workflow", d: "Screen → assess → interview → hire" },
-    ],
   },
   {
-    name: "Skill assessments",
-    id: "skill-assessments",
-    href: routes.productSkillAssessments,
-    cta: "Browse skill assessments →",
-    icon: (
-      <>
-        <path d="M9 11l3 3L22 4" />
-        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-      </>
-    ),
-    title: "Skill assessments",
-    desc: "3,500+ expert-validated tests across every role",
-    subs: [
-      { label: "Test library", d: "3,500+ tests across roles" },
-      { label: "Coding tests", d: "Real-world dev challenges" },
-      { label: "Cognitive ability", d: "Aptitude & reasoning" },
-      { label: "Personality & culture", d: "Behavioural fit" },
-    ],
-  },
-  {
-    name: "AI resume screener",
     id: "ai-resume-screener",
     href: routes.aiResumeScreener,
-    cta: "See the screener →",
     icon: (
       <>
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -79,99 +47,10 @@ const PLAT: PlatGroup[] = [
     ),
     title: "AI resume screener",
     desc: "Rank applicants by verified fit in seconds",
-    subs: [
-      { label: "Bulk ranking", d: "Sort thousands instantly" },
-      { label: "Fit scoring", d: "Evidence-based match scores" },
-      { label: "Bias controls", d: "Structured, fair shortlists" },
-      { label: "ATS sync", d: "Push results back to your ATS" },
-    ],
   },
   {
-    name: "AI interviews",
-    id: "ai-interviews",
-    href: routes.libraryInterviews,
-    cta: "Browse interviews →",
-    icon: (
-      <>
-        <polygon points="23 7 16 12 23 17 23 7" />
-        <rect x="1" y="5" width="15" height="14" rx="2" />
-      </>
-    ),
-    title: "AI interviews",
-    desc: "Video, audio & chat — AI-scored, structured",
-    subs: [
-      { label: "Video interviews", d: "Async & live, AI-scored" },
-      { label: "Audio interviews", d: "Voice-first, structured" },
-      { label: "Chat interviews", d: "Written scenario scoring" },
-      { label: "Interview library", d: "Role-ready, AI-scored interviews" },
-    ],
-  },
-  {
-    name: "Video interviewing",
-    id: "video-interviewing",
-    href: routes.productVideoInterviewing,
-    cta: "See video interviewing →",
-    icon: (
-      <>
-        <rect x="2" y="3" width="20" height="14" rx="2" />
-        <line x1="8" y1="21" x2="16" y2="21" />
-        <line x1="12" y1="17" x2="12" y2="21" />
-      </>
-    ),
-    title: "Video interviewing",
-    desc: "One-way & live interviews, auto-scored",
-    subs: [
-      { label: "One-way async", d: "Recorded on the candidate’s time" },
-      { label: "Live two-way", d: "Real-time calls in-platform" },
-      { label: "Auto-scoring", d: "Relevance & verbal-cue scores" },
-      { label: "Recordings & transcripts", d: "Download, review & share" },
-    ],
-  },
-  {
-    name: "ATS integrations",
-    id: "ats-integrations",
-    href: routes.integrations,
-    cta: "View integrations →",
-    icon: (
-      <>
-        <path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5" />
-        <path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7L12 19" />
-      </>
-    ),
-    title: "ATS integrations",
-    desc: "Native two-way sync with 100+ ATS tools",
-    subs: [
-      { label: "100+ integrations", d: "Greenhouse, Lever, Workday…" },
-      { label: "Two-way sync", d: "Keep both systems in step" },
-      { label: "API & webhooks", d: "Build your own flows" },
-      { label: "Zapier", d: "No-code automations" },
-    ],
-  },
-  {
-    name: "Why it works",
-    id: "science",
-    href: routes.productScience,
-    cta: "See the proof →",
-    icon: (
-      <>
-        <path d="M9 3v6l-5 9a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-9V3" />
-        <path d="M8 3h8" />
-      </>
-    ),
-    title: "Why it works",
-    desc: "Science, validity, fairness & security",
-    subs: [
-      { label: "Validity & reliability", d: "Psychometrically sound tests" },
-      { label: "Bias testing", d: "Fair, EEOC-defensible by design" },
-      { label: "Expert-built", d: "Reviewed by subject-matter experts" },
-      { label: "Security & trust", d: "SOC 2, ISO 27001, GDPR" },
-    ],
-  },
-  {
-    name: "Features",
     id: "features",
     href: routes.productFeatures,
-    cta: "See all features →",
     icon: (
       <>
         <rect x="3" y="3" width="7" height="7" />
@@ -182,18 +61,34 @@ const PLAT: PlatGroup[] = [
     ),
     title: "Features",
     desc: "Question types, proctoring, analytics & API",
-    subs: [
-      { label: "Question types", d: "13+ formats, from coding to video" },
-      { label: "Anti-cheating & proctoring", d: "Webcam, tab & plagiarism checks" },
-      { label: "Reporting & analytics", d: "Benchmarks and score insights" },
-      { label: "API & white label", d: "Build it into your own flow" },
-    ],
   },
   {
-    name: "Live product demo",
+    id: "video-interviewing",
+    href: routes.productVideoInterviewing,
+    icon: (
+      <>
+        <polygon points="23 7 16 12 23 17 23 7" />
+        <rect x="1" y="5" width="15" height="14" rx="2" />
+      </>
+    ),
+    title: "Video interviewing",
+    desc: "One-way & live two-way interviews",
+  },
+  {
+    id: "science",
+    href: routes.productScience,
+    icon: (
+      <>
+        <path d="M9 3v6l-5 9a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-9V3" />
+        <path d="M8 3h8" />
+      </>
+    ),
+    title: "Science behind tests",
+    desc: "Validity, reliability & fairness",
+  },
+  {
     id: "live-demo",
     href: routes.productLiveDemo,
-    cta: "Watch the demo →",
     icon: (
       <>
         <circle cx="12" cy="12" r="10" />
@@ -202,12 +97,32 @@ const PLAT: PlatGroup[] = [
     ),
     title: "Live product demo",
     desc: "See the full workflow, end to end",
-    subs: [
-      { label: "Guided walkthrough", d: "The full workflow, end to end" },
-      { label: "Screen & rank", d: "From application to shortlist" },
-      { label: "Interview & score", d: "Auto-scored, rubric-based" },
-      { label: "Book a live demo", d: "See it on your roles" },
-    ],
+  },
+  {
+    id: "roadmap",
+    href: "https://roadmap.testlify.com/",
+    external: true,
+    icon: (
+      <>
+        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+        <line x1="8" y1="2" x2="8" y2="18" />
+        <line x1="16" y1="6" x2="16" y2="22" />
+      </>
+    ),
+    title: "Roadmap",
+    desc: "See what we're building next",
+  },
+  {
+    id: "ats-integrations",
+    href: routes.integrations,
+    icon: (
+      <>
+        <path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5" />
+        <path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7L12 19" />
+      </>
+    ),
+    title: "ATS integrations",
+    desc: "Native two-way sync with 100+ ATS tools",
   },
 ];
 
@@ -399,6 +314,54 @@ const RES: MenuTab[] = [
   },
 ];
 
+type MobileLink = { label: string; d: string; href: string; external?: boolean };
+type MobileSection = { key: string; label: string; links: MobileLink[] };
+
+const MOBILE_SECTIONS: MobileSection[] = [
+  {
+    key: "product",
+    label: "Product",
+    links: [
+      { label: "Testlify AI", d: "The full hiring platform, end to end", href: routes.productTestlifyAi },
+      { label: "AI resume screener", d: "Rank applicants by verified fit in seconds", href: routes.aiResumeScreener },
+      { label: "Features", d: "Question types, proctoring, analytics & API", href: routes.productFeatures },
+      { label: "Video interviewing", d: "One-way & live two-way interviews", href: routes.productVideoInterviewing },
+      { label: "Science behind tests", d: "Validity, reliability & fairness", href: routes.productScience },
+      { label: "Live product demo", d: "See the full workflow, end to end", href: routes.productLiveDemo },
+      { label: "Roadmap", d: "See what we're building next", href: "https://roadmap.testlify.com/", external: true },
+      { label: "ATS integrations", d: "Native two-way sync with 100+ ATS tools", href: routes.integrations },
+    ],
+  },
+  {
+    key: "library",
+    label: "Library",
+    links: [
+      { label: "Test library", d: "3,500+ validated tests across every role", href: routes.testLibrary },
+      { label: "Interview library", d: "AI video, audio & chat interviews by role", href: routes.libraryInterviews },
+      { label: "Build your own", d: "Custom tests & questions, SME-reviewed", href: routes.libraryBuildYourOwn },
+    ],
+  },
+  {
+    key: "solutions",
+    label: "Solutions",
+    links: [
+      { label: "By use case", d: "Volume, remote, campus, technical & more", href: routes.solutions },
+      { label: "By industry", d: "IT, SaaS, finance, healthcare & more", href: routes.solutions },
+      { label: "By company size", d: "Startup to enterprise & public sector", href: routes.solutions },
+      { label: "By test type", d: "Coding, cognitive, personality & more", href: "/solutions/coding-tests" },
+    ],
+  },
+  {
+    key: "resources",
+    label: "Resources",
+    links: [
+      { label: "Learn", d: "Blog, ebooks, glossary & podcast", href: routes.blog },
+      { label: "Templates & tools", d: "Ready-to-use hiring assets", href: routes.resourcesTools },
+      { label: "Company", d: "Customers, trust, careers & about", href: routes.customers },
+    ],
+  },
+];
+
 function MegaIcon({ children }: { children: React.ReactNode }) {
   return (
     <svg
@@ -429,8 +392,14 @@ export default function SiteHeader({
 }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobOpen, setMobOpen] = useState(false);
+  const [mobExpand, setMobExpand] = useState("");
   const [solActive, setSolActive] = useState(0);
   const [resActive, setResActive] = useState(0);
+
+  const closeDrawer = () => {
+    setMobOpen(false);
+    setMobExpand("");
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
@@ -519,8 +488,8 @@ export default function SiteHeader({
                 <span className="absolute -top-[14px] left-0 right-0 h-[14px]" />
                 <div className="flex">
                   {[
-                    ["testlify-ai", "ai-resume-screener", "skill-assessments", "ai-interviews"],
-                    ["features", "ats-integrations", "science", "live-demo"],
+                    ["testlify-ai", "ai-resume-screener", "features", "video-interviewing"],
+                    ["science", "live-demo", "roadmap", "ats-integrations"],
                   ].map((col, ci) => (
                     <div
                       key={ci}
@@ -528,12 +497,8 @@ export default function SiteHeader({
                     >
                       {col.map((id) => {
                         const g = PLAT.find((x) => x.id === id)!;
-                        return (
-                          <Link
-                            key={g.id}
-                            href={g.href ?? routes.productFeatures}
-                            className="flex items-start gap-[11px] py-[9px] px-2.5 rounded-[11px] transition-colors hover:bg-[#FFF4F3]"
-                          >
+                        const inner = (
+                          <>
                             <span className="shrink-0 w-[34px] h-[34px] rounded-[9px] bg-rose-100 text-coral flex items-center justify-center mt-px">
                               <MegaIcon>{g.icon}</MegaIcon>
                             </span>
@@ -541,6 +506,17 @@ export default function SiteHeader({
                               <span className="block text-[14px] font-semibold text-ink leading-[1.25]">{g.title}</span>
                               <span className="block text-[12px] text-[#9A878A] leading-[1.35] mt-0.5">{g.desc}</span>
                             </span>
+                          </>
+                        );
+                        const cls =
+                          "flex items-start gap-[11px] py-[9px] px-2.5 rounded-[11px] transition-colors hover:bg-[#FFF4F3]";
+                        return g.external ? (
+                          <a key={g.id} href={g.href} target="_blank" rel="noopener" className={cls}>
+                            {inner}
+                          </a>
+                        ) : (
+                          <Link key={g.id} href={g.href} className={cls}>
+                            {inner}
                           </Link>
                         );
                       })}
@@ -708,7 +684,7 @@ export default function SiteHeader({
 
       {/* mobile drawer */}
       <div
-        onClick={() => setMobOpen(false)}
+        onClick={closeDrawer}
         className={`fixed inset-0 bg-[rgba(20,8,10,0.44)] z-[1190] transition-all duration-300 min-[901px]:hidden ${
           mobOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
@@ -719,20 +695,70 @@ export default function SiteHeader({
           mobOpen ? "translate-x-0" : "translate-x-[105%]"
         }`}
       >
-        <button onClick={() => setMobOpen(false)} aria-label="Close menu" className="absolute top-5 right-[22px] w-[42px] h-[42px] border-0 bg-[#FAF0F0] rounded-[11px] text-[20px] text-ink cursor-pointer leading-none">✕</button>
-        {[
-          ["Home", routes.home],
-          ["Product", routes.productTestlifyAi],
-          ["Library", routes.testLibrary],
-          ["Solutions", routes.solutions],
-          ["Pricing", routes.pricing],
-          ["Resources", routes.blog],
-        ].map(([label, href]) => (
-          <Link key={label} href={href} onClick={() => setMobOpen(false)} className="block text-[18px] font-semibold text-ink py-[15px] px-1.5 border-b border-[#F4E8E9] hover:text-coral">{label}</Link>
-        ))}
+        <button onClick={closeDrawer} aria-label="Close menu" className="absolute top-5 right-[22px] w-[42px] h-[42px] border-0 bg-[#FAF0F0] rounded-[11px] text-[20px] text-ink cursor-pointer leading-none">✕</button>
+        <Link href={routes.home} onClick={closeDrawer} className="block text-[18px] font-semibold text-ink py-[15px] px-1.5 border-b border-[#F4E8E9] hover:text-coral">Home</Link>
+        {MOBILE_SECTIONS.map((section) => {
+          const open = mobExpand === section.key;
+          const accordion = (
+            <div key={section.key} className="border-b border-[#F4E8E9]">
+              <button
+                onClick={() => setMobExpand((cur) => (cur === section.key ? "" : section.key))}
+                aria-expanded={open}
+                className={`flex items-center justify-between w-full bg-transparent border-0 font-[inherit] text-[18px] font-semibold py-[15px] px-1.5 cursor-pointer text-left transition-colors ${
+                  open ? "text-coral" : "text-ink"
+                }`}
+              >
+                {section.label}
+                <span
+                  className={`w-[22px] h-[22px] flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                    open ? "rotate-180 text-coral" : "text-[#B59A9D]"
+                  }`}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+                </span>
+              </button>
+              <div
+                className={`overflow-hidden transition-[max-height] duration-[360ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                  open ? "max-h-[760px]" : "max-h-0"
+                }`}
+              >
+                <div className="flex flex-col gap-0.5 px-1 pt-0.5 pb-3.5">
+                  {section.links.map((l) => {
+                    const inner = (
+                      <>
+                        <span className="text-[15px] font-semibold text-ink">{l.label}</span>
+                        <span className="text-[12.5px] text-[#8A7A7D] leading-[1.4]">{l.d}</span>
+                      </>
+                    );
+                    const cls =
+                      "flex flex-col gap-px py-2.5 px-3 rounded-[11px] hover:bg-[#FCF0F0] active:bg-[#FCF0F0] transition-colors";
+                    return l.external ? (
+                      <a key={l.label} href={l.href} target="_blank" rel="noopener" onClick={closeDrawer} className={cls}>
+                        {inner}
+                      </a>
+                    ) : (
+                      <Link key={l.label} href={l.href} onClick={closeDrawer} className={cls}>
+                        {inner}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          );
+          // Pricing is a direct link that sits between Solutions and Resources.
+          return section.key === "resources" ? (
+            <Fragment key={section.key}>
+              <Link href={routes.pricing} onClick={closeDrawer} className="block text-[18px] font-semibold text-ink py-[15px] px-1.5 border-b border-[#F4E8E9] hover:text-coral">Pricing</Link>
+              {accordion}
+            </Fragment>
+          ) : (
+            accordion
+          );
+        })}
         <span className="block text-[12px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mt-[22px] mx-1.5 mb-1">Account</span>
-        <a href={loginHref} onClick={() => setMobOpen(false)} className="block text-[18px] font-semibold text-ink py-[15px] px-1.5 border-b border-[#F4E8E9] hover:text-coral">Login</a>
-        <a href={ctaHref} onClick={() => setMobOpen(false)} className="block text-center bg-coral text-white font-bold text-[16px] py-[15px] rounded-[13px] mt-[22px] shadow-[0_12px_26px_rgba(242,63,68,0.3)]">{ctaLabel}</a>
+        <a href={loginHref} onClick={closeDrawer} className="block text-[18px] font-semibold text-ink py-[15px] px-1.5 border-b border-[#F4E8E9] hover:text-coral">Login</a>
+        <a href={ctaHref} onClick={closeDrawer} className="block text-center bg-coral text-white font-bold text-[16px] py-[15px] rounded-[13px] mt-[22px] shadow-[0_12px_26px_rgba(242,63,68,0.3)]">{ctaLabel}</a>
       </nav>
     </>
   );
