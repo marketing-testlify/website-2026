@@ -54,6 +54,30 @@ Core / company: `/` home · `/pricing` · `/compare` · `/customers` (+ `/[slug]
 - **Routes map:** `web/lib/routes.ts` centralizes every internal link.
 - `web/PORTING_GUIDE.md` documents the conventions used to port the prototypes.
 
+## Updating the site from a new design ZIP (STANDING WORKFLOW)
+
+When asked to **"update"** (a new Claude Design export ZIP is provided), the goal
+is always to **update the live Vercel site** — which means changing the `web/`
+Next.js app, never shipping the ZIP itself. The `.dc.html` prototypes cannot run
+on Vercel (they need the Claude Design runtime); `web/` is the deployable
+translation. The procedure:
+
+1. **Extract** the ZIP to a scratch dir and **diff it against `project/`** to find
+   what changed (modified prototypes, net-new pages/assets).
+2. **Triage direction per file** — the export is *not* always newer. If a `web/`
+   page / `project/` prototype is already richer than the export, do NOT regress
+   it. Only carry forward changes where the export is genuinely newer.
+3. **Refresh `project/`** (reference folder) with the newer prototypes + assets.
+4. **Port the real changes into `web/`** following `web/PORTING_GUIDE.md`
+   conventions (Tailwind arbitrary values for exact px/hex, shared
+   `SiteHeader`/`SiteFooter`/`Reveal`/`CtaButton`, `<img>` hot-links for
+   testlify.com assets, client components for interactivity). Skip DC-runtime-only
+   fixes that don't apply to React (e.g. the `>span:last-child` eyebrow bug — the
+   React eyebrows already color only the period via a separate `<b>`).
+5. **Verify**: `cd web && npm install && npm run build && npx eslint .`, then
+   `npm run start` and spot-check the changed routes.
+6. **Commit + push**. Pushing to the default branch triggers the Vercel deploy.
+
 ## Deploy to Vercel (Git integration)
 
 Import this repo in Vercel and set **Root Directory = `web`** (the app is in a
