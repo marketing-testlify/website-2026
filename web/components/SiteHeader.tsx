@@ -526,6 +526,10 @@ export default function SiteHeader({
               </div>
             </div>
 
+            <Link href={routes.testLibrary} className={navLink}>Test library</Link>
+
+            <Link href={routes.libraryInterviews} className={navLink}>Interviews</Link>
+
             <Link href={routes.pricing} className={navLink}>Pricing</Link>
 
             {/* Solutions mega */}
@@ -740,8 +744,12 @@ export default function SiteHeader({
             </div>
           );
           // Pricing is a direct link that sits between Product and Solutions.
+          // Test library, Interviews and Pricing are direct links that sit
+          // between the Product and Solutions accordions (design nav order).
           return section.key === "solutions" ? (
             <Fragment key={section.key}>
+              <Link href={routes.testLibrary} onClick={closeDrawer} className="block text-[18px] font-semibold text-ink py-[15px] px-1.5 border-b border-[#F4E8E9] hover:text-coral">Test library</Link>
+              <Link href={routes.libraryInterviews} onClick={closeDrawer} className="block text-[18px] font-semibold text-ink py-[15px] px-1.5 border-b border-[#F4E8E9] hover:text-coral">Interviews</Link>
               <Link href={routes.pricing} onClick={closeDrawer} className="block text-[18px] font-semibold text-ink py-[15px] px-1.5 border-b border-[#F4E8E9] hover:text-coral">Pricing</Link>
               {accordion}
             </Fragment>
