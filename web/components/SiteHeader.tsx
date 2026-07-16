@@ -203,11 +203,11 @@ const SOL: MenuTab[] = [
       </>
     ),
     subs: [
-      { label: "IT & technology", d: "Developers, DevOps, data & security", href: "/solutions/it-technology" },
-      { label: "SaaS & software", d: "GTM, product and engineering roles", href: routes.solutions },
+      { label: "IT & technology", d: "Developers, DevOps, data & security", href: "/solutions/it-industry" },
+      { label: "Recruitment & staffing", d: "Vet candidates before you submit them", href: "/solutions/recruitment-industry" },
       { label: "Financial services", d: "Analysts, ops and compliance-heavy roles", href: routes.solutions },
       { label: "Healthcare", d: "Clinical & administrative screening", href: routes.solutions },
-      { label: "Retail & e-commerce", d: "High-volume frontline hiring", href: routes.solutions },
+      { label: "Retail & e-commerce", d: "High-volume frontline hiring", href: "/solutions/retail-industry" },
       { label: "BPO & services", d: "Multilingual, high-ramp hiring", href: routes.solutions },
     ],
   },
@@ -314,6 +314,31 @@ const RES: MenuTab[] = [
   },
 ];
 
+type AboutLink = { label: string; href: string; external?: boolean };
+type AboutColumn = { heading: string; links: AboutLink[] };
+
+// About mega — two simple text-link columns (prototype `.mega.mend`)
+const ABOUT: AboutColumn[] = [
+  {
+    heading: "Company",
+    links: [
+      { label: "Our story", href: routes.about },
+      { label: "Contact us", href: routes.contact },
+      { label: "Our leadership", href: routes.about },
+      { label: "Trust center", href: routes.trustCenter },
+    ],
+  },
+  {
+    heading: "More",
+    links: [
+      { label: "Clients", href: routes.customers },
+      { label: "Partners", href: routes.partners },
+      { label: "Job openings", href: routes.careers },
+      { label: "Write for us", href: "#" },
+    ],
+  },
+];
+
 type MobileLink = { label: string; d: string; href: string; external?: boolean };
 type MobileSection = { key: string; label: string; links: MobileLink[] };
 
@@ -358,6 +383,18 @@ const MOBILE_SECTIONS: MobileSection[] = [
       { label: "Learn", d: "Blog, ebooks, glossary & podcast", href: routes.blog },
       { label: "Templates & tools", d: "Ready-to-use hiring assets", href: routes.resourcesTools },
       { label: "Company", d: "Customers, trust, careers & about", href: routes.customers },
+    ],
+  },
+  {
+    key: "about",
+    label: "About",
+    links: [
+      { label: "Our story", d: "Why we built Testlify", href: routes.about },
+      { label: "Contact us", d: "Talk to sales or support", href: routes.contact },
+      { label: "Trust center", d: "SOC 2, ISO 27001, GDPR", href: routes.trustCenter },
+      { label: "Clients", d: "Teams hiring with Testlify", href: routes.customers },
+      { label: "Partners", d: "Refer, resell or build with us", href: routes.partners },
+      { label: "Job openings", d: "Join the team behind Testlify", href: routes.careers },
     ],
   },
 ];
@@ -420,6 +457,9 @@ export default function SiteHeader({
   // centered under its trigger (prototype .mega.mctr) — used by Resources
   const megaPanelCentered =
     "absolute top-[calc(100%+14px)] left-1/2 -translate-x-1/2 bg-white border border-[#F4E4E5] rounded-[18px] p-[18px] shadow-[0_30px_70px_rgba(110,11,14,0.16)] opacity-0 invisible translate-y-2 transition-all duration-200 z-[60] group-hover:opacity-100 group-hover:visible group-hover:translate-y-0";
+  // right-aligned (prototype .mega.mend) — used by About
+  const megaPanelEnd =
+    "absolute top-[calc(100%+14px)] right-0 bg-white border border-[#F4E4E5] rounded-[18px] p-[18px] shadow-[0_30px_70px_rgba(110,11,14,0.16)] opacity-0 invisible translate-y-2 transition-all duration-200 z-[60] group-hover:opacity-100 group-hover:visible group-hover:translate-y-0";
 
   return (
     <>
@@ -571,7 +611,7 @@ export default function SiteHeader({
               <button className="inline-flex items-center gap-1.5 text-[15px] font-medium text-[#46383C] group-hover:text-coral transition-colors cursor-pointer bg-transparent border-0 py-1.5">
                 Solutions<span className="text-[8px] opacity-60 transition-transform duration-200 group-hover:rotate-180">▼</span>
               </button>
-              <div className={megaPanel}>
+              <div className={megaPanelCentered}>
                 <span className="absolute -top-[14px] left-0 right-0 h-[14px]" />
                 <div className="flex">
                   <div className="flex flex-col gap-0.5 min-w-[268px] border-r border-[#F4E4E5] pr-3 mr-3.5">
@@ -602,7 +642,6 @@ export default function SiteHeader({
                         <span className="text-[12px] text-[#9A878A] leading-[1.35]">{s.d}</span>
                       </Link>
                     ))}
-                    <Link href={S.ctaHref} className="mt-1.5 text-[13px] font-bold text-coral px-3 py-2 hover:text-coral-deep">{S.cta}</Link>
                   </div>
                   <div className="w-[216px] bg-gradient-to-br from-[#FFF1F0] to-[#FFE7E4] rounded-[14px] p-[18px] flex flex-col justify-center gap-[7px]">
                     <p className="text-[15px] font-bold text-[#1A0E10] m-0">Not sure where to start?</p>
@@ -658,6 +697,41 @@ export default function SiteHeader({
                     <p className="text-[12.5px] text-[#6B4F52] m-0 leading-[1.45]">Job descriptions, interview kits and skills maps — ready to use.</p>
                     <Link href={routes.resourcesTools} className="text-[13px] font-bold text-coral mt-1">Browse free tools →</Link>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* About mega (right-aligned) */}
+            <div className="relative group">
+              <button className="inline-flex items-center gap-1.5 text-[15px] font-medium text-[#46383C] group-hover:text-coral transition-colors cursor-pointer bg-transparent border-0 py-1.5">
+                About<span className="text-[8px] opacity-60 transition-transform duration-200 group-hover:rotate-180">▼</span>
+              </button>
+              <div className={megaPanelEnd}>
+                <span className="absolute -top-[14px] left-0 right-0 h-[14px]" />
+                <div className="flex gap-5">
+                  {ABOUT.map((col) => (
+                    <div key={col.heading} className="min-w-[178px]">
+                      <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mb-2 px-2.5 mt-0.5">{col.heading}</p>
+                      {col.links.map((l) => {
+                        const cls =
+                          "block text-[14px] font-medium text-[#2A1A1D] py-[9px] px-2.5 rounded-[9px] whitespace-nowrap transition-colors hover:bg-rose-100 hover:text-coral";
+                        return l.external || l.href === "#" ? (
+                          <a
+                            key={l.label}
+                            href={l.href}
+                            {...(l.external ? { target: "_blank", rel: "noopener" } : {})}
+                            className={cls}
+                          >
+                            {l.label}
+                          </a>
+                        ) : (
+                          <Link key={l.label} href={l.href} className={cls}>
+                            {l.label}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

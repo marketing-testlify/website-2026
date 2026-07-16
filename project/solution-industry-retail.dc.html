@@ -193,38 +193,38 @@ class Component extends DCLogic {
   toggleFaq(i){ this.setState(s=>({ open: Object.assign({}, s.open, { [i]: !s.open[i] }) })); }
   renderVals(){
     const DATA = {
-      crumb:"Company / Enterprise",
-      eyebrow:"For enterprises",
-      title:"One-stop solution for global enterprise hiring",
-      lead:"Volume, cross-functional and global hiring, internal mobility and senior roles — assess with accuracy, speed and scale, with zero guesswork.",
-      ctaLabel:"Talk to sales",
-      ctaHref:"#demo",
-      stats:[{t:"3,500+ tests · 4,500+ roles"},{t:"SOC 2 · ISO 27001 · GDPR"},{t:"100+ ATS integrations"}],
-      logos:["LTIMindtree","Thales","Third Bridge","Schweiger","Adium"],
+      crumb:"Industry / Retail",
+      eyebrow:"For retail teams",
+      title:"Say goodbye to high turnover with retail skills tests",
+      lead:"Employment testing for retail helps you hire people with the right skills and the personality to stay and thrive. Make smarter decisions and cut turnover with assessments that match the best talent to your retail roles.",
+      ctaLabel:"Try for free",
+      ctaHref:"pricing.dc.html",
+      stats:[{t:"3,500+ validated tests"},{t:"65% avg. retail turnover"},{t:"100+ ATS integrations"}],
       sections:[
-        {kind:"split", num:"1", h2:"A better way to assess enterprise talent", body:["Evaluate thousands of candidates across regions and roles from a single platform, with the controls and integrations large teams need."], bullets:[{label:"15+ question types"},{label:"3,500+ tests, 4,500+ roles"},{label:"45+ coding languages"},{label:"Custom workflows"},{label:"Global benchmarking"},{label:"100+ ATS, Slack & API"}]},
-        {kind:"grid", eyebrow:"Outcomes that matter", h2:"More than features — outcomes that matter", intro:"Enterprise hiring is measured on cost, speed and defensibility. Testlify delivers on all three.", cards:[
-          {title:"Role-based access & permissions", desc:"Give every team the right level of control across regions and business units."},
-          {title:"Reduce cost-per-hire", desc:"Automate screening so recruiters spend time only on qualified candidates."},
-          {title:"Customizable workflow", desc:"Map assessments to your existing hiring stages and approval flows."},
-          {title:"Scale without overhead", desc:"From 10 to 10,000 candidates on predictable, transparent pricing."},
-          {title:"Enterprise-grade security", desc:"SOC 2 Type II, ISO 27001 and GDPR, with full audit trails."},
-          {title:"Advanced analytics & insights", desc:"Benchmark talent globally and prove quality-of-hire to leadership."}
+        {kind:"split", num:"1", h2:"Cut turnover, boost retention", body:["With an average turnover rate of 65%, retail needs a smarter way to hire. Skill and personality assessments identify candidates with the aptitude — and the temperament — to stay longer.","Retail-specific competency tests measure the skills that actually drive store performance."], bullets:[{label:"Cross-selling & upselling"},{label:"Visual merchandising"},{label:"Customer engagement"},{label:"Product knowledge"},{label:"Attention to detail"},{label:"Literacy & numeracy"}], cta:{label:"Explore retail assessments", href:"test-library.dc.html"}},
+        {kind:"split", num:"2", h2:"Find the right fit for every retail role", body:["Hiring store managers, clerks or sales associates? Retail aptitude tests, customer-service tests and role-specific assessments confirm candidates have the attention to detail and service instinct the job demands.","Behavioral assessments for retail leadership surface adaptability, decision-making and conflict resolution — so you spot tomorrow's leaders today."]},
+        {kind:"cards", eyebrow:"Why Testlify", h2:"Everything you need to hire retail talent on proof", intro:"Assess real-world retail ability, not resume claims.", cards:[
+          {title:"Situational judgment tests", desc:"See how candidates handle difficult customers, inventory shortages and team conflicts before you hire."},
+          {title:"Retail analytics & data", desc:"Measure the ability to read sales reports, KPIs and retail data for smarter decision-making."},
+          {title:"Product & POS proficiency", desc:"Assess familiarity with point-of-sale systems and the retail technology your teams use daily."},
+          {title:"Customer service aptitude", desc:"Evaluate communication, empathy and complaint resolution in realistic service scenarios."},
+          {title:"Tailored role assessments", desc:"Build tests for any retail role from a pre-vetted question pool or your own custom questions."},
+          {title:"Enterprise security", desc:"AI proctoring, plagiarism detection, SOC 2 Type II, ISO 27001 and GDPR compliance."}
         ]},
-        {kind:"split", num:"2", h2:"White-labeling & employer branding", body:["Deliver a fully branded assessment experience end to end — your logo, your colors, your candidate journey."], cta:{label:"Explore white-label", href:"#"}},
-        {kind:"split", num:"3", h2:"A fully functional free trial", body:["Explore the full platform — candidate portal, evaluation cards, reporting and proctoring — with no credit card required. Rated 4.7 on G2 by enterprise recruiters."], cta:{label:"See pricing", href:"pricing.dc.html"}}
+        {kind:"split", num:"3", h2:"Create tailored assessments for every retail role", body:["Hiring for more than one position? Design assessments specific to each retail role with Testlify's intuitive builder — incorporate real-life scenarios, keywords and challenges that reflect the fast-paced, customer-centric floor.","Pick from the pre-vetted question pool or write your own."], cta:{label:"See pricing", href:"pricing.dc.html"}}
       ],
       faqs:[
-        {q:"How does Testlify support global, multi-region hiring?", a:"Assess candidates across regions from one platform, with role-based access, 16+ languages and global benchmarking so every team hires to the same bar."},
-        {q:"Is Testlify secure and compliant enough for enterprise?", a:"Yes. Testlify is SOC 2 Type II, ISO 27001, GDPR and CCPA compliant, with full audit trails and EEOC-defensible assessments."},
-        {q:"Can it integrate with our existing HR stack?", a:"100+ native ATS integrations plus Slack and an open API mean scores flow into the systems your teams already use."},
-        {q:"How does pricing scale for large teams?", a:"Predictable, transparent pricing scales from 10 to 10,000+ candidates without per-seat surprises."},
-        {q:"Can we brand the candidate experience?", a:"Yes — white-label the entire assessment journey with your logo, colors and domain."}
+        {q:"Can Testlify assess proficiency with retail software and technology?", a:"Yes. Testlify measures candidates' familiarity and proficiency with retail software, point-of-sale systems and the technology used across the industry."},
+        {q:"Can it evaluate inventory management and stock control skills?", a:"Assessments cover inventory management concepts including stock control, ordering and replenishment to gauge skills in this critical retail area."},
+        {q:"Can it evaluate problem-solving in retail-specific scenarios?", a:"Assessments incorporate retail scenarios to evaluate critical thinking, problem-solving and decision-making in real-life situations."},
+        {q:"Can it measure understanding of retail trends and consumer behavior?", a:"Yes — assessments measure knowledge of the latest retail trends, consumer behavior and the ability to adapt to evolving customer preferences."},
+        {q:"Does it assess handling customer complaints and conflict?", a:"Yes. Testlify assesses skills in handling complaints, resolving conflict and turning challenging situations into positive outcomes."},
+        {q:"How do you keep retail assessments relevant and up to date?", a:"Assessments are created by industry experts and updated regularly to stay relevant to the current retail landscape."}
       ],
       ctaEyebrow:"Get started",
-      ctaTitle:"Standardize hiring across every team.",
-      ctaBody:"Give every requisition the same defensible, skills-based bar — and prove quality-of-hire to leadership. Talk to our enterprise team.",
-      ctaTicks:["Dedicated onboarding","SSO & audit trails","Volume pricing"]
+      ctaTitle:"Cut through the noise. Hire with clarity.",
+      ctaBody:"Resumes don't tell you everything. Get the insight to hire the right retail people with assessments that are accurate, automated and unbiased.",
+      ctaTicks:["7-day free trial","Unlimited assessments","Cancel anytime"]
     };
     const P = (this.props && this.props.pageData) ? this.props.pageData : DATA;
     const open = this.state.open || {};

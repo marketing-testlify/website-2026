@@ -193,38 +193,37 @@ class Component extends DCLogic {
   toggleFaq(i){ this.setState(s=>({ open: Object.assign({}, s.open, { [i]: !s.open[i] }) })); }
   renderVals(){
     const DATA = {
-      crumb:"Company / Enterprise",
-      eyebrow:"For enterprises",
-      title:"One-stop solution for global enterprise hiring",
-      lead:"Volume, cross-functional and global hiring, internal mobility and senior roles — assess with accuracy, speed and scale, with zero guesswork.",
-      ctaLabel:"Talk to sales",
-      ctaHref:"#demo",
-      stats:[{t:"3,500+ tests · 4,500+ roles"},{t:"SOC 2 · ISO 27001 · GDPR"},{t:"100+ ATS integrations"}],
-      logos:["LTIMindtree","Thales","Third Bridge","Schweiger","Adium"],
+      crumb:"Industry / Recruitment",
+      eyebrow:"For recruitment teams",
+      title:"Empowering recruitment with talent assessments",
+      lead:"Time is everything in recruitment. A complete suite of assessments lets you evaluate skills, aptitude and cultural fit efficiently — from pre-employment tests to behavioral assessments, everything you need to identify the right candidates fast.",
+      ctaLabel:"Try for free",
+      ctaHref:"pricing.dc.html",
+      stats:[{t:"1,500+ hiring teams"},{t:"3,500+ validated tests"},{t:"100+ ATS integrations"}],
       sections:[
-        {kind:"split", num:"1", h2:"A better way to assess enterprise talent", body:["Evaluate thousands of candidates across regions and roles from a single platform, with the controls and integrations large teams need."], bullets:[{label:"15+ question types"},{label:"3,500+ tests, 4,500+ roles"},{label:"45+ coding languages"},{label:"Custom workflows"},{label:"Global benchmarking"},{label:"100+ ATS, Slack & API"}]},
-        {kind:"grid", eyebrow:"Outcomes that matter", h2:"More than features — outcomes that matter", intro:"Enterprise hiring is measured on cost, speed and defensibility. Testlify delivers on all three.", cards:[
-          {title:"Role-based access & permissions", desc:"Give every team the right level of control across regions and business units."},
-          {title:"Reduce cost-per-hire", desc:"Automate screening so recruiters spend time only on qualified candidates."},
-          {title:"Customizable workflow", desc:"Map assessments to your existing hiring stages and approval flows."},
-          {title:"Scale without overhead", desc:"From 10 to 10,000 candidates on predictable, transparent pricing."},
-          {title:"Enterprise-grade security", desc:"SOC 2 Type II, ISO 27001 and GDPR, with full audit trails."},
-          {title:"Advanced analytics & insights", desc:"Benchmark talent globally and prove quality-of-hire to leadership."}
+        {kind:"split", num:"1", h2:"Your partner in talent acquisition", body:["Assess candidates across every domain — technical skills, cognitive ability, behavioral traits and more — with customizable assessments that align to your unique requirements.","Gain insight into each candidate's potential and match them to the exact role."], bullets:[{label:"Technical & role-specific skills"},{label:"Cognitive ability"},{label:"Behavioral & personality traits"},{label:"Cultural-fit evaluation"},{label:"Customizable to your requirements"},{label:"Objective, bias-reduced scoring"}], cta:{label:"Explore the test library", href:"test-library.dc.html"}},
+        {kind:"split", num:"2", h2:"Built on recruitment industry expertise", body:["We understand the pressures recruiters face. Assessments are developed alongside HR professionals and recruiters to address real, industry-specific hiring needs — not generic tests bolted onto a job.","Every assessment reflects how the role is actually performed."]},
+        {kind:"cards", eyebrow:"Why Testlify", h2:"Everything a modern recruitment team needs", intro:"Screen faster, shortlist smarter and give every candidate a great experience.", cards:[
+          {title:"Positive candidate experience", desc:"Intuitive interfaces, clear instructions and timely communication keep completion rates high and your employer brand strong."},
+          {title:"White-label branding", desc:"Add your logo, colors and identity across the assessment for a seamless, professional candidate journey."},
+          {title:"100+ ATS integrations", desc:"Connect Testlify to your existing stack, import candidates effortlessly and skip manual data entry."},
+          {title:"Situational judgment tests", desc:"Role-play simulations gauge resilience, decision-making and performance under pressure."},
+          {title:"Adaptability & leadership", desc:"Assess candidates' ability to learn, adapt and step into managerial roles as the landscape shifts."},
+          {title:"Post-hire assessments", desc:"Evaluate onboarding experience, identify training needs and track performance and growth."}
         ]},
-        {kind:"split", num:"2", h2:"White-labeling & employer branding", body:["Deliver a fully branded assessment experience end to end — your logo, your colors, your candidate journey."], cta:{label:"Explore white-label", href:"#"}},
-        {kind:"split", num:"3", h2:"A fully functional free trial", body:["Explore the full platform — candidate portal, evaluation cards, reporting and proctoring — with no credit card required. Rated 4.7 on G2 by enterprise recruiters."], cta:{label:"See pricing", href:"pricing.dc.html"}}
+        {kind:"split", num:"3", h2:"Make your brand the candidate's first impression", body:["A powerful white-label solution lets you customize the platform with your own branding. Candidates feel familiarity and connection with your organization at every step — enhancing your employer brand and leaving a polished impression.","Seamless ATS integration then moves results straight into your workflow."], cta:{label:"See how integrations work", href:"integrations.dc.html"}}
       ],
       faqs:[
-        {q:"How does Testlify support global, multi-region hiring?", a:"Assess candidates across regions from one platform, with role-based access, 16+ languages and global benchmarking so every team hires to the same bar."},
-        {q:"Is Testlify secure and compliant enough for enterprise?", a:"Yes. Testlify is SOC 2 Type II, ISO 27001, GDPR and CCPA compliant, with full audit trails and EEOC-defensible assessments."},
-        {q:"Can it integrate with our existing HR stack?", a:"100+ native ATS integrations plus Slack and an open API mean scores flow into the systems your teams already use."},
-        {q:"How does pricing scale for large teams?", a:"Predictable, transparent pricing scales from 10 to 10,000+ candidates without per-seat surprises."},
-        {q:"Can we brand the candidate experience?", a:"Yes — white-label the entire assessment journey with your logo, colors and domain."}
+        {q:"Can Testlify assess how candidates handle high-pressure situations?", a:"Yes. Situational judgment tests and role-play simulations assess resilience, decision-making and the ability to perform under pressure."},
+        {q:"Can it evaluate adaptability and flexibility?", a:"Yes. Assessments measure candidates' adaptability to change, ability to learn new technologies and flexibility in navigating an evolving recruitment landscape."},
+        {q:"Can it evaluate leadership and managerial potential?", a:"Testlify provides assessments that evaluate leadership qualities, strategic thinking and the ability to manage teams effectively."},
+        {q:"How does Testlify handle remote hiring for distributed teams?", a:"A secure, user-friendly online platform supports remote assessments, candidate collaboration and real-time feedback for distributed recruitment teams."},
+        {q:"Does it support post-hire assessments?", a:"Yes. Post-hire assessments evaluate onboarding experience, identify training needs and track performance and growth over time."}
       ],
       ctaEyebrow:"Get started",
-      ctaTitle:"Standardize hiring across every team.",
-      ctaBody:"Give every requisition the same defensible, skills-based bar — and prove quality-of-hire to leadership. Talk to our enterprise team.",
-      ctaTicks:["Dedicated onboarding","SSO & audit trails","Volume pricing"]
+      ctaTitle:"Cut through the noise. Hire with clarity.",
+      ctaBody:"Resumes don't tell you everything. Get the insight to hire the right people with assessments that are accurate, automated and unbiased.",
+      ctaTicks:["7-day free trial","Unlimited assessments","Cancel anytime"]
     };
     const P = (this.props && this.props.pageData) ? this.props.pageData : DATA;
     const open = this.state.open || {};

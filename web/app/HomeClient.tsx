@@ -388,8 +388,8 @@ export default function HomeClient() {
     };
 
     lines.forEach((l) => {
-      const rise = +(l.getAttribute("data-bh-rise") || 0);
-      timers.push(window.setTimeout(() => l.classList.add("is-in"), rise));
+      // Lines are visible immediately (no staggered rise); only the text scrambles in.
+      l.classList.add("is-in");
       const sc = l.querySelector<HTMLElement>("[data-bh-text]");
       if (sc) {
         const delay = +(sc.getAttribute("data-bh-delay") || 0);
@@ -1788,8 +1788,8 @@ const KEYFRAMES = `
 .tl-orb-rose{background:radial-gradient(rgba(229,39,84,.08),transparent 65%);}
 .tl-gradient-text{-webkit-text-fill-color:transparent;background:linear-gradient(135deg,#df202e,#db0c26,#d50022 22.5%,#c6001e 45%,#d1000b 58.75%,#d40c00,#d52400 72.5%,#d74b00);-webkit-background-clip:text;background-clip:text;}
 .tl-glow-text{text-shadow:0 0 28px rgba(242,63,68,.35);}
-.tl-hero-line{display:block;opacity:0;transform:translateY(50px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1);will-change:opacity,transform;}
-.tl-hero-line.is-in{opacity:1;transform:translateY(0);}
+.tl-hero-line{display:block;}
+.tl-hero-line.is-in{opacity:1;transform:none;}
 @keyframes tl-pulsedot-kf{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.45);opacity:.7;}}
 @keyframes tl-partfloat{0%,100%{transform:translateY(-10px);opacity:.3;}50%{transform:translateY(10px);opacity:.8;}}
 @media(prefers-reduced-motion:reduce){.tl-hero-line{opacity:1;transform:none;}}

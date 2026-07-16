@@ -49,12 +49,20 @@ a{text-decoration:none;color:inherit;}
 .szcard{background:#fff;border:1px solid #EFE2E3;border-radius:20px;padding:32px 28px;text-decoration:none;color:inherit;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;}
 .szcard:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(110,11,14,.10);border-color:#F4D2D3;}
 .statn{font-size:50px;font-weight:800;letter-spacing:-2px;color:#F23F44;line-height:1;}
+.metricrow{display:grid;grid-template-columns:repeat(4,1fr);}
+.metric{text-align:center;padding:4px 22px;}
+.metric + .metric{border-left:1px solid rgba(255,255,255,.14);}
+.metricnum{font-size:34px;font-weight:700;letter-spacing:-1px;line-height:1;color:#fff;font-variant-numeric:tabular-nums;}
+.metricnum .u{color:#FF7A52;font-weight:600;}
+.metriclbl{font-size:14px;color:rgba(255,255,255,.72);font-weight:500;margin-top:10px;line-height:1.45;}
 @media(max-width:920px){
   .h1{font-size:42px;letter-spacing:-1.4px;}
   .h2{font-size:32px;letter-spacing:-1px;}
   .sec{padding:72px 22px;}
   .ucgrid,.indgrid,.szgrid{grid-template-columns:1fr;}
   .statgrid{grid-template-columns:1fr 1fr !important;}
+  .metricrow{grid-template-columns:repeat(2,1fr);row-gap:34px;}
+  .metric + .metric{border-left:none;}
 }
 </style>
 </helmet>
@@ -64,7 +72,7 @@ a{text-decoration:none;color:inherit;}
   <h1 class="h1 reveal" style="transition-delay:.04s">A hiring solution for<br>every kind of team</h1>
   <p class="lead reveal" style="margin:22px auto 0;max-width:600px;transition-delay:.08s">However you hire — high volume, fully remote, straight off campus — Testlify adapts to your workflow and surfaces the right people, faster.</p>
   <div class="reveal" style="margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;transition-delay:.12s;">
-    <dc-import name="component-cta-button" label="Start free" href="core-pricing.dc.html" variant="primary" size="md" icon="arrow" magnetic="true" hint-size="150px,52px"></dc-import>
+    <dc-import name="component-cta-button" label="Start free" href="pricing.dc.html" variant="primary" size="md" icon="arrow" magnetic="true" hint-size="150px,52px"></dc-import>
     <dc-import name="component-cta-button" label="Book a demo" href="#" variant="secondary" size="md" icon="play" hint-size="150px,52px"></dc-import>
   </div>
 </div></section>
@@ -112,18 +120,18 @@ a{text-decoration:none;color:inherit;}
     <p class="eyebrow reveal" style="color:#C9A9AB;">The outcomes<b style="color:#FF7A52;">.</b></p>
     <h2 class="h2 reveal" style="color:#fff;transition-delay:.04s;">Results across every team</h2>
   </div>
-  <div class="statgrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;">
-    <div class="reveal"><div class="statn">68%</div><p style="color:rgba(255,255,255,.7);font-size:14px;margin:10px 0 0;">faster time-to-hire</p></div>
-    <div class="reveal" style="transition-delay:.05s"><div class="statn">3.2×</div><p style="color:rgba(255,255,255,.7);font-size:14px;margin:10px 0 0;">more qualified shortlists</p></div>
-    <div class="reveal" style="transition-delay:.1s"><div class="statn">91%</div><p style="color:rgba(255,255,255,.7);font-size:14px;margin:10px 0 0;">candidate completion rate</p></div>
-    <div class="reveal" style="transition-delay:.15s"><div class="statn">40%</div><p style="color:rgba(255,255,255,.7);font-size:14px;margin:10px 0 0;">lower cost per hire</p></div>
+  <div class="metricrow reveal">
+    <div class="metric"><div class="metricnum"><span class="v" data-to="68">0</span><span class="u">%</span></div><div class="metriclbl">faster time-to-hire</div></div>
+    <div class="metric"><div class="metricnum"><span class="v" data-to="3.2" data-dec="1">0</span><span class="u">×</span></div><div class="metriclbl">more qualified shortlists</div></div>
+    <div class="metric"><div class="metricnum"><span class="v" data-to="91">0</span><span class="u">%</span></div><div class="metriclbl">candidate completion rate</div></div>
+    <div class="metric"><div class="metricnum"><span class="v" data-to="40">0</span><span class="u">%</span></div><div class="metriclbl">lower cost per hire</div></div>
   </div>
 </div></section>
 <section class="sec" style="text-align:center;"><div class="wrap" style="max-width:720px;">
   <h2 class="h2 reveal">Find your hiring solution</h2>
   <p class="lead reveal" style="margin:18px auto 30px;transition-delay:.04s;">Tell us how you hire and we'll show you the fastest path to better shortlists.</p>
   <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;transition-delay:.08s;">
-    <dc-import name="component-cta-button" label="Start free" href="core-pricing.dc.html" variant="primary" size="md" icon="arrow" hint-size="150px,52px"></dc-import>
+    <dc-import name="component-cta-button" label="Start free" href="pricing.dc.html" variant="primary" size="md" icon="arrow" hint-size="150px,52px"></dc-import>
     <dc-import name="component-cta-button" label="Book a demo" href="#" variant="secondary" size="md" icon="play" hint-size="150px,52px"></dc-import>
   </div>
 </div></section>
@@ -152,8 +160,10 @@ class Component extends DCLogic {
     [0,150,400,800,1500].forEach(t=>setTimeout(sweep, t));
     requestAnimationFrame(sweep);
     try{ this._mo = new MutationObserver(()=>requestAnimationFrame(sweep)); this._mo.observe(document.body,{childList:true,subtree:true}); }catch(e){}
+    const runCount=(el)=>{ const to=+el.dataset.to, comma=el.dataset.comma==='1', dec=+(el.dataset.dec||0), dur=1500; let st=null; const fmt=(n)=>{ if(dec) return (+n).toFixed(dec); n=Math.round(n); return comma? n.toLocaleString('en-US'):String(n); }; const tick=(t)=>{ if(st===null)st=t; const p=Math.min(1,(t-st)/dur); const e=1-Math.pow(1-p,3); el.textContent=fmt(to*e); if(p<1) requestAnimationFrame(tick); else el.textContent=fmt(to); }; requestAnimationFrame(tick); };
+    try{ this._io = new IntersectionObserver((ents)=>{ ents.forEach(en=>{ if(en.isIntersecting){ en.target.querySelectorAll('.v[data-to]').forEach(runCount); this._io.unobserve(en.target); } }); }, {threshold:.4}); document.querySelectorAll('.metricrow').forEach(r=>this._io.observe(r)); }catch(e){}
   }
-  componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); }
+  componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); if(this._io) this._io.disconnect(); }
   renderVals(){ return {}; }
 }
 </script>

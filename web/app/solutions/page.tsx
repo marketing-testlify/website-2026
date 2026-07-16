@@ -4,6 +4,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
 import CtaButton from "@/components/CtaButton";
+import OutcomesMetrics from "./OutcomesMetrics";
 import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = {
@@ -178,19 +179,6 @@ const SIZES: Size[] = [
     desc: "Global, compliant, high-volume hiring with SSO, custom integrations, security review and a dedicated team.",
     delay: 0.12,
   },
-];
-
-type Outcome = {
-  stat: string;
-  label: string;
-  delay: number;
-};
-
-const OUTCOMES: Outcome[] = [
-  { stat: "68%", label: "faster time-to-hire", delay: 0 },
-  { stat: "3.2×", label: "more qualified shortlists", delay: 0.05 },
-  { stat: "91%", label: "candidate completion rate", delay: 0.1 },
-  { stat: "40%", label: "lower cost per hire", delay: 0.15 },
 ];
 
 export default function Page() {
@@ -406,21 +394,7 @@ export default function Page() {
             </Reveal>
           </div>
 
-          <div
-            className="grid gap-5 text-center max-[920px]:grid-cols-2"
-            style={{ gridTemplateColumns: "repeat(4,1fr)" }}
-          >
-            {OUTCOMES.map((o) => (
-              <Reveal key={o.label} delay={o.delay}>
-                <div className="text-[50px] font-extrabold tracking-[-2px] text-[#F23F44] leading-none">
-                  {o.stat}
-                </div>
-                <p className="text-[14px] m-0 text-white/70" style={{ marginTop: 10 }}>
-                  {o.label}
-                </p>
-              </Reveal>
-            ))}
-          </div>
+          <OutcomesMetrics />
         </div>
       </section>
 

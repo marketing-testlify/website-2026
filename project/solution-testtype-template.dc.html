@@ -142,7 +142,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 </div></section>
 <section class="tsd-sec tsd-sand"><div class="tsdw">
 <div class="tsd-shead reveal"><p class="eyebrow">{{ atsEyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ atsTitle }}</h2><p class="tsd-lead">{{ atsIntro }}</p></div>
-<div class="tsd-atsgrid reveal"><sc-for list="{{ atsLogos }}" as="a" hint-placeholder-count="8"><span class="tsd-atslogo">{{ a }}</span></sc-for><a class="tsd-atsmore" href="product-integrations.dc.html">+100 more<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div>
+<div class="tsd-atsgrid reveal"><sc-for list="{{ atsLogos }}" as="a" hint-placeholder-count="8"><span class="tsd-atslogo">{{ a }}</span></sc-for><a class="tsd-atsmore" href="integrations.dc.html">+100 more<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div>
 </div></section>
 <section class="tsd-trust"><div class="tsdw tsd-trow reveal">
 <div class="tsd-g2"><span class="tsd-g2n">4.7</span><span class="tsd-g2l">Rated 4.7 on G2<br>by 1,000+ reviewers</span></div>
@@ -198,16 +198,16 @@ class Component extends DCLogic {
       title:"Hire developers on proof of skill, not a resume",
       lead:"Put real code in front of candidates. Testlify's coding tests measure how developers actually build, debug and reason across 45+ languages — auto-scored, proctored and ready in minutes.",
       ctaLabel:"Try for free",
-      ctaHref:"core-pricing.dc.html",
+      ctaHref:"pricing.dc.html",
       stats:[{t:"45+ programming languages"},{t:"Live IDE & real test cases"},{t:"Auto-scored in minutes"}],
       sections:[
-        {kind:"split", num:"1", h2:"Real coding challenges, not multiple-choice trivia", body:["Candidates write and run code in a full in-browser IDE against hidden test cases — so you see working solutions, not memorized definitions. Every submission is scored on correctness, efficiency and code quality."], bullets:[{label:"45+ languages & frameworks"},{label:"Live IDE with real test cases"},{label:"Debugging & code-review tasks"},{label:"Auto-scored on correctness & efficiency"}], cta:{label:"Browse coding tests", href:"library-tests.dc.html"}},
+        {kind:"split", num:"1", h2:"Real coding challenges, not multiple-choice trivia", body:["Candidates write and run code in a full in-browser IDE against hidden test cases — so you see working solutions, not memorized definitions. Every submission is scored on correctness, efficiency and code quality."], bullets:[{label:"45+ languages & frameworks"},{label:"Live IDE with real test cases"},{label:"Debugging & code-review tasks"},{label:"Auto-scored on correctness & efficiency"}], cta:{label:"Browse coding tests", href:"test-library.dc.html"}},
         {kind:"cards", eyebrow:"Beyond syntax", h2:"Assess the full engineering skill set", intro:"One test type, every developer competency — from fundamentals to real-world problem solving.", cards:[
           {title:"Language & framework fluency", desc:"Python, Java, JavaScript, Go, C#, SQL and 40+ more — test the exact stack of the role."},
           {title:"Problem solving & DSA", desc:"Algorithmic challenges reveal how candidates reason, optimize and handle edge cases."},
           {title:"Live coding & debugging", desc:"Pair on a live challenge, or have candidates fix broken code the way they would on the job."}
         ]},
-        {kind:"split", num:"2", h2:"Fair, cheat-resistant, and defensible", body:["Every coding test is proctored by default — webcam snapshots, tab-switch detection and plagiarism checks keep scores trustworthy. Standardized challenges mean every developer is measured against the same bar."], bullets:[{label:"Webcam & tab-switch proctoring"},{label:"Plagiarism & AI-answer detection"},{label:"EEOC-defensible, standardized scoring"}], cta:{label:"See how it works", href:"product-why-it-works.dc.html"}},
+        {kind:"split", num:"2", h2:"Fair, cheat-resistant, and defensible", body:["Every coding test is proctored by default — webcam snapshots, tab-switch detection and plagiarism checks keep scores trustworthy. Standardized challenges mean every developer is measured against the same bar."], bullets:[{label:"Webcam & tab-switch proctoring"},{label:"Plagiarism & AI-answer detection"},{label:"EEOC-defensible, standardized scoring"}], cta:{label:"See how it works", href:"science.dc.html"}},
         {kind:"steps", eyebrow:"How it works", h2:"From role to ranked shortlist in four steps", steps:[
           {title:"Pick your challenges", desc:"Choose from validated coding tests or add your own questions and languages."},
           {title:"Invite developers", desc:"Share a link or sync to your ATS — candidates code on their own schedule."},
@@ -254,7 +254,7 @@ class Component extends DCLogic {
     const atsLogos = (P.atsLogos!=null) ? P.atsLogos : ATS_D;
     return {
       crumb:P.crumb, eyebrow:P.eyebrow, title:P.title, lead:P.lead,
-      ctaLabel:P.ctaLabel||'Try for free', ctaHref:P.ctaHref||'core-pricing.dc.html',
+      ctaLabel:P.ctaLabel||'Try for free', ctaHref:P.ctaHref||'pricing.dc.html',
       stats:P.stats||[], hasStats:!!(P.stats&&P.stats.length),
       logos:P.logos||[], hasLogos:!!(P.logos&&P.logos.length),
       viewSections, viewFaqs, faqTitle:P.faqTitle||'Frequently asked questions',

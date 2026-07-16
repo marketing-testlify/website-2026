@@ -1,52 +1,77 @@
 import Link from "next/link";
 import { routes } from "@/lib/routes";
 
+const ROADMAP_URL = "https://roadmap.testlify.com/";
+const HELP_URL = "https://help.testlify.com/";
+const CODING_TESTS = "/solutions/coding-tests";
+
 const FOOTER_COLS: { heading: string; links: [string, string][] }[] = [
   {
     heading: "Product",
     links: [
       ["Testlify AI", routes.productTestlifyAi],
-      ["AI resume screener", routes.aiResumeScreener],
-      ["Skill assessments", routes.productSkillAssessments],
-      ["AI interviews", routes.libraryInterviews],
-      ["Features", routes.productFeatures],
-      ["ATS integrations", routes.integrations],
-      ["Pricing", routes.pricing],
-      ["Compare plans", routes.compare],
-    ],
-  },
-  {
-    heading: "Library",
-    links: [
       ["Test library", routes.testLibrary],
-      ["Interview library", routes.libraryInterviews],
-      ["Build your own", routes.libraryBuildYourOwn],
-      ["Coding tests", routes.testLibrary],
-      ["Cognitive ability", routes.testLibrary],
-      ["Personality & culture", routes.testLibrary],
-      ["Language & typing", routes.testLibrary],
+      ["ATS integrations", routes.integrations],
+      ["Science", routes.productScience],
+      ["Analytics", "#"],
+      ["API", `${routes.productFeatures}#developers`],
+      ["Reseller plan", "#"],
+      ["Features", routes.productFeatures],
+      ["What's new", ROADMAP_URL],
+      ["White label", "#"],
+      ["Video interviewing", routes.productVideoInterviewing],
+      ["Product roadmap", ROADMAP_URL],
     ],
   },
   {
-    heading: "Solutions",
+    heading: "Test type",
     links: [
-      ["Volume hiring", "/solutions/volume-hiring"],
-      ["Remote hiring", `${routes.solutions}#remote-hiring`],
-      ["Campus hiring", `${routes.solutions}#campus-hiring`],
-      ["Diversity & inclusion", `${routes.solutions}#diversity-hiring`],
-      ["For enterprise", "/solutions/enterprise"],
-      ["For startups", routes.solutions],
+      ["Role specific tests", routes.testLibrary],
+      ["Language tests", routes.testLibrary],
+      ["Programming tests", routes.testLibrary],
+      ["Software skills tests", routes.testLibrary],
+      ["Cognitive ability tests", routes.testLibrary],
+      ["Situational judgment", routes.testLibrary],
+      ["CEFR test", routes.testLibrary],
+      ["Typing test", routes.testLibrary],
+      ["Coding tests", CODING_TESTS],
+      ["Psychometric tests", routes.testLibrary],
+      ["Engineering tests", routes.testLibrary],
+      ["Process knowledge tests", routes.testLibrary],
     ],
   },
   {
     heading: "Resources",
     links: [
       ["Blog", routes.blog],
-      ["HR tools", routes.resourcesTools],
+      ["Join Testlify SME", "#"],
+      ["Integration program", "#"],
+      ["Sitemap", routes.sitemap],
+      ["Knowledge base", "#"],
+      ["Podcast", "#"],
+      ["Referral program", "#"],
+      ["Partnership program", "#"],
+      ["Success stories", routes.customers],
+      ["Competitors", routes.resourcesCompetitors],
       ["Hiring guides", routes.resourcesHiringGuides],
       ["HR glossary", routes.resourcesGlossary],
-      ["Success stories", routes.customers],
-      ["Compare alternatives", routes.resourcesCompetitors],
+      ["HR tools", routes.resourcesTools],
+    ],
+  },
+  {
+    heading: "Terms",
+    links: [
+      ["Privacy policy", routes.legal],
+      ["Terms & conditions", routes.legal],
+      ["Refund policy", routes.legal],
+      ["GDPR compliance", routes.legal],
+      ["Cookie policy", routes.legal],
+      ["Security practices", "#"],
+      ["Security", routes.security],
+      ["Data processing agreement", "#"],
+      ["Data privacy framework", "#"],
+      ["CCPA", routes.legal],
+      ["Trust center", routes.trustCenter],
     ],
   },
   {
@@ -54,10 +79,14 @@ const FOOTER_COLS: { heading: string; links: [string, string][] }[] = [
     links: [
       ["About us", routes.about],
       ["Careers", routes.careers],
+      ["For subject matter experts", "#"],
       ["Clients", routes.customers],
-      ["Partners", routes.partners],
-      ["Trust center", routes.security],
+      ["Our partners", routes.partners],
+      ["Press room", "#"],
+      ["Investors", "#"],
+      ["Write for us", "#"],
       ["Contact us", routes.contact],
+      ["Help center", HELP_URL],
     ],
   },
 ];
@@ -130,9 +159,24 @@ export default function SiteFooter() {
               <div key={col.heading}>
                 <div className="font-semibold text-[14px] text-white mb-[18px] tracking-[0.3px]">{col.heading}</div>
                 <div className="flex flex-col gap-3 text-[14.5px]">
-                  {col.links.map(([label, href]) => (
-                    <Link key={label} href={href} className="text-faint hover:text-coral transition-colors">{label}</Link>
-                  ))}
+                  {col.links.map(([label, href]) => {
+                    const isExternal = href.startsWith("http");
+                    if (isExternal || href === "#") {
+                      return (
+                        <a
+                          key={label}
+                          href={href}
+                          {...(isExternal ? { target: "_blank", rel: "noopener" } : {})}
+                          className="text-faint hover:text-coral transition-colors"
+                        >
+                          {label}
+                        </a>
+                      );
+                    }
+                    return (
+                      <Link key={label} href={href} className="text-faint hover:text-coral transition-colors">{label}</Link>
+                    );
+                  })}
                 </div>
               </div>
             ))}

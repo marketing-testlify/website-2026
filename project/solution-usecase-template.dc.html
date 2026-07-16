@@ -142,7 +142,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 </div></section>
 <section class="tsd-sec tsd-sand"><div class="tsdw">
 <div class="tsd-shead reveal"><p class="eyebrow">{{ atsEyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ atsTitle }}</h2><p class="tsd-lead">{{ atsIntro }}</p></div>
-<div class="tsd-atsgrid reveal"><sc-for list="{{ atsLogos }}" as="a" hint-placeholder-count="8"><span class="tsd-atslogo">{{ a }}</span></sc-for><a class="tsd-atsmore" href="product-integrations.dc.html">+100 more<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div>
+<div class="tsd-atsgrid reveal"><sc-for list="{{ atsLogos }}" as="a" hint-placeholder-count="8"><span class="tsd-atslogo">{{ a }}</span></sc-for><a class="tsd-atsmore" href="integrations.dc.html">+100 more<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div>
 </div></section>
 <section class="tsd-trust"><div class="tsdw tsd-trow reveal">
 <div class="tsd-g2"><span class="tsd-g2n">4.7</span><span class="tsd-g2l">Rated 4.7 on G2<br>by 1,000+ reviewers</span></div>
@@ -198,16 +198,16 @@ class Component extends DCLogic {
       title:"Bulk hiring made easy with Testlify's volume hiring software",
       lead:"Overwhelmed with applications or need to fill roles fast? Screen high volumes accurately with AI-driven assessments that protect quality while saving you time.",
       ctaLabel:"Try for free",
-      ctaHref:"core-pricing.dc.html",
+      ctaHref:"pricing.dc.html",
       stats:[{t:"Up to 75% less screening time"},{t:"Screen thousands in hours"},{t:"3,500+ validated tests"}],
       sections:[
-        {kind:"split", num:"1", h2:"Hiring at scale just got faster, smarter, and more precise", body:["Move applicants through screening automatically, without manual review of every resume. Testlify surfaces the candidates worth your time so your team focuses on the shortlist, not the pile."], bullets:[{label:"Video and audio interviewing"},{label:"3,500+ technical & non-technical tests"},{label:"Best-in-class proctoring"},{label:"Auto-advance candidates by results"}], cta:{label:"View our test library", href:"library-tests.dc.html"}},
+        {kind:"split", num:"1", h2:"Hiring at scale just got faster, smarter, and more precise", body:["Move applicants through screening automatically, without manual review of every resume. Testlify surfaces the candidates worth your time so your team focuses on the shortlist, not the pile."], bullets:[{label:"Video and audio interviewing"},{label:"3,500+ technical & non-technical tests"},{label:"Best-in-class proctoring"},{label:"Auto-advance candidates by results"}], cta:{label:"View our test library", href:"test-library.dc.html"}},
         {kind:"cards", eyebrow:"Confidence at scale", h2:"Hire candidates in bulk with confidence", intro:"Speed doesn't have to mean compromise. Every high-volume hire is backed by data.", cards:[
           {title:"Powerful proctoring", desc:"Snapshots, tab-switch and mouse tracking keep results trustworthy at any volume."},
           {title:"Diverse assessment types", desc:"Combine cognitive, role-specific and behavioral tests in one flow."},
           {title:"Robust reporting & analytics", desc:"Spot bottlenecks, benchmark candidates and prove time-to-hire gains."}
         ]},
-        {kind:"split", num:"2", h2:"Attract top talent with a skills-first approach", body:["Combine ready-made tests, your existing candidate pool or your own questionnaire. Candidates advance automatically based on results — so quality rises even as volume grows."], cta:{label:"Try for free", href:"core-pricing.dc.html"}},
+        {kind:"split", num:"2", h2:"Attract top talent with a skills-first approach", body:["Combine ready-made tests, your existing candidate pool or your own questionnaire. Candidates advance automatically based on results — so quality rises even as volume grows."], cta:{label:"Try for free", href:"pricing.dc.html"}},
         {kind:"split", num:"3", h2:"One-stop solution for every hiring need", body:["Automate repetitive tasks, centralize candidates and let analytics find where applicants drop off."], bullets:[{label:"Identify skills gaps early"},{label:"Improve time-to-hire"},{label:"Benchmark against a global pool"}]}
       ],
       faqs:[
@@ -259,7 +259,7 @@ class Component extends DCLogic {
     const atsLogos = (P.atsLogos!=null) ? P.atsLogos : ATS_D;
     return {
       crumb:P.crumb, eyebrow:P.eyebrow, title:P.title, lead:P.lead,
-      ctaLabel:P.ctaLabel||'Try for free', ctaHref:P.ctaHref||'core-pricing.dc.html',
+      ctaLabel:P.ctaLabel||'Try for free', ctaHref:P.ctaHref||'pricing.dc.html',
       stats:P.stats||[], hasStats:!!(P.stats&&P.stats.length),
       logos:P.logos||[], hasLogos:!!(P.logos&&P.logos.length),
       viewSections, viewFaqs, faqTitle:P.faqTitle||'Frequently asked questions',
