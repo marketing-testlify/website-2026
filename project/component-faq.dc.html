@@ -15,6 +15,8 @@
 .fq-chev{font-size:26px;font-weight:300;color:#F23F44;transition:transform .3s ease;line-height:1;flex:none;}
 .fq-a{max-height:0;overflow:hidden;opacity:0;transition:max-height .42s ease,opacity .3s ease;}
 .fq-p{font-size:16px;line-height:1.64;color:#5A4B4E;margin:0 0 24px;max-width:780px;}
+
+h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 </style></helmet><div class="fq-wrap"><sc-for list="{{ items }}" as="item" hint-placeholder-count="4"><div class="fq-item"><div class="fq-q" onClick="{{ item.toggle }}"><span class="fq-t">{{ item.q }}</span><span class="fq-chev" style="{{ item.chevStyle }}">+</span></div><div class="fq-a" style="{{ item.aStyle }}"><p class="fq-p">{{ item.a }}</p></div></div></sc-for></div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:840,&quot;height&quot;:420},&quot;items&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{q:string;a:string}[]&quot;}}">
