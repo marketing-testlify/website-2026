@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import LiveDemoClient from "./LiveDemoClient";
 
 export const metadata: Metadata = {
-  title: "See Testlify live, end to end",
+  title: "Experience Testlify with a demo",
   description:
-    "Watch how Testlify screens, interviews and scores candidates automatically — a guided walkthrough of the full skills-based hiring workflow, from first application to verified shortlist.",
+    "See how Testlify helps 1,500+ teams hire with confidence using skills-based assessments, structured interviews, and advanced proctoring, all in one platform.",
 };
 
 export default function Page() {

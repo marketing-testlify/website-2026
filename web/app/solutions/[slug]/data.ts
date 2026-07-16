@@ -201,7 +201,7 @@ export const SOLUTIONS: Record<string, SolutionData> = {
     crumb: "Industry / IT & technology",
     eyebrow: "For IT teams",
     title: "The all-in-one talent assessment platform built for IT teams",
-    lead: "From developers and DevOps to data analysts, assess real-world skills, cut hiring time in half, and build high-performing tech teams faster.",
+    lead: "From developers and DevOps to data analysts, assess real-world skills, cut hiring time in half, and build high-performing tech teams faster. Simulate real-world coding scenarios, automate screening, and reduce mis-hires with expert-crafted, timed questions.",
     ctaLabel: "Try for free",
     ctaHref: routes.pricing,
     stats: [
@@ -209,7 +209,7 @@ export const SOLUTIONS: Record<string, SolutionData> = {
       { t: "45+ coding languages" },
       { t: "100+ ATS integrations" },
     ],
-    logos: ["LTIMindtree", "Sonatafy", "Thales", "Third Bridge", "Cogitotech"],
+    logos: ["LTIMindtree", "Sonatafy", "Thales", "Third Bridge", "Virtual", "Cogitotech"],
     sections: [
       {
         kind: "split",
@@ -572,7 +572,7 @@ export const SOLUTIONS: Record<string, SolutionData> = {
     crumb: "Industry / IT & technology",
     eyebrow: "For IT teams",
     title: "The all-in-one talent assessment platform built for IT teams",
-    lead: "From developers and DevOps to data analysts, assess real-world skills, cut hiring time in half, and build high-performing tech teams faster.",
+    lead: "From developers and DevOps to data analysts, assess real-world skills, cut hiring time in half, and build high-performing tech teams faster. Simulate real-world coding scenarios, automate screening, and reduce mis-hires with expert-crafted, timed questions.",
     ctaLabel: "Try for free",
     ctaHref: routes.pricing,
     stats: [
@@ -580,7 +580,7 @@ export const SOLUTIONS: Record<string, SolutionData> = {
       { t: "45+ coding languages" },
       { t: "100+ ATS integrations" },
     ],
-    logos: ["LTIMindtree", "Sonatafy", "Thales", "Third Bridge", "Cogitotech"],
+    logos: ["LTIMindtree", "Sonatafy", "Thales", "Third Bridge", "Virtual", "Cogitotech"],
     sections: [
       {
         kind: "split",

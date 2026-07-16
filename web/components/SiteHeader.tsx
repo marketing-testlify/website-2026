@@ -126,43 +126,10 @@ const PLAT: PlatGroup[] = [
   },
 ];
 
-type LibraryRow = { label: string; d: string; href: string; icon: React.ReactNode };
-
-const LIBRARY: LibraryRow[] = [
-  {
-    label: "Test library",
-    d: "3,500+ validated tests across every role",
-    href: routes.testLibrary,
-    icon: (
-      <>
-        <path d="M9 11l3 3L22 4" />
-        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-      </>
-    ),
-  },
-  {
-    label: "Interview library",
-    d: "AI video, audio & chat interviews by role",
-    href: routes.libraryInterviews,
-    icon: (
-      <>
-        <polygon points="23 7 16 12 23 17 23 7" />
-        <rect x="1" y="5" width="15" height="14" rx="2" />
-      </>
-    ),
-  },
-  {
-    label: "Build your own",
-    d: "Custom tests & questions, SME-reviewed",
-    href: routes.libraryBuildYourOwn,
-    icon: <path d="M12 5v14M5 12h14" />,
-  },
-];
-
 type MenuTab = {
   name: string;
   tabDesc: string;
-  cta: string;
+  /** where the tab row itself links */
   ctaHref: string;
   icon: React.ReactNode;
   subs: { label: string; d: string; href: string }[];
@@ -170,9 +137,30 @@ type MenuTab = {
 
 const SOL: MenuTab[] = [
   {
+    name: "By industry type",
+    tabDesc: "IT, SaaS, finance, healthcare & more",
+    ctaHref: routes.solutions,
+    icon: (
+      <>
+        <path d="M3 21h18" />
+        <path d="M5 21V7l8-4v18" />
+        <path d="M19 21V11l-6-4" />
+      </>
+    ),
+    subs: [
+      { label: "Information & technology", d: "Developers, DevOps, data & security", href: "/solutions/it-industry" },
+      { label: "SaaS & software", d: "GTM, product and engineering roles", href: routes.solutions },
+      { label: "Financial services", d: "Analysts, ops & compliance roles", href: routes.solutions },
+      { label: "Healthcare", d: "Clinical & administrative screening", href: routes.solutions },
+      { label: "Retail & e-commerce", d: "High-volume frontline hiring", href: "/solutions/retail-industry" },
+      { label: "BPO & services", d: "Multilingual, high-ramp hiring", href: routes.solutions },
+      { label: "Logistics & supply chain", d: "Ops, warehouse & driver roles", href: routes.solutions },
+      { label: "Energy, hospitality, edtech & more", d: "13 industries covered", href: routes.solutions },
+    ],
+  },
+  {
     name: "By use case",
     tabDesc: "Volume, remote, campus, technical & more",
-    cta: "Explore all solutions →",
     ctaHref: routes.solutions,
     icon: (
       <>
@@ -183,38 +171,35 @@ const SOL: MenuTab[] = [
     ),
     subs: [
       { label: "Volume hiring", d: "Screen thousands of applicants in hours", href: "/solutions/volume-hiring" },
-      { label: "Remote hiring", d: "Hire anywhere with proctored assessments", href: `${routes.solutions}#remote-hiring` },
-      { label: "Campus hiring", d: "Rank fresh graduates without resumes", href: `${routes.solutions}#campus-hiring` },
-      { label: "Diversity & inclusion", d: "Bias-free, EEOC-defensible screening", href: `${routes.solutions}#diversity-hiring` },
-      { label: "Technical hiring", d: "45+ coding languages with a live IDE", href: `${routes.solutions}#technical-hiring` },
-      { label: "Staffing & agencies", d: "Vet candidates before you submit them", href: `${routes.solutions}#agency-hiring` },
+      { label: "Remote hiring", d: "Hire anywhere with proctored tests", href: routes.solutions },
+      { label: "Campus hiring", d: "Rank fresh graduates without resumes", href: routes.solutions },
+      { label: "Technical hiring", d: "45+ coding languages with a live IDE", href: routes.solutions },
+      { label: "Diversity & inclusion", d: "Bias-free, EEOC-defensible screening", href: routes.solutions },
+      { label: "Lateral, sales, blue-collar & freelance", d: "10 use cases covered", href: routes.solutions },
     ],
   },
   {
-    name: "By industry",
-    tabDesc: "IT, SaaS, finance, healthcare & more",
-    cta: "See industry solutions →",
+    name: "By test type",
+    tabDesc: "Coding, cognitive, personality & more",
     ctaHref: routes.solutions,
     icon: (
       <>
-        <path d="M3 21h18" />
-        <path d="M5 21V7l8-4v18" />
-        <path d="M19 21V11l-6-4" />
+        <path d="M9 11l3 3L22 4" />
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
       </>
     ),
     subs: [
-      { label: "IT & technology", d: "Developers, DevOps, data & security", href: "/solutions/it-industry" },
-      { label: "Recruitment & staffing", d: "Vet candidates before you submit them", href: "/solutions/recruitment-industry" },
-      { label: "Financial services", d: "Analysts, ops and compliance-heavy roles", href: routes.solutions },
-      { label: "Healthcare", d: "Clinical & administrative screening", href: routes.solutions },
-      { label: "Retail & e-commerce", d: "High-volume frontline hiring", href: "/solutions/retail-industry" },
-      { label: "BPO & services", d: "Multilingual, high-ramp hiring", href: routes.solutions },
+      { label: "Coding tests", d: "Real-world dev challenges, 45+ languages", href: "/solutions/coding-tests" },
+      { label: "Cognitive ability", d: "Reasoning & problem-solving", href: "/solutions/coding-tests" },
+      { label: "Personality & culture", d: "Work style and culture fit", href: "/solutions/coding-tests" },
+      { label: "Language & CEFR", d: "Proficiency across 16+ languages", href: "/solutions/coding-tests" },
+      { label: "Role-specific & software skills", d: "4,500+ job-specific assessments", href: "/solutions/coding-tests" },
+      { label: "Situational judgment & typing", d: "11 test types covered", href: "/solutions/coding-tests" },
     ],
   },
   {
-    name: "By company size",
+    name: "By company type",
     tabDesc: "Startup to enterprise & public sector",
-    cta: "Find your fit →",
     ctaHref: routes.solutions,
     icon: (
       <>
@@ -225,28 +210,10 @@ const SOL: MenuTab[] = [
     ),
     subs: [
       { label: "Startups", d: "Hire fast without a TA team", href: routes.solutions },
-      { label: "Mid-market", d: "Standardize hiring as you scale", href: routes.solutions },
-      { label: "Enterprise", d: "SSO, compliance and audit trails", href: "/solutions/enterprise" },
-      { label: "Non-profits & public sector", d: "Fair, defensible selection", href: routes.solutions },
-    ],
-  },
-  {
-    name: "By test type",
-    tabDesc: "Coding, cognitive, personality & more",
-    cta: "Browse the test library →",
-    ctaHref: routes.testLibrary,
-    icon: (
-      <>
-        <path d="M9 11l3 3L22 4" />
-        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-      </>
-    ),
-    subs: [
-      { label: "Coding tests", d: "Real-world dev challenges, 45+ languages", href: "/solutions/coding-tests" },
-      { label: "Cognitive ability", d: "Reasoning & problem-solving", href: "/solutions/coding-tests" },
-      { label: "Personality & behavioral", d: "Work style and culture fit", href: "/solutions/coding-tests" },
-      { label: "Language & communication", d: "Proficiency across 16+ languages", href: "/solutions/coding-tests" },
-      { label: "Role-based tests", d: "4,500+ job-specific assessments", href: "/solutions/coding-tests" },
+      { label: "SMBs", d: "Standardize hiring as you scale", href: routes.solutions },
+      { label: "Enterprises", d: "SSO, compliance and audit trails", href: "/solutions/enterprise" },
+      { label: "Non-profits", d: "Fair, defensible selection", href: routes.solutions },
+      { label: "Public sector", d: "Transparent, auditable hiring", href: routes.solutions },
     ],
   },
 ];
@@ -254,8 +221,7 @@ const SOL: MenuTab[] = [
 const RES: MenuTab[] = [
   {
     name: "Learn",
-    tabDesc: "Blog, ebooks, glossary & podcast",
-    cta: "Browse all resources →",
+    tabDesc: "Blog, guides, glossary & podcast",
     ctaHref: routes.blog,
     icon: (
       <>
@@ -264,17 +230,16 @@ const RES: MenuTab[] = [
       </>
     ),
     subs: [
-      { label: "Blog", d: "Hiring science, playbooks and product news", href: routes.blog },
-      { label: "Ebooks & guides", d: "Deep dives on skills-based hiring", href: routes.blog },
+      { label: "Blog", d: "Hiring science, playbooks & product news", href: routes.blog },
+      { label: "Hiring guides", d: "Deep dives on skills-based hiring", href: routes.resourcesHiringGuides },
       { label: "HR glossary", d: "500+ hiring terms, defined", href: routes.resourcesGlossary },
-      { label: "Podcast", d: "Conversations with talent leaders", href: routes.blog },
-      { label: "FAQ", d: "Quick answers on plans and platform", href: routes.blog },
+      { label: "Ebooks", d: "Downloadable playbooks & reports", href: "#" },
+      { label: "Podcast", d: "Conversations with talent leaders", href: "#" },
     ],
   },
   {
-    name: "Templates & tools",
-    tabDesc: "Ready-to-use hiring assets",
-    cta: "Get free HR tools →",
+    name: "Tools & templates",
+    tabDesc: "Calculators, JD templates & more",
     ctaHref: routes.resourcesTools,
     icon: (
       <>
@@ -285,31 +250,30 @@ const RES: MenuTab[] = [
       </>
     ),
     subs: [
-      { label: "Test library", d: "3,500+ validated tests across roles", href: routes.testLibrary },
       { label: "HR tools & calculators", d: "Cost per hire, time to hire & more", href: routes.resourcesTools },
       { label: "Job description templates", d: "Role-ready JDs in minutes", href: routes.resourcesJdTemplates },
-      { label: "Interview question kits", d: "Structured, scorable prompts", href: routes.resourcesTools },
-      { label: "Skills mapping", d: "Map roles to measurable skills", href: routes.resourcesTools },
+      { label: "Customer success stories", d: "How 1,500+ teams hire on proof", href: routes.customers },
+      { label: "Competitors", d: "How Testlify compares", href: routes.resourcesCompetitors },
     ],
   },
   {
-    name: "Company",
-    tabDesc: "Customers, trust, careers & about",
-    cta: "Read success stories →",
-    ctaHref: routes.customers,
+    name: "Programs",
+    tabDesc: "Referral, partnership & integrations",
+    ctaHref: "#",
     icon: (
       <>
-        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-        <line x1="4" y1="22" x2="4" y2="15" />
+        <circle cx="18" cy="5" r="3" />
+        <circle cx="6" cy="12" r="3" />
+        <circle cx="18" cy="19" r="3" />
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
       </>
     ),
     subs: [
-      { label: "Success stories", d: "How 1,500+ teams hire on proof", href: routes.customers },
-      { label: "Integrations", d: "100+ native ATS connections", href: routes.integrations },
-      { label: "Trust center", d: "SOC 2, ISO 27001, GDPR", href: routes.security },
-      { label: "Partners", d: "Refer, resell or build with us", href: routes.partners },
-      { label: "About us", d: "Why we built Testlify", href: routes.about },
-      { label: "Careers", d: "Join the team behind Testlify", href: routes.careers },
+      { label: "Referral program", d: "Refer a team, earn rewards", href: "#" },
+      { label: "Partnership program", d: "Grow with Testlify", href: routes.partners },
+      { label: "Integration program", d: "Build on the Testlify API", href: "#" },
+      { label: "Sitemap", d: "Every page, in one place", href: routes.sitemap },
     ],
   },
 ];
@@ -358,31 +322,22 @@ const MOBILE_SECTIONS: MobileSection[] = [
     ],
   },
   {
-    key: "library",
-    label: "Library",
-    links: [
-      { label: "Test library", d: "3,500+ validated tests across every role", href: routes.testLibrary },
-      { label: "Interview library", d: "AI video, audio & chat interviews by role", href: routes.libraryInterviews },
-      { label: "Build your own", d: "Custom tests & questions, SME-reviewed", href: routes.libraryBuildYourOwn },
-    ],
-  },
-  {
     key: "solutions",
     label: "Solutions",
     links: [
+      { label: "By industry type", d: "IT, SaaS, finance, healthcare & more", href: routes.solutions },
       { label: "By use case", d: "Volume, remote, campus, technical & more", href: routes.solutions },
-      { label: "By industry", d: "IT, SaaS, finance, healthcare & more", href: routes.solutions },
-      { label: "By company size", d: "Startup to enterprise & public sector", href: routes.solutions },
       { label: "By test type", d: "Coding, cognitive, personality & more", href: "/solutions/coding-tests" },
+      { label: "By company type", d: "Startup to enterprise & public sector", href: routes.solutions },
     ],
   },
   {
     key: "resources",
     label: "Resources",
     links: [
-      { label: "Learn", d: "Blog, ebooks, glossary & podcast", href: routes.blog },
-      { label: "Templates & tools", d: "Ready-to-use hiring assets", href: routes.resourcesTools },
-      { label: "Company", d: "Customers, trust, careers & about", href: routes.customers },
+      { label: "Learn", d: "Blog, guides, glossary & podcast", href: routes.blog },
+      { label: "Tools & templates", d: "Calculators, JD templates & more", href: routes.resourcesTools },
+      { label: "Programs", d: "Referral, partnership & integrations", href: "#" },
     ],
   },
   {
@@ -571,40 +526,7 @@ export default function SiteHeader({
               </div>
             </div>
 
-            {/* Library mega */}
-            <div className="relative group">
-              <button className="inline-flex items-center gap-1.5 text-[15px] font-medium text-[#46383C] group-hover:text-coral transition-colors cursor-pointer bg-transparent border-0 py-1.5">
-                Library<span className="text-[8px] opacity-60 transition-transform duration-200 group-hover:rotate-180">▼</span>
-              </button>
-              <div className={megaPanel}>
-                <span className="absolute -top-[14px] left-0 right-0 h-[14px]" />
-                <div className="flex">
-                  <div className="flex flex-col gap-0.5 min-w-[300px] pt-0.5 mr-3.5">
-                    <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mb-2 px-2.5 mt-0.5">Browse the library</p>
-                    {LIBRARY.map((g) => (
-                      <Link
-                        key={g.label}
-                        href={g.href}
-                        className="flex items-start gap-[11px] py-[9px] px-2.5 rounded-[11px] transition-colors hover:bg-[#FFF4F3]"
-                      >
-                        <span className="shrink-0 w-[34px] h-[34px] rounded-[9px] bg-rose-100 text-coral flex items-center justify-center mt-px">
-                          <MegaIcon>{g.icon}</MegaIcon>
-                        </span>
-                        <span>
-                          <span className="block text-[14px] font-semibold text-ink leading-[1.25]">{g.label}</span>
-                          <span className="block text-[12px] text-[#9A878A] leading-[1.35] mt-0.5">{g.d}</span>
-                        </span>
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="w-[216px] bg-gradient-to-br from-[#FFF1F0] to-[#FFE7E4] rounded-[14px] p-[18px] flex flex-col justify-center gap-[7px]">
-                    <p className="text-[15px] font-bold text-[#1A0E10] m-0">One test, tests + interviews</p>
-                    <p className="text-[12.5px] text-[#6B4F52] m-0 leading-[1.45]">Mix any assessment with an AI interview to build one job-ready evaluation.</p>
-                    <Link href={routes.testLibrary} className="text-[13px] font-bold text-coral mt-1">Browse the library →</Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Link href={routes.pricing} className={navLink}>Pricing</Link>
 
             {/* Solutions mega */}
             <div className="relative group">
@@ -652,8 +574,6 @@ export default function SiteHeader({
               </div>
             </div>
 
-            <Link href={routes.pricing} className={navLink}>Pricing</Link>
-
             {/* Resources mega */}
             <div className="relative group">
               <button className="inline-flex items-center gap-1.5 text-[15px] font-medium text-[#46383C] group-hover:text-coral transition-colors cursor-pointer bg-transparent border-0 py-1.5">
@@ -690,11 +610,10 @@ export default function SiteHeader({
                         <span className="text-[12px] text-[#9A878A] leading-[1.35]">{s.d}</span>
                       </Link>
                     ))}
-                    <Link href={R.ctaHref} className="mt-1.5 text-[13px] font-bold text-coral px-3 py-2 hover:text-coral-deep">{R.cta}</Link>
                   </div>
                   <div className="w-[216px] bg-gradient-to-br from-[#FFF1F0] to-[#FFE7E4] rounded-[14px] p-[18px] flex flex-col justify-center gap-[7px]">
                     <p className="text-[15px] font-bold text-[#1A0E10] m-0">Free HR toolkit</p>
-                    <p className="text-[12.5px] text-[#6B4F52] m-0 leading-[1.45]">Job descriptions, interview kits and skills maps — ready to use.</p>
+                    <p className="text-[12.5px] text-[#6B4F52] m-0 leading-[1.45]">Job descriptions, interview kits and calculators — ready to use.</p>
                     <Link href={routes.resourcesTools} className="text-[13px] font-bold text-coral mt-1">Browse free tools →</Link>
                   </div>
                 </div>
@@ -820,8 +739,8 @@ export default function SiteHeader({
               </div>
             </div>
           );
-          // Pricing is a direct link that sits between Solutions and Resources.
-          return section.key === "resources" ? (
+          // Pricing is a direct link that sits between Product and Solutions.
+          return section.key === "solutions" ? (
             <Fragment key={section.key}>
               <Link href={routes.pricing} onClick={closeDrawer} className="block text-[18px] font-semibold text-ink py-[15px] px-1.5 border-b border-[#F4E8E9] hover:text-coral">Pricing</Link>
               {accordion}

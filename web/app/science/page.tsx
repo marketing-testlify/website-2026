@@ -20,23 +20,23 @@ export const metadata: Metadata = {
 const FAQ_ITEMS = [
   {
     q: "What is the purpose of talent assessments?",
-    a: "Talent assessments help organisations find the best people by providing objective insight into candidates' skills and aptitudes, predicting their chances of success in a role far better than a resume alone.",
+    a: "Talent assessments help organizations find the best people by providing insights into candidates’ technical skills and aptitudes to predict their chances of success in a job.",
   },
   {
-    q: "Are Testlify's assessments reliable?",
-    a: "Yes. Our tests are developed by subject-matter experts using proven psychometric frameworks and are continuously monitored for effectiveness, making them reliable and trustworthy.",
+    q: "Are talent assessments reliable?",
+    a: "Our talent assessments are developed by experts using proven frameworks and are constantly monitored for effectiveness, making them reliable and trustworthy.",
   },
   {
-    q: "How are the assessments designed for diversity?",
-    a: "The platform is engineered with diversity in mind and lets you hide details like name, gender, age or school, so every candidate is evaluated purely on merit with an equal opportunity.",
+    q: "How are talent assessments designed for diversity?",
+    a: "Our platform is designed with diversity in mind and allows organizations to hide details like gender, age, or race to ensure equal opportunities for all candidates.",
   },
   {
-    q: "What kind of insights do the assessments provide?",
-    a: "After candidates complete an assessment, Testlify generates reports and insights that help you understand each individual's strengths and gaps by skill, benchmark them and shortlist the best talent.",
+    q: "What kind of insights do talent assessments provide?",
+    a: "After candidates complete their assessments, reports, and insights are generated to help organizations better understand each individual’s strengths and weaknesses and select the best talent.",
   },
   {
     q: "How do talent assessments benefit recruiters?",
-    a: "They give recruiters objective, comparable data on every candidate's skills and aptitudes, making it faster and fairer to evaluate, compare and select the best fit for a role.",
+    a: "Talent assessments are a powerful tool for recruiters as they provide insights into candidates’ skills and aptitudes, making it easier to evaluate and compare individuals and select the best fit for a job.",
   },
 ];
 
@@ -70,12 +70,6 @@ const SKILLS: [string, string, string][] = [
   ["Data & analytics", "Proven", "81%"],
 ];
 
-/* audio wave bars: [height px, bright?] — exact heights/colors from the prototype */
-const WAVE: [number, boolean][] = [
-  [10, false], [22, false], [14, true], [30, true], [18, false], [26, true],
-  [12, false], [20, false], [8, false], [16, true], [24, false], [10, false],
-];
-
 /* ---------- shared class strings ---------- */
 
 const H2 =
@@ -87,13 +81,7 @@ const SEC = "px-7 py-24 max-[960px]:px-[22px] max-[960px]:py-[72px]";
 const WRAP = "max-w-[1240px] mx-auto px-7";
 const SPLIT =
   "grid grid-cols-1 min-[961px]:grid-cols-[1.02fr_1fr] gap-11 min-[961px]:gap-16 items-center";
-/* dark card lift: Tailwind v4 -translate-y-* sets `translate`, so the transition
-   list includes `translate` (never `transform`) */
-const DCARD =
-  "h-full bg-[#241417] border border-[#3A2529] rounded-[18px] p-[26px] transition-[translate,border-color] duration-300 ease-[cubic-bezier(.2,.7,.3,1)] hover:-translate-y-[5px] hover:border-coral";
-const DSICON =
-  "w-[46px] h-[46px] rounded-xl bg-[rgba(242,63,68,0.14)] text-coral-bright flex items-center justify-center mb-5";
-const DBODY = "text-[16px] leading-[1.66] text-[#C2B1B4] m-0 mb-[18px]";
+const LEARN_LINK = "inline-flex items-center gap-2 text-coral font-semibold text-[16px] mt-[26px]";
 
 /* ---------- small shared pieces ---------- */
 
@@ -125,14 +113,6 @@ function Chk({ children, small = false }: { children: ReactNode; small?: boolean
   );
 }
 
-function SparkIcon() {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6z" />
-    </svg>
-  );
-}
-
 function StarIcon() {
   return (
     <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -141,7 +121,7 @@ function StarIcon() {
   );
 }
 
-/** Browser-chrome mock window: traffic lights + address bar */
+/** Browser-chrome mock window: traffic lights + address bar (hero report) */
 function Mock({ bar, children }: { bar: string; children: ReactNode }) {
   return (
     <div className="bg-white border border-warm rounded-[20px] shadow-[0_40px_90px_rgba(110,11,14,0.16)] overflow-hidden">
@@ -154,6 +134,16 @@ function Mock({ bar, children }: { bar: string; children: ReactNode }) {
         </span>
       </div>
       {children}
+    </div>
+  );
+}
+
+/** Rounded, shadowed image panel — matches the prototype's split-section frame */
+function ImagePanel({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="rounded-[20px] overflow-hidden border border-warm shadow-[0_30px_60px_rgba(110,11,14,0.12)] bg-white">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} className="w-full h-auto block" />
     </div>
   );
 }
@@ -190,13 +180,13 @@ export default function Page() {
                 delay={0.06}
                 className="mt-[22px] mb-0 text-[62px] leading-[1.04] font-extrabold tracking-[-2px] text-ink max-[960px]:text-[44px] max-[960px]:tracking-[-1.4px]"
               >
-                The science behind
+                Made for people,
                 <br />
-                every <span className="text-coral">Testlify test.</span>
+                built on <span className="text-coral">science.</span>
               </Reveal>
               <Reveal as="p" delay={0.1} className={`${LEAD} text-body mt-[22px] mb-0 max-w-[520px]`}>
-                Reliable, valid, bias-tested assessments — built and reviewed by subject-matter experts and grounded in
-                psychometric best practice, so every score holds up to scrutiny.
+                The purpose of our talent assessments is to help organisations find the best people — an enjoyable
+                experience for candidates and simple for recruiters to evaluate and compare individuals.
               </Reveal>
               <Reveal delay={0.14} className="flex items-center gap-3.5 flex-wrap mt-8">
                 {/* transparent border equalizes height with the bordered secondary (prototype .ctabtn.v-primary override) */}
@@ -219,11 +209,12 @@ export default function Page() {
                 />
               </Reveal>
               <Reveal delay={0.18} className="flex items-center gap-[13px] flex-wrap text-[13.5px] text-muted font-semibold mt-[26px]">
-                <span>No credit card</span>
-                <span className="w-1 h-1 rounded-full bg-[#D9C7C9]" />
-                <span>7-day free trial</span>
-                <span className="w-1 h-1 rounded-full bg-[#D9C7C9]" />
-                <span>SOC 2 · ISO 27001 · GDPR</span>
+                <span className="inline-flex items-center gap-[7px]">
+                  <span className="text-coral font-bold">✓</span>7-day free trial
+                </span>
+                <span className="inline-flex items-center gap-[7px]">
+                  <span className="text-coral font-bold">✓</span>No credit card required
+                </span>
               </Reveal>
             </div>
 
@@ -289,302 +280,112 @@ export default function Page() {
         </div>
       </section>
 
-      {/* 2 · DEVELOPED BY EXPERTS (sand) */}
+      {/* 2 · DEVELOPED BY EXPERTS (sand) — text left, image right */}
       <section className={`bg-sand ${SEC}`}>
         <div className={WRAP}>
           <div className={SPLIT}>
             <Reveal>
               <Eyebrow>Developed by experts</Eyebrow>
-              <h2 className={`${H2} text-ink mb-5`}>Every test is built and reviewed by experts</h2>
-              <p className={`${LEAD} text-body mt-0 mb-[22px]`}>
-                Our tests are guided by proven psychometric frameworks that shape how every question is written,
-                reviewed and approved. Subject-matter experts author each area of expertise, and every test is
-                independently reviewed before it goes live.
+              <h2 className={`${H2} text-ink mb-5`}>Developed by experts</h2>
+              <p className={`${LEAD} text-body mt-0 mb-[18px]`}>
+                Our process of creating tests is guided by proven frameworks to maintain the highest standards
+                possible. These frameworks guide how all our tests are written, reviewed, and approved.
               </p>
-              <div className="flex flex-col gap-[15px]">
-                <Chk>
-                  <b className="text-ink">Proven frameworks</b> — consistent standards guide how every test is written.
-                </Chk>
-                <Chk>
-                  <b className="text-ink">Subject-matter experts</b> — questions authored by specialists in each field.
-                </Chk>
-                <Chk>
-                  <b className="text-ink">Independent review</b> — every test validated by experts before publication.
-                </Chk>
+              <div className="flex flex-col gap-[13px]">
+                <Chk>Subject-matter experts develop and structure questions for each area of expertise.</Chk>
+                <Chk>Guided by our testing team at every step.</Chk>
+                <Chk>Each test is further reviewed by experts before it goes live.</Chk>
               </div>
+              <Link href={routes.productFeatures} className={LEARN_LINK}>
+                Learn more<span>→</span>
+              </Link>
             </Reveal>
             <Reveal delay={0.08}>
-              <Mock bar="Test authoring & expert review">
-                <div className="p-5">
-                  <div className="bg-[#FCFAFA] border border-[#F1E6E7] rounded-[13px] py-3.5 px-4 flex gap-[11px] items-start mb-4">
-                    <span className="flex-none w-7 h-7 rounded-lg bg-coral flex items-center justify-center">
-                      <SparkIcon />
-                    </span>
-                    <div className="text-[13.5px] text-[#46383C] leading-[1.5]">
-                      Mid-level React developer — TypeScript, testing, accessibility. 30 minutes, mixed question types.
-                    </div>
-                  </div>
-                  <div className={`${PLABEL} tracking-[0.08em] text-faint mb-[11px]`}>Generated · 14 questions</div>
-                  <div className="flex flex-col gap-[9px]">
-                    {(
-                      [
-                        ["Q1", "Refactor a component to eliminate re-renders", "CODE", false],
-                        ["Q2", "Explain a tricky useEffect dependency bug", "OPEN", false],
-                        ["Q3", "Prioritise accessibility fixes before launch", "MCQ", true],
-                      ] as [string, string, string, boolean][]
-                    ).map(([q, text, tag, dim]) => (
-                      <div
-                        key={q}
-                        className={`flex items-center gap-[11px] py-3 px-3.5 border border-[#F1E6E7] rounded-[11px] ${
-                          dim ? "opacity-60" : ""
-                        }`.trim()}
-                      >
-                        <span className="text-[11px] text-coral font-bold">{q}</span>
-                        <span className="text-[13.5px] flex-1">{text}</span>
-                        <span
-                          className={`text-[10.5px] font-bold py-[3px] px-2 rounded-md ${
-                            dim ? "text-muted bg-[#F3EAEA]" : "text-coral bg-[#FFF0F0]"
-                          }`}
-                        >
-                          {tag}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Mock>
+              <ImagePanel
+                src="https://testlify.com/wp-content/uploads/2024/10/Developed-by-experts.png"
+                alt="Developed by experts"
+              />
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* 3 · INTELLIGENT MONITORING (white) */}
+      {/* 3 · INTELLIGENT MONITORING (white) — image left, text right */}
       <section id="chat" className={`bg-white ${SEC}`}>
         <div className={WRAP}>
           <div className={SPLIT}>
+            <Reveal delay={0.08}>
+              <ImagePanel
+                src="https://testlify.com/wp-content/uploads/2024/10/Intelligent-monitoring.png"
+                alt="Intelligent monitoring"
+              />
+            </Reveal>
             <Reveal className="order-2">
               <Eyebrow>Intelligent monitoring</Eyebrow>
-              <h2 className={`${H2} text-ink mb-5`}>We monitor every test&apos;s performance — continuously</h2>
-              <p className={`${LEAD} text-body mt-0 mb-[22px]`}>
-                Even after a test is published, we track its effectiveness with intelligent data monitoring —
-                gathering real hiring outcomes from customers and refining questions so every assessment stays
-                accurate and dependable.
+              <h2 className={`${H2} text-ink mb-5`}>Intelligent monitoring</h2>
+              <p className={`${LEAD} text-body mt-0 mb-[18px]`}>
+                Even after our tests are published, we monitor their effectiveness. We use intelligent data
+                monitoring to constantly assess and identify test performance.
               </p>
-              <div className="flex flex-col gap-[15px]">
-                <Chk>
-                  <b className="text-ink">Live performance tracking</b> — flag items that drift or underperform.
-                </Chk>
-                <Chk>
-                  <b className="text-ink">Outcome feedback</b> — real hiring results feed back into every test.
-                </Chk>
+              <div className="flex flex-col gap-[13px]">
+                <Chk>We gather feedback from customers on the candidates they hire and how they perform on the job.</Chk>
+                <Chk>Constant review and refining delivers advanced, accurate skills assessments you can depend upon.</Chk>
               </div>
-            </Reveal>
-            <Reveal delay={0.08} className="order-1">
-              <Mock bar="Item performance · test health">
-                <div className="p-5 flex flex-col gap-3">
-                  <div className="flex gap-2.5 items-start">
-                    <span className="flex-none w-[30px] h-[30px] rounded-[9px] bg-coral flex items-center justify-center">
-                      <SparkIcon />
-                    </span>
-                    <div className="bg-[#FCFAFA] border border-[#F1E6E7] rounded-[4px_13px_13px_13px] py-[11px] px-3.5 text-[13.5px] leading-[1.5] max-w-[80%]">
-                      A key account threatens to churn over a missed SLA. They&apos;re on the phone now. What&apos;s
-                      your first move?
-                    </div>
-                  </div>
-                  <div className="flex flex-row-reverse gap-2.5 items-start">
-                    <span className="flex-none w-[30px] h-[30px] rounded-[9px] bg-ink text-coral-bright flex items-center justify-center font-bold text-[12px]">
-                      RS
-                    </span>
-                    <div className="bg-ink text-[#F1E7E8] rounded-[13px_4px_13px_13px] py-[11px] px-3.5 text-[13.5px] leading-[1.5] max-w-[80%]">
-                      Acknowledge the miss directly, own it, and get the facts before promising anything. I&apos;d
-                      confirm impact, then offer a concrete recovery timeline.
-                    </div>
-                  </div>
-                  <div className="mt-1 flex items-center gap-2.5 py-3 px-3.5 rounded-xl bg-[#F1FBF4] border border-[#CBEBD5]">
-                    <span className="flex-none w-[26px] h-[26px] rounded-full bg-[#3DDC84] flex items-center justify-center">
-                      <CheckIcon size={14} stroke="#0A3D22" />
-                    </span>
-                    <div className="flex-1 text-[12.5px] text-[#1F7A46] font-semibold">
-                      Empathy + ownership + action detected
-                    </div>
-                    <span className="text-[18px] font-extrabold text-[#1F7A46]">9.1</span>
-                  </div>
-                </div>
-              </Mock>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* 4 · INSIGHTS THAT COUNT (dark) */}
-      <section className={`bg-ink text-[#F1E7E8] ${SEC}`}>
+      {/* 4 · DESIGNED FOR DIVERSITY (sand) — text left, image right */}
+      <section className={`bg-sand ${SEC}`}>
         <div className={WRAP}>
-          <div className="max-w-[660px] mx-auto mb-[52px] text-center">
-            <Reveal as="p" className="text-[12.5px] font-semibold tracking-[0.16em] uppercase text-[#C9A9AB] m-0 mb-[18px]">
-              Insights that count<b className="text-coral-bright font-semibold">.</b>
-            </Reveal>
-            <Reveal as="h2" delay={0.04} className={`${H2} text-white`}>
-              Insights you can act on
-            </Reveal>
-            <Reveal as="p" delay={0.08} className={`${LEAD} text-[#D3C3C6] mt-4 mb-0`}>
-              After every assessment, Testlify generates accurate, reliable reports — clear strengths and gaps by
-              skill, benchmarked and ready to compare — so you can confidently shortlist the best talent.
-            </Reveal>
-          </div>
-          <div className="grid grid-cols-1 min-[961px]:grid-cols-3 gap-5">
-            {/* open-ended */}
-            <Reveal delay={0.04}>
-              <div className={DCARD}>
-                <div className={DSICON}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <path d="M4 6h16M4 12h16M4 18h11" />
-                  </svg>
-                </div>
-                <h3 className={`${H3} text-white mb-2.5`}>Open-ended questions</h3>
-                <p className={DBODY}>
-                  Say goodbye to manual scoring. Get consistent, objective results and deeper insight on written
-                  responses.
-                </p>
-                <div className="bg-ink border border-[#3A2529] rounded-xl p-3.5">
-                  <div className="h-1.5 rounded-full bg-[#3A2529] mb-2 overflow-hidden">
-                    <div className="w-[88%] h-full bg-coral-bright" />
-                  </div>
-                  <div className="h-1.5 rounded-full bg-[#3A2529] w-[70%] overflow-hidden">
-                    <div className="w-[76%] h-full bg-coral" />
-                  </div>
-                  <div className="flex justify-between mt-3">
-                    <span className={`${PLABEL} tracking-[0.1em] text-[#8A6A6E]`}>Scored</span>
-                    <span className="text-[15px] font-extrabold text-coral-bright">8.6</span>
-                  </div>
-                </div>
+          <div className={SPLIT}>
+            <Reveal>
+              <Eyebrow>Designed for diversity</Eyebrow>
+              <h2 className={`${H2} text-ink mb-5`}>Designed for diversity</h2>
+              <p className={`${LEAD} text-body mt-0 mb-[18px]`}>
+                Diversity in the workplace is a priority more than ever. Our platform is engineered from the ground
+                up with diversity in mind. This ensures that every candidate is evaluated on their merits.
+              </p>
+              <div className="flex flex-col gap-[13px]">
+                <Chk>Constantly updated and refined to meet the needs of organizations committed to workplace diversity.</Chk>
+                <Chk>Hide details like gender, age or race so every candidate gets an equal chance at opportunities.</Chk>
               </div>
+              <Link href={routes.solutions} className={LEARN_LINK}>
+                More on diversity<span>→</span>
+              </Link>
             </Reveal>
-            {/* video */}
-            <Reveal delay={0.1}>
-              <div className={DCARD}>
-                <div className={DSICON}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <polygon points="23 7 16 12 23 17 23 7" />
-                    <rect x="1" y="5" width="15" height="14" rx="2" />
-                  </svg>
-                </div>
-                <h3 className={`${H3} text-white mb-2.5`}>Video interviews</h3>
-                <p className={DBODY}>
-                  Auto-scored one-way and live interviews for instant, unbiased results — with manual scoring on tap.
-                </p>
-                <div className="bg-ink border border-[#3A2529] rounded-xl overflow-hidden">
-                  <div
-                    className="relative h-[74px] flex items-center justify-center"
-                    style={{ background: "linear-gradient(135deg, #2C181C, #3A2529)" }}
-                  >
-                    <span className="w-9 h-9 rounded-full bg-[rgba(242,63,68,0.18)] flex items-center justify-center">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="#FF7A52" aria-hidden>
-                        <polygon points="5 3 19 12 5 21 5 3" />
-                      </svg>
-                    </span>
-                    <span className="absolute bottom-2 left-2.5 text-[10px] font-semibold text-[#C2B1B4]">02:14</span>
-                  </div>
-                  <div className="flex justify-between py-2.5 px-3.5">
-                    <span className={`${PLABEL} tracking-[0.1em] text-[#8A6A6E]`}>Auto-scored</span>
-                    <span className="text-[15px] font-extrabold text-coral-bright">9.0</span>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-            {/* audio */}
-            <Reveal delay={0.16}>
-              <div className={DCARD}>
-                <div className={DSICON}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
-                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                    <line x1="12" y1="19" x2="12" y2="23" />
-                  </svg>
-                </div>
-                <h3 className={`${H3} text-white mb-2.5`}>Audio questions</h3>
-                <p className={DBODY}>
-                  Evaluate verbal communication, clarity and linguistic proficiency with AI-driven audio scoring.
-                </p>
-                <div className="bg-ink border border-[#3A2529] rounded-xl py-4 px-3.5">
-                  <div className="flex items-center gap-[3px] h-[34px] mb-3">
-                    {WAVE.map(([h, bright], i) => (
-                      <div
-                        key={i}
-                        className={`w-[3px] rounded-[2px] ${bright ? "bg-coral-bright" : "bg-[#5A3A3E]"}`}
-                        style={{ height: h }}
-                      />
-                    ))}
-                  </div>
-                  <div className="flex justify-between">
-                    <span className={`${PLABEL} tracking-[0.1em] text-[#8A6A6E]`}>Clarity · Fluency</span>
-                    <span className="text-[15px] font-extrabold text-coral-bright">8.4</span>
-                  </div>
-                </div>
-              </div>
+            <Reveal delay={0.08}>
+              <ImagePanel
+                src="https://testlify.com/wp-content/uploads/2024/10/Designed-for-diversity.png"
+                alt="Designed for diversity"
+              />
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* 5 · DESIGNED FOR DIVERSITY (white) */}
+      {/* 5 · INSIGHTS THAT COUNT (white) — image left, text right */}
       <section className={`bg-white ${SEC}`}>
         <div className={WRAP}>
           <div className={SPLIT}>
             <Reveal delay={0.08}>
-              <Mock bar="Bias controls · Marketing Lead">
-                <div className="py-2">
-                  {(
-                    [
-                      ["eye", "Names, photos & schools hidden", "Blind screening · applied to all", "ON", "text-[#1F9D6B]", true],
-                      ["check", "Same rubric, every candidate", "318 assessed · consistent criteria", "DONE", "text-[#1F9D6B]", true],
-                      ["file", "Audit trail exported", "EEOC-defensible · PDF", "PDF", "text-muted", false],
-                    ] as [string, string, string, string, string, boolean][]
-                  ).map(([icon, title, sub, tag, tagColor, border]) => (
-                    <div
-                      key={title}
-                      className={`flex items-center gap-3 py-[15px] px-5 ${border ? "border-b border-[#F4ECEC]" : ""}`.trim()}
-                    >
-                      <span className="flex-none w-8 h-8 rounded-[9px] bg-[#FFF0F0] flex items-center justify-center">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="2" aria-hidden>
-                          {icon === "eye" && (
-                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
-                          )}
-                          {icon === "check" && (
-                            <>
-                              <path d="M9 11l3 3L22 4" />
-                              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-                            </>
-                          )}
-                          {icon === "file" && (
-                            <>
-                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                              <path d="M14 2v6h6" />
-                            </>
-                          )}
-                        </svg>
-                      </span>
-                      <div className="flex-1">
-                        <div className="text-[13.5px] font-semibold">{title}</div>
-                        <div className={`${PLABEL} tracking-[0.04em] text-faint`}>{sub}</div>
-                      </div>
-                      <span className={`text-[11px] font-bold ${tagColor}`}>{tag}</span>
-                    </div>
-                  ))}
-                </div>
-              </Mock>
+              <ImagePanel
+                src="https://testlify.com/wp-content/uploads/2024/10/Insights-that-count.png"
+                alt="Insights that count"
+              />
             </Reveal>
             <Reveal className="order-2">
-              <Eyebrow>Designed for diversity</Eyebrow>
-              <h2 className={`${H2} text-ink mb-5`}>Engineered for fair, bias-tested hiring</h2>
-              <p className={`${LEAD} text-body mt-0 mb-[22px]`}>
-                Mitigate bias to create equitable opportunity for every candidate. Attract diverse top talent that
-                aligns with your culture — and prove it with a defensible audit trail.
+              <Eyebrow>Insights that count</Eyebrow>
+              <h2 className={`${H2} text-ink mb-5`}>Insights that count</h2>
+              <p className={`${LEAD} text-body mt-0 mb-[18px]`}>
+                Our insights are accurate and reliable. After candidates complete their assessments, effortlessly
+                generate reports and insights. These insights help you and your team better understand each
+                individual&rsquo;s strengths and weaknesses.
               </p>
-              <div className="grid grid-cols-2 gap-[13px]">
-                <Chk small>Identify &amp; address bias effectively</Chk>
-                <Chk small>Build a diverse, inclusive workplace</Chk>
-                <Chk small>Ensure regulatory compliance</Chk>
-                <Chk small>Strengthen teams with fresh perspectives</Chk>
+              <div className="flex flex-col gap-[13px]">
+                <Chk>Understand each individual&rsquo;s strengths and weaknesses by skill.</Chk>
+                <Chk>Select the candidates that best meet your requirements to shortlist the best talent.</Chk>
               </div>
             </Reveal>
           </div>
@@ -599,10 +400,11 @@ export default function Page() {
               Integrations<b className="text-coral font-semibold">.</b>
             </Reveal>
             <Reveal as="h2" delay={0.06} className={`${H2} text-ink`}>
-              Connected to 100+ ATS tools
+              Testlify integrates seamlessly with 100+ ATS tools
             </Reveal>
             <Reveal as="p" delay={0.12} className={`${LEAD} text-body mt-3.5 mb-0`}>
-              Native two-way sync with Workday, Greenhouse, Lever and 97 more — no middleware, no data mapping.
+              Native integrations with Workday, Greenhouse, Lever, iCIMS and 97 more ATS platforms — no middleware,
+              no data mapping required.
             </Reveal>
           </div>
           <Reveal delay={0.16} className="grid grid-cols-3 min-[961px]:grid-cols-5 gap-3.5">
@@ -618,7 +420,7 @@ export default function Page() {
           </Reveal>
           <Reveal delay={0.2} className="text-center mt-[26px]">
             <Link href={routes.integrations} className="inline-flex items-center gap-2 text-coral font-semibold text-[16px]">
-              View all integrations<span>→</span>
+              View all ATS integrations<span>→</span>
             </Link>
           </Reveal>
         </div>
@@ -696,7 +498,11 @@ export default function Page() {
               FAQ<b className="text-coral font-semibold">.</b>
             </Reveal>
             <Reveal as="h2" delay={0.04} className={`${H2} text-ink`}>
-              Frequently asked questions
+              Frequently asked questions (FAQs)
+            </Reveal>
+            <Reveal as="p" delay={0.08} className={`${LEAD} text-body mt-3.5 mb-0`}>
+              Want to know more about Testlify? Here are answers to the most commonly asked questions about our
+              company.
             </Reveal>
           </div>
           <Reveal>
