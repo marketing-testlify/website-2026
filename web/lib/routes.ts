@@ -5,8 +5,8 @@
  */
 export const routes = {
   home: "/",
-  productTestlifyAi: "/product/testlify-ai",
-  aiResumeScreener: "/product/ai-resume-screener",
+  productTestlifyAi: "/ai-powered-talent-assessment-platform",
+  aiResumeScreener: "/ai-resume-screener",
   productSkillAssessments: "/product/skill-assessments",
   productVideoInterviewing: "/product/video-interviewing",
   productScience: "/product/science",

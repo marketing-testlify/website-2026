@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -143,6 +143,81 @@ function StarIcon() {
 /* ---------- page ---------- */
 
 export default function TestlifyAiClient() {
+  /* Hero H1 scramble-in: cycle random glyphs, settle left-to-right, then reveal
+     the final text. Respects prefers-reduced-motion (final text stays put). */
+  useEffect(() => {
+    const el = document.querySelector<HTMLElement>(".js-scramble");
+    if (!el) return;
+
+    const nodes: { node: Text; text: string; prev?: string }[] = [];
+    const walk = (n: Node) => {
+      n.childNodes.forEach((c) => {
+        if (c.nodeType === 3) {
+          if ((c.textContent ?? "").trim().length) {
+            nodes.push({ node: c as Text, text: c.textContent ?? "" });
+          }
+        } else {
+          walk(c);
+        }
+      });
+    };
+    walk(el);
+    if (!nodes.length) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const chars = "!<>-_\\/[]{}=+*^?#________";
+    const rnd = () => chars[Math.floor(Math.random() * chars.length)];
+    const total = nodes.reduce((a, n) => a + n.text.length, 0);
+    let revealed = 0;
+    let frame = 0;
+    let raf = 0;
+    let last = 0;
+
+    const run = (t: number) => {
+      // ~30ms/frame settle
+      if (t - last >= 30) {
+        last = t;
+        frame++;
+        revealed = Math.min(total, revealed + total / 26);
+        let acc = 0;
+        nodes.forEach((n) => {
+          let out = "";
+          for (let i = 0; i < n.text.length; i++) {
+            const gi = acc + i;
+            if (n.text[i] === " ") out += " ";
+            else if (gi < revealed) out += n.text[i];
+            else if (frame % 2 === 0 && Math.random() < 0.55) out += rnd();
+            else out += (n.prev && n.prev[i]) || rnd();
+          }
+          n.prev = out;
+          n.node.textContent = out;
+          acc += n.text.length;
+        });
+      }
+      if (revealed < total) {
+        raf = requestAnimationFrame(run);
+      } else {
+        nodes.forEach((n) => {
+          n.node.textContent = n.text;
+        });
+      }
+    };
+
+    const timer = window.setTimeout(() => {
+      raf = requestAnimationFrame(run);
+    }, 200);
+
+    return () => {
+      window.clearTimeout(timer);
+      cancelAnimationFrame(raf);
+      // restore final text if unmounted mid-animation
+      nodes.forEach((n) => {
+        n.node.textContent = n.text;
+      });
+    };
+  }, []);
+
   return (
     <>
       <SiteHeader
@@ -170,7 +245,7 @@ export default function TestlifyAiClient() {
               <Reveal
                 as="h1"
                 delay={0.06}
-                className="mt-[22px] mb-0 text-[62px] leading-[1.04] font-extrabold tracking-[-2px] text-ink max-[960px]:text-[44px] max-[960px]:tracking-[-1.4px]"
+                className="js-scramble mt-[22px] mb-0 text-[62px] leading-[1.04] font-extrabold tracking-[-2px] text-ink max-[960px]:text-[44px] max-[960px]:tracking-[-1.4px]"
               >
                 The AI talent
                 <br />
@@ -202,16 +277,13 @@ export default function TestlifyAiClient() {
                   className="[&>span:first-child]:w-6 [&>span:first-child]:h-6"
                 />
               </Reveal>
-              <Reveal delay={0.18} className="flex items-center gap-[13px] flex-wrap text-[13.5px] text-muted font-semibold mt-[26px]">
-                <span>No credit card</span>
-                <span className="w-1 h-1 rounded-full bg-[#D9C7C9]" />
-                <span>7-day free trial</span>
-                <span className="w-1 h-1 rounded-full bg-[#D9C7C9]" />
-                <span>SOC 2 · ISO 27001 · GDPR</span>
+              <Reveal delay={0.18} className="flex items-center gap-[18px] flex-wrap text-[14.5px] text-muted font-medium mt-[26px]">
+                <span className="inline-flex items-center gap-[7px]"><span className="text-coral font-bold">&#10003;</span>7-day free trial</span>
+                <span className="inline-flex items-center gap-[7px]"><span className="text-coral font-bold">&#10003;</span>No credit card required</span>
               </Reveal>
             </div>
 
-            <Reveal delay={0.12} className="relative">
+            <Reveal delay={0.12} className="relative top-5">
               <div className="absolute -top-4 left-6 z-[4] flex items-center gap-2 bg-ink text-white text-[12.5px] font-semibold py-[9px] px-[15px] rounded-xl shadow-[0_16px_34px_rgba(26,16,20,0.30)]">
                 <i className="inline-block w-[7px] h-[7px] rounded-full bg-[#3DDC84] shadow-[0_0_0_4px_rgba(61,220,132,0.2)]" />
                 Auto-scored — 0 manual review
@@ -404,16 +476,14 @@ export default function TestlifyAiClient() {
         </div>
       </section>
 
-      {/* 4 · AUTOMATED SCORING (dark) */}
-      <section className={`bg-ink text-[#F1E7E8] ${SEC}`}>
+      {/* 4 · AUTOMATED SCORING (sand) */}
+      <section className={`bg-sand ${SEC}`}>
         <div className={WRAP}>
           <div className={`${SPLIT} items-center`}>
             <Reveal>
-              <p className="text-[12.5px] font-semibold tracking-[0.16em] uppercase text-[#C9A9AB] m-0 mb-[18px]">
-                Automated scoring<b className="text-coral-bright font-semibold">.</b>
-              </p>
-              <h2 className={`${H2} text-white mb-[18px]`}>Score every answer format — automatically</h2>
-              <p className={`${LEAD} text-[#D3C3C6] mt-0 mb-[26px] max-w-[460px]`}>
+              <Eyebrow>Automated scoring</Eyebrow>
+              <h2 className={`${H2} text-ink mb-[18px]`}>Score every answer format — automatically</h2>
+              <p className={`${LEAD} text-body mt-0 mb-[26px] max-w-[460px]`}>
                 AI-driven analysis eliminates tedious manual scoring — consistent, objective, bias-free results across
                 text, video and audio, with manual override whenever you want it.
               </p>
@@ -426,13 +496,13 @@ export default function TestlifyAiClient() {
                   ] as [string, string][]
                 ).map(([bold, rest]) => (
                   <div key={bold} className="flex gap-[13px] items-start">
-                    <span className="flex-none w-[26px] h-[26px] rounded-lg bg-[rgba(242,63,68,0.16)] text-coral-bright flex items-center justify-center mt-px">
+                    <span className="flex-none w-[26px] h-[26px] rounded-lg bg-rose-100 text-coral flex items-center justify-center mt-px">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </span>
-                    <p className="text-[16px] leading-[1.66] text-[#C2B1B4] m-0">
-                      <b className="text-white">{bold}</b>
+                    <p className="text-[16px] leading-[1.66] text-body m-0">
+                      <b className="text-ink">{bold}</b>
                       {rest}
                     </p>
                   </div>
@@ -440,65 +510,65 @@ export default function TestlifyAiClient() {
               </div>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="bg-[#241417] border border-[#3A2529] rounded-[18px] overflow-hidden transition-[translate,border-color] duration-300 ease-[cubic-bezier(.2,.7,.3,1)] hover:-translate-y-[5px] hover:border-coral">
+              <div className="bg-white border border-warm rounded-[18px] overflow-hidden shadow-[0_16px_30px_rgba(110,11,14,0.10)] transition-[translate,border-color] duration-300 ease-[cubic-bezier(.2,.7,.3,1)] hover:-translate-y-[5px] hover:border-[#FBD0D1]">
                 {/* header */}
-                <div className="flex items-center justify-between py-4 px-5 border-b border-[#3A2529]">
-                  <span className="text-[13.5px] font-bold text-white">Scoring feed · Marketing Lead</span>
-                  <span className="inline-flex items-center gap-[7px] text-[11px] font-bold tracking-[0.04em] text-[#FF9E7A]">
+                <div className="flex items-center justify-between py-4 px-5 border-b border-warm">
+                  <span className="text-[13.5px] font-bold text-ink">Scoring feed · Marketing Lead</span>
+                  <span className="inline-flex items-center gap-[7px] text-[11px] font-bold tracking-[0.04em] text-coral">
                     <span className="w-[7px] h-[7px] rounded-full bg-[#3DDC84] shadow-[0_0_0_4px_rgba(61,220,132,0.18)]" />
                     AUTO-SCORING
                   </span>
                 </div>
                 {/* open-ended row */}
-                <div className="flex items-center gap-[15px] py-[18px] px-5 border-b border-[#2C181C]">
-                  <span className="flex-none w-10 h-10 rounded-xl bg-[rgba(242,63,68,0.14)] text-coral-bright flex items-center justify-center">
+                <div className="flex items-center gap-[15px] py-[18px] px-5 border-b border-[#F4ECEC]">
+                  <span className="flex-none w-10 h-10 rounded-xl bg-rose-100 text-coral flex items-center justify-center">
                     <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                       <path d="M4 6h16M4 12h16M4 18h11" />
                     </svg>
                   </span>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[13.5px] font-bold text-white mb-[7px]">Open-ended question</div>
-                    <div className="h-[5px] rounded-full bg-[#3A2529] mb-1.5 overflow-hidden">
+                    <div className="text-[13.5px] font-bold text-ink mb-[7px]">Open-ended question</div>
+                    <div className="h-[5px] rounded-full bg-[#F4E7E8] mb-1.5 overflow-hidden">
                       <div className="w-[88%] h-full bg-coral-bright" />
                     </div>
-                    <div className="h-[5px] rounded-full bg-[#3A2529] w-[70%] overflow-hidden">
+                    <div className="h-[5px] rounded-full bg-[#F4E7E8] w-[70%] overflow-hidden">
                       <div className="w-[76%] h-full bg-coral" />
                     </div>
                   </div>
-                  <span className="flex-none text-[20px] font-extrabold text-coral-bright tracking-[-0.5px]">8.6</span>
+                  <span className="flex-none text-[20px] font-extrabold text-coral tracking-[-0.5px]">8.6</span>
                 </div>
                 {/* video row */}
-                <div className="flex items-center gap-[15px] py-[18px] px-5 border-b border-[#2C181C]">
-                  <span className="flex-none w-14 h-10 rounded-[9px] flex items-center justify-center relative" style={{ background: "linear-gradient(135deg,#2C181C,#3A2529)" }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF7A52" aria-hidden>
+                <div className="flex items-center gap-[15px] py-[18px] px-5 border-b border-[#F4ECEC]">
+                  <span className="flex-none w-14 h-10 rounded-[9px] flex items-center justify-center relative" style={{ background: "linear-gradient(135deg,#FFF0EF,#FCE0DE)" }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#F23F44" aria-hidden>
                       <polygon points="5 3 19 12 5 21 5 3" />
                     </svg>
                   </span>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[13.5px] font-bold text-white mb-[3px]">Video interview</div>
-                    <div className="text-[11px] font-bold uppercase tracking-[0.04em] text-[#8A6A6E]">02:14 · communication &amp; structure</div>
+                    <div className="text-[13.5px] font-bold text-ink mb-[3px]">Video interview</div>
+                    <div className={`${PLABEL} tracking-[0.04em] text-muted`}>02:14 · communication &amp; structure</div>
                   </div>
-                  <span className="flex-none text-[20px] font-extrabold text-coral-bright tracking-[-0.5px]">9.0</span>
+                  <span className="flex-none text-[20px] font-extrabold text-coral tracking-[-0.5px]">9.0</span>
                 </div>
                 {/* audio row */}
                 <div className="flex items-center gap-[15px] py-[18px] px-5">
                   <div className="flex-none w-14 flex items-center gap-[3px] h-[34px]">
                     {WAVE.map(([h, bright], i) => (
-                      <div key={i} className={`w-[3px] rounded-[2px] ${bright ? "bg-coral-bright" : "bg-[#5A3A3E]"}`} style={{ height: h }} />
+                      <div key={i} className={`w-[3px] rounded-[2px] ${bright ? "bg-coral-bright" : "bg-[#E7D3D5]"}`} style={{ height: h }} />
                     ))}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[13.5px] font-bold text-white mb-[3px]">Audio question</div>
-                    <div className="text-[11px] font-bold uppercase tracking-[0.04em] text-[#8A6A6E]">Clarity · fluency · pronunciation</div>
+                    <div className="text-[13.5px] font-bold text-ink mb-[3px]">Audio question</div>
+                    <div className={`${PLABEL} tracking-[0.04em] text-muted`}>Clarity · fluency · pronunciation</div>
                   </div>
-                  <span className="flex-none text-[20px] font-extrabold text-coral-bright tracking-[-0.5px]">8.4</span>
+                  <span className="flex-none text-[20px] font-extrabold text-coral tracking-[-0.5px]">8.4</span>
                 </div>
                 {/* overall footer */}
-                <div className="flex items-center justify-between py-3.5 px-5 bg-ink border-t border-[#3A2529]">
-                  <span className="text-[11px] font-bold uppercase tracking-[0.04em] text-[#8A6A6E]">Overall · weighted</span>
+                <div className="flex items-center justify-between py-3.5 px-5 bg-sand border-t border-warm">
+                  <span className={`${PLABEL} tracking-[0.04em] text-muted`}>Overall · weighted</span>
                   <span className="flex items-center gap-2.5">
-                    <span className="text-[11px] font-bold text-[#8A6A6E]">Manual override available</span>
-                    <span className="text-[15px] font-extrabold text-white bg-[rgba(242,63,68,0.18)] rounded-lg py-1 px-[11px]">8.7</span>
+                    <span className="text-[11px] font-bold text-muted">Manual override available</span>
+                    <span className="text-[15px] font-extrabold text-coral bg-[#FFE7E6] rounded-lg py-1 px-[11px]">8.7</span>
                   </span>
                 </div>
               </div>
