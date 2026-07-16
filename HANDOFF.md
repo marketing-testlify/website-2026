@@ -56,6 +56,11 @@ Each new export is a set of `*.dc.html` prototypes. To update the code:
   smooth-scroll. If exact GSAP/Lenis parity is ever wanted, that's a follow-up.
 - **Hub cards without a detail page render non-linking** (not 404) — glossary
   terms, tool "generator" cards, competitor cards.
+- **Real images, never mocks** (standing rule — see `web/PORTING_GUIDE.md` §Images):
+  when a prototype uses a real `<img>`/`<video>` (hosted testlify.com screenshot,
+  local `images/` asset, compliance badge, ATS logo, avatar, product video), wire
+  the real asset — do not recreate it as a styled mock. Replace existing mocks
+  when the current prototype has switched to a real image.
 - Prototype-runtime concerns that are **N/A** to this stack: the footer's global
   auto-reveal JS and responsive-CSS safety net (we use `Reveal` + Tailwind
   responsive utilities); HTML-entity/`crossorigin` noise in diffs.

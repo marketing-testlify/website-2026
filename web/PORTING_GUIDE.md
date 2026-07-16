@@ -78,10 +78,28 @@ solutions, integrations, customers, blog, blogArticle, resources, about, careers
 security, legal, sectionTemplates. Preserve `#anchors`:
 `` `${routes.solutions}#volume-hiring` ``. External/`#` placeholders stay as `<a href="#">`.
 
-## Images
-Prototype hot-links `https://testlify.com/…`. Use plain `<img>` (NOT next/image)
-with the same `src`, and put `{/* eslint-disable-next-line @next/next/no-img-element */}`
-on the line directly above every `<img>`.
+## Images — ALWAYS use the real image, never a mock
+**Standing rule:** whenever a prototype uses a real `<img>` — a hosted
+`https://testlify.com/…` screenshot, a local `images/…` asset, a compliance
+badge, an ATS logo, an avatar photo, a `<video>` — wire the REAL asset. Do NOT
+recreate it as a styled/HTML "mock" panel. (Older prototypes used placeholder
+`image-slot` blocks, which we used to recreate as mocks — that is no longer the
+default. A mock is acceptable ONLY where the current prototype itself still ships
+an `image-slot` placeholder, not a real `<img>`.)
+
+- Hosted images (`https://testlify.com/…`): use plain `<img>` with the same
+  `src` — NOT next/image.
+- Local assets (`images/foo.png` in an export): copy the file into
+  `web/public/images/` and reference `/images/foo.png`.
+- `<video>`: use the real `src` (e.g. the product-overview MP4), with the
+  prototype's poster/controls/overlay.
+- Put `{/* eslint-disable-next-line @next/next/no-img-element */}` on the line
+  directly above every `<img>` (one inside a `.map()` covers the loop).
+- Match the prototype's exact sizing / object-fit / object-position / alt text.
+
+When updating an existing page, if it currently renders a styled mock where the
+current prototype has a real `<img>`/`<video>`, replace the mock with the real
+asset.
 
 ## Interactivity
 Tabs / accordions / carousels / drag / filters → make a client component
