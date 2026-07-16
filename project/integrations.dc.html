@@ -39,7 +39,20 @@ a{text-decoration:none;color:inherit;}
 .intgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
 .intcard{display:flex;flex-direction:column;background:#fff;border:1px solid #EFE2E3;border-radius:18px;padding:22px;transition:transform .22s ease, box-shadow .22s ease, border-color .22s;}
 .intcard:hover{transform:translateY(-4px);box-shadow:0 20px 42px rgba(110,11,14,.10);border-color:#F4D2D3;}
-.intlogo{width:46px;height:46px;border-radius:12px;background:#FBF3EE;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#C0242B;margin-bottom:14px;}
+.intlogo{width:64px;height:64px;border-radius:14px;background:#FBF3EE;background-size:44px 44px;background-repeat:no-repeat;background-position:center;display:flex;align-items:center;justify-content:center;margin-bottom:16px;overflow:hidden;transition:transform .3s cubic-bezier(.2,.7,.3,1),background-color .3s;}
+.intlogo img{max-width:44px;max-height:44px;object-fit:contain;transition:transform .3s cubic-bezier(.2,.7,.3,1);}
+.intcard:hover .intlogo{transform:scale(1.06);background-color:#FFF0EF;}
+.intload{display:flex;justify-content:center;margin-top:36px;}
+.intloadbtn{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #EADDDE;color:#1A1014;font-family:inherit;font-weight:600;font-size:15px;padding:13px 26px;border-radius:13px;cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.intloadbtn:hover{transform:translateY(-2px);border-color:#F2B7B9;box-shadow:0 10px 24px rgba(110,11,14,.08);}
+.intspin{width:16px;height:16px;border-radius:50%;border:2px solid #F4D2D3;border-top-color:#F23F44;animation:intspin .7s linear infinite;}
+@keyframes intspin{to{transform:rotate(360deg);}}
+.intnative{display:inline-flex;align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#1F9D6B;background:#E7F6EE;padding:3px 10px;border-radius:100px;margin-bottom:10px;}
+.isearch{display:flex;align-items:center;gap:10px;max-width:none;margin:28px 0 0;background:#fff;border:1px solid #EFE2E3;border-radius:12px;padding:12px 16px;box-shadow:0 8px 20px rgba(110,11,14,.05);}
+.isearch input{border:none;outline:none;font-family:inherit;font-size:15px;color:#1A1014;flex:1;background:transparent;}
+.isearch svg{color:#A9999C;flex:none;}
+.intmore{text-align:center;margin-top:34px;}
+.intmore a{display:inline-flex;align-items:center;gap:8px;color:#F23F44;font-weight:700;font-size:15.5px;}
 .intname{font-size:15.5px;font-weight:700;margin:0 0 4px;}
 .intcat{font-size:12px;color:#A9999C;font-weight:600;margin:0 0 12px;}
 .intdesc{font-size:13px;color:#6A5A5D;line-height:1.5;margin:0 0 14px;}
@@ -60,24 +73,24 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 </style>
 </helmet>
 <dc-import name="component-site-header" announcement="New · Native two-way sync with Workday" announcement-cta="View integration" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
-<section class="ihero"><div class="wrap" style="max-width:820px;">
+<section class="ihero"><div class="wrap" style="max-width:860px;">
   <p class="eyebrow reveal">Integrations<b>.</b></p>
-  <h1 class="h1 reveal" style="transition-delay:.04s">Testlify works with<br>your whole stack</h1>
-  <p class="lead reveal" style="margin:22px auto 0;max-width:600px;transition-delay:.08s">Connect Testlify to your ATS, HRIS and the tools your team already uses. 100+ native integrations, plus an open API and webhooks for everything else.</p>
-  <div class="reveal cats" style="transition-delay:.12s">
-    <button class="cat {{ c0 }}" onClick="{{ all }}">All</button>
-    <button class="cat {{ c1 }}" onClick="{{ ats }}">ATS</button>
-    <button class="cat {{ c2 }}" onClick="{{ hris }}">HRIS</button>
-    <button class="cat {{ c3 }}" onClick="{{ comms }}">Communication</button>
-    <button class="cat {{ c4 }}" onClick="{{ auto }}">Automation</button>
+  <h1 class="h1 reveal" style="transition-delay:.04s">Testlify integration with third-party platforms</h1>
+  <p class="lead reveal" style="margin:22px auto 0;max-width:640px;transition-delay:.08s">Our platform is designed with integration in mind and can be seamlessly connected to a variety of third-party tools including applicant tracking, communications, email tools, and more.</p>
+  <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px;transition-delay:.1s;">
+    <dc-import name="component-cta-button" label="Book a demo" href="contact.dc.html" variant="primary" size="md" icon="arrow" magnetic="true" hint-size="150px,52px"></dc-import>
+    <dc-import name="component-cta-button" label="API docs" href="#" variant="secondary" size="md" icon="none" hint-size="130px,52px"></dc-import>
   </div>
+  <div class="reveal isearch" style="transition-delay:.14s;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><input placeholder="Search integrations" onInput="{{ onSearch }}" value="{{ query }}"></div>
 </div></section>
 <section style="padding:18px 28px 0;"><div class="wrap">
   <div class="intgrid">
-    <sc-for list="{{ shown }}" as="it" hint-placeholder-count="12">
-      <div class="intcard reveal in"><span class="intlogo">{{ it.mark }}</span><p class="intname">{{ it.name }}</p><p class="intcat">{{ it.cat }}</p><p class="intdesc">{{ it.desc }}</p><span class="intlink">Connect →</span></div>
+    <sc-for list="{{ shown }}" as="it">
+      <div class="intcard reveal in"><div class="intlogo" style="background-image:url({{ it.logo }})"></div><span class="intnative">{{ it.tag }}</span><p class="intname">{{ it.name }}</p><p class="intcat">{{ it.cat }}</p></div>
     </sc-for>
   </div>
+  <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}"><div class="intload"><button class="intloadbtn" onClick="{{ loadMore }}"><sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><span class="intspin"></span>Loading…</sc-if><sc-if value="{{ notLoading }}" hint-placeholder-val="{{ true }}">Load more integrations</sc-if></button></div></sc-if>
+  <div class="intmore reveal"><a href="#">Explore all 100+ native integrations<span>→</span></a></div>
 </div></section>
 <section class="sec" style="padding-top:84px;"><div class="wrap">
   <div style="max-width:640px;margin:0 auto 44px;text-align:center;">
@@ -103,7 +116,8 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { cat:'all' };
+  state = { query:'', limit:8, loading:false };
+  loadMore(){ if(this.state.loading) return; this.setState({loading:true}); setTimeout(()=>this.setState(s=>({limit:s.limit+8, loading:false})), 650); }
   componentDidMount(){
     const sweep = ()=>{
       const vh = window.innerHeight || document.documentElement.clientHeight;
@@ -127,27 +141,36 @@ class Component extends DCLogic {
   }
   componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); }
   renderVals(){
+    const B='https://testlify.com/wp-content/uploads/';
     const DATA = [
-      {name:'Greenhouse',cat:'ATS',group:'ats',mark:'GH',desc:'Sync candidates and push assessment scores straight into Greenhouse.'},
-      {name:'Lever',cat:'ATS',group:'ats',mark:'L',desc:'Trigger Testlify assessments from any Lever pipeline stage.'},
-      {name:'Workday',cat:'ATS',group:'ats',mark:'W',desc:'Enterprise two-way sync for candidates, stages and results.'},
-      {name:'SmartRecruiters',cat:'ATS',group:'ats',mark:'SR',desc:'Add skills screening to your SmartRecruiters workflow.'},
-      {name:'Ashby',cat:'ATS',group:'ats',mark:'A',desc:'Native integration for modern, data-driven recruiting teams.'},
-      {name:'BambooHR',cat:'HRIS',group:'hris',mark:'B',desc:'Move new hires from assessment to onboarding seamlessly.'},
-      {name:'Workable',cat:'ATS',group:'ats',mark:'Wk',desc:'Send tests and receive scorecards without leaving Workable.'},
-      {name:'SAP SuccessFactors',cat:'HRIS',group:'hris',mark:'SF',desc:'Connect Testlify to your global SuccessFactors instance.'},
-      {name:'Slack',cat:'Communication',group:'comms',mark:'Sl',desc:'Get notified the moment a candidate completes an assessment.'},
-      {name:'Microsoft Teams',cat:'Communication',group:'comms',mark:'T',desc:'Share results and collaborate on shortlists inside Teams.'},
-      {name:'Zapier',cat:'Automation',group:'auto',mark:'Z',desc:'Connect Testlify to 6,000+ apps with no-code automations.'},
-      {name:'Gmail',cat:'Communication',group:'comms',mark:'G',desc:'Invite candidates and send reminders from your own inbox.'},
+      {name:'Workday',cat:'ATS',tag:'Native',logo:B+'2023/01/Workday-230x230-1.png'},
+      {name:'SAP SuccessFactors',cat:'ATS',tag:'Native',logo:B+'2023/01/SAP-SuccessFactors-230x230-1.png'},
+      {name:'Lever',cat:'ATS',tag:'Native',logo:B+'2023/01/Lever.png'},
+      {name:'Greenhouse',cat:'ATS',tag:'Native',logo:B+'2023/01/greenhouse-230x230-1.png'},
+      {name:'BambooHR',cat:'ATS',tag:'Native',logo:B+'2023/01/BambooHR.png'},
+      {name:'Workable',cat:'ATS',tag:'Native',logo:B+'2023/01/Workable.png'},
+      {name:'UKG Pro Recruiting',cat:'ATS',tag:'Native',logo:B+'2023/01/UKG-Pro-Recruiting.png'},
+      {name:'SmartRecruiters',cat:'ATS',tag:'Native',logo:B+'2023/01/SmartRecruiters.png'},
+      {name:'Fountain',cat:'ATS',tag:'Native',logo:B+'2023/01/download-5.png'},
+      {name:'Pinpoint',cat:'ATS',tag:'Native',logo:B+'2023/01/Pinpoint.png'},
+      {name:'Teamtailor',cat:'ATS',tag:'Native',logo:B+'2023/01/Teamtailor.png'},
+      {name:'Manatal',cat:'ATS',tag:'Native',logo:B+'2024/08/Manatal.png'},
+      {name:'JazzHR',cat:'ATS',tag:'Native',logo:B+'2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png?wsr'},
+      {name:'Zoho Recruit',cat:'ATS',tag:'Native',logo:B+'2024/08/zoho-recruit-logo-1.png'},
+      {name:'Recruitee',cat:'ATS',tag:'Native',logo:B+'2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png?wsr'}
     ];
-    const c = this.state.cat;
-    const shown = c==='all' ? DATA : DATA.filter(d=>d.group===c);
-    const cls = (k)=> c===k ? 'on' : '';
+    const q = (this.state.query||'').toLowerCase().trim();
+    const filtered = q ? DATA.filter(d=>d.name.toLowerCase().includes(q)) : DATA;
+    const limit = this.state.limit;
+    const shown = filtered.slice(0, limit);
+    const loading = !!this.state.loading;
     return {
       shown,
-      c0:cls('all'),c1:cls('ats'),c2:cls('hris'),c3:cls('comms'),c4:cls('auto'),
-      all:()=>this.setState({cat:'all'}), ats:()=>this.setState({cat:'ats'}), hris:()=>this.setState({cat:'hris'}), comms:()=>this.setState({cat:'comms'}), auto:()=>this.setState({cat:'auto'}),
+      query: this.state.query || '',
+      onSearch: (e)=>this.setState({ query: e.target.value, limit:8 }),
+      hasMore: filtered.length > shown.length,
+      loading, notLoading: !loading,
+      loadMore: ()=>this.loadMore()
     };
   }
 }

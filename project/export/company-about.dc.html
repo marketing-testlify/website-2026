@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+a{text-decoration:none;color:inherit;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+.sec{padding:104px 28px;}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8A7A7D;margin:0 0 18px;}
+.eyebrow b{color:#F23F44;font-weight:600;}
+.h1{font-size:62px;line-height:1.04;font-weight:800;letter-spacing:-2px;margin:0;color:#1A1014;}
+.h2{font-size:43px;line-height:1.08;font-weight:800;letter-spacing:-1.4px;margin:0;color:#1A1014;}
+.h3{font-size:22px;line-height:1.25;font-weight:700;letter-spacing:-.4px;margin:0;color:#1A1014;}
+.lead{font-size:19px;line-height:1.6;color:#5A4B4E;font-weight:400;}
+.body{font-size:16px;line-height:1.66;color:#5A4B4E;}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;padding:14px 26px;border-radius:13px;transition:transform .25s ease, box-shadow .25s ease;cursor:pointer;border:none;}
+.btn-primary{background:#F23F44;color:#fff;box-shadow:0 12px 26px rgba(242,63,68,.30);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(242,63,68,.40);}
+.btn-ghost{background:#fff;color:#1A1014;border:1.5px solid #EADDDE;}
+.btn-ghost:hover{transform:translateY(-2px);border-color:#F2B7B9;box-shadow:0 10px 24px rgba(110,11,14,.08);}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.ahero{padding:64px 28px 40px;background:radial-gradient(1100px 520px at 50% -10%,#FFF0EE 0%,rgba(255,240,238,0) 62%),#fff;text-align:center;}
+.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;}
+.statn{font-size:52px;font-weight:800;letter-spacing:-2px;color:#F23F44;line-height:1;}
+.valgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.valcard{background:#fff;border:1px solid #EFE2E3;border-radius:20px;padding:30px 26px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;}
+.valcard:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(110,11,14,.10);border-color:#F4D2D3;}
+.valic{width:46px;height:46px;border-radius:13px;background:#FFF0F0;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.tmember{text-align:center;}
+.tav{width:96px;height:96px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:30px;}
+.tname{font-size:16px;font-weight:700;margin:0;}
+.trole{font-size:13px;color:#9A878A;margin:4px 0 0;}
+.tl{position:relative;padding-left:30px;border-left:2px solid #F1DDDE;display:flex;flex-direction:column;gap:30px;}
+.tlitem{position:relative;}
+.tldot{position:absolute;left:-39px;top:2px;width:16px;height:16px;border-radius:50%;background:#F23F44;border:4px solid #fff;box-shadow:0 0 0 2px #F4D2D3;}
+.tlyear{font-size:14px;font-weight:800;color:#F23F44;margin:0 0 4px;}
+@media(max-width:920px){
+  .h1{font-size:42px;letter-spacing:-1.4px;}
+  .h2{font-size:32px;letter-spacing:-1px;}
+  .sec{padding:72px 22px;}
+  .statgrid{grid-template-columns:1fr 1fr;}
+  .valgrid{grid-template-columns:1fr;}
+  .team{grid-template-columns:1fr 1fr;}
+}
+</style>
+</helmet>
+<dc-import name="component-site-header" announcement="We're hiring across product, engineering and GTM" announcement-cta="See openings" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+<section class="ahero"><div class="wrap" style="max-width:840px;">
+  <p class="eyebrow reveal">About us<b>.</b></p>
+  <h1 class="h1 reveal" style="transition-delay:.04s">Hiring should be<br>about skill, not luck</h1>
+  <p class="lead reveal" style="margin:22px auto 0;max-width:620px;transition-delay:.08s">We started Testlify because the best person for a job is so often missed — filtered out by a keyword, a school, or a gut feeling. We're building the platform that puts proven ability first.</p>
+</div></section>
+<section style="padding:30px 28px 0;"><div class="wrap">
+  <div class="statgrid reveal">
+    <div><div class="statn">12,000+</div><p class="body" style="font-size:14px;margin:10px 0 0;">teams hiring with us</p></div>
+    <div><div class="statn">3,500+</div><p class="body" style="font-size:14px;margin:10px 0 0;">validated tests</p></div>
+    <div><div class="statn">8M+</div><p class="body" style="font-size:14px;margin:10px 0 0;">assessments taken</p></div>
+    <div><div class="statn">120+</div><p class="body" style="font-size:14px;margin:10px 0 0;">countries served</p></div>
+  </div>
+</div></section>
+<section class="sec"><div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+  <div class="reveal">
+    <p class="eyebrow">Our mission<b>.</b></p>
+    <h2 class="h2" style="margin-bottom:20px;">Open the door to opportunity for everyone</h2>
+    <p class="body">Talent is everywhere — opportunity isn't. Traditional hiring rewards the candidates who look right on paper and quietly overlooks millions of others.</p>
+    <p class="body" style="margin-top:14px;">Testlify replaces guesswork with evidence. By measuring what people can actually do, we help companies find better hires while giving every candidate a fair shot, regardless of background.</p>
+  </div>
+  <div class="reveal" style="transition-delay:.08s;background:linear-gradient(160deg,#FFF4F3,#FBE9E9);border:1px solid #F6DCDD;border-radius:24px;padding:40px;">
+    <p class="h3" style="font-size:24px;line-height:1.4;font-weight:600;">"The question was never 'who has the best résumé?' It was always 'who can do the job best?' We built Testlify to finally answer it."</p>
+    <p class="body" style="font-size:14px;margin-top:20px;font-weight:600;color:#1A1014;">— The Testlify founders</p>
+  </div>
+</div></section>
+<section class="sec" style="background:#FBF3EE;"><div class="wrap">
+  <div style="max-width:640px;margin:0 auto 44px;text-align:center;">
+    <p class="eyebrow reveal">Our values<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">What we stand for</h2>
+  </div>
+  <div class="valgrid">
+    <div class="valcard reveal"><span class="valic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Fairness first</h3><p class="body" style="font-size:14px;">Every product decision starts with one question: does this make hiring more fair?</p></div>
+    <div class="valcard reveal" style="transition-delay:.06s"><span class="valic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></span><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Evidence over opinion</h3><p class="body" style="font-size:14px;">We trust data, run the experiment, and let results — not hierarchy — win the argument.</p></div>
+    <div class="valcard reveal" style="transition-delay:.12s"><span class="valic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"></path></svg></span><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Move with urgency</h3><p class="body" style="font-size:14px;">Hiring teams can't wait. We ship fast, learn faster, and obsess over our customers' time.</p></div>
+  </div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div style="max-width:640px;margin:0 auto 44px;text-align:center;">
+    <p class="eyebrow reveal">Leadership<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">The team behind Testlify</h2>
+  </div>
+  <div class="team">
+    <div class="tmember reveal"><div class="tav" style="background:#F23F44;">AR</div><p class="tname">Aditya Rao</p><p class="trole">Co-founder &amp; CEO</p></div>
+    <div class="tmember reveal" style="transition-delay:.05s"><div class="tav" style="background:#2A6FDB;">SK</div><p class="tname">Sneha Kulkarni</p><p class="trole">Co-founder &amp; CPO</p></div>
+    <div class="tmember reveal" style="transition-delay:.1s"><div class="tav" style="background:#1F8A5B;">DM</div><p class="tname">Daniel Mwangi</p><p class="trole">VP Engineering</p></div>
+    <div class="tmember reveal" style="transition-delay:.15s"><div class="tav" style="background:#6B3FA0;">EL</div><p class="tname">Elena Costa</p><p class="trole">VP Customer Success</p></div>
+  </div>
+</div></section>
+<section class="sec" style="background:#FBF3EE;"><div class="wrap" style="max-width:760px;">
+  <div style="margin:0 auto 44px;text-align:center;">
+    <p class="eyebrow reveal">Our journey<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">From idea to 12,000 teams</h2>
+  </div>
+  <div class="tl reveal">
+    <div class="tlitem"><span class="tldot"></span><p class="tlyear">2019</p><p class="body" style="font-size:15px;">Testlify is founded with a simple test library and a big belief: skills should come first.</p></div>
+    <div class="tlitem"><span class="tldot"></span><p class="tlyear">2021</p><p class="body" style="font-size:15px;">We cross 1,000 customers and launch coding assessments and anti-cheat proctoring.</p></div>
+    <div class="tlitem"><span class="tldot"></span><p class="tlyear">2023</p><p class="body" style="font-size:15px;">Video interviewing and our first AI scoring models ship; the library passes 3,000 tests.</p></div>
+    <div class="tlitem"><span class="tldot"></span><p class="tlyear">2025</p><p class="body" style="font-size:15px;">Testlify AI launches — conversational screening and interviewing that reads every applicant.</p></div>
+  </div>
+</div></section>
+<section class="sec" style="background:#1A1014;color:#fff;text-align:center;"><div class="wrap" style="max-width:720px;">
+  <h2 class="h2 reveal" style="color:#fff;">Come build the future of hiring</h2>
+  <p class="lead reveal" style="color:rgba(255,255,255,.78);margin:18px auto 30px;transition-delay:.04s;">We're a remote-first team on a mission to make hiring fair. We'd love to meet you.</p>
+  <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;transition-delay:.08s;">
+    <dc-import name="component-cta-button" label="View open roles" href="company-careers.dc.html" variant="light" size="md" icon="arrow" hint-size="170px,52px"></dc-import>
+    <dc-import name="component-cta-button" label="Contact us" href="#" variant="outline-light" size="md" icon="none" hint-size="150px,52px"></dc-import>
+  </div>
+</div></section>
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    const sweep = ()=>{
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.reveal:not(.in)').forEach(n=>{
+        if(n.getBoundingClientRect().top < vh + 600){
+          n.classList.add('in');
+          const _d=(parseFloat(n.style.transitionDelay||'0')||0)*1000;
+          n.style.transition='none';
+          const _dur=700,_sy=26; let _st=null;
+          const _tick=(t)=>{ if(_st===null)_st=t; const p=Math.min(1,(t-_st)/_dur); const e=1-Math.pow(1-p,3); n.style.opacity=String(e); n.style.transform='translateY('+(_sy*(1-e)).toFixed(2)+'px)'; if(p<1) requestAnimationFrame(_tick); else { n.style.opacity='1'; n.style.transform='none'; } };
+          setTimeout(()=>requestAnimationFrame(_tick), _d);
+        }
+      });
+    };
+    this._sweep = sweep;
+    window.addEventListener('scroll', sweep, { passive:true });
+    window.addEventListener('resize', sweep);
+    [0,150,400,800,1500].forEach(t=>setTimeout(sweep, t));
+    requestAnimationFrame(sweep);
+    try{ this._mo = new MutationObserver(()=>requestAnimationFrame(sweep)); this._mo.observe(document.body,{childList:true,subtree:true}); }catch(e){}
+  }
+  componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); }
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>

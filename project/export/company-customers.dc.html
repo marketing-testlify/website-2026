@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+a{text-decoration:none;color:inherit;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+.sec{padding:104px 28px;}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8A7A7D;margin:0 0 18px;}
+.eyebrow b{color:#F23F44;font-weight:600;}
+.h1{font-size:62px;line-height:1.04;font-weight:800;letter-spacing:-2px;margin:0;color:#1A1014;}
+.h2{font-size:43px;line-height:1.08;font-weight:800;letter-spacing:-1.4px;margin:0;color:#1A1014;}
+.h3{font-size:22px;line-height:1.25;font-weight:700;letter-spacing:-.4px;margin:0;color:#1A1014;}
+.lead{font-size:19px;line-height:1.6;color:#5A4B4E;font-weight:400;}
+.body{font-size:16px;line-height:1.66;color:#5A4B4E;}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;padding:14px 26px;border-radius:13px;transition:transform .25s ease, box-shadow .25s ease;cursor:pointer;border:none;}
+.btn-primary{background:#F23F44;color:#fff;box-shadow:0 12px 26px rgba(242,63,68,.30);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(242,63,68,.40);}
+.btn-ghost{background:#fff;color:#1A1014;border:1.5px solid #EADDDE;}
+.btn-ghost:hover{transform:translateY(-2px);border-color:#F2B7B9;box-shadow:0 10px 24px rgba(110,11,14,.08);}
+.dot{width:4px;height:4px;border-radius:50%;background:#D9C7C9;}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.chero{padding:64px 28px 40px;background:radial-gradient(1100px 520px at 50% -10%,#FFF0EE 0%,rgba(255,240,238,0) 62%),#fff;text-align:center;}
+.feat{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;background:#fff;border:1px solid #EFE2E3;border-radius:26px;padding:44px;box-shadow:0 24px 60px rgba(110,11,14,.08);}
+.bigquote{font-size:27px;line-height:1.4;font-weight:600;letter-spacing:-.5px;color:#1A1014;margin:0 0 24px;}
+.bigquote span{color:#F23F44;}
+.statrow{display:flex;gap:34px;flex-wrap:wrap;margin-top:30px;}
+.statn{font-size:40px;font-weight:800;letter-spacing:-1.5px;color:#F23F44;line-height:1;}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.ccard{display:flex;flex-direction:column;background:#fff;border:1px solid #EFE2E3;border-radius:20px;padding:28px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;}
+.ccard:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(110,11,14,.10);border-color:#F4D2D3;}
+.clogo{font-weight:800;font-size:18px;color:#C0242B;margin-bottom:16px;}
+.cquote{font-size:15.5px;line-height:1.6;color:#3A2C30;font-weight:500;margin:0 0 20px;}
+.cby{display:flex;align-items:center;gap:11px;margin-top:auto;}
+.cav{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex:none;}
+.cmeta{font-size:13px;line-height:1.3;}
+.cname{font-weight:700;color:#1A1014;}
+.crole{color:#9A878A;}
+.metric{font-size:12px;font-weight:700;color:#1FA463;background:#E9F7EF;padding:5px 10px;border-radius:999px;align-self:flex-start;margin-bottom:16px;}
+@media(max-width:920px){
+  .h1{font-size:42px;letter-spacing:-1.4px;}
+  .h2{font-size:32px;letter-spacing:-1px;}
+  .sec{padding:72px 22px;}
+  .feat{grid-template-columns:1fr;padding:30px;gap:28px;}
+  .bigquote{font-size:22px;}
+  .cgrid{grid-template-columns:1fr;}
+}
+</style>
+</helmet>
+<dc-import name="component-site-header" announcement="Read how Northwind cut time-to-hire by 71%" announcement-cta="Read story" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+<section class="chero"><div class="wrap" style="max-width:820px;">
+  <p class="eyebrow reveal">Customers<b>.</b></p>
+  <h1 class="h1 reveal" style="transition-delay:.04s">Hiring teams that<br>made the switch</h1>
+  <p class="lead reveal" style="margin:22px auto 0;max-width:600px;transition-delay:.08s">From fast-growing startups to global enterprises — see how teams use Testlify to hire faster, fairer and with more confidence.</p>
+</div></section>
+<section style="padding:20px 28px 0;"><div class="wrap">
+  <div class="feat reveal">
+    <div>
+      <div class="clogo" style="font-size:22px;">Northwind</div>
+      <p class="bigquote">"We went from <span>drowning in 4,000 applications</span> to a ranked shortlist of 30 in a single afternoon. Testlify gave us our hiring quarter back."</p>
+      <div class="cby"><span class="cav" style="background:#F23F44;">RP</span><div class="cmeta"><div class="cname">Rhea Patel</div><div class="crole">VP Talent, Northwind</div></div></div>
+      <div class="statrow">
+        <div><div class="statn">71%</div><p class="body" style="font-size:13.5px;margin:6px 0 0;">faster time-to-hire</p></div>
+        <div><div class="statn">4,000</div><p class="body" style="font-size:13.5px;margin:6px 0 0;">applicants screened</p></div>
+        <div><div class="statn">12 hrs</div><p class="body" style="font-size:13.5px;margin:6px 0 0;">saved per role</p></div>
+      </div>
+    </div>
+    <div style="background:linear-gradient(160deg,#FFF4F3,#FBE9E9);border-radius:20px;padding:34px;border:1px solid #F6DCDD;">
+      <p class="eyebrow" style="margin-bottom:14px;">The challenge<b>.</b></p>
+      <p class="body" style="font-size:14.5px;margin:0 0 22px;">A viral job post buried the recruiting team. Manual screening would have taken three weeks they didn't have.</p>
+      <p class="eyebrow" style="margin-bottom:14px;">The result<b>.</b></p>
+      <p class="body" style="font-size:14.5px;margin:0;">Skills-first assessments ranked every applicant overnight. The team interviewed only the top 30 and closed the role in eight days.</p>
+    </div>
+  </div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div style="max-width:640px;margin:0 auto 44px;text-align:center;">
+    <p class="eyebrow reveal">Success stories<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">Results across every industry</h2>
+  </div>
+  <div class="cgrid">
+    <div class="ccard reveal" id="voices"><span class="metric">↓ 58% time-to-hire</span><div class="clogo">Lumen SaaS</div><p class="cquote">"Our engineering shortlists are night-and-day better. Real coding challenges replaced gut-feel résumé reviews entirely."</p><div class="cby"><span class="cav" style="background:#2A6FDB;">JK</span><div class="cmeta"><div class="cname">Jonas Klein</div><div class="crole">Head of Eng, Lumen</div></div></div></div>
+    <div class="ccard reveal" style="transition-delay:.06s"><span class="metric">3.4× more qualified hires</span><div class="clogo">Vela Health</div><p class="cquote">"Compliance loved the audit trail, candidates loved the experience, and we filled 40 clinical roles in a quarter."</p><div class="cby"><span class="cav" style="background:#1F8A5B;">MA</span><div class="cmeta"><div class="cname">Maria Alvarez</div><div class="crole">Talent Director, Vela</div></div></div></div>
+    <div class="ccard reveal" style="transition-delay:.12s"><span class="metric">91% completion rate</span><div class="clogo">Orbit Retail</div><p class="cquote">"We hire seasonal staff at huge volume. Testlify scaled with us instantly — no extra recruiters needed."</p><div class="cby"><span class="cav" style="background:#B8521A;">DC</span><div class="cmeta"><div class="cname">Derek Cho</div><div class="crole">People Ops, Orbit</div></div></div></div>
+    <div class="ccard reveal"><span class="metric">↓ 44% cost per hire</span><div class="clogo">Finovo</div><p class="cquote">"Structured assessments removed bias from our first round and widened our candidate pool dramatically."</p><div class="cby"><span class="cav" style="background:#6B3FA0;">SN</span><div class="cmeta"><div class="cname">Sara Neeson</div><div class="crole">CHRO, Finovo</div></div></div></div>
+    <div class="ccard reveal" style="transition-delay:.06s"><span class="metric">8-day average fill</span><div class="clogo">Kestrel</div><p class="cquote">"From job post to signed offer in a week. The ranked shortlist means we never waste an interview slot."</p><div class="cby"><span class="cav" style="background:#C0242B;">AB</span><div class="cmeta"><div class="cname">Amir Banerjee</div><div class="crole">Recruiting Lead, Kestrel</div></div></div></div>
+    <div class="ccard reveal" style="transition-delay:.12s"><span class="metric">12 hrs saved / role</span><div class="clogo">Atlas Agency</div><p class="cquote">"White-labeled assessments make us look great to clients, and the scorecards close placements faster."</p><div class="cby"><span class="cav" style="background:#16607A;">LT</span><div class="cmeta"><div class="cname">Lena Tomas</div><div class="crole">Founder, Atlas</div></div></div></div>
+  </div>
+</div></section>
+<section class="sec" style="background:#1A1014;color:#fff;text-align:center;"><div class="wrap" style="max-width:720px;">
+  <h2 class="h2 reveal" style="color:#fff;">Become the next success story</h2>
+  <p class="lead reveal" style="color:rgba(255,255,255,.78);margin:18px auto 30px;transition-delay:.04s;">Join thousands of teams hiring on skill with Testlify. Start free or talk to our team.</p>
+  <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;transition-delay:.08s;">
+    <dc-import name="component-cta-button" label="Start free" href="core-pricing.dc.html" variant="light" size="md" icon="arrow" hint-size="150px,52px"></dc-import>
+    <dc-import name="component-cta-button" label="Book a demo" href="#" variant="outline-light" size="md" icon="play" hint-size="150px,52px"></dc-import>
+  </div>
+</div></section>
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    const sweep = ()=>{
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.reveal:not(.in)').forEach(n=>{
+        if(n.getBoundingClientRect().top < vh + 600){
+          n.classList.add('in');
+          const _d=(parseFloat(n.style.transitionDelay||'0')||0)*1000;
+          n.style.transition='none';
+          const _dur=700,_sy=26; let _st=null;
+          const _tick=(t)=>{ if(_st===null)_st=t; const p=Math.min(1,(t-_st)/_dur); const e=1-Math.pow(1-p,3); n.style.opacity=String(e); n.style.transform='translateY('+(_sy*(1-e)).toFixed(2)+'px)'; if(p<1) requestAnimationFrame(_tick); else { n.style.opacity='1'; n.style.transform='none'; } };
+          setTimeout(()=>requestAnimationFrame(_tick), _d);
+        }
+      });
+    };
+    this._sweep = sweep;
+    window.addEventListener('scroll', sweep, { passive:true });
+    window.addEventListener('resize', sweep);
+    [0,150,400,800,1500].forEach(t=>setTimeout(sweep, t));
+    requestAnimationFrame(sweep);
+    try{ this._mo = new MutationObserver(()=>requestAnimationFrame(sweep)); this._mo.observe(document.body,{childList:true,subtree:true}); }catch(e){}
+  }
+  componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); }
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>
