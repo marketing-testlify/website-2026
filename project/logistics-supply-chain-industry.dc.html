@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+a{text-decoration:none;color:inherit;}
+a:hover{color:#DC3137;}
+.rtw{max-width:1240px;margin:0 auto;padding:0 28px;}
+.rtsec{padding:96px 0;}
+.rtsand{background:#FBF3EE;}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
+.rt-h1{font-size:52px;font-weight:800;letter-spacing:-1.6px;line-height:1.06;margin:16px 0 0;}
+.rt-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
+.rt-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
+.rt-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
+.rt-crumb{font-size:13px;color:#8A7A7D;display:flex;gap:8px;align-items:center;margin-bottom:18px;}.rt-crumb a{color:#8A7A7D;}.rt-crumb a:hover{color:#F23F44;}
+.rt-hero{padding:74px 0 80px;background:linear-gradient(180deg,#FFF8F7 0%,#fff 82%);}
+.rt-hgrid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center;}
+.rt-ticks{display:flex;gap:22px;flex-wrap:wrap;margin-top:24px;}
+.rt-tick{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#6C5A5D;}
+.rt-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.fin-hero-card{background:linear-gradient(180deg,#FFF1EF,#FFF8F7);border:1px solid #F6DAD9;border-radius:24px;padding:24px;box-shadow:0 40px 90px rgba(110,11,14,.14);animation:rtfloat 6s ease-in-out infinite;}
+@keyframes rtfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.fin-pipe{position:relative;display:flex;justify-content:space-between;padding:12px 6px 24px;}
+.fin-pipe::before{content:"";position:absolute;top:38px;left:36px;right:36px;height:2px;background:repeating-linear-gradient(90deg,#F0B9B9 0 6px,transparent 6px 12px);}
+.fin-node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:9px;flex:1;}
+.fin-dot{width:52px;height:52px;border-radius:50%;background:#fff;border:2px solid #F23F44;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 7px rgba(242,63,68,.07);}
+.fin-dot i{width:15px;height:15px;border-radius:50%;background:#F23F44;display:block;}
+.fin-node span{font-size:11px;font-weight:600;color:#6C5A5D;text-align:center;line-height:1.2;}
+.fin-score{background:#fff;border-radius:16px;padding:18px 20px;box-shadow:0 12px 26px rgba(110,11,14,.08);}
+.fin-score-top{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;font-weight:600;color:#6C5A5D;margin-bottom:16px;}
+.fin-score-top b{font-size:20px;font-weight:800;color:#F23F44;letter-spacing:-.5px;}
+.rt-scores{display:flex;flex-direction:column;gap:11px;}
+.rt-scr{display:flex;align-items:center;gap:12px;}
+.rt-scl{font-size:12.5px;font-weight:600;color:#46383C;width:150px;flex:none;}
+.rt-scbar{flex:1;height:8px;border-radius:6px;background:#F4E7E8;overflow:hidden;}
+.rt-scbar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#FF7A52,#F23F44);width:0;animation:rtfill 1.4s cubic-bezier(.4,0,.2,1) forwards;}
+@keyframes rtfill{to{width:var(--w);}}
+.rt-scv{font-size:13px;font-weight:800;color:#F23F44;width:34px;text-align:right;flex:none;}
+.statrow{display:grid;grid-template-columns:repeat(4,1fr);}
+.statrow3{grid-template-columns:repeat(3,1fr);}
+.stat{text-align:center;padding:4px 22px;}
+.stat + .stat{border-left:1px solid #EFE3E4;}
+.statn{font-size:34px;font-weight:700;letter-spacing:-1px;line-height:1;color:#1A1014;font-variant-numeric:tabular-nums;}
+.statn .u{color:#D98C8F;font-weight:600;}
+.statl{font-size:14px;color:#6C5A5D;font-weight:500;margin-top:10px;line-height:1.45;}
+.rt-g2{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.rt-flip .rt-copy{order:2;}
+.rt-chk{display:flex;flex-direction:column;gap:12px;margin-top:22px;}
+.rt-ci{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5;color:#46383C;font-weight:500;}
+.rt-ci svg{flex:none;margin-top:2px;color:#1FA463;width:20px;height:20px;stroke-width:3;}
+.rt-shead{text-align:center;max-width:760px;margin:0 auto;}
+/* 3-col identify cards */
+.en-3col{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px;}
+.en-lcard{position:relative;background:#fff;border:1px solid #F0E2E3;border-radius:20px;padding:34px 32px 32px;box-shadow:0 16px 30px rgba(110,11,14,.08);transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.en-lcard:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 22px 44px rgba(110,11,14,.12);}
+.en-lhead{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+.en-lic{width:48px;height:48px;border-radius:14px;background:#FFF0F0;color:#F23F44;display:flex;align-items:center;justify-content:center;flex:none;}
+.en-lnum{font-size:13px;font-weight:800;color:#E7C4C6;letter-spacing:.04em;}
+.en-lcard h3{font-size:19px;font-weight:700;margin:0;letter-spacing:-.3px;line-height:1.28;}
+.en-lcard p{font-size:14.5px;line-height:1.62;color:#6C5A5D;margin:14px 0 0;}
+/* role cards */
+.rt-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
+.rt-role{position:relative;background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:28px 26px;box-shadow:0 16px 30px rgba(110,11,14,.08);transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.rt-role:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 22px 44px rgba(110,11,14,.12);}
+.rt-role-h{display:flex;align-items:center;margin-bottom:18px;}
+.rt-role-ic{width:46px;height:46px;border-radius:13px;background:#FFF0F0;color:#F23F44;display:flex;align-items:center;justify-content:center;}
+.rt-role h3{font-size:18px;font-weight:700;margin:0 0 6px;letter-spacing:-.3px;}
+.rt-role-d{font-size:13.5px;line-height:1.5;color:#6C5A5D;margin:0 0 16px;}
+.rt-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.rt-tag{font-size:12px;font-weight:600;color:#B23A3F;background:#FDECEC;border:1px solid #F8DADA;border-radius:100px;padding:6px 12px;white-space:nowrap;}
+.rt-viewall{display:inline-flex;align-items:center;gap:8px;margin-top:34px;color:#F23F44;font-weight:700;font-size:15.5px;}
+.fin-card{background:#fff;border:1px solid #F0E2E3;border-radius:20px;box-shadow:0 24px 50px rgba(110,11,14,.10);overflow:hidden;}
+.fin-card-bar{display:flex;align-items:center;gap:8px;padding:13px 20px;border-bottom:1px solid #F4E9E9;background:#FCF7F7;}
+.fin-dots{display:flex;gap:6px;}
+.fin-dots i{width:11px;height:11px;border-radius:50%;display:block;}
+.fin-card-t{font-size:12.5px;font-weight:600;color:#8A7A7D;margin-left:6px;}
+.fin-card-b{padding:22px 22px;}
+/* scorecard */
+.en-scorehead{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;}
+.en-scorehead b{font-size:15.5px;font-weight:700;color:#1A1014;display:block;}
+.en-scorehead .sub{font-size:12px;color:#8A7A7D;margin-top:2px;display:block;}
+.en-bigscore{font-size:32px;font-weight:800;color:#F23F44;letter-spacing:-1px;line-height:1;flex:none;}
+.en-bigscore i{font-size:14px;color:#C9B9BC;font-style:normal;font-weight:700;}
+/* module builder */
+.en-mbmeta{font-size:12px;color:#8A7A7D;font-weight:600;margin:0 0 16px;}
+.sa-al-row{display:flex;align-items:center;gap:12px;border:1px solid #EFE3E4;border-radius:14px;padding:14px 16px;margin-bottom:9px;background:#fff;}
+.sa-al-nm{flex:1;}
+.sa-al-nm b{font-size:14px;font-weight:700;color:#1A1014;display:block;}
+.sa-al-nm span{font-size:11.5px;color:#8A7A7D;}
+.en-min{font-size:11px;font-weight:700;color:#6C5A5D;background:#F5EFEF;border-radius:100px;padding:5px 11px;white-space:nowrap;}
+.en-addmod{text-align:center;border:1.5px dashed #EADDDE;border-radius:12px;padding:12px;font-size:12.5px;font-weight:600;color:#A9999C;margin-top:2px;}
+.en-mbfoot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-size:12.5px;font-weight:600;color:#8A7A7D;}
+.en-send{background:#F23F44;color:#fff;padding:9px 17px;border-radius:100px;font-size:12px;font-weight:700;}
+/* grid operator table */
+.en-gt{width:100%;border-collapse:collapse;font-size:13px;}
+.en-gt th{font-size:10.5px;font-weight:700;color:#8A7A7D;text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:0 8px 12px;}
+.en-gt th.r,.en-gt td.r{text-align:right;}
+.en-gt td{padding:12px 8px;border-top:1px solid #F4ECEC;color:#46383C;font-weight:700;}
+.en-gt td:first-child{color:#1A1014;}
+.en-gt td.r{color:#6C5A5D;font-variant-numeric:tabular-nums;}
+.en-badge{font-size:11px;font-weight:700;border-radius:100px;padding:5px 11px;white-space:nowrap;}
+.en-adv{color:#1FA463;background:#E8F6EE;}
+.en-below{color:#8A7A7D;background:#F1E9E9;}
+/* proctoring */
+.en-proc-t{font-size:10.5px;font-weight:700;color:#8A7A7D;letter-spacing:.05em;margin:0 0 6px;}
+.en-proc-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-top:1px solid #F4ECEC;font-size:14px;color:#6C5A5D;font-weight:500;}
+.en-proc-row b{color:#1FA463;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;gap:7px;}
+.en-proc-row b svg{width:15px;height:15px;}
+/* testimonials cards local */
+.sat-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px;}
+.sat-card{background:#fff;border:1px solid #F0E2E3;border-radius:20px;padding:38px 36px;}
+.sat-stars{display:flex;gap:5px;margin-bottom:20px;}
+.sat-stars svg{width:20px;height:20px;}
+.sat-q{font-size:20px;line-height:1.5;font-style:italic;color:#2A1D21;margin:0 0 26px;text-wrap:pretty;}
+.sat-nm{font-weight:700;font-size:17px;color:#1A1014;}
+.sat-role{font-size:14.5px;color:#6C5A5D;margin-top:4px;}
+.sat-badge{display:inline-block;white-space:nowrap;margin-top:20px;background:#FCE0DE;color:#F23F44;font-size:12.5px;font-weight:700;padding:7px 14px;border-radius:100px;}
+/* integrations */
+.rt-ats{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:44px;}
+.rt-atst{background:#fff;border:1px solid #F0E2E3;border-radius:14px;height:84px;display:flex;align-items:center;justify-content:center;padding:18px;box-shadow:0 10px 22px rgba(110,11,14,.06);transition:transform .25s,box-shadow .25s,border-color .25s;}
+.rt-atst:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 18px 34px rgba(110,11,14,.10);}
+.rt-atst img{max-width:100%;max-height:38px;object-fit:contain;}
+.rt-atsmore{text-align:center;margin-top:34px;}
+.rt-atsmore a{display:inline-flex;align-items:center;gap:8px;color:#F23F44;font-weight:700;font-size:15.5px;}
+.rt-faqw{max-width:820px;margin:44px auto 0;}
+.rt-faq{border-bottom:1px solid #F0E2E3;padding:22px 2px;cursor:pointer;}
+.rt-faqq{display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:16.5px;font-weight:700;color:#1A1014;}
+.rt-faqx{width:28px;height:28px;border-radius:50%;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;flex:none;transition:transform .25s;}
+.rt-faqa{display:none;font-size:15px;line-height:1.64;color:#5A4B4E;margin-top:12px;max-width:730px;}
+.rt-open .rt-faqa{display:block;}.rt-open .rt-faqx{transform:rotate(45deg);}
+@media(max-width:960px){.rt-hgrid,.rt-g2{grid-template-columns:1fr;gap:40px;}.rt-flip .rt-copy{order:1;}.statrow{grid-template-columns:1fr 1fr;row-gap:34px;}.statrow3{grid-template-columns:1fr 1fr;}.stat + .stat{border-left:none;}.rt-roles,.en-3col,.sat-grid{grid-template-columns:1fr;}.rt-ats{grid-template-columns:repeat(3,1fr);}.rt-h1{font-size:38px;}.rt-h2{font-size:27px;}.rtsec{padding:64px 0;}}
+@media(max-width:560px){.rt-ats{grid-template-columns:repeat(2,1fr);}.statrow,.statrow3{grid-template-columns:1fr;}.fin-node span{font-size:9px;}.rt-scl{width:120px;}}
+.fin-cmpw{margin:44px -40px -12px;overflow-x:auto;padding:16px 40px 44px;}
+.fin-cmp{width:100%;border-collapse:collapse;background:#fff;border:1px solid #F0E2E3;border-radius:18px;overflow:hidden;min-width:720px;box-shadow:0 18px 40px rgba(110,11,14,.09);}
+.fin-cmp th,.fin-cmp td{padding:16px 18px;text-align:left;font-size:14.5px;border-bottom:1px solid #F4ECEC;color:#6C5A5D;}
+.fin-cmp thead th{font-size:13px;font-weight:700;color:#1A1014;background:#fff;}
+.fin-cmp thead th.tl{color:#F23F44;}
+.fin-cmp td.cap{font-weight:600;color:#1A1014;}
+.fin-cmp td.tlcol{font-weight:700;color:#1A1014;background:#FFF8F7;}
+.fin-cmp tbody tr:last-child td{border-bottom:none;}
+.fin-yes{color:#1FA463;font-weight:700;}
+.fin-no{color:#C79A9C;}
+.re-marq-wrap{position:relative;max-width:1100px;margin:0 auto;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);}
+.re-trust-l{text-align:center;font-size:13.5px;font-weight:600;letter-spacing:1.5px;color:#A9999C;text-transform:uppercase;margin:0 0 30px;}
+.re-trust-l strong{color:#F23F44;font-weight:800;}
+.re-marq{display:flex;width:max-content;gap:64px;animation:remarquee 30s linear infinite;align-items:center;}
+.re-marq-i{font-size:24px;font-weight:700;color:#C9B9BC;letter-spacing:-.5px;white-space:nowrap;}
+@keyframes remarquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.lg-funh{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#8A7A7D;display:flex;justify-content:space-between;margin:0 0 14px;}
+.lg-funrow{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.lg-funrow .lbl{font-size:11.5px;color:#6C5A5D;font-weight:600;width:70px;flex:none;text-align:right;}
+.lg-funbar{height:26px;border-radius:7px;background:linear-gradient(90deg,#FF7A52,#F23F44);display:flex;align-items:center;padding:0 11px;color:#fff;font-size:12px;font-weight:800;min-width:44px;}
+.lg-skillcard{background:#fff;border:1px solid #F0E2E3;border-radius:20px;padding:32px 30px;box-shadow:0 16px 30px rgba(110,11,14,.08);}
+.lg-skhead{display:flex;align-items:center;gap:13px;margin-bottom:4px;}
+.lg-skic{width:44px;height:44px;border-radius:12px;background:#FFF0F0;color:#F23F44;display:flex;align-items:center;justify-content:center;flex:none;}
+.lg-skhead h3{font-size:18px;font-weight:700;margin:0;letter-spacing:-.3px;}
+.lg-sksub{font-size:13px;color:#8A7A7D;margin:0 0 22px;}
+.lg-certgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
+.lg-cert{background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:28px 26px;box-shadow:0 16px 30px rgba(110,11,14,.08);transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.lg-cert:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 22px 44px rgba(110,11,14,.12);}
+.lg-cert .cf{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#F23F44;margin:0 0 10px;}
+.lg-cert h3{font-size:17.5px;font-weight:700;margin:0 0 16px;letter-spacing:-.3px;}
+.lg-cert .ci{display:flex;gap:9px;align-items:flex-start;font-size:14px;line-height:1.45;color:#46383C;font-weight:500;padding:7px 0;}
+.lg-cert .ci svg{flex:none;margin-top:2px;color:#1FA463;width:18px;height:18px;stroke-width:3;}
+.lg-dark{background:#1A1014;}
+.lg-dq{font-size:26px;line-height:1.5;font-weight:600;color:#fff;margin:18px 0 26px;text-wrap:pretty;}
+.lg-dark .statn{color:#fff;}.lg-dark .stat + .stat{border-left-color:rgba(255,255,255,.14);}.lg-dark .statl{color:#C9B9BC;}
+.lg-2col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:46px;}
+@media(max-width:960px){.lg-2col,.lg-certgrid{grid-template-columns:1fr;}}
+h1,h2,h3,h4,.rt-h1,.rt-h2,.eyebrow{text-wrap:balance;}p,li,.rt-p,.rt-lead{text-wrap:pretty;}/*om-balance-rule*/
+</style>
+</helmet>
+<dc-import name="component-site-header" announcement="Testlify AI is here — screen, interview &amp; score candidates automatically." home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+
+<section class="rt-hero" data-screen-label="Hero"><div class="rtw rt-hgrid">
+  <div class="rt-copy reveal">
+    <div class="rt-crumb"><a href="solution-index.dc.html">Solutions</a><span>/</span><span>Industry / Logistics &amp; supply chain</span></div>
+    <p class="eyebrow">For logistics &amp; supply chain teams<b>.</b></p>
+    <h1 class="rt-h1">Logistics and supply chain skill tests for <span style="color:#F23F44;">every role you hire</span></h1>
+    <p class="rt-lead">Assess warehouse, driver, planner and analyst candidates on the skills that predict performance. Screen applicants at volume, shortlist in days, and stop losing new hires.</p>
+    <div class="rt-ctas">
+      <dc-import name="component-cta-button" label="Try for Free" href="pricing.dc.html" variant="primary" size="md" icon="arrow" magnetic="true" hint-size="150px,52px"></dc-import>
+      <dc-import name="component-cta-button" label="Book a Demo" href="contact.dc.html" variant="secondary" size="md" icon="play" hint-size="150px,52px"></dc-import>
+    </div>
+    <div class="rt-ticks">
+      <span class="rt-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>7-day free trial</span>
+      <span class="rt-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Unlimited assessments</span>
+      <span class="rt-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>No credit card required</span>
+    </div>
+  </div>
+  <div class="rt-media reveal">
+    <div class="fin-hero-card">
+      <div class="lg-funh"><span>Frontline applicant funnel</span><span>Peak season</span></div>
+      <div class="lg-funrow"><span class="lbl">Applicants</span><span class="lg-funbar" style="width:100%">3,499</span></div>
+      <div class="lg-funrow"><span class="lbl">Assessed</span><span class="lg-funbar" style="width:70%">1,780</span></div>
+      <div class="lg-funrow"><span class="lbl">Job-fit</span><span class="lg-funbar" style="width:40%">820</span></div>
+      <div class="lg-funrow"><span class="lbl">Shortlist</span><span class="lg-funbar" style="width:15%">28</span></div>
+      <div class="fin-score" style="margin-top:20px;">
+        <div class="en-scorehead"><div><b>Rohan M.</b><span class="sub">Demand Planner</span></div><span class="en-bigscore" style="font-size:19px;">Top 6%</span></div>
+        <div class="rt-scores" style="margin-top:14px;">
+          <div class="rt-scr"><span class="rt-scl" style="width:168px">Excel &amp; Data Analysis</span><span class="rt-scbar"><i style="--w:92%"></i></span><span class="rt-scv">92</span></div>
+          <div class="rt-scr"><span class="rt-scl" style="width:168px">Supply Chain Analytics</span><span class="rt-scbar"><i style="--w:88%"></i></span><span class="rt-scv">88</span></div>
+          <div class="rt-scr"><span class="rt-scl" style="width:168px">ERP / SAP knowledge</span><span class="rt-scbar"><i style="--w:87%"></i></span><span class="rt-scv">87</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+
+
+<section class="rtsec rtsand" style="padding-top:44px;padding-bottom:44px;"><div class="rtw">
+  <div class="statrow reveal">
+    <div class="stat"><div class="statn"><span class="v" data-to="22">0</span><span class="u">%</span></div><div class="statl">YoY growth in supply chain roles since 2020, with no sign of slowing</div></div>
+    <div class="stat"><div class="statn"><span class="v" data-to="35">0</span><span class="u">%</span></div><div class="statl">of companies rank talent shortage as a top supply chain challenge</div></div>
+    <div class="stat"><div class="statn"><span class="v" data-to="17">0</span><span class="u">%</span></div><div class="statl">projected employment growth for logistics 2024–2034, far above average</div></div>
+    <div class="stat"><div class="statn">1.9<span class="u">M</span></div><div class="statl">US supply chain jobs projected to go unfilled by 2030</div></div>
+  </div>
+</div></section>
+
+<section class="rtsec"><div class="rtw">
+  <div class="rt-shead reveal"><h2 class="rt-h2">Exactly which skills do your logistics and supply chain roles need?</h2><p class="rt-lead">Testlify's validated skill library maps to both frontline and strategic logistics roles, so every test predicts on-the-job performance.</p></div>
+  <div class="lg-2col reveal">
+    <div class="lg-skillcard">
+      <div class="lg-skhead"><span class="lg-skic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></span><h3>Frontline &amp; Operational skills</h3></div>
+      <p class="lg-sksub">Warehouse, floor, forklift and fleet roles</p>
+      <div class="rt-scores">
+        <div class="rt-scr"><span class="rt-scl" style="width:168px">Attention to detail</span><span class="rt-scbar"><i style="--w:89%"></i></span><span class="rt-scv">89</span></div><div class="rt-scr"><span class="rt-scl" style="width:168px">Workplace safety</span><span class="rt-scbar"><i style="--w:92%"></i></span><span class="rt-scv">92</span></div><div class="rt-scr"><span class="rt-scl" style="width:168px">Numerical reasoning</span><span class="rt-scbar"><i style="--w:82%"></i></span><span class="rt-scv">82</span></div><div class="rt-scr"><span class="rt-scl" style="width:168px">Reliability &amp; punctuality</span><span class="rt-scbar"><i style="--w:86%"></i></span><span class="rt-scv">86</span></div><div class="rt-scr"><span class="rt-scl" style="width:168px">Spatial reasoning</span><span class="rt-scbar"><i style="--w:79%"></i></span><span class="rt-scv">79</span></div><div class="rt-scr"><span class="rt-scl" style="width:168px">Situational judgement</span><span class="rt-scbar"><i style="--w:90%"></i></span><span class="rt-scv">90</span></div>
+      </div>
+    </div>
+    <div class="lg-skillcard">
+      <div class="lg-skhead"><span class="lg-skic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></span><h3>Strategic &amp; Professional skills</h3></div>
+      <p class="lg-sksub">Analyst, planner, procurement and ops manager</p>
+      <div class="rt-scores">
+        <div class="rt-scr"><span class="rt-scl" style="width:168px">Excel &amp; Analytics</span><span class="rt-scbar"><i style="--w:91%"></i></span><span class="rt-scv">91</span></div><div class="rt-scr"><span class="rt-scl" style="width:168px">ERP / SAP / Oracle</span><span class="rt-scbar"><i style="--w:86%"></i></span><span class="rt-scv">86</span></div><div class="rt-scr"><span class="rt-scl" style="width:168px">SQL &amp; Reporting</span><span class="rt-scbar"><i style="--w:77%"></i></span><span class="rt-scv">77</span></div><div class="rt-scr"><span class="rt-scl" style="width:168px">Demand forecasting</span><span class="rt-scbar"><i style="--w:84%"></i></span><span class="rt-scv">84</span></div><div class="rt-scr"><span class="rt-scl" style="width:168px">Procurement &amp; sourcing</span><span class="rt-scbar"><i style="--w:81%"></i></span><span class="rt-scv">81</span></div><div class="rt-scr"><span class="rt-scl" style="width:168px">Supply chain analytics</span><span class="rt-scbar"><i style="--w:88%"></i></span><span class="rt-scv">88</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;"><a class="rt-viewall reveal" href="test-library.dc.html">Browse the full test library<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div>
+</div></section>
+
+<section class="rtsec rtsand"><div class="rtw">
+  <div class="rt-shead reveal"><p class="eyebrow">How teams hire<b>.</b></p><h2 class="rt-h2">Built for how logistics teams actually hire</h2><p class="rt-lead">Whether you're ramping for peak season or building a planning team, Testlify fits the way your work works.</p></div>
+  <div class="rt-roles reveal">
+    <div class="rt-role"><div class="rt-role-h"><span class="rt-role-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></span></div><h3>Peak season volume hiring</h3><p class="rt-role-d">Screen thousands of warehouse and fulfilment applicants in days, not weeks. Auto-rank candidates and shortlist the job-fit ones before your competitors do.</p><div class="rt-tags"><span class="rt-tag">High-volume</span><span class="rt-tag">Warehouse</span><span class="rt-tag">Frontline</span><span class="rt-tag">Seasonal</span></div></div>
+    <div class="rt-role"><div class="rt-role-h"><span class="rt-role-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></span></div><h3>Distribution centre buildout</h3><p class="rt-role-d">Rapidly assess and hire forklift operators, shift leads and logistics coordinators across multiple sites with one consistent skills benchmark.</p><div class="rt-tags"><span class="rt-tag">High-volume</span><span class="rt-tag">Warehouse</span><span class="rt-tag">Frontline</span></div></div>
+    <div class="rt-role"><div class="rt-role-h"><span class="rt-role-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></span></div><h3>Nearshoring &amp; network redesign</h3><p class="rt-role-d">As supply chains restructure, test candidates for strategic network design, trade compliance and cross-border operations the skills nearshoring demands.</p><div class="rt-tags"><span class="rt-tag">Strategic</span><span class="rt-tag">Compliance</span><span class="rt-tag">Cross-border</span></div></div>
+    <div class="rt-role"><div class="rt-role-h"><span class="rt-role-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></span></div><h3>Planning &amp; analytics team growth</h3><p class="rt-role-d">Validate Excel, SQL, ERP and forecasting proficiency for demand planners, supply-chain analysts and operations roles before the first interview.</p><div class="rt-tags"><span class="rt-tag">Planners</span><span class="rt-tag">Analysts</span><span class="rt-tag">ERP</span><span class="rt-tag">SQL</span></div></div>
+    <div class="rt-role"><div class="rt-role-h"><span class="rt-role-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></span></div><h3>Fleet &amp; driver hiring</h3><p class="rt-role-d">Assess route logic, safety awareness and service quality across a high-volume applicant pool. Reduce risky hires before they get behind the wheel.</p><div class="rt-tags"><span class="rt-tag">Drivers</span><span class="rt-tag">Fleet</span><span class="rt-tag">Safety</span><span class="rt-tag">High-volume</span></div></div>
+    <div class="rt-role"><div class="rt-role-h"><span class="rt-role-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6"></path></svg></span></div><h3>Sustainability &amp; compliance hiring</h3><p class="rt-role-d">Test for Scope 3 emissions awareness, supplier governance and ESG reporting skills as sustainability regulations reshape supply chain hiring.</p><div class="rt-tags"><span class="rt-tag">ESG</span><span class="rt-tag">Compliance</span><span class="rt-tag">Procurement</span><span class="rt-tag">Governance</span></div></div>
+  </div>
+  <div style="text-align:center;"><a class="rt-viewall reveal" href="test-library.dc.html">See volume hiring solutions<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div>
+</div></section>
+
+<section class="rtsec"><div class="rtw">
+  <div class="rt-shead reveal"><p class="eyebrow">Certifications<b>.</b></p><h2 class="rt-h2">Test for the certifications your industry values most</h2><p class="rt-lead">Testlify's logistics and supply chain skill tests cover the knowledge frameworks behind the most in-demand industry credentials.</p></div>
+  <div class="lg-certgrid reveal">
+    <div class="lg-cert"><p class="cf">APICS / ASCM</p><h3>CSCP &amp; CPIM aligned</h3><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>Demand &amp; supply planning</span></div><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>Inventory optimization</span></div><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>Distribution &amp; logistics management</span></div></div>
+    <div class="lg-cert"><p class="cf">Lean / Six Sigma</p><h3>Process improvement skills</h3><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>DMAIC process knowledge</span></div><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>Waste identification</span></div><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>KPI measurement &amp; analysis</span></div></div>
+    <div class="lg-cert"><p class="cf">WMS / TMS platforms</p><h3>Tech stack proficiency</h3><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>SAP, Oracle &amp; Blue Yonder</span></div><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>WMS operations &amp; workflows</span></div><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>TMS reporting &amp; routing</span></div></div>
+    <div class="lg-cert"><p class="cf">Trade &amp; compliance</p><h3>Regulatory &amp; legal knowledge</h3><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>Customs &amp; import/export rules</span></div><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>Incoterms &amp; documentation</span></div><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>Tariff classification basics</span></div></div>
+    <div class="lg-cert"><p class="cf">RFP / CPIM aligned</p><h3>Procurement &amp; sourcing</h3><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>Supplier evaluation &amp; bid</span></div><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>Category management</span></div><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>Contract &amp; negotiation skills</span></div></div>
+    <div class="lg-cert"><p class="cf">Safety &amp; OSHA</p><h3>Workplace safety compliance</h3><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>OSHA standards &amp; regulations</span></div><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>Forklift &amp; equipment safety</span></div><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>Hazmat awareness &amp; protocols</span></div></div>
+  </div>
+</div></section>
+
+<section class="rtsec lg-dark" data-screen-label="Client story"><div class="rtw" style="max-width:960px;text-align:center;">
+  <p class="eyebrow reveal" style="color:#C9B9BC;">Client story<b>.</b></p>
+  <p class="lg-dq reveal">"We were drowning in warehouse applicants every peak season. Testlify cut our screening from <span style="color:#FF7A52;">weeks to days</span>, and the people we hire now actually stay past 90 days."</p>
+  <p class="reveal" style="color:#fff;font-weight:700;margin:0;">Head of Talent</p>
+  <p class="reveal" style="color:#A9999C;font-size:14px;margin:4px 0 40px;">Logistics Company</p>
+  <div class="statrow reveal" style="grid-template-columns:repeat(3,1fr);max-width:720px;margin:0 auto;">
+    <div class="stat"><div class="statn"><span class="v" data-to="80">0</span><span class="u">%</span></div><div class="statl">faster time to shortlist</div></div>
+    <div class="stat"><div class="statn"><span class="v" data-to="3">0</span><span class="u">×</span></div><div class="statl">faster time-to-hire</div></div>
+    <div class="stat"><div class="statn"><span class="v" data-to="40">0</span><span class="u">%</span></div><div class="statl">lower 90-day attrition</div></div>
+  </div>
+</div></section>
+
+<section class="rtsec rtsand"><div class="rtw">
+  <div class="rt-shead reveal"><p class="eyebrow">Integrations<b>.</b></p><h2 class="rt-h2">Testlify integrates seamlessly with 100+ ATS tools</h2><p class="rt-lead">Streamline your hiring process from assessment to onboarding. Sync candidate data effortlessly, automate workflows, and gain deeper insights to make informed hiring decisions faster.</p></div>
+  <div class="rt-ats reveal">
+    <div class="rt-atst"><img src="https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png" alt="Workday"></div>
+    <div class="rt-atst"><img src="https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png" alt="SAP SuccessFactors"></div>
+    <div class="rt-atst"><img src="https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png" alt="Lever"></div>
+    <div class="rt-atst"><img src="https://testlify.com/wp-content/uploads/2025/10/SR-SAP-Logo.svg" alt="SmartRecruiters"></div>
+    <div class="rt-atst"><img src="https://testlify.com/wp-content/uploads/2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png" alt="Recruitee"></div>
+    <div class="rt-atst"><img src="https://testlify.com/wp-content/uploads/2025/10/logo.svg" alt="UKG Pro Recruiting"></div>
+    <div class="rt-atst"><img src="https://testlify.com/wp-content/uploads/2024/09/BambooHR-Logo-1-2048x1152-2.png" alt="BambooHR"></div>
+    <div class="rt-atst"><img src="https://testlify.com/wp-content/uploads/2023/03/629a0bbcb04c5ae587c411c2-1-1.png" alt="Greenhouse"></div>
+    <div class="rt-atst"><img src="https://testlify.com/wp-content/uploads/2024/08/zoho-recruit-logo-1.png" alt="Zoho Recruit"></div>
+    <div class="rt-atst"><img src="https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png" alt="JazzHR"></div>
+  </div>
+  <div class="rt-atsmore reveal"><a href="integrations.dc.html">View all ATS integration<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div>
+</div></section>
+
+<section class="rtsec"><div class="rtw">
+  <div class="rt-shead reveal"><p class="eyebrow">FAQ<b>.</b></p><h2 class="rt-h2">Frequently asked questions (FAQs)</h2><p class="rt-lead">Here are answers to the most commonly asked questions about Testlify's logistics and supply chain skill tests.</p></div>
+  <div class="rt-faqw"><sc-for list="{{ viewFaqs }}" as="f" hint-placeholder-count="8"><div class="rt-faq reveal {{ f.openClass }}" onClick="{{ f.toggle }}"><div class="rt-faqq">{{ f.q }}<span class="rt-faqx">+</span></div><div class="rt-faqa">{{ f.a }}</div></div></sc-for></div>
+</div></section>
+
+<dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { open:{} };
+  componentDidMount(){
+    const sweep = ()=>{
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.reveal:not(.in)').forEach(n=>{
+        if(n.getBoundingClientRect().top < vh + 600){
+          n.classList.add('in');
+          const _d=(parseFloat(n.style.transitionDelay||'0')||0)*1000;
+          n.style.transition='none';
+          const _dur=700,_sy=26; let _st=null;
+          const _tick=(t)=>{ if(_st===null)_st=t; const p=Math.min(1,(t-_st)/_dur); const e=1-Math.pow(1-p,3); n.style.opacity=String(e); n.style.transform='translateY('+(_sy*(1-e)).toFixed(2)+'px)'; if(p<1) requestAnimationFrame(_tick); else { n.style.opacity='1'; n.style.transform='none'; } };
+          setTimeout(()=>requestAnimationFrame(_tick), _d);
+        }
+      });
+    };
+    this._sweep = sweep;
+    window.addEventListener('scroll', sweep, { passive:true });
+    window.addEventListener('resize', sweep);
+    [0,150,400,800,1500].forEach(t=>setTimeout(sweep, t));
+    requestAnimationFrame(sweep);
+    try{ this._mo = new MutationObserver(()=>requestAnimationFrame(sweep)); this._mo.observe(document.body,{childList:true,subtree:true}); }catch(e){}
+    const runCount=(el)=>{ const to=+el.dataset.to, comma=el.dataset.comma==='1', dur=1500; let st=null; const fmt=(n)=>{ n=Math.round(n); return comma? n.toLocaleString('en-US') : String(n); }; const tick=(t)=>{ if(st===null)st=t; const p=Math.min(1,(t-st)/dur); const e=1-Math.pow(1-p,3); el.textContent=fmt(to*e); if(p<1) requestAnimationFrame(tick); else el.textContent=fmt(to); }; requestAnimationFrame(tick); };
+    try{ this._io = new IntersectionObserver((ents)=>{ ents.forEach(en=>{ if(en.isIntersecting){ en.target.querySelectorAll('.v[data-to]').forEach(runCount); this._io.unobserve(en.target); } }); }, {threshold:.4}); document.querySelectorAll('.statrow').forEach(el=>this._io.observe(el)); }catch(e){}
+  }
+  componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); if(this._io) this._io.disconnect(); }
+  toggleFaq(i){ this.setState(s=>({ open: Object.assign({}, s.open, { [i]: !s.open[i] }) })); }
+  renderVals(){
+    const faqs = [
+      {q:"What are logistics and supply chain skill tests?", a:"Logistics and supply chain skill tests are pre-hire assessments that measure a candidate's ability to perform the actual tasks required in logistics, warehousing, procurement and planning roles. Unlike resumes, they give objective, role-specific data on skills like ERP proficiency, data analysis, safety awareness and demand forecasting before a single interview."},
+      {q:"How do I screen warehouse applicants at high volume without slowing down?", a:"Send one assessment link to your entire applicant pool and Testlify auto-scores and ranks every candidate on operational aptitude, attention to detail and safety. During peak season you get a job-fit shortlist within hours instead of manually reviewing thousands of resumes."},
+      {q:"Which skills should I test for logistics and supply chain roles?", a:"Frontline roles need attention to detail, workplace safety, numerical reasoning and situational judgment. Strategic roles need Excel and analytics, ERP/SAP knowledge, SQL, demand forecasting and procurement skills. Testlify maps validated tests to both so every hire is measured on what the role actually demands."},
+      {q:"Can logistics skill tests reduce warehouse turnover?", a:"Yes. Hiring on verified reliability, safety awareness and operational aptitude — rather than availability alone — means new hires are better matched to the job and stay longer. Teams using skills-based screening report meaningfully lower early attrition on frontline roles."},
+      {q:"Do the assessments work for nearshoring and cross-border supply chain roles?", a:"Yes. Testlify includes tests for trade compliance, customs and documentation, network design and cross-border operations, so you can screen for the strategic and regulatory skills that nearshoring and network redesign require."},
+      {q:"How do the assessments fit into our ATS and HRIS?", a:"Testlify has 100+ native ATS and HRIS integrations including Workday, SAP SuccessFactors, Greenhouse, BambooHR and Lever. Assessments fire automatically and ranked results sync straight into your existing hiring workflow without manual data transfer."},
+      {q:"Are Testlify's supply chain skill tests valid and bias free?", a:"Every test is built by subject-matter experts and I/O psychologists, validated for reliability and reviewed for adverse impact. Objective, consistent scoring gives every candidate the same fair evaluation and produces a defensible, documented hiring decision."},
+      {q:"How fast can we launch assessments for a peak season hiring surge?", a:"Minutes. Pick a role-specific logistics assessment or build your own from the test library, set your pass threshold, and send one link to your whole applicant pool. Candidates are scored and ranked automatically as they complete, so your shortlist builds in real time."}
+    ];
+    const open = this.state.open || {};
+    const viewFaqs = faqs.map((f,i)=>({ q:f.q, a:f.a, openClass: open[i]?'rt-open':'', toggle: ()=>this.toggleFaq(i) }));
+    return { viewFaqs };
+  }
+}
+</script>
+</body>
+</html>

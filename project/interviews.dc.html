@@ -182,10 +182,7 @@ a{text-decoration:none;color:inherit;}
 .reqcard{max-width:1240px;margin:0 auto;background:#FBF3EE;border:1px solid #F1E0DC;border-radius:22px;padding:40px 44px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;}
 .reqcard h3{font-size:24px;font-weight:800;letter-spacing:-.5px;margin:0 0 7px;}
 .reqcard p{font-size:15px;color:#6C5A5D;margin:0;max-width:520px;line-height:1.55;}
-/* cta band */
-.ctaband{padding:90px 28px;background:radial-gradient(900px 460px at 50% 0%,#2A1417 0%,#1A1014 60%);color:#fff;text-align:center;}
-.ctaband h2{font-size:40px;font-weight:800;letter-spacing:-1px;margin:0 auto 16px;max-width:680px;line-height:1.1;}
-.ctaband p{font-size:17px;color:#D8C5C8;margin:0 auto 30px;max-width:560px;line-height:1.6;}
+/* cta band styles are owned by component-cta-band (do not restyle .ctaband here) */
 .cta-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
 .cta-mini{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:24px;font-size:13.5px;color:#B7A4A7;}
 .cta-mini span{display:inline-flex;align-items:center;gap:7px;}
@@ -253,10 +250,10 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <dc-import name="component-site-header" announcement="AI video, audio and chat interviews — one platform, every role" announcement-cta="Browse interviews" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
 <section class="tl-hero" ref="{{ rootRef }}"><div class="tl-blob"></div><div class="tl-wrap"><div class="tl-hgrid">
 <div>
-<div class="tl-badge" data-reveal=""><span class="d"></span><span class="t">AI-led interviews — video, audio &amp; chat</span></div>
-<h1 class="tl-h1" data-reveal="" data-delay="80" style="margin-top:22px;">AI interviews for&nbsp;<br><em>every role you hire.</em></h1>
-<p class="tl-sub" data-reveal="" data-delay="150">Structured, AI-scored interviews in video, audio and chat — with role-specific questions and intelligent follow-ups. Every candidate gets the same fair interview; you get a scored, reviewable transcript.</p>
-<div class="tl-hstats" data-reveal="" data-delay="190"><div class="tl-hstat"><b>3</b><span>Interview modes</span></div><div class="tl-hstat"><b>4,500+</b><span>Job roles</span></div><div class="tl-hstat"><b>94%</b><span>Candidate satisfaction</span></div></div>
+<div class="tl-badge" data-reveal=""><span class="d"></span><span class="t">Ready-to-use, AI-scored interviews</span></div>
+<h1 class="tl-h1" data-reveal="" data-delay="80" style="margin-top:22px;">Ready-to-use interviews<br><em>for every role you hire.</em></h1>
+<p class="tl-sub" data-reveal="" data-delay="150">Discover ready-to-use interview questions for every role — designed for fast, consistent and effective candidate evaluation, scored automatically in video, audio and chat.</p>
+<div class="tl-hstats" data-reveal="" data-delay="190"><div class="tl-hstat"><b>500+</b><span>Ready-to-use interviews</span></div><div class="tl-hstat"><b>4,500+</b><span>Job roles</span></div><div class="tl-hstat"><b>15 min</b><span>Average length</span></div></div>
 <div class="tl-hbtns" data-reveal="" data-delay="230"><dc-import name="component-cta-button" label="Try for free" href="pricing.dc.html" variant="primary" size="lg" icon="arrow" magnetic="true" hint-size="180px,56px"></dc-import><dc-import name="component-cta-button" label="Book a demo" href="#" variant="secondary" size="lg" icon="play" hint-size="190px,56px"></dc-import></div>
 <div class="tl-trust" data-reveal="" data-delay="270"><span><b>✓</b> 7-day free trial</span><span><b>✓</b> No credit card required</span></div>
 </div>
@@ -264,31 +261,30 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <div class="tl-vcard">
 <div class="tl-vbrowser"><span class="tl-dot" style="background:#FF5F57;"></span><span class="tl-dot" style="background:#FEBC2E;"></span><span class="tl-dot" style="background:#28C840;"></span><span class="tl-vurl">testlify.com/interviews</span></div>
 <div class="tl-vsearch"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg><span>Search interviews…</span></div>
-<div class="tl-vchips"><span class="tl-vchip on">All</span><span class="tl-vchip">Video</span><span class="tl-vchip">Audio</span><span class="tl-vchip">Chat</span></div>
+<div class="tl-vchips"><span class="tl-vchip on">All</span><span class="tl-vchip">Beginner</span><span class="tl-vchip">Intermediate</span><span class="tl-vchip">Advanced</span></div>
 <div class="tl-vlist">
-<div class="tl-vitem"><span class="tl-vico" style="background:linear-gradient(135deg,#F76A6E,#F23F44);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg></span><div class="tl-vinfo"><span class="tl-vnm">Frontend Engineer</span><span class="tl-vmeta">Video · 8 Q · 25 min</span></div><span class="tl-vtag">AI-scored</span></div>
-<div class="tl-vitem"><span class="tl-vico" style="background:linear-gradient(135deg,#7C5CFF,#5B7BFF);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span><div class="tl-vinfo"><span class="tl-vnm">Sales Discovery Call</span><span class="tl-vmeta">Audio · 6 Q · 20 min</span></div><span class="tl-vtag">AI-scored</span></div>
-<div class="tl-vitem"><span class="tl-vico" style="background:linear-gradient(135deg,#1FB57A,#12A063);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg></span><div class="tl-vinfo"><span class="tl-vnm">Customer Support Chat</span><span class="tl-vmeta">Chat · 5 scenarios · 15 min</span></div><span class="tl-vtag">AI-scored</span></div>
-<div class="tl-vitem"><span class="tl-vico" style="background:linear-gradient(135deg,#FF9F43,#F76A2E);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"></path></svg></span><div class="tl-vinfo"><span class="tl-vnm">HR Business Partner</span><span class="tl-vmeta">Video · 7 Q · 22 min</span></div><span class="tl-vtag">AI-scored</span></div>
+<div class="tl-vitem"><span class="tl-vico" style="background:linear-gradient(135deg,#F76A6E,#F23F44);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"></path></svg></span><div class="tl-vinfo"><span class="tl-vnm">Content Strategy for Writing</span><span class="tl-vmeta">Intermediate · 15 min</span></div><span class="tl-vtag">AI-scored</span></div>
+<div class="tl-vitem"><span class="tl-vico" style="background:linear-gradient(135deg,#7C5CFF,#5B7BFF);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg></span><div class="tl-vinfo"><span class="tl-vnm">Metrics &amp; KPIs for Product</span><span class="tl-vmeta">Intermediate · 15 min</span></div><span class="tl-vtag">AI-scored</span></div>
+<div class="tl-vitem"><span class="tl-vico" style="background:linear-gradient(135deg,#1FB57A,#12A063);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg></span><div class="tl-vinfo"><span class="tl-vnm">SEO for Marketing Strategy</span><span class="tl-vmeta">Intermediate · 15 min</span></div><span class="tl-vtag">AI-scored</span></div>
+<div class="tl-vitem"><span class="tl-vico" style="background:linear-gradient(135deg,#FF9F43,#F76A2E);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></span><div class="tl-vinfo"><span class="tl-vnm">Quality Assurance for Engineering</span><span class="tl-vmeta">Intermediate · 15 min</span></div><span class="tl-vtag">AI-scored</span></div>
 </div>
 </div>
-<div class="tl-float tl-f1"><span style="width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#F76A6E,#F23F44);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12.5px;">3</span><div><div class="fl">Interview modes</div><div class="fv">Video · Audio · Chat</div></div></div>
+<div class="tl-float tl-f1"><span style="width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#F76A6E,#F23F44);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12.5px;">500+</span><div><div class="fl">Ready to use</div><div class="fv">Interviews</div></div></div>
 <div class="tl-float tl-f2"><span style="width:38px;height:38px;border-radius:50%;background:#E7F6EE;display:flex;align-items:center;justify-content:center;color:#1F9D6B;font-weight:700;">✓</span><div><div class="fl">Every answer</div><div class="fv">AI-scored</div></div></div>
 </div>
 </div></div></section>
 <section class="fx-sec"><div class="tl-wrap">
-<div class="fx-head" data-reveal=""><h2 class="sec-h2">Browse the interview library</h2><p class="sec-p">Filter role-specific AI interviews by team, mode and length.</p></div>
+<div class="fx-head" data-reveal=""><h2 class="sec-h2">Browse the interview library</h2><p class="sec-p">Filter ready-to-use AI interviews by level and length.</p></div>
 <div class="fx-layout" data-reveal="" data-delay="130">
 <aside class="fx-rail">
 <div class="fx-railhead"><span class="fx-rh-title">Filters<span class="fx-badge">{{ count }}</span></span><sc-if value="{{ hasActive }}" hint-placeholder-val="{{ false }}"><button class="fx-clear" onClick="{{ clearAll }}">Clear all</button></sc-if></div>
-<div class="facet"><div class="facet-t">Category</div><div class="facet-body facet-scroll"><sc-for list="{{ catFacets }}" as="f" hint-placeholder-count="8"><button type="button" class="fopt {{ f.cls }}" onClick="{{ f.onToggle }}"><span class="fbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"></path></svg></span><span class="flab">{{ f.label }}</span><span class="fcount">{{ f.count }}</span></button></sc-for></div></div>
-<div class="facet"><div class="facet-t">Interview mode</div><div class="facet-body"><sc-for list="{{ levelFacets }}" as="f" hint-placeholder-count="3"><button type="button" class="fopt {{ f.cls }}" onClick="{{ f.onToggle }}"><span class="fbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"></path></svg></span><span class="flab">{{ f.label }}</span><span class="fcount">{{ f.count }}</span></button></sc-for></div></div>
+<div class="facet"><div class="facet-t">Level</div><div class="facet-body"><sc-for list="{{ levelFacets }}" as="f" hint-placeholder-count="3"><button type="button" class="fopt {{ f.cls }}" onClick="{{ f.onToggle }}"><span class="fbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"></path></svg></span><span class="flab">{{ f.label }}</span><span class="fcount">{{ f.count }}</span></button></sc-for></div></div>
 <div class="facet"><div class="facet-t">Duration</div><div class="facet-body"><sc-for list="{{ durFacets }}" as="f" hint-placeholder-count="3"><button type="button" class="fopt {{ f.cls }}" onClick="{{ f.onToggle }}"><span class="fbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"></path></svg></span><span class="flab">{{ f.label }}</span><span class="fcount">{{ f.count }}</span></button></sc-for></div></div>
 </aside>
 <div class="fx-main">
 <div class="fx-mainhead"><div class="fx-mhright"><div class="tl-search fx-hsearch"><span class="si"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span><input type="text" value="{{ query }}" onInput="{{ onSearch }}" placeholder="Search interviews…"></div><div class="srtsel {{ srtOpenCls }}"><button type="button" class="lvbtn" onClick="{{ toggleSrt }}"><span>{{ sortLabel }}</span><span class="lvcaret"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></span></button><sc-if value="{{ srtOpen }}" hint-placeholder-val="{{ false }}"><div class="lvback" onClick="{{ closeSrt }}"></div><div class="lvmenu"><sc-for list="{{ sortOpts }}" as="o" hint-placeholder-count="3"><button type="button" class="lvopt {{ o.cls }}" onClick="{{ o.onSelect }}">{{ o.label }}</button></sc-for></div></sc-if></div></div></div>
 <sc-if value="{{ hasChips }}" hint-placeholder-val="{{ false }}"><div class="fx-chips"><sc-for list="{{ chips }}" as="c" hint-placeholder-count="0"><button type="button" class="fx-chip" onClick="{{ c.onRemove }}">{{ c.label }}<span class="fx-chipx"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span></button></sc-for></div></sc-if>
-<sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}"><div class="grid fx-grid"><sc-for list="{{ cards }}" as="c" hint-placeholder-count="9"><a class="card {{ c.cbcCls }}" href="{{ c.href }}"><div class="card-top"><span class="tbadge"><span class="tbico">{{ c.icon }}</span>{{ c.typeLabel }}</span><span class="lvtag {{ c.lvCls }}">{{ c.level }}</span></div><h3 class="card-title">{{ c.name }}</h3><p class="card-desc">{{ c.desc }}</p><div class="card-meta"><span class="mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>{{ c.q }} questions</span><span class="mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>{{ c.dur }} min</span><span class="card-cta">View<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div></a></sc-for></div></sc-if>
+<sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}"><div class="grid fx-grid"><sc-for list="{{ cards }}" as="c" hint-placeholder-count="9"><a class="card {{ c.cbcCls }}" href="{{ c.href }}"><div class="card-top"><span class="lvtag {{ c.lvCls }}">{{ c.level }}</span></div><h3 class="card-title">{{ c.name }}</h3><p class="card-desc">{{ c.desc }}</p><div class="card-meta"><span class="mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>{{ c.dur }} min</span><span class="card-cta">View<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div></a></sc-for></div></sc-if>
 <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}"><div class="empty"><span class="eico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span><h3>No interviews matched your filters</h3><p>Try a different keyword or clear your filters to see the full library.</p><button class="btn btn-g" onClick="{{ clearAll }}">Clear filters</button></div></sc-if>
 </div>
 </div>
@@ -301,77 +297,76 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 class Component extends DCLogic {
   rootRef = React.createRef();
   state = { query: '', cats: [], levels: [], durs: [], sort: 'popular', srtOpen: false };
-  durBucket(m) { return m <= 15 ? 'short' : (m <= 22 ? 'mid' : 'long'); }
+  durBucket(m) { return m <= 15 ? 'short' : (m <= 20 ? 'mid' : 'long'); }
   toggleIn(key, val) { this.setState(s => { const a = s[key]; return { [key]: a.includes(val) ? a.filter(x => x !== val) : a.concat(val) }; }); }
 
   componentDidMount() {
-    const base = this.rootRef.current;
-    const root = (base && base.getRootNode && base.getRootNode()) || document;
-    const animateReveal = (el, delay) => {
-      const dur = 640, startY = 28;
-      let start = null;
-      const tick = (t) => {
-        if (start === null) start = t;
-        const p = Math.min(1, (t - start) / dur);
-        const e = 1 - Math.pow(1 - p, 3);
-        el.style.opacity = String(e);
-        el.style.transform = 'translateY(' + (startY * (1 - e)).toFixed(2) + 'px)';
-        if (p < 1) requestAnimationFrame(tick);
-        else { el.style.opacity = '1'; el.style.transform = 'none'; }
-      };
-      setTimeout(() => requestAnimationFrame(tick), delay);
-    };
-    const run = () => {
-      root.querySelectorAll('[data-reveal]').forEach(el => {
-        animateReveal(el, parseInt(el.getAttribute('data-delay') || '0', 10));
-      });
-      root.querySelectorAll('.tl-vfill').forEach((el, i) => {
-        setTimeout(() => { el.style.width = el.getAttribute('data-w') + '%'; }, 500 + i * 140);
+    const sweep = ()=>{
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('[data-reveal]:not(.in)').forEach(n=>{
+        if(n.getBoundingClientRect().top < vh + 600){
+          const d = parseInt(n.getAttribute('data-delay')||'0',10);
+          setTimeout(()=>n.classList.add('in'), d);
+        }
       });
     };
-    requestAnimationFrame(() => requestAnimationFrame(run));
+    this._sweep = sweep;
+    window.addEventListener('scroll', sweep, { passive:true });
+    window.addEventListener('resize', sweep);
+    [0,150,400,800,1500].forEach(t=>setTimeout(sweep, t));
+    requestAnimationFrame(sweep);
+    try{ this._mo = new MutationObserver(()=>requestAnimationFrame(sweep)); this._mo.observe(document.body,{childList:true,subtree:true}); }catch(e){}
   }
+  componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); }
 
   types = [
-    ['programming','Software engineering'],
-    ['cognitive','Sales'],
-    ['language','Marketing'],
-    ['simulation','Customer support'],
-    ['personality','HR & recruiting'],
-    ['role','Finance'],
-    ['software','Product & design'],
-    ['coding','Data'],
-    ['engineering','Operations'],
+    ['writing','Writing'],
+    ['product','Product'],
+    ['business','Business'],
+    ['marketing','Marketing'],
+    ['engineering','Engineering'],
+    ['hr','HR & recruiting'],
+    ['sales','Sales'],
+    ['support','Customer support'],
+    ['data','Data & analytics'],
+    ['finance','Finance'],
+    ['operations','Operations'],
+    ['design','Design'],
   ];
+  iconMap = { writing:'language', product:'software', business:'role', marketing:'cognitive', engineering:'engineering', hr:'personality', sales:'cognitive', support:'simulation', data:'coding', finance:'role', operations:'engineering', design:'software' };
+  iconFor(k){ return this.iconMap[k] || 'role'; }
 
   tests = [
-    ['Frontend Engineer','programming','Video',25,8,'React, CSS and architecture questions with AI follow-ups on depth.'],
-    ['Backend Engineer','programming','Video',25,8,'APIs, databases, scaling trade-offs and system design reasoning.'],
-    ['DevOps Engineer','programming','Audio',20,7,'CI/CD, infrastructure-as-code and incident response scenarios.'],
-    ['Mobile Developer','programming','Video',22,7,'Platform patterns, performance and release judgement.'],
-    ['Sales Discovery Call','cognitive','Audio',20,6,'A simulated discovery call scoring questioning, listening and qualifying.'],
-    ['Account Executive','cognitive','Video',25,8,'Pipeline management, negotiation and closing judgement.'],
-    ['SDR Cold Outreach','cognitive','Chat',15,5,'Live chat scenario scoring objection handling and personalisation.'],
-    ['Digital Marketing Manager','language','Video',22,7,'Channel strategy, budget allocation and campaign analysis.'],
-    ['Content Strategist','language','Chat',15,5,'Brief-to-outline exercise scoring clarity, tone and audience fit.'],
-    ['SEO Specialist','language','Audio',20,6,'Technical audits, keyword strategy and prioritisation calls.'],
-    ['Customer Support Chat','simulation','Chat',15,5,'A realistic chat scenario scoring tone, accuracy and resolution.'],
-    ['Customer Success Manager','simulation','Video',22,7,'Renewal risk, escalation and expansion conversations.'],
-    ['Technical Support Engineer','simulation','Audio',20,6,'Troubleshooting under pressure with clear customer communication.'],
-    ['HR Business Partner','personality','Video',22,7,'Employee relations, coaching and policy judgement questions.'],
-    ['Talent Acquisition Specialist','personality','Audio',20,6,'Sourcing strategy, structured screening and candidate experience.'],
-    ['People Operations','personality','Chat',15,5,'Process, systems and prioritisation in a written scenario.'],
-    ['Financial Analyst','role','Video',25,8,'Modelling logic, variance analysis and stakeholder storytelling.'],
-    ['Accountant','role','Audio',20,6,'Reconciliation, reporting standards and month-end judgement.'],
-    ['Product Manager','software','Video',25,8,'Prioritisation, discovery and metric trade-offs with AI follow-ups.'],
-    ['Product Designer','software','Video',22,7,'Portfolio walkthrough prompts scoring process and rationale.'],
-    ['UX Researcher','software','Audio',20,6,'Method selection, synthesis and stakeholder influence.'],
-    ['Data Analyst','coding','Video',22,7,'SQL reasoning, metric definitions and insight communication.'],
-    ['Data Scientist','coding','Video',25,8,'Modelling choices, experiment design and business framing.'],
-    ['Analytics Engineer','coding','Chat',18,5,'Pipeline design and data-quality judgement in a written scenario.'],
-    ['Operations Manager','engineering','Audio',20,6,'Process bottlenecks, staffing and vendor trade-off scenarios.'],
-    ['Project Manager','engineering','Video',22,7,'Scoping, risk and stakeholder scenarios with AI follow-ups.'],
-    ['Executive Assistant','engineering','Chat',15,5,'Prioritisation, communication and calendar-conflict judgement.'],
+    ['Background Check','hr','Intermediate',15,10,"A thorough AI interview to verify a candidate's identity, work history, education, certifications, references and eligibility to work."],
+    ['Content Strategy for Writing','writing','Intermediate',15,8,"Evaluates the ability to develop content strategies, conduct audience research, and create and optimize content."],
+    ['Copywriting for Writing','writing','Beginner',15,7,'Evaluates persuasive copy, tone control and message clarity across formats.'],
+    ['Technical Writing for Writing','writing','Advanced',20,9,'Assesses the ability to document complex products clearly for technical and non-technical readers.'],
+    ['Metrics and KPIs for Product Performance','product','Intermediate',15,8,"Evaluates the ability to define, analyze and report KPIs, with insight into data analysis and strategy."],
+    ['Product Roadmapping for Product','product','Advanced',20,9,'Evaluates prioritisation, stakeholder alignment and roadmap trade-off reasoning.'],
+    ['User Research for Product','product','Intermediate',15,8,'Assesses method selection, synthesis and turning insight into product decisions.'],
+    ['Competitive Analysis for Business','business','Intermediate',15,8,'Evaluates skills in competitive analysis, strategy formulation and process improvement.'],
+    ['Process Improvement for Business','business','Intermediate',15,8,'Evaluates the ability to identify inefficiencies, apply improvement methodologies and measure success.'],
+    ['Stakeholder Management for Business','business','Intermediate',15,8,'Assesses communication, alignment and influence across stakeholders.'],
+    ['SEO for Marketing Strategy','marketing','Intermediate',15,9,'Evaluates the ability to plan and execute SEO — keyword research, on-page and technical SEO, content optimization and analytics.'],
+    ['Email Marketing Strategies for Marketing','marketing','Intermediate',15,8,'Evaluates skills in list segmentation, content creation, performance tracking, A/B testing and deliverability.'],
+    ['Brand Strategy for Marketing','marketing','Advanced',20,9,'Evaluates positioning, messaging and go-to-market reasoning.'],
+    ['Quality Assurance for Engineering','engineering','Intermediate',15,9,'Assesses expertise in QA processes, risk management, testing, automation, defect handling and collaboration.'],
+    ['Engineering Project Risk Management','engineering','Intermediate',15,8,'Evaluates the ability to identify, assess and mitigate risks in engineering projects.'],
+    ['System Design for Engineering','engineering','Advanced',30,10,'Assesses architecture trade-offs, scalability and reliability reasoning.'],
+    ['Debugging for Engineering','engineering','Intermediate',15,8,'Evaluates structured troubleshooting and root-cause analysis.'],
+    ['Recruitment Screening for HR','hr','Beginner',15,7,'Evaluates structured screening, candidate experience and sourcing judgement.'],
+    ['Employee Relations for HR','hr','Intermediate',15,8,'Assesses coaching, conflict resolution and policy judgement.'],
+    ['Lead Generation for Sales','sales','Intermediate',15,8,'Evaluates prospecting, qualification and pipeline-building judgement.'],
+    ['Negotiation for Sales','sales','Advanced',20,8,'Assesses discovery, objection handling and closing under realistic scenarios.'],
+    ['Ticket Handling for Customer Support','support','Beginner',15,6,'Evaluates tone, accuracy and resolution in realistic support scenarios.'],
+    ['Escalation Management for Customer Support','support','Intermediate',15,7,'Assesses judgement in prioritising, de-escalating and resolving complex issues.'],
+    ['Data Analysis for Data & Analytics','data','Intermediate',15,8,'Evaluates SQL reasoning, metric definitions and insight communication.'],
+    ['Experiment Design for Data & Analytics','data','Advanced',20,9,'Assesses hypothesis framing, test design and interpretation of results.'],
+    ['Financial Modeling for Finance','finance','Advanced',20,9,'Evaluates modelling logic, assumptions and scenario analysis for decision-making.'],
+    ['Budgeting and Forecasting for Finance','finance','Intermediate',15,8,'Assesses forecasting accuracy, variance analysis and financial storytelling.'],
+    ['Operations Planning for Operations','operations','Intermediate',15,8,'Evaluates process bottlenecks, staffing and vendor trade-off scenarios.'],
+    ['UX Design for Design','design','Intermediate',15,8,'Evaluates process, rationale and usability judgement through portfolio prompts.'],
+    ['Visual Design for Design','design','Beginner',15,7,'Assesses hierarchy, typography and brand-consistent execution.'],
   ];
 
   get tlab() {
@@ -407,9 +402,9 @@ class Component extends DCLogic {
     const q = (this.state.query || '').trim().toLowerCase();
     const selCats = this.state.cats, selLvls = this.state.levels, selDurs = this.state.durs, sort = this.state.sort;
     const lab = this.tlab;
-    const lvClass = { Chat: 'lv-beg', Audio: 'lv-int', Video: 'lv-adv' };
-    const cbcClass = { Chat: 'cbc-beg', Audio: 'cbc-int', Video: 'cbc-adv' };
-    const durDefs = [['short', 'Under 15 min'], ['mid', '15–22 min'], ['long', '22+ min']];
+    const lvClass = { Beginner: 'lv-beg', Intermediate: 'lv-int', Advanced: 'lv-adv' };
+    const cbcClass = { Beginner: 'cbc-beg', Intermediate: 'cbc-int', Advanced: 'cbc-adv' };
+    const durDefs = [['short', '15 min or less'], ['mid', '16–20 min'], ['long', '20+ min']];
     const durLab = {}; durDefs.forEach(d => { durLab[d[0]] = d[1]; });
     // match a test, optionally ignoring one facet dimension (for facet counts)
     const matches = (t, ignore) => {
@@ -423,7 +418,7 @@ class Component extends DCLogic {
     if (sort === 'az') filtered = filtered.slice().sort((a, b) => a[0].localeCompare(b[0]));
     else if (sort === 'dur') filtered = filtered.slice().sort((a, b) => a[3] - b[3]);
     const cards = filtered.map((t, i) => ({
-      key: t[0] + i, name: t[0], typeLabel: lab[t[1]], icon: this.mkIcon(t[1]), typeKey: t[1],
+      key: t[0] + i, name: t[0], typeLabel: lab[t[1]], icon: this.mkIcon(this.iconFor(t[1])), typeKey: t[1],
       level: t[2], lvCls: lvClass[t[2]], cbcCls: cbcClass[t[2]], dur: t[3], q: t[4], desc: t[5], href: 'interviews-detail.dc.html'
     }));
     const catFacets = this.types.map(ty => ({
@@ -432,7 +427,7 @@ class Component extends DCLogic {
       cls: selCats.includes(ty[0]) ? 'on' : '',
       onToggle: () => this.toggleIn('cats', ty[0])
     }));
-    const levelFacets = ['Video', 'Audio', 'Chat'].map(lv => ({
+    const levelFacets = ['Beginner', 'Intermediate', 'Advanced'].map(lv => ({
       key: lv, label: lv,
       count: this.tests.filter(t => t[2] === lv && matches(t, 'lvl')).length,
       cls: selLvls.includes(lv) ? 'on' : '',

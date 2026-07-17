@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./site-base.css">
+<script src="./reveal.js"></script>
+</helmet>
+<dc-import name="component-site-header" announcement="Our information security standards" announcement-cta="Trust center" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+
+<section class="phero"><div class="wrap" style="max-width:860px;">
+  <p class="eyebrow reveal">Information security standards<b>.</b></p>
+  <h1 class="h1 reveal" style="transition-delay:.04s">The standards<br>we hold ourselves to</h1>
+  <p class="lead reveal" style="margin:22px auto 0;max-width:640px;transition-delay:.08s">A summary of the frameworks, controls and commitments that define information security at Testlify.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="grid2" style="gap:22px;">
+    <div class="card reveal"><h3 class="h3" style="font-size:18px;margin-bottom:8px;">SOC 2 Type II</h3><p class="body" style="font-size:14.5px;">Audited controls for security, availability, and confidentiality, reviewed annually.</p></div>
+    <div class="card reveal" style="transition-delay:.05s"><h3 class="h3" style="font-size:18px;margin-bottom:8px;">ISO/IEC 27001</h3><p class="body" style="font-size:14.5px;">A certified information security management system (ISMS) governing our controls.</p></div>
+    <div class="card reveal" style="transition-delay:.1s"><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Data protection</h3><p class="body" style="font-size:14.5px;">GDPR and CCPA compliance with DPAs and approved transfer mechanisms.</p></div>
+    <div class="card reveal" style="transition-delay:.15s"><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Encryption standards</h3><p class="body" style="font-size:14.5px;">TLS 1.2+ in transit, AES-256 at rest, with managed key rotation.</p></div>
+    <div class="card reveal"><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Access &amp; identity</h3><p class="body" style="font-size:14.5px;">SSO, MFA, least-privilege access and periodic access reviews.</p></div>
+    <div class="card reveal" style="transition-delay:.05s"><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Resilience</h3><p class="body" style="font-size:14.5px;">Automated backups, tested disaster recovery and high-availability architecture.</p></div>
+  </div>
+  <p class="body reveal" style="text-align:center;margin-top:30px;">For the full standards documentation, <a class="lnk" href="contact.dc.html">contact our security team.</a></p>
+</div></section>
+
+<dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}"></script>
+</body>
+</html>

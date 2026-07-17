@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="solution-usecase-template" page-data="{{ pd }}" hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals(){
+    return { pd: {
+      crumb:"Use case / Skills validation",
+      eyebrow:"For skills validation",
+      title:"Validate skills with evidence, not claims",
+      lead:"Whether you're hiring, promoting or upskilling, confirm what people can really do with objective, validated assessments \u2014 and make every decision defensible.",
+      ctaLabel:"Try for free", ctaHref:"pricing.dc.html",
+      stats:[{t:"3,500+ validated tests"},{t:"13+ question formats"},{t:"EEOC-defensible scoring"}],
+      logos:["Xneelo","Kimp","Endiprev","Virtual Gurus","HROne"],
+      sections:[
+        {kind:"split", num:"1", h2:"Confirm ability objectively", body:["Self-reported skills and resumes overstate reality. Validated assessments measure real ability against benchmarks, so you know exactly where people stand."], bullets:[{label:"Role-specific & technical tests"},{label:"Cognitive & personality"},{label:"Benchmarked scoring"},{label:"13+ question formats"},{label:"Anti-cheat proctoring"},{label:"Clear, actionable reports"}], cta:{label:"Browse the test library", href:"test-library.dc.html"}},
+        {kind:"cards", eyebrow:"Why Testlify", h2:"Trusted, fair skills validation", intro:"Built and reviewed by experts, defensible by design.", cards:[
+          {title:"Validated tests", desc:"Developed to BPS/EFPA standards, peer-reviewed by SMEs."},
+          {title:"Benchmarked scoring", desc:"Compare every person against the same objective bar."},
+          {title:"EEOC-defensible", desc:"Structured scoring and a full audit trail."},
+          {title:"Anti-cheat proctoring", desc:"Keep validation honest and trustworthy."},
+          {title:"Multilingual", desc:"Assess a global workforce fairly."},
+          {title:"Integrations", desc:"100+ ATS integrations plus open API."}
+        ]},
+        {kind:"split", num:"2", h2:"Beyond hiring", body:["Use validation for promotions, internal mobility and L&D \u2014 identify skill gaps and target development where it counts."], bullets:[{label:"Promotion & mobility decisions"},{label:"Training-needs analysis"},{label:"Team capability mapping"}]}
+      ],
+      faqs:[
+        {q:"What is skills validation?", a:"It's confirming what someone can actually do through objective, validated assessment \u2014 for hiring, promotion or development."},
+        {q:"Are the assessments validated?", a:"Yes \u2014 developed to BPS guidelines and the EFPA model, and peer-reviewed by subject-matter experts."},
+        {q:"Is it defensible?", a:"Yes. Consistent scoring and a complete audit trail make every decision EEOC-defensible."},
+        {q:"Can I use it beyond hiring?", a:"Yes \u2014 for promotions, internal mobility and identifying training needs across teams."},
+        {q:"How do you prevent cheating?", a:"Anti-cheat proctoring \u2014 webcam, full-screen and plagiarism detection \u2014 keeps results honest."},
+        {q:"Does it integrate with our systems?", a:"Yes \u2014 100+ native ATS integrations plus an open API."}
+      ],
+      ctaEyebrow:"Get started", ctaTitle:"Prove skill with evidence.", ctaBody:"Validate what people can really do \u2014 start assessing in minutes.",
+      ctaTicks:["7-day free trial","Unlimited assessments","Cancel anytime"]
+    } };
+  }
+}
+</script>
+</body>
+</html>

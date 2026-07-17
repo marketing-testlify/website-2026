@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="solution-usecase-template" page-data="{{ pd }}" hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals(){
+    return { pd: {
+      crumb:"Use case / Diversity & inclusion",
+      eyebrow:"For diverse hiring",
+      title:"Build diverse teams with bias-free, skills-first hiring",
+      lead:"Give every applicant an equal, unbiased chance to show what they can do \u2014 and find hidden talent traditional screening filters out.",
+      ctaLabel:"Try for free", ctaHref:"pricing.dc.html",
+      stats:[{t:"Structured, blind assessment"},{t:"EEOC-defensible scoring"},{t:"3,500+ validated tests"}],
+      logos:["Xneelo","Kimp","Endiprev","Virtual Gurus","HROne"],
+      sections:[
+        {kind:"split", num:"1", h2:"Remove bias at the source", body:["Resumes carry signals \u2014 names, schools, gaps \u2014 that trigger unconscious bias. Skills-first assessment focuses on ability alone, so candidates advance on merit, not background."], bullets:[{label:"Anonymised, structured assessment"},{label:"Consistent scoring for everyone"},{label:"Skills over pedigree"},{label:"Wider, fairer funnels"}], cta:{label:"Why it works", href:"responsible-hiring.dc.html"}},
+        {kind:"cards", eyebrow:"Fair by design", h2:"Inclusion built into every step", intro:"Fairness isn't a feature you add later \u2014 it's how the platform works.", cards:[
+          {title:"Blind screening", desc:"Assess ability before identifying details influence the decision."},
+          {title:"Validated tests", desc:"Built to BPS/EFPA standards and reviewed by I/O psychologists."},
+          {title:"EEOC-defensible", desc:"Structured scoring and a full audit trail for every decision."},
+          {title:"Multilingual", desc:"Candidates test in their own language for a level field."},
+          {title:"Accessible", desc:"A clean, mobile-friendly experience for every candidate."},
+          {title:"Analytics", desc:"Track funnel fairness and spot drop-off by stage."}
+        ]},
+        {kind:"split", num:"2", h2:"Find talent others miss", body:["Self-taught, career-changers and non-traditional candidates often out-perform \u2014 if they get a fair shot. Skills-first hiring surfaces them."], bullets:[{label:"Surface non-traditional talent"},{label:"Reduce screening bias"},{label:"Improve quality of hire"}]}
+      ],
+      faqs:[
+        {q:"How does Testlify reduce bias?", a:"By assessing verified skills through structured, consistent tests before identifying details influence the decision \u2014 so candidates advance on ability."},
+        {q:"Is skills-based hiring EEOC-defensible?", a:"Yes. Consistent scoring and a complete audit trail make every decision defensible."},
+        {q:"Does it really improve diversity?", a:"Teams consistently report more diverse pipelines because skills-first hiring surfaces qualified people traditional filters overlook."},
+        {q:"Are the tests validated?", a:"Yes \u2014 developed to BPS guidelines and the EFPA model, and reviewed by I/O psychologists."},
+        {q:"Can candidates test in their own language?", a:"Yes. Multilingual support gives global candidates a fair, level experience."},
+        {q:"Does it integrate with our ATS?", a:"Yes \u2014 100+ native ATS integrations on every paid plan."}
+      ],
+      ctaEyebrow:"Get started", ctaTitle:"Hire for ability, build for diversity.", ctaBody:"Give every candidate a fair shot and find the talent others miss \u2014 start free.",
+      ctaTicks:["7-day free trial","Unlimited assessments","Cancel anytime"]
+    } };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+.tcc-sec{padding:96px 0;font-family:'Poppins',sans-serif;}
+.tcc-w{max-width:1240px;margin:0 auto;padding:0 28px;}
+.tcc-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 16px;text-wrap:balance;}
+.tcc-eyebrow>span:last-child{color:#F23F44;}
+.tcc-h2{font-size:44px;line-height:1.12;font-weight:800;letter-spacing:-1px;color:#1A1014;margin:0 0 44px;text-wrap:balance;max-width:940px;}
+.tcc-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.tcc-card{background:#fff;border:1px solid #F0E2E3;border-radius:20px;padding:38px 36px;}
+.tcc-stars{display:flex;gap:5px;margin-bottom:20px;}
+.tcc-stars svg{width:20px;height:20px;}
+.tcc-q{font-size:20px;line-height:1.5;font-style:italic;color:#2A1D21;margin:0 0 26px;text-wrap:pretty;}
+.tcc-nm{font-weight:700;font-size:17px;color:#1A1014;}
+.tcc-role{font-size:14.5px;color:#6C5A5D;margin-top:4px;}
+.tcc-badge{display:inline-block;white-space:nowrap;margin-top:20px;background:#FCE0DE;color:#F23F44;font-size:12.5px;font-weight:700;padding:7px 14px;border-radius:100px;}
+@media(max-width:820px){.tcc-grid{grid-template-columns:1fr;}.tcc-h2{font-size:32px;}.tcc-sec{padding:68px 0;}}
+</style>
+<script src="./reveal.js"></script>
+</helmet>
+<section class="tcc-sec" style="background: {{ bgColor }};"><div class="tcc-w">
+  <sc-if value="{{ hasEyebrow }}" hint-placeholder-val="{{ false }}"><p class="tcc-eyebrow reveal">{{ eyebrowText }}<span>.</span></p></sc-if>
+  <h2 class="tcc-h2 reveal">{{ headingText }}</h2>
+  <div class="tcc-grid reveal">
+    <div class="tcc-card">
+      <div class="tcc-stars"><svg viewBox="0 0 24 24" fill="#F23F44"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg><svg viewBox="0 0 24 24" fill="#F23F44"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg><svg viewBox="0 0 24 24" fill="#F23F44"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg><svg viewBox="0 0 24 24" fill="#F23F44"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg><svg viewBox="0 0 24 24" fill="#F23F44"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
+      <p class="tcc-q">{{ quote1 }}</p>
+      <div class="tcc-nm">{{ nm1 }}</div>
+      <div class="tcc-role">{{ role1 }}</div>
+      <sc-if value="{{ hasBadge1 }}" hint-placeholder-val="{{ false }}"><span class="tcc-badge">{{ badge1 }}</span></sc-if>
+    </div>
+    <div class="tcc-card">
+      <div class="tcc-stars"><svg viewBox="0 0 24 24" fill="#F23F44"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg><svg viewBox="0 0 24 24" fill="#F23F44"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg><svg viewBox="0 0 24 24" fill="#F23F44"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg><svg viewBox="0 0 24 24" fill="#F23F44"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg><svg viewBox="0 0 24 24" fill="#F23F44"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
+      <p class="tcc-q">{{ quote2 }}</p>
+      <div class="tcc-nm">{{ nm2 }}</div>
+      <div class="tcc-role">{{ role2 }}</div>
+      <sc-if value="{{ hasBadge2 }}" hint-placeholder-val="{{ false }}"><span class="tcc-badge">{{ badge2 }}</span></sc-if>
+    </div>
+  </div>
+</div></section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:560},&quot;heading&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;What hiring teams say about skills-based hiring&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;eyebrow&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;bg&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ffffff&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;q1&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;name1&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;role1&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;badge1&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;q2&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;name2&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;role2&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;badge2&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    const eb = p.eyebrow ?? '';
+    return {
+      bgColor: p.bg ?? '#ffffff',
+      hasEyebrow: !!eb,
+      eyebrowText: eb,
+      headingText: p.heading ?? 'What hiring teams say about skills-based hiring',
+      quote1: p.q1 ?? '', nm1: p.name1 ?? '', role1: p.role1 ?? '',
+      hasBadge1: !!(p.badge1), badge1: p.badge1 ?? '',
+      quote2: p.q2 ?? '', nm2: p.name2 ?? '', role2: p.role2 ?? '',
+      hasBadge2: !!(p.badge2), badge2: p.badge2 ?? '',
+    };
+  }
+}
+</script>
+</body>
+</html>

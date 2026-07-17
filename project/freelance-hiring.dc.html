@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="solution-usecase-template" page-data="{{ pd }}" hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals(){
+    return { pd: {
+      crumb:"Use case / Freelance hiring",
+      eyebrow:"For freelance & contract hiring",
+      title:"Hire freelancers you can trust, fast",
+      lead:"Contract roles move quickly and there's no time for a bad fit. Verify skills up front so every freelancer you bring on can deliver from day one.",
+      ctaLabel:"Try for free", ctaHref:"pricing.dc.html",
+      stats:[{t:"Verify skills in minutes"},{t:"3,500+ validated tests"},{t:"Any device, anywhere"}],
+      logos:["Virtual Gurus","Kimp","Xneelo","Endiprev","HROne"],
+      sections:[
+        {kind:"split", num:"1", h2:"Prove skill before the project starts", body:["Portfolios and profiles can be misleading. A short, role-specific assessment confirms a freelancer can actually do the work before you commit budget and deadlines."], bullets:[{label:"Role-specific skills tests"},{label:"Coding & design challenges"},{label:"Real-world work samples"},{label:"Fast, mobile-friendly"}], cta:{label:"Browse the test library", href:"test-library.dc.html"}},
+        {kind:"split", num:"2", h2:"Screen a global talent pool fairly", body:["Freelance hiring is borderless. Multilingual, objective assessment lets you compare candidates worldwide on the same fair standard."], bullets:[{label:"Multilingual assessments"},{label:"Consistent, objective scoring"},{label:"Anti-cheat proctoring"},{label:"Auto-ranking by fit"}]},
+        {kind:"cards", eyebrow:"Why Testlify", h2:"Confidence in every contract hire", intro:"Everything you need to hire freelancers on proof.", cards:[
+          {title:"Fast verification", desc:"Short assessments confirm skill in minutes, not days."},
+          {title:"Work samples", desc:"See real output that mirrors the actual project."},
+          {title:"Objective scoring", desc:"Compare freelancers on the same fair standard."},
+          {title:"Anti-cheat proctoring", desc:"Trust the results you're hiring on."},
+          {title:"Multilingual", desc:"Assess a global freelance pool fairly."},
+          {title:"Integrations", desc:"100+ ATS integrations plus open API."}
+        ]}
+      ],
+      faqs:[
+        {q:"Why assess freelancers if they have a portfolio?", a:"Portfolios show past work, not who did it or whether they can repeat it. A short assessment verifies the skill you're actually paying for."},
+        {q:"How long do assessments take?", a:"Most take around 30 minutes or less, so they fit the fast pace of contract hiring."},
+        {q:"Can I assess a global talent pool?", a:"Yes. Multilingual, objective tests let you compare freelancers worldwide fairly."},
+        {q:"How do you prevent cheating?", a:"Anti-cheat proctoring \u2014 webcam, full-screen and plagiarism detection \u2014 keeps results honest."},
+        {q:"Does it integrate with our tools?", a:"Yes \u2014 100+ native ATS integrations plus an open API."},
+        {q:"Is it suitable for one-off hires?", a:"Yes. Pay-per-candidate pricing means it works whether you hire one freelancer or a hundred."}
+      ],
+      ctaEyebrow:"Get started", ctaTitle:"Hire freelancers who deliver.", ctaBody:"Verify skill before the project starts \u2014 start assessing in minutes.",
+      ctaTicks:["7-day free trial","Pay per candidate","Cancel anytime"]
+    } };
+  }
+}
+</script>
+</body>
+</html>

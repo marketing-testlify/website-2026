@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./site-base.css">
+<link rel="stylesheet" href="./calc.css">
+<script src="./reveal.js"></script>
+</helmet>
+<dc-import name="component-site-header" announcement="Free HR tools — calculators, templates and interview kits." announcement-cta="Browse tools" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+
+<section class="tsec" style="background:radial-gradient(1000px 500px at 80% 4%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff;"><div class="tw">
+  <div class="tcrumb reveal"><a href="blog.dc.html">Resources</a><span>/</span><a href="hr-tools.dc.html">HR tools</a><span>/</span><span>Recruiting conversion rate calculator</span></div>
+  <div style="max-width:720px;">
+    <p class="eyebrow reveal">Recruiting conversion rate<b>.</b></p>
+    <h1 class="th1 reveal" style="transition-delay:.04s;">Calculate your recruiting conversion rate</h1>
+    <p class="tlead reveal" style="transition-delay:.08s;">See what share of applicants convert into hires. A stronger conversion rate means less wasted effort and a more qualified top of funnel.</p>
+  </div>
+</div></section>
+
+<section class="tsec" style="background:#FBF3EE;padding-top:40px;"><div class="tw">
+  <div class="tcalc reveal">
+    <div class="tcard">
+      <p class="eyebrow" style="margin-bottom:22px;">Your numbers<b>.</b></p>
+      <div class="tfield"><label>Total applicants</label><input class="tinput" type="number" min="1" value="{{ appl }}" onInput="{{ onAppl }}"></div>
+      <div class="tfield" style="margin-bottom:0;"><label>Total hires</label><input class="tinput" type="number" min="0" value="{{ hire }}" onInput="{{ onHire }}"></div>
+    </div>
+    <div class="tresult">
+      <p class="trlabel">Conversion rate</p>
+      <p class="trbig">{{ result }}</p>
+      <p class="trsub">{{ note }}</p>
+      <div class="trbreak">
+        <div class="trrow"><span>Applicants</span><span>{{ appl }}</span></div>
+        <div class="trrow"><span>Hires</span><span>{{ hire }}</span></div>
+        <div class="trrow"><span>Applicants per hire</span><span>{{ perHire }}</span></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="tsec"><div class="tw">
+  <div style="max-width:640px;">
+    <p class="eyebrow reveal">How it works<b>.</b></p>
+    <h2 class="th2 reveal" style="transition-delay:.04s;">Conversion rate, explained</h2>
+    <p class="tlead reveal" style="transition-delay:.08s;">Conversion rate is hires divided by applicants, as a percentage. A very low rate can mean a poorly targeted top of funnel — sharper sourcing and skills screening lift it.</p>
+  </div>
+  <div class="tsteps">
+    <div class="tstep reveal"><div class="tstepn">1</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Total applicants</h3><p class="tbody" style="margin:0;font-size:14.5px;">Everyone who applied in the period.</p></div>
+    <div class="tstep reveal" style="transition-delay:.06s;"><div class="tstepn">2</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Total hires</h3><p class="tbody" style="margin:0;font-size:14.5px;">The number you actually hired.</p></div>
+    <div class="tstep reveal" style="transition-delay:.12s;"><div class="tstepn">3</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">See conversion</h3><p class="tbody" style="margin:0;font-size:14.5px;">Hires ÷ applicants, expressed as a percentage.</p></div>
+  </div>
+</div></section>
+
+<dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { appl: 500, hire: 6 };
+  num(v){ const n=parseFloat(v); return isNaN(n)||n<0?0:n; }
+  renderVals(){
+    const appl=Math.max(1,this.num(this.state.appl)), hire=this.num(this.state.hire);
+    const conv=hire/appl*100;
+    return {
+      appl:this.state.appl, hire:this.state.hire,
+      onAppl:(e)=>this.setState({appl:e.target.value}),
+      onHire:(e)=>this.setState({hire:e.target.value}),
+      result:conv.toFixed(1)+'%',
+      perHire: hire? Math.round(appl/hire):'—',
+      note:'The share of applicants who became hires this period.'
+    };
+  }
+}
+</script>
+</body>
+</html>

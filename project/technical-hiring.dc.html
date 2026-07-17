@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="solution-usecase-template" page-data="{{ pd }}" hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals(){
+    return { pd: {
+      crumb:"Use case / Technical hiring",
+      eyebrow:"For technical hiring",
+      title:"Technical hiring, backed by real coding proof",
+      lead:"Stop guessing from resumes. Assess engineers in real coding environments across 45+ languages, and only interview the ones who can actually build.",
+      ctaLabel:"Try for free", ctaHref:"pricing.dc.html",
+      stats:[{t:"45+ coding languages"},{t:"Live coding environments"},{t:"3,500+ validated tests"}],
+      logos:["LTIMindtree","Sonatafy","Thales","Third Bridge","Cogitotech"],
+      sections:[
+        {kind:"split", num:"1", h2:"See how engineers actually work", body:["Interactive IDEs and real-world challenges test coding, debugging and system design the way the job demands \u2014 not trivia. You see the work, not just the claim."], bullets:[{label:"Live coding in 45+ languages"},{label:"Debugging & code-review tasks"},{label:"System & API design"},{label:"Frontend, backend, data & DevOps"},{label:"Take-home and timed formats"},{label:"Auto-scored for accuracy & efficiency"}], cta:{label:"Explore coding tests", href:"coding-tests.dc.html"}},
+        {kind:"cards", eyebrow:"Why Testlify", h2:"Everything technical hiring needs", intro:"Assess deeply, rank objectively, protect your engineers' time.", cards:[
+          {title:"Real coding environments", desc:"Interactive IDEs across 45+ stacks that mirror day-to-day work."},
+          {title:"Automated scoring", desc:"Rank on accuracy, efficiency and code quality."},
+          {title:"Anti-cheat proctoring", desc:"IP locking and plagiarism detection keep results honest."},
+          {title:"Global benchmarking", desc:"Compare candidates against a worldwide talent pool."},
+          {title:"Enterprise security", desc:"SOC 2 Type II, ISO 27001 and GDPR compliant."},
+          {title:"Fully integratable", desc:"100+ ATS integrations plus Slack and open API."}
+        ]},
+        {kind:"split", num:"2", h2:"Protect your engineers' time", body:["Only candidates who clear the skills bar reach a live interview, so senior engineers spend their hours on the strongest applicants."], bullets:[{label:"Screen before you interview"},{label:"Auto-ranked shortlists"},{label:"Consistent, fair evaluation"}]}
+      ],
+      faqs:[
+        {q:"Which languages and stacks are supported?", a:"45+ programming languages plus frontend, backend, data and DevOps scenarios, in interactive coding environments."},
+        {q:"Can candidates cheat on coding tests?", a:"Anti-cheat proctoring, IP locking and plagiarism detection keep results trustworthy."},
+        {q:"How are coding tests scored?", a:"Automatically, on accuracy, efficiency and code quality, with candidates auto-ranked."},
+        {q:"Does it integrate with our ATS?", a:"Yes \u2014 100+ native ATS integrations plus Slack and open API."},
+        {q:"Can we customise tests to our stack?", a:"Yes. Tailor assessments to your languages, frameworks and role requirements."},
+        {q:"Is it suitable for startups and enterprises?", a:"Yes. Testlify scales from a few hires to thousands across teams and regions."}
+      ],
+      ctaEyebrow:"Get started", ctaTitle:"Hire engineers on proof, not resumes.", ctaBody:"See who can actually build \u2014 start assessing technical talent in minutes.",
+      ctaTicks:["7-day free trial","45+ coding languages","Cancel anytime"]
+    } };
+  }
+}
+</script>
+</body>
+</html>

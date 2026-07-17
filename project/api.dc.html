@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./site-base.css">
+<script src="./reveal.js"></script>
+<style>
+.code{background:#1A1014;border-radius:18px;padding:26px 28px;font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;font-size:13.5px;line-height:1.7;color:#F3E9E9;overflow-x:auto;box-shadow:0 16px 30px rgba(110,11,14,.16);}
+.code .k{color:#FF9E7A;}.code .s{color:#8FD4A8;}.code .c{color:#8A7A7D;}
+</style>
+</helmet>
+<dc-import name="component-site-header" announcement="Build with the Testlify API" announcement-cta="Read the docs" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+
+<section class="phero"><div class="wrap" style="max-width:860px;">
+  <p class="eyebrow reveal">Developer API<b>.</b></p>
+  <h1 class="h1 reveal" style="transition-delay:.04s">Assessment,<br>built into your stack</h1>
+  <p class="lead reveal" style="margin:22px auto 0;max-width:640px;transition-delay:.08s">A clean REST API and webhooks let you create assessments, invite candidates and pull results programmatically — so Testlify fits right into your product or workflow.</p>
+  <div class="reveal btnrow" style="margin-top:30px;transition-delay:.12s;">
+    <dc-import name="component-cta-button" label="Get API access" href="contact.dc.html" variant="primary" size="md" icon="arrow" hint-size="170px,52px"></dc-import>
+    <dc-import name="component-cta-button" label="Integration program" href="integration-program.dc.html" variant="ghost" size="md" icon="none" hint-size="190px,52px"></dc-import>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap split">
+  <div class="reveal">
+    <p class="eyebrow">Simple by design<b>.</b></p>
+    <h2 class="h2" style="margin-bottom:20px;">A few lines to your first assessment</h2>
+    <p class="body">Authenticate, create an assessment, and invite a candidate with a handful of calls. Webhooks push results back to you the moment they're ready.</p>
+    <ul class="chk" style="margin-top:22px;">
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>REST endpoints with predictable JSON</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Webhooks for real-time result events</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Scoped API keys and sandbox environment</li>
+    </ul>
+  </div>
+  <div class="reveal" style="transition-delay:.08s;">
+    <div class="code"><span class="c"># Invite a candidate to an assessment</span><br>POST /v1/invitations<br>Authorization: Bearer <span class="s">&lt;API_KEY&gt;</span><br><br>{<br>&nbsp;&nbsp;<span class="k">"assessment_id"</span>: <span class="s">"asmt_9k2"</span>,<br>&nbsp;&nbsp;<span class="k">"email"</span>: <span class="s">"jordan@acme.com"</span>,<br>&nbsp;&nbsp;<span class="k">"send_email"</span>: <span class="k">true</span><br>}</div>
+  </div>
+</div></section>
+
+<section class="sec" style="background:#FBF3EE;"><div class="wrap">
+  <div class="center-head">
+    <p class="eyebrow reveal">What you can build<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">Endless possibilities</h2>
+  </div>
+  <div class="grid3">
+    <div class="card reveal"><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Embed assessment</h3><p class="body" style="font-size:14px;">Add skills testing directly inside your own product or careers site.</p></div>
+    <div class="card reveal" style="transition-delay:.06s"><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Automate workflows</h3><p class="body" style="font-size:14px;">Trigger assessments from your ATS or CRM and sync results automatically.</p></div>
+    <div class="card reveal" style="transition-delay:.12s"><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Custom reporting</h3><p class="body" style="font-size:14px;">Pull scores and analytics into your own dashboards and data warehouse.</p></div>
+  </div>
+</div></section>
+
+<dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./site-base.css">
+<link rel="stylesheet" href="./calc.css">
+<script src="./reveal.js"></script>
+</helmet>
+<dc-import name="component-site-header" announcement="Free HR tools — calculators, templates and interview kits." announcement-cta="Browse tools" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+
+<section class="tsec" style="background:radial-gradient(1000px 500px at 80% 4%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff;"><div class="tw">
+  <div class="tcrumb reveal"><a href="blog.dc.html">Resources</a><span>/</span><a href="hr-tools.dc.html">HR tools</a><span>/</span><span>eNPS calculator</span></div>
+  <div style="max-width:720px;">
+    <p class="eyebrow reveal">Employee NPS calculator<b>.</b></p>
+    <h1 class="th1 reveal" style="transition-delay:.04s;">Calculate your employee NPS</h1>
+    <p class="tlead reveal" style="transition-delay:.08s;">Enter how many employees are promoters, passives and detractors to see your eNPS — a quick pulse on how likely your people are to recommend working with you.</p>
+  </div>
+</div></section>
+
+<section class="tsec" style="background:#FBF3EE;padding-top:40px;"><div class="tw">
+  <div class="tcalc reveal">
+    <div class="tcard">
+      <p class="eyebrow" style="margin-bottom:22px;">Your survey<b>.</b></p>
+      <div class="tfield"><label>Promoters <span class="thint">scored 9–10</span></label><input class="tinput" type="number" min="0" value="{{ prom }}" onInput="{{ onProm }}"></div>
+      <div class="tfield"><label>Passives <span class="thint">scored 7–8</span></label><input class="tinput" type="number" min="0" value="{{ pass }}" onInput="{{ onPass }}"></div>
+      <div class="tfield" style="margin-bottom:0;"><label>Detractors <span class="thint">scored 0–6</span></label><input class="tinput" type="number" min="0" value="{{ detr }}" onInput="{{ onDetr }}"></div>
+    </div>
+    <div class="tresult">
+      <p class="trlabel">Your eNPS</p>
+      <p class="trbig">{{ result }}</p>
+      <p class="trsub">{{ note }}</p>
+      <div class="trbreak">
+        <div class="trrow"><span>Total responses</span><span>{{ total }}</span></div>
+        <div class="trrow"><span>% Promoters</span><span>{{ promPct }}</span></div>
+        <div class="trrow"><span>% Detractors</span><span>{{ detrPct }}</span></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="tsec"><div class="tw">
+  <div style="max-width:640px;">
+    <p class="eyebrow reveal">How it works<b>.</b></p>
+    <h2 class="th2 reveal" style="transition-delay:.04s;">eNPS, explained</h2>
+    <p class="tlead reveal" style="transition-delay:.08s;">eNPS subtracts the percentage of detractors from the percentage of promoters. It ranges from -100 to +100. Anything above 0 is good; above 30 is excellent.</p>
+  </div>
+  <div class="tsteps">
+    <div class="tstep reveal"><div class="tstepn">1</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Ask one question</h3><p class="tbody" style="margin:0;font-size:14.5px;">"How likely are you to recommend us as a place to work?" (0–10).</p></div>
+    <div class="tstep reveal" style="transition-delay:.06s;"><div class="tstepn">2</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Group responses</h3><p class="tbody" style="margin:0;font-size:14.5px;">Promoters (9–10), passives (7–8), detractors (0–6).</p></div>
+    <div class="tstep reveal" style="transition-delay:.12s;"><div class="tstepn">3</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">See your score</h3><p class="tbody" style="margin:0;font-size:14.5px;">% promoters minus % detractors gives your eNPS.</p></div>
+  </div>
+</div></section>
+
+<dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { prom: 42, pass: 30, detr: 12 };
+  num(v){ const n=parseFloat(v); return isNaN(n)||n<0?0:n; }
+  renderVals(){
+    const prom=this.num(this.state.prom), pass=this.num(this.state.pass), detr=this.num(this.state.detr);
+    const total=prom+pass+detr;
+    const pp = total? prom/total*100:0;
+    const dp = total? detr/total*100:0;
+    const enps = Math.round(pp-dp);
+    let note='Neutral — a mix of promoters and detractors.';
+    if(enps>30) note='Excellent — your team would strongly recommend you.';
+    else if(enps>0) note='Good — more promoters than detractors.';
+    else if(enps<0) note='Below zero — more detractors than promoters.';
+    return {
+      prom:this.state.prom, pass:this.state.pass, detr:this.state.detr,
+      onProm:(e)=>this.setState({prom:e.target.value}),
+      onPass:(e)=>this.setState({pass:e.target.value}),
+      onDetr:(e)=>this.setState({detr:e.target.value}),
+      result:(enps>0?'+':'')+enps,
+      total, promPct:Math.round(pp)+'%', detrPct:Math.round(dp)+'%', note
+    };
+  }
+}
+</script>
+</body>
+</html>
