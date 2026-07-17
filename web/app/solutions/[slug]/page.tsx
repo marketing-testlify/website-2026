@@ -189,14 +189,14 @@ export default async function Page(props: PageProps<"/solutions/[slug]">) {
       <section id="demo" className="bg-ink text-white py-[100px] text-center">
         <Reveal className="max-w-[1240px] mx-auto px-7">
           <p className="text-[13px] font-bold tracking-[0.16em] uppercase m-0 text-coral-bright2">
-            {d.ctaEyebrow}
+            {d.ctaEyebrow ?? "Get started"}
             <b className="text-coral">.</b>
           </p>
           <h2 className="text-[42px] font-extrabold tracking-[-0.8px] leading-[1.16] mt-[14px] mb-0 text-white max-[960px]:text-[27px]">
-            {d.ctaTitle}
+            {d.ctaTitle ?? "Cut through the noise. Hire with clarity."}
           </h2>
           <p className="text-[17.5px] leading-[1.6] text-faint2 max-w-[640px] mx-auto mt-5 mb-0">
-            {d.ctaBody}
+            {d.ctaBody ?? "Resumes don't tell you everything. Prove who can actually do the job — start assessing talent in minutes."}
           </p>
           <div className="flex gap-[14px] flex-wrap justify-center mt-[30px]">
             <CtaButton
@@ -215,7 +215,7 @@ export default async function Page(props: PageProps<"/solutions/[slug]">) {
             />
           </div>
           <div className="flex gap-[22px] flex-wrap justify-center mt-[26px]">
-            {d.ctaTicks.map((tk) => (
+            {(d.ctaTicks ?? ["No credit card required", "7-day free trial", "Cancel anytime"]).map((tk) => (
               <Tick key={tk} stroke="#F76A6E" className="text-faint2">
                 {tk}
               </Tick>

@@ -5,6 +5,7 @@ import { routes } from "@/lib/routes";
 import { ATS_LOGOS, AWARDS } from "./data";
 import type {
   Bullet,
+  BulletsSection,
   CardsSection,
   ChipsSection,
   GridSection,
@@ -25,12 +26,12 @@ const SHOT_SRC =
   "https://testlify.com/wp-content/uploads/2025/06/Featured-image-1.png";
 
 /* .tsd-shot — framed product screenshot with the deep warm shadow. */
-export function Shot({ alt }: { alt: string }) {
+export function Shot({ alt, src }: { alt: string; src?: string }) {
   return (
     <div className="bg-white border border-warm rounded-[22px] p-[10px] shadow-[0_40px_90px_rgba(110,11,14,0.14)]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={SHOT_SRC}
+        src={src ?? SHOT_SRC}
         alt={alt}
         className="block w-full h-[360px] max-[960px]:h-[280px] rounded-[14px] object-cover"
       />
@@ -151,7 +152,7 @@ const ARROW = (
 
 /* .tsd-grid2 split — copy + framed screenshot, alternating sides. */
 function SplitBlock({ s, flipped }: { s: SplitSection; flipped: boolean }) {
-  const hasDesc = (s.bullets ?? []).some((b) => !!b.desc);
+  const oneCol = s.blOneCol || (s.bullets ?? []).some((b) => !!b.desc);
   const linkClass =
     "inline-flex items-center gap-[7px] mt-6 text-[15px] font-bold text-coral transition-colors hover:text-coral-deep";
   return (
@@ -171,7 +172,7 @@ function SplitBlock({ s, flipped }: { s: SplitSection; flipped: boolean }) {
         {s.bullets && s.bullets.length > 0 && (
           <div
             className={`grid gap-x-6 gap-y-3 mt-[22px] ${
-              hasDesc ? "grid-cols-1" : "grid-cols-2 max-[960px]:grid-cols-1"
+              oneCol ? "grid-cols-1" : "grid-cols-2 max-[960px]:grid-cols-1"
             }`}
           >
             {s.bullets.map((b) => (
@@ -196,9 +197,53 @@ function SplitBlock({ s, flipped }: { s: SplitSection; flipped: boolean }) {
         delay={0.08}
         className={flipped ? "order-1 max-[960px]:order-2" : ""}
       >
-        <Shot alt={s.h2} />
+        <Shot alt={s.h2} src={s.img} />
       </Reveal>
     </div>
+  );
+}
+
+/* .tsd-bullets — copy + eyebrow with an inline bullet list (no media). */
+function BulletsBlock({ s }: { s: BulletsSection }) {
+  const oneCol = s.blOneCol || s.bullets.some((b) => !!b.desc);
+  const linkClass =
+    "inline-flex items-center gap-[7px] mt-6 text-[15px] font-bold text-coral transition-colors hover:text-coral-deep";
+  return (
+    <Reveal className="max-w-[820px] mx-auto text-center">
+      {s.eyebrow && (
+        <p className={EYEBROW_CLASS}>
+          {s.eyebrow}
+          <b className="text-coral">.</b>
+        </p>
+      )}
+      <h2 className={H2_CLASS}>{s.h2}</h2>
+      {s.body.map((para) => (
+        <p key={para} className="text-[15.5px] leading-[1.64] text-body mt-[14px] mb-0">
+          {para}
+        </p>
+      ))}
+      <div
+        className={`grid gap-x-6 gap-y-3 mt-[26px] text-left ${
+          oneCol ? "grid-cols-1 max-w-[520px] mx-auto" : "grid-cols-2 max-[960px]:grid-cols-1"
+        }`}
+      >
+        {s.bullets.map((b) => (
+          <BulletItem key={b.label} b={b} />
+        ))}
+      </div>
+      {s.cta &&
+        (s.cta.href.startsWith("#") ? (
+          <a href={s.cta.href} className={linkClass}>
+            {s.cta.label}
+            {ARROW}
+          </a>
+        ) : (
+          <Link href={s.cta.href} className={linkClass}>
+            {s.cta.label}
+            {ARROW}
+          </Link>
+        ))}
+    </Reveal>
   );
 }
 
@@ -322,6 +367,8 @@ export function SolutionSections({ sections }: { sections: Section[] }) {
     if (s.kind === "split") {
       content = <SplitBlock s={s} flipped={flip} />;
       flip = !flip;
+    } else if (s.kind === "bullets") {
+      content = <BulletsBlock s={s} />;
     } else if (s.kind === "cards") {
       content = <CardsBlock s={s} />;
     } else if (s.kind === "grid") {
