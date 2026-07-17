@@ -742,6 +742,263 @@ const CONFIGS: CalculatorConfig[] = [
       sub: "Skills-based screening keeps qualified candidates moving — a tighter pipeline, end to end.",
     },
   },
+
+  /* ---- 10. Cost of employee turnover — VERBATIM port of prototype ---- */
+  {
+    slug: "cost-of-employee-turnover-calculator",
+    toolName: "Cost of turnover calculator",
+    eyebrow: "Cost of turnover calculator",
+    title: "The real cost of employee turnover",
+    lead: "Turnover costs far more than a job ad. Enter salary, replacement cost and the number of leavers to see what turnover is really costing you each year.",
+    resultLabel: "Annual turnover cost",
+    fields: [
+      { key: "salary", label: "Average annual salary", prefix: "$", min: 0, value: 65000 },
+      { key: "pct", label: "Replacement cost", hint: "% of salary", min: 0, value: 100 },
+      { key: "leavers", label: "Employees who left", hint: "per year", min: 0, value: 10 },
+    ],
+    compute: (s) => {
+      const salary = num(s.salary);
+      const pct = num(s.pct);
+      const leavers = num(s.leavers);
+      const perDep = (salary * pct) / 100;
+      const total = perDep * leavers;
+      return {
+        value: money(total),
+        note: "That’s what turnover costs you each year — before the disruption to teams.",
+        rows: [
+          { label: "Cost per departure", value: money(perDep) },
+          { label: "Leavers per year", value: intFmt(leavers) },
+          { label: "Typical replacement cost", value: "50–200% of salary" },
+        ],
+      };
+    },
+    how: {
+      heading: "Cost of turnover, explained",
+      lead: "Replacing an employee typically costs 50–200% of their salary once you count recruiting, onboarding, lost productivity and ramp time. Better hiring decisions up front are the cheapest way to reduce it.",
+      steps: [
+        { h: "Enter salary", d: "The average annual salary of the roles that turn over." },
+        { h: "Set replacement cost", d: "A percentage of salary — 100% is a common estimate." },
+        { h: "See the yearly cost", d: "Multiply by the number of people who leave each year." },
+      ],
+    },
+    faq: [
+      {
+        q: "How much does employee turnover cost?",
+        a: "Replacing an employee typically costs 50–200% of their salary once you count recruiting, onboarding, lost productivity and ramp time — so a single departure in a mid-salary role can run well into five figures.",
+      },
+      {
+        q: "What goes into the cost of turnover?",
+        a: "Recruiting spend to backfill the role, onboarding and training, lost productivity while the seat is empty, and the ramp time before the replacement is fully effective.",
+      },
+      {
+        q: "How do I reduce turnover cost?",
+        a: "Better hiring decisions up front are the cheapest lever — selecting on verified skill and fit means fewer regretted hires and fewer early departures to backfill.",
+      },
+    ],
+    related: [
+      { t: "Attrition rate calculator", d: "Track turnover and its real cost", href: toolHref("attrition-rate-calculator") },
+      { t: "Quality of hire calculator", d: "Score new-hire success", href: toolHref("quality-of-hire-calculator") },
+      { t: "Cost per hire calculator", d: "Find your true cost to fill", href: toolHref("cost-per-hire-calculator") },
+      { t: "eNPS calculator", d: "Gauge employee sentiment", href: toolHref("enps-calculator") },
+    ],
+    cta: {
+      heading: "Cut turnover cost with better hiring decisions",
+      sub: "Hires selected on verified skill and fit stay longer — the cheapest way to reduce turnover at the source.",
+    },
+  },
+
+  /* ---- 11. Remote work cost savings — VERBATIM port of prototype ---- */
+  {
+    slug: "remote-work-cost-savings-calculator",
+    toolName: "Remote work savings",
+    eyebrow: "Remote work savings",
+    title: "Calculate your remote work savings",
+    lead: "Remote and hybrid teams save on office space, utilities and equipment. Enter your numbers to estimate your annual savings from going remote.",
+    resultLabel: "Estimated annual savings",
+    fields: [
+      { key: "emp", label: "Employees going remote", min: 0, value: 50 },
+      { key: "office", label: "Office cost per employee", hint: "per year", prefix: "$", min: 0, value: 11000 },
+      { key: "share", label: "Share of time remote", hint: "%", min: 0, value: 100 },
+    ],
+    compute: (s) => {
+      const emp = num(s.emp);
+      const office = num(s.office);
+      const share = Math.min(100, num(s.share));
+      const perEmp = (office * share) / 100;
+      const total = perEmp * emp;
+      return {
+        value: money(total),
+        note: "Estimated savings on office space, utilities and equipment per year.",
+        rows: [
+          { label: "Savings per employee", value: money(perEmp) },
+          { label: "Employees", value: intFmt(emp) },
+          { label: "Time remote", value: `${intFmt(share)}%` },
+        ],
+      };
+    },
+    how: {
+      heading: "Remote savings, explained",
+      lead: "We multiply your per-employee office cost by the share of time worked remotely, then across your team. Hiring remotely also widens your talent pool — skills-based assessment makes that fair and reliable.",
+      steps: [
+        { h: "Count employees", d: "How many people will work remotely or hybrid." },
+        { h: "Office cost each", d: "Rent, utilities, equipment and facilities per employee." },
+        { h: "See the savings", d: "Scaled by how much time is spent remote." },
+      ],
+    },
+    faq: [
+      {
+        q: "How do remote teams save money?",
+        a: "The biggest savings come from office space, utilities and equipment you no longer need per employee, scaled by how much of their time is actually spent remote.",
+      },
+      {
+        q: "How is remote work savings calculated?",
+        a: "Multiply each employee's annual office cost by the share of time they work remotely, then multiply across everyone going remote or hybrid.",
+      },
+      {
+        q: "What else does going remote unlock?",
+        a: "Hiring remotely widens your talent pool well beyond commuting distance — skills-based assessment makes evaluating that wider pool fair and reliable.",
+      },
+    ],
+    related: [
+      { t: "Cost per hire calculator", d: "Find your true cost to fill", href: toolHref("cost-per-hire-calculator") },
+      { t: "Cost of turnover calculator", d: "See what turnover really costs", href: toolHref("cost-of-employee-turnover-calculator") },
+      { t: "Quality of hire calculator", d: "Score new-hire success", href: toolHref("quality-of-hire-calculator") },
+      { t: "eNPS calculator", d: "Gauge employee sentiment", href: toolHref("enps-calculator") },
+    ],
+    cta: {
+      heading: "Hire the best from anywhere",
+      sub: "Skills-based assessment makes remote hiring fair and reliable — so a wider talent pool works in your favor.",
+    },
+  },
+
+  /* ---- 12. Interview to offer ratio — VERBATIM port of prototype ---- */
+  {
+    slug: "interview-to-offer-ratio-calculator",
+    toolName: "Interview to offer ratio",
+    eyebrow: "Interview to offer ratio",
+    title: "Calculate your interview-to-offer ratio",
+    lead: "How many interviews does it take to make an offer? Enter your numbers to see the ratio — a high one usually means candidates arrive at interviews under-qualified.",
+    resultLabel: "Interview to offer ratio",
+    fields: [
+      { key: "intv", label: "Interviews conducted", min: 0, value: 24 },
+      { key: "off", label: "Offers made", min: 1, value: 6 },
+    ],
+    compute: (s) => {
+      const intv = num(s.intv);
+      const off = Math.max(1, num(s.off));
+      const ratio = intv / off;
+      const rate = intv ? Math.round((off / intv) * 100) + "%" : "—";
+      return {
+        value: ratio.toFixed(1) + ":1",
+        note:
+          ratio <= 4
+            ? "A strong ratio — your pipeline arrives well-qualified."
+            : "On the high side — screen for skills before interviewing.",
+        rows: [
+          { label: "Interviews", value: intFmt(intv) },
+          { label: "Offers", value: intFmt(off) },
+          { label: "Offer rate", value: rate },
+        ],
+      };
+    },
+    how: {
+      heading: "The ratio, explained",
+      lead: "The interview-to-offer ratio divides interviews by offers. A lower ratio means your pipeline is well-qualified before interviews begin. Skills screening earlier is the simplest way to bring it down.",
+      steps: [
+        { h: "Count interviews", d: "Total interviews conducted over the period." },
+        { h: "Count offers", d: "The number of offers you extended." },
+        { h: "Read the ratio", d: "Fewer interviews per offer means a stronger pipeline." },
+      ],
+    },
+    faq: [
+      {
+        q: "What is a good interview-to-offer ratio?",
+        a: "Lower is better — roughly four interviews or fewer per offer signals a well-qualified pipeline. A high ratio usually means candidates arrive at interviews under-qualified.",
+      },
+      {
+        q: "How is the interview-to-offer ratio calculated?",
+        a: "Divide the number of interviews conducted by the number of offers extended over the same period to get interviews per offer.",
+      },
+      {
+        q: "How do I lower my interview-to-offer ratio?",
+        a: "Screen for skills earlier so only qualified candidates reach the interview stage — the simplest way to make each interview more likely to end in an offer.",
+      },
+    ],
+    related: [
+      { t: "Offer acceptance rate", d: "Measure how often offers land", href: toolHref("offer-acceptance-rate-calculator") },
+      { t: "Applicant funnel calculator", d: "See where candidates drop", href: toolHref("applicant-funnel-calculator") },
+      { t: "Time to hire calculator", d: "Measure your average time to fill", href: toolHref("time-to-hire-calculator") },
+      { t: "Recruiting conversion rate", d: "Track pipeline efficiency", href: toolHref("recruiting-conversion-rate") },
+    ],
+    cta: {
+      heading: "Interview fewer, better candidates",
+      sub: "Skills-based screening puts qualified candidates in front of you — so more interviews end in an offer.",
+    },
+  },
+
+  /* ---- 13. Hiring manager satisfaction — VERBATIM port of prototype ---- */
+  {
+    slug: "hiring-manager-satisfaction-calculator",
+    toolName: "Hiring manager satisfaction",
+    eyebrow: "Hiring manager satisfaction",
+    title: "Measure hiring manager satisfaction",
+    lead: "Are your hiring managers happy with the candidates they get? Enter your survey results to see your satisfaction score — a key signal of recruiting quality.",
+    resultLabel: "Satisfaction score",
+    fields: [
+      { key: "sat", label: "Satisfied respondents", min: 0, value: 17 },
+      { key: "tot", label: "Total respondents", min: 1, value: 20 },
+    ],
+    compute: (s) => {
+      const sat = num(s.sat);
+      const tot = Math.max(1, num(s.tot));
+      const rate = Math.min(100, (sat / tot) * 100);
+      return {
+        value: rate.toFixed(0) + "%",
+        note:
+          rate >= 80
+            ? "Above the 80% benchmark — recruiting is delivering."
+            : "Below 80% — tighten the shortlist with skills-based screening.",
+        rows: [
+          { label: "Satisfied", value: intFmt(sat) },
+          { label: "Total surveyed", value: intFmt(tot) },
+          { label: "Healthy benchmark", value: "> 80%" },
+        ],
+      };
+    },
+    how: {
+      heading: "Satisfaction, explained",
+      lead: "Divide satisfied hiring managers by everyone surveyed. It’s one of the clearest signals of whether recruiting is delivering the right candidates — and skills-based shortlists reliably raise it.",
+      steps: [
+        { h: "Survey your managers", d: "Ask if they were satisfied with candidate quality." },
+        { h: "Count the satisfied", d: "How many responded positively out of the total." },
+        { h: "See the score", d: "Aim to stay above the 80% healthy benchmark." },
+      ],
+    },
+    faq: [
+      {
+        q: "What is a good hiring manager satisfaction score?",
+        a: "Staying above 80% is a healthy benchmark. Below that, it’s a signal that recruiting isn’t consistently delivering the candidates managers need.",
+      },
+      {
+        q: "How is hiring manager satisfaction measured?",
+        a: "Survey your hiring managers on whether they were satisfied with candidate quality, then divide the satisfied respondents by everyone surveyed.",
+      },
+      {
+        q: "How do I raise hiring manager satisfaction?",
+        a: "Tighten the shortlist with skills-based screening so managers consistently see qualified, well-matched candidates — one of the most reliable ways to lift the score.",
+      },
+    ],
+    related: [
+      { t: "Quality of hire calculator", d: "Score new-hire success", href: toolHref("quality-of-hire-calculator") },
+      { t: "Offer acceptance rate", d: "Measure how often offers land", href: toolHref("offer-acceptance-rate-calculator") },
+      { t: "Interview to offer ratio", d: "See how qualified your pipeline is", href: toolHref("interview-to-offer-ratio-calculator") },
+      { t: "eNPS calculator", d: "Gauge employee sentiment", href: toolHref("enps-calculator") },
+    ],
+    cta: {
+      heading: "Give hiring managers candidates they trust",
+      sub: "Skills-based shortlists put qualified, well-matched candidates in front of managers — and reliably raise satisfaction.",
+    },
+  },
 ];
 
 export const CALCULATORS: Record<string, CalculatorConfig> = Object.fromEntries(
