@@ -494,17 +494,12 @@ export default function SiteHeader({
                         const g = PLAT.find((x) => x.id === id)!;
                         const inner = (
                           <>
-                            <span className="shrink-0 w-[34px] h-[34px] rounded-[9px] bg-rose-100 text-coral flex items-center justify-center mt-px">
-                              <MegaIcon>{g.icon}</MegaIcon>
-                            </span>
-                            <span>
-                              <span className="block text-[14px] font-semibold text-ink leading-[1.25]">{g.title}</span>
-                              <span className="block text-[12px] text-[#9A878A] leading-[1.35] mt-0.5">{g.desc}</span>
-                            </span>
+                            <span className="block text-[14px] font-semibold text-ink leading-[1.25]">{g.title}</span>
+                            <span className="block text-[12px] text-[#9A878A] leading-[1.35] mt-0.5">{g.desc}</span>
                           </>
                         );
                         const cls =
-                          "flex items-start gap-[11px] py-[9px] px-2.5 rounded-[11px] transition-colors hover:bg-[#FFF4F3]";
+                          "block py-[9px] px-2.5 rounded-[11px] transition-colors hover:bg-[#FFF4F3]";
                         return g.external ? (
                           <a key={g.id} href={g.href} target="_blank" rel="noopener" className={cls}>
                             {inner}
