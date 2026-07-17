@@ -109,7 +109,9 @@
 .ptwo{display:flex;gap:0;}
 .plist{display:flex;flex-direction:column;gap:2px;min-width:250px;border-right:1px solid #F4E4E5;padding-right:12px;margin-right:14px;}
 .mlrich.on{background:#FFF4F3;}
-.ppane{display:flex;flex-direction:column;gap:1px;width:280px;min-width:280px;padding-top:2px;margin-right:6px;max-height:340px;overflow-y:auto;}
+.ppane{display:block;column-count:2;column-gap:14px;width:560px;min-width:560px;padding-top:2px;margin-right:6px;}
+.ppane::-webkit-scrollbar{width:6px;}.ppane::-webkit-scrollbar-thumb{background:#EAD6D8;border-radius:8px;}
+.psub{break-inside:avoid;-webkit-column-break-inside:avoid;}
 .psub{display:flex;flex-direction:column;gap:1px;padding:8px 12px;border-radius:10px;transition:background .15s;}
 .psub:hover{background:#FFF0F0;}
 .ppane-cta{margin-top:4px;font-size:13px;font-weight:700;color:#F23F44;padding:8px 12px;}
@@ -152,20 +154,20 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
       </div><div class="ppane"><p class="megah">{{ solName }}</p><sc-for list="{{ solSubs }}" as="s" hint-placeholder-count="6"><a class="psub" href="{{ s.href }}"><span class="mlt">{{ s.label }}</span><span class="mld">{{ s.d }}</span></a></sc-for></div><div class="megafeat"><p class="megafeat-t">Not sure where to start?</p><p class="megafeat-d">Tell us how you hire — we'll map the right assessments to every role.</p><a class="megafeat-a" href="{{ contactHref }}">Talk to sales →</a></div></div></div></div>
       <div class="navitem"><button class="navtrigger">Resources<span class="navcar">▼</span></button><div class="mega mctr"><div class="ptwo"><div class="plist">
         <a class="mlrich ptab {{ rcls0 }}" onMouseEnter="{{ renter0 }}" href="blog.dc.html"><span class="mlic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></span><span><span class="mlt">Learn</span><span class="mld">Blog, guides, glossary &amp; podcast</span></span></a>
-        <a class="mlrich ptab {{ rcls1 }}" onMouseEnter="{{ renter1 }}" href="hr-tools.dc.html"><span class="mlic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></span><span><span class="mlt">Tools &amp; templates</span><span class="mld">Calculators, JD templates &amp; more</span></span></a>
+        <a class="mlrich ptab {{ rcls1 }}" onMouseEnter="{{ renter1 }}" href="hr-tools.dc.html"><span class="mlic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></span><span><span class="mlt">HR tools</span><span class="mld">AI generators &amp; 13 calculators</span></span></a>
         <a class="mlrich ptab {{ rcls2 }}" onMouseEnter="{{ renter2 }}" href="referral-program.dc.html"><span class="mlic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></span><span><span class="mlt">Programs</span><span class="mld">Referral, partnership &amp; integrations</span></span></a>
       </div><div class="ppane"><p class="megah">{{ resName }}</p><sc-for list="{{ resSubs }}" as="s" hint-placeholder-count="5"><a class="psub" href="{{ s.href }}"><span class="mlt">{{ s.label }}</span><span class="mld">{{ s.d }}</span></a></sc-for></div><div class="megafeat"><p class="megafeat-t">Free HR toolkit</p><p class="megafeat-d">Job descriptions, interview kits and calculators — ready to use.</p><a class="megafeat-a" href="hr-tools.dc.html">Browse free tools →</a></div></div></div></div>
       <div class="navitem"><button class="navtrigger">About<span class="navcar">▼</span></button><div class="mega mend"><div class="megacols"><div class="megacol">
         <p class="megah">Company</p>
         <a class="megalink" href="about.dc.html">Our story</a>
         <a class="megalink" href="contact.dc.html">Contact us</a>
-        <a class="megalink" href="about.dc.html">Our leadership</a>
+        <a class="megalink" href="our-leadership.dc.html">Our leadership</a>
         <a class="megalink" href="trust.dc.html">Trust center</a>
       </div><div class="megacol">
         <p class="megah">More</p>
-        <a class="megalink" href="customer-success-stories.dc.html">Clients</a>
+        <a class="megalink" href="clients.dc.html">Clients</a>
         <a class="megalink" href="our-partners.dc.html">Partners</a>
-        <a class="megalink" href="careers.dc.html">Job openings</a>
+        <a class="megalink" href="job-openings.dc.html">Job openings</a>
         <a class="megalink" href="write-for-us.dc.html">Write for us</a>
       </div></div></div></div>
     </nav>
@@ -226,9 +228,9 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
       <a class="mobacc-link" href="about.dc.html" onClick="{{ closeMob }}"><span class="mt">Our story</span><span class="md">Why we built Testlify</span></a>
       <a class="mobacc-link" href="contact.dc.html" onClick="{{ closeMob }}"><span class="mt">Contact us</span><span class="md">Talk to sales or support</span></a>
       <a class="mobacc-link" href="trust.dc.html" onClick="{{ closeMob }}"><span class="mt">Trust center</span><span class="md">SOC 2, ISO 27001, GDPR</span></a>
-      <a class="mobacc-link" href="customer-success-stories.dc.html" onClick="{{ closeMob }}"><span class="mt">Clients</span><span class="md">Teams hiring with Testlify</span></a>
+      <a class="mobacc-link" href="clients.dc.html" onClick="{{ closeMob }}"><span class="mt">Clients</span><span class="md">Teams hiring with Testlify</span></a>
       <a class="mobacc-link" href="our-partners.dc.html" onClick="{{ closeMob }}"><span class="mt">Partners</span><span class="md">Refer, resell or build with us</span></a>
-      <a class="mobacc-link" href="careers.dc.html" onClick="{{ closeMob }}"><span class="mt">Job openings</span><span class="md">Join the team behind Testlify</span></a>
+      <a class="mobacc-link" href="job-openings.dc.html" onClick="{{ closeMob }}"><span class="mt">Job openings</span><span class="md">Join the team behind Testlify</span></a>
     </div></div>
   </div>
   <span class="mobsub">Account</span>
@@ -262,55 +264,82 @@ class Component extends DCLogic {
   renderVals(){
     const p = this.props;
     const overlay = p.overlay === true || p.overlay === 'true';
-    const IND='solution-industry-template.dc.html', UC='solution-usecase-template.dc.html', TT='solution-testtype-template.dc.html', CO='solution-company-template.dc.html';
     const SOL=[
       {name:'By industry type',subs:[
-        {label:'Information & technology',d:'Developers, DevOps, data & security',href:IND},
-        {label:'SaaS & software',d:'GTM, product and engineering roles',href:IND},
-        {label:'Financial services',d:'Analysts, ops & compliance roles',href:IND},
-        {label:'Healthcare',d:'Clinical & administrative screening',href:IND},
-        {label:'Retail & e-commerce',d:'High-volume frontline hiring',href:IND},
-        {label:'BPO & services',d:'Multilingual, high-ramp hiring',href:IND},
-        {label:'Logistics & supply chain',d:'Ops, warehouse & driver roles',href:IND},
-        {label:'Energy, hospitality, edtech & more',d:'13 industries covered',href:IND}]},
+        {label:'Information & technology',d:'Developers, DevOps, data & security',href:'it-industry.dc.html'},
+        {label:'Logistics & supply chain',d:'Ops, warehouse & driver roles',href:'logistics-supply-chain-industry.dc.html'},
+        {label:'Retail',d:'High-volume frontline hiring',href:'retail-industry.dc.html'},
+        {label:'Recruitment',d:'Agency & in-house recruiters',href:'recruitment-industry.dc.html'},
+        {label:'Financial',d:'Analysts, ops & compliance',href:'financial-industry.dc.html'},
+        {label:'SaaS',d:'GTM, product & engineering',href:'saas-industry.dc.html'},
+        {label:'Energy',d:'Field, technical & safety roles',href:'energy-industry.dc.html'},
+        {label:'Hospitality',d:'Service & front-of-house teams',href:'hospitality-industry.dc.html'},
+        {label:'Health care',d:'Clinical & administrative screening',href:'health-care-industry.dc.html'},
+        {label:'BPO',d:'Multilingual, high-ramp hiring',href:'bpo-industry.dc.html'},
+        {label:'Edtech',d:'Educators & product teams',href:'edtech-industry.dc.html'},
+        {label:'Real estate',d:'Sales, ops & support roles',href:'real-estate-industry.dc.html'},
+        {label:'Media',d:'Creative, editorial & production',href:'media-industry.dc.html'}]},
       {name:'By use case',subs:[
-        {label:'Volume hiring',d:'Screen thousands of applicants in hours',href:UC},
-        {label:'Remote hiring',d:'Hire anywhere with proctored tests',href:UC},
-        {label:'Campus hiring',d:'Rank fresh graduates without resumes',href:UC},
-        {label:'Technical hiring',d:'45+ coding languages with a live IDE',href:UC},
-        {label:'Diversity & inclusion',d:'Bias-free, EEOC-defensible screening',href:UC},
-        {label:'Lateral, sales, blue-collar & freelance',d:'10 use cases covered',href:UC}]},
+        {label:'Lateral hiring',d:'Experienced, role-specific hires',href:'lateral-hiring.dc.html'},
+        {label:'Diversity and inclusion',d:'Bias-free, EEOC-defensible screening',href:'diversity-and-inclusions.dc.html'},
+        {label:'Volume hiring',d:'Screen thousands in hours',href:'volume-hiring.dc.html'},
+        {label:'Remote hiring',d:'Hire anywhere with proctoring',href:'remote-hiring.dc.html'},
+        {label:'Blue collar hiring',d:'Practical, on-the-job skills',href:'blue-collar-hiring.dc.html'},
+        {label:'Freelance hiring',d:'Vet contractors fast',href:'freelance-hiring.dc.html'},
+        {label:'Campus hiring',d:'Rank graduates without resumes',href:'campus-hiring.dc.html'},
+        {label:'Technical hiring',d:'45+ coding languages, live IDE',href:'technical-hiring.dc.html'},
+        {label:'Sales hiring',d:'Role-plays & sales aptitude',href:'sales-hiring.dc.html'},
+        {label:'Skills validation',d:'Verify skills at scale',href:'skills-validation.dc.html'}]},
       {name:'By test type',subs:[
-        {label:'Coding tests',d:'Real-world dev challenges, 45+ languages',href:TT},
-        {label:'Cognitive ability',d:'Reasoning & problem-solving',href:TT},
-        {label:'Personality & culture',d:'Work style and culture fit',href:TT},
-        {label:'Language & CEFR',d:'Proficiency across 16+ languages',href:TT},
-        {label:'Role-specific & software skills',d:'4,500+ job-specific assessments',href:TT},
-        {label:'Situational judgment & typing',d:'11 test types covered',href:TT}]},
+        {label:'Role specific',d:'4,500+ job-specific assessments',href:'role-specific-tests.dc.html'},
+        {label:'Language',d:'Proficiency across 16+ languages',href:'language-tests.dc.html'},
+        {label:'Programming',d:'Real-world dev challenges',href:'programming-tests.dc.html'},
+        {label:'Software skills',d:'Tools & platform proficiency',href:'software-skills-tests.dc.html'},
+        {label:'Personality & culture',d:'Work style & culture fit',href:'psychometric-tests.dc.html'},
+        {label:'Cognitive ability',d:'Reasoning & problem-solving',href:'cognitive-ability-tests.dc.html'},
+        {label:'Situational judgment',d:'Real scenario decisions',href:'situational-judgment.dc.html'},
+        {label:'CEFR',d:'Standardised language levels',href:'cefr-test.dc.html'},
+        {label:'Typing',d:'Speed & accuracy',href:'typing-test.dc.html'},
+        {label:'Coding',d:'Live coding, 45+ languages',href:'coding-tests.dc.html'},
+        {label:'Engineering',d:'Applied engineering skills',href:'engineering-skills.dc.html'}]},
       {name:'By company type',subs:[
-        {label:'Startups',d:'Hire fast without a TA team',href:CO},
-        {label:'SMBs',d:'Standardize hiring as you scale',href:CO},
-        {label:'Enterprises',d:'SSO, compliance and audit trails',href:CO},
-        {label:'Non-profits',d:'Fair, defensible selection',href:CO},
-        {label:'Public sector',d:'Transparent, auditable hiring',href:CO}]},
+        {label:'For startups',d:'Hire fast without a TA team',href:'for-startups.dc.html'},
+        {label:"SMB's",d:'Standardize hiring as you scale',href:'small-medium-businesses.dc.html'},
+        {label:'Enterprises',d:'SSO, compliance & audit trails',href:'enterprise.dc.html'},
+        {label:'Non-profits',d:'Fair, defensible selection',href:'non-profits.dc.html'},
+        {label:'Public sector',d:'Transparent, auditable hiring',href:'public-sector-talent-assessment-solution.dc.html'}]},
     ];
     const RES=[
       {name:'Learn',subs:[
-        {label:'Blog',d:'Hiring science, playbooks & product news',href:'blog.dc.html'},
+        {label:'Blogs',d:'Hiring science, playbooks & news',href:'blog.dc.html'},
         {label:'Hiring guides',d:'Deep dives on skills-based hiring',href:'hiring-guides.dc.html'},
         {label:'HR glossary',d:'500+ hiring terms, defined',href:'hr-glossary.dc.html'},
         {label:'Ebooks',d:'Downloadable playbooks & reports',href:'knowledge-base.dc.html'},
-        {label:'Podcast',d:'Conversations with talent leaders',href:'podcast.dc.html'}]},
-      {name:'Tools & templates',subs:[
-        {label:'HR tools & calculators',d:'Cost per hire, time to hire & more',href:'hr-tools.dc.html'},
-        {label:'Job description templates',d:'Role-ready JDs in minutes',href:'job-description-templates.dc.html'},
+        {label:'Podcasts',d:'Conversations with talent leaders',href:'podcast.dc.html'},
         {label:'Customer success stories',d:'How 1,500+ teams hire on proof',href:'customer-success-stories.dc.html'},
-        {label:'Competitors',d:'How Testlify compares',href:'alternatives.dc.html'}]},
+        {label:'Job description templates',d:'Role-ready JDs in minutes',href:'job-description-templates.dc.html'},
+        {label:'Competitors',d:'How Testlify compares',href:'alternatives.dc.html'},
+        {label:'Sitemap',d:'Every page, in one place',href:'sitemap.dc.html'}]},
+      {name:'HR tools',subs:[
+        {label:'AI Interview question generator',d:'Generate role-ready questions',href:'ai-interview-question-generator.dc.html'},
+        {label:'AI Job description generator',d:'Draft JDs in seconds',href:'job-description-generator.dc.html'},
+        {label:'Cost per hire calculator',d:'',href:'cost-per-hire-calculator.dc.html'},
+        {label:'Attrition rate calculator',d:'',href:'attrition-rate-calculator.dc.html'},
+        {label:'Employee NPS calculator',d:'',href:'free-employee-net-promoter-score-enps-calculator.dc.html'},
+        {label:'Applicant funnel calculator',d:'',href:'applicant-funnel-calculator.dc.html'},
+        {label:'Average Time to Hire',d:'',href:'average-time-to-hire-calculator.dc.html'},
+        {label:'Employee turnover',d:'',href:'cost-of-employee-turnover-calculator.dc.html'},
+        {label:'Sourcing channel efficiency',d:'',href:'sourcing-channel-efficiency-calculator.dc.html'},
+        {label:'Remote work cost savings',d:'',href:'remote-work-cost-savings-calculator.dc.html'},
+        {label:'Quality of hire calculator',d:'',href:'quality-of-hire-calculator.dc.html'},
+        {label:'Interview-to-hire offer',d:'',href:'interview-to-offer-ratio-calculator.dc.html'},
+        {label:'Recruiting conversion rate',d:'',href:'recruiting-conversion-rate-calculator.dc.html'},
+        {label:'Job offer acceptance rate',d:'',href:'job-offer-acceptance-rate-calculator.dc.html'},
+        {label:'Hiring manager satisfaction',d:'',href:'hiring-manager-satisfaction-calculator.dc.html'}]},
       {name:'Programs',subs:[
         {label:'Referral program',d:'Refer a team, earn rewards',href:'referral-program.dc.html'},
         {label:'Partnership program',d:'Grow with Testlify',href:'partnership.dc.html'},
-        {label:'Integration program',d:'Build on the Testlify API',href:'integration-program.dc.html'},
-        {label:'Sitemap',d:'Every page, in one place',href:'sitemap.dc.html'}]},
+        {label:'Integration program',d:'Build on the Testlify API',href:'integration-program.dc.html'}]},
     ];
     const sAct=this.state.solActive||0, rAct=this.state.resActive||0;
     const S=SOL[sAct]||SOL[0], R=RES[rAct]||RES[0];

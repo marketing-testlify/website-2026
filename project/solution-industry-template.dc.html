@@ -30,6 +30,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
 .tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
+.tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
 .tsd-logos-l{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#A9999C;margin:0 0 14px;}
 .tsd-logos-r{display:flex;gap:12px;flex-wrap:wrap;}
@@ -107,7 +108,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <div class="tsd-copy reveal">
 <div class="tsd-crumb"><a href="solution-index.dc.html">Solutions</a><span>/</span><span>{{ crumb }}</span></div>
 <p class="eyebrow">{{ eyebrow }}<b>.</b></p>
-<h1 class="tsd-h1">{{ title }}</h1>
+<h1 class="tsd-h1">{{ titlePre }}<span style="color:#F23F44;">{{ titleAccent }}</span></h1>
 <p class="tsd-lead">{{ lead }}</p>
 <sc-if value="{{ hasStats }}" hint-placeholder-val="{{ false }}"><div class="tsd-stats"><sc-for list="{{ stats }}" as="st" hint-placeholder-count="3"><span class="tsd-statc">{{ st.t }}</span></sc-for></div></sc-if>
 <div class="tsd-ctas">
@@ -116,7 +117,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 </div>
 <div class="tsd-ticks"><span class="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>No credit card required</span><span class="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>7-day free trial</span></div>
 </div>
-<div class="tsd-media reveal"><div class="tsd-shot"><image-slot id="tsd-hero-shot" shape="rounded" radius="14" placeholder="Drop a product screenshot"></image-slot></div></div>
+<div class="tsd-media reveal"><div class="tsd-shot"><sc-if value="{{ hasHeroImg }}" hint-placeholder-val="{{ false }}"><div class="tsd-shotimg" data-bg="{{ heroImg }}"></div></sc-if><sc-if value="{{ noHeroImg }}" hint-placeholder-val="{{ true }}"><image-slot id="tsd-hero-shot" shape="rounded" radius="14" placeholder="Drop a product screenshot"></image-slot></sc-if></div></div>
 </div>
 <sc-if value="{{ hasLogos }}" hint-placeholder-val="{{ false }}"><div class="tsdw tsd-logos reveal"><p class="tsd-logos-l">Trusted by 1,500+ hiring teams</p><div class="tsd-logos-r"><sc-for list="{{ logos }}" as="lg" hint-placeholder-count="5"><span class="tsd-logo">{{ lg }}</span></sc-for></div></div></sc-if>
 </section>
@@ -130,7 +131,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <sc-if value="{{ s.hasBullets }}" hint-placeholder-val="{{ false }}"><div class="{{ s.blClass }}"><sc-for list="{{ s.bullets }}" as="b" hint-placeholder-count="4"><div class="tsd-bi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="tsd-bt"><sc-if value="{{ b.hasHref }}" hint-placeholder-val="{{ false }}"><a href="{{ b.href }}">{{ b.label }}</a></sc-if><sc-if value="{{ b.noHref }}" hint-placeholder-val="{{ true }}">{{ b.label }}</sc-if><sc-if value="{{ b.hasDesc }}" hint-placeholder-val="{{ false }}"><span class="tsd-bd">{{ b.desc }}</span></sc-if></span></div></sc-for></div></sc-if>
 <sc-if value="{{ s.hasCta }}" hint-placeholder-val="{{ false }}"><a class="tsd-link" href="{{ s.cta.href }}">{{ s.cta.label }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></sc-if>
 </div>
-<div class="tsd-media reveal"><div class="tsd-shot"><image-slot id="{{ s.slotId }}" shape="rounded" radius="14" placeholder="Drop an image"></image-slot></div></div>
+<div class="tsd-media reveal"><div class="tsd-shot"><sc-if value="{{ s.hasImg }}" hint-placeholder-val="{{ false }}"><div class="tsd-shotimg" data-bg="{{ s.img }}"></div></sc-if><sc-if value="{{ s.noImg }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ s.slotId }}" shape="rounded" radius="14" placeholder="Drop an image"></image-slot></sc-if></div></div>
 </div></sc-if>
 <sc-if value="{{ s.isCards }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2><sc-if value="{{ s.hasIntro }}" hint-placeholder-val="{{ false }}"><p class="tsd-lead">{{ s.intro }}</p></sc-if></div><div class="tsd-cards"><sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="3"><div class="tsd-card reveal"><div class="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg></div><p class="tsd-ct">{{ c.title }}</p><p class="tsd-cd">{{ c.desc }}</p></div></sc-for></div></sc-if>
 <sc-if value="{{ s.isGrid }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2><sc-if value="{{ s.hasIntro }}" hint-placeholder-val="{{ false }}"><p class="tsd-lead">{{ s.intro }}</p></sc-if></div><div class="tsd-fgrid"><sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="6"><div class="tsd-fcard reveal"><div class="tsd-fn">{{ c.n }}</div><p class="tsd-ct">{{ c.title }}</p><p class="tsd-cd">{{ c.desc }}</p></div></sc-for></div></sc-if>
@@ -138,10 +139,10 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <sc-if value="{{ s.isChips }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><h2 class="tsd-h2">{{ s.h2 }}</h2></div><div class="tsd-chips" style="justify-content:center;"><sc-for list="{{ s.chips }}" as="ch" hint-placeholder-count="6"><span class="tsd-chip">{{ ch }}</span></sc-for></div></sc-if>
 </div></section>
 </sc-for>
-<section class="tsd-sec"><div class="tsdw">
+<sc-if value="{{ hasTestimonials }}" hint-placeholder-val="{{ true }}"><section class="tsd-sec"><div class="tsdw">
 <div class="tsd-shead reveal"><p class="eyebrow">{{ testimonialEyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ testimonialTitle }}</h2></div>
 <div class="tsd-tgrid"><sc-for list="{{ viewTestimonials }}" as="t" hint-placeholder-count="3"><div class="tsd-tcard reveal"><div class="tsd-stars"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 18.6 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"></path></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 18.6 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"></path></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 18.6 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"></path></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 18.6 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"></path></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 18.6 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"></path></svg></div><p class="tsd-quote">{{ t.quote }}</p><div class="tsd-author"><span class="tsd-avatar">{{ t.initials }}</span><span><span class="tsd-aname">{{ t.name }}</span><span class="tsd-arole">{{ t.role }}</span></span></div></div></sc-for></div>
-</div></section>
+</div></section></sc-if>
 <section class="tsd-sec tsd-sand"><div class="tsdw">
 <div class="tsd-shead reveal"><p class="eyebrow">{{ atsEyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ atsTitle }}</h2><p class="tsd-lead">{{ atsIntro }}</p></div>
 <div class="tsd-atsgrid reveal"><sc-for list="{{ atsLogos }}" as="a" hint-placeholder-count="8"><span class="tsd-atslogo">{{ a }}</span></sc-for><a class="tsd-atsmore" href="integrations.dc.html">+100 more<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div>
@@ -183,6 +184,7 @@ class Component extends DCLogic {
           setTimeout(()=>requestAnimationFrame(_tick), _d);
         }
       });
+      document.querySelectorAll('.tsd-shotimg[data-bg]').forEach(el=>{ const u=el.getAttribute('data-bg'); if(u && u.indexOf('{{')<0){ el.style.backgroundImage='url("'+u+'")'; } });
     };
     this._sweep = sweep;
     window.addEventListener('scroll', sweep, { passive:true });
@@ -198,6 +200,7 @@ class Component extends DCLogic {
       crumb:"Industry / IT & technology",
       eyebrow:"For IT teams",
       title:"The all-in-one talent assessment platform built for IT teams",
+      accent:"IT teams",
       lead:"From developers and DevOps to data analysts, assess real-world skills, cut hiring time in half, and build high-performing tech teams faster.",
       ctaLabel:"Try for free",
       ctaHref:"pricing.dc.html",
@@ -230,13 +233,15 @@ class Component extends DCLogic {
       ctaTicks:["7-day free trial","Unlimited assessments","Cancel anytime"]
     };
     const P = (this.props && this.props.pageData) ? this.props.pageData : DATA;
+    let _t=P.title||'', _a=P.accent||'', _pre=_t, _acc='';
+    if(_a && _t.indexOf(_a)>=0){ const _i=_t.lastIndexOf(_a); _pre=_t.slice(0,_i); _acc=_t.slice(_i); }
     const open = this.state.open || {};
     let sflip=false, bgToggle=false;
     const viewSections = (P.sections||[]).map((s,i)=>{
       const v = Object.assign({}, s);
       v.isSplit = s.kind==='split'; v.isCards = s.kind==='cards'; v.isGrid = s.kind==='grid'; v.isSteps = s.kind==='steps'; v.isChips = s.kind==='chips';
       v.bgClass = bgToggle ? 'tsd-sand' : ''; bgToggle=!bgToggle;
-      if(v.isSplit){ v.flipClass = sflip ? 'tsd-flip' : ''; sflip=!sflip; v.slotId = 'tsd-slot-'+i; v.hasNum=!!s.num; v.hasCta=!!s.cta; }
+      if(v.isSplit){ v.flipClass = sflip ? 'tsd-flip' : ''; sflip=!sflip; v.slotId = 'tsd-slot-'+i; v.hasNum=!!s.num; v.hasCta=!!s.cta; v.img=s.img||''; v.hasImg=!!s.img; v.noImg=!s.img; }
       if(s.bullets){ const bs = s.bullets.map(b=> typeof b==='string'?{label:b}:b).map(b=>({label:b.label,href:b.href,desc:b.desc,hasHref:!!b.href,noHref:!b.href,hasDesc:!!b.desc})); v.bullets=bs; v.hasBullets=true; v.blClass = bs.some(b=>b.hasDesc) ? 'tsd-bl tsd-bl1' : 'tsd-bl'; } else { v.hasBullets=false; }
       if(s.cards){ v.cards = s.cards.map((c,ci)=>Object.assign({n:ci+1}, c)); }
       if(s.steps){ v.steps = s.steps.map((c,ci)=>Object.assign({n:ci+1}, c)); }
@@ -254,12 +259,12 @@ class Component extends DCLogic {
     const viewAwards = awardsRaw.map(a=>({ t:a.t, s:a.s }));
     const atsLogos = (P.atsLogos!=null) ? P.atsLogos : ATS_D;
     return {
-      crumb:P.crumb, eyebrow:P.eyebrow, title:P.title, lead:P.lead,
+      crumb:P.crumb, eyebrow:P.eyebrow, title:P.title, titlePre:_pre, titleAccent:_acc, lead:P.lead, heroImg:P.heroImg||'', hasHeroImg:!!P.heroImg, noHeroImg:!P.heroImg,
       ctaLabel:P.ctaLabel||'Try for free', ctaHref:P.ctaHref||'pricing.dc.html',
       stats:P.stats||[], hasStats:!!(P.stats&&P.stats.length),
       logos:P.logos||[], hasLogos:!!(P.logos&&P.logos.length),
       viewSections, viewFaqs, faqTitle:P.faqTitle||'Frequently asked questions',
-      testimonialEyebrow:P.testimonialEyebrow||'Loved by hiring teams', testimonialTitle:P.testimonialTitle||'Recruiters who hire on proof', viewTestimonials,
+      testimonialEyebrow:P.testimonialEyebrow||'Loved by hiring teams', testimonialTitle:P.testimonialTitle||'Recruiters who hire on proof', viewTestimonials, hasTestimonials: viewTestimonials.length>0,
       atsEyebrow:P.atsEyebrow||'Fits your stack', atsTitle:P.atsTitle||'Works with the ATS you already use', atsIntro:P.atsIntro||'Push assessment results straight into your workflow with 100+ native, two-way integrations.', atsLogos,
       awardEyebrow:P.awardEyebrow||'Awards & recognition', awardTitle:P.awardTitle||'Recognized by the people who use it', viewAwards,
       ctaEyebrow:P.ctaEyebrow||'Get started', ctaTitle:P.ctaTitle, ctaBody:P.ctaBody, ctaTicks:P.ctaTicks||[]
