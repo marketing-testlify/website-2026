@@ -149,13 +149,18 @@ const SOL: MenuTab[] = [
     ),
     subs: [
       { label: "Information & technology", d: "Developers, DevOps, data & security", href: "/solutions/it-industry" },
-      { label: "SaaS & software", d: "GTM, product and engineering roles", href: routes.solutions },
-      { label: "Financial services", d: "Analysts, ops & compliance roles", href: routes.solutions },
-      { label: "Healthcare", d: "Clinical & administrative screening", href: "/solutions/health-care-industry" },
-      { label: "Retail & e-commerce", d: "High-volume frontline hiring", href: "/solutions/retail-industry" },
-      { label: "BPO & services", d: "Multilingual, high-ramp hiring", href: "/solutions/bpo-industry" },
       { label: "Logistics & supply chain", d: "Ops, warehouse & driver roles", href: routes.solutions },
-      { label: "Energy, hospitality, edtech & more", d: "13 industries covered", href: routes.solutions },
+      { label: "Retail", d: "High-volume frontline hiring", href: "/solutions/retail-industry" },
+      { label: "Recruitment", d: "Agency & in-house recruiters", href: "/solutions/recruitment-industry" },
+      { label: "Financial", d: "Analysts, ops & compliance", href: routes.solutions },
+      { label: "SaaS", d: "GTM, product & engineering", href: routes.solutions },
+      { label: "Energy", d: "Field, technical & safety roles", href: routes.solutions },
+      { label: "Hospitality", d: "Service & front-of-house teams", href: "/solutions/hospitality-industry" },
+      { label: "Health care", d: "Clinical & administrative screening", href: "/solutions/health-care-industry" },
+      { label: "BPO", d: "Multilingual, high-ramp hiring", href: "/solutions/bpo-industry" },
+      { label: "Edtech", d: "Educators & product teams", href: "/solutions/edtech-industry" },
+      { label: "Real estate", d: "Sales, ops & support roles", href: routes.solutions },
+      { label: "Media", d: "Creative, editorial & production", href: "/solutions/media-industry" },
     ],
   },
   {
@@ -170,12 +175,16 @@ const SOL: MenuTab[] = [
       </>
     ),
     subs: [
-      { label: "Volume hiring", d: "Screen thousands of applicants in hours", href: "/solutions/volume-hiring" },
-      { label: "Remote hiring", d: "Hire anywhere with proctored tests", href: routes.solutions },
-      { label: "Campus hiring", d: "Rank fresh graduates without resumes", href: routes.solutions },
-      { label: "Technical hiring", d: "45+ coding languages with a live IDE", href: routes.solutions },
-      { label: "Diversity & inclusion", d: "Bias-free, EEOC-defensible screening", href: routes.solutions },
-      { label: "Lateral, sales, blue-collar & freelance", d: "10 use cases covered", href: routes.solutions },
+      { label: "Lateral hiring", d: "Experienced, role-specific hires", href: routes.solutions },
+      { label: "Diversity and inclusion", d: "Bias-free, EEOC-defensible screening", href: routes.solutions },
+      { label: "Volume hiring", d: "Screen thousands in hours", href: "/solutions/volume-hiring" },
+      { label: "Remote hiring", d: "Hire anywhere with proctoring", href: routes.solutions },
+      { label: "Blue collar hiring", d: "Practical, on-the-job skills", href: routes.solutions },
+      { label: "Freelance hiring", d: "Vet contractors fast", href: routes.solutions },
+      { label: "Campus hiring", d: "Rank graduates without resumes", href: routes.solutions },
+      { label: "Technical hiring", d: "45+ coding languages, live IDE", href: routes.solutions },
+      { label: "Sales hiring", d: "Role-plays & sales aptitude", href: routes.solutions },
+      { label: "Skills validation", d: "Verify skills at scale", href: routes.solutions },
     ],
   },
   {
@@ -189,12 +198,17 @@ const SOL: MenuTab[] = [
       </>
     ),
     subs: [
-      { label: "Coding tests", d: "Real-world dev challenges, 45+ languages", href: "/solutions/coding-tests" },
-      { label: "Cognitive ability", d: "Reasoning & problem-solving", href: "/solutions/coding-tests" },
-      { label: "Personality & culture", d: "Work style and culture fit", href: "/solutions/coding-tests" },
-      { label: "Language & CEFR", d: "Proficiency across 16+ languages", href: "/solutions/coding-tests" },
-      { label: "Role-specific & software skills", d: "4,500+ job-specific assessments", href: "/solutions/coding-tests" },
-      { label: "Situational judgment & typing", d: "11 test types covered", href: "/solutions/coding-tests" },
+      { label: "Role specific", d: "4,500+ job-specific assessments", href: routes.solutions },
+      { label: "Language", d: "Proficiency across 16+ languages", href: routes.solutions },
+      { label: "Programming", d: "Real-world dev challenges", href: routes.solutions },
+      { label: "Software skills", d: "Tools & platform proficiency", href: routes.solutions },
+      { label: "Personality & culture", d: "Work style & culture fit", href: routes.solutions },
+      { label: "Cognitive ability", d: "Reasoning & problem-solving", href: routes.solutions },
+      { label: "Situational judgment", d: "Real scenario decisions", href: routes.solutions },
+      { label: "CEFR", d: "Standardised language levels", href: routes.solutions },
+      { label: "Typing", d: "Speed & accuracy", href: routes.solutions },
+      { label: "Coding", d: "Live coding, 45+ languages", href: "/solutions/coding-tests" },
+      { label: "Engineering", d: "Applied engineering skills", href: routes.solutions },
     ],
   },
   {
@@ -209,9 +223,9 @@ const SOL: MenuTab[] = [
       </>
     ),
     subs: [
-      { label: "Startups", d: "Hire fast without a TA team", href: routes.solutions },
-      { label: "SMBs", d: "Standardize hiring as you scale", href: routes.solutions },
-      { label: "Enterprises", d: "SSO, compliance and audit trails", href: "/solutions/enterprise" },
+      { label: "For startups", d: "Hire fast without a TA team", href: routes.solutions },
+      { label: "SMB's", d: "Standardize hiring as you scale", href: routes.solutions },
+      { label: "Enterprises", d: "SSO, compliance & audit trails", href: "/solutions/enterprise" },
       { label: "Non-profits", d: "Fair, defensible selection", href: routes.solutions },
       { label: "Public sector", d: "Transparent, auditable hiring", href: routes.solutions },
     ],
@@ -230,16 +244,20 @@ const RES: MenuTab[] = [
       </>
     ),
     subs: [
-      { label: "Blog", d: "Hiring science, playbooks & product news", href: routes.blog },
+      { label: "Blogs", d: "Hiring science, playbooks & news", href: routes.blog },
       { label: "Hiring guides", d: "Deep dives on skills-based hiring", href: routes.resourcesHiringGuides },
       { label: "HR glossary", d: "500+ hiring terms, defined", href: routes.resourcesGlossary },
       { label: "Ebooks", d: "Downloadable playbooks & reports", href: "#" },
-      { label: "Podcast", d: "Conversations with talent leaders", href: "#" },
+      { label: "Podcasts", d: "Conversations with talent leaders", href: "#" },
+      { label: "Customer success stories", d: "How 1,500+ teams hire on proof", href: routes.customers },
+      { label: "Job description templates", d: "Role-ready JDs in minutes", href: routes.resourcesJdTemplates },
+      { label: "Competitors", d: "How Testlify compares", href: routes.resourcesCompetitors },
+      { label: "Sitemap", d: "Every page, in one place", href: routes.sitemap },
     ],
   },
   {
-    name: "Tools & templates",
-    tabDesc: "Calculators, JD templates & more",
+    name: "HR tools",
+    tabDesc: "AI generators & 13 calculators",
     ctaHref: routes.resourcesTools,
     icon: (
       <>
@@ -250,10 +268,21 @@ const RES: MenuTab[] = [
       </>
     ),
     subs: [
-      { label: "HR tools & calculators", d: "Cost per hire, time to hire & more", href: routes.resourcesTools },
-      { label: "Job description templates", d: "Role-ready JDs in minutes", href: routes.resourcesJdTemplates },
-      { label: "Customer success stories", d: "How 1,500+ teams hire on proof", href: routes.customers },
-      { label: "Competitors", d: "How Testlify compares", href: routes.resourcesCompetitors },
+      { label: "AI Interview question generator", d: "Generate role-ready questions", href: routes.resourcesTools },
+      { label: "AI Job description generator", d: "Draft JDs in seconds", href: routes.resourcesTools },
+      { label: "Cost per hire calculator", d: "", href: routes.resourcesTools },
+      { label: "Attrition rate calculator", d: "", href: routes.resourcesTools },
+      { label: "Employee NPS calculator", d: "", href: routes.resourcesTools },
+      { label: "Applicant funnel calculator", d: "", href: routes.resourcesTools },
+      { label: "Average Time to Hire", d: "", href: routes.resourcesTools },
+      { label: "Employee turnover", d: "", href: routes.resourcesTools },
+      { label: "Sourcing channel efficiency", d: "", href: routes.resourcesTools },
+      { label: "Remote work cost savings", d: "", href: routes.resourcesTools },
+      { label: "Quality of hire calculator", d: "", href: routes.resourcesTools },
+      { label: "Interview-to-hire offer", d: "", href: routes.resourcesTools },
+      { label: "Recruiting conversion rate", d: "", href: routes.resourcesTools },
+      { label: "Job offer acceptance rate", d: "", href: routes.resourcesTools },
+      { label: "Hiring manager satisfaction", d: "", href: routes.resourcesTools },
     ],
   },
   {
@@ -273,7 +302,6 @@ const RES: MenuTab[] = [
       { label: "Referral program", d: "Refer a team, earn rewards", href: "#" },
       { label: "Partnership program", d: "Grow with Testlify", href: routes.partners },
       { label: "Integration program", d: "Build on the Testlify API", href: "#" },
-      { label: "Sitemap", d: "Every page, in one place", href: routes.sitemap },
     ],
   },
 ];
@@ -336,7 +364,7 @@ const MOBILE_SECTIONS: MobileSection[] = [
     label: "Resources",
     links: [
       { label: "Learn", d: "Blog, guides, glossary & podcast", href: routes.blog },
-      { label: "Tools & templates", d: "Calculators, JD templates & more", href: routes.resourcesTools },
+      { label: "HR tools", d: "AI generators & 13 calculators", href: routes.resourcesTools },
       { label: "Programs", d: "Referral, partnership & integrations", href: "#" },
     ],
   },
@@ -560,14 +588,16 @@ export default function SiteHeader({
                       </Link>
                     ))}
                   </div>
-                  <div className="flex flex-col gap-0.5 w-[290px] min-w-[290px] pt-0.5 mr-1.5">
+                  <div className={`pt-0.5 mr-1.5 ${S.subs.length > 6 ? "w-[500px] min-w-[500px]" : "w-[290px] min-w-[290px]"}`}>
                     <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mb-2 px-2.5 mt-0.5">{S.name}</p>
-                    {S.subs.map((s) => (
-                      <Link key={s.label} href={s.href} className="flex flex-col gap-px py-[9px] px-3 rounded-[10px] hover:bg-rose-100 transition-colors">
-                        <span className="text-[14px] font-semibold text-ink leading-[1.25]">{s.label}</span>
-                        <span className="text-[12px] text-[#9A878A] leading-[1.35]">{s.d}</span>
-                      </Link>
-                    ))}
+                    <div className={S.subs.length > 6 ? "columns-2 gap-x-4" : "flex flex-col gap-0.5"}>
+                      {S.subs.map((s) => (
+                        <Link key={s.label} href={s.href} className="block break-inside-avoid py-[9px] px-3 rounded-[10px] hover:bg-rose-100 transition-colors">
+                          <span className="block text-[14px] font-semibold text-ink leading-[1.25]">{s.label}</span>
+                          {s.d && <span className="block text-[12px] text-[#9A878A] leading-[1.35]">{s.d}</span>}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                   <div className="w-[216px] bg-gradient-to-br from-[#FFF1F0] to-[#FFE7E4] rounded-[14px] p-[18px] flex flex-col justify-center gap-[7px]">
                     <p className="text-[15px] font-bold text-[#1A0E10] m-0">Not sure where to start?</p>
@@ -606,14 +636,16 @@ export default function SiteHeader({
                       </Link>
                     ))}
                   </div>
-                  <div className="flex flex-col gap-0.5 w-[290px] min-w-[290px] pt-0.5 mr-1.5">
+                  <div className={`pt-0.5 mr-1.5 ${R.subs.length > 6 ? "w-[500px] min-w-[500px]" : "w-[290px] min-w-[290px]"}`}>
                     <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#B59A9D] mb-2 px-2.5 mt-0.5">{R.name}</p>
-                    {R.subs.map((s) => (
-                      <Link key={s.label} href={s.href} className="flex flex-col gap-px py-[9px] px-3 rounded-[10px] hover:bg-rose-100 transition-colors">
-                        <span className="text-[14px] font-semibold text-ink leading-[1.25]">{s.label}</span>
-                        <span className="text-[12px] text-[#9A878A] leading-[1.35]">{s.d}</span>
-                      </Link>
-                    ))}
+                    <div className={R.subs.length > 6 ? "columns-2 gap-x-4" : "flex flex-col gap-0.5"}>
+                      {R.subs.map((s) => (
+                        <Link key={s.label} href={s.href} className="block break-inside-avoid py-[9px] px-3 rounded-[10px] hover:bg-rose-100 transition-colors">
+                          <span className="block text-[14px] font-semibold text-ink leading-[1.25]">{s.label}</span>
+                          {s.d && <span className="block text-[12px] text-[#9A878A] leading-[1.35]">{s.d}</span>}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                   <div className="w-[216px] bg-gradient-to-br from-[#FFF1F0] to-[#FFE7E4] rounded-[14px] p-[18px] flex flex-col justify-center gap-[7px]">
                     <p className="text-[15px] font-bold text-[#1A0E10] m-0">Free HR toolkit</p>
