@@ -15,6 +15,20 @@ export type SplitSection = {
   h2: string;
   body: string[];
   bullets?: Bullet[];
+  /** Force a single-column bullet list (matches the prototype `blOneCol`). */
+  blOneCol?: boolean;
+  /** Real per-section image URL (testlify.com asset). Falls back to Shot. */
+  img?: string;
+  cta?: { label: string; href: string };
+};
+
+export type BulletsSection = {
+  kind: "bullets";
+  eyebrow?: string;
+  h2: string;
+  body: string[];
+  bullets: Bullet[];
+  blOneCol?: boolean;
   cta?: { label: string; href: string };
 };
 
@@ -49,6 +63,7 @@ export type StepsSection = {
 
 export type Section =
   | SplitSection
+  | BulletsSection
   | CardsSection
   | GridSection
   | ChipsSection
@@ -68,10 +83,10 @@ export type SolutionData = {
   testimonials?: Testimonial[];
   faqs: { q: string; a: string }[];
   faqTitle?: string;
-  ctaEyebrow: string;
-  ctaTitle: string;
-  ctaBody: string;
-  ctaTicks: string[];
+  ctaEyebrow?: string;
+  ctaTitle?: string;
+  ctaBody?: string;
+  ctaTicks?: string[];
 };
 
 export const SOLUTIONS: Record<string, SolutionData> = {
