@@ -1,26 +1,24 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
 import CtaButton from "@/components/CtaButton";
-import TestIcon, { type TestIconKey } from "@/components/TestIcon";
 import { routes } from "@/lib/routes";
 import {
   INTERVIEWS,
-  INTERVIEW_CATEGORIES,
-  INTERVIEW_MODES,
+  INTERVIEW_LEVELS,
   CATEGORY_LABEL,
   DUR_DEFS,
   DUR_LABEL,
-  MODE_TAG_CLASS,
-  MODE_CBC_CLASS,
+  LEVEL_TAG_CLASS,
+  LEVEL_CBC_CLASS,
   durBucket,
   interviewSlug,
   type Interview,
-  type InterviewMode,
+  type Level,
   type DurKey,
 } from "./interviewData";
 
@@ -52,11 +50,48 @@ const SORTS: { key: "popular" | "az" | "dur"; label: string }[] = [
 ];
 
 /** Hero browser-card showcase rows (verbatim from the prototype's `.tl-vlist`). */
-const SHOWCASE: { icon: TestIconKey; grad: string; name: string; meta: string }[] = [
-  { icon: "cognitive", grad: "linear-gradient(135deg,#F76A6E,#F23F44)", name: "Frontend Engineer", meta: "Video · 8 Q · 25 min" },
-  { icon: "programming", grad: "linear-gradient(135deg,#7C5CFF,#5B7BFF)", name: "Sales Discovery Call", meta: "Audio · 6 Q · 20 min" },
-  { icon: "role", grad: "linear-gradient(135deg,#1FB57A,#12A063)", name: "Customer Support Chat", meta: "Chat · 5 scenarios · 15 min" },
-  { icon: "language", grad: "linear-gradient(135deg,#FF9F43,#F76A2E)", name: "HR Business Partner", meta: "Video · 7 Q · 22 min" },
+const SHOWCASE: { icon: ReactNode; grad: string; name: string; meta: string }[] = [
+  {
+    grad: "linear-gradient(135deg,#F76A6E,#F23F44)",
+    name: "Content Strategy for Writing",
+    meta: "Intermediate · 15 min",
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="10" />
+        <path d="M2 12h20" />
+        <path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20" />
+      </>
+    ),
+  },
+  {
+    grad: "linear-gradient(135deg,#7C5CFF,#5B7BFF)",
+    name: "Metrics & KPIs for Product",
+    meta: "Intermediate · 15 min",
+    icon: (
+      <>
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <path d="M3 9h18" />
+        <path d="M9 21V9" />
+      </>
+    ),
+  },
+  {
+    grad: "linear-gradient(135deg,#1FB57A,#12A063)",
+    name: "SEO for Marketing Strategy",
+    meta: "Intermediate · 15 min",
+    icon: <path d="M22 12h-4l-3 9L9 3l-3 9H2" />,
+  },
+  {
+    grad: "linear-gradient(135deg,#FF9F43,#F76A2E)",
+    name: "Quality Assurance for Engineering",
+    meta: "Intermediate · 15 min",
+    icon: (
+      <>
+        <path d="M9 11l3 3L22 4" />
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+      </>
+    ),
+  },
 ];
 
 const ArrowRight = ({ w = 16, sw = 2.4 }: { w?: number; sw?: number }) => (
@@ -99,7 +134,7 @@ const SearchIcon = ({ w = 20 }: { w?: number }) => (
 
 type FacetItem = { key: string; label: string; count: number; on: boolean; onToggle: () => void };
 
-function FacetGroup({ title, items, scroll, first }: { title: string; items: FacetItem[]; scroll?: boolean; first?: boolean }) {
+function FacetGroup({ title, items, first }: { title: string; items: FacetItem[]; first?: boolean }) {
   return (
     <div
       className={
@@ -109,7 +144,7 @@ function FacetGroup({ title, items, scroll, first }: { title: string; items: Fac
       }
     >
       <div className="text-[13.5px] font-bold text-ink px-1.5 pb-1.5">{title}</div>
-      <div className={`flex flex-col gap-px ${scroll ? "ilib-facet-scroll max-h-[250px] overflow-y-auto max-[860px]:max-h-none" : ""}`}>
+      <div className="flex flex-col gap-px">
         {items.map((f) => (
           <button
             key={f.key}
@@ -139,8 +174,7 @@ function toggleArr<T>(arr: T[], val: T): T[] {
 
 export default function InterviewLibraryClient() {
   const [query, setQuery] = useState("");
-  const [cats, setCats] = useState<TestIconKey[]>([]);
-  const [modes, setModes] = useState<InterviewMode[]>([]);
+  const [levels, setLevels] = useState<Level[]>([]);
   const [durs, setDurs] = useState<DurKey[]>([]);
   const [sort, setSort] = useState<"popular" | "az" | "dur">("popular");
   const [srtOpen, setSrtOpen] = useState(false);
@@ -148,9 +182,8 @@ export default function InterviewLibraryClient() {
   const q = query.trim().toLowerCase();
 
   const data = useMemo(() => {
-    const matches = (t: Interview, ignore?: "cat" | "mode" | "dur") => {
-      if (ignore !== "cat" && cats.length && !cats.includes(t.cat)) return false;
-      if (ignore !== "mode" && modes.length && !modes.includes(t.mode)) return false;
+    const matches = (t: Interview, ignore?: "lvl" | "dur") => {
+      if (ignore !== "lvl" && levels.length && !levels.includes(t.level)) return false;
       if (ignore !== "dur" && durs.length && !durs.includes(durBucket(t.dur))) return false;
       if (q) {
         const hay = `${t.name} ${t.desc} ${CATEGORY_LABEL[t.cat]}`.toLowerCase();
@@ -163,19 +196,12 @@ export default function InterviewLibraryClient() {
     if (sort === "az") list = [...list].sort((a, b) => a.name.localeCompare(b.name));
     else if (sort === "dur") list = [...list].sort((a, b) => a.dur - b.dur);
 
-    const catFacets: FacetItem[] = INTERVIEW_CATEGORIES.map((ty) => ({
-      key: ty.key,
-      label: ty.label,
-      count: INTERVIEWS.filter((t) => t.cat === ty.key && matches(t, "cat")).length,
-      on: cats.includes(ty.key),
-      onToggle: () => setCats((a) => toggleArr(a, ty.key)),
-    }));
-    const modeFacets: FacetItem[] = INTERVIEW_MODES.map((lv) => ({
+    const levelFacets: FacetItem[] = INTERVIEW_LEVELS.map((lv) => ({
       key: lv,
       label: lv,
-      count: INTERVIEWS.filter((t) => t.mode === lv && matches(t, "mode")).length,
-      on: modes.includes(lv),
-      onToggle: () => setModes((a) => toggleArr(a, lv)),
+      count: INTERVIEWS.filter((t) => t.level === lv && matches(t, "lvl")).length,
+      on: levels.includes(lv),
+      onToggle: () => setLevels((a) => toggleArr(a, lv)),
     }));
     const durFacets: FacetItem[] = DUR_DEFS.map(([k, l]) => ({
       key: k,
@@ -186,19 +212,17 @@ export default function InterviewLibraryClient() {
     }));
 
     const chips = [
-      ...cats.map((c) => ({ key: `c-${c}`, label: CATEGORY_LABEL[c], onRemove: () => setCats((a) => toggleArr(a, c)) })),
-      ...modes.map((l) => ({ key: `m-${l}`, label: l, onRemove: () => setModes((a) => toggleArr(a, l)) })),
+      ...levels.map((l) => ({ key: `l-${l}`, label: l, onRemove: () => setLevels((a) => toggleArr(a, l)) })),
       ...durs.map((d) => ({ key: `d-${d}`, label: DUR_LABEL[d], onRemove: () => setDurs((a) => toggleArr(a, d)) })),
     ];
 
-    return { list, catFacets, modeFacets, durFacets, chips };
-  }, [cats, modes, durs, q, sort]);
+    return { list, levelFacets, durFacets, chips };
+  }, [levels, durs, q, sort]);
 
-  const hasActive = !!(q || cats.length || modes.length || durs.length);
+  const hasActive = !!(q || levels.length || durs.length);
   const clearAll = () => {
     setQuery("");
-    setCats([]);
-    setModes([]);
+    setLevels([]);
     setDurs([]);
   };
   const sortLabel = SORTS.find((s) => s.key === sort)!.label;
@@ -236,22 +260,22 @@ export default function InterviewLibraryClient() {
               <Reveal>
                 <div className="inline-flex items-center gap-[9px] bg-white border border-[#FBD0D1] px-4 py-2 rounded-full shadow-[0_6px_18px_rgba(242,63,68,0.10)]">
                   <span className="w-2 h-2 rounded-full bg-coral" />
-                  <span className="text-[13.5px] font-semibold text-coral-deep tracking-[0.2px]">AI-led interviews — video, audio &amp; chat</span>
+                  <span className="text-[13.5px] font-semibold text-coral-deep tracking-[0.2px]">Ready-to-use, AI-scored interviews</span>
                 </div>
               </Reveal>
               <Reveal as="h1" delay={0.08} className="text-[52px] leading-[1.05] font-extrabold tracking-[-1.4px] m-0 max-w-[780px] mt-[22px] max-[760px]:text-[36px]">
-                AI interviews for&nbsp;
+                Ready-to-use interviews
                 <br />
-                <em className="not-italic text-coral">every role you hire.</em>
+                <em className="not-italic text-coral">for every role you hire.</em>
               </Reveal>
               <Reveal as="p" delay={0.15} className="text-[18px] leading-[1.62] text-body mt-5 max-w-[600px]">
-                Structured, AI-scored interviews in video, audio and chat — with role-specific questions and intelligent follow-ups. Every candidate gets the same fair interview; you get a scored, reviewable transcript.
+                Discover ready-to-use interview questions for every role — designed for fast, consistent and effective candidate evaluation, scored automatically in video, audio and chat.
               </Reveal>
               <Reveal delay={0.19} className="flex gap-[34px] mt-[30px]">
                 {[
-                  ["3", "Interview modes"],
+                  ["500+", "Ready-to-use interviews"],
                   ["4,500+", "Job roles"],
-                  ["94%", "Candidate satisfaction"],
+                  ["15 min", "Average length"],
                 ].map(([b, lab]) => (
                   <div key={lab} className="flex flex-col gap-0.5">
                     <b className="text-[28px] font-extrabold tracking-[-1px] text-coral leading-none">{b}</b>
@@ -260,7 +284,7 @@ export default function InterviewLibraryClient() {
                 ))}
               </Reveal>
               <Reveal delay={0.23} className="flex flex-wrap gap-[14px] mt-[34px]">
-                <CtaButton label="Try for free" href={routes.pricing} variant="primary" size="lg" icon="arrow" />
+                <CtaButton label="Try for free" href={routes.pricing} variant="primary" size="lg" icon="arrow" magnetic />
                 <CtaButton label="Book a demo" href="#" variant="secondary" size="lg" icon="play" />
               </Reveal>
               <Reveal delay={0.27} className="flex items-center gap-[26px] flex-wrap mt-[18px] text-[14.5px] text-muted font-medium">
@@ -285,7 +309,7 @@ export default function InterviewLibraryClient() {
                 </div>
                 <div className="flex gap-2 mb-[14px]">
                   <span className="text-[12px] font-semibold px-[13px] py-[5px] rounded-full bg-coral text-white border border-coral">All</span>
-                  {["Video", "Audio", "Chat"].map((c) => (
+                  {["Beginner", "Intermediate", "Advanced"].map((c) => (
                     <span key={c} className="text-[12px] font-semibold text-muted bg-[#FBF3F3] border border-[#F2E4E5] px-[13px] py-[5px] rounded-full">{c}</span>
                   ))}
                 </div>
@@ -297,8 +321,10 @@ export default function InterviewLibraryClient() {
                         i === 0 ? "bg-[#FFF6F6] border-[#FBD0D1]" : "border-[#F2E6E7]"
                       }`}
                     >
-                      <span className="w-[38px] h-[38px] rounded-[11px] flex items-center justify-center shrink-0 text-white" style={{ background: s.grad }}>
-                        <TestIcon name={s.icon} size={17} />
+                      <span className="w-[38px] h-[38px] rounded-[11px] flex items-center justify-center shrink-0" style={{ background: s.grad }}>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" aria-hidden>
+                          {s.icon}
+                        </svg>
                       </span>
                       <div className="flex-1 flex flex-col gap-[3px] min-w-0">
                         <span className="text-[14.5px] font-bold text-ink tracking-[-0.2px]">{s.name}</span>
@@ -317,11 +343,11 @@ export default function InterviewLibraryClient() {
                   className="w-[38px] h-[38px] rounded-[11px] flex items-center justify-center text-white font-bold text-[12.5px]"
                   style={{ background: "linear-gradient(135deg,#F76A6E,#F23F44)" }}
                 >
-                  3
+                  500+
                 </span>
                 <div>
-                  <div className="text-[12px] text-muted font-medium">Interview modes</div>
-                  <div className="text-[15.5px] font-bold text-ink">Video · Audio · Chat</div>
+                  <div className="text-[12px] text-muted font-medium">Ready to use</div>
+                  <div className="text-[15.5px] font-bold text-ink">Interviews</div>
                 </div>
               </div>
               <div
@@ -344,7 +370,7 @@ export default function InterviewLibraryClient() {
         <div className="max-w-[1240px] mx-auto px-7">
           <Reveal className="mb-[22px]">
             <h2 className="text-[30px] font-extrabold tracking-[-0.8px] m-0 max-[760px]:text-[25px]">Browse the interview library</h2>
-            <p className="text-[15px] text-muted2 mt-1.5 mb-0">Filter role-specific AI interviews by team, mode and length.</p>
+            <p className="text-[15px] text-muted2 mt-1.5 mb-0">Filter ready-to-use AI interviews by level and length.</p>
           </Reveal>
 
           <Reveal delay={0.13} className="grid grid-cols-[264px_1fr] gap-[34px] items-start max-[860px]:grid-cols-1 max-[860px]:gap-[22px]">
@@ -361,8 +387,7 @@ export default function InterviewLibraryClient() {
                   </button>
                 )}
               </div>
-              <FacetGroup title="Category" items={data.catFacets} scroll first />
-              <FacetGroup title="Interview mode" items={data.modeFacets} />
+              <FacetGroup title="Level" items={data.levelFacets} first />
               <FacetGroup title="Duration" items={data.durFacets} />
             </aside>
 
@@ -443,26 +468,16 @@ export default function InterviewLibraryClient() {
                     <Link
                       key={t.name}
                       href={`${routes.libraryInterviews}/${interviewSlug(t.name)}`}
-                      className={`ilib-card ${MODE_CBC_CLASS[t.mode]} group flex flex-col bg-white border-[1.4px] border-[#EFE1E2] rounded-2xl px-[22px] pt-[22px] pb-[18px] transition-all duration-300 relative hover:border-transparent hover:shadow-[0_22px_46px_rgba(110,11,14,0.12)] hover:-translate-y-1`}
+                      className={`ilib-card ${LEVEL_CBC_CLASS[t.level]} group flex flex-col bg-white border-[1.4px] border-[#EFE1E2] rounded-2xl px-[22px] pt-[22px] pb-[18px] transition-all duration-300 relative hover:border-transparent hover:shadow-[0_22px_46px_rgba(110,11,14,0.12)] hover:-translate-y-1`}
                     >
                       <div className="flex items-center justify-between gap-2.5 mb-[15px]">
-                        <span className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#7A686B] min-w-0">
-                          <span className="w-[30px] h-[30px] rounded-lg bg-rose-100 text-coral flex items-center justify-center shrink-0">
-                            <TestIcon name={t.cat} />
-                          </span>
-                          <span className="overflow-hidden text-ellipsis">{CATEGORY_LABEL[t.cat]}</span>
-                        </span>
-                        <span className={`text-[11px] font-bold tracking-[0.03em] px-2.5 py-1 rounded-full shrink-0 ${MODE_TAG_CLASS[t.mode]}`}>
-                          {t.mode}
+                        <span className={`text-[11px] font-bold tracking-[0.03em] px-2.5 py-1 rounded-full ${LEVEL_TAG_CLASS[t.level]}`}>
+                          {t.level}
                         </span>
                       </div>
                       <h3 className="text-[18.5px] font-bold tracking-[-0.3px] text-ink m-0 mb-2 leading-[1.25]">{t.name}</h3>
                       <p className="text-[14px] leading-[1.55] text-body2 m-0 mb-[18px] flex-1">{t.desc}</p>
                       <div className="flex items-center gap-4 pt-[15px] border-t border-[#F4E7E8]">
-                        <span className="flex items-center gap-1.5 text-[12.5px] text-muted2 font-medium">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-[#C0989B] shrink-0" aria-hidden><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></svg>
-                          {t.questions} questions
-                        </span>
                         <span className="flex items-center gap-1.5 text-[12.5px] text-muted2 font-medium">
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-[#C0989B] shrink-0" aria-hidden><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
                           {t.dur} min
