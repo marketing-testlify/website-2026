@@ -174,7 +174,7 @@ export default function CognitiveAbilityTestsPage() {
       <section className="tsd-hero">
         <div className="tsdw tsd-hgrid">
           <div className="tsd-copy reveal">
-            <div className="tsd-crumb"><Link href="/solutions">Solutions</Link><span>/</span><span>Test type / Cognitive ability</span></div>
+            <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Test type / Cognitive ability</span></div>
             <p className="eyebrow">Cognitive ability tests<b>.</b></p>
             <h1 className="tsd-h1">Best cognitive ability tests for hiring smart</h1>
             <p className="tsd-lead">Resumes show experience. Cognitive tests reveal potential. Testlify&apos;s cognitive ability assessments evaluate logical reasoning, problem-solving and numerical ability — so you see how well a candidate can think, learn, reason and solve problems, and identify high-potential candidates with timed questions that test mental agility.</p>

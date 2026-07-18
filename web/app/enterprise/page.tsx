@@ -215,7 +215,7 @@ export default function EnterprisePage() {
       <section className="tsd-hero">
         <div className="tsdw tsd-hgrid">
           <div className="tsd-copy reveal">
-            <div className="tsd-crumb"><Link href="/solutions">Solutions</Link><span>/</span><span>Company size / Enterprises</span></div>
+            <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Company size / Enterprises</span></div>
             <p className="eyebrow">For enterprises<b>.</b></p>
             <h1 className="tsd-h1">One-stop solution for global enterprise hiring</h1>
             <p className="tsd-lead">Volume hiring? Cross-functional hiring? Global hiring? Internal mobility and reducing mis-hires at senior levels? Testlify&apos;s skills assessments for global enterprises have you covered — delivering accuracy, speed and scale so you identify top talent faster with zero guesswork.</p>
