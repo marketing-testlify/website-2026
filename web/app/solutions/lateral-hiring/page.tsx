@@ -3,10 +3,7 @@ import { notFound } from "next/navigation";
 import { SOLUTIONS } from "../_shared/data";
 import SolutionBody from "../_shared/SolutionBody";
 
-/* Dedicated static route for the "health-care-industry" template industry — kept as its own
-   page so it ships in the immutable build and is
-   served fresh on every deploy, instead of the dynamic route ISR cache. */
-const SLUG = "health-care-industry";
+const SLUG = "lateral-hiring";
 const d = SOLUTIONS[SLUG];
 
 export const metadata: Metadata = {

@@ -20,7 +20,7 @@ import {
 import FaqList from "./FaqList";
 
 /**
- * Full solution-detail page body, shared by the dynamic /solutions/[slug]
+ * Full solution-detail page body, shared by the/solutions
  * route and the per-industry static routes (it/bpo/edtech/health-care/
  * hospitality/media). Kept as a plain server component so every page that
  * renders it is fully static.
