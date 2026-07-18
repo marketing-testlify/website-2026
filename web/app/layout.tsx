@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
+import './globals.css';
+import RevealInit from '@/components/RevealInit';
 
 export const metadata: Metadata = {
-  title: "Testlify",
-  description: "",
+  title: 'Testlify',
 };
 
 export default function RootLayout({
@@ -10,7 +11,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, background: "#fff" }}>{children}</body>
+      <body>
+        {children}
+        <RevealInit />
+      </body>
     </html>
   );
 }
