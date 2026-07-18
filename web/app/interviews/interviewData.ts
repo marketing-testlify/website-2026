@@ -1,14 +1,12 @@
-import type { TestIconKey } from "@/components/TestIcon";
-
-/** Interview delivery mode — drives the coloured level tag + running-border tint. */
-export type InterviewMode = "Video" | "Audio" | "Chat";
+/** Interview difficulty level — drives the coloured level tag + running-border tint. */
+export type Level = "Beginner" | "Intermediate" | "Advanced";
 
 /** A single interview in the library, ported 1:1 from the prototype's `tests` array. */
 export type Interview = {
   name: string;
-  /** category key — reuses the shared TestIcon taxonomy keys */
-  cat: TestIconKey;
-  mode: InterviewMode;
+  /** category key — see INTERVIEW_CATEGORIES */
+  cat: string;
+  level: Level;
   /** duration in minutes */
   dur: number;
   /** number of questions */
@@ -17,19 +15,21 @@ export type Interview = {
 };
 
 /**
- * 9 interview categories, ported verbatim from the prototype's `types` array.
- * The key reuses the shared TestIcon taxonomy; the label is interview-specific.
+ * 12 interview categories, ported verbatim from the prototype's `types` array.
  */
-export const INTERVIEW_CATEGORIES: { key: TestIconKey; label: string }[] = [
-  { key: "programming", label: "Software engineering" },
-  { key: "cognitive", label: "Sales" },
-  { key: "language", label: "Marketing" },
-  { key: "simulation", label: "Customer support" },
-  { key: "personality", label: "HR & recruiting" },
-  { key: "role", label: "Finance" },
-  { key: "software", label: "Product & design" },
-  { key: "coding", label: "Data" },
-  { key: "engineering", label: "Operations" },
+export const INTERVIEW_CATEGORIES: { key: string; label: string }[] = [
+  { key: "writing", label: "Writing" },
+  { key: "product", label: "Product" },
+  { key: "business", label: "Business" },
+  { key: "marketing", label: "Marketing" },
+  { key: "engineering", label: "Engineering" },
+  { key: "hr", label: "HR & recruiting" },
+  { key: "sales", label: "Sales" },
+  { key: "support", label: "Customer support" },
+  { key: "data", label: "Data & analytics" },
+  { key: "finance", label: "Finance" },
+  { key: "operations", label: "Operations" },
+  { key: "design", label: "Design" },
 ];
 
 export const CATEGORY_LABEL: Record<string, string> = INTERVIEW_CATEGORIES.reduce(
@@ -40,67 +40,70 @@ export const CATEGORY_LABEL: Record<string, string> = INTERVIEW_CATEGORIES.reduc
   {} as Record<string, string>
 );
 
-export const INTERVIEW_MODES: InterviewMode[] = ["Video", "Audio", "Chat"];
+export const INTERVIEW_LEVELS: Level[] = ["Beginner", "Intermediate", "Advanced"];
 
-/** 27 role-specific interviews, ported 1:1 from the prototype's `tests` array. */
+/** 30 ready-to-use interviews, ported 1:1 from the prototype's `tests` array. */
 export const INTERVIEWS: Interview[] = (
   [
-    ["Frontend Engineer", "programming", "Video", 25, 8, "React, CSS and architecture questions with AI follow-ups on depth."],
-    ["Backend Engineer", "programming", "Video", 25, 8, "APIs, databases, scaling trade-offs and system design reasoning."],
-    ["DevOps Engineer", "programming", "Audio", 20, 7, "CI/CD, infrastructure-as-code and incident response scenarios."],
-    ["Mobile Developer", "programming", "Video", 22, 7, "Platform patterns, performance and release judgement."],
-    ["Sales Discovery Call", "cognitive", "Audio", 20, 6, "A simulated discovery call scoring questioning, listening and qualifying."],
-    ["Account Executive", "cognitive", "Video", 25, 8, "Pipeline management, negotiation and closing judgement."],
-    ["SDR Cold Outreach", "cognitive", "Chat", 15, 5, "Live chat scenario scoring objection handling and personalisation."],
-    ["Digital Marketing Manager", "language", "Video", 22, 7, "Channel strategy, budget allocation and campaign analysis."],
-    ["Content Strategist", "language", "Chat", 15, 5, "Brief-to-outline exercise scoring clarity, tone and audience fit."],
-    ["SEO Specialist", "language", "Audio", 20, 6, "Technical audits, keyword strategy and prioritisation calls."],
-    ["Customer Support Chat", "simulation", "Chat", 15, 5, "A realistic chat scenario scoring tone, accuracy and resolution."],
-    ["Customer Success Manager", "simulation", "Video", 22, 7, "Renewal risk, escalation and expansion conversations."],
-    ["Technical Support Engineer", "simulation", "Audio", 20, 6, "Troubleshooting under pressure with clear customer communication."],
-    ["HR Business Partner", "personality", "Video", 22, 7, "Employee relations, coaching and policy judgement questions."],
-    ["Talent Acquisition Specialist", "personality", "Audio", 20, 6, "Sourcing strategy, structured screening and candidate experience."],
-    ["People Operations", "personality", "Chat", 15, 5, "Process, systems and prioritisation in a written scenario."],
-    ["Financial Analyst", "role", "Video", 25, 8, "Modelling logic, variance analysis and stakeholder storytelling."],
-    ["Accountant", "role", "Audio", 20, 6, "Reconciliation, reporting standards and month-end judgement."],
-    ["Product Manager", "software", "Video", 25, 8, "Prioritisation, discovery and metric trade-offs with AI follow-ups."],
-    ["Product Designer", "software", "Video", 22, 7, "Portfolio walkthrough prompts scoring process and rationale."],
-    ["UX Researcher", "software", "Audio", 20, 6, "Method selection, synthesis and stakeholder influence."],
-    ["Data Analyst", "coding", "Video", 22, 7, "SQL reasoning, metric definitions and insight communication."],
-    ["Data Scientist", "coding", "Video", 25, 8, "Modelling choices, experiment design and business framing."],
-    ["Analytics Engineer", "coding", "Chat", 18, 5, "Pipeline design and data-quality judgement in a written scenario."],
-    ["Operations Manager", "engineering", "Audio", 20, 6, "Process bottlenecks, staffing and vendor trade-off scenarios."],
-    ["Project Manager", "engineering", "Video", 22, 7, "Scoping, risk and stakeholder scenarios with AI follow-ups."],
-    ["Executive Assistant", "engineering", "Chat", 15, 5, "Prioritisation, communication and calendar-conflict judgement."],
-  ] as [string, TestIconKey, InterviewMode, number, number, string][]
-).map(([name, cat, mode, dur, questions, desc]) => ({ name, cat, mode, dur, questions, desc }));
+    ["Background Check", "hr", "Intermediate", 15, 10, "A thorough AI interview to verify a candidate's identity, work history, education, certifications, references and eligibility to work."],
+    ["Content Strategy for Writing", "writing", "Intermediate", 15, 8, "Evaluates the ability to develop content strategies, conduct audience research, and create and optimize content."],
+    ["Copywriting for Writing", "writing", "Beginner", 15, 7, "Evaluates persuasive copy, tone control and message clarity across formats."],
+    ["Technical Writing for Writing", "writing", "Advanced", 20, 9, "Assesses the ability to document complex products clearly for technical and non-technical readers."],
+    ["Metrics and KPIs for Product Performance", "product", "Intermediate", 15, 8, "Evaluates the ability to define, analyze and report KPIs, with insight into data analysis and strategy."],
+    ["Product Roadmapping for Product", "product", "Advanced", 20, 9, "Evaluates prioritisation, stakeholder alignment and roadmap trade-off reasoning."],
+    ["User Research for Product", "product", "Intermediate", 15, 8, "Assesses method selection, synthesis and turning insight into product decisions."],
+    ["Competitive Analysis for Business", "business", "Intermediate", 15, 8, "Evaluates skills in competitive analysis, strategy formulation and process improvement."],
+    ["Process Improvement for Business", "business", "Intermediate", 15, 8, "Evaluates the ability to identify inefficiencies, apply improvement methodologies and measure success."],
+    ["Stakeholder Management for Business", "business", "Intermediate", 15, 8, "Assesses communication, alignment and influence across stakeholders."],
+    ["SEO for Marketing Strategy", "marketing", "Intermediate", 15, 9, "Evaluates the ability to plan and execute SEO — keyword research, on-page and technical SEO, content optimization and analytics."],
+    ["Email Marketing Strategies for Marketing", "marketing", "Intermediate", 15, 8, "Evaluates skills in list segmentation, content creation, performance tracking, A/B testing and deliverability."],
+    ["Brand Strategy for Marketing", "marketing", "Advanced", 20, 9, "Evaluates positioning, messaging and go-to-market reasoning."],
+    ["Quality Assurance for Engineering", "engineering", "Intermediate", 15, 9, "Assesses expertise in QA processes, risk management, testing, automation, defect handling and collaboration."],
+    ["Engineering Project Risk Management", "engineering", "Intermediate", 15, 8, "Evaluates the ability to identify, assess and mitigate risks in engineering projects."],
+    ["System Design for Engineering", "engineering", "Advanced", 30, 10, "Assesses architecture trade-offs, scalability and reliability reasoning."],
+    ["Debugging for Engineering", "engineering", "Intermediate", 15, 8, "Evaluates structured troubleshooting and root-cause analysis."],
+    ["Recruitment Screening for HR", "hr", "Beginner", 15, 7, "Evaluates structured screening, candidate experience and sourcing judgement."],
+    ["Employee Relations for HR", "hr", "Intermediate", 15, 8, "Assesses coaching, conflict resolution and policy judgement."],
+    ["Lead Generation for Sales", "sales", "Intermediate", 15, 8, "Evaluates prospecting, qualification and pipeline-building judgement."],
+    ["Negotiation for Sales", "sales", "Advanced", 20, 8, "Assesses discovery, objection handling and closing under realistic scenarios."],
+    ["Ticket Handling for Customer Support", "support", "Beginner", 15, 6, "Evaluates tone, accuracy and resolution in realistic support scenarios."],
+    ["Escalation Management for Customer Support", "support", "Intermediate", 15, 7, "Assesses judgement in prioritising, de-escalating and resolving complex issues."],
+    ["Data Analysis for Data & Analytics", "data", "Intermediate", 15, 8, "Evaluates SQL reasoning, metric definitions and insight communication."],
+    ["Experiment Design for Data & Analytics", "data", "Advanced", 20, 9, "Assesses hypothesis framing, test design and interpretation of results."],
+    ["Financial Modeling for Finance", "finance", "Advanced", 20, 9, "Evaluates modelling logic, assumptions and scenario analysis for decision-making."],
+    ["Budgeting and Forecasting for Finance", "finance", "Intermediate", 15, 8, "Assesses forecasting accuracy, variance analysis and financial storytelling."],
+    ["Operations Planning for Operations", "operations", "Intermediate", 15, 8, "Evaluates process bottlenecks, staffing and vendor trade-off scenarios."],
+    ["UX Design for Design", "design", "Intermediate", 15, 8, "Evaluates process, rationale and usability judgement through portfolio prompts."],
+    ["Visual Design for Design", "design", "Beginner", 15, 7, "Assesses hierarchy, typography and brand-consistent execution."],
+  ] as [string, string, Level, number, number, string][]
+).map(([name, cat, level, dur, questions, desc]) => ({ name, cat, level, dur, questions, desc }));
 
 /** Duration buckets — ported from the prototype's `durBucket`/`durDefs`. */
 export type DurKey = "short" | "mid" | "long";
 export const DUR_DEFS: [DurKey, string][] = [
-  ["short", "Under 15 min"],
-  ["mid", "15–22 min"],
-  ["long", "22+ min"],
+  ["short", "15 min or less"],
+  ["mid", "16–20 min"],
+  ["long", "20+ min"],
 ];
 export const DUR_LABEL: Record<DurKey, string> = DUR_DEFS.reduce((m, [k, l]) => {
   m[k] = l;
   return m;
 }, {} as Record<DurKey, string>);
 export function durBucket(m: number): DurKey {
-  return m <= 15 ? "short" : m <= 22 ? "mid" : "long";
+  return m <= 15 ? "short" : m <= 20 ? "mid" : "long";
 }
 
-/** Chat→beg, Audio→int, Video→adv (colour system ported from the prototype). */
-export const MODE_TAG_CLASS: Record<InterviewMode, string> = {
-  Chat: "bg-[#E8F6EE] text-[#1B7F4B]",
-  Audio: "bg-[#FFF3E0] text-[#B5740F]",
-  Video: "bg-[#FDE7E7] text-[#D23B40]",
+/** level → coloured tag classes (ported from the prototype's `.lv-*`). */
+export const LEVEL_TAG_CLASS: Record<Level, string> = {
+  Beginner: "bg-[#E8F6EE] text-[#1B7F4B]",
+  Intermediate: "bg-[#FFF3E0] text-[#B5740F]",
+  Advanced: "bg-[#FDE7E7] text-[#D23B40]",
 };
-/** running-border tint per mode */
-export const MODE_CBC_CLASS: Record<InterviewMode, string> = {
-  Chat: "ilib-cbc-beg",
-  Audio: "ilib-cbc-int",
-  Video: "ilib-cbc-adv",
+/** running-border tint per level */
+export const LEVEL_CBC_CLASS: Record<Level, string> = {
+  Beginner: "ilib-cbc-beg",
+  Intermediate: "ilib-cbc-int",
+  Advanced: "ilib-cbc-adv",
 };
 
 export function interviewSlug(name: string): string {
@@ -116,7 +119,7 @@ export function findInterview(slug: string): Interview | undefined {
 }
 
 /* ------------------------------------------------------------------ *
- *  DETAIL TEMPLATE DATA (from library-interviews-detail.dc.html)      *
+ *  DETAIL TEMPLATE DATA (consumed by app/interviews/[slug])           *
  * ------------------------------------------------------------------ */
 
 export type Skill = { name: string; desc: string };
@@ -162,74 +165,18 @@ export const FAQ_PLATFORM: Faq[] = [
 ];
 
 /**
- * The fully authored Frontend Engineer instance, extracted VERBATIM from the
- * prototype's `test` object. Used directly when the slug resolves to it.
- */
-export const FRONTEND_ENGINEER_DETAIL: InterviewDetail = {
-  category: "Software engineering",
-  tag: "AI video interview",
-  title: "Frontend Engineer Interview",
-  lede: "A structured, AI-led video interview for frontend roles — React, CSS, architecture and collaboration. Every candidate answers the same questions with intelligent follow-ups, and every answer is scored against the same rubric.",
-  type: "Video · AI-led",
-  duration: "25 min",
-  questions: 8,
-  level: "Video",
-  languages: LANGUAGES,
-  summary: [
-    "The Frontend Engineer interview evaluates how candidates think and communicate about real front-end work — component architecture, state management, performance and debugging — in their own words, on camera.",
-    "The AI interviewer asks eight structured questions and probes deeper with follow-ups based on each answer. Every candidate gets the same interview, removing interviewer variance and scheduling bottlenecks entirely.",
-    "Each answer is scored independently against a role-specific rubric covering technical depth, problem solving and communication — and you get the full transcript and recording to review in minutes, not hours.",
-  ],
-  skills: [
-    { name: "Technical depth", desc: "How far a candidate can go past surface answers — internals, trade-offs and edge cases surfaced by AI follow-up questions." },
-    { name: "Problem solving", desc: "Structure and reasoning when walking through unfamiliar problems: framing, decomposition and validating assumptions out loud." },
-    { name: "Communication", desc: "Clarity, structure and audience-awareness — can they explain a technical decision to an engineer and to a stakeholder?" },
-    { name: "Code reasoning", desc: "Talking through code behaviour, state flow and rendering — evidence they read and reason about code, not just write it." },
-    { name: "Architecture judgement", desc: "Component boundaries, state placement and when to reach for a library versus the platform — judgement, not memorised patterns." },
-    { name: "Debugging approach", desc: "A repeatable method for isolating faults: reproduce, narrow, instrument — and knowing which tools to reach for first." },
-    { name: "Performance mindset", desc: "Awareness of what makes UIs slow and how to measure before optimising — bundle size, re-renders, network and perception." },
-    { name: "Collaboration", desc: "How they handle code review, disagreement and hand-offs — signals of a teammate, drawn from behavioural questions." },
-    { name: "Ownership", desc: "Taking responsibility end-to-end: shipping, monitoring, fixing — and the examples they choose to talk about." },
-  ],
-  roles: ["Frontend Developer", "React Developer", "UI Developer", "Web Developer", "Full Stack Developer", "JavaScript Developer", "Senior Frontend Engineer"],
-  interview: [
-    { q: "Walk me through a component you built recently. What were the hardest decisions?", why: "Open-ended and grounded in real work — it reveals depth of experience and how candidates frame trade-offs without a rehearsed answer.", listen: "Specificity of the example, clear articulation of trade-offs, and follow-up depth on state, boundaries and testing." },
-    { q: "A page renders slowly after a data update. How do you find out why?", why: "Debugging under uncertainty is daily frontend work; the method matters more than the answer.", listen: "A repeatable approach — reproduce, profile, isolate — plus naming concrete tools and distinguishing measurement from guessing." },
-    { q: "When would you choose local component state over a global store?", why: "Tests architecture judgement and whether the candidate reasons from principles rather than habits.", listen: "Awareness of co-location, ownership, sharing costs and refactor paths — with examples from real projects." },
-    { q: "Tell me about a code review disagreement. How was it resolved?", why: "Behavioural signal on collaboration and ego — strong ICs disagree productively.", listen: "Steel-manning the other side, focusing on the code not the person, and a concrete resolution or learning." },
-    { q: "How do you decide something is accessible enough to ship?", why: "Separates candidates who treat accessibility as a checklist from those who treat it as a quality bar.", listen: "Concrete practices — semantics, keyboard paths, contrast, screen-reader passes — and honest limits of their process." },
-  ],
-  faqTest: [
-    { q: "What is the Frontend Engineer interview?", a: "A structured, AI-led video interview that asks every candidate the same role-specific questions, probes with intelligent follow-ups, and scores each answer against an explicit rubric." },
-    { q: "Is it live or asynchronous?", a: "Asynchronous — candidates take it on their own schedule from any device with a camera. No coordination, no time zones, no interviewer calendars." },
-    { q: "Can I customise the questions?", a: "Yes — use the interview as-is, swap individual questions, or generate a fresh set from your own job description with scoring criteria included." },
-    { q: "How does AI scoring work?", a: "Each answer is evaluated against per-question criteria (depth, correctness, structure, communication). You get per-competency scores, a transcript, and the recording — and you can always override a score." },
-    { q: "What do candidates experience?", a: "A clean, guided flow: question on screen, thinking time, then a timed recorded answer. Practice question included — 94% of candidates rate the experience positively." },
-  ],
-  related: [
-    { name: "React Developer Test", meta: "Coding + MCQ · 35 min", tag: "Skills test", ic: "code" },
-    { name: "Backend Engineer Interview", meta: "Video · 8 Q · 25 min", tag: "Interview", ic: "server", slug: "backend-engineer" },
-    { name: "Culture Add Interview", meta: "Video · 6 Q · 20 min", tag: "Interview", ic: "layers" },
-  ],
-};
-
-/**
- * Build detail data for any interview in the library. The Frontend Engineer
- * slug returns the verbatim authored instance above; every other interview is
- * generated from its library row using the same structure so hub cards resolve.
+ * Build detail data for any interview in the library. Generated from the
+ * library row using a consistent structure so hub cards resolve to a detail page.
  */
 export function buildDetail(iv: Interview): InterviewDetail {
-  if (interviewSlug(iv.name) === "frontend-engineer") return FRONTEND_ENGINEER_DETAIL;
-
-  const cat = CATEGORY_LABEL[iv.cat];
+  const cat = CATEGORY_LABEL[iv.cat] ?? iv.cat;
   const catLower = cat.toLowerCase();
-  const modeLower = iv.mode.toLowerCase();
   const title = `${iv.name} Interview`;
 
   const summary = [
     `The ${iv.name} interview evaluates how candidates think and communicate about real ${catLower} work — ${iv.desc.replace(/\.$/, "").toLowerCase()} — in their own words.`,
     `The AI interviewer asks ${iv.questions} structured questions and probes deeper with follow-ups based on each answer. Every candidate gets the same interview, removing interviewer variance and scheduling bottlenecks entirely.`,
-    `Each answer is scored independently against a role-specific rubric covering depth, judgement and communication — and you get the full transcript${iv.mode === "Chat" ? "" : " and recording"} to review in minutes, not hours.`,
+    `Each answer is scored independently against a role-specific rubric covering depth, judgement and communication — and you get the full transcript and recording to review in minutes, not hours.`,
   ];
 
   const skills: Skill[] = [
@@ -254,10 +201,10 @@ export function buildDetail(iv: Interview): InterviewDetail {
 
   const faqTest: Faq[] = [
     { q: `What is the ${iv.name} interview?`, a: "A structured, AI-led interview that asks every candidate the same role-specific questions, probes with intelligent follow-ups, and scores each answer against an explicit rubric." },
-    { q: "Is it live or asynchronous?", a: `Asynchronous — candidates take it on their own schedule from any device${iv.mode === "Video" ? " with a camera" : ""}. No coordination, no time zones, no interviewer calendars.` },
+    { q: "Is it live or asynchronous?", a: "Asynchronous — candidates take it on their own schedule from any device. No coordination, no time zones, no interviewer calendars." },
     { q: "Can I customise the questions?", a: "Yes — use the interview as-is, swap individual questions, or generate a fresh set from your own job description with scoring criteria included." },
     { q: "How does AI scoring work?", a: "Each answer is evaluated against per-question criteria (depth, judgement, structure, communication). You get per-competency scores, a transcript, and can always override a score." },
-    { q: "What do candidates experience?", a: `A clean, guided flow: question on screen, thinking time, then a ${modeLower} answer. Practice question included — 94% of candidates rate the experience positively.` },
+    { q: "What do candidates experience?", a: "A clean, guided flow: question on screen, thinking time, then a scored answer in video, audio or chat. Practice question included — 94% of candidates rate the experience positively." },
   ];
 
   // three related items: two same-category interviews + one skills-test pairing
@@ -266,7 +213,7 @@ export function buildDetail(iv: Interview): InterviewDetail {
     { name: `${iv.name} Skills Test`, meta: "Skills test · 20 Q · 25 min", tag: "Skills test", ic: "code" as RelatedItem["ic"] },
     ...sameCat.map((t, i) => ({
       name: `${t.name} Interview`,
-      meta: `${t.mode} · ${t.questions} Q · ${t.dur} min`,
+      meta: `${t.level} · ${t.questions} Q · ${t.dur} min`,
       tag: "Interview",
       ic: (i === 0 ? "server" : "layers") as RelatedItem["ic"],
       slug: interviewSlug(t.name),
@@ -275,13 +222,13 @@ export function buildDetail(iv: Interview): InterviewDetail {
 
   return {
     category: cat,
-    tag: `AI ${modeLower} interview`,
+    tag: "AI-scored interview",
     title,
-    lede: `A structured, AI-led ${modeLower} interview for ${iv.name} roles — ${iv.desc.replace(/\.$/, "").toLowerCase()}. Every candidate answers the same questions with intelligent follow-ups, and every answer is scored against the same rubric.`,
-    type: `${iv.mode} · AI-led`,
+    lede: `A structured, AI-led interview for ${iv.name} roles — ${iv.desc.replace(/\.$/, "").toLowerCase()}. Every candidate answers the same questions with intelligent follow-ups, and every answer is scored against the same rubric.`,
+    type: "Video · Audio · Chat",
     duration: `${iv.dur} min`,
     questions: iv.questions,
-    level: iv.mode,
+    level: iv.level,
     languages: LANGUAGES,
     summary,
     skills,
