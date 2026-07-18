@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./site-base.css">
+<script src="./reveal.js"></script>
+<style>
+.trait{margin-bottom:22px;}
+.traith{display:flex;justify-content:space-between;font-size:14.5px;font-weight:700;color:#1A1014;margin-bottom:8px;}
+.bar{height:10px;border-radius:100px;background:#F1E2E2;overflow:hidden;}
+.barfill{height:100%;border-radius:100px;background:linear-gradient(90deg,#FF7A52,#F23F44);}
+</style>
+</helmet>
+<dc-import name="component-site-header" announcement="See a full sample personality report" announcement-cta="Try for free" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+
+<section class="phero"><div class="wrap" style="max-width:860px;">
+  <p class="eyebrow reveal">Sample report<b>.</b></p>
+  <h1 class="h1 reveal" style="transition-delay:.04s">Inside the personality report</h1>
+  <p class="lead reveal" style="margin:22px auto 0;max-width:640px;transition-delay:.08s">Every Smart Personality Assessment produces a clear, structured report you can act on — traits, strengths, and how to work with someone best.</p>
+</div></section>
+
+<section class="sec"><div class="wrap split">
+  <div class="reveal" style="background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:34px;box-shadow:0 20px 44px rgba(110,11,14,.08);">
+    <p class="eyebrow" style="margin-bottom:20px;">Trait profile<b>.</b></p>
+    <div class="trait"><div class="traith"><span>Conscientiousness</span><span>82</span></div><div class="bar"><div class="barfill" style="width:82%;"></div></div></div>
+    <div class="trait"><div class="traith"><span>Openness</span><span>74</span></div><div class="bar"><div class="barfill" style="width:74%;"></div></div></div>
+    <div class="trait"><div class="traith"><span>Extraversion</span><span>58</span></div><div class="bar"><div class="barfill" style="width:58%;"></div></div></div>
+    <div class="trait"><div class="traith"><span>Agreeableness</span><span>69</span></div><div class="bar"><div class="barfill" style="width:69%;"></div></div></div>
+    <div class="trait" style="margin-bottom:0;"><div class="traith"><span>Emotional stability</span><span>77</span></div><div class="bar"><div class="barfill" style="width:77%;"></div></div></div>
+  </div>
+  <div class="reveal" style="transition-delay:.08s;">
+    <p class="eyebrow">What you get<b>.</b></p>
+    <h2 class="h2" style="margin-bottom:20px;">Clear, actionable insight</h2>
+    <p class="body">The report translates scores into plain language: what each trait means for the role, where this person thrives, and how to bring out their best.</p>
+    <ul class="chk" style="margin-top:22px;">
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Trait-by-trait breakdown with benchmarks</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Strengths and potential blind spots</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Interview questions tailored to the profile</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Tips for onboarding and management</li>
+    </ul>
+    <div style="margin-top:26px;">
+      <dc-import name="component-cta-button" label="How to get your report" href="getting-your-smart-personality-assessment-report.dc.html" variant="primary" size="md" icon="arrow" hint-size="220px,52px"></dc-import>
+    </div>
+  </div>
+</div></section>
+
+<dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}"></script>
+</body>
+</html>

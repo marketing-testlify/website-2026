@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+.tsm,.tsm *{box-sizing:border-box;font-family:'Poppins',sans-serif;}
+.tsm-sec{padding:96px 28px;background:#fff;}
+.tsm-inner{max-width:920px;margin:0 auto;text-align:center;}
+.tsm-eyebrow{font-size:14px;font-weight:700;letter-spacing:1px;color:#8A7A7D;text-transform:uppercase;margin:0 0 14px;}
+.tsm-eyebrow>span:last-child{color:#F23F44;}
+.tsm-h2{font-size:46px;line-height:1.08;font-weight:800;letter-spacing:-1.4px;margin:0 0 44px;color:#1A1014;}
+.tsm-stage{position:relative;max-width:1060px;margin:0 auto;}
+.tsm-view{overflow:hidden;border-radius:26px;}
+.tcard2{display:grid;grid-template-columns:300px 1fr;gap:0;background:#fff;border:1px solid #F4E4E5;border-radius:26px;overflow:hidden;box-shadow:0 24px 60px rgba(110,11,14,.10);text-align:left;}
+.tphoto{position:relative;background:linear-gradient(160deg,#F76A6E,#A91E23);overflow:hidden;min-height:340px;}
+.tphoto img{width:100%;height:100%;object-fit:cover;object-position:center 18%;}
+.tphoto .g2badge{position:absolute;left:18px;bottom:18px;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.94);border-radius:100px;padding:7px 13px;font-size:12.5px;font-weight:700;color:#1A1014;box-shadow:0 6px 16px rgba(0,0,0,.18);}
+.tphoto .g2badge b{color:#FF492C;font-size:13px;letter-spacing:.5px;}
+.tcontent{padding:46px 48px;display:flex;flex-direction:column;justify-content:center;}
+.tquotemark{font-family:Georgia,serif;font-size:66px;line-height:.5;color:#FBD0D1;height:30px;}
+.tstars{color:#F23F44;font-size:17px;letter-spacing:3px;margin-bottom:16px;}
+.tquote2{font-size:24px;line-height:1.5;color:#1A1014;font-weight:600;letter-spacing:-.4px;margin:0 0 26px;}
+.tname2{font-weight:700;font-size:16px;color:#1A1014;}
+.trole2{font-size:14px;color:#8A7A7D;margin-top:2px;}
+.tnav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid #F0D9DA;color:#F23F44;font-size:18px;cursor:pointer;box-shadow:0 10px 26px rgba(110,11,14,.14);display:flex;align-items:center;justify-content:center;transition:transform .2s ease, background .2s ease, color .2s ease;z-index:3;}
+.tnav:hover{transform:translateY(-50%) scale(1.1);background:#F23F44;color:#fff;}
+.ttrack{display:flex;cursor:grab;touch-action:pan-y;}
+.ttrack.grabbing{cursor:grabbing;}
+.tsm-dots{display:flex;justify-content:center;gap:9px;margin-top:26px;}
+.tsm-dots span{height:9px;border-radius:6px;cursor:pointer;transition:all .3s ease;}
+@media(max-width:760px){.tsm-sec{padding:64px 20px;}.tsm-h2{font-size:32px;}.tcard2{grid-template-columns:1fr;}.tphoto{min-height:200px;max-height:260px;}.tphoto img{object-fit:contain;object-position:center;}.tcontent{padding:30px 26px;}.tquote2{font-size:20px;}.tnav{display:none;}}
+
+h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
+</style>
+</helmet>
+<section class="tsm-sec" ref="{{ rootRef }}"><div class="tsm-inner">
+  <p class="tsm-eyebrow">{{ eyebrow }}<span>.</span></p>
+  <h2 class="tsm-h2">{{ heading }}</h2>
+  <div class="tsm-stage">
+    <div class="tsm-view">
+      <div data-track class="ttrack" style="transform:translateX(0%);">
+        <sc-for list="{{ items }}" as="t" hint-placeholder-count="4">
+          <div data-slide style="flex:0 0 100%;padding:6px;"><div class="tcard2">
+            <div class="tphoto"><img src="{{ t.img }}" alt="{{ t.name }}" draggable="false"><span class="g2badge"><b>G2</b>{{ t.rating }} ★</span></div>
+            <div class="tcontent"><div class="tquotemark">"</div><div class="tstars">★★★★★</div><p class="tquote2">{{ t.quote }}</p><div><div class="tname2">{{ t.name }}</div><div class="trole2">{{ t.role }}</div></div></div>
+          </div></div>
+        </sc-for>
+      </div>
+    </div>
+    <button onClick="{{ prevSlide }}" aria-label="Previous" class="tnav" style="left:-22px;">‹</button>
+    <button onClick="{{ nextSlide }}" aria-label="Next" class="tnav" style="right:-22px;">›</button>
+    <div class="tsm-dots"><sc-for list="{{ dots }}" as="d" hint-placeholder-count="4"><span data-dot="{{ d.i }}" onClick="{{ onDot }}" style="{{ d.style }}"></span></sc-for></div>
+  </div>
+</div></section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:560},&quot;eyebrow&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Loved by HR teams&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heading&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Hiring managers don't go back&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;items&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{img:string;name:string;role:string;rating:string;quote:string}[]&quot;}}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  DEFAULT = [
+    { img:"https://testlify.com/wp-content/uploads/2026/03/Xneelo-Chrissie-Blom.png", name:"Chrissie Blom", role:"Technical Talent Specialist, Xneelo", rating:"5.0", quote:"We cut screening time by two-thirds. The ranked shortlist is the first thing my hiring managers open every morning." },
+    { img:"https://testlify.com/wp-content/uploads/2026/03/Kimp-Senthu-Velnayagam.png", name:"Senthu Velnayagam", role:"People Ops, Kimp", rating:"5.0", quote:"Skills-based assessments doubled our shortlist diversity and our offer-acceptance rate. The data finally backs every decision." },
+    { img:"https://testlify.com/wp-content/uploads/2026/03/Endiprev-Daniela-Santos.png", name:"Daniela Santos", role:"HR Lead, Endiprev", rating:"5.0", quote:"Setup took an afternoon. Within a week we'd replaced three rounds of phone screens with one fair assessment." },
+    { img:"https://testlify.com/wp-content/uploads/2026/03/Virtual-Gurus-Abby-Belin.png", name:"Abby Belin", role:"Recruiting, Virtual Gurus", rating:"5.0", quote:"Candidates actually thank us for the experience. It feels fair, it's fast, and our drop-off fell off a cliff." }
+  ];
+  items(){ const p = this.props.items; return (Array.isArray(p) && p.length) ? p : this.DEFAULT; }
+
+  componentDidMount(){
+    const base = this.rootRef.current;
+    const root = (base && base.getRootNode && base.getRootNode()) || document;
+    this._root = base || root;
+    this._slide = 0;
+    this._slides = this._root.querySelectorAll('[data-slide]').length || 1;
+    const track = this._root.querySelector('[data-track]');
+    if(track && this._slides > 1 && !track.__cloned){
+      const first = track.querySelector('[data-slide]');
+      if(first){ const c = first.cloneNode(true); c.setAttribute('data-clone',''); track.appendChild(c); track.__cloned = 1; }
+    }
+    this._slideTimer = setInterval(()=>this.go(this._slide + 1, false), 4800);
+    this.initCarouselDrag(this._root);
+  }
+  componentWillUnmount(){ if(this._slideTimer) clearInterval(this._slideTimer); if(this._dragCleanup) this._dragCleanup(); }
+
+  setX(el, pct){ if(el.__raf) cancelAnimationFrame(el.__raf); el.style.transform = 'translateX(' + pct + '%)'; el.__x = pct; }
+  go(i, user){
+    const n = this._slides; if(!n) return;
+    const root = this._root; if(!root) return;
+    const track = root.querySelector('[data-track]');
+    let target, real;
+    if(i >= n){ target = n; real = 0; }
+    else if(i < 0){ if(track) this.setX(track, -n * 100); target = n - 1; real = n - 1; }
+    else { target = i; real = i; }
+    this._slide = real;
+    if(track){
+      this.tweenX(track, -target * 100, 480);
+      if(target === n){ clearTimeout(this._loopSnap); this._loopSnap = setTimeout(()=>this.setX(track, 0), 510); }
+    }
+    root.querySelectorAll('[data-dot]').forEach(d=>{
+      const on = parseInt(d.getAttribute('data-dot'), 10) === real;
+      d.style.width = on ? '26px' : '9px';
+      d.style.background = on ? '#F23F44' : '#FBD0D1';
+    });
+    if(user && this._slideTimer){ clearInterval(this._slideTimer); this._slideTimer = setInterval(()=>this.go(this._slide + 1, false), 4800); }
+  }
+  initCarouselDrag(root){
+    const track = root.querySelector('[data-track]');
+    if(!track || track.__drag) return; track.__drag = 1;
+    let down = false, startX = 0, baseX = 0, moved = 0, w = 0;
+    const start = (e)=>{
+      down = true; moved = 0;
+      startX = (e.touches ? e.touches[0].clientX : e.clientX);
+      w = track.getBoundingClientRect().width || 1;
+      baseX = (typeof track.__x === 'number') ? track.__x : -this._slide * 100;
+      track.classList.add('grabbing');
+      if(track.__raf) cancelAnimationFrame(track.__raf);
+      if(this._slideTimer){ clearInterval(this._slideTimer); this._slideTimer = null; }
+    };
+    const move = (e)=>{
+      if(!down) return;
+      const x = (e.touches ? e.touches[0].clientX : e.clientX);
+      const dx = x - startX; moved = dx;
+      const pct = baseX + (dx / w) * 100;
+      track.style.transform = 'translateX(' + pct + '%)'; track.__x = pct;
+      if(Math.abs(dx) > 6 && e.cancelable) e.preventDefault();
+    };
+    const end = ()=>{
+      if(!down) return; down = false;
+      track.classList.remove('grabbing');
+      const threshold = w * 0.18;
+      if(moved < -threshold) this.go(this._slide + 1, true);
+      else if(moved > threshold) this.go(this._slide - 1, true);
+      else this.go(this._slide, true);
+    };
+    track.addEventListener('mousedown', start);
+    window.addEventListener('mousemove', move, { passive: false });
+    window.addEventListener('mouseup', end);
+    track.addEventListener('touchstart', start, { passive: true });
+    track.addEventListener('touchmove', move, { passive: false });
+    window.addEventListener('touchend', end);
+    this._dragCleanup = ()=>{ window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', end); window.removeEventListener('touchend', end); };
+  }
+  tweenX(el, toPct, dur){
+    if(el.__raf) cancelAnimationFrame(el.__raf);
+    const from = (typeof el.__x === 'number') ? el.__x : 0;
+    const start = performance.now();
+    const step = (t)=>{
+      const p = Math.min((t - start) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      const v = from + (toPct - from) * e;
+      el.style.transform = 'translateX(' + v + '%)'; el.__x = v;
+      if(p < 1) el.__raf = requestAnimationFrame(step);
+      else el.__x = toPct;
+    };
+    el.__raf = requestAnimationFrame(step);
+  }
+
+  renderVals(){
+    const items = this.items();
+    return {
+      rootRef: this.rootRef,
+      eyebrow: this.props.eyebrow || 'Loved by HR teams',
+      heading: this.props.heading || "Hiring managers don't go back",
+      items,
+      dots: items.map((_, i)=>({ i, style: 'width:'+(i===0?'26px':'9px')+';height:9px;border-radius:6px;background:'+(i===0?'#F23F44':'#FBD0D1')+';cursor:pointer;transition:all .3s ease;' })),
+      prevSlide: ()=>this.go(this._slide - 1, true),
+      nextSlide: ()=>this.go(this._slide + 1, true),
+      onDot: (e)=>this.go(parseInt(e.currentTarget.getAttribute('data-dot'), 10), true)
+    };
+  }
+}
+</script>
+</body>
+</html>

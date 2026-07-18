@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./site-base.css">
+<link rel="stylesheet" href="./calc.css">
+<script src="./reveal.js"></script>
+</helmet>
+<dc-import name="component-site-header" announcement="Free HR tools — calculators, templates and interview kits." announcement-cta="Browse tools" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+
+<section class="tsec" style="background:radial-gradient(1000px 500px at 80% 4%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff;"><div class="tw">
+  <div class="tcrumb reveal"><a href="blog.dc.html">Resources</a><span>/</span><a href="hr-tools.dc.html">HR tools</a><span>/</span><span>Remote work cost savings calculator</span></div>
+  <div style="max-width:720px;">
+    <p class="eyebrow reveal">Remote work savings<b>.</b></p>
+    <h1 class="th1 reveal" style="transition-delay:.04s;">Calculate your remote work savings</h1>
+    <p class="tlead reveal" style="transition-delay:.08s;">Remote and hybrid teams save on office space, utilities and equipment. Enter your numbers to estimate your annual savings from going remote.</p>
+  </div>
+</div></section>
+
+<section class="tsec" style="background:#FBF3EE;padding-top:40px;"><div class="tw">
+  <div class="tcalc reveal">
+    <div class="tcard">
+      <p class="eyebrow" style="margin-bottom:22px;">Your numbers<b>.</b></p>
+      <div class="tfield"><label>Employees going remote</label><input class="tinput" type="number" min="0" value="{{ emp }}" onInput="{{ onEmp }}"></div>
+      <div class="tfield"><label>Office cost per employee <span class="thint">per year</span></label><div class="tprefix"><span class="tsym">$</span><input class="tinput" type="number" min="0" value="{{ office }}" onInput="{{ onOffice }}"></div></div>
+      <div class="tfield" style="margin-bottom:0;"><label>Share of time remote <span class="thint">%</span></label><div class="tprefix suf"><span class="tsym">%</span><input class="tinput" type="number" min="0" max="100" value="{{ share }}" onInput="{{ onShare }}"></div></div>
+    </div>
+    <div class="tresult">
+      <p class="trlabel">Estimated annual savings</p>
+      <p class="trbig">{{ result }}</p>
+      <p class="trsub">{{ note }}</p>
+      <div class="trbreak">
+        <div class="trrow"><span>Savings per employee</span><span>{{ perEmp }}</span></div>
+        <div class="trrow"><span>Employees</span><span>{{ emp }}</span></div>
+        <div class="trrow"><span>Time remote</span><span>{{ share }}%</span></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="tsec"><div class="tw">
+  <div style="max-width:640px;">
+    <p class="eyebrow reveal">How it works<b>.</b></p>
+    <h2 class="th2 reveal" style="transition-delay:.04s;">Remote savings, explained</h2>
+    <p class="tlead reveal" style="transition-delay:.08s;">We multiply your per-employee office cost by the share of time worked remotely, then across your team. Hiring remotely also widens your talent pool — skills-based assessment makes that fair and reliable.</p>
+  </div>
+  <div class="tsteps">
+    <div class="tstep reveal"><div class="tstepn">1</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Count employees</h3><p class="tbody" style="margin:0;font-size:14.5px;">How many people will work remotely or hybrid.</p></div>
+    <div class="tstep reveal" style="transition-delay:.06s;"><div class="tstepn">2</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Office cost each</h3><p class="tbody" style="margin:0;font-size:14.5px;">Rent, utilities, equipment and facilities per employee.</p></div>
+    <div class="tstep reveal" style="transition-delay:.12s;"><div class="tstepn">3</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">See the savings</h3><p class="tbody" style="margin:0;font-size:14.5px;">Scaled by how much time is spent remote.</p></div>
+  </div>
+</div></section>
+
+<dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { emp: 50, office: 11000, share: 100 };
+  num(v){ const n=parseFloat(v); return isNaN(n)||n<0?0:n; }
+  money(n){ return '$'+Math.round(n).toLocaleString('en-US'); }
+  renderVals(){
+    const emp=this.num(this.state.emp), office=this.num(this.state.office), share=Math.min(100,this.num(this.state.share));
+    const perEmp=office*share/100;
+    const total=perEmp*emp;
+    return {
+      emp:this.state.emp, office:this.state.office, share:this.state.share,
+      onEmp:(e)=>this.setState({emp:e.target.value}),
+      onOffice:(e)=>this.setState({office:e.target.value}),
+      onShare:(e)=>this.setState({share:e.target.value}),
+      result:this.money(total),
+      perEmp:this.money(perEmp),
+      note:'Estimated savings on office space, utilities and equipment per year.'
+    };
+  }
+}
+</script>
+</body>
+</html>
