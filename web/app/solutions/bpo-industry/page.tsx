@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { SOLUTIONS } from "../[slug]/data";
-import SolutionBody from "../[slug]/SolutionBody";
+import { SOLUTIONS } from "../_shared/data";
+import SolutionBody from "../_shared/SolutionBody";
 
 /* Dedicated static route for the "bpo-industry" template industry — kept as its own
-   page (like the bespoke industries) so it ships in the immutable build and is
-   served fresh on every deploy, instead of the dynamic [slug] ISR cache. */
+   page so it ships in the immutable build and is
+   served fresh on every deploy, instead of the dynamic route ISR cache. */
 const SLUG = "bpo-industry";
 const d = SOLUTIONS[SLUG];
 
