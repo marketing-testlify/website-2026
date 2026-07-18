@@ -265,7 +265,7 @@ export default function Page() {
             {USE_CASES.map((uc) => (
               <Reveal key={uc.id} delay={uc.delay} className="h-full">
               <Link
-                href={`${routes.solutions}/volume-hiring`}
+                href="/volume-hiring"
                 id={uc.id}
                 className="scroll-mt-[120px] h-full flex flex-col bg-white border border-[#EFE2E3] rounded-[20px] p-7 transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
               >
@@ -318,7 +318,7 @@ export default function Page() {
             {INDUSTRIES.map((ind) => (
               <Reveal key={ind.label} delay={ind.delay} className="h-full">
               <Link
-                href={`${routes.solutions}/it-technology`}
+                href="/it-technology"
                 className="h-full flex items-center gap-[13px] bg-white border border-[#EFE2E3] rounded-[15px] px-5 py-[18px] font-semibold text-[15px] text-[#1A1014] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_16px_34px_rgba(110,11,14,0.08)] hover:border-[#F4D2D3]"
               >
                 <span className="w-10 h-10 rounded-[11px] bg-[#FBF3EE] text-[#C0242B] flex items-center justify-center flex-none">
@@ -364,7 +364,7 @@ export default function Page() {
             {SIZES.map((s) => (
               <Reveal key={s.title} delay={s.delay} className="h-full">
               <Link
-                href={`${routes.solutions}/enterprise`}
+                href={routes.solutions}
                 className="block h-full bg-white border border-[#EFE2E3] rounded-[20px] px-7 py-8 transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(110,11,14,0.10)] hover:border-[#F4D2D3]"
               >
                 <h3 className="text-[22px] leading-[1.25] font-bold tracking-[-0.4px] m-0 text-[#1A1014]" style={{ marginBottom: 10 }}>
