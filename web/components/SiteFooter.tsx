@@ -3,7 +3,7 @@ import { routes } from "@/lib/routes";
 
 const ROADMAP_URL = "https://roadmap.testlify.com/";
 const HELP_URL = "https://help.testlify.com/";
-const CODING_TESTS = "/solutions/coding-tests";
+const CODING_TESTS = "/coding-tests";
 
 const FOOTER_COLS: { heading: string; links: [string, string][] }[] = [
   {
