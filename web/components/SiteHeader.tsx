@@ -374,10 +374,12 @@ const MOBILE_SECTIONS: MobileSection[] = [
     links: [
       { label: "Our story", d: "Why we built Testlify", href: routes.about },
       { label: "Contact us", d: "Talk to sales or support", href: routes.contact },
+      { label: "Our leadership", d: "The team behind Testlify", href: routes.about },
       { label: "Trust center", d: "SOC 2, ISO 27001, GDPR", href: routes.trustCenter },
       { label: "Clients", d: "Teams hiring with Testlify", href: routes.customers },
       { label: "Partners", d: "Refer, resell or build with us", href: routes.partners },
       { label: "Job openings", d: "Join the team behind Testlify", href: routes.careers },
+      { label: "Write for us", d: "Contribute to the Testlify blog", href: "#" },
     ],
   },
 ];
