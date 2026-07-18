@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import Reveal from "@/components/Reveal";
 import { routes } from "@/lib/routes";
-import { ATS_LOGOS, AWARDS } from "./data";
+import { AWARDS } from "./data";
 import type {
   Bullet,
   BulletsSection,
@@ -415,7 +415,7 @@ export function TestimonialsBand({ items }: { items: Testimonial[] }) {
           <p className={EYEBROW_CLASS}>
             Loved by hiring teams<b className="text-coral">.</b>
           </p>
-          <h2 className={H2_CLASS}>Recruiters who hire on proof</h2>
+          <h2 className={H2_CLASS}>What hiring teams say about skills-based hiring</h2>
         </Reveal>
         <div className="grid grid-cols-3 gap-[22px] mt-[46px] max-[960px]:grid-cols-1">
           {items.map((t, i) => (
@@ -453,30 +453,46 @@ export function TestimonialsBand({ items }: { items: Testimonial[] }) {
   );
 }
 
-/* .tsd-sec.tsd-sand ATS band — logo pills + "+100 more". */
+/* ATS band — real ATS logo grid + "View all ATS integrations" (matches design). */
+const ATS_LOGO_IMAGES: { src: string; alt: string }[] = [
+  { src: "https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png", alt: "Workday" },
+  { src: "https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png", alt: "SAP SuccessFactors" },
+  { src: "https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png", alt: "Lever" },
+  { src: "https://testlify.com/wp-content/uploads/2025/10/SR-SAP-Logo.svg", alt: "SmartRecruiters" },
+  { src: "https://testlify.com/wp-content/uploads/2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png", alt: "Recruitee" },
+  { src: "https://testlify.com/wp-content/uploads/2025/10/logo.svg", alt: "UKG Pro Recruiting" },
+  { src: "https://testlify.com/wp-content/uploads/2024/09/BambooHR-Logo-1-2048x1152-2.png", alt: "BambooHR" },
+  { src: "https://testlify.com/wp-content/uploads/2023/03/629a0bbcb04c5ae587c411c2-1-1.png", alt: "Greenhouse" },
+  { src: "https://testlify.com/wp-content/uploads/2024/08/zoho-recruit-logo-1.png", alt: "Zoho Recruit" },
+  { src: "https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png", alt: "JazzHR" },
+];
+
 export function AtsBand() {
   return (
     <section className="py-24 max-[960px]:py-16 bg-sand">
       <div className="max-w-[1240px] mx-auto px-7">
         <SHead
-          eyebrow="Fits your stack"
-          h2="Works with the ATS you already use"
+          eyebrow="Integrations"
+          h2="Testlify integrates seamlessly with 100+ ATS tools"
           intro="Push assessment results straight into your workflow with 100+ native, two-way integrations."
         />
-        <Reveal className="flex gap-3 flex-wrap justify-center mt-10">
-          {ATS_LOGOS.map((a) => (
+        <Reveal className="grid grid-cols-5 gap-4 mt-10 max-[760px]:grid-cols-2">
+          {ATS_LOGO_IMAGES.map((logo) => (
             <span
-              key={a}
-              className="bg-white border border-warm rounded-[12px] px-[22px] py-[14px] text-[15px] font-bold text-body2 shadow-[0_8px_18px_rgba(110,11,14,0.06)]"
+              key={logo.alt}
+              className="flex items-center justify-center bg-white border border-warm rounded-[14px] px-6 py-5 shadow-[0_8px_18px_rgba(110,11,14,0.06)]"
             >
-              {a}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={logo.src} alt={logo.alt} className="max-w-full max-h-[34px] object-contain" />
             </span>
           ))}
+        </Reveal>
+        <Reveal className="text-center mt-9">
           <Link
             href={routes.integrations}
-            className="bg-rose-100 border border-rose-200 text-coral rounded-[12px] px-[22px] py-[14px] text-[15px] font-bold inline-flex items-center gap-[6px] transition-colors hover:bg-rose-200"
+            className="inline-flex items-center gap-2 text-coral font-bold text-[15.5px] transition-colors hover:text-coral-deep"
           >
-            +100 more
+            View all ATS integrations
             {ARROW}
           </Link>
         </Reveal>

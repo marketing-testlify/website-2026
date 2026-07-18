@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import SecuritySection from "@/components/SecuritySection";
 import Reveal from "@/components/Reveal";
 import CtaButton from "@/components/CtaButton";
 import { routes } from "@/lib/routes";
@@ -32,14 +33,6 @@ export async function generateMetadata(
   if (!d) return { title: "Solutions" };
   return { title: d.title, description: d.lead };
 }
-
-const TRUST_BADGES = [
-  "SOC 2 TYPE II",
-  "ISO 27001",
-  "GDPR",
-  "CCPA",
-  "100+ ATS INTEGRATIONS",
-];
 
 export default async function Page(props: PageProps<"/solutions/[slug]">) {
   const { slug } = await props.params;
@@ -135,37 +128,14 @@ export default async function Page(props: PageProps<"/solutions/[slug]">) {
       {/* DATA-DRIVEN SECTIONS (split / cards / grid / chips) */}
       <SolutionSections sections={d.sections} />
 
-      {/* TESTIMONIALS */}
-      <TestimonialsBand items={d.testimonials ?? DEFAULT_TESTIMONIALS} />
-
       {/* ATS INTEGRATIONS */}
       <AtsBand />
 
-      {/* TRUST BAND */}
-      <section className="border-t border-b border-warm py-10 bg-white">
-        <Reveal className="max-w-[1240px] mx-auto px-7 flex items-center justify-between gap-[30px] flex-wrap">
-          <div className="flex items-center gap-3">
-            <span className="text-[34px] font-extrabold text-coral tracking-[-1px]">
-              4.7
-            </span>
-            <span className="text-[13px] font-semibold text-body2 leading-[1.4]">
-              Rated 4.7 on G2
-              <br />
-              by 1,000+ reviewers
-            </span>
-          </div>
-          <div className="flex gap-[10px] flex-wrap">
-            {TRUST_BADGES.map((b) => (
-              <span
-                key={b}
-                className="border-[1.5px] border-ink rounded-full px-[15px] py-[7px] text-[12px] font-bold tracking-[0.03em] text-ink"
-              >
-                {b}
-              </span>
-            ))}
-          </div>
-        </Reveal>
-      </section>
+      {/* SECURITY & COMPLIANCE */}
+      <SecuritySection sub="Ensure the security of your recruitment data with top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits, and strong privacy protections." />
+
+      {/* TESTIMONIALS */}
+      <TestimonialsBand items={d.testimonials ?? DEFAULT_TESTIMONIALS} />
 
       {/* AWARDS & RECOGNITION */}
       <AwardsBand />
