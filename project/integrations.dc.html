@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+a{text-decoration:none;color:inherit;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+.sec{padding:104px 28px;}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8A7A7D;margin:0 0 18px;}
+.eyebrow b{color:#F23F44;font-weight:600;}
+.h1{font-size:62px;line-height:1.04;font-weight:800;letter-spacing:-2px;margin:0;color:#1A1014;}
+.h2{font-size:43px;line-height:1.08;font-weight:800;letter-spacing:-1.4px;margin:0;color:#1A1014;}
+.h3{font-size:22px;line-height:1.25;font-weight:700;letter-spacing:-.4px;margin:0;color:#1A1014;}
+.lead{font-size:19px;line-height:1.6;color:#5A4B4E;font-weight:400;}
+.body{font-size:16px;line-height:1.66;color:#5A4B4E;}
+.muted{color:#8A7A7D;}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;padding:14px 26px;border-radius:13px;transition:transform .25s ease, box-shadow .25s ease;cursor:pointer;border:none;}
+.btn-primary{background:#F23F44;color:#fff;box-shadow:0 12px 26px rgba(242,63,68,.30);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(242,63,68,.40);}
+.btn-ghost{background:#fff;color:#1A1014;border:1.5px solid #EADDDE;}
+.btn-ghost:hover{transform:translateY(-2px);border-color:#F2B7B9;box-shadow:0 10px 24px rgba(110,11,14,.08);}
+.dot{width:4px;height:4px;border-radius:50%;background:#D9C7C9;}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.ihero{padding:64px 28px 40px;background:radial-gradient(1100px 520px at 50% -10%,#FFF0EE 0%,rgba(255,240,238,0) 62%),#fff;text-align:center;}
+.cats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+.cat{border:1px solid #EFE2E3;background:#fff;border-radius:999px;padding:9px 18px;font-size:13.5px;font-weight:600;color:#6A5A5D;cursor:pointer;transition:all .2s ease;font-family:inherit;}
+.cat.on{background:#F23F44;color:#fff;border-color:#F23F44;}
+.intgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.intcard{display:flex;flex-direction:column;background:#fff;border:1px solid #EFE2E3;border-radius:18px;padding:22px;transition:transform .22s ease, box-shadow .22s ease, border-color .22s;}
+.intcard:hover{transform:translateY(-4px);box-shadow:0 20px 42px rgba(110,11,14,.10);border-color:#F4D2D3;}
+.intlogo{width:64px;height:64px;border-radius:14px;background:#FBF3EE;background-size:44px 44px;background-repeat:no-repeat;background-position:center;display:flex;align-items:center;justify-content:center;margin-bottom:16px;overflow:hidden;transition:transform .3s cubic-bezier(.2,.7,.3,1),background-color .3s;}
+.intlogo img{max-width:44px;max-height:44px;object-fit:contain;transition:transform .3s cubic-bezier(.2,.7,.3,1);}
+.intcard:hover .intlogo{transform:scale(1.06);background-color:#FFF0EF;}
+.intload{display:flex;justify-content:center;margin-top:36px;}
+.intloadbtn{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #EADDDE;color:#1A1014;font-family:inherit;font-weight:600;font-size:15px;padding:13px 26px;border-radius:13px;cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.intloadbtn:hover{transform:translateY(-2px);border-color:#F2B7B9;box-shadow:0 10px 24px rgba(110,11,14,.08);}
+.intspin{width:16px;height:16px;border-radius:50%;border:2px solid #F4D2D3;border-top-color:#F23F44;animation:intspin .7s linear infinite;}
+@keyframes intspin{to{transform:rotate(360deg);}}
+.intnative{display:inline-flex;align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#1F9D6B;background:#E7F6EE;padding:3px 10px;border-radius:100px;margin-bottom:10px;}
+.isearch{display:flex;align-items:center;gap:10px;max-width:none;margin:28px 0 0;background:#fff;border:1px solid #EFE2E3;border-radius:12px;padding:12px 16px;box-shadow:0 8px 20px rgba(110,11,14,.05);}
+.isearch input{border:none;outline:none;font-family:inherit;font-size:15px;color:#1A1014;flex:1;background:transparent;}
+.isearch svg{color:#A9999C;flex:none;}
+.intmore{text-align:center;margin-top:34px;}
+.intmore a{display:inline-flex;align-items:center;gap:8px;color:#F23F44;font-weight:700;font-size:15.5px;}
+.intname{font-size:15.5px;font-weight:700;margin:0 0 4px;}
+.intcat{font-size:12px;color:#A9999C;font-weight:600;margin:0 0 12px;}
+.intdesc{font-size:13px;color:#6A5A5D;line-height:1.5;margin:0 0 14px;}
+.intlink{font-size:12.5px;font-weight:700;color:#F23F44;margin-top:auto;}
+.feature3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.fcard{background:#fff;border:1px solid #EFE2E3;border-radius:20px;padding:30px 26px;}
+.fic{width:46px;height:46px;border-radius:13px;background:#FFF0F0;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+@media(max-width:1080px){.intgrid{grid-template-columns:1fr 1fr;}}
+@media(max-width:920px){
+  .h1{font-size:42px;letter-spacing:-1.4px;}
+  .h2{font-size:32px;letter-spacing:-1px;}
+  .sec{padding:72px 22px;}
+  .intgrid{grid-template-columns:1fr 1fr;}
+  .feature3{grid-template-columns:1fr;}
+}
+
+h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
+</style>
+</helmet>
+<dc-import name="component-site-header" announcement="New · Native two-way sync with Workday" announcement-cta="View integration" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+<section class="ihero"><div class="wrap" style="max-width:860px;">
+  <p class="eyebrow reveal">Integrations<b>.</b></p>
+  <h1 class="h1 reveal" style="transition-delay:.04s">Testlify integration with third-party platforms</h1>
+  <p class="lead reveal" style="margin:22px auto 0;max-width:640px;transition-delay:.08s">Our platform is designed with integration in mind and can be seamlessly connected to a variety of third-party tools including applicant tracking, communications, email tools, and more.</p>
+  <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px;transition-delay:.1s;">
+    <dc-import name="component-cta-button" label="Book a demo" href="contact.dc.html" variant="primary" size="md" icon="arrow" magnetic="true" hint-size="150px,52px"></dc-import>
+    <dc-import name="component-cta-button" label="API docs" href="#" variant="secondary" size="md" icon="none" hint-size="130px,52px"></dc-import>
+  </div>
+  <div class="reveal isearch" style="transition-delay:.14s;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><input placeholder="Search integrations" onInput="{{ onSearch }}" value="{{ query }}"></div>
+</div></section>
+<section style="padding:18px 28px 0;"><div class="wrap">
+  <div class="intgrid">
+    <sc-for list="{{ shown }}" as="it">
+      <div class="intcard reveal in"><div class="intlogo" style="background-image:url({{ it.logo }})"></div><span class="intnative">{{ it.tag }}</span><p class="intname">{{ it.name }}</p><p class="intcat">{{ it.cat }}</p></div>
+    </sc-for>
+  </div>
+  <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}"><div class="intload"><button class="intloadbtn" onClick="{{ loadMore }}"><sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><span class="intspin"></span>Loading…</sc-if><sc-if value="{{ notLoading }}" hint-placeholder-val="{{ true }}">Load more integrations</sc-if></button></div></sc-if>
+  <div class="intmore reveal"><a href="#">Explore all 100+ native integrations<span>→</span></a></div>
+</div></section>
+<section class="sec" style="padding-top:84px;"><div class="wrap">
+  <div style="max-width:640px;margin:0 auto 44px;text-align:center;">
+    <p class="eyebrow reveal">Why it matters<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">One source of truth for hiring</h2>
+  </div>
+  <div class="feature3">
+    <div class="fcard reveal"><span class="fic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg></span><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Two-way sync</h3><p class="body" style="font-size:14px;">Candidates, stages and scores flow both ways automatically — no copy-paste, no stale data.</p></div>
+    <div class="fcard reveal" style="transition-delay:.06s"><span class="fic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"></path></svg></span><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Set up in minutes</h3><p class="body" style="font-size:14px;">Authenticate once and you're live. Most integrations connect in under five minutes, no engineering needed.</p></div>
+    <div class="fcard reveal" style="transition-delay:.12s"><span class="fic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Open API &amp; webhooks</h3><p class="body" style="font-size:14px;">Build exactly the workflow you need with a fully documented REST API and real-time event webhooks.</p></div>
+  </div>
+</div></section>
+<section class="sec" style="background:#1A1014;color:#fff;text-align:center;"><div class="wrap" style="max-width:720px;">
+  <h2 class="h2 reveal" style="color:#fff;">Don't see your tool?</h2>
+  <p class="lead reveal" style="color:rgba(255,255,255,.78);margin:18px auto 30px;transition-delay:.04s;">Our API connects Testlify to anything. Tell us what you use and we'll help you wire it up.</p>
+  <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;transition-delay:.08s;">
+    <dc-import name="component-cta-button" label="Read API docs" href="#" variant="light" size="md" icon="arrow" hint-size="160px,52px"></dc-import>
+    <dc-import name="component-cta-button" label="Request an integration" href="#" variant="outline-light" size="md" icon="none" hint-size="200px,52px"></dc-import>
+  </div>
+</div></section>
+<dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { query:'', limit:8, loading:false };
+  loadMore(){ if(this.state.loading) return; this.setState({loading:true}); setTimeout(()=>this.setState(s=>({limit:s.limit+8, loading:false})), 650); }
+  componentDidMount(){
+    const sweep = ()=>{
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.reveal:not(.in)').forEach(n=>{
+        if(n.getBoundingClientRect().top < vh + 600){
+          n.classList.add('in');
+          const _d=(parseFloat(n.style.transitionDelay||'0')||0)*1000;
+          n.style.transition='none';
+          const _dur=700,_sy=26; let _st=null;
+          const _tick=(t)=>{ if(_st===null)_st=t; const p=Math.min(1,(t-_st)/_dur); const e=1-Math.pow(1-p,3); n.style.opacity=String(e); n.style.transform='translateY('+(_sy*(1-e)).toFixed(2)+'px)'; if(p<1) requestAnimationFrame(_tick); else { n.style.opacity='1'; n.style.transform='none'; } };
+          setTimeout(()=>requestAnimationFrame(_tick), _d);
+        }
+      });
+    };
+    this._sweep = sweep;
+    window.addEventListener('scroll', sweep, { passive:true });
+    window.addEventListener('resize', sweep);
+    [0,150,400,800,1500].forEach(t=>setTimeout(sweep, t));
+    requestAnimationFrame(sweep);
+    try{ this._mo = new MutationObserver(()=>requestAnimationFrame(sweep)); this._mo.observe(document.body,{childList:true,subtree:true}); }catch(e){}
+  }
+  componentWillUnmount(){ if(this._sweep){ window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep);} if(this._mo) this._mo.disconnect(); }
+  renderVals(){
+    const B='https://testlify.com/wp-content/uploads/';
+    const DATA = [
+      {name:'Workday',cat:'ATS',tag:'Native',logo:B+'2023/01/Workday-230x230-1.png'},
+      {name:'SAP SuccessFactors',cat:'ATS',tag:'Native',logo:B+'2023/01/SAP-SuccessFactors-230x230-1.png'},
+      {name:'Lever',cat:'ATS',tag:'Native',logo:B+'2023/01/Lever.png'},
+      {name:'Greenhouse',cat:'ATS',tag:'Native',logo:B+'2023/01/greenhouse-230x230-1.png'},
+      {name:'BambooHR',cat:'ATS',tag:'Native',logo:B+'2023/01/BambooHR.png'},
+      {name:'Workable',cat:'ATS',tag:'Native',logo:B+'2023/01/Workable.png'},
+      {name:'UKG Pro Recruiting',cat:'ATS',tag:'Native',logo:B+'2023/01/UKG-Pro-Recruiting.png'},
+      {name:'SmartRecruiters',cat:'ATS',tag:'Native',logo:B+'2023/01/SmartRecruiters.png'},
+      {name:'Fountain',cat:'ATS',tag:'Native',logo:B+'2023/01/download-5.png'},
+      {name:'Pinpoint',cat:'ATS',tag:'Native',logo:B+'2023/01/Pinpoint.png'},
+      {name:'Teamtailor',cat:'ATS',tag:'Native',logo:B+'2023/01/Teamtailor.png'},
+      {name:'Manatal',cat:'ATS',tag:'Native',logo:B+'2024/08/Manatal.png'},
+      {name:'JazzHR',cat:'ATS',tag:'Native',logo:B+'2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png?wsr'},
+      {name:'Zoho Recruit',cat:'ATS',tag:'Native',logo:B+'2024/08/zoho-recruit-logo-1.png'},
+      {name:'Recruitee',cat:'ATS',tag:'Native',logo:B+'2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png?wsr'}
+    ];
+    const q = (this.state.query||'').toLowerCase().trim();
+    const filtered = q ? DATA.filter(d=>d.name.toLowerCase().includes(q)) : DATA;
+    const limit = this.state.limit;
+    const shown = filtered.slice(0, limit);
+    const loading = !!this.state.loading;
+    return {
+      shown,
+      query: this.state.query || '',
+      onSearch: (e)=>this.setState({ query: e.target.value, limit:8 }),
+      hasMore: filtered.length > shown.length,
+      loading, notLoading: !loading,
+      loadMore: ()=>this.loadMore()
+    };
+  }
+}
+</script>
+</body>
+</html>

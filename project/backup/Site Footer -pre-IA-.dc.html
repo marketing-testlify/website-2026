@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   Site Footer — single source of truth for the global footer.
+   Drop on any page:  <dc-import name="component-site-footer"
+       home-href="page-index.dc.html" hint-size="100%,560px"></dc-import>
+   #anchors not present on the current page auto-redirect to home-href.
+   =========================================================== */
+.sf,.sf *{box-sizing:border-box;font-family:'Poppins',sans-serif;}
+.sf a{text-decoration:none;}
+.sf{background:#1A1014;color:#C9B9BC;padding:66px 28px 34px;}
+.sf-in{max-width:1240px;margin:0 auto;}
+.sf-backed{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-bottom:36px;margin-bottom:40px;border-bottom:1px solid #3A2D30;}
+.sf-backed-l{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8A7A7D;}
+.bpill{display:flex;align-items:center;justify-content:center;height:48px;padding:0 14px;border-radius:12px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.16);}
+.bpill img{max-height:24px;max-width:108px;object-fit:contain;}
+.foot-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid #3A2D30;}
+.sf-brand{display:block;}
+.sf-brand img{height:30px;width:auto;display:block;}
+.sf-tag{font-size:15px;line-height:1.6;margin:16px 0 22px;max-width:280px;color:#A9999C;}
+.sf-soc{display:flex;gap:11px;}
+.sf-soc a{width:38px;height:38px;border-radius:11px;background:#2B2023;display:flex;align-items:center;justify-content:center;color:#C9B9BC;font-size:13px;font-weight:600;transition:background .2s,color .2s;}
+.sf-soc a:hover{background:#F23F44;color:#fff;}
+.sf-h{font-weight:600;font-size:14px;color:#fff;margin-bottom:18px;letter-spacing:.3px;}
+.sf-col{display:flex;flex-direction:column;gap:12px;font-size:14.5px;}
+.flink{color:#A9999C;transition:color .2s;}
+.flink:hover{color:#F23F44;}
+.sf-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-top:26px;font-size:13.5px;color:#8A7A7D;}
+.sf-legal{display:flex;gap:24px;flex-wrap:wrap;}
+.sf-legal .flink{color:#8A7A7D;}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;gap:30px;}.sf-backed{justify-content:flex-start;}}
+@media(max-width:520px){.foot-grid{grid-template-columns:1fr 1fr;}}
+/* Global CTA band (sits directly above the footer on every page) */
+.sfcta{position:relative;overflow:hidden;background:linear-gradient(135deg,#F23F44 0%,#A91E23 60%,#6E0B0E 100%);padding:96px 28px;text-align:center;}
+.sfcta-c1{position:absolute;top:-100px;left:-60px;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.10);}
+.sfcta-c2{position:absolute;bottom:-130px;right:-50px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.08);}
+.sfcta-in{position:relative;z-index:2;max-width:1180px;margin:0 auto;}
+.sfcta-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.82);margin:0 0 16px;}
+.sfcta-h{font-size:48px;line-height:1.08;font-weight:800;letter-spacing:-1.6px;color:#fff;margin:0 auto;max-width:1010px;}
+.sfcta-p{font-size:19px;color:#FFE2E3;margin:20px auto 0;max-width:560px;line-height:1.6;}
+.sfcta-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:36px;}
+.sfcta-b1{display:inline-flex;align-items:center;gap:9px;background:#fff;color:#F23F44;font-weight:700;font-size:17px;padding:16px 32px;border-radius:15px;box-shadow:0 16px 34px rgba(0,0,0,.2);transition:transform .25s ease;}
+.sfcta-b1:hover{transform:translateY(-3px);}
+.sfcta-b2{display:inline-flex;align-items:center;background:rgba(255,255,255,.14);color:#fff;font-weight:600;font-size:17px;padding:16px 30px;border-radius:15px;border:1.5px solid rgba(255,255,255,.35);transition:background .25s ease;}
+.sfcta-b2:hover{background:rgba(255,255,255,.24);}
+.sfcta-trust{display:flex;justify-content:center;flex-wrap:wrap;gap:26px;margin-top:30px;color:#FFD2D3;font-size:14.5px;font-weight:500;}
+@media(max-width:600px){.sfcta-h{font-size:34px;}}
+</style>
+</helmet>
+<section class="sfcta">
+  <div class="sfcta-c1"></div>
+  <div class="sfcta-c2"></div>
+  <div class="sfcta-in">
+    <p class="sfcta-eyebrow">Start hiring on skill<span style="color:#fff;">.</span></p>
+    <h2 class="sfcta-h">Your next great hire is already in <br>your pipeline</h2>
+    <p class="sfcta-p">Build your first assessment in about two minutes and start surfacing proven talent today — free for 7 days.</p>
+    <div class="sfcta-btns">
+      <a href="#" class="sfcta-b1">Try for free<span>→</span></a>
+      <a href="#" class="sfcta-b2">Book a demo</a>
+    </div>
+    <div class="sfcta-trust"><span>✓ Full feature access</span><span>✓ No credit card required</span><span>✓ Cancel anytime</span></div>
+  </div>
+</section>
+<footer ref="{{ rootRef }}" class="sf" style="padding-top: 48px; padding-bottom: 24px"><div class="sf-in">
+  
+  <div class="foot-grid">
+    <div>
+      <div class="sf-brand"><img src="brand/testlify-logo-white.svg" alt="Testlify"></div>
+      <p class="sf-tag">The AI-powered skills assessment and interviewing platform helping teams hire the best talent — quickly, fairly, efficiently.</p>
+      <div class="sf-soc"><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="X">X</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="YouTube">▶</a></div>
+    </div>
+    <div><div class="sf-h">Product</div><div class="sf-col">
+      <a href="page-product-platform.dc.html" class="flink">Testlify AI</a>
+      <a href="page-test-library.dc.html" class="flink">Test library</a>
+      <a href="template-section-templates.dc.html#watch" class="flink">Video interviewing</a>
+      <a href="page-product-integrations.dc.html" class="flink">ATS integrations</a>
+      <a href="page-product-platform.dc.html#stats" class="flink">Analytics</a>
+      <a href="page-pricing.dc.html" class="flink">White label</a>
+      <a href="page-pricing.dc.html" class="flink">Pricing</a>
+    </div></div>
+    <div><div class="sf-h">Test types</div><div class="sf-col">
+      <a href="page-test-library.dc.html" class="flink">Role-specific</a><a href="page-test-library.dc.html" class="flink">Coding</a><a href="page-test-library.dc.html" class="flink">Cognitive ability</a><a href="page-test-library.dc.html" class="flink">Psychometric</a><a href="page-test-library.dc.html" class="flink">Language</a><a href="page-test-library.dc.html" class="flink">Situational judgment</a><a href="page-test-library.dc.html" class="flink">Typing</a>
+    </div></div>
+    <div><div class="sf-h">Solutions</div><div class="sf-col">
+      <a href="page-solution-index.dc.html#volume-hiring" class="flink">Volume hiring</a><a href="page-solution-index.dc.html#remote-hiring" class="flink">Remote hiring</a><a href="page-solution-index.dc.html#campus-hiring" class="flink">Campus hiring</a><a href="page-solution-index.dc.html#diversity-hiring" class="flink">Diversity &amp; inclusion</a><a href="page-solution-index.dc.html" class="flink">For enterprise</a><a href="page-solution-index.dc.html" class="flink">For startups</a>
+    </div></div>
+    <div><div class="sf-h">Resources</div><div class="sf-col">
+      <a href="page-resource-blog.dc.html" class="flink">Blog</a><a href="page-resource-index.dc.html#tools" class="flink">HR tools</a><a href="page-resource-index.dc.html#guides" class="flink">Hiring guides</a><a href="page-resource-index.dc.html#glossary" class="flink">HR glossary</a><a href="page-company-customers.dc.html" class="flink">Success stories</a><a href="page-resource-index.dc.html" class="flink">Help center</a>
+    </div></div>
+    <div><div class="sf-h">Company</div><div class="sf-col">
+      <a href="page-company-about.dc.html" class="flink">About us</a><a href="page-company-careers.dc.html" class="flink">Careers</a><a href="page-company-customers.dc.html" class="flink">Clients</a><a href="page-company-about.dc.html" class="flink">Partners</a><a href="page-company-trust.dc.html" class="flink">Trust center</a><a href="page-company-about.dc.html" class="flink">Contact us</a>
+    </div></div>
+  </div>
+  <div class="sf-backed" style="padding-top: 24px; padding-bottom: 24px; margin-bottom: 24px">
+    <span class="sf-backed-l">Backed by</span>
+    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:12px;">
+      <span class="bpill"><img src="https://testlify.com/wp-content/uploads/2023/12/image-2-1.png" alt="Google for Startups"></span>
+      <span class="bpill"><img src="https://testlify.com/wp-content/uploads/2023/12/image-1-1-1024x430.png" alt="Microsoft for Startups"></span>
+      <span class="bpill"><img src="https://testlify.com/wp-content/uploads/2023/12/NV_Inception_Program_Logo_NV_Inception_Logo_H_CMYK-1080x662.png.webp" alt="NVIDIA Inception"></span>
+      <span class="bpill"><img src="https://testlify.com/wp-content/uploads/2023/12/image-13.png" alt="SHRM Labs"></span>
+    </div>
+  </div><div class="sf-bottom" style="padding-top: 0px">
+    <span>© 2026 Testlify. All rights reserved.</span>
+    <div class="sf-legal"><a href="page-company-legal.dc.html" class="flink">Privacy policy</a><a href="page-company-legal.dc.html" class="flink">Terms &amp; conditions</a><a href="page-company-trust.dc.html" class="flink">Security</a><a href="page-company-legal.dc.html" class="flink">GDPR</a><a href="page-company-legal.dc.html" class="flink">Cookie policy</a></div>
+  </div>
+</div></footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:560},&quot;homeHref&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Homepage.dc.html&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Routing&quot;}}">
+class Component extends DCLogic {
+  constructor(props){ super(props); this.rootRef = React.createRef(); }
+  componentDidMount(){
+    const home = this.props.homeHref || 'page-index.dc.html';
+    this._onClick = (e)=>{
+      const a = e.target.closest('a[href^="#"]'); if(!a) return;
+      const id = a.getAttribute('href').slice(1); if(!id) return;
+      if(!document.getElementById(id)){ e.preventDefault(); window.location.href = home + '#' + id; }
+    };
+    const root = this.rootRef.current; if(root) root.addEventListener('click', this._onClick);
+  }
+  componentWillUnmount(){ const root=this.rootRef.current; if(root) root.removeEventListener('click', this._onClick); }
+  renderVals(){ return { rootRef: this.rootRef }; }
+}
+</script>
+</body>
+</html>

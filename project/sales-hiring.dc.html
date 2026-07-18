@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="solution-usecase-template" page-data="{{ pd }}" hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals(){
+    return { pd: {
+      crumb:"Use case / Sales hiring",
+      eyebrow:"For sales hiring",
+      title:"Hire sales reps who actually close",
+      lead:"Great interviewers don't always make great closers. Assess the skills that predict sales performance \u2014 communication, objection handling, resilience \u2014 before you hire.",
+      ctaLabel:"Try for free", ctaHref:"pricing.dc.html",
+      stats:[{t:"Role-specific sales tests"},{t:"Situational judgment"},{t:"3,500+ validated tests"}],
+      logos:["Xneelo","Kimp","Endiprev","Virtual Gurus","HROne"],
+      sections:[
+        {kind:"split", num:"1", h2:"Test for what makes a closer", body:["Charisma in an interview doesn't equal quota attainment. Scenario-based assessments measure how candidates prospect, handle objections and stay resilient under pressure."], bullets:[{label:"Communication & persuasion"},{label:"Objection handling"},{label:"Discovery & qualification"},{label:"Resilience & drive"},{label:"CRM & process knowledge"},{label:"Situational judgment"}], cta:{label:"Browse the test library", href:"test-library.dc.html"}},
+        {kind:"cards", eyebrow:"Why Testlify", h2:"Predict sales performance before you hire", intro:"Stop hiring on gut feel and first impressions.", cards:[
+          {title:"Scenario-based tests", desc:"See how candidates handle real sales situations."},
+          {title:"Personality & culture", desc:"Assess drive, resilience and team fit."},
+          {title:"Objective scoring", desc:"Compare reps on the same fair standard."},
+          {title:"Video interviews", desc:"Assess pitch and presence, scored consistently."},
+          {title:"Anti-cheat proctoring", desc:"Trust every result."},
+          {title:"Integrations", desc:"100+ ATS integrations plus open API."}
+        ]},
+        {kind:"split", num:"2", h2:"Ramp faster, churn less", body:["Hiring reps who fit the role means faster ramp and lower turnover \u2014 measurable ROI on every sales hire."], bullets:[{label:"Better quality of hire"},{label:"Faster ramp to quota"},{label:"Lower sales-team churn"}]}
+      ],
+      faqs:[
+        {q:"Can you assess soft skills for sales?", a:"Yes. Communication, persuasion, resilience and situational judgment are all assessable alongside process knowledge."},
+        {q:"Do you offer video interviews for sales?", a:"Yes. Assess pitch and presence with AI-scored video interviews, consistently across candidates."},
+        {q:"How is sales fit measured?", a:"Through role-specific, personality and scenario-based tests that map to what predicts sales performance."},
+        {q:"Does it integrate with our CRM/ATS?", a:"Yes \u2014 100+ native ATS integrations plus an open API."},
+        {q:"Can tests be customised?", a:"Yes. Tailor assessments to your sales motion, product and market."},
+        {q:"Is it suitable for high-volume sales hiring?", a:"Yes. Screen large pools of reps quickly without lowering the bar."}
+      ],
+      ctaEyebrow:"Get started", ctaTitle:"Hire closers, not just talkers.", ctaBody:"Assess the skills that predict sales performance \u2014 start free in minutes.",
+      ctaTicks:["7-day free trial","Unlimited assessments","Cancel anytime"]
+    } };
+  }
+}
+</script>
+</body>
+</html>
