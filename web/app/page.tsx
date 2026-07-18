@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import SiteHeader from '@/components/SiteHeader';
+import HeroScramble from '@/components/HeroScramble';
 import SiteFooter from '@/components/SiteFooter';
 import UseCaseCard from '@/components/UseCaseCard';
 import Testimonials from '@/components/Testimonials';
@@ -699,10 +700,11 @@ export default function Page() {
           </div>
 
           <h1 style={{ fontSize: 'clamp(48px,7.5vw,92px)', lineHeight: 1.0, fontWeight: 800, letterSpacing: '-3px', margin: '0 0 28px' }}>
-            <span className="tl-hero-line" style={{ color: '#1A1014' }}>Hire on skill,</span>
-            <span className="tl-hero-line tl-gradient-text tl-glow-text">not on</span>
-            <span className="tl-hero-line" style={{ color: '#1A1014' }}>a résumé.</span>
+            <span className="tl-hero-line" data-bh-rise="350" style={{ color: '#1A1014' }}><span data-bh-text="Hire on skill," data-bh-delay="600">Hire on skill,</span></span>
+            <span className="tl-hero-line tl-gradient-text tl-glow-text" data-bh-rise="500"><span data-bh-text="not on" data-bh-delay="900">not on</span></span>
+            <span className="tl-hero-line" data-bh-rise="650" style={{ color: '#1A1014' }}><span data-bh-text="a résumé." data-bh-delay="1200">a résumé.</span></span>
           </h1>
+          <HeroScramble />
 
           <p data-reveal="" data-delay="0.9" style={{ opacity: 0, transform: 'translateY(28px)', fontSize: '20px', lineHeight: 1.65, color: '#6C5A5D', maxWidth: '700px', margin: '0 auto 40px', fontWeight: 400 }}>Your next great hire is already in your pipeline. Testlify surfaces them in 30 minutes with validated assessments — no resume bias, no gut-check interviews, no bad-hire regret.</p>
 
