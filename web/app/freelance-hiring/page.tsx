@@ -5,6 +5,8 @@ import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaButton from '@/components/CtaButton';
+import SecuritySection from '@/components/SecuritySection';
+import Testimonials from '@/components/Testimonials';
 import Recognition from '@/components/Recognition';
 import CtaBand from '@/components/CtaBand';
 
@@ -26,8 +28,18 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
-.tsd-shot .tsd-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;background:#FFF0EF;}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
+.tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
+.itats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:44px;}
+.itats-tile{background:#fff;border:1px solid #F0E2E3;border-radius:14px;height:84px;display:flex;align-items:center;justify-content:center;padding:18px;box-shadow:0 10px 22px rgba(110,11,14,.06);transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.itats-tile:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 18px 34px rgba(110,11,14,.10);}
+.itats-tile img{max-width:100%;max-height:38px;object-fit:contain;}
+.itats-more{text-align:center;margin-top:34px;}
+.itats-more a{display:inline-flex;align-items:center;gap:8px;color:#F23F44;font-weight:700;font-size:15.5px;text-decoration:none;}
+@media(max-width:960px){.itats-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:560px){.itats-grid{grid-template-columns:repeat(2,1fr);}}
+.tsm-sec{background:#FBF3EE!important;}
+.tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-logos{margin-top:40px;}
 .tsd-logos-l{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#A9999C;margin:0 0 14px;}
 .tsd-logos-r{display:flex;gap:12px;flex-wrap:wrap;}
@@ -45,12 +57,14 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-link{display:inline-flex;align-items:center;gap:7px;margin-top:24px;font-size:15px;font-weight:700;color:#F23F44;text-decoration:none;}.tsd-link:hover{color:#A91E23;}
 .tsd-shead{text-align:center;max-width:720px;margin:0 auto;}
 .tsd-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px;}
-.tsd-card{background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:28px 26px;box-shadow:0 16px 30px rgba(110,11,14,.10);}
+.tsd-card{background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:28px 26px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
-.tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
+.tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-fcard:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
 .tsd-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:46px;}
 .tsd-step{background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:26px 22px;box-shadow:0 16px 30px rgba(110,11,14,.10);}
@@ -95,50 +109,122 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-aws{font-size:11.5px;color:#8A7A7D;}
 .reveal{opacity:0;transform:translateY(26px);}
 .reveal.in{opacity:1;transform:none;}
-@media(max-width:960px){.tsd-hgrid,.tsd-grid2{grid-template-columns:1fr;gap:40px;}.tsd-flip .tsd-copy{order:1;}.tsd-flip .tsd-media{order:2;}.tsd-cards,.tsd-fgrid,.tsd-tgrid{grid-template-columns:1fr;}.tsd-steps{grid-template-columns:1fr 1fr;}.tsd-h1{font-size:38px;}.tsd-h2{font-size:27px;}.tsd-sec{padding:64px 0;}.tsd-bl{grid-template-columns:1fr;}.tsd-shot .tsd-slot{height:280px;}}
+@media(max-width:960px){.tsd-hgrid,.tsd-grid2{grid-template-columns:1fr;gap:40px;}.tsd-flip .tsd-copy{order:1;}.tsd-flip .tsd-media{order:2;}.tsd-cards,.tsd-fgrid,.tsd-tgrid{grid-template-columns:1fr;}.tsd-steps{grid-template-columns:1fr 1fr;}.tsd-h1{font-size:38px;}.tsd-h2{font-size:27px;}.tsd-sec{padding:64px 0;}.tsd-bl{grid-template-columns:1fr;}.tsd-shot image-slot{height:280px;}}
 
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
-const Check = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-);
+type SplitSection = {
+  kind: 'split';
+  bgClass: string;
+  flipClass: string;
+  h2: string;
+  body: string[];
+  img: string;
+  shotBg: string;
+};
 
-const Arrow = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-);
+type CardsSection = {
+  kind: 'cards';
+  bgClass: string;
+  eyebrow: string;
+  h2: string;
+  intro: string;
+  cards: { title: string; iconD: string; desc: string }[];
+};
 
-const ClockIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg>
-);
-
-const stats = ['Verify skills in minutes', '3,500+ validated tests', 'Any device, anywhere'];
-const logos = ['Virtual Gurus', 'Kimp', 'Xneelo', 'Endiprev', 'HROne'];
-
-const section1Bullets = ['Role-specific skills tests', 'Coding & design challenges', 'Real-world work samples', 'Fast, mobile-friendly'];
-const section2Bullets = ['Multilingual assessments', 'Consistent, objective scoring', 'Anti-cheat proctoring', 'Auto-ranking by fit'];
-
-const cards = [
-  { title: 'Fast verification', desc: 'Short assessments confirm skill in minutes, not days.' },
-  { title: 'Work samples', desc: 'See real output that mirrors the actual project.' },
-  { title: 'Objective scoring', desc: 'Compare freelancers on the same fair standard.' },
-  { title: 'Anti-cheat proctoring', desc: "Trust the results you're hiring on." },
-  { title: 'Multilingual', desc: 'Assess a global freelance pool fairly.' },
-  { title: 'Integrations', desc: '100+ ATS integrations plus open API.' },
+const splitSections: SplitSection[] = [
+  {
+    kind: 'split',
+    bgClass: 'tsd-sand',
+    flipClass: '',
+    h2: 'Efficient freelance hiring process',
+    body: [
+      'We offer an efficient hiring process for freelance positions, which helps save time and ensures that only the best candidates are considered.',
+      'Organizations can easily screen and evaluate freelance candidates based on their skills and expertise, which allows them to identify the most qualified candidates for the job quickly. This streamlined process helps businesses find the right freelancer in less time and effort.',
+    ],
+    img: 'https://testlify.com/wp-content/uploads/2023/02/Freelance-hiring-one.png',
+    shotBg: '#F3F6F9',
+  },
+  {
+    kind: 'split',
+    bgClass: '',
+    flipClass: 'tsd-flip',
+    h2: 'Objective evaluation of freelance candidates',
+    body: [
+      'Our talent assessment tests offer an objective evaluation process that enables businesses to assess the skills and abilities of freelance candidates.',
+      'We help you to ensure that all candidates are evaluated fairly, based on their skills and expertise. This process helps businesses to make informed decisions when hiring freelancers and reduces the risk of hiring someone who is not a good fit for the job.',
+    ],
+    img: 'https://testlify.com/wp-content/uploads/2022/11/Better-Skill-Set-Evaluation-Process.png',
+    shotBg: '#FFF',
+  },
+  {
+    kind: 'split',
+    bgClass: 'tsd-sand',
+    flipClass: '',
+    h2: 'Highly skilled freelance hires',
+    body: [
+      'Hiring the right freelancer is crucial for the success of any project. Testlify helps businesses to evaluate freelance candidates thoroughly, ensuring that only the most qualified and skilled candidates are hired.',
+      'By assessing the skills and abilities of freelance candidates, Testlify helps businesses to make informed hiring decisions that lead to better quality hires. This, in turn, can improve the quality of work delivered and reduce the risk of project failure.',
+    ],
+    img: 'https://testlify.com/wp-content/uploads/2022/11/Difficulty-Scaling-Recruitment-Efforts-1024x1024-1.png',
+    shotBg: '#F3F6F9',
+  },
+  {
+    kind: 'split',
+    bgClass: '',
+    flipClass: 'tsd-flip',
+    h2: 'Tailor your freelancer search to meet your project needs',
+    body: [
+      'We also provide customization options to assist you in finding freelancers with the skills that are most important to your project.',
+      'Whether you require expertise in web development, content writing, or social media management, our platform enables you to personalize your search to suit your specific requirements.',
+    ],
+    img: 'https://testlify.com/wp-content/uploads/2022/12/Get-deeper-insights-1.svg',
+    shotBg: '#FFF',
+  },
+  {
+    kind: 'split',
+    bgClass: 'tsd-sand',
+    flipClass: '',
+    h2: 'How to begin your search for freelancers?',
+    body: [
+      'Starting your search for freelancers on our platform is hassle-free. First, create an account, then select the criteria that match your project needs, and begin evaluating candidates’ skills.',
+      'Our platform can be of great assistance, in finding freelancers with the right skill set for your project. With our vast library of assessments and user-friendly interface, you can quickly and effectively evaluate freelancers’ skills to find the right match for your project needs.',
+    ],
+    img: 'https://testlify.com/wp-content/uploads/2023/02/white-lable-1024x672.png',
+    shotBg: '#F3F6F9',
+  },
 ];
 
-const atsLogos = ['Greenhouse', 'Lever', 'Workday', 'BambooHR', 'Zoho Recruit', 'SAP SuccessFactors', 'Ashby', 'JazzHR'];
+const cardsSection: CardsSection = {
+  kind: 'cards',
+  bgClass: '',
+  eyebrow: 'Why Testlify',
+  h2: 'Why use our freelancer assessment platform?',
+  intro:
+    'Our freelancer assessment platform is tailored to meet the specific needs of businesses looking for skilled freelancers. Here are some of the benefits of using our platform:',
+  cards: [
+    { title: 'Diverse test library', iconD: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z', desc: 'Our comprehensive test library covers a broad range of skills essential to freelancing. You can choose from pre-built assessments or customize your own tests to meet your specific hiring needs.' },
+    { title: 'Streamlined test administration', iconD: 'M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11', desc: 'With our platform, you can easily assign tests to freelancers and track their progress in real-time.' },
+    { title: 'Affordable pricing', iconD: 'M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6', desc: 'We offer cost-effective pricing plans suitable for businesses of all sizes. You can assess freelancers’ skills without exceeding your budget.' },
+    { title: 'Time-saving features', iconD: 'M12 8v4l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z', desc: 'Our platform includes features like automated scoring and reporting, making it easy to evaluate freelancer skills efficiently.' },
+    { title: 'Mobile-friendly', iconD: 'M5 2h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zM12 18h.01', desc: 'Our platform is mobile-responsive, allowing you to access it from anywhere and at any time.' },
+    { title: 'Personalized feedback', iconD: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z', desc: 'Our platform enables you to provide personalized feedback to freelancers after completing their assessments.' },
+  ],
+};
+
+const stats = ['3,500+ validated tests', 'Objective evaluation', 'Any device, anywhere'];
+
+const atsIntro =
+  'Streamline your hiring process from assessment to onboarding. Sync candidate data effortlessly, automate workflows, and gain deeper insights to make informed hiring decisions faster.';
 
 const faqs = [
-  { q: 'Why assess freelancers if they have a portfolio?', a: "Portfolios show past work, not who did it or whether they can repeat it. A short assessment verifies the skill you're actually paying for." },
-  { q: 'How long do assessments take?', a: 'Most take around 30 minutes or less, so they fit the fast pace of contract hiring.' },
-  { q: 'Can I assess a global talent pool?', a: 'Yes. Multilingual, objective tests let you compare freelancers worldwide fairly.' },
-  { q: 'How do you prevent cheating?', a: 'Anti-cheat proctoring — webcam, full-screen and plagiarism detection — keeps results honest.' },
-  { q: 'Does it integrate with our tools?', a: 'Yes — 100+ native ATS integrations plus an open API.' },
-  { q: 'Is it suitable for one-off hires?', a: 'Yes. Pay-per-candidate pricing means it works whether you hire one freelancer or a hundred.' },
+  { q: 'Why should businesses use Testlify?', a: 'Businesses should use Testlify because it offers a streamlined and objective evaluation process to find highly skilled freelancers efficiently.' },
+  { q: 'What kind of assessments does Testlify offer?', a: 'Testlify offers a diverse test library covering various skills essential to freelancing, including web development, content writing, and social media management.' },
+  { q: 'How does Testlify help businesses find the right freelancer?', a: 'Testlify helps businesses find the right freelancer by providing a standardized and objective evaluation process based on their skills and expertise.' },
+  { q: 'How does Testlify make the hiring process more efficient?', a: 'Testlify makes the hiring process more efficient by providing businesses with a streamlined process to screen and evaluate candidates based on their skills and expertise.' },
+  { q: 'What customization options does Testlify offer for businesses?', a: 'Testlify offers customization options like including your own questions, selecting the duration of the test, and establishing the minimum score required to pass.' },
 ];
-
-const ctaTicks = ['7-day free trial', 'Pay per candidate', 'Cancel anytime'];
 
 export default function FreelanceHiringPage() {
   const [open, setOpen] = useState<Record<number, boolean>>({});
@@ -152,65 +238,71 @@ export default function FreelanceHiringPage() {
       <section className="tsd-hero" data-screen-label="Hero"><div className="tsdw tsd-hgrid">
         <div className="tsd-copy reveal">
           <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Use case / Freelance hiring</span></div>
-          <p className="eyebrow">For freelance &amp; contract hiring<b>.</b></p>
-          <h1 className="tsd-h1">Hire freelancers you can trust, fast</h1>
-          <p className="tsd-lead">Contract roles move quickly and there&apos;s no time for a bad fit. Verify skills up front so every freelancer you bring on can deliver from day one.</p>
+          <p className="eyebrow">For freelance hiring<b>.</b></p>
+          <h1 className="tsd-h1">Find the best freelance talent with Testlify&apos;s hiring assessments</h1>
+          <p className="tsd-lead">Testlify is your go-to talent assessment tool for freelance hiring! If you&apos;re in need of top-notch freelance talent, you&apos;ve come to the right place. We can help you choose highly skilled and experienced freelancers who can help you take your business to the next level with our skill assessment tests.</p>
           <div className="tsd-stats">
             {stats.map((t, i) => (<span className="tsd-statc" key={i}>{t}</span>))}
           </div>
           <div className="tsd-ctas">
             <CtaButton label="Try for free" href="/pricing" variant="primary" size="md" icon="arrow" magnetic />
-            <CtaButton label="Book a demo" href="#demo" variant="secondary" size="md" icon="play" />
+            <CtaButton label="Book a demo" href="/contact" variant="secondary" size="md" icon="play" />
           </div>
           <div className="tsd-ticks"><span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>No credit card required</span><span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>7-day free trial</span></div>
         </div>
-        <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-slot"></div></div></div>
-      </div>
-      <div className="tsdw tsd-logos reveal"><p className="tsd-logos-l">Trusted by 1,500+ hiring teams</p><div className="tsd-logos-r">{logos.map((lg, i) => (<span className="tsd-logo" key={i}>{lg}</span>))}</div></div>
-      </section>
-
-      {/* Section 1 — split */}
-      <section className="tsd-sec"><div className="tsdw">
-        <div className="tsd-grid2">
-          <div className="tsd-copy reveal">
-            <span className="tsd-num">1</span>
-            <h2 className="tsd-h2">Prove skill before the project starts</h2>
-            <p className="tsd-p">Portfolios and profiles can be misleading. A short, role-specific assessment confirms a freelancer can actually do the work before you commit budget and deadlines.</p>
-            <div className="tsd-bl">
-              {section1Bullets.map((b, i) => (
-                <div className="tsd-bi" key={i}><Check /><span className="tsd-bt">{b}</span></div>
-              ))}
-            </div>
-            <Link className="tsd-link" href="/test-library">Browse the test library<Arrow /></Link>
-          </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-slot"></div></div></div>
-        </div>
+        <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#fff' }}>
+          <svg viewBox="0 0 520 430" width="100%" style={{ display: 'block' }} xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Freelancer shortlist ranked by verified skills">
+            <rect x="0" y="0" width="520" height="430" fill="#FFF8F7" />
+            <text x="38" y="52" fontFamily="Poppins,sans-serif" fontSize="18" fontWeight="700" fill="#1A1014">Candidate shortlist</text>
+            <text x="38" y="74" fontFamily="Poppins,sans-serif" fontSize="12.5" fontWeight="500" fill="#8A7A7D">Ranked by verified skill score</text>
+            <rect x="342" y="34" width="140" height="30" rx="15" fill="#FFF0EF" stroke="#FBD0D1" />
+            <path d="M360 49l4 4 8-8" fill="none" stroke="#F23F44" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+            <text x="380" y="53" fontFamily="Poppins,sans-serif" fontSize="11.5" fontWeight="700" fill="#F23F44">Skills verified</text>
+            <g fontFamily="Poppins,sans-serif">
+              <rect x="32" y="96" width="456" height="92" rx="16" fill="#fff" stroke="#F0E2E3" strokeWidth="1" />
+              <circle cx="74" cy="142" r="22" fill="#F23F44" /><text x="74" y="148" textAnchor="middle" fontSize="15" fontWeight="700" fill="#fff">AR</text>
+              <text x="110" y="133" fontSize="14.5" fontWeight="700" fill="#1A1014">Ana Rossi</text>
+              <text x="110" y="152" fontSize="11.5" fill="#8A7A7D">Top-ranked candidate</text>
+              <rect x="110" y="162" width="150" height="7" rx="3.5" fill="#F0E2E3" /><rect x="110" y="162" width="142" height="7" rx="3.5" fill="#F23F44" />
+              <rect x="398" y="120" width="64" height="30" rx="9" fill="#1A1014" /><text x="430" y="140" textAnchor="middle" fontSize="15" fontWeight="800" fill="#fff">96</text>
+              <text x="430" y="167" textAnchor="middle" fontSize="10" fontWeight="700" fill="#F23F44">TOP MATCH</text>
+              <rect x="32" y="200" width="456" height="84" rx="16" fill="#fff" stroke="#F0E2E3" />
+              <circle cx="74" cy="242" r="22" fill="#FCE0DE" /><text x="74" y="248" textAnchor="middle" fontSize="15" fontWeight="700" fill="#A91E23">MK</text>
+              <text x="110" y="236" fontSize="14.5" fontWeight="700" fill="#1A1014">Marco Kim</text>
+              <text x="110" y="254" fontSize="11.5" fill="#8A7A7D">Strong match</text>
+              <rect x="110" y="263" width="150" height="7" rx="3.5" fill="#F0E2E3" /><rect x="110" y="263" width="128" height="7" rx="3.5" fill="#FF7A52" />
+              <rect x="406" y="226" width="56" height="28" rx="9" fill="#FFF0EF" /><text x="434" y="245" textAnchor="middle" fontSize="14" fontWeight="800" fill="#F23F44">91</text>
+              <rect x="32" y="296" width="456" height="84" rx="16" fill="#fff" stroke="#F0E2E3" />
+              <circle cx="74" cy="338" r="22" fill="#FCE0DE" /><text x="74" y="344" textAnchor="middle" fontSize="15" fontWeight="700" fill="#A91E23">JD</text>
+              <text x="110" y="332" fontSize="14.5" fontWeight="700" fill="#1A1014">Jade Dubois</text>
+              <text x="110" y="350" fontSize="11.5" fill="#8A7A7D">Qualified candidate</text>
+              <rect x="110" y="359" width="150" height="7" rx="3.5" fill="#F0E2E3" /><rect x="110" y="359" width="118" height="7" rx="3.5" fill="#FF7A52" />
+              <rect x="406" y="322" width="56" height="28" rx="9" fill="#FFF0EF" /><text x="434" y="341" textAnchor="middle" fontSize="14" fontWeight="800" fill="#F23F44">88</text>
+            </g>
+          </svg>
+        </div></div>
       </div></section>
 
-      {/* Section 2 — split flipped, sand */}
-      <section className="tsd-sec tsd-sand"><div className="tsdw">
-        <div className="tsd-grid2 tsd-flip">
-          <div className="tsd-copy reveal">
-            <span className="tsd-num">2</span>
-            <h2 className="tsd-h2">Screen a global talent pool fairly</h2>
-            <p className="tsd-p">Freelance hiring is borderless. Multilingual, objective assessment lets you compare candidates worldwide on the same fair standard.</p>
-            <div className="tsd-bl">
-              {section2Bullets.map((b, i) => (
-                <div className="tsd-bi" key={i}><Check /><span className="tsd-bt">{b}</span></div>
-              ))}
+      {splitSections.map((s, i) => (
+        <section className={`tsd-sec ${s.bgClass}`.trim()} key={i}><div className="tsdw">
+          <div className={`tsd-grid2 ${s.flipClass}`.trim()}>
+            <div className="tsd-copy reveal">
+              <h2 className="tsd-h2">{s.h2}</h2>
+              {s.body.map((para, pi) => (<p className="tsd-p" key={pi}>{para}</p>))}
             </div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: s.shotBg }}>
+              <div className="tsd-shotimg" style={{ backgroundColor: s.shotBg, backgroundImage: `url("${s.img}")` }}></div>
+            </div></div>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-slot"></div></div></div>
-        </div>
-      </div></section>
+        </div></section>
+      ))}
 
-      {/* Section 3 — cards */}
-      <section className="tsd-sec"><div className="tsdw">
-        <div className="tsd-shead reveal"><p className="eyebrow">Why Testlify<b>.</b></p><h2 className="tsd-h2">Confidence in every contract hire</h2><p className="tsd-lead">Everything you need to hire freelancers on proof.</p></div>
-        <div className="tsd-cards">
-          {cards.map((c, i) => (
-            <div className="tsd-card reveal" key={i}>
-              <div className="tsd-ic"><ClockIcon /></div>
+      <section className={`tsd-sec ${cardsSection.bgClass}`.trim()}><div className="tsdw">
+        <div className="tsd-shead reveal"><p className="eyebrow">{cardsSection.eyebrow}<b>.</b></p><h2 className="tsd-h2">{cardsSection.h2}</h2><p className="tsd-lead">{cardsSection.intro}</p></div>
+        <div className="tsd-cards reveal">
+          {cardsSection.cards.map((c, i) => (
+            <div className="tsd-card" key={i}>
+              <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={c.iconD}></path></svg></div>
               <p className="tsd-ct">{c.title}</p>
               <p className="tsd-cd">{c.desc}</p>
             </div>
@@ -218,29 +310,40 @@ export default function FreelanceHiringPage() {
         </div>
       </div></section>
 
-      {/* Testimonials (no items in data) */}
-      <section className="tsd-sec"><div className="tsdw">
-        <div className="tsd-shead reveal"><p className="eyebrow">Loved by hiring teams<b>.</b></p><h2 className="tsd-h2">Recruiters who hire on proof</h2></div>
-        <div className="tsd-tgrid"></div>
-      </div></section>
-
-      {/* ATS */}
       <section className="tsd-sec tsd-sand"><div className="tsdw">
-        <div className="tsd-shead reveal"><p className="eyebrow">Fits your stack<b>.</b></p><h2 className="tsd-h2">Works with the ATS you already use</h2><p className="tsd-lead">Push assessment results straight into your workflow with 100+ native, two-way integrations.</p></div>
-        <div className="tsd-atsgrid reveal">
-          {atsLogos.map((a, i) => (<span className="tsd-atslogo" key={i}>{a}</span>))}
-          <Link className="tsd-atsmore" href="/integrations">+100 more<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
+        <div className="tsd-shead reveal"><p className="eyebrow">Integrations<b>.</b></p><h2 className="tsd-h2">Testlify integrates seamlessly with 100+ ATS tools</h2><p className="tsd-lead">{atsIntro}</p></div>
+        <div className="itats-grid reveal">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png" alt="Workday" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png" alt="SAP SuccessFactors" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png" alt="Lever" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/SR-SAP-Logo.svg" alt="SmartRecruiters" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png" alt="Recruitee" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/logo.svg" alt="UKG Pro Recruiting" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2024/09/BambooHR-Logo-1-2048x1152-2.png" alt="BambooHR" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2023/03/629a0bbcb04c5ae587c411c2-1-1.png" alt="Greenhouse" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2024/08/zoho-recruit-logo-1.png" alt="Zoho Recruit" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png" alt="JazzHR" /></div>
         </div>
+        <div className="itats-more reveal"><Link href="/integrations">View all ATS integrations<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link></div>
       </div></section>
 
-      <section className="tsd-trust"><div className="tsdw tsd-trow reveal">
-        <div className="tsd-g2"><span className="tsd-g2n">4.7</span><span className="tsd-g2l">Rated 4.7 on G2<br />by 1,000+ reviewers</span></div>
-        <div className="tsd-badges"><span className="tsd-badge">SOC 2 TYPE II</span><span className="tsd-badge">ISO 27001</span><span className="tsd-badge">GDPR</span><span className="tsd-badge">CCPA</span><span className="tsd-badge">100+ ATS INTEGRATIONS</span></div>
-      </div></section>
+      <SecuritySection eyebrow="Security" heading="Built to keep your organization secure" sub="Ensure the security of your recruitment data with top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits, and strong privacy protections." />
 
-      <Recognition bg="#FBF3EE" />
+      <Testimonials eyebrow="Testimonials" heading="What our customers are saying about Testlify" />
 
-      <section className="tsd-sec"><div className="tsdw">
+      <Recognition bg="#fff" />
+
+      <section className="tsd-sec tsd-sand"><div className="tsdw">
         <div className="tsd-shead reveal"><p className="eyebrow">FAQ<b>.</b></p><h2 className="tsd-h2">Frequently asked questions</h2></div>
         <div className="tsd-faqw">
           {faqs.map((f, i) => (
@@ -248,21 +351,6 @@ export default function FreelanceHiringPage() {
               <div className="tsd-faqq">{f.q}<span className="tsd-faqx">+</span></div>
               <div className="tsd-faqa">{f.a}</div>
             </div>
-          ))}
-        </div>
-      </div></section>
-
-      <section className="tsd-cta" id="demo"><div className="tsdw reveal">
-        <p className="eyebrow" style={{ color: '#F76A6E' }}>Get started<b style={{ color: '#F23F44' }}>.</b></p>
-        <h2 className="tsd-h2">Hire freelancers who deliver.</h2>
-        <p className="tsd-lead">Verify skill before the project starts — start assessing in minutes.</p>
-        <div className="tsd-ctas">
-          <CtaButton label="Try for free" href="/pricing" variant="primary" size="lg" icon="arrow" magnetic />
-          <CtaButton label="Book a demo" href="#" variant="light" size="lg" icon="play" />
-        </div>
-        <div className="tsd-ticks">
-          {ctaTicks.map((tk, i) => (
-            <span className="tsd-tick" key={i}><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F76A6E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>{tk}</span>
           ))}
         </div>
       </div></section>

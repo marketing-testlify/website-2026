@@ -4,11 +4,13 @@ import Link from 'next/link';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 type SubItem = { label: string; d: string; href: string };
-type Group = { name: string; subs: SubItem[] };
+type Group = { name: string; cta: string; ctaLabel: string; subs: SubItem[] };
 
 const SOL: Group[] = [
   {
     name: 'By industry type',
+    cta: 'solution-industry-template.dc.html',
+    ctaLabel: 'View all industries →',
     subs: [
       { label: 'Information & technology', d: 'Developers, DevOps, data & security', href: 'it-industry.dc.html' },
       { label: 'Logistics & supply chain', d: 'Ops, warehouse & driver roles', href: 'logistics-supply-chain-industry.dc.html' },
@@ -27,6 +29,8 @@ const SOL: Group[] = [
   },
   {
     name: 'By use case',
+    cta: 'solution-usecase-template.dc.html',
+    ctaLabel: 'View all use cases →',
     subs: [
       { label: 'Lateral hiring', d: 'Experienced, role-specific hires', href: 'lateral-hiring.dc.html' },
       { label: 'Diversity and inclusion', d: 'Bias-free, EEOC-defensible screening', href: 'diversity-and-inclusions.dc.html' },
@@ -42,6 +46,8 @@ const SOL: Group[] = [
   },
   {
     name: 'By test type',
+    cta: 'solution-testtype-template.dc.html',
+    ctaLabel: 'View all test types →',
     subs: [
       { label: 'Role specific', d: '4,500+ job-specific assessments', href: 'role-specific-tests.dc.html' },
       { label: 'Language', d: 'Proficiency across 16+ languages', href: 'language-tests.dc.html' },
@@ -58,6 +64,8 @@ const SOL: Group[] = [
   },
   {
     name: 'By company type',
+    cta: 'solution-company-template.dc.html',
+    ctaLabel: 'View all company types →',
     subs: [
       { label: 'For startups', d: 'Hire fast without a TA team', href: 'for-startups.dc.html' },
       { label: "SMB's", d: 'Standardize hiring as you scale', href: 'small-medium-businesses.dc.html' },
@@ -71,6 +79,8 @@ const SOL: Group[] = [
 const RES: Group[] = [
   {
     name: 'Learn',
+    cta: 'blog.dc.html',
+    ctaLabel: 'Visit the blog →',
     subs: [
       { label: 'Blogs', d: 'Hiring science, playbooks & news', href: 'blog.dc.html' },
       { label: 'Hiring guides', d: 'Deep dives on skills-based hiring', href: 'hiring-guides.dc.html' },
@@ -85,6 +95,8 @@ const RES: Group[] = [
   },
   {
     name: 'HR tools',
+    cta: 'hr-tools.dc.html',
+    ctaLabel: 'All HR tools →',
     subs: [
       { label: 'AI Interview question generator', d: 'Generate role-ready questions', href: 'ai-interview-question-generator.dc.html' },
       { label: 'AI Job description generator', d: 'Draft JDs in seconds', href: 'job-description-generator.dc.html' },
@@ -105,6 +117,8 @@ const RES: Group[] = [
   },
   {
     name: 'Programs',
+    cta: 'referral-program.dc.html',
+    ctaLabel: 'All programs →',
     subs: [
       { label: 'Referral program', d: 'Refer a team, earn rewards', href: 'referral-program.dc.html' },
       { label: 'Partnership program', d: 'Grow with Testlify', href: 'partnership.dc.html' },
@@ -191,8 +205,8 @@ export default function SiteHeader({
   const spacerRef = useRef<HTMLDivElement>(null);
   const [mobOpen, setMobOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [solActive, setSolActive] = useState(0);
-  const [resActive, setResActive] = useState(0);
+  const [solAcc, setSolAcc] = useState(0);
+  const [resAcc, setResAcc] = useState(0);
   const [mobExp, setMobExp] = useState<'' | 'pro' | 'sol' | 'res' | 'abt'>('');
 
   useEffect(() => {
@@ -225,8 +239,10 @@ export default function SiteHeader({
   const solidClass = (overlay ? (scrolled ? 'solid collapsed' : '') : 'solid') + (scrolled ? ' collapsed' : '');
   const mobOpenCls = mobOpen ? 'open' : '';
 
-  const S = SOL[solActive] || SOL[0];
-  const R = RES[resActive] || RES[0];
+  const sAcc = solAcc < 0 || solAcc > 3 ? 0 : solAcc;
+  const rAcc = resAcc < 0 || resAcc > 2 ? 0 : resAcc;
+  const solActive = SOL[sAcc];
+  const resActive = RES[rAcc];
 
   const closeMob = () => {
     setMobOpen(false);
@@ -345,6 +361,21 @@ export default function SiteHeader({
 .psub:hover{background:#FFF0F0;}
 .ppane-cta{margin-top:4px;font-size:13px;font-weight:700;color:#F23F44;padding:8px 12px;}
 .ppane-cta:hover{color:#A91E23;}
+.magrid{display:flex;gap:16px;}
+.macc{width:530px;display:flex;flex-direction:column;gap:2px;}
+.maccitem{border-radius:12px;}
+.maccbtn{display:flex;align-items:center;gap:11px;width:100%;background:none;border:0;font-family:inherit;cursor:pointer;padding:10px 12px;border-radius:12px;text-align:left;transition:background .15s;}
+.maccbtn:hover{background:#FFF4F3;}
+.maccitem.on .maccbtn{background:#FFF0F0;}
+.maccbtn .macctx{display:flex;flex-direction:column;min-width:0;}
+.maccbtn .macctx .mlt{font-size:14px;font-weight:600;color:#1A1014;line-height:1.25;}
+.maccbtn .macctx .mld{font-size:12px;color:#9A878A;line-height:1.35;margin-top:1px;}
+.macccv{margin-left:auto;color:#B59A9D;display:flex;flex:none;transition:transform .28s;}
+.maccitem.on .macccv{transform:rotate(180deg);color:#F23F44;}
+.maccp{max-height:0;overflow:hidden;transition:max-height .34s cubic-bezier(.4,0,.2,1);}
+.maccitem.on .maccp{max-height:660px;}
+.maccp-inner{display:grid;grid-template-columns:1fr 1fr;gap:1px 8px;padding:4px 8px 4px 53px;}
+.maccp .ppane-cta{padding-left:53px;}
 
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `,
@@ -521,7 +552,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
               <div className="mega mctr">
                 <div className="ptwo">
                   <div className="plist">
-                    <A className={`mlrich ptab ${solActive === 0 ? 'on' : ''}`} onMouseEnter={() => setSolActive(0)} href="solution-industry-template.dc.html">
+                    <div className={`mlrich ${sAcc === 0 ? 'on' : ''}`} onMouseEnter={() => setSolAcc(0)}>
                       <span className="mlic">
                         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M3 21h18"></path>
@@ -533,8 +564,8 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
                         <span className="mlt">By industry type</span>
                         <span className="mld">IT, SaaS, finance, healthcare &amp; more</span>
                       </span>
-                    </A>
-                    <A className={`mlrich ptab ${solActive === 1 ? 'on' : ''}`} onMouseEnter={() => setSolActive(1)} href="solution-usecase-template.dc.html">
+                    </div>
+                    <div className={`mlrich ${sAcc === 1 ? 'on' : ''}`} onMouseEnter={() => setSolAcc(1)}>
                       <span className="mlic">
                         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M12 2l10 5-10 5L2 7z"></path>
@@ -546,8 +577,8 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
                         <span className="mlt">By use case</span>
                         <span className="mld">Volume, remote, campus, technical &amp; more</span>
                       </span>
-                    </A>
-                    <A className={`mlrich ptab ${solActive === 2 ? 'on' : ''}`} onMouseEnter={() => setSolActive(2)} href="solution-testtype-template.dc.html">
+                    </div>
+                    <div className={`mlrich ${sAcc === 2 ? 'on' : ''}`} onMouseEnter={() => setSolAcc(2)}>
                       <span className="mlic">
                         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M9 11l3 3L22 4"></path>
@@ -558,8 +589,8 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
                         <span className="mlt">By test type</span>
                         <span className="mld">Coding, cognitive, personality &amp; more</span>
                       </span>
-                    </A>
-                    <A className={`mlrich ptab ${solActive === 3 ? 'on' : ''}`} onMouseEnter={() => setSolActive(3)} href="solution-company-template.dc.html">
+                    </div>
+                    <div className={`mlrich ${sAcc === 3 ? 'on' : ''}`} onMouseEnter={() => setSolAcc(3)}>
                       <span className="mlic">
                         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <line x1="12" y1="20" x2="12" y2="10"></line>
@@ -571,23 +602,15 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
                         <span className="mlt">By company type</span>
                         <span className="mld">Startup to enterprise &amp; public sector</span>
                       </span>
-                    </A>
+                    </div>
                   </div>
                   <div className="ppane">
-                    <p className="megah">{S.name}</p>
-                    {S.subs.map((s, i) => (
+                    {solActive.subs.map((s, i) => (
                       <A className="psub" href={s.href} key={i}>
                         <span className="mlt">{s.label}</span>
                         <span className="mld">{s.d}</span>
                       </A>
                     ))}
-                  </div>
-                  <div className="megafeat">
-                    <p className="megafeat-t">Not sure where to start?</p>
-                    <p className="megafeat-d">Tell us how you hire — we&apos;ll map the right assessments to every role.</p>
-                    <A className="megafeat-a" href={contactHref}>
-                      Talk to sales →
-                    </A>
                   </div>
                 </div>
               </div>
@@ -600,7 +623,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
               <div className="mega mctr">
                 <div className="ptwo">
                   <div className="plist">
-                    <A className={`mlrich ptab ${resActive === 0 ? 'on' : ''}`} onMouseEnter={() => setResActive(0)} href="blog.dc.html">
+                    <div className={`mlrich ${rAcc === 0 ? 'on' : ''}`} onMouseEnter={() => setResAcc(0)}>
                       <span className="mlic">
                         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
@@ -611,8 +634,8 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
                         <span className="mlt">Learn</span>
                         <span className="mld">Blog, guides, glossary &amp; podcast</span>
                       </span>
-                    </A>
-                    <A className={`mlrich ptab ${resActive === 1 ? 'on' : ''}`} onMouseEnter={() => setResActive(1)} href="hr-tools.dc.html">
+                    </div>
+                    <div className={`mlrich ${rAcc === 1 ? 'on' : ''}`} onMouseEnter={() => setResAcc(1)}>
                       <span className="mlic">
                         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <rect x="3" y="3" width="7" height="7"></rect>
@@ -625,8 +648,8 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
                         <span className="mlt">HR tools</span>
                         <span className="mld">AI generators &amp; 13 calculators</span>
                       </span>
-                    </A>
-                    <A className={`mlrich ptab ${resActive === 2 ? 'on' : ''}`} onMouseEnter={() => setResActive(2)} href="referral-program.dc.html">
+                    </div>
+                    <div className={`mlrich ${rAcc === 2 ? 'on' : ''}`} onMouseEnter={() => setResAcc(2)}>
                       <span className="mlic">
                         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <circle cx="18" cy="5" r="3"></circle>
@@ -640,22 +663,17 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
                         <span className="mlt">Programs</span>
                         <span className="mld">Referral, partnership &amp; integrations</span>
                       </span>
-                    </A>
+                    </div>
                   </div>
                   <div className="ppane">
-                    <p className="megah">{R.name}</p>
-                    {R.subs.map((s, i) => (
+                    {resActive.subs.map((s, i) => (
                       <A className="psub" href={s.href} key={i}>
                         <span className="mlt">{s.label}</span>
                         <span className="mld">{s.d}</span>
                       </A>
                     ))}
-                  </div>
-                  <div className="megafeat">
-                    <p className="megafeat-t">Free HR toolkit</p>
-                    <p className="megafeat-d">Job descriptions, interview kits and calculators — ready to use.</p>
-                    <A className="megafeat-a" href="hr-tools.dc.html">
-                      Browse free tools →
+                    <A className="ppane-cta" href={resActive.cta}>
+                      {resActive.ctaLabel}
                     </A>
                   </div>
                 </div>
@@ -668,34 +686,108 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
               </button>
               <div className="mega mend">
                 <div className="megacols">
-                  <div className="megacol">
-                    <p className="megah">Company</p>
-                    <A className="megalink" href="about.dc.html">
-                      Our story
+                  <div className="megacol megacol-w" style={{ borderRight: '1px solid #F4E4E5', paddingRight: '14px' }}>
+                    <A className="mlrich" href="about.dc.html">
+                      <span className="mlic">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <path d="M12 16v-4"></path>
+                          <path d="M12 8h.01"></path>
+                        </svg>
+                      </span>
+                      <span>
+                        <span className="mlt">Our story</span>
+                        <span className="mld">Why we built Testlify</span>
+                      </span>
                     </A>
-                    <A className="megalink" href="contact.dc.html">
-                      Contact us
+                    <A className="mlrich" href="contact.dc.html">
+                      <span className="mlic">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"></path>
+                        </svg>
+                      </span>
+                      <span>
+                        <span className="mlt">Contact us</span>
+                        <span className="mld">Talk to sales or support</span>
+                      </span>
                     </A>
-                    <A className="megalink" href="our-leadership.dc.html">
-                      Our leadership
+                    <A className="mlrich" href="our-leadership.dc.html">
+                      <span className="mlic">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                          <circle cx="9" cy="7" r="4"></circle>
+                          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                      </span>
+                      <span>
+                        <span className="mlt">Our leadership</span>
+                        <span className="mld">The team behind Testlify</span>
+                      </span>
                     </A>
-                    <A className="megalink" href="trust.dc.html">
-                      Trust center
+                    <A className="mlrich" href="trust.dc.html">
+                      <span className="mlic">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                      </span>
+                      <span>
+                        <span className="mlt">Trust center</span>
+                        <span className="mld">SOC 2, ISO 27001, GDPR</span>
+                      </span>
                     </A>
                   </div>
-                  <div className="megacol">
-                    <p className="megah">More</p>
-                    <A className="megalink" href="clients.dc.html">
-                      Clients
+                  <div className="megacol megacol-w">
+                    <A className="mlrich" href="clients.dc.html">
+                      <span className="mlic">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                          <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                      </span>
+                      <span>
+                        <span className="mlt">Clients</span>
+                        <span className="mld">Teams hiring with Testlify</span>
+                      </span>
                     </A>
-                    <A className="megalink" href="our-partners.dc.html">
-                      Partners
+                    <A className="mlrich" href="our-partners.dc.html">
+                      <span className="mlic">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="18" cy="5" r="3"></circle>
+                          <circle cx="6" cy="12" r="3"></circle>
+                          <circle cx="18" cy="19" r="3"></circle>
+                          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                      </span>
+                      <span>
+                        <span className="mlt">Partners</span>
+                        <span className="mld">Refer, resell or build with us</span>
+                      </span>
                     </A>
-                    <A className="megalink" href="job-openings.dc.html">
-                      Job openings
+                    <A className="mlrich" href="job-openings.dc.html">
+                      <span className="mlic">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="2" y="7" width="20" height="14" rx="2"></rect>
+                          <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path>
+                        </svg>
+                      </span>
+                      <span>
+                        <span className="mlt">Job openings</span>
+                        <span className="mld">Join the team behind Testlify</span>
+                      </span>
                     </A>
-                    <A className="megalink" href="write-for-us.dc.html">
-                      Write for us
+                    <A className="mlrich" href="write-for-us.dc.html">
+                      <span className="mlic">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 20h9"></path>
+                          <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"></path>
+                        </svg>
+                      </span>
+                      <span>
+                        <span className="mlt">Write for us</span>
+                        <span className="mld">Contribute to the blog</span>
+                      </span>
                     </A>
                   </div>
                 </div>
@@ -785,22 +877,34 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
           </button>
           <div className="mobacc-p">
             <div className="mobacc-sub">
-              <A className="mobacc-link" href="solution-industry-template.dc.html" onClick={closeMob}>
-                <span className="mt">By industry type</span>
-                <span className="md">IT, SaaS, finance, healthcare &amp; more</span>
-              </A>
-              <A className="mobacc-link" href="solution-usecase-template.dc.html" onClick={closeMob}>
-                <span className="mt">By use case</span>
-                <span className="md">Volume, remote, campus, technical &amp; more</span>
-              </A>
-              <A className="mobacc-link" href="solution-testtype-template.dc.html" onClick={closeMob}>
-                <span className="mt">By test type</span>
-                <span className="md">Coding, cognitive, personality &amp; more</span>
-              </A>
-              <A className="mobacc-link" href="solution-company-template.dc.html" onClick={closeMob}>
-                <span className="mt">By company type</span>
-                <span className="md">Startup to enterprise &amp; public sector</span>
-              </A>
+              <span className="mobsub" style={{ margin: '6px 6px 2px' }}>By industry type</span>
+              {SOL[0].subs.map((s, i) => (
+                <A className="mobacc-link" href={s.href} onClick={closeMob} key={`s0-${i}`}>
+                  <span className="mt">{s.label}</span>
+                  <span className="md">{s.d}</span>
+                </A>
+              ))}
+              <span className="mobsub">By use case</span>
+              {SOL[1].subs.map((s, i) => (
+                <A className="mobacc-link" href={s.href} onClick={closeMob} key={`s1-${i}`}>
+                  <span className="mt">{s.label}</span>
+                  <span className="md">{s.d}</span>
+                </A>
+              ))}
+              <span className="mobsub">By test type</span>
+              {SOL[2].subs.map((s, i) => (
+                <A className="mobacc-link" href={s.href} onClick={closeMob} key={`s2-${i}`}>
+                  <span className="mt">{s.label}</span>
+                  <span className="md">{s.d}</span>
+                </A>
+              ))}
+              <span className="mobsub">By company type</span>
+              {SOL[3].subs.map((s, i) => (
+                <A className="mobacc-link" href={s.href} onClick={closeMob} key={`s3-${i}`}>
+                  <span className="mt">{s.label}</span>
+                  <span className="md">{s.d}</span>
+                </A>
+              ))}
               <A className="mobacc-link" href="solution-index.dc.html" onClick={closeMob}>
                 <span className="mt" style={{ color: '#F23F44' }}>
                   All solutions →
@@ -815,37 +919,31 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
           </button>
           <div className="mobacc-p">
             <div className="mobacc-sub">
-              <A className="mobacc-link" href="blog.dc.html" onClick={closeMob}>
-                <span className="mt">Blog</span>
-                <span className="md">Hiring science, playbooks &amp; product news</span>
-              </A>
-              <A className="mobacc-link" href="hiring-guides.dc.html" onClick={closeMob}>
-                <span className="mt">Hiring guides</span>
-                <span className="md">Deep dives on skills-based hiring</span>
-              </A>
-              <A className="mobacc-link" href="hr-glossary.dc.html" onClick={closeMob}>
-                <span className="mt">HR glossary</span>
-                <span className="md">500+ hiring terms, defined</span>
-              </A>
-              <A className="mobacc-link" href="hr-tools.dc.html" onClick={closeMob}>
-                <span className="mt">HR tools &amp; calculators</span>
-                <span className="md">Cost per hire, time to hire &amp; more</span>
-              </A>
-              <A className="mobacc-link" href="job-description-templates.dc.html" onClick={closeMob}>
-                <span className="mt">Job description templates</span>
-                <span className="md">Role-ready JDs in minutes</span>
-              </A>
-              <A className="mobacc-link" href="customer-success-stories.dc.html" onClick={closeMob}>
-                <span className="mt">Customer success stories</span>
-                <span className="md">How 1,500+ teams hire on proof</span>
-              </A>
-              <A className="mobacc-link" href="alternatives.dc.html" onClick={closeMob}>
-                <span className="mt">Competitors</span>
-                <span className="md">How Testlify compares</span>
-              </A>
+              <span className="mobsub" style={{ margin: '6px 6px 2px' }}>Learn</span>
+              {RES[0].subs.map((s, i) => (
+                <A className="mobacc-link" href={s.href} onClick={closeMob} key={`r0-${i}`}>
+                  <span className="mt">{s.label}</span>
+                  <span className="md">{s.d}</span>
+                </A>
+              ))}
+              <span className="mobsub">HR tools</span>
+              {RES[1].subs.map((s, i) => (
+                <A className="mobacc-link" href={s.href} onClick={closeMob} key={`r1-${i}`}>
+                  <span className="mt">{s.label}</span>
+                  <span className="md">{s.d}</span>
+                </A>
+              ))}
+              <span className="mobsub">Programs</span>
+              {RES[2].subs.map((s, i) => (
+                <A className="mobacc-link" href={s.href} onClick={closeMob} key={`r2-${i}`}>
+                  <span className="mt">{s.label}</span>
+                  <span className="md">{s.d}</span>
+                </A>
+              ))}
               <A className="mobacc-link" href="sitemap.dc.html" onClick={closeMob}>
-                <span className="mt">Sitemap</span>
-                <span className="md">Every page, in one place</span>
+                <span className="mt" style={{ color: '#F23F44' }}>
+                  Sitemap →
+                </span>
               </A>
             </div>
           </div>

@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -81,6 +81,13 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-marq-i{font-size:24px;font-weight:700;color:#C9B9BC;letter-spacing:-.5px;white-space:nowrap;}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .tsd-grid2{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.tsd-solo{display:block;max-width:860px;}
+.tsd-midcta{position:relative;background:#1A1014;color:#fff;padding:78px 28px;text-align:center;overflow:hidden;}
+.tsd-midcta .tsd-h2{margin:0 auto;color:#fff;max-width:760px;position:relative;z-index:1;}
+.tsd-midcta .tsd-p{margin:16px auto 0;max-width:640px;color:rgba(255,255,255,.92);position:relative;z-index:1;}
+.tsd-midcta .tsd-ctas{justify-content:center;margin-top:30px;position:relative;z-index:1;}
+.tsd-midcta-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.tsd-secflush{padding:0!important;}
 .tsd-flip .tsd-copy{order:2;}.tsd-flip .tsd-media{order:1;}
 .tsd-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:#FCE0DE;color:#A91E23;font-size:13px;font-weight:800;margin-bottom:12px;}
 .tsd-bl{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-top:22px;}
@@ -93,12 +100,14 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-link{display:inline-flex;align-items:center;gap:7px;margin-top:24px;font-size:15px;font-weight:700;color:#F23F44;text-decoration:none;}.tsd-link:hover{color:#A91E23;}
 .tsd-shead{text-align:center;max-width:720px;margin:0 auto;}
 .tsd-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px;}
-.tsd-card{background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:28px 26px;box-shadow:0 16px 30px rgba(110,11,14,.10);}
+.tsd-card{background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:28px 26px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
-.tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
+.tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-fcard:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
 .tsd-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:46px;}
 .tsd-step{background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:26px 22px;box-shadow:0 16px 30px rgba(110,11,14,.10);}
@@ -148,65 +157,96 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
-const Clock = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg>
-);
+type SplitSection = {
+  img: string;
+  shotBg: string;
+  h2: string;
+  body: string[];
+  bgClass: string;
+  gridClass: string;
+};
 
-const splitSections = [
+const splitSections: SplitSection[] = [
   {
     img: 'https://testlify.com/wp-content/uploads/2024/10/Make-hiring-structured.png',
+    shotBg: '#F3F6F9',
     h2: 'Make hiring structured',
     body: [
-      "A structured recruitment process is essential for efficient, effective and objective hiring. With Testlify's pre-hiring assessments, recruiters standardize the process — evaluating candidates against a predetermined set of criteria for objective, consistent results.",
-      'This helps you compare candidates more objectively and make informed decisions, while improving the candidate experience by giving everyone a fair chance to showcase their skills.',
+      "A structured recruitment process is essential for ensuring the hiring process is efficient, effective, and objective. With Testlify's pre-hiring assessments, recruiters can standardize the recruitment process, making it more structured and objective.",
+      'These assessments evaluate candidates based on a predetermined set of criteria, providing recruiters with objective and consistent results. This helps recruiters to compare candidates more objectively and make more informed hiring decisions. Additionally, a structured recruitment process improves the candidate experience, giving candidates a fair chance to showcase their skills and abilities.',
     ],
-    bgClass: '',
-    flipClass: '',
-    cta: null,
+    bgClass: 'tsd-sand',
+    gridClass: 'tsd-grid2',
   },
   {
     img: 'https://testlify.com/wp-content/uploads/2024/10/Find-the-right-talent-in-competition.png',
+    shotBg: '#FFF',
     h2: 'Find the right talent in competition',
     body: [
-      "In today's highly competitive job market, finding the right talent can be daunting. Traditional recruitment is time-consuming and inefficient when sifting through a large pool of applicants.",
-      "Testlify's pre-hiring assessments evaluate candidates' skills, knowledge and expertise — giving recruiters clear insight into abilities and helping them select the right talent quickly and efficiently.",
+      "In today's highly competitive job market, finding the right talent can be a daunting task for recruiters. The traditional recruitment process can be time-consuming and inefficient, making it challenging to find the right candidate in a pool of many applicants. Testlify's pre-hiring assessments help to identify the right talent quickly and efficiently.",
+      "These assessments are designed to evaluate candidates' skills, knowledge, and expertise, giving recruiters a clear insight into the candidates' abilities. This enables recruiters to select the right talent in a highly competitive job market and ensures the success of their recruitment efforts.",
     ],
-    bgClass: 'tsd-sand',
-    flipClass: 'tsd-flip',
-    cta: null,
+    bgClass: '',
+    gridClass: 'tsd-grid2 tsd-flip',
   },
   {
     img: 'https://testlify.com/wp-content/uploads/2024/10/Reduce-turnover-rates.png',
+    shotBg: '#F3F6F9',
     h2: 'Reduce turnover rates',
     body: [
-      "High employee turnover is costly and disruptive. Testlify's pre-hiring assessments help reduce it by evaluating candidates' skills and abilities accurately.",
-      'By predicting job performance, recruiters can choose the best-suited candidate for the role — avoiding mis-hires and significantly reducing turnover.',
-    ],
-    bgClass: '',
-    flipClass: '',
-    cta: null,
-  },
-  {
-    img: 'https://testlify.com/wp-content/uploads/2024/10/Customized-campus-hiring.png',
-    h2: 'Customized campus hiring',
-    body: [
-      'Tailor your campus hiring process to your specific needs. Design your recruitment program — schedule campus visits, conduct pre-placement talks and select specific assessment modules — for a more engaging, personalized experience that improves candidate engagement and retention.',
-      "Getting started is easy: create an account, select the criteria that match your hiring needs and begin evaluating candidates' skills and aptitude.",
+      'One of the biggest challenges faced by companies during the recruitment process is hiring the right candidate. High employee turnover rates can be costly and disruptive for businesses. However, with Testlify, pre-hiring assessments can help reduce turnover rates by evaluating candidates’ skills and abilities accurately.',
+      "These assessments can predict the candidates' job performance, giving recruiters the chance to choose the best-suited candidate for the role. By using Testlify's pre-hiring assessments, recruiters can avoid hiring the wrong candidate and significantly reduce turnover rates.",
     ],
     bgClass: 'tsd-sand',
-    flipClass: 'tsd-flip',
-    cta: { label: 'Book a demo', href: '/contact' },
+    gridClass: 'tsd-grid2',
   },
 ];
 
+const customizedSection: SplitSection = {
+  img: 'https://testlify.com/wp-content/uploads/2024/10/Customized-campus-hiring.png',
+  shotBg: '#F3F6F9',
+  h2: 'Customized campus hiring',
+  body: [
+    'Our talent assessment platform offers customization options that enable companies to tailor their campus hiring process to meet their specific needs. We provide companies with the flexibility to design their campus recruitment program, including scheduling campus visits, conducting pre-placement talks, and selecting specific assessment modules. This customization allows businesses to create a more engaging and personalized campus hiring experience for candidates and helps to improve candidate engagement and retention.',
+  ],
+  bgClass: 'tsd-sand',
+  gridClass: 'tsd-grid2 tsd-flip',
+};
+
 const whyCards = [
-  { title: 'Unlimited users', desc: 'Add as many team members as you need — especially helpful when assessing a large volume of campus candidates.' },
-  { title: 'Multiple formats', desc: 'Assessment formats including multiple-choice questions, coding assessments and video-based assessments.' },
-  { title: 'Comprehensive test library', desc: 'An extensive library covering aptitude, technical skills, language proficiency and personality traits.' },
-  { title: 'Difficulty levels', desc: 'Assessments across varying difficulty levels, so you can evaluate candidates at different proficiency levels.' },
-  { title: 'Objective test administration', desc: 'Assessments administered objectively, ensuring all candidates are evaluated under the same conditions.' },
-  { title: 'Reports and insights', desc: 'Detailed reports and insights on candidate performance to help you make informed decisions.' },
+  {
+    iconD: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
+    title: 'Unlimited users',
+    desc: 'Testlify allows for unlimited users, which is especially helpful for campus hiring, as there may be a large number of candidates to assess.',
+  },
+  {
+    iconD: 'M4 5h16v10H4zM2 19h20M9 9l2 2 4-4',
+    title: 'Multiple formats',
+    desc: 'Testlify offers various assessment formats, including multiple-choice questions, coding assessments, and video-based assessments.',
+  },
+  {
+    iconD: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z',
+    title: 'Comprehensive test library',
+    desc: 'Testlify has an extensive test library that covers a wide range of topics and skills, including aptitude, technical skills, language proficiency, and personality traits.',
+  },
+  {
+    iconD: 'M12 20V10M18 20V4M6 20v-4',
+    title: 'Difficulty level',
+    desc: "Testlify's assessments come with varying levels of difficulty, allowing recruiters to evaluate candidates at different proficiency levels.",
+  },
+  {
+    iconD: 'M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11',
+    title: 'Objective test administration',
+    desc: "Testlify's assessments are administered objectively, ensuring that all candidates are assessed under the same conditions.",
+  },
+  {
+    iconD: 'M9 17v-6M12 17V7M15 17v-4M21 21H5a2 2 0 0 1-2-2V3',
+    title: 'Reports and insights',
+    desc: "Testlify provides detailed reports and insights on candidates' performance, which help recruiters make informed decisions.",
+  },
 ];
+
+const stats = ['3,500+ validated tests', 'Unlimited users', 'Aptitude & role tests'];
 
 const faqs = [
   { q: 'Can Testlify be used for campus hiring?', a: 'Yes, Testlify is highly beneficial for campus hiring, as it offers varying difficulty levels, a comprehensive test library, objective test administration, and detailed reports.' },
@@ -216,8 +256,27 @@ const faqs = [
   { q: 'How does your platform help businesses find the right talent from campuses?', a: 'Our platform helps businesses find the right talent from campuses through objective, skills-based assessments that quickly surface the most capable candidates for every role.' },
 ];
 
-const stats = ['3,500+ validated tests', 'Unlimited users', 'Aptitude & role tests'];
-const logos = ['LTIMindtree', 'Sonatafy', 'Thales', 'Third Bridge', 'Virtual', 'Cogitotech'];
+function SplitBlock({ s }: { s: SplitSection }) {
+  return (
+    <section className={('tsd-sec ' + s.bgClass).trim()}>
+      <div className="tsdw">
+        <div className={s.gridClass}>
+          <div className="tsd-copy reveal">
+            <h2 className="tsd-h2">{s.h2}</h2>
+            {s.body.map((para, pi) => (
+              <p className="tsd-p" key={pi}>{para}</p>
+            ))}
+          </div>
+          <div className="tsd-media reveal">
+            <div className="tsd-shot" style={{ background: s.shotBg }}>
+              <div className="tsd-shotimg" style={{ backgroundColor: s.shotBg, backgroundImage: `url("${s.img}")` }}></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function CampusHiringPage() {
   const [open, setOpen] = useState<Record<number, boolean>>({});
@@ -238,7 +297,7 @@ export default function CampusHiringPage() {
             </div>
             <p className="eyebrow">For campus hiring<b>.</b></p>
             <h1 className="tsd-h1">Campus hiring made easy with our platform</h1>
-            <p className="tsd-lead">Looking to hire the best talent from universities and colleges? We understand the challenges of finding and recruiting top campus talent — which is why our platform streamlines the entire campus hiring process for businesses.</p>
+            <p className="tsd-lead">Are you a company looking to hire the best talent from universities and colleges? Look no further than our campus hiring platform! We understand the challenges of finding and recruiting top talent from campuses, which is why we offer a platform that streamlines the campus hiring process for businesses.</p>
             <div className="tsd-stats">
               {stats.map((t) => (
                 <span className="tsd-statc" key={t}>{t}</span>
@@ -272,50 +331,51 @@ export default function CampusHiringPage() {
         </div>
       </section>
 
-      <section className="tsd-trust reveal">
-        <div className="tsdw">
-          <p className="tsd-trust-l">Trusted by <strong>1,500+</strong> hiring teams worldwide</p>
-          <div className="tsd-marq-wrap">
-            <div className="tsd-marq">
-              {logos.map((lg, i) => (<span className="tsd-marq-i" key={'a' + i}>{lg}</span>))}
-              {logos.map((lg, i) => (<span className="tsd-marq-i" key={'b' + i}>{lg}</span>))}
-            </div>
+      {splitSections.map((s, i) => (
+        <SplitBlock s={s} key={i} />
+      ))}
+
+      <section className="tsd-midsec">
+        <div className="tsd-midcta reveal">
+          <div className="tsd-midcta-bg">
+            <svg width="100%" height="100%" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="1060" cy="70" r="150" stroke="rgba(255,255,255,.16)" strokeWidth="2" />
+              <circle cx="1060" cy="70" r="96" stroke="rgba(255,255,255,.14)" strokeWidth="2" />
+              <circle cx="1060" cy="70" r="46" stroke="rgba(255,255,255,.12)" strokeWidth="2" />
+              <g fill="rgba(255,255,255,.18)">
+                <circle cx="70" cy="250" r="4" />
+                <circle cx="110" cy="250" r="4" />
+                <circle cx="150" cy="250" r="4" />
+                <circle cx="70" cy="288" r="4" />
+                <circle cx="110" cy="288" r="4" />
+                <circle cx="150" cy="288" r="4" />
+                <circle cx="70" cy="212" r="4" />
+                <circle cx="110" cy="212" r="4" />
+                <circle cx="150" cy="212" r="4" />
+              </g>
+            </svg>
+          </div>
+          <h2 className="tsd-h2">How to get started with campus hiring?</h2>
+          <p className="tsd-p">Getting started with campus hiring is easy. First, create an account on our platform, select the criteria that match your hiring needs, and begin evaluating candidates&apos; skills and aptitude. Our platform is designed to simplify the hiring process and help businesses find the best-suited candidates from campuses.</p>
+          <div className="tsd-ctas">
+            <CtaButton label="Book a demo" href="/contact" variant="light" size="md" icon="arrow" />
           </div>
         </div>
       </section>
 
-      {splitSections.map((s, i) => (
-        <section className={('tsd-sec ' + s.bgClass).trim()} key={i}>
-          <div className="tsdw">
-            <div className={('tsd-grid2 ' + s.flipClass).trim()}>
-              <div className="tsd-copy reveal">
-                <h2 className="tsd-h2">{s.h2}</h2>
-                {s.body.map((para, pi) => (<p className="tsd-p" key={pi}>{para}</p>))}
-                {s.cta && (
-                  <a className="tsd-link" href={s.cta.href}>{s.cta.label}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-                )}
-              </div>
-              <div className="tsd-media reveal">
-                <div className="tsd-shot">
-                  <div className="tsd-shotimg" style={{ backgroundImage: `url("${s.img}")` }}></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      ))}
+      <SplitBlock s={customizedSection} />
 
       <section className="tsd-sec">
         <div className="tsdw">
           <div className="tsd-shead reveal">
             <p className="eyebrow">Why Testlify<b>.</b></p>
             <h2 className="tsd-h2">Why use our campus hiring platform?</h2>
-            <p className="tsd-lead">Features built for the scale and fairness campus recruitment demands.</p>
+            <p className="tsd-lead">Our campus hiring platform is tailored to meet the specific needs of businesses looking to hire the best talent from universities and colleges. Our talent assessment tool offers a variety of features that are beneficial for campus hiring. Here are some of the most helpful features that Testlify provides:</p>
           </div>
-          <div className="tsd-cards">
+          <div className="tsd-cards reveal">
             {whyCards.map((c, i) => (
-              <div className="tsd-card reveal" key={i}>
-                <div className="tsd-ic"><Clock /></div>
+              <div className="tsd-card" key={i}>
+                <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={c.iconD}></path></svg></div>
                 <p className="tsd-ct">{c.title}</p>
                 <p className="tsd-cd">{c.desc}</p>
               </div>

@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -240,7 +240,7 @@ export default function RemoteHiringPage() {
                 ))}
               </div>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Your-hunt-for-top-talent-ends-with-Testlify-1.png")' }}></div></div></div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#F3F6F9' }}><div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Your-hunt-for-top-talent-ends-with-Testlify-1.png")' }}></div></div></div>
           </div>
         </div>
       </section>
@@ -259,7 +259,7 @@ export default function RemoteHiringPage() {
               </div>
               <Link className="tsd-link" href="/pricing">Try for free<Arrow /></Link>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Leverage-world-class-talent-faster-and-smarterhunt-for-top-talent-ends-with-Testlify-1024x1024.png")' }}></div></div></div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#FFF' }}><div className="tsd-shotimg" style={{ backgroundColor: '#FFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Leverage-world-class-talent-faster-and-smarterhunt-for-top-talent-ends-with-Testlify-1024x1024.png")' }}></div></div></div>
           </div>
         </div>
       </section>
@@ -277,7 +277,7 @@ export default function RemoteHiringPage() {
                 ))}
               </div>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/11/Break-through-barriers-with-Testlify.png")' }}></div></div></div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#F3F6F9' }}><div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/11/Break-through-barriers-with-Testlify.png")' }}></div></div></div>
           </div>
         </div>
       </section>
@@ -291,7 +291,7 @@ export default function RemoteHiringPage() {
               <p className="tsd-p">Select from various in-demand skills and aptitude evaluations to gain deeper insights into candidates&apos; capabilities and expertise. Our comprehensive suite includes psychometric tests, behavioral evaluations, situational judgment tests, coding tests and more — all while efficiently managing your hiring workflow.</p>
               <Link className="tsd-link" href="/pricing">Try for free<Arrow /></Link>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Explore-our-extensive-library-of-skills-tests-1024x1024.png")' }}></div></div></div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#FFF' }}><div className="tsd-shotimg" style={{ backgroundColor: '#FFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Explore-our-extensive-library-of-skills-tests-1024x1024.png")' }}></div></div></div>
           </div>
         </div>
       </section>

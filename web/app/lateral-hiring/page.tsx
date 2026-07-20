@@ -156,8 +156,8 @@ const Arrow = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
 );
 
-const CardIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg>
+const CardIcon = ({ d }: { d: string }) => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={d}></path></svg>
 );
 
 const stats = ['1,700+ role tests', '5,000+ job roles', '50+ industries'];
@@ -177,9 +177,9 @@ const atsTiles = [
 ];
 
 const cards = [
-  { title: 'Skills-based assessments', desc: 'Evaluate candidates on technical skills, soft skills, knowledge, personality, situational judgment, cognitive ability and more.' },
-  { title: 'Multiple difficulty levels', desc: "Assess candidates' on-the-job skills across numerous difficulty levels to find exactly the right fit." },
-  { title: 'Powerful proctoring features', desc: 'Advanced proctoring detects impersonation through candidate snapshots, manages tab switching, tracks mouse movement and more.' },
+  { title: 'Skills-based assessments', icon: 'M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3', desc: 'Evaluate candidates on technical skills, soft skills, knowledge, personality, situational judgment, cognitive ability and more.' },
+  { title: 'Multiple difficulty levels', icon: 'M12 20V10M18 20V4M6 20v-4', desc: "Assess candidates' on-the-job skills across numerous difficulty levels to find exactly the right fit." },
+  { title: 'Powerful proctoring features', icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', desc: 'Advanced proctoring detects impersonation through candidate snapshots, manages tab switching, tracks mouse movement and more.' },
 ];
 
 const faqs = [
@@ -255,9 +255,8 @@ export default function LateralHiringPage() {
             </div>
             <Link className="tsd-link" href="/pricing">Try for free<Arrow /></Link>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/09/Land-the-most-skilled-professionals-with-confidence-and-clarity.png")' }}></div>
+          <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#F3F6F9' }}>
+            <div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/09/Land-the-most-skilled-professionals-with-confidence-and-clarity.png")' }}></div>
           </div></div>
         </div>
       </div></section>
@@ -277,8 +276,8 @@ export default function LateralHiringPage() {
               <div className="tsd-bi"><Check /><span className="tsd-bt">Non-googleable questions</span></div>
             </div>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot">
-            <div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/09/Lateral-hiring-made-easy-backed-by-data-not-by-gut-feel.png")' }}></div>
+          <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#FFF' }}>
+            <div className="tsd-shotimg" style={{ backgroundColor: '#FFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/09/Lateral-hiring-made-easy-backed-by-data-not-by-gut-feel.png")' }}></div>
           </div></div>
         </div>
       </div></section>
@@ -296,8 +295,8 @@ export default function LateralHiringPage() {
             </div>
             <Link className="tsd-link" href="/pricing">Try for free<Arrow /></Link>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot">
-            <div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/09/Tailor-our-suite-of-tools-to-ensure-you-hire-the-best-fit-candidates.png")' }}></div>
+          <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#F3F6F9' }}>
+            <div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/09/Tailor-our-suite-of-tools-to-ensure-you-hire-the-best-fit-candidates.png")' }}></div>
           </div></div>
         </div>
       </div></section>
@@ -308,7 +307,7 @@ export default function LateralHiringPage() {
         <div className="tsd-cards">
           {cards.map((c, i) => (
             <div className="tsd-card reveal" key={i}>
-              <div className="tsd-ic"><CardIcon /></div>
+              <div className="tsd-ic"><CardIcon d={c.icon} /></div>
               <p className="tsd-ct">{c.title}</p>
               <p className="tsd-cd">{c.desc}</p>
             </div>

@@ -155,6 +155,12 @@ const arrow = (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
 );
 
+const cards = [
+  { title: "Proctoring features", iconD: "M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7zM12 15a3 3 0 100-6 3 3 0 000 6z", desc: "Advanced proctoring tools minimize the chances of cheating, ensuring the integrity of assessments during bulk hiring." },
+  { title: "Diverse assessment types", iconD: "M12 2l10 5-10 5L2 7zM2 12l10 5 10-5M2 17l10 5 10-5", desc: "A wide range of assessment types — technical, cognitive, behavioral and situational judgment tests." },
+  { title: "Robust reporting & analytics", iconD: "M12 20V10M18 20V4M6 20v-4", desc: "Gain valuable insights with comprehensive analytics, including candidate reports, HR analysis and more." },
+];
+
 const faqs = [
   { q: "What is the best volume hiring software?", a: "Testlify's volume hiring software is the best choice for scaling your hiring efforts. Our AI-driven platform integrates skills assessments with technical questionnaires, delivering comprehensive insights into each candidate. This enables recruiters to efficiently hire at high volumes without facing any bottlenecks." },
   { q: "What is volume hiring in recruitment?", a: "Volume hiring in recruitment involves bringing on a large number of candidates in a short timeframe. This approach is typically used for roles that need to be filled quickly and often experience high turnover rates, such as seasonal positions." },
@@ -217,24 +223,24 @@ export default function VolumeHiringPage() {
         </div>
       </div></section>
 
-      {/* Section 0 — split */}
+      {/* Section 0 — split, white, shotBg #F3F6F9 */}
       <section className="tsd-sec"><div className="tsdw">
         <div className="tsd-grid2">
           <div className="tsd-copy reveal">
-            <h2 className="tsd-h2">Hiring at scale just got faster, smarter and more precise</h2>
+            <h2 className="tsd-h2">Hiring at scale just got faster, smarter, and more precise</h2>
             <p className="tsd-p">Identify top talent instantly, automate the hiring process and provide an exceptional candidate experience. Leverage our skills assessments and candidate-focused features to scale your recruitment effortlessly.</p>
             <div className="tsd-bl">
               <div className="tsd-bi">{check}<span className="tsd-bt">Video and audio interviewing</span></div>
-              <div className="tsd-bi">{check}<span className="tsd-bt">1,700+ tests for technical and non-technical roles</span></div>
               <div className="tsd-bi">{check}<span className="tsd-bt">Best proctoring capabilities</span></div>
+              <div className="tsd-bi">{check}<span className="tsd-bt">1,700+ tests for technical and non-technical roles</span></div>
             </div>
             <Link className="tsd-link" href="/test-library">View our test library{arrow}</Link>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Hiring-at-scale-just-got-faster-smarter-and-more-precise-1.png")' }}></div></div></div>
+          <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: "#F3F6F9" }}><div className="tsd-shotimg" style={{ backgroundColor: "#F3F6F9", backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Hiring-at-scale-just-got-faster-smarter-and-more-precise-1.png")' }}></div></div></div>
         </div>
       </div></section>
 
-      {/* Section 1 — split flip, sand */}
+      {/* Section 1 — split flip, sand, shotBg #FFF */}
       <section className="tsd-sec tsd-sand"><div className="tsdw">
         <div className="tsd-grid2 tsd-flip">
           <div className="tsd-copy reveal">
@@ -243,15 +249,15 @@ export default function VolumeHiringPage() {
             <p className="tsd-p">Save countless hours of manual effort and advance qualified candidates based on test results.</p>
             <Link className="tsd-link" href="/pricing">Try for free{arrow}</Link>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Attract-top-talent-with-a-skills-first-approach-1.png")' }}></div></div></div>
+          <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: "#FFF" }}><div className="tsd-shotimg" style={{ backgroundColor: "#FFF", backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Attract-top-talent-with-a-skills-first-approach-1.png")' }}></div></div></div>
         </div>
       </div></section>
 
-      {/* Section 2 — split */}
+      {/* Section 2 — split, white, shotBg #F3F6F9 */}
       <section className="tsd-sec"><div className="tsdw">
         <div className="tsd-grid2">
           <div className="tsd-copy reveal">
-            <h2 className="tsd-h2">One-stop solution for all your hiring needs</h2>
+            <h2 className="tsd-h2">Testlify&apos;s volume hiring software — One-stop solution for hiring needs</h2>
             <p className="tsd-p">Automate repetitive tasks, centralize candidate management and enhance communication with our volume hiring software. Analytics and reporting features help HR teams identify bottlenecks in their recruitment process.</p>
             <div className="tsd-bl">
               <div className="tsd-bi">{check}<span className="tsd-bt">Identify skills gaps</span></div>
@@ -259,21 +265,17 @@ export default function VolumeHiringPage() {
               <div className="tsd-bi">{check}<span className="tsd-bt">Global benchmarking for candidates</span></div>
             </div>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Testlifys-volume-hiring-software-One-stop-solution-for-hiring-needs-1.png")' }}></div></div></div>
+          <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: "#F3F6F9" }}><div className="tsd-shotimg" style={{ backgroundColor: "#F3F6F9", backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Testlifys-volume-hiring-software-One-stop-solution-for-hiring-needs-1.png")' }}></div></div></div>
         </div>
       </div></section>
 
       {/* Section 3 — cards, sand */}
       <section className="tsd-sec tsd-sand"><div className="tsdw">
-        <div className="tsd-shead reveal"><p className="eyebrow">Built for scale<b>.</b></p><h2 className="tsd-h2">Hire candidates in bulk with confidence</h2><p className="tsd-lead">Use technical and soft-skill assessments created by veterans in one test to discover the top matches quickly.</p></div>
+        <div className="tsd-shead reveal"><p className="eyebrow">Built for scale<b>.</b></p><h2 className="tsd-h2">Hire candidates in bulk with confidence using comprehensive assessments</h2><p className="tsd-lead">Use technical and soft skills assessments created by veterans in one test to discover the top matches quickly with our volume hiring software.</p></div>
         <div className="tsd-cards">
-          {[
-            { title: "Proctoring features", desc: "Advanced proctoring tools minimize the chances of cheating, ensuring the integrity of assessments during bulk hiring." },
-            { title: "Diverse assessment types", desc: "A wide range of assessment types — technical, cognitive, behavioral and situational judgment tests." },
-            { title: "Robust reporting & analytics", desc: "Gain valuable insights with comprehensive analytics, including candidate reports, HR analysis and more." },
-          ].map((c, i) => (
+          {cards.map((c, i) => (
             <div className="tsd-card reveal" key={i}>
-              <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg></div>
+              <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={c.iconD}></path></svg></div>
               <p className="tsd-ct">{c.title}</p>
               <p className="tsd-cd">{c.desc}</p>
             </div>

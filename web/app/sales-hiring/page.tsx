@@ -5,6 +5,8 @@ import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaButton from '@/components/CtaButton';
+import SecuritySection from '@/components/SecuritySection';
+import Testimonials from '@/components/Testimonials';
 import Recognition from '@/components/Recognition';
 import CtaBand from '@/components/CtaBand';
 
@@ -26,8 +28,18 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
-.tsd-shot .tsd-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;background:#FBF3EE;}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
+.tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
+.itats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:44px;}
+.itats-tile{background:#fff;border:1px solid #F0E2E3;border-radius:14px;height:84px;display:flex;align-items:center;justify-content:center;padding:18px;box-shadow:0 10px 22px rgba(110,11,14,.06);transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.itats-tile:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 18px 34px rgba(110,11,14,.10);}
+.itats-tile img{max-width:100%;max-height:38px;object-fit:contain;}
+.itats-more{text-align:center;margin-top:34px;}
+.itats-more a{display:inline-flex;align-items:center;gap:8px;color:#F23F44;font-weight:700;font-size:15.5px;text-decoration:none;}
+@media(max-width:960px){.itats-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:560px){.itats-grid{grid-template-columns:repeat(2,1fr);}}
+.tsm-sec{background:#FBF3EE!important;}
+.tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-logos{margin-top:40px;}
 .tsd-logos-l{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#A9999C;margin:0 0 14px;}
 .tsd-logos-r{display:flex;gap:12px;flex-wrap:wrap;}
@@ -45,12 +57,14 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-link{display:inline-flex;align-items:center;gap:7px;margin-top:24px;font-size:15px;font-weight:700;color:#F23F44;text-decoration:none;}.tsd-link:hover{color:#A91E23;}
 .tsd-shead{text-align:center;max-width:720px;margin:0 auto;}
 .tsd-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px;}
-.tsd-card{background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:28px 26px;box-shadow:0 16px 30px rgba(110,11,14,.10);}
+.tsd-card{background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:28px 26px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
-.tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
+.tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-fcard:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
 .tsd-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:46px;}
 .tsd-step{background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:26px 22px;box-shadow:0 16px 30px rgba(110,11,14,.10);}
@@ -95,7 +109,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-aws{font-size:11.5px;color:#8A7A7D;}
 .reveal{opacity:0;transform:translateY(26px);}
 .reveal.in{opacity:1;transform:none;}
-@media(max-width:960px){.tsd-hgrid,.tsd-grid2{grid-template-columns:1fr;gap:40px;}.tsd-flip .tsd-copy{order:1;}.tsd-flip .tsd-media{order:2;}.tsd-cards,.tsd-fgrid,.tsd-tgrid{grid-template-columns:1fr;}.tsd-steps{grid-template-columns:1fr 1fr;}.tsd-h1{font-size:38px;}.tsd-h2{font-size:27px;}.tsd-sec{padding:64px 0;}.tsd-bl{grid-template-columns:1fr;}.tsd-shot .tsd-slot{height:280px;}}
+@media(max-width:960px){.tsd-hgrid,.tsd-grid2{grid-template-columns:1fr;gap:40px;}.tsd-flip .tsd-copy{order:1;}.tsd-flip .tsd-media{order:2;}.tsd-cards,.tsd-fgrid,.tsd-tgrid{grid-template-columns:1fr;}.tsd-steps{grid-template-columns:1fr 1fr;}.tsd-h1{font-size:38px;}.tsd-h2{font-size:27px;}.tsd-sec{padding:64px 0;}.tsd-bl{grid-template-columns:1fr;}.tsd-shot image-slot{height:280px;}}
 
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `;
@@ -108,56 +122,136 @@ const Arrow = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
 );
 
-const HeroTick = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-);
+const stats = ['Role-based sales tests', 'Situational judgement', '1,700+ validated tests'];
 
-const CtaTick = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F76A6E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-);
-
-const stats = ['Role-specific sales tests', 'Situational judgment', '3,500+ validated tests'];
-const logos = ['Xneelo', 'Kimp', 'Endiprev', 'Virtual Gurus', 'HROne'];
-
-const section1Bullets = [
-  'Communication & persuasion',
-  'Objection handling',
-  'Discovery & qualification',
-  'Resilience & drive',
-  'CRM & process knowledge',
-  'Situational judgment',
-];
-
-const cardsSection = {
-  eyebrow: 'Why Testlify',
-  h2: 'Predict sales performance before you hire',
-  intro: 'Stop hiring on gut feel and first impressions.',
-  cards: [
-    { title: 'Scenario-based tests', desc: 'See how candidates handle real sales situations.' },
-    { title: 'Personality & culture', desc: 'Assess drive, resilience and team fit.' },
-    { title: 'Objective scoring', desc: 'Compare reps on the same fair standard.' },
-    { title: 'Video interviews', desc: 'Assess pitch and presence, scored consistently.' },
-    { title: 'Anti-cheat proctoring', desc: 'Trust every result.' },
-    { title: 'Integrations', desc: '100+ ATS integrations plus open API.' },
-  ],
+type Split = {
+  kind: 'split';
+  flip: boolean;
+  bg: string;
+  shotBg: string;
+  img: string;
+  h2: string;
+  body: string[];
+  bullets: string[];
+  cta?: { label: string; href: string };
 };
 
-const section2Bullets = ['Better quality of hire', 'Faster ramp to quota', 'Lower sales-team churn'];
+type Cards = {
+  kind: 'cards';
+  bg: string;
+  eyebrow: string;
+  h2: string;
+  cards: { title: string; iconD: string; desc: string }[];
+};
 
-const atsLogos = ['Greenhouse', 'Lever', 'Workday', 'BambooHR', 'Zoho Recruit', 'SAP SuccessFactors', 'Ashby', 'JazzHR'];
-
-const faqs = [
-  { q: 'Can you assess soft skills for sales?', a: 'Yes. Communication, persuasion, resilience and situational judgment are all assessable alongside process knowledge.' },
-  { q: 'Do you offer video interviews for sales?', a: 'Yes. Assess pitch and presence with AI-scored video interviews, consistently across candidates.' },
-  { q: 'How is sales fit measured?', a: 'Through role-specific, personality and scenario-based tests that map to what predicts sales performance.' },
-  { q: 'Does it integrate with our CRM/ATS?', a: 'Yes — 100+ native ATS integrations plus an open API.' },
-  { q: 'Can tests be customised?', a: 'Yes. Tailor assessments to your sales motion, product and market.' },
-  { q: 'Is it suitable for high-volume sales hiring?', a: 'Yes. Screen large pools of reps quickly without lowering the bar.' },
+const sections: (Split | Cards)[] = [
+  {
+    kind: 'split',
+    flip: false,
+    bg: 'tsd-sand',
+    shotBg: '#F3F6F9',
+    img: 'https://testlify.com/wp-content/uploads/2024/09/Land-the-most-skilled-professionals-with-confidence-and-clarity.png',
+    h2: 'Screen for real selling ability, not interview charisma',
+    body: [
+      'Evaluate sales candidates on the skills that predict quota attainment, persuasion, objection handling, communication, resilience, and drive, with role-based assessments for inside, outside, and field sales, SDR, and account-management roles.',
+      'Our tailored assessments gauge how well sales candidates perform in realistic scenarios through behavioral, psychometric, and cognitive tests, helping you minimize turnover.',
+    ],
+    bullets: [
+      'Over 1,700 tests for 5,000+ job roles across 50+ industries',
+      'Discrete screening tools to evaluate, compare, and select top-tier candidates.',
+      'Assess in-demand professionals anywhere in the world with our multilingual feature.',
+    ],
+    cta: { label: 'Try for free', href: '/pricing' },
+  },
+  {
+    kind: 'split',
+    flip: true,
+    bg: '',
+    shotBg: '#FFF',
+    img: 'https://testlify.com/wp-content/uploads/2024/09/Lateral-hiring-made-easy-backed-by-data-not-by-gut-feel.png',
+    h2: 'Sales hiring backed by evidence, not gut feel',
+    body: [
+      'Hire across the full sales org, from SDRs and inside sales to field reps and account managers, with role-specific tests matched to each seat.',
+    ],
+    bullets: [
+      'Auto grading with AI',
+      'Suspicious activity detection',
+      'Audio and video interviewing feature',
+      'Fully customizable assessments',
+      'Detailed analytics and reporting',
+      'Non-googleable questions',
+    ],
+  },
+  {
+    kind: 'split',
+    flip: false,
+    bg: 'tsd-sand',
+    shotBg: '#F3F6F9',
+    img: 'https://testlify.com/wp-content/uploads/2024/09/Tailor-our-suite-of-tools-to-ensure-you-hire-the-best-fit-candidates.png',
+    h2: 'Test the exact sales role you are hiring for',
+    body: ["With Testlify's sales hiring software, screening reps at scale is effortless."],
+    bullets: [
+      'Save time and onboard the right professionals by conducting simulation-based assessments at different levels.',
+      'AI-powered tests evaluation identifies the strengths and gaps of candidates effectively.',
+      'Eliminate unconscious bias with data-driven insights, ensuring a fair and objective hiring process.',
+    ],
+    cta: { label: 'Try for free', href: '/pricing' },
+  },
+  {
+    kind: 'cards',
+    bg: '',
+    eyebrow: 'Sales screening',
+    h2: 'A complete platform for sales screening',
+    cards: [
+      {
+        title: 'Role-based sales assessments',
+        iconD: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2z',
+        desc: 'Evaluate persuasion, objection handling, communication, resilience, personality, situational judgement, and cognitive ability in one comparable score.',
+      },
+      {
+        title: 'Situational judgement and role-play',
+        iconD: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z',
+        desc: 'Put candidates through realistic sales scenarios and role-play so you see how they handle objections and prioritize a pipeline, not just what they say.',
+      },
+      {
+        title: 'Powerful proctoring features',
+        iconD: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
+        desc: 'Advanced proctoring keeps results trustworthy: candidate snapshots detect impersonation, plus tab-switch monitoring and mouse tracking.',
+      },
+    ],
+  },
 ];
 
-const Star = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 18.6 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"></path></svg>
-);
+const faqs = [
+  {
+    q: 'How do you test if someone can actually sell?',
+    a: 'Use role-based sales assessments and situational-judgement scenarios that mirror real selling, scored on a fixed rubric so ability is measured the same way for every candidate, rather than judged on interview charisma.',
+  },
+  {
+    q: 'What does a sales assessment measure?',
+    a: 'Persuasion, objection handling, communication, resilience, and cognitive drive, combined with role-specific knowledge for inside, outside, or field sales and account management.',
+  },
+  {
+    q: 'Does this work for SDR and account-management roles?',
+    a: 'Yes. Testlify covers the full sales org, from SDRs and inside sales to field reps and account managers, with tests matched to each role and difficulty level.',
+  },
+  {
+    q: 'Does Testlify integrate with our ATS and CRM workflow?',
+    a: 'Yes. Testlify connects to your ATS and hiring workflow with 100+ integrations, including BambooHR, Ashby, Breezy HR, Comeet, and Cornerstone, so sales screening fits the process your team already runs.',
+  },
+  {
+    q: 'How do I customize tests?',
+    a: 'Assessments can be customized by adding any additional skill test from our library of tests. These can be a combination of aptitude, language, programming, software, or role-specific skills.',
+  },
+  {
+    q: 'What is the duration of a test?',
+    a: 'Each test will evaluate one skill, and you may use several. Each is about 10 minutes in duration. And can be customized to test for more skills which will affect the total time of an assessment.',
+  },
+  {
+    q: 'How do I schedule a demo?',
+    a: 'You can schedule a demo by filling out the request for a demo and we will contact you to make arrangements.',
+  },
+];
 
 export default function SalesHiringPage() {
   const [open, setOpen] = useState<Record<number, boolean>>({});
@@ -172,94 +266,124 @@ export default function SalesHiringPage() {
         <div className="tsd-copy reveal">
           <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Use case / Sales hiring</span></div>
           <p className="eyebrow">For sales hiring<b>.</b></p>
-          <h1 className="tsd-h1">Hire sales reps who actually close</h1>
-          <p className="tsd-lead">Great interviewers don&apos;t always make great closers. Assess the skills that predict sales performance — communication, objection handling, resilience — before you hire.</p>
+          <h1 className="tsd-h1">Hire sales reps who close with Testlify&apos;s sales hiring software</h1>
+          <p className="tsd-lead">Screen, assess, and shortlist sales reps faster on proven selling ability, not resume claims. Build a team that hits quota and cut the cost of a bad sales hire.</p>
           <div className="tsd-stats">
             {stats.map((t, i) => (<span className="tsd-statc" key={i}>{t}</span>))}
           </div>
           <div className="tsd-ctas">
             <CtaButton label="Try for free" href="/pricing" variant="primary" size="md" icon="arrow" magnetic />
-            <CtaButton label="Book a demo" href="#demo" variant="secondary" size="md" icon="play" />
+            <CtaButton label="Book a demo" href="/contact" variant="secondary" size="md" icon="play" />
           </div>
-          <div className="tsd-ticks"><span className="tsd-tick"><HeroTick />No credit card required</span><span className="tsd-tick"><HeroTick />7-day free trial</span></div>
+          <div className="tsd-ticks"><span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>No credit card required</span><span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>7-day free trial</span></div>
         </div>
-        <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-slot"></div></div></div>
-      </div>
-        <div className="tsdw tsd-logos reveal"><p className="tsd-logos-l">Trusted by 1,500+ hiring teams</p><div className="tsd-logos-r">{logos.map((lg, i) => (<span className="tsd-logo" key={i}>{lg}</span>))}</div></div>
-      </section>
+        <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#fff' }}>
+          <svg viewBox="0 0 520 430" width="100%" style={{ display: 'block' }} xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Freelancer shortlist ranked by verified skills">
+            <rect x="0" y="0" width="520" height="430" fill="#FFF8F7" />
+            <text x="38" y="52" fontFamily="Poppins,sans-serif" fontSize="18" fontWeight="700" fill="#1A1014">Candidate shortlist</text>
+            <text x="38" y="74" fontFamily="Poppins,sans-serif" fontSize="12.5" fontWeight="500" fill="#8A7A7D">Ranked by verified skill score</text>
+            <rect x="342" y="34" width="140" height="30" rx="15" fill="#FFF0EF" stroke="#FBD0D1" />
+            <path d="M360 49l4 4 8-8" fill="none" stroke="#F23F44" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+            <text x="380" y="53" fontFamily="Poppins,sans-serif" fontSize="11.5" fontWeight="700" fill="#F23F44">Skills verified</text>
+            <g fontFamily="Poppins,sans-serif">
+              <rect x="32" y="96" width="456" height="92" rx="16" fill="#fff" stroke="#F0E2E3" strokeWidth="1" />
+              <circle cx="74" cy="142" r="22" fill="#F23F44" /><text x="74" y="148" textAnchor="middle" fontSize="15" fontWeight="700" fill="#fff">AR</text>
+              <text x="110" y="133" fontSize="14.5" fontWeight="700" fill="#1A1014">Ana Rossi</text>
+              <text x="110" y="152" fontSize="11.5" fill="#8A7A7D">Top-ranked candidate</text>
+              <rect x="110" y="162" width="150" height="7" rx="3.5" fill="#F0E2E3" /><rect x="110" y="162" width="142" height="7" rx="3.5" fill="#F23F44" />
+              <rect x="398" y="120" width="64" height="30" rx="9" fill="#1A1014" /><text x="430" y="140" textAnchor="middle" fontSize="15" fontWeight="800" fill="#fff">96</text>
+              <text x="430" y="167" textAnchor="middle" fontSize="10" fontWeight="700" fill="#F23F44">TOP MATCH</text>
+              <rect x="32" y="200" width="456" height="84" rx="16" fill="#fff" stroke="#F0E2E3" />
+              <circle cx="74" cy="242" r="22" fill="#FCE0DE" /><text x="74" y="248" textAnchor="middle" fontSize="15" fontWeight="700" fill="#A91E23">MK</text>
+              <text x="110" y="236" fontSize="14.5" fontWeight="700" fill="#1A1014">Marco Kim</text>
+              <text x="110" y="254" fontSize="11.5" fill="#8A7A7D">Strong match</text>
+              <rect x="110" y="263" width="150" height="7" rx="3.5" fill="#F0E2E3" /><rect x="110" y="263" width="128" height="7" rx="3.5" fill="#FF7A52" />
+              <rect x="406" y="226" width="56" height="28" rx="9" fill="#FFF0EF" /><text x="434" y="245" textAnchor="middle" fontSize="14" fontWeight="800" fill="#F23F44">91</text>
+              <rect x="32" y="296" width="456" height="84" rx="16" fill="#fff" stroke="#F0E2E3" />
+              <circle cx="74" cy="338" r="22" fill="#FCE0DE" /><text x="74" y="344" textAnchor="middle" fontSize="15" fontWeight="700" fill="#A91E23">JD</text>
+              <text x="110" y="332" fontSize="14.5" fontWeight="700" fill="#1A1014">Jade Dubois</text>
+              <text x="110" y="350" fontSize="11.5" fill="#8A7A7D">Qualified candidate</text>
+              <rect x="110" y="359" width="150" height="7" rx="3.5" fill="#F0E2E3" /><rect x="110" y="359" width="118" height="7" rx="3.5" fill="#FF7A52" />
+              <rect x="406" y="322" width="56" height="28" rx="9" fill="#FFF0EF" /><text x="434" y="341" textAnchor="middle" fontSize="14" fontWeight="800" fill="#F23F44">88</text>
+            </g>
+          </svg>
+        </div></div>
+      </div></section>
 
-      {/* Section 1 — split */}
-      <section className="tsd-sec"><div className="tsdw">
-        <div className="tsd-grid2">
-          <div className="tsd-copy reveal">
-            <span className="tsd-num">1</span>
-            <h2 className="tsd-h2">Test for what makes a closer</h2>
-            <p className="tsd-p">Charisma in an interview doesn&apos;t equal quota attainment. Scenario-based assessments measure how candidates prospect, handle objections and stay resilient under pressure.</p>
-            <div className="tsd-bl">
-              {section1Bullets.map((b, i) => (
-                <div className="tsd-bi" key={i}><Check /><span className="tsd-bt">{b}</span></div>
+      {sections.map((s, i) => {
+        if (s.kind === 'split') {
+          return (
+            <section className={`tsd-sec ${s.bg}`} key={i}><div className="tsdw">
+              <div className={`tsd-grid2 ${s.flip ? 'tsd-flip' : ''}`}>
+                <div className="tsd-copy reveal">
+                  <h2 className="tsd-h2">{s.h2}</h2>
+                  {s.body.map((para, pi) => (<p className="tsd-p" key={pi}>{para}</p>))}
+                  <div className="tsd-bl">
+                    {s.bullets.map((b, bi) => (
+                      <div className="tsd-bi" key={bi}><Check /><span className="tsd-bt">{b}</span></div>
+                    ))}
+                  </div>
+                  {s.cta && (
+                    <Link className="tsd-link" href={s.cta.href}>{s.cta.label}<Arrow /></Link>
+                  )}
+                </div>
+                <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: s.shotBg }}>
+                  <div className="tsd-shotimg" style={{ backgroundColor: s.shotBg, backgroundImage: `url("${s.img}")` }} data-bg={s.img}></div>
+                </div></div>
+              </div>
+            </div></section>
+          );
+        }
+        return (
+          <section className={`tsd-sec ${s.bg}`} key={i}><div className="tsdw">
+            <div className="tsd-shead reveal"><p className="eyebrow">{s.eyebrow}<b>.</b></p><h2 className="tsd-h2">{s.h2}</h2></div>
+            <div className="tsd-cards reveal">
+              {s.cards.map((c, ci) => (
+                <div className="tsd-card" key={ci}>
+                  <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={c.iconD}></path></svg></div>
+                  <p className="tsd-ct">{c.title}</p>
+                  <p className="tsd-cd">{c.desc}</p>
+                </div>
               ))}
             </div>
-            <Link className="tsd-link" href="/test-library">Browse the test library<Arrow /></Link>
-          </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-slot"></div></div></div>
-        </div>
-      </div></section>
+          </div></section>
+        );
+      })}
 
-      {/* Section — cards, sand */}
       <section className="tsd-sec tsd-sand"><div className="tsdw">
-        <div className="tsd-shead reveal"><p className="eyebrow">{cardsSection.eyebrow}<b>.</b></p><h2 className="tsd-h2">{cardsSection.h2}</h2><p className="tsd-lead">{cardsSection.intro}</p></div>
-        <div className="tsd-cards">
-          {cardsSection.cards.map((c, i) => (
-            <div className="tsd-card reveal" key={i}>
-              <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg></div>
-              <p className="tsd-ct">{c.title}</p>
-              <p className="tsd-cd">{c.desc}</p>
-            </div>
-          ))}
+        <div className="tsd-shead reveal"><p className="eyebrow">Integrations<b>.</b></p><h2 className="tsd-h2">Testlify integrates seamlessly with 100+ ATS tools</h2><p className="tsd-lead">Native integrations with Workday, Greenhouse, Lever, iCIMS, and 97 more ATS platforms — no middleware, no data mapping required.</p></div>
+        <div className="itats-grid reveal">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png" alt="Workday" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png" alt="SAP SuccessFactors" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png" alt="Lever" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/SR-SAP-Logo.svg" alt="SmartRecruiters" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png" alt="Recruitee" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/logo.svg" alt="UKG Pro Recruiting" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2024/09/BambooHR-Logo-1-2048x1152-2.png" alt="BambooHR" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2023/03/629a0bbcb04c5ae587c411c2-1-1.png" alt="Greenhouse" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2024/08/zoho-recruit-logo-1.png" alt="Zoho Recruit" /></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png" alt="JazzHR" /></div>
         </div>
+        <div className="itats-more reveal"><Link href="/integrations">View all ATS integrations<Arrow /></Link></div>
       </div></section>
 
-      {/* Section 2 — split flipped */}
-      <section className="tsd-sec"><div className="tsdw">
-        <div className="tsd-grid2 tsd-flip">
-          <div className="tsd-copy reveal">
-            <span className="tsd-num">2</span>
-            <h2 className="tsd-h2">Ramp faster, churn less</h2>
-            <p className="tsd-p">Hiring reps who fit the role means faster ramp and lower turnover — measurable ROI on every sales hire.</p>
-            <div className="tsd-bl">
-              {section2Bullets.map((b, i) => (
-                <div className="tsd-bi" key={i}><Check /><span className="tsd-bt">{b}</span></div>
-              ))}
-            </div>
-          </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-slot"></div></div></div>
-        </div>
-      </div></section>
+      <SecuritySection eyebrow="Security" heading="Built to keep your organization secure" sub="Ensure the security of your recruitment data with top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits, and strong privacy protections." />
 
-      {/* Testimonials (no items in data — header only) */}
-      <section className="tsd-sec"><div className="tsdw">
-        <div className="tsd-shead reveal"><p className="eyebrow">Loved by hiring teams<b>.</b></p><h2 className="tsd-h2">Recruiters who hire on proof</h2></div>
-        <div className="tsd-tgrid"></div>
-      </div></section>
+      <Testimonials eyebrow="Testimonials" heading="What our customers are saying about Testlify" />
 
-      {/* ATS */}
+      <Recognition bg="#fff" />
+
       <section className="tsd-sec tsd-sand"><div className="tsdw">
-        <div className="tsd-shead reveal"><p className="eyebrow">Fits your stack<b>.</b></p><h2 className="tsd-h2">Works with the ATS you already use</h2><p className="tsd-lead">Push assessment results straight into your workflow with 100+ native, two-way integrations.</p></div>
-        <div className="tsd-atsgrid reveal">
-          {atsLogos.map((a, i) => (<span className="tsd-atslogo" key={i}>{a}</span>))}
-          <Link className="tsd-atsmore" href="/integrations">+100 more<Arrow /></Link>
-        </div>
-      </div></section>
-
-      <section className="tsd-trust"><div className="tsdw tsd-trow reveal">
-        <div className="tsd-g2"><span className="tsd-g2n">4.7</span><span className="tsd-g2l">Rated 4.7 on G2<br />by 1,000+ reviewers</span></div>
-        <div className="tsd-badges"><span className="tsd-badge">SOC 2 TYPE II</span><span className="tsd-badge">ISO 27001</span><span className="tsd-badge">GDPR</span><span className="tsd-badge">CCPA</span><span className="tsd-badge">100+ ATS INTEGRATIONS</span></div>
-      </div></section>
-
-      <Recognition bg="#FBF3EE" />
-
-      <section className="tsd-sec"><div className="tsdw">
         <div className="tsd-shead reveal"><p className="eyebrow">FAQ<b>.</b></p><h2 className="tsd-h2">Frequently asked questions</h2></div>
         <div className="tsd-faqw">
           {faqs.map((f, i) => (
@@ -267,21 +391,6 @@ export default function SalesHiringPage() {
               <div className="tsd-faqq">{f.q}<span className="tsd-faqx">+</span></div>
               <div className="tsd-faqa">{f.a}</div>
             </div>
-          ))}
-        </div>
-      </div></section>
-
-      <section className="tsd-cta" id="demo"><div className="tsdw reveal">
-        <p className="eyebrow" style={{ color: '#F76A6E' }}>Get started<b style={{ color: '#F23F44' }}>.</b></p>
-        <h2 className="tsd-h2">Hire closers, not just talkers.</h2>
-        <p className="tsd-lead">Assess the skills that predict sales performance — start free in minutes.</p>
-        <div className="tsd-ctas">
-          <CtaButton label="Try for free" href="/pricing" variant="primary" size="lg" icon="arrow" magnetic />
-          <CtaButton label="Book a demo" href="#" variant="light" size="lg" icon="play" />
-        </div>
-        <div className="tsd-ticks">
-          {['7-day free trial', 'Unlimited assessments', 'Cancel anytime'].map((tk, i) => (
-            <span className="tsd-tick" key={i}><CtaTick />{tk}</span>
           ))}
         </div>
       </div></section>

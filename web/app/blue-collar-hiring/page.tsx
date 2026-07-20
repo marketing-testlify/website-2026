@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -159,6 +159,100 @@ const Arrow = () => (
 const stats = ['3,500+ validated tests', '10+ languages', 'Safety & technical tests'];
 const logos = ['LTIMindtree', 'Sonatafy', 'Thales', 'Third Bridge', 'Virtual', 'Cogitotech'];
 
+type Bullet = { label: string };
+type Cta = { label: string; href: string };
+type Section = {
+  bgClass: string;
+  flip: boolean;
+  shotBg: string;
+  img: string;
+  h2: string;
+  body: string[];
+  bullets?: Bullet[];
+  blClass?: string;
+  cta?: Cta;
+};
+
+const sections: Section[] = [
+  {
+    bgClass: '',
+    flip: false,
+    shotBg: '#fff',
+    img: 'https://testlify.com/wp-content/uploads/2022/09/Test-Libraries-dedicated-to-the-blockchain-Industry-1024x653.png',
+    h2: 'Built for the people who build your business',
+    body: [
+      'Blue-collar roles demand more than just resumes; they require real-world skills, adaptability, and attention to safety. Testlify’s blue-collar assessments help you identify capable candidates before they’re on the floor and highlight training needs post-hire to boost productivity and reduce errors.',
+      'Testlify’s blue-collar assessments are relevant for:',
+    ],
+    bullets: [
+      { label: 'Carpenters' },
+      { label: 'Maintenance Technicians' },
+      { label: 'HVAC Technicians' },
+      { label: 'Assembly Line Workers' },
+      { label: 'Warehouse Operatives' },
+      { label: 'Machine Operators' },
+      { label: 'Welders and Fabricators' },
+      { label: 'Construction Laborers' },
+      { label: 'Electricians' },
+      { label: 'Plumbers' },
+    ],
+    blClass: 'tsd-bl',
+  },
+  {
+    bgClass: 'tsd-sand',
+    flip: true,
+    shotBg: '#fff',
+    img: 'https://testlify.com/wp-content/uploads/2022/11/Better-Skill-Set-Evaluation-Process.png',
+    h2: 'Assess technical expertise, workplace safety and protocols of blue-collar workers',
+    body: [
+      'The timed assessment is designed to identify candidates with the right technical expertise, problem-solving skills, practical knowledge and an understanding of workplace safety and protocols. It looks at skills like hand-eye coordination, mechanical knowledge and following instructions — critical where precision and safety matter.',
+      'It helps HR professionals identify candidates likely to do well in physically demanding jobs, highlights where training may be needed, and shows whether a candidate can work independently — reducing accidents, increasing productivity and ensuring quality work.',
+    ],
+    cta: { label: 'Try for free', href: '/pricing' },
+  },
+  {
+    bgClass: '',
+    flip: false,
+    shotBg: '#fff',
+    img: 'https://testlify.com/wp-content/uploads/2022/11/Difficulty-Scaling-Recruitment-Efforts-1024x1024-1.png',
+    h2: 'Evaluate skills in multiple languages and varying literacy levels',
+    body: [
+      'Our blue-collar employee screening tool makes it accessible to a diverse workforce by supporting multiple languages (10+) and varying literacy levels. This ensures that every candidate can take the assessment comfortably and demonstrate their skills regardless of their background. This ensures your candidates are:',
+    ],
+    bullets: [
+      { label: 'Assessed based on their true skills, not language proficiency or literacy.' },
+      { label: 'Create an inclusive environment where every worker feels confident in showcasing their abilities.' },
+      { label: 'Reach a broader range of candidates from different regions and backgrounds, increasing your hiring options.' },
+      { label: 'Verify blue-collar employees and build a more diverse workforce with people from different linguistic and educational backgrounds.' },
+    ],
+    blClass: 'tsd-bl',
+  },
+  {
+    bgClass: 'tsd-sand',
+    flip: true,
+    shotBg: '#fff',
+    img: 'https://testlify.com/wp-content/uploads/2022/12/Get-deeper-insights-1.svg',
+    h2: 'Hire blue-collar workers backed with data',
+    body: [
+      'Our blue-collar skills assessment helps you evaluate soft and technical skills. Our platform integrates with 100+ ATS, making tracking, reporting, and analyzing results easy. It can handle large numbers of candidates without slowing down, even when hiring in bulk or across wide areas.',
+      'The results are accurate, reliable, and objective, ensuring that candidates’ abilities and potential job performance are correctly assessed. The platform is simple to use, even for candidates who aren’t tech-savvy, with clear instructions and an easy-to-navigate interface.',
+      'Test real-world job simulations and hire the best blue-collar worker with confidence.',
+    ],
+  },
+  {
+    bgClass: '',
+    flip: false,
+    shotBg: '#fff',
+    img: 'https://testlify.com/wp-content/uploads/2023/02/white-lable-1024x672.png',
+    h2: 'Customize your assessments to meet your hiring needs',
+    body: [
+      'At our platform, we understand that different businesses have different hiring needs. That’s why we offer customization options to help you assess candidates’ skills in the areas that matter most to your business. Whether you need to evaluate technical skills, soft skills, or safety training, our platform allows you to create customized assessments that meet your specific requirements.',
+      'Our user-friendly platform makes creating, assigning and monitoring customized assessments easy — add your own questions, choose the test duration, set the passing score and use weighted scoring to find the best candidates.',
+    ],
+    cta: { label: 'Create your free assessment', href: '/pricing' },
+  },
+];
+
 const faqs = [
   { q: 'What is Testlify and how does it simplify blue-collar hiring?', a: 'Testlify is an assessment tool that simplifies blue-collar hiring with a standardized, objective evaluation process.' },
   { q: 'How does Testlify save time and money in the hiring process?', a: 'Testlify saves time and money by automating the screening process, allowing hiring managers to focus on top-performing candidates.' },
@@ -230,65 +324,28 @@ export default function BlueCollarHiringPage() {
         </div>
       </div></section>
 
-      {/* Section 1 — split */}
-      <section className="tsd-sec"><div className="tsdw">
-        <div className="tsd-grid2">
-          <div className="tsd-copy reveal">
-            <h2 className="tsd-h2">Built for the people who build your business</h2>
-            <p className="tsd-p">Blue-collar roles demand more than resumes — they require real-world skills, adaptability and attention to safety. Testlify&apos;s assessments help you identify capable candidates before they&apos;re on the floor and highlight training needs post-hire to boost productivity and reduce errors.</p>
-            <div className="tsd-bl">
-              {['Carpenters', 'Maintenance & HVAC technicians', 'Assembly line & warehouse operatives', 'Machine operators', 'Welders and fabricators', 'Construction laborers, electricians & plumbers'].map((b, i) => (
-                <div className="tsd-bi" key={i}><Check /><span className="tsd-bt">{b}</span></div>
-              ))}
+      {sections.map((s, si) => (
+        <section className={`tsd-sec ${s.bgClass}`.trim()} key={si}><div className="tsdw">
+          <div className={`tsd-grid2 ${s.flip ? 'tsd-flip' : ''}`.trim()}>
+            <div className="tsd-copy reveal">
+              <h2 className="tsd-h2">{s.h2}</h2>
+              {s.body.map((para, pi) => (<p className="tsd-p" key={pi}>{para}</p>))}
+              {s.bullets && (
+                <div className={s.blClass}>
+                  {s.bullets.map((b, bi) => (
+                    <div className="tsd-bi" key={bi}><Check /><span className="tsd-bt">{b.label}</span></div>
+                  ))}
+                </div>
+              )}
+              {s.cta && (
+                <Link className="tsd-link" href={s.cta.href}>{s.cta.label}<Arrow /></Link>
+              )}
             </div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: s.shotBg }}><div className="tsd-shotimg" style={{ backgroundColor: s.shotBg, backgroundImage: `url("${s.img}")` }}></div></div></div>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/09/Test-Libraries-dedicated-to-the-blockchain-Industry-1024x653.png")' }}></div></div></div>
-        </div>
-      </div></section>
+        </div></section>
+      ))}
 
-      {/* Section 2 — split flipped, sand */}
-      <section className="tsd-sec tsd-sand"><div className="tsdw">
-        <div className="tsd-grid2 tsd-flip">
-          <div className="tsd-copy reveal">
-            <h2 className="tsd-h2">Assess technical expertise, workplace safety and protocols</h2>
-            <p className="tsd-p">The timed assessment identifies candidates with the right technical expertise, problem-solving skills, practical knowledge and understanding of workplace safety and protocols. It looks at skills like hand-eye coordination, mechanical knowledge and following instructions — critical where precision and safety matter.</p>
-            <p className="tsd-p">It helps HR professionals identify candidates likely to do well in physically demanding jobs, highlights where training may be needed, and shows whether a candidate can work independently — reducing accidents, increasing productivity and ensuring quality work.</p>
-            <Link className="tsd-link" href="/pricing">Try for free<Arrow /></Link>
-          </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/11/Better-Skill-Set-Evaluation-Process.png")' }}></div></div></div>
-        </div>
-      </div></section>
-
-      {/* Section 3 — split */}
-      <section className="tsd-sec"><div className="tsdw">
-        <div className="tsd-grid2">
-          <div className="tsd-copy reveal">
-            <h2 className="tsd-h2">Evaluate skills in multiple languages and varying literacy levels</h2>
-            <p className="tsd-p">Our blue-collar screening tool supports multiple languages (10+) and varying literacy levels, so every candidate can take the assessment comfortably and demonstrate their skills regardless of background.</p>
-            <div className="tsd-bl">
-              {['Assessed on true skills, not language proficiency or literacy', 'An inclusive environment where every worker feels confident', 'Reach a broader range of candidates from different regions', 'Build a more diverse workforce across linguistic and educational backgrounds'].map((b, i) => (
-                <div className="tsd-bi" key={i}><Check /><span className="tsd-bt">{b}</span></div>
-              ))}
-            </div>
-          </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/11/Difficulty-Scaling-Recruitment-Efforts-1024x1024-1.png")' }}></div></div></div>
-        </div>
-      </div></section>
-
-      {/* Section 4 — split flipped, sand */}
-      <section className="tsd-sec tsd-sand"><div className="tsdw">
-        <div className="tsd-grid2 tsd-flip">
-          <div className="tsd-copy reveal">
-            <h2 className="tsd-h2">Customize your assessments to meet your hiring needs</h2>
-            <p className="tsd-p">Different businesses have different hiring needs. Create customized assessments that evaluate the technical skills, soft skills or safety training that matter most to your business.</p>
-            <p className="tsd-p">Our user-friendly platform makes creating, assigning and monitoring assessments easy — add your own questions, choose the test duration, set the passing score and use weighted scoring to find the best candidates.</p>
-            <Link className="tsd-link" href="/pricing">Create your free assessment<Arrow /></Link>
-          </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2023/02/white-lable-1024x672.png")' }}></div></div></div>
-        </div>
-      </div></section>
-
-      {/* Integrations */}
       <section className="tsd-sec tsd-sand"><div className="tsdw">
         <div className="tsd-shead reveal"><p className="eyebrow">Integrations<b>.</b></p><h2 className="tsd-h2">Testlify integrates seamlessly with 100+ ATS tools</h2><p className="tsd-lead">Streamline your hiring process from assessment to onboarding. Sync candidate data effortlessly, automate workflows, and gain deeper insights to make informed hiring decisions faster.</p></div>
         <div className="itats-grid reveal">
