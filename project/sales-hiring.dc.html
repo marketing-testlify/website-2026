@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="solution-usecase-template" page-data="{{ pd }}" hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals(){
+    return { pd: {
+      crumb:"Use case / Sales hiring",
+      eyebrow:"For sales hiring",
+      title:"Hire sales reps who close with Testlify's sales hiring software",
+      lead:"Screen, assess, and shortlist sales reps faster on proven selling ability, not resume claims. Build a team that hits quota and cut the cost of a bad sales hire.",
+      ctaLabel:"Try for free", ctaHref:"pricing.dc.html",
+      stats:[{t:"Role-based sales tests"},{t:"Situational judgement"},{t:"1,700+ validated tests"}],
+      sections:[
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/09/Land-the-most-skilled-professionals-with-confidence-and-clarity.png", shotBg:"#F3F6F9", h2:"Screen for real selling ability, not interview charisma", body:["Evaluate sales candidates on the skills that predict quota attainment, persuasion, objection handling, communication, resilience, and drive, with role-based assessments for inside, outside, and field sales, SDR, and account-management roles.","Our tailored assessments gauge how well sales candidates perform in realistic scenarios through behavioral, psychometric, and cognitive tests, helping you minimize turnover."], bullets:[{label:"Over 1,700 tests for 5,000+ job roles across 50+ industries"},{label:"Discrete screening tools to evaluate, compare, and select top-tier candidates."},{label:"Assess in-demand professionals anywhere in the world with our multilingual feature."}], cta:{label:"Try for free", href:"pricing.dc.html"}},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/09/Lateral-hiring-made-easy-backed-by-data-not-by-gut-feel.png", shotBg:"#FFF", h2:"Sales hiring backed by evidence, not gut feel", body:["Hire across the full sales org, from SDRs and inside sales to field reps and account managers, with role-specific tests matched to each seat."], bullets:[{label:"Auto grading with AI"},{label:"Suspicious activity detection"},{label:"Audio and video interviewing feature"},{label:"Fully customizable assessments"},{label:"Detailed analytics and reporting"},{label:"Non-googleable questions"}]},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/09/Tailor-our-suite-of-tools-to-ensure-you-hire-the-best-fit-candidates.png", shotBg:"#F3F6F9", h2:"Test the exact sales role you are hiring for", body:["With Testlify's sales hiring software, screening reps at scale is effortless."], bullets:[{label:"Save time and onboard the right professionals by conducting simulation-based assessments at different levels."},{label:"AI-powered tests evaluation identifies the strengths and gaps of candidates effectively."},{label:"Eliminate unconscious bias with data-driven insights, ensuring a fair and objective hiring process."}], cta:{label:"Try for free", href:"pricing.dc.html"}},
+        {kind:"cards", eyebrow:"Sales screening", h2:"A complete platform for sales screening", cards:[
+          {title:"Role-based sales assessments", icon:"M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2z", desc:"Evaluate persuasion, objection handling, communication, resilience, personality, situational judgement, and cognitive ability in one comparable score."},
+          {title:"Situational judgement and role-play", icon:"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z", desc:"Put candidates through realistic sales scenarios and role-play so you see how they handle objections and prioritize a pipeline, not just what they say."},
+          {title:"Powerful proctoring features", icon:"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z", desc:"Advanced proctoring keeps results trustworthy: candidate snapshots detect impersonation, plus tab-switch monitoring and mouse tracking."}
+        ]}
+      ],
+      faqs:[
+        {q:"How do you test if someone can actually sell?", a:"Use role-based sales assessments and situational-judgement scenarios that mirror real selling, scored on a fixed rubric so ability is measured the same way for every candidate, rather than judged on interview charisma."},
+        {q:"What does a sales assessment measure?", a:"Persuasion, objection handling, communication, resilience, and cognitive drive, combined with role-specific knowledge for inside, outside, or field sales and account management."},
+        {q:"Does this work for SDR and account-management roles?", a:"Yes. Testlify covers the full sales org, from SDRs and inside sales to field reps and account managers, with tests matched to each role and difficulty level."},
+        {q:"Does Testlify integrate with our ATS and CRM workflow?", a:"Yes. Testlify connects to your ATS and hiring workflow with 100+ integrations, including BambooHR, Ashby, Breezy HR, Comeet, and Cornerstone, so sales screening fits the process your team already runs."},
+        {q:"How do I customize tests?", a:"Assessments can be customized by adding any additional skill test from our library of tests. These can be a combination of aptitude, language, programming, software, or role-specific skills."},
+        {q:"What is the duration of a test?", a:"Each test will evaluate one skill, and you may use several. Each is about 10 minutes in duration. And can be customized to test for more skills which will affect the total time of an assessment."},
+        {q:"How do I schedule a demo?", a:"You can schedule a demo by filling out the request for a demo and we will contact you to make arrangements."}
+      ],
+      ctaEyebrow:"Get started", ctaTitle:"Ready to replace gut instinct with verified skills?", ctaBody:"Your next great hire is in your candidate pool right now. Testlify's assessments surface them in 30 minutes \u2014 no resume bias, no interview gut checks, no bad hire regret.",
+      ctaTicks:["7-day free trial","Unlimited assessments","Cancel anytime"]
+    } };
+  }
+}
+</script>
+</body>
+</html>

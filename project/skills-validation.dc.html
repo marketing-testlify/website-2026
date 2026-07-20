@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="solution-usecase-template" page-data="{{ pd }}" hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals(){
+    return { pd: {
+      crumb:"Use case / Skills validation",
+      eyebrow:"For skills validation",
+      title:"Verify candidate skills before you hire with Testlify's skills validation software",
+      lead:"Screen, assess, and shortlist candidates faster on demonstrated ability, backed by objective, proctored assessments. Replace guesswork with proof and make every skills-based hiring decision defensible.",
+      ctaLabel:"Try for free", ctaHref:"pricing.dc.html",
+      stats:[{t:"1,700+ validated tests"},{t:"EEOC-defensible scoring"},{t:"Proctored assessments"}],
+      sections:[
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/09/Land-the-most-skilled-professionals-with-confidence-and-clarity.png", shotBg:"#F3F6F9", h2:"Hire on proof of skill, not resume claims", body:["Validate the skills a role actually requires across technical, cognitive, personality, language, and role-specific domains, with a library of thousands of job-relevant tests plus real-world tasks, so every shortlist is backed by evidence.","Our tailored assessments gauge how well candidates demonstrate real skills through behavioral, psychometric, and cognitive tests, helping you minimize turnover."], bullets:[{label:"Over 1,700 tests for 5,000+ job roles across 50+ industries"},{label:"Discrete screening tools to evaluate, compare, and select top-tier candidates."},{label:"Assess in-demand professionals anywhere in the world with our multilingual feature."}], cta:{label:"Try for free", href:"pricing.dc.html"}},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/09/Lateral-hiring-made-easy-backed-by-data-not-by-gut-feel.png", shotBg:"#FFF", h2:"Skills-based hiring backed by evidence, not gut feel", body:["Validate skills for any role, even ones your team does not know, with role-specific tests that do the evaluation for you."], bullets:[{label:"Auto grading with AI"},{label:"Suspicious activity detection"},{label:"Audio and video interviewing feature"},{label:"Fully customizable assessments"},{label:"Detailed analytics and reporting"},{label:"Non-googleable questions"}]},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/09/Tailor-our-suite-of-tools-to-ensure-you-hire-the-best-fit-candidates.png", shotBg:"#F3F6F9", h2:"Validate exactly the skills the role needs", body:["With Testlify's skills validation software, verifying real ability is effortless."], bullets:[{label:"Save time and onboard the right professionals by conducting simulation-based assessments at different levels."},{label:"AI-powered tests evaluation identifies the strengths and gaps of candidates effectively."},{label:"Eliminate unconscious bias with data-driven insights, ensuring a fair and objective hiring process."}], cta:{label:"Try for free", href:"pricing.dc.html"}},
+        {kind:"cards", eyebrow:"Skills validation", h2:"A complete platform for skills validation", cards:[
+          {title:"Validated skill tests", icon:"M12 3l7 4v5c0 5-7 9-7 9s-7-4-7-9V7l7-4zM9 12l2 2 4-4", desc:"Validate technical, cognitive, personality, language, and role-specific skills, combined into one comparable, defensible score per candidate."},
+          {title:"Real-world tasks", icon:"M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11", desc:"Set real-world tasks that mirror the job so candidates demonstrate the skill, not just answer trivia about it."},
+          {title:"Powerful proctoring features", icon:"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z", desc:"Anti-cheating proctoring keeps every result trustworthy: candidate snapshots detect impersonation, tab-switch monitoring, mouse tracking, and plagiarism detection."}
+        ]}
+      ],
+      faqs:[
+        {q:"What is skills validation in hiring?", a:"Skills validation verifies a candidate can perform the skills a role requires through objective assessments and job-realistic tasks, rather than trusting resume claims or interview impressions. Every candidate takes the same test, scored on a fixed rubric."},
+        {q:"How is it different from a normal interview?", a:"Interviews measure how someone talks about their skills. Validation measures the skill itself, consistently and with proctoring, so the result is evidence rather than opinion."},
+        {q:"Can you validate soft skills as well as technical ones?", a:"Yes. Testlify covers technical, cognitive, personality, language, and role-specific skills, so you can validate the full profile a role needs, from coding to communication."},
+        {q:"Does Testlify integrate with our ATS?", a:"Yes. Testlify connects to your ATS and hiring workflow with 100+ integrations, including BambooHR, Ashby, Breezy HR, Comeet, and Cornerstone, adding an objective validation layer to the process you already run."},
+        {q:"How do I customize tests?", a:"Assessments can be customized by adding any additional skill test from our library of tests. These can be a combination of aptitude, language, programming, software, or role-specific skills."},
+        {q:"What is the duration of a test?", a:"Each test will evaluate one skill, and you may use several. Each is about 10 minutes in duration. And can be customized to test for more skills which will affect the total time of an assessment."},
+        {q:"How do I schedule a demo?", a:"You can schedule a demo by filling out the request for a demo and we will contact you to make arrangements."}
+      ],
+      ctaEyebrow:"Get started", ctaTitle:"Ready to replace gut instinct with verified skills?", ctaBody:"Your next great hire is in your candidate pool right now. Testlify's assessments surface them in 30 minutes \u2014 no resume bias, no interview gut checks, no bad hire regret.",
+      ctaTicks:["7-day free trial","Unlimited assessments","Cancel anytime"]
+    } };
+  }
+}
+</script>
+</body>
+</html>

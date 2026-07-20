@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="solution-usecase-template" page-data="{{ pd }}" hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals(){
+    return { pd: {
+      crumb:"Use case / Freelance hiring",
+      eyebrow:"For freelance hiring",
+      title:"Find the best freelance talent with Testlify's hiring assessments",
+      lead:"Testlify is your go-to talent assessment tool for freelance hiring! If you're in need of top-notch freelance talent, you've come to the right place. We can help you choose highly skilled and experienced freelancers who can help you take your business to the next level with our skill assessment tests.",
+      ctaLabel:"Try for free", ctaHref:"pricing.dc.html",
+      stats:[{t:"3,500+ validated tests"},{t:"Objective evaluation"},{t:"Any device, anywhere"}],
+      sections:[
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2023/02/Freelance-hiring-one.png", shotBg:"#F3F6F9", h2:"Efficient freelance hiring process", body:["We offer an efficient hiring process for freelance positions, which helps save time and ensures that only the best candidates are considered.","Organizations can easily screen and evaluate freelance candidates based on their skills and expertise, which allows them to identify the most qualified candidates for the job quickly. This streamlined process helps businesses find the right freelancer in less time and effort."]},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/11/Better-Skill-Set-Evaluation-Process.png", shotBg:"#FFF", h2:"Objective evaluation of freelance candidates", body:["Our talent assessment tests offer an objective evaluation process that enables businesses to assess the skills and abilities of freelance candidates.","We help you to ensure that all candidates are evaluated fairly, based on their skills and expertise. This process helps businesses to make informed decisions when hiring freelancers and reduces the risk of hiring someone who is not a good fit for the job."]},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/11/Difficulty-Scaling-Recruitment-Efforts-1024x1024-1.png", shotBg:"#F3F6F9", h2:"Highly skilled freelance hires", body:["Hiring the right freelancer is crucial for the success of any project. Testlify helps businesses to evaluate freelance candidates thoroughly, ensuring that only the most qualified and skilled candidates are hired.","By assessing the skills and abilities of freelance candidates, Testlify helps businesses to make informed hiring decisions that lead to better quality hires. This, in turn, can improve the quality of work delivered and reduce the risk of project failure."]},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/12/Get-deeper-insights-1.svg", shotBg:"#FFF", h2:"Tailor your freelancer search to meet your project needs", body:["We also provide customization options to assist you in finding freelancers with the skills that are most important to your project.","Whether you require expertise in web development, content writing, or social media management, our platform enables you to personalize your search to suit your specific requirements."]},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2023/02/white-lable-1024x672.png", shotBg:"#F3F6F9", h2:"How to begin your search for freelancers?", body:["Starting your search for freelancers on our platform is hassle-free. First, create an account, then select the criteria that match your project needs, and begin evaluating candidates' skills.","Our platform can be of great assistance, in finding freelancers with the right skill set for your project. With our vast library of assessments and user-friendly interface, you can quickly and effectively evaluate freelancers' skills to find the right match for your project needs."]},
+        {kind:"cards", eyebrow:"Why Testlify", h2:"Why use our freelancer assessment platform?", intro:"Our freelancer assessment platform is tailored to meet the specific needs of businesses looking for skilled freelancers. Here are some of the benefits of using our platform:", cards:[
+          {title:"Diverse test library", icon:"M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z", desc:"Our comprehensive test library covers a broad range of skills essential to freelancing. You can choose from pre-built assessments or customize your own tests to meet your specific hiring needs."},
+          {title:"Streamlined test administration", icon:"M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11", desc:"With our platform, you can easily assign tests to freelancers and track their progress in real-time."},
+          {title:"Affordable pricing", icon:"M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6", desc:"We offer cost-effective pricing plans suitable for businesses of all sizes. You can assess freelancers' skills without exceeding your budget."},
+          {title:"Time-saving features", icon:"M12 8v4l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z", desc:"Our platform includes features like automated scoring and reporting, making it easy to evaluate freelancer skills efficiently."},
+          {title:"Mobile-friendly", icon:"M5 2h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zM12 18h.01", desc:"Our platform is mobile-responsive, allowing you to access it from anywhere and at any time."},
+          {title:"Personalized feedback", icon:"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z", desc:"Our platform enables you to provide personalized feedback to freelancers after completing their assessments."}
+        ]}
+      ],
+      atsIntro:"Streamline your hiring process from assessment to onboarding. Sync candidate data effortlessly, automate workflows, and gain deeper insights to make informed hiring decisions faster.",
+      faqs:[
+        {q:"Why should businesses use Testlify?", a:"Businesses should use Testlify because it offers a streamlined and objective evaluation process to find highly skilled freelancers efficiently."},
+        {q:"What kind of assessments does Testlify offer?", a:"Testlify offers a diverse test library covering various skills essential to freelancing, including web development, content writing, and social media management."},
+        {q:"How does Testlify help businesses find the right freelancer?", a:"Testlify helps businesses find the right freelancer by providing a standardized and objective evaluation process based on their skills and expertise."},
+        {q:"How does Testlify make the hiring process more efficient?", a:"Testlify makes the hiring process more efficient by providing businesses with a streamlined process to screen and evaluate candidates based on their skills and expertise."},
+        {q:"What customization options does Testlify offer for businesses?", a:"Testlify offers customization options like including your own questions, selecting the duration of the test, and establishing the minimum score required to pass."}
+      ],
+      ctaEyebrow:"Get started", ctaTitle:"Cut through the noise, hire with clarity.", ctaBody:"Resumes don't tell you everything! Testlify gives you the insights you need to hire the right people with skills assessments that are accurate, automated, and unbiased.",
+      ctaTicks:["7-day free trial","Unlimited assessments","Cancel anytime"]
+    } };
+  }
+}
+</script>
+</body>
+</html>
