@@ -63,7 +63,7 @@ export default function SiteFooter() {
           <div>
             <div className="sf-brand">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="brand/testlify-logo-white.svg" alt="Testlify" />
+              <img src="/brand/testlify-logo-white.svg" alt="Testlify" />
             </div>
             <p className="sf-tag">The AI-powered skills assessment and interviewing platform helping teams hire the best talent — quickly, fairly, efficiently.</p>
             <div className="sf-soc"><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="X">X</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="YouTube">▶</a></div>

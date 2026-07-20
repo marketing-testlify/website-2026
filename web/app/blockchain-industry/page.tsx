@@ -139,7 +139,7 @@ export default function BlockchainIndustryPage() {
           </div>
           <div className="tsd-ticks"><span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>No credit card required</span><span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>7-day free trial</span></div>
         </div>
-        <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("assets/blockchain-hero.png")' }}></div></div></div>
+        <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("/assets/blockchain-hero.png")' }}></div></div></div>
       </div></section>
 
       {/* Section 1 — split */}
@@ -151,7 +151,7 @@ export default function BlockchainIndustryPage() {
             <p className="tsd-p">With Testlify, you no longer rely on gut feelings. Test candidates&apos; actual ability, real coding skill, and practical blockchain knowledge, before they ever get to the interview.</p>
             <p className="tsd-p">Save time without compromising on the results.</p>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("assets/blockchain-talent-gap.png")' }}></div></div></div>
+          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("/assets/blockchain-talent-gap.png")' }}></div></div></div>
         </div>
       </div></section>
 
@@ -169,7 +169,7 @@ export default function BlockchainIndustryPage() {
             </div>
             <Link className="tsd-link" href="/pricing">Try for Free<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("assets/blockchain-real-skills.png")' }}></div></div></div>
+          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("/assets/blockchain-real-skills.png")' }}></div></div></div>
         </div>
       </div></section>
 
@@ -186,7 +186,7 @@ export default function BlockchainIndustryPage() {
               ))}
             </div>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("assets/blockchain-assessments.png")' }}></div></div></div>
+          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("/assets/blockchain-assessments.png")' }}></div></div></div>
         </div>
       </div></section>
 

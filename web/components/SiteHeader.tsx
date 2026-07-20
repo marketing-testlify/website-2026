@@ -382,7 +382,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
         <div className="sh-bar">
           <A className="sh-logo" href={homeHref} ariaLabel="Testlify home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="brand/testlify-logo-main.svg" alt="Testlify" />
+            <img src="/brand/testlify-logo-main.svg" alt="Testlify" />
           </A>
           <nav className="nav-links" aria-label="Primary">
             {/* Product */}
