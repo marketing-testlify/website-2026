@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -28,9 +28,27 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
+.tsd-video{max-width:920px;margin:34px auto 0;}
+.tsd-vwrap{position:relative;display:block;border-radius:22px;overflow:hidden;border:1px solid #F0E2E3;background:#fff;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-vimg{height:460px !important;border-radius:0 !important;}
+.tsd-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;background:#F23F44;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 34px rgba(242,63,68,.45);transition:transform .25s ease;}
+.tsd-vwrap:hover .tsd-play{transform:translate(-50%,-50%) scale(1.08);}
+.tsd-play svg{margin-left:4px;}
+.tsd-acc2{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-top:8px;}
+.tsd-accimg{border:1px solid #F0E2E3;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 40px 90px rgba(110,11,14,.14);aspect-ratio:5/4;}
+.tsd-accimg > div{width:100%;height:100%;background-size:contain;background-repeat:no-repeat;background-position:center;}
+@keyframes accimgin{0%{opacity:0;transform:scale(.94) translateY(10px);}100%{opacity:1;transform:none;}}
+.tsd-accimg-in.anim{animation:accimgin .45s cubic-bezier(.2,.7,.3,1);}
+@media(max-width:900px){.tsd-acc2{grid-template-columns:1fr;}.tsd-accimg{order:-1;}}
+.tsd-shot.tsd-plain{background:transparent !important;border:0;box-shadow:none;}
+.tsd-langgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px;margin-top:8px;}
+.tsd-langt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#fff;border:1px solid #F2E6E7;border-radius:16px;padding:26px 16px;font-size:14.5px;font-weight:600;color:#1A1014;text-align:center;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-langt:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
+.tsd-langlogo{width:46px;height:46px;background-size:contain;background-repeat:no-repeat;background-position:center;}
+.tsd-langmore{flex:none;width:46px;height:46px;border-radius:12px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;}
 .tsd-logos{margin-top:40px;}
 /* animated IT hero graphic */
 .ithero-wrap{position:relative;}
@@ -97,6 +115,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -148,38 +168,65 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
-const Check = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+const CardIcon = ({ d }: { d: string }) => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={d}></path></svg>
 );
-
-const ClockIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg>
-);
-
-const faqs = [
-  { q: 'How does the evaluation for coding and programming tests work?', a: 'The evaluation is based on test cases that the code is run against. Candidates’ submissions are evaluated on how well their code performs, ensuring accuracy and efficiency in the assessment.' },
-  { q: 'How can Testlify help recruiters make better hiring decisions?', a: 'Testlify’s features provide recruiters with the tools they need to evaluate candidates accurately and efficiently, ultimately leading to better hiring decisions.' },
-  { q: 'Does Testlify support multifile coding questions?', a: 'Yes, Testlify fully supports multifile coding questions, allowing candidates to work on more complex coding tasks and projects in a real-world environment.' },
-  { q: 'Does Testlify offer time-limited tests?', a: 'Yes, Testlify offers a range of test durations, enabling you to assess a candidate’s programming skills within a specified timeframe.' },
-  { q: 'Which languages/technologies does Testlify support for multifile coding questions?', a: 'Currently, Testlify supports Node.js, Python and Java for multifile coding questions, providing flexibility for diverse coding assessments.' },
-];
 
 const stats = ['45+ languages', 'Proctored VS Code', 'Auto-graded'];
 const logos = ['LTIMindtree', 'Sonatafy', 'Thales', 'Third Bridge', 'Virtual', 'Cogitotech'];
 
-const cards1 = [
-  { title: 'Single & multi-file questions', desc: '45+ languages for single-file coding; Node.js, Python and Java supported for multi-file projects.' },
-  { title: 'Proctoring', desc: 'AI-powered proctoring: video monitoring, screen recording, webcam snapshots, mouse tracking, copy-paste prevention and question-level logs.' },
-  { title: 'Test duration', desc: 'Choose predefined durations of 30, 60 or 90 minutes, or customize to fit your needs.' },
+const cardsKey = [
+  { title: 'Single and multi-file coding questions', iconD: 'M16 18l6-6-6-6M8 6l-6 6 6 6', desc: '45+ languages for single-file coding; Node.js, Python and Java supported for multi-file projects.' },
+  { title: 'Proctoring', iconD: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', desc: 'AI-powered proctoring: video monitoring, screen recording, webcam snapshots, mouse tracking, copy-paste prevention and question-level logs.' },
+  { title: 'Test duration', iconD: 'M12 8v4l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z', desc: 'Choose predefined durations of 30, 60 or 90 minutes, or customize to fit your needs.' },
 ];
 
-const cards2 = [
-  { title: 'Extensive test library', desc: 'Over 350 assessments covering a wide range of skills and topics.' },
-  { title: 'Live coding test', desc: 'Assess a candidate’s coding skills in real time.' },
-  { title: 'White labeling', desc: 'Brand assessments with your own logo, colors and identity.' },
-  { title: 'Customizable assessments', desc: 'Tailor assessments to the specific skills and requirements of the role.' },
-  { title: 'Advanced analytics', desc: 'Insights into how candidates performed on their assessments.' },
-  { title: 'User-friendly interface', desc: 'Easy for both recruiters and candidates to navigate and use.' },
+const cardsWhy = [
+  { title: 'Extensive test library', iconD: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z', desc: 'Over 350 assessments covering a wide range of skills and topics.' },
+  { title: 'Live coding test', iconD: 'M22 12h-4l-3 9L9 3l-3 9H2', desc: "Assess a candidate's coding skills in real time." },
+  { title: 'White labeling', iconD: 'M20.59 13.41 12 22l-9-9V3h10l9 9-1.41 1.41zM7 7h.01', desc: 'Brand assessments with your own logo, colors and identity.' },
+  { title: 'Customizable assessments', iconD: 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z', desc: 'Tailor assessments to the specific skills and requirements of the role.' },
+  { title: 'Advanced analytics', iconD: 'M12 20V10M18 20V4M6 20v-4', desc: 'Insights into how candidates performed on their assessments.' },
+  { title: 'User-friendly interface', iconD: 'M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z', desc: 'Easy for both recruiters and candidates to navigate and use.' },
+];
+
+const DEVICON = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/';
+const langs = [
+  { name: 'JavaScript', logo: DEVICON + 'javascript/javascript-original.svg' },
+  { name: 'TypeScript', logo: DEVICON + 'typescript/typescript-original.svg' },
+  { name: 'Python', logo: DEVICON + 'python/python-original.svg' },
+  { name: 'Java', logo: DEVICON + 'java/java-original.svg' },
+  { name: 'C', logo: DEVICON + 'c/c-original.svg' },
+  { name: 'C++', logo: DEVICON + 'cplusplus/cplusplus-original.svg' },
+  { name: 'C#', logo: DEVICON + 'csharp/csharp-original.svg' },
+  { name: 'Go', logo: DEVICON + 'go/go-original.svg' },
+  { name: 'Ruby', logo: DEVICON + 'ruby/ruby-original.svg' },
+  { name: 'PHP', logo: DEVICON + 'php/php-original.svg' },
+  { name: 'Rust', logo: DEVICON + 'rust/rust-original.svg' },
+  { name: 'Swift', logo: DEVICON + 'swift/swift-original.svg' },
+  { name: 'Kotlin', logo: DEVICON + 'kotlin/kotlin-original.svg' },
+  { name: 'Scala', logo: DEVICON + 'scala/scala-original.svg' },
+  { name: 'SQL', logo: DEVICON + 'mysql/mysql-original.svg' },
+  { name: 'Perl', logo: DEVICON + 'perl/perl-original.svg' },
+  { name: 'Bash', logo: DEVICON + 'bash/bash-original.svg' },
+  { name: 'Haskell', logo: DEVICON + 'haskell/haskell-original.svg' },
+  { name: 'Lua', logo: DEVICON + 'lua/lua-original.svg' },
+  { name: 'R', logo: DEVICON + 'r/r-original.svg' },
+  { name: 'Objective-C', logo: DEVICON + 'objectivec/objectivec-plain.svg' },
+];
+
+const accItems = [
+  { title: 'Real-time programming evaluation to simulate real-world coding scenarios', desc: 'Candidates showcase their programming skills in a simulated real-world coding environment.', img: 'https://testlify.com/wp-content/uploads/2024/11/Coding-projects-in-a-proctored-VS-code-environment-1.png', bg: '#fff' },
+  { title: "Comprehensive reporting system to analyze candidate's performance", desc: "Detailed insights into a candidate's performance, so you can make informed decisions when selecting candidates for technical positions.", img: 'https://testlify.com/wp-content/uploads/2024/11/Score-reports-and-insights-1-1024x1024.png', bg: '#F3F6F9' },
+  { title: 'Wide range of programming languages & frameworks available', desc: 'Choose from a wide range of programming languages and frameworks to create tests that match the technical requirements of your positions.', img: 'https://testlify.com/wp-content/uploads/2022/03/Product-image-1024x741.png', bg: '#fff' },
+];
+
+const faqs = [
+  { q: 'How does the evaluation for coding and programming tests work?', a: "The evaluation is based on test cases that the code is run against. Candidates' submissions are evaluated on how well their code performs, ensuring accuracy and efficiency in the assessment." },
+  { q: 'How can Testlify help recruiters make better hiring decisions?', a: "Testlify's features provide recruiters with the tools they need to evaluate candidates accurately and efficiently, ultimately leading to better hiring decisions." },
+  { q: 'Does Testlify support multifile coding questions?', a: 'Yes, Testlify fully supports multifile coding questions, allowing candidates to work on more complex coding tasks and projects in a real-world environment.' },
+  { q: 'Does Testlify offer time-limited tests?', a: "Yes, Testlify offers a range of test durations, enabling you to assess a candidate's programming skills within a specified timeframe." },
+  { q: 'Which languages/technologies does Testlify support for multifile coding questions?', a: 'Currently, Testlify supports Node.js, Python and Java for multifile coding questions, providing flexibility for diverse coding assessments.' },
 ];
 
 const ats = [
@@ -195,9 +242,16 @@ const ats = [
   { src: 'https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png', alt: 'JazzHR' },
 ];
 
+const ArrowLink = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+);
+
 export default function CodingTestsPage() {
   const [open, setOpen] = useState<Record<number, boolean>>({});
   const toggle = (i: number) => setOpen((s) => ({ ...s, [i]: !s[i] }));
+  const [acc, setAcc] = useState(0);
+  const toggleAcc = (j: number) => setAcc((cur) => (cur === j ? -1 : j));
+  const activeIdx = acc >= 0 ? acc : 0;
 
   return (
     <>
@@ -209,7 +263,7 @@ export default function CodingTestsPage() {
           <div className="tsd-copy reveal">
             <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Test type / Coding</span></div>
             <p className="eyebrow">Live coding tests<b>.</b></p>
-            <h1 className="tsd-h1">Identify top developers with live coding and programming tests</h1>
+            <h1 className="tsd-h1">Identify top developers with <span className="tac">live coding and programming tests</span></h1>
             <p className="tsd-lead">Testlify supports live coding tests in 45+ programming languages, so you can assess a candidate&apos;s technical skills across languages. Assign real-world tasks directly within the platform — all in a secure, fully proctored environment that maintains assessment integrity.</p>
             <div className="tsd-stats">
               {stats.map((t) => (
@@ -260,40 +314,34 @@ export default function CodingTestsPage() {
         </div>
       </section>
 
-      {/* Section 0: split */}
-      <section className="tsd-sec ">
+      {/* Section 0: video */}
+      <section className="tsd-sec">
         <div className="tsdw">
-          <div className="tsd-grid2 ">
-            <div className="tsd-copy reveal">
-              <h2 className="tsd-h2">Assess real-world coding ability, in any stack</h2>
-              <p className="tsd-p">Role-specific challenges with built-in auto-grading and broad language support streamline evaluation. Simulate real coding scenarios and get a practical assessment of programming skill.</p>
-              <div className="tsd-bl">
-                {['JavaScript, TypeScript, Python, Java', 'C, C++, C#, Go, Ruby, PHP, Rust', 'Swift, Kotlin, Scala, SQL and 45+ in total'].map((label) => (
-                  <div className="tsd-bi" key={label}><Check /><span className="tsd-bt">{label}</span></div>
-                ))}
-              </div>
-            </div>
-            <div className="tsd-media reveal">
-              <div className="tsd-shot">
-                <div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2026/03/Coding-Test.png")' }}></div>
-              </div>
-            </div>
+          <div className="tsd-shead reveal">
+            <h2 className="tsd-h2">See how coding test works</h2>
+            <p className="tsd-lead">Assess real-world coding ability with role-specific challenges. Built-in auto-grading and broad language support streamline the evaluation process.</p>
+          </div>
+          <div className="tsd-video reveal">
+            <a className="tsd-vwrap" href="https://youtu.be/apt7oAl8nNw?si=eJGWTBX7jUpPY3Lr" target="_blank" rel="noopener">
+              <div className="tsd-shotimg tsd-vimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2026/03/Coding-Test.png")' }}></div>
+              <span className="tsd-play"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"></path></svg></span>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Section 1: cards */}
+      {/* Section 1: cards — Key features */}
       <section className="tsd-sec tsd-sand">
         <div className="tsdw">
           <div className="tsd-shead reveal">
             <p className="eyebrow">Key features<b>.</b></p>
-            <h2 className="tsd-h2">What makes coding tests reliable and comprehensive</h2>
-            <p className="tsd-lead">Everything you need for a fair, secure coding assessment.</p>
+            <h2 className="tsd-h2">Key features of coding tests</h2>
+            <p className="tsd-lead">Explore the critical components that make coding tests reliable and comprehensive.</p>
           </div>
           <div className="tsd-cards">
-            {cards1.map((c) => (
+            {cardsKey.map((c) => (
               <div className="tsd-card reveal" key={c.title}>
-                <div className="tsd-ic"><ClockIcon /></div>
+                <div className="tsd-ic"><CardIcon d={c.iconD} /></div>
                 <p className="tsd-ct">{c.title}</p>
                 <p className="tsd-cd">{c.desc}</p>
               </div>
@@ -302,25 +350,68 @@ export default function CodingTestsPage() {
         </div>
       </section>
 
-      {/* Section 2: split (flipped) */}
-      <section className="tsd-sec ">
+      {/* Section 2: langs */}
+      <section className="tsd-sec">
         <div className="tsdw">
-          <div className="tsd-grid2 tsd-flip">
+          <div className="tsd-shead reveal">
+            <h2 className="tsd-h2">Languages and technologies Testlify supports</h2>
+          </div>
+          <div className="tsd-langgrid reveal">
+            {langs.map((lg) => (
+              <div className="tsd-langt" key={lg.name}>
+                <span className="tsd-langlogo" style={{ backgroundImage: `url("${lg.logo}")` }}></span>{lg.name}
+              </div>
+            ))}
+          </div>
+          <div className="reveal" style={{ textAlign: 'center', marginTop: '30px' }}>
+            <Link className="tsd-link" href="/test-library">See all 45+ languages<ArrowLink /></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: accordion — Evaluation */}
+      <section className="tsd-sec tsd-sand">
+        <div className="tsdw">
+          <div className="tsd-shead reveal">
+            <p className="eyebrow">Evaluation<b>.</b></p>
+            <h2 className="tsd-h2">Advanced evaluation and reporting</h2>
+            <p className="tsd-lead">Simulate real-world coding scenarios and get a practical assessment of candidates&apos; programming skills, with reporting that supports informed hiring decisions.</p>
+          </div>
+          <div className="tsd-acc2 reveal">
+            <div className="tsd-faqw">
+              {accItems.map((it, j) => (
+                <div className={'tsd-faq ' + (activeIdx === j ? 'tsd-open' : '')} onClick={() => toggleAcc(j)} key={j}>
+                  <div className="tsd-faqq">{it.title}<span className="tsd-faqx">+</span></div>
+                  <div className="tsd-faqa">{it.desc}</div>
+                </div>
+              ))}
+            </div>
+            <div className="tsd-accimg" style={{ background: accItems[activeIdx].bg }}>
+              <div className="tsd-accimg-in anim" style={{ backgroundImage: `url("${accItems[activeIdx].img}")` }}></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: split */}
+      <section className="tsd-sec">
+        <div className="tsdw">
+          <div className="tsd-grid2">
             <div className="tsd-copy reveal">
               <h2 className="tsd-h2">Coding projects in a proctored VS Code environment</h2>
               <p className="tsd-p">Let candidates demonstrate their skills directly within a live VS Code environment on the Testlify platform. From the moment they begin, candidates can access and work on multi-file projects in popular languages like Node.js, Python and Java.</p>
               <p className="tsd-p">This hands-on approach evaluates coding proficiency, problem-solving and code structure in a real-world setting — all monitored in a fully proctored environment to ensure integrity.</p>
             </div>
             <div className="tsd-media reveal">
-              <div className="tsd-shot">
-                <div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/11/Coding-projects-in-a-proctored-VS-code-environment-1.png")' }}></div>
+              <div className="tsd-shot" style={{ background: '#F3F6F9' }}>
+                <div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/11/Coding-projects-in-a-proctored-VS-code-environment-1.png")' }}></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 3: cards */}
+      {/* Section 5: cards — Why Testlify */}
       <section className="tsd-sec tsd-sand">
         <div className="tsdw">
           <div className="tsd-shead reveal">
@@ -329,13 +420,31 @@ export default function CodingTestsPage() {
             <p className="tsd-lead">Advanced testing features and customizable options for accurate evaluation.</p>
           </div>
           <div className="tsd-cards">
-            {cards2.map((c) => (
+            {cardsWhy.map((c) => (
               <div className="tsd-card reveal" key={c.title}>
-                <div className="tsd-ic"><ClockIcon /></div>
+                <div className="tsd-ic"><CardIcon d={c.iconD} /></div>
                 <p className="tsd-ct">{c.title}</p>
                 <p className="tsd-cd">{c.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: feature — Effortless integration */}
+      <section className="tsd-sec">
+        <div className="tsdw">
+          <div className="tsd-shead reveal">
+            <h2 className="tsd-h2">Effortless integration</h2>
+            <p className="tsd-lead">Integrating Testlify into your HR tech stack is easy with our integrations with popular tools. Streamline your recruitment process and find the best technical talent with Testlify.</p>
+            <div style={{ marginTop: '8px' }}>
+              <Link className="tsd-link" href="/product-integrations">See all integrations<ArrowLink /></Link>
+            </div>
+          </div>
+          <div className="tsd-video reveal">
+            <div className="tsd-shot tsd-plain">
+              <div className="tsd-shotimg" style={{ backgroundColor: 'transparent', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2023/03/Integrations-1024x833.png")' }}></div>
+            </div>
           </div>
         </div>
       </section>
@@ -355,7 +464,7 @@ export default function CodingTestsPage() {
               </div>
             ))}
           </div>
-          <div className="itats-more reveal"><Link href="/integrations">View all ATS integrations<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link></div>
+          <div className="itats-more reveal"><Link href="/integrations">View all ATS integrations<ArrowLink /></Link></div>
         </div>
       </section>
 

@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -94,6 +94,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -241,7 +243,7 @@ export default function DiversityAndInclusionsPage() {
               <span>Use case / Diversity &amp; inclusion</span>
             </div>
             <p className="eyebrow">Diversity &amp; inclusion<b>.</b></p>
-            <h1 className="tsd-h1">Fostering diversity and inclusion</h1>
+            <h1 className="tsd-h1">Fostering <span className="tac">diversity and inclusion</span></h1>
             <p className="tsd-lead">We’re dedicated to building a company you’ll be proud to grow with. At Testlify, we understand the significance of diversity, inclusion, and belonging (DI&amp;B) and consider them essential to our mission, not mere add-ons.</p>
             <div className="tsd-stats">
               {stats.map((t) => (<span className="tsd-statc" key={t}>{t}</span>))}

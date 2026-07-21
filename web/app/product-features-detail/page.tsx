@@ -52,7 +52,7 @@ a:hover{color:#DC3137;}
 .ft-split.rev .ft-splitcopy{order:2;}
 .ft-chks{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:24px;}
 .chk{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;line-height:1.45;color:#46383C;font-weight:500;}
-.chki{flex:none;width:22px;height:22px;border-radius:7px;background:#F23F44;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.chki{flex:none;width:22px;height:22px;border-radius:7px;background:transparent !important;display:flex;align-items:center;justify-content:center;margin-top:1px;}.chki svg{stroke:#1FA463;}
 .ft-panel{background:#fff;border:1px solid #EFE2E3;border-radius:20px;box-shadow:0 22px 50px rgba(110,11,14,.09);overflow:hidden;}
 .ft-panelslot{aspect-ratio:5/4;background:#FBF3EE;}
 .ft-statband{background:radial-gradient(900px 480px at 50% -10%,#2A1417 0%,#1A1014 62%);color:#fff;}

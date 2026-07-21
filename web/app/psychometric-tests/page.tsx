@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -97,6 +97,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -152,6 +154,10 @@ const Check = () => (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
 );
 
+const Arrow = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+);
+
 const faqs = [
   { q: 'How can psychometric tests be used for recruitment and assessing candidates?', a: "Psychometric tests assess candidates' skills, personality, and cognitive abilities, aiding recruiters in making informed and objective hiring decisions." },
   { q: 'What is the purpose of psychometric evaluation in hiring?', a: 'Psychometric evaluation in hiring serves to identify candidate suitability, promoting objective assessment of traits crucial for job performance and team dynamics.' },
@@ -174,7 +180,7 @@ export default function PsychometricTestsPage() {
         <div className="tsd-copy reveal">
           <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Test type / Personality &amp; culture</span></div>
           <p className="eyebrow">Personality &amp; culture tests<b>.</b></p>
-          <h1 className="tsd-h1">Assess candidates with psychometric tests and hire the best</h1>
+          <h1 className="tsd-h1">Assess candidates with <span className="tac">psychometric tests</span> and hire the best</h1>
           <p className="tsd-lead">One of the main challenges in hiring is identifying candidates who possess the right skills and cultural fit for the organization. Use psychometric tests to overcome hiring challenges and ensure the selection of the best-fit candidates.</p>
           <div className="tsd-stats">
             <span className="tsd-statc">DISC · SMART · Culture fit</span>
@@ -220,7 +226,7 @@ export default function PsychometricTestsPage() {
         </div>
       </div></section>
 
-      {/* Section 1: split (no bg, not flipped) */}
+      {/* Section 1: split — no bg, not flipped */}
       <section className="tsd-sec"><div className="tsdw">
         <div className="tsd-grid2">
           <div className="tsd-copy reveal">
@@ -233,11 +239,11 @@ export default function PsychometricTestsPage() {
               <div className="tsd-bi"><Check /><span className="tsd-bt">Evaluates fit with organizational culture</span></div>
             </div>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2023/03/Psychometric-Tests-2.png")' }} /></div></div>
+          <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#F3F6F9' }}><div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2023/03/Psychometric-Tests-2.png")' }} /></div></div>
         </div>
       </div></section>
 
-      {/* Section 2: split (sand bg, flipped) */}
+      {/* Section 2: split — sand bg, flipped */}
       <section className="tsd-sec tsd-sand"><div className="tsdw">
         <div className="tsd-grid2 tsd-flip">
           <div className="tsd-copy reveal">
@@ -250,25 +256,46 @@ export default function PsychometricTestsPage() {
               <div className="tsd-bi"><Check /><span className="tsd-bt">Saves time and resources in recruitment</span></div>
             </div>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2023/03/Benefits-of-psychometric-tests-for-recruitment-.png")' }} /></div></div>
+          <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#FFF' }}><div className="tsd-shotimg" style={{ backgroundColor: '#FFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2023/03/Benefits-of-psychometric-tests-for-recruitment-.png")' }} /></div></div>
         </div>
       </div></section>
 
-      {/* Section 3: cards (no bg) */}
+      {/* Section 3: split — no bg, not flipped */}
       <section className="tsd-sec"><div className="tsdw">
-        <div className="tsd-shead reveal"><p className="eyebrow">Choose your assessment<b>.</b></p><h2 className="tsd-h2">Three personality assessments, one platform</h2><p className="tsd-lead">Pick the framework that fits your role and culture goals.</p></div>
-        <div className="tsd-cards">
-          {[
-            { title: 'DISC personality test', desc: "Understand behavioral styles through statement-based questions on a 4-point Likert scale — aligning candidates' preferences with job requirements and supporting team development." },
-            { title: 'SMART personality test', desc: 'Inspired by the Big Five, SMART evaluates Sociability, Mindfulness, Agreeableness, Receptivity and Temperamental Behavior — backed by rigorous research for recruitment, team building and development.' },
-            { title: 'Cultural Fit test', desc: "Focuses on a candidate's alignment with your organization's ethos, values and work environment — minimizing turnover and maximizing productivity." },
-          ].map((c, i) => (
-            <div className="tsd-card reveal" key={i}>
-              <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 2" /></svg></div>
-              <p className="tsd-ct">{c.title}</p>
-              <p className="tsd-cd">{c.desc}</p>
-            </div>
-          ))}
+        <div className="tsd-grid2">
+          <div className="tsd-copy reveal">
+            <h2 className="tsd-h2">DISC personality test</h2>
+            <p className="tsd-p">Testlify&apos;s DISC personality test offers a thorough understanding of individual behavioral styles through statement-based questions on a 4-point Likert scale and situational queries.</p>
+            <p className="tsd-p">The personality test aids hiring decisions by aligning candidates&apos; behavioral preferences with job requirements, fostering team development by providing insights into strengths and communication preferences, and supporting personal growth.</p>
+            <Link className="tsd-link" href="/test-library">Use this test<Arrow /></Link>
+          </div>
+          <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#F3F6F9' }}><div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2023/04/manual-screening.svg")' }} /></div></div>
+        </div>
+      </div></section>
+
+      {/* Section 4: split — sand bg, flipped */}
+      <section className="tsd-sec tsd-sand"><div className="tsdw">
+        <div className="tsd-grid2 tsd-flip">
+          <div className="tsd-copy reveal">
+            <h2 className="tsd-h2">SMART personality test</h2>
+            <p className="tsd-p">Testlify&apos;s unique SMART personality test is inspired by the Big Five Factor Theory. The test, encompassing Sociability, Mindfulness, Agreeableness, Receptivity to new things, and Temperamental Behavior, meticulously evaluates these five dimensions.</p>
+            <p className="tsd-p">Crafted with behavior indicators and measurements, the SMART test ensures accuracy, providing a comprehensive solution for recruitment, team building, and personal development, backed by rigorous research and dedication to precision.</p>
+            <Link className="tsd-link" href="/test-library">Use this test<Arrow /></Link>
+          </div>
+          <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#FFF' }}><div className="tsd-shotimg" style={{ backgroundColor: '#FFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/11/Better-Skill-Set-Evaluation-Process.png")' }} /></div></div>
+        </div>
+      </div></section>
+
+      {/* Section 5: split — no bg, not flipped */}
+      <section className="tsd-sec"><div className="tsdw">
+        <div className="tsd-grid2">
+          <div className="tsd-copy reveal">
+            <h2 className="tsd-h2">Cultural Fit test</h2>
+            <p className="tsd-p">Testlify&apos;s Cultural Fit test is an essential tool for data-driven hiring decisions, focusing on a candidate&apos;s alignment with an organization&apos;s ethos, values, professional attributes, and work environment.</p>
+            <p className="tsd-p">This psychometric test helps you assess if the candidate would be a good fit for the team, minimizing turnover, and maximizing productivity for a mutually beneficial employer-employee relationship.</p>
+            <Link className="tsd-link" href="/test-library">Use this test<Arrow /></Link>
+          </div>
+          <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#F3F6F9' }}><div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/10/Asset-16.svg")' }} /></div></div>
         </div>
       </div></section>
 

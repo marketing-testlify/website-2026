@@ -8,6 +8,9 @@ import SecuritySection from "@/components/SecuritySection";
 
 const css = `
 *{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+a{text-decoration:none;color:inherit;}
+::selection{background:#F23F44;color:#fff;}
 .wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
 .sec{padding:96px 28px;}
 .eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 18px;}
@@ -20,6 +23,7 @@ const css = `
 .muted{color:#8A7A7D;}
 .acc{color:#F23F44;}
 .plabel{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#A9999C;}
+.reveal{opacity:0;transform:translateY(28px);}
 @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 .mqword{font-size:24px;font-weight:700;color:#C9B9BC;letter-spacing:-.5px;white-space:nowrap;}
 .ctabtn .cta-play{width:24px !important;height:24px !important;}
@@ -64,7 +68,7 @@ const css = `
 /* steps */
 .split{display:grid;grid-template-columns:1.02fr 1.05fr;gap:64px;align-items:center;}
 .chk{display:flex;gap:12px;align-items:flex-start;}
-.chki{flex:none;width:24px;height:24px;border-radius:7px;background:#F23F44;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.chki{flex:none;width:24px;height:24px;border-radius:7px;background:transparent !important;display:flex;align-items:center;justify-content:center;margin-top:1px;}.chki svg{stroke:#1FA463;}
 .stepno{flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:#F23F44;color:#fff;font-weight:800;font-size:15px;}
 .stephead{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
 .rulerow{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid #F1E6E7;border-radius:13px;margin-bottom:10px;font-size:13.5px;}

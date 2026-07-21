@@ -158,9 +158,9 @@ const sections: Section[] = [
     h2: 'Hire candidates in bulk with confidence',
     intro: "Speed doesn't have to mean compromise. Every high-volume hire is backed by data.",
     cards: [
-      { title: 'Powerful proctoring', desc: 'Snapshots, tab-switch and mouse tracking keep results trustworthy at any volume.' },
-      { title: 'Diverse assessment types', desc: 'Combine cognitive, role-specific and behavioral tests in one flow.' },
-      { title: 'Robust reporting & analytics', desc: 'Spot bottlenecks, benchmark candidates and prove time-to-hire gains.' },
+      { title: 'Powerful proctoring', icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', desc: 'Snapshots, tab-switch and mouse tracking keep results trustworthy at any volume.' },
+      { title: 'Diverse assessment types', icon: 'M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5', desc: 'Combine cognitive, role-specific and behavioral tests in one flow.' },
+      { title: 'Robust reporting & analytics', icon: 'M12 20V10M18 20V4M6 20v-4', desc: 'Spot bottlenecks, benchmark candidates and prove time-to-hire gains.' },
     ],
   },
   {

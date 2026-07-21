@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -97,6 +97,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -156,8 +158,8 @@ const Arrow = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
 );
 
-const Clock = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg>
+const CardIcon = ({ d }: { d: string }) => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={d}></path></svg>
 );
 
 const logos = ['LTIMindtree', 'Sonatafy', 'Thales', 'Third Bridge', 'Virtual', 'Cogitotech'];
@@ -185,7 +187,7 @@ export default function SmallMediumBusinessesPage() {
           <div className="tsd-copy reveal">
             <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Company size / SMBs</span></div>
             <p className="eyebrow">For SMBs<b>.</b></p>
-            <h1 className="tsd-h1">Smart skills assessments for SMBs</h1>
+            <h1 className="tsd-h1">Smart skills assessments for <span className="tac">SMBs</span></h1>
             <p className="tsd-lead">Make faster, bias-free hiring decisions with expertly designed assessments tailored for small and growing businesses. Testlify is built for the agility and speed SMBs need without compromising on quality — identify top talent with ready-to-use tests, automated workflows and instant insights.</p>
             <div className="tsd-stats">
               <span className="tsd-statc">50% faster time-to-hire</span>
@@ -260,12 +262,12 @@ export default function SmallMediumBusinessesPage() {
           </div>
           <div className="tsd-cards">
             {[
-              { title: 'Real-time candidate scoring', desc: "Manage hundreds of candidate profiles with a single click and see who's progressing, instantly." },
-              { title: 'Candidate benchmarking', desc: 'Connect with top prospects against job postings while candidates enjoy a simple, professional experience.' },
-              { title: 'Easy PDF reports', desc: 'Fully branded assessments and clear PDF reports built for hiring managers to act on fast.' },
+              { title: 'Real-time candidate scoring', icon: 'M22 12h-4l-3 9L9 3l-3 9H2', desc: "Manage hundreds of candidate profiles with a single click and see who's progressing, instantly." },
+              { title: 'Candidate benchmarking', icon: 'M12 20V10M18 20V4M6 20v-4', desc: 'Connect with top prospects against job postings while candidates enjoy a simple, professional experience.' },
+              { title: 'Easy PDF reports', icon: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8', desc: 'Fully branded assessments and clear PDF reports built for hiring managers to act on fast.' },
             ].map((c, i) => (
               <div className="tsd-card reveal" key={i}>
-                <div className="tsd-ic"><Clock /></div>
+                <div className="tsd-ic"><CardIcon d={c.icon} /></div>
                 <p className="tsd-ct">{c.title}</p>
                 <p className="tsd-cd">{c.desc}</p>
               </div>
@@ -302,12 +304,12 @@ export default function SmallMediumBusinessesPage() {
           </div>
           <div className="tsd-cards">
             {[
-              { title: 'Drag-and-drop test creation', desc: 'Intuitive design means founders, office managers and team leads can build tests fast.' },
-              { title: '100+ ATS integrations', desc: 'Works out of the box with your existing tools and recruitment workflow.' },
-              { title: 'Anti-cheat & proctoring', desc: 'Built-in proctoring and anti-cheating keep every assessment fair and secure.' },
+              { title: 'Drag-and-drop test creation', icon: 'M5 9 2 12l3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20', desc: 'Intuitive design means founders, office managers and team leads can build tests fast.' },
+              { title: '100+ ATS integrations', icon: 'M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1', desc: 'Works out of the box with your existing tools and recruitment workflow.' },
+              { title: 'Anti-cheat & proctoring', icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', desc: 'Built-in proctoring and anti-cheating keep every assessment fair and secure.' },
             ].map((c, i) => (
               <div className="tsd-card reveal" key={i}>
-                <div className="tsd-ic"><Clock /></div>
+                <div className="tsd-ic"><CardIcon d={c.icon} /></div>
                 <p className="tsd-ct">{c.title}</p>
                 <p className="tsd-cd">{c.desc}</p>
               </div>

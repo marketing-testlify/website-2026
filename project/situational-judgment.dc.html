@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -97,6 +97,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -153,7 +155,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <div class="tsd-copy reveal">
 <div class="tsd-crumb"><a href="solution-index.dc.html">Solutions</a><span>/</span><span>{{ crumb }}</span></div>
 <p class="eyebrow">{{ eyebrow }}<b>.</b></p>
-<h1 class="tsd-h1">{{ title }}</h1>
+<h1 class="tsd-h1">{{ titlePre }}<span class="tac">{{ titleAccent }}</span>{{ titlePost }}</h1>
 <p class="tsd-lead">{{ lead }}</p>
 <sc-if value="{{ hasStats }}" hint-placeholder-val="{{ false }}"><div class="tsd-stats"><sc-for list="{{ stats }}" as="st" hint-placeholder-count="3"><span class="tsd-statc">{{ st.t }}</span></sc-for></div></sc-if>
 <div class="tsd-ctas">
@@ -197,9 +199,9 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <sc-if value="{{ s.hasBullets }}" hint-placeholder-val="{{ false }}"><div class="{{ s.blClass }}"><sc-for list="{{ s.bullets }}" as="b" hint-placeholder-count="4"><div class="tsd-bi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="tsd-bt"><sc-if value="{{ b.hasHref }}" hint-placeholder-val="{{ false }}"><a href="{{ b.href }}">{{ b.label }}</a></sc-if><sc-if value="{{ b.noHref }}" hint-placeholder-val="{{ true }}">{{ b.label }}</sc-if><sc-if value="{{ b.hasDesc }}" hint-placeholder-val="{{ false }}"><span class="tsd-bd">{{ b.desc }}</span></sc-if></span></div></sc-for></div></sc-if>
 <sc-if value="{{ s.hasCta }}" hint-placeholder-val="{{ false }}"><a class="tsd-link" href="{{ s.cta.href }}">{{ s.cta.label }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></sc-if>
 </div>
-<div class="tsd-media reveal"><div class="tsd-shot"><sc-if value="{{ s.hasImg }}" hint-placeholder-val="{{ false }}"><div class="tsd-shotimg" data-bg="{{ s.img }}"></div></sc-if><sc-if value="{{ s.noImg }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ s.slotId }}" shape="rounded" radius="14" placeholder="Drop an image"></image-slot></sc-if></div></div>
+<div class="tsd-media reveal"><div class="tsd-shot" style="background:{{ s.shotBg }}"><sc-if value="{{ s.hasImg }}" hint-placeholder-val="{{ false }}"><div class="tsd-shotimg" style="background-color:{{ s.shotBg }}" data-bg="{{ s.img }}"></div></sc-if><sc-if value="{{ s.noImg }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ s.slotId }}" shape="rounded" radius="14" placeholder="Drop an image"></image-slot></sc-if></div></div>
 </div></sc-if>
-<sc-if value="{{ s.isCards }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2><sc-if value="{{ s.hasIntro }}" hint-placeholder-val="{{ false }}"><p class="tsd-lead">{{ s.intro }}</p></sc-if></div><div class="tsd-cards"><sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="3"><div class="tsd-card reveal"><div class="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg></div><p class="tsd-ct">{{ c.title }}</p><p class="tsd-cd">{{ c.desc }}</p></div></sc-for></div></sc-if>
+<sc-if value="{{ s.isCards }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2><sc-if value="{{ s.hasIntro }}" hint-placeholder-val="{{ false }}"><p class="tsd-lead">{{ s.intro }}</p></sc-if></div><div class="tsd-cards"><sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="3"><div class="tsd-card reveal"><div class="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ c.iconD }}"></path></svg></div><p class="tsd-ct">{{ c.title }}</p><p class="tsd-cd">{{ c.desc }}</p></div></sc-for></div></sc-if>
 <sc-if value="{{ s.isGrid }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2><sc-if value="{{ s.hasIntro }}" hint-placeholder-val="{{ false }}"><p class="tsd-lead">{{ s.intro }}</p></sc-if></div><div class="tsd-fgrid"><sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="6"><div class="tsd-fcard reveal"><div class="tsd-fn">{{ c.n }}</div><p class="tsd-ct">{{ c.title }}</p><p class="tsd-cd">{{ c.desc }}</p></div></sc-for></div></sc-if>
 <sc-if value="{{ s.isSteps }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2></div><div class="tsd-steps"><sc-for list="{{ s.steps }}" as="st" hint-placeholder-count="3"><div class="tsd-step reveal"><div class="tsd-sn">{{ st.n }}</div><p class="tsd-ct">{{ st.title }}</p><p class="tsd-cd">{{ st.desc }}</p></div></sc-for></div></sc-if>
 <sc-if value="{{ s.isChips }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><h2 class="tsd-h2">{{ s.h2 }}</h2></div><div class="tsd-chips" style="justify-content:center;"><sc-for list="{{ s.chips }}" as="ch" hint-placeholder-count="6"><span class="tsd-chip">{{ ch }}</span></sc-for></div></sc-if>
@@ -262,17 +264,19 @@ class Component extends DCLogic {
       crumb:"Test type / Situational judgment",
       eyebrow:"Situational judgment tests",
       title:"Test real-world thinking with situational judgment tests",
+      accent:"situational judgment tests",
       lead:"When resumes blur together and interviews feel rehearsed, how do you really know how a candidate will perform on the job? Situational Judgment Tests simulate the everyday decisions your team faces — giving you a lens into soft skills, critical thinking and cultural fit. It's not guesswork; it's predictive, practical hiring at scale.",
       ctaLabel:"Try for free",
       ctaHref:"pricing.dc.html",
       stats:[{t:"Real-world scenarios"},{t:"90%+ completion"},{t:"DEI-first design"}],
       logos:["LTIMindtree","Sonatafy","Thales","Third Bridge","Virtual","Cogitotech"],
       sections:[
-        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/10/Subject-assessment-1024x1024.png", h2:"Strategic relevance for hiring teams", body:["A Situational Judgment Test helps you see what a resume can't — how candidates respond to practical, high-pressure situations before you make the hire.","Our SJTs simulate the day-to-day decisions your team faces. From entry-level roles to leadership, you gain deeper insight into critical thinking, emotional intelligence and how well a candidate fits your team's culture."]},
-        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/11/Better-Skill-Set-Evaluation-Process.png", h2:"Real scenarios, real insight, real talent", body:["Anyone can say they're a problem solver — our situational judgment assessment makes them prove it. We work with domain experts to craft assessments grounded in real-world situations tailored to your industry, role and expectations."], bullets:[{label:"Conflict resolution and interpersonal judgment"},{label:"Prioritization and time management"},{label:"Ethical decision-making under pressure"},{label:"Leadership and collaboration dynamics"}]},
-        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/11/Vast-Lib-1-1024x1024-1.png", h2:"Elevate your hiring game, not your workload", body:["You need smarter hiring, not more complexity. Our SJTs integrate effortlessly into your existing workflows with ready-to-use templates, customizable test paths and built-in automation — saving time while giving more reliable hiring signals."], bullets:[{label:"A vast library of assessments"},{label:"Seamless ATS and HRMS integrations"},{label:"Tailored tests for any role or seniority"},{label:"Automated scoring, insights and filtering"}]},
-        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/02/How-to-simplify-candidate-screening-with-salesforce-test-1024x761.png", h2:"A better experience for candidates means better talent for you", body:["Great talent has choices, and a frustrating assessment could mean they choose someone else. Our SJTs are intuitive, fast and fair — no trick questions, no jargon, just realistic scenarios, clear instructions and a polished experience."], bullets:[{label:"Mobile-friendly and accessible"},{label:"DEI-first design that reduces bias"},{label:"90%+ candidate completion rate"}]},
-        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/10/team-1024x567.png", h2:"Actionable insights, not just scores", body:["A raw score can't tell the full story — our situational judgment assessments can. Get deep, contextual insight into how candidates think and respond, with a reporting dashboard that helps you compare candidates and refine your hiring strategy over time."], bullets:[{label:"Skill-by-skill breakdowns"},{label:"Cultural and team fit indicators"},{label:"Time-stamped decision tracking"},{label:"Exportable reports for hiring managers and stakeholders"}], cta:{label:"Try for free", href:"pricing.dc.html"}}
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/10/Subject-assessment-1024x1024.png", shotBg:"#F3F6F9", h2:"Strategic relevance for hiring teams", body:["When resumes blur together and interviews feel rehearsed, how do you really know how a candidate will perform on the job?","A Situational Judgment Test (SJT) helps you see what a resume can't. These assessments reveal how candidates respond to practical, high-pressure situations before you make the hire.","At Testlify, our situational judgment tests are designed to simulate the day-to-day decisions your team faces. From entry-level roles to leadership, you'll gain deeper insight into critical thinking, emotional intelligence, and how well a candidate fits your team's culture."]},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/11/Better-Skill-Set-Evaluation-Process.png", shotBg:"#FFF", h2:"Real scenarios, real insight, real talent", body:["Anyone can say they're a problem solver. Our situational judgment assessment makes them prove it. We work with domain experts to craft assessments grounded in real-world situations tailored to your industry, role, and expectations.","Whether you're hiring junior professionals or evaluating leadership potential, situational judgment tests for managers and teams give you the clarity to hire with confidence. Because the best hires aren't just technically skilled — they're situationally smart.","Testlify helps you assess key decision-making skills such as:"], bullets:[{label:"Conflict resolution and interpersonal judgment"},{label:"Prioritization and time management"},{label:"Ethical decision-making under pressure"},{label:"Leadership and collaboration dynamics"}]},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/11/Vast-Lib-1-1024x1024-1.png", shotBg:"#F3F6F9", h2:"Elevate your hiring game, not your workload", body:["You need smarter hiring, not more complexity.","That's why our situational judgment tests integrate effortlessly into your existing hiring workflows. With ready-to-use templates, customizable test paths, and automation built in, you'll save time while gaining more reliable hiring signals.","What you get:"], bullets:[{label:"A vast library of assessments"},{label:"Seamless ATS and HRMS integrations"},{label:"Tailored tests for any role or seniority"},{label:"Automated scoring, insights, and filtering"}]},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/02/How-to-simplify-candidate-screening-with-salesforce-test-1024x761.png", shotBg:"#FFF", h2:"A better experience for candidates means better talent for you", body:["Great talent has choices. And a frustrating assessment process could mean they choose someone else.","Our situational judgment tests for professionals are built to be intuitive, fast, and fair keeping top candidates engaged throughout. No trick questions. No jargon. Just realistic scenarios, clear instructions, and a polished user experience. When candidates enjoy the process, they're more likely to say yes and speak highly of your brand."], bullets:[{label:"Mobile-friendly and accessible"},{label:"DEI-first design that reduces bias"},{label:"90%+ candidate completion rate"}]},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/10/team-1024x567.png", shotBg:"#F3F6F9", h2:"Actionable insights, not just scores", body:["A raw score can't tell the full story. But our situational judgment assessments can.","Get deep, contextual insights into how candidates think and respond. Our reporting dashboard breaks down individual scoring and report so you can compare candidates, identify patterns, and refine your hiring strategy over time.","Here's what you'll see:"], bullets:[{label:"Skill-by-skill breakdowns"},{label:"Cultural and team fit indicators"},{label:"Time-stamped decision tracking"},{label:"Exportable reports for hiring managers and stakeholders"}]},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/05/undraw_Predictive_analytics_re_wxt8.png", shotBg:"#FFF", h2:"The smartest teams hire with Testlify", body:["Top teams don't guess. They test.","Whether you're scaling a sales team, hiring people leaders, or filling high-impact roles, our situational judgment tests deliver clarity, speed, and confidence at every stage of the hiring journey.","Ready to see how it works?"], cta:{label:"Book a demo", href:"contact.dc.html"}}
       ],
       faqs:[
         {q:"What skills can I test under situational judgment tests?", a:"Based on the job role, you can test for business judgment, business communication, time management, business negotiation, critical thinking and business ethics."},
@@ -285,15 +289,16 @@ class Component extends DCLogic {
       faqTitle:"Frequently asked questions (FAQs)"
     };
     const P = (this.props && this.props.pageData) ? this.props.pageData : DATA;
+    var __ti=((P.title||'')+''); var __ac=((P.accent||'')+'').trim(); var __ix=__ac?__ti.indexOf(__ac):-1; var __pre=__ix>=0?__ti.slice(0,__ix):__ti; var __ta=__ix>=0?__ac:''; var __post=__ix>=0?__ti.slice(__ix+__ac.length):'';
     const open = this.state.open || {};
     let sflip=false, bgToggle=false;
     const viewSections = (P.sections||[]).map((s,i)=>{
       const v = Object.assign({}, s);
       v.isSplit = s.kind==='split'; v.isCards = s.kind==='cards'; v.isGrid = s.kind==='grid'; v.isSteps = s.kind==='steps'; v.isChips = s.kind==='chips';
       v.bgClass = bgToggle ? 'tsd-sand' : ''; bgToggle=!bgToggle;
-      if(v.isSplit){ v.flipClass = sflip ? 'tsd-flip' : ''; sflip=!sflip; v.slotId = 'tsd-slot-'+i; v.hasNum=false; v.hasCta=!!s.cta; v.img=s.img||''; v.hasImg=!!s.img; v.noImg=!s.img; }
+      if(v.isSplit){ v.flipClass = sflip ? 'tsd-flip' : ''; sflip=!sflip; v.slotId = 'tsd-slot-'+i; v.hasNum=false; v.hasCta=!!s.cta; v.img=s.img||''; v.hasImg=!!s.img; v.noImg=!s.img; v.shotBg=s.shotBg||'#fff'; }
       if(s.bullets){ const bs = s.bullets.map(b=> typeof b==='string'?{label:b}:b).map(b=>({label:b.label,href:b.href,desc:b.desc,hasHref:!!b.href,noHref:!b.href,hasDesc:!!b.desc})); v.bullets=bs; v.hasBullets=true; v.blClass = bs.some(b=>b.hasDesc) ? 'tsd-bl tsd-bl1' : 'tsd-bl'; } else { v.hasBullets=false; }
-      if(s.cards){ v.cards = s.cards.map((c,ci)=>Object.assign({n:ci+1}, c)); }
+      if(s.cards){ v.cards = s.cards.map((c,ci)=>Object.assign({n:ci+1, iconD:c.icon||"M12 8v4l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"}, c)); }
       if(s.steps){ v.steps = s.steps.map((c,ci)=>Object.assign({n:ci+1}, c)); }
       v.hasIntro = !!s.intro;
       return v;
@@ -309,7 +314,7 @@ class Component extends DCLogic {
     const viewAwards = awardsRaw.map(a=>({ t:a.t, s:a.s }));
     const atsLogos = (P.atsLogos!=null) ? P.atsLogos : ATS_D;
     return {
-      crumb:P.crumb, eyebrow:P.eyebrow, title:P.title, lead:P.lead,
+      crumb:P.crumb, eyebrow:P.eyebrow, title:P.title, titlePre:__pre, titleAccent:__ta, titlePost:__post, lead:P.lead,
       ctaLabel:P.ctaLabel||'Try for free', ctaHref:P.ctaHref||'pricing.dc.html',
       stats:P.stats||[], hasStats:!!(P.stats&&P.stats.length),
       logos:P.logos||[], hasLogos:!!(P.logos&&P.logos.length),

@@ -7,8 +7,8 @@
 </head>
 <body>
 <x-dc>
-<helmet data-dc-atomics>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<helmet data-dc-atomics="">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
 <style>
 body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -97,6 +97,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -153,7 +155,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <div class="tsd-copy reveal">
 <div class="tsd-crumb"><a href="solution-index.dc.html">Solutions</a><span>/</span><span>{{ crumb }}</span></div>
 <p class="eyebrow">{{ eyebrow }}<b>.</b></p>
-<h1 class="tsd-h1">{{ title }}</h1>
+<h1 class="tsd-h1">{{ titlePre }}<span class="tac">{{ titleAccent }}</span>{{ titlePost }}</h1>
 <p class="tsd-lead">{{ lead }}</p>
 <sc-if value="{{ hasStats }}" hint-placeholder-val="{{ false }}"><div class="tsd-stats"><sc-for list="{{ stats }}" as="st" hint-placeholder-count="3"><span class="tsd-statc">{{ st.t }}</span></sc-for></div></sc-if>
 <div class="tsd-ctas">
@@ -178,15 +180,6 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 </div></div>
 </div>
 </section>
-<sc-if value="{{ hasLogos }}" hint-placeholder-val="{{ false }}"><section class="tsd-trust reveal"><div class="tsdw">
-<p class="tsd-trust-l">Trusted by <strong>1,500+</strong> hiring teams worldwide</p>
-<div class="tsd-marq-wrap">
-<div class="tsd-marq">
-<sc-for list="{{ logos }}" as="lg" hint-placeholder-count="6"><span class="tsd-marq-i">{{ lg }}</span></sc-for>
-<sc-for list="{{ logos }}" as="lg" hint-placeholder-count="6"><span class="tsd-marq-i">{{ lg }}</span></sc-for>
-</div>
-</div>
-</div></section></sc-if>
 <sc-for list="{{ viewSections }}" as="s" hint-placeholder-count="4">
 <section class="tsd-sec {{ s.bgClass }}"><div class="tsdw">
 <sc-if value="{{ s.isSplit }}" hint-placeholder-val="{{ false }}"><div class="tsd-grid2 {{ s.flipClass }}">
@@ -197,9 +190,9 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <sc-if value="{{ s.hasBullets }}" hint-placeholder-val="{{ false }}"><div class="{{ s.blClass }}"><sc-for list="{{ s.bullets }}" as="b" hint-placeholder-count="4"><div class="tsd-bi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="tsd-bt"><sc-if value="{{ b.hasHref }}" hint-placeholder-val="{{ false }}"><a href="{{ b.href }}">{{ b.label }}</a></sc-if><sc-if value="{{ b.noHref }}" hint-placeholder-val="{{ true }}">{{ b.label }}</sc-if><sc-if value="{{ b.hasDesc }}" hint-placeholder-val="{{ false }}"><span class="tsd-bd">{{ b.desc }}</span></sc-if></span></div></sc-for></div></sc-if>
 <sc-if value="{{ s.hasCta }}" hint-placeholder-val="{{ false }}"><a class="tsd-link" href="{{ s.cta.href }}">{{ s.cta.label }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></sc-if>
 </div>
-<div class="tsd-media reveal"><div class="tsd-shot"><sc-if value="{{ s.hasImg }}" hint-placeholder-val="{{ false }}"><div class="tsd-shotimg" data-bg="{{ s.img }}"></div></sc-if><sc-if value="{{ s.noImg }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ s.slotId }}" shape="rounded" radius="14" placeholder="Drop an image"></image-slot></sc-if></div></div>
+<div class="tsd-media reveal"><div class="tsd-shot" style="background:{{ s.shotBg }}"><sc-if value="{{ s.hasImg }}" hint-placeholder-val="{{ false }}"><div class="tsd-shotimg" style="background-color:{{ s.shotBg }}" data-bg="{{ s.img }}"></div></sc-if><sc-if value="{{ s.noImg }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ s.slotId }}" shape="rounded" radius="14" placeholder="Drop an image"></image-slot></sc-if></div></div>
 </div></sc-if>
-<sc-if value="{{ s.isCards }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2><sc-if value="{{ s.hasIntro }}" hint-placeholder-val="{{ false }}"><p class="tsd-lead">{{ s.intro }}</p></sc-if></div><div class="tsd-cards"><sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="3"><div class="tsd-card reveal"><div class="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg></div><p class="tsd-ct">{{ c.title }}</p><p class="tsd-cd">{{ c.desc }}</p></div></sc-for></div></sc-if>
+<sc-if value="{{ s.isCards }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2><sc-if value="{{ s.hasIntro }}" hint-placeholder-val="{{ false }}"><p class="tsd-lead">{{ s.intro }}</p></sc-if></div><div class="tsd-cards"><sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="3"><div class="tsd-card reveal"><div class="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ c.iconD }}"></path></svg></div><p class="tsd-ct">{{ c.title }}</p><p class="tsd-cd">{{ c.desc }}</p></div></sc-for></div></sc-if>
 <sc-if value="{{ s.isGrid }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2><sc-if value="{{ s.hasIntro }}" hint-placeholder-val="{{ false }}"><p class="tsd-lead">{{ s.intro }}</p></sc-if></div><div class="tsd-fgrid"><sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="6"><div class="tsd-fcard reveal"><div class="tsd-fn">{{ c.n }}</div><p class="tsd-ct">{{ c.title }}</p><p class="tsd-cd">{{ c.desc }}</p></div></sc-for></div></sc-if>
 <sc-if value="{{ s.isSteps }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2></div><div class="tsd-steps"><sc-for list="{{ s.steps }}" as="st" hint-placeholder-count="3"><div class="tsd-step reveal"><div class="tsd-sn">{{ st.n }}</div><p class="tsd-ct">{{ st.title }}</p><p class="tsd-cd">{{ st.desc }}</p></div></sc-for></div></sc-if>
 <sc-if value="{{ s.isChips }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><h2 class="tsd-h2">{{ s.h2 }}</h2></div><div class="tsd-chips" style="justify-content:center;"><sc-for list="{{ s.chips }}" as="ch" hint-placeholder-count="6"><span class="tsd-chip">{{ ch }}</span></sc-for></div></sc-if>
@@ -262,16 +255,17 @@ class Component extends DCLogic {
       crumb:"Test type / Role specific",
       eyebrow:"Role-specific tests",
       title:"Role-specific tests that match real-world skills",
+      accent:"Role-specific tests",
       lead:"The best candidates aren't just skilled — they're skilled for the job you're hiring for. Testlify's role-specific tests go beyond resumes to uncover true job-readiness, with assessments designed around real responsibilities, tools and tasks. Hire people who can hit the ground running from day one.",
       ctaLabel:"Try for free",
       ctaHref:"pricing.dc.html",
       stats:[{t:"500+ roles covered"},{t:"20+ departments"},{t:"30% faster screening"}],
       logos:["LTIMindtree","Sonatafy","Thales","Third Bridge","Virtual","Cogitotech"],
       sections:[
-        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/10/Candidate-comparison-2.png", h2:"What are role-specific tests?", body:["Testlify's role-specific tests are expertly built assessments tailored to actual job requirements across departments and seniority levels. They help you identify real talent — people who can not only talk the talk, but actually do the job."], bullets:[{label:"500+ curated tests across roles and industries"},{label:"Entry to executive-level options"},{label:"Real-world scenarios and simulations"},{label:"Custom test creation and combination"},{label:"Secure, anti-cheating infrastructure"},{label:"DEI-aligned for fair hiring"},{label:"Instant reports with benchmark comparisons"}]},
-        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/10/Less-guessing-better-assessing.png", h2:"Why role-specific tests matter", body:["Too often, hiring decisions rely on generic tests or surface-level interviews that don't reveal whether a candidate is truly fit for the role — leading to wasted interviews, frustrated teams and costly mis-hires.","Our curated assessments dive deep into the real skills candidates need to succeed. Whether it's a Python developer, digital marketer or sales manager, we've got tests built for that exact job."], bullets:[{label:"Tests aligned with day-to-day tasks"},{label:"Role-ready challenges, not theoretical quizzes"},{label:"Clear, actionable reports"},{label:"Customizable for your exact job openings"}]},
-        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/10/Candidate-comparison-2.png", h2:"Built for accuracy and speed", body:["Fast for you. Fair for candidates. Accurate for everyone. Each test is rigorously designed and constantly validated by experts and real-world performance data — and you can customize questions and difficulty while delivering a smooth, engaging candidate experience."], bullets:[{label:"Tests mapped to real job responsibilities"},{label:"Role-based difficulty levels (junior to senior)"},{label:"30% faster screening cycles"},{label:"Built-in anti-cheating and diversity measures"}], cta:{label:"Try for free", href:"pricing.dc.html"}},
-        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/10/Less-guessing-better-assessing.png", h2:"Covering every role you need", body:["From tech to talent, sales to support, we've got it covered. With 500+ tests across 20+ departments and roles, Testlify offers one of the largest, most dynamic test libraries in the industry — browse by role, skill or domain."], bullets:[{label:"Engineering — code-based, tech-stack-specific tests"},{label:"Sales — real-world negotiation and communication tasks"},{label:"Marketing — campaign analysis, content judgment, SEO skills"},{label:"Customer support — scenario-based empathy and problem-solving"},{label:"Finance & ops — accuracy, analytical thinking and tool familiarity"},{label:"Product & design — prioritization, UX thinking and collaboration"}], cta:{label:"View our test library", href:"test-library.dc.html"}}
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/10/Candidate-comparison-2.png", shotBg:"#F3F6F9", h2:"What are role-specific tests?", body:["Testlify's role-specific tests are expertly built assessments tailored to actual job requirements across departments and seniority levels. They help you identify real talent — people who can not only talk the talk, but actually do the job."], bullets:[{label:"500+ curated tests across roles and industries"},{label:"Entry to executive-level options"},{label:"Real-world scenarios and simulations"},{label:"Custom test creation and combination"},{label:"Secure, anti-cheating infrastructure"},{label:"DEI-aligned for fair hiring"},{label:"Instant reports with benchmark comparisons"}]},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/10/Less-guessing-better-assessing.png", shotBg:"#FFF", h2:"Why role-specific tests matter?", body:["Too often, hiring decisions rely on generic tests or surface-level interviews that don't reveal whether a candidate is truly fit for the role — leading to wasted interviews, frustrated teams and costly mis-hires.","Our curated assessments dive deep into the real skills candidates need to succeed. Whether it's a Python developer, digital marketer or sales manager, we've got tests built for that exact job."], bullets:[{label:"Tests aligned with day-to-day tasks"},{label:"Role-ready challenges, not theoretical quizzes"},{label:"Clear, actionable reports"},{label:"Customizable for your exact job openings"}]},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/10/Candidate-comparison-2.png", shotBg:"#F3F6F9", h2:"Built for accuracy and speed", body:["Fast for you. Fair for candidates. Accurate for everyone. Each test is rigorously designed and constantly validated by experts and real-world performance data — and you can customize questions and difficulty while delivering a smooth, engaging candidate experience."], bullets:[{label:"Tests mapped to real job responsibilities"},{label:"Role-based difficulty levels (junior to senior)"},{label:"30% faster screening cycles"},{label:"Built-in anti-cheating and diversity measures"}], cta:{label:"Try for free", href:"pricing.dc.html"}},
+        {kind:"split", img:"https://testlify.com/wp-content/uploads/2024/10/Less-guessing-better-assessing.png", shotBg:"#FFF", h2:"Covering every role you need", body:["From tech to talent, sales to support, we've got it covered. With 500+ tests across 20+ departments and roles, Testlify offers one of the largest, most dynamic test libraries in the industry — browse by role, skill or domain."], bullets:[{label:"Engineering — code-based, tech-stack-specific tests"},{label:"Sales — real-world negotiation and communication tasks"},{label:"Marketing — campaign analysis, content judgment, SEO skills"},{label:"Customer support — scenario-based empathy and problem-solving"},{label:"Finance & ops — accuracy, analytical thinking and tool familiarity"},{label:"Product & design — prioritization, UX thinking and collaboration"}], cta:{label:"View our test library", href:"test-library.dc.html"}}
       ],
       faqs:[
         {q:"How are role-specific tests used in the hiring process?", a:"Role-specific tests are used to evaluate candidates as part of the pre-screening process. These tests can evaluate a vast range of skills for numerous job descriptions from bookkeepers, to marketers, to data scientists. The feedback gives you the insights to compare and select the best talent in an automated, consistent way — reducing time-to-decision and helping you scale hiring faster."},
@@ -285,15 +279,16 @@ class Component extends DCLogic {
       faqTitle:"Frequently asked questions (FAQs)"
     };
     const P = (this.props && this.props.pageData) ? this.props.pageData : DATA;
+    var __ti=((P.title||'')+''); var __ac=((P.accent||'')+'').trim(); var __ix=__ac?__ti.indexOf(__ac):-1; var __pre=__ix>=0?__ti.slice(0,__ix):__ti; var __ta=__ix>=0?__ac:''; var __post=__ix>=0?__ti.slice(__ix+__ac.length):'';
     const open = this.state.open || {};
     let sflip=false, bgToggle=false;
     const viewSections = (P.sections||[]).map((s,i)=>{
       const v = Object.assign({}, s);
       v.isSplit = s.kind==='split'; v.isCards = s.kind==='cards'; v.isGrid = s.kind==='grid'; v.isSteps = s.kind==='steps'; v.isChips = s.kind==='chips';
       v.bgClass = bgToggle ? 'tsd-sand' : ''; bgToggle=!bgToggle;
-      if(v.isSplit){ v.flipClass = sflip ? 'tsd-flip' : ''; sflip=!sflip; v.slotId = 'tsd-slot-'+i; v.hasNum=false; v.hasCta=!!s.cta; v.img=s.img||''; v.hasImg=!!s.img; v.noImg=!s.img; }
+      if(v.isSplit){ v.flipClass = sflip ? 'tsd-flip' : ''; sflip=!sflip; v.slotId = 'tsd-slot-'+i; v.hasNum=false; v.hasCta=!!s.cta; v.img=s.img||''; v.hasImg=!!s.img; v.noImg=!s.img; v.shotBg=s.shotBg||'#fff'; }
       if(s.bullets){ const bs = s.bullets.map(b=> typeof b==='string'?{label:b}:b).map(b=>({label:b.label,href:b.href,desc:b.desc,hasHref:!!b.href,noHref:!b.href,hasDesc:!!b.desc})); v.bullets=bs; v.hasBullets=true; v.blClass = bs.some(b=>b.hasDesc) ? 'tsd-bl tsd-bl1' : 'tsd-bl'; } else { v.hasBullets=false; }
-      if(s.cards){ v.cards = s.cards.map((c,ci)=>Object.assign({n:ci+1}, c)); }
+      if(s.cards){ v.cards = s.cards.map((c,ci)=>Object.assign({n:ci+1, iconD:c.icon||"M12 8v4l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"}, c)); }
       if(s.steps){ v.steps = s.steps.map((c,ci)=>Object.assign({n:ci+1}, c)); }
       v.hasIntro = !!s.intro;
       return v;
@@ -309,7 +304,7 @@ class Component extends DCLogic {
     const viewAwards = awardsRaw.map(a=>({ t:a.t, s:a.s }));
     const atsLogos = (P.atsLogos!=null) ? P.atsLogos : ATS_D;
     return {
-      crumb:P.crumb, eyebrow:P.eyebrow, title:P.title, lead:P.lead,
+      crumb:P.crumb, eyebrow:P.eyebrow, title:P.title, titlePre:__pre, titleAccent:__ta, titlePost:__post, lead:P.lead,
       ctaLabel:P.ctaLabel||'Try for free', ctaHref:P.ctaHref||'pricing.dc.html',
       stats:P.stats||[], hasStats:!!(P.stats&&P.stats.length),
       logos:P.logos||[], hasLogos:!!(P.logos&&P.logos.length),

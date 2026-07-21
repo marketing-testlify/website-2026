@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -162,7 +162,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <div class="tsd-copy reveal">
 <div class="tsd-crumb"><a href="solution-index.dc.html">Solutions</a><span>/</span><span>{{ crumb }}</span></div>
 <p class="eyebrow">{{ eyebrow }}<b>.</b></p>
-<h1 class="tsd-h1">{{ title }}</h1>
+<h1 class="tsd-h1">{{ titlePre }}<span class="tac">{{ titleAccent }}</span>{{ titlePost }}</h1>
 <p class="tsd-lead">{{ lead }}</p>
 <sc-if value="{{ hasStats }}" hint-placeholder-val="{{ false }}"><div class="tsd-stats"><sc-for list="{{ stats }}" as="st" hint-placeholder-count="3"><span class="tsd-statc">{{ st.t }}</span></sc-for></div></sc-if>
 <div class="tsd-ctas">
@@ -264,6 +264,7 @@ class Component extends DCLogic {
       crumb:"Use case / Campus hiring",
       eyebrow:"For campus hiring",
       title:"Campus hiring made easy with our platform",
+      accent:"Campus hiring",
       lead:"Are you a company looking to hire the best talent from universities and colleges? Look no further than our campus hiring platform! We understand the challenges of finding and recruiting top talent from campuses, which is why we offer a platform that streamlines the campus hiring process for businesses.",
       ctaLabel:"Try for free",
       ctaHref:"pricing.dc.html",
@@ -294,6 +295,7 @@ class Component extends DCLogic {
       faqTitle:"Frequently asked questions (FAQs)"
     };
     const P = (this.props && this.props.pageData) ? this.props.pageData : DATA;
+    var __ti=((P.title||'')+''); var __ac=((P.accent||'')+'').trim(); var __ix=__ac?__ti.indexOf(__ac):-1; var __pre=__ix>=0?__ti.slice(0,__ix):__ti; var __ta=__ix>=0?__ac:''; var __post=__ix>=0?__ti.slice(__ix+__ac.length):'';
     const open = this.state.open || {};
     let sflip=false, bgToggle=((P.sections||[]).length % 2 === 0);
     const viewSections = (P.sections||[]).map((s,i)=>{
@@ -318,7 +320,7 @@ class Component extends DCLogic {
     const viewAwards = awardsRaw.map(a=>({ t:a.t, s:a.s }));
     const atsLogos = (P.atsLogos!=null) ? P.atsLogos : ATS_D;
     return {
-      crumb:P.crumb, eyebrow:P.eyebrow, title:P.title, lead:P.lead,
+      crumb:P.crumb, eyebrow:P.eyebrow, title:P.title, titlePre:__pre, titleAccent:__ta, titlePost:__post, lead:P.lead,
       ctaLabel:P.ctaLabel||'Try for free', ctaHref:P.ctaHref||'pricing.dc.html',
       stats:P.stats||[], hasStats:!!(P.stats&&P.stats.length),
       logos:P.logos||[], hasLogos:!!(P.logos&&P.logos.length),

@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -97,6 +97,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -156,10 +158,6 @@ const arrow = (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
 );
 
-const clockIcon = (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg>
-);
-
 const bullets1 = [
   '15+ question types for diverse roles',
   '3,000+ tests to assess 4,000+ roles',
@@ -171,12 +169,12 @@ const bullets1 = [
 ];
 
 const outcomeCards = [
-  { title: 'Role-based access & permissions', desc: 'Recruiters, hiring managers, L&D and finance each get the right level of access and control.' },
-  { title: 'Reduce cost-per-hire', desc: 'Automated screening and scoring save recruiter hours and eliminate external testing tools or agencies.' },
-  { title: 'Customizable workflow', desc: 'Tailor hiring pipelines to each department, geography or job level without rigid limitations.' },
-  { title: 'Scale without overhead', desc: 'From 10 to 10,000 candidates, Testlify grows with you — with predictable pricing for global operations.' },
-  { title: 'Enterprise-grade security', desc: 'SOC 2, GDPR and ISO certified, with strong data privacy and compliance across global regions.' },
-  { title: 'Advanced analytics', desc: 'Go beyond pass/fail — candidate analytics, skill benchmarking and team-wide reporting for smarter decisions.' },
+  { title: 'Role-based access & permissions', iconD: 'M19 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zM7 11V7a5 5 0 0 1 10 0v4', desc: 'Recruiters, hiring managers, L&D and finance each get the right level of access and control.' },
+  { title: 'Reduce cost-per-hire', iconD: 'M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6', desc: 'Automated screening and scoring save recruiter hours and eliminate external testing tools or agencies.' },
+  { title: 'Customizable workflow', iconD: 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z', desc: 'Tailor hiring pipelines to each department, geography or job level without rigid limitations.' },
+  { title: 'Scale without overhead', iconD: 'M20 4H4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM20 13H4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2zM6 7h.01M6 16h.01', desc: 'From 10 to 10,000 candidates, Testlify grows with you — with predictable pricing for global operations.' },
+  { title: 'Enterprise-grade security', iconD: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', desc: 'SOC 2, GDPR and ISO certified, with strong data privacy and compliance across global regions.' },
+  { title: 'Advanced analytics', iconD: 'M12 20V10M18 20V4M6 20v-4', desc: 'Go beyond pass/fail — candidate analytics, skill benchmarking and team-wide reporting for smarter decisions.' },
 ];
 
 const atsTiles = [
@@ -217,7 +215,7 @@ export default function EnterprisePage() {
           <div className="tsd-copy reveal">
             <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Company size / Enterprises</span></div>
             <p className="eyebrow">For enterprises<b>.</b></p>
-            <h1 className="tsd-h1">One-stop solution for global enterprise hiring</h1>
+            <h1 className="tsd-h1">One-stop solution for <span className="tac">global enterprise hiring</span></h1>
             <p className="tsd-lead">Volume hiring? Cross-functional hiring? Global hiring? Internal mobility and reducing mis-hires at senior levels? Testlify&apos;s skills assessments for global enterprises have you covered — delivering accuracy, speed and scale so you identify top talent faster with zero guesswork.</p>
             <div className="tsd-stats">
               <span className="tsd-statc">Scale to 10,000+</span>
@@ -293,7 +291,7 @@ export default function EnterprisePage() {
           <div className="tsd-cards">
             {outcomeCards.map((c, i) => (
               <div className="tsd-card reveal" key={i}>
-                <div className="tsd-ic">{clockIcon}</div>
+                <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={c.iconD}></path></svg></div>
                 <p className="tsd-ct">{c.title}</p>
                 <p className="tsd-cd">{c.desc}</p>
               </div>

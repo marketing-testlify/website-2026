@@ -240,7 +240,7 @@ export default function Page() {
       </div></div></section>
 
       <section className="vi-sec sand"><div className="vi-wrap">
-        <div className="vi-shead reveal"><div className="vi-eyebrow">See how video AI works<span className="dot">.</span></div><h2 className="vi-h2">See how video AI works</h2><p className="vi-h2p">Conduct async video interviews to evaluate communication skills, confidence, and presence. Watch responses at your convenience and reduce scheduling hassle.</p></div>
+        <div className="vi-shead reveal"><div className="vi-eyebrow">Video AI<span className="dot">.</span></div><h2 className="vi-h2">See how video AI works</h2><p className="vi-h2p">Conduct async video interviews to evaluate communication skills, confidence, and presence. Watch responses at your convenience and reduce scheduling hassle.</p></div>
         <div style={{ maxWidth: '860px', margin: '0 auto' }} className="reveal"><a href="https://youtu.be/nFsnsuHiq04" target="_blank" rel="noopener" className="vsimg" style={{ display: 'block' }}>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://testlify.com/wp-content/uploads/2026/03/Video-AI.png" alt="Video AI" /><span className="vplay"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></span></a></div>
       </div></section>
 

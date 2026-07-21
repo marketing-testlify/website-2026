@@ -14,9 +14,10 @@ const CSS = `
 body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsdw{max-width:1240px;margin:0 auto;padding:0 28px;}
 .tsd-sec{padding:96px 0;}
+.tsd-sec.tsd-flush{padding:0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -28,7 +29,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -97,6 +98,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -186,7 +189,7 @@ export default function EngineeringSkillsPage() {
           <div className="tsd-copy reveal">
             <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Test type / Engineering</span></div>
             <p className="eyebrow">Engineering tests<b>.</b></p>
-            <h1 className="tsd-h1">Redefine your engineering recruitment game</h1>
+            <h1 className="tsd-h1">Redefine your <span className="tac">engineering recruitment</span> game</h1>
             <p className="tsd-lead">Identifying top engineering talent is no small feat. Our talent assessment tool transforms how recruiters evaluate candidates&apos; skills — with comprehensive engineering tests that accurately gauge capabilities so you make informed, confident hiring decisions.</p>
             <div className="tsd-stats">
               {stats.map((t) => (
@@ -237,74 +240,155 @@ export default function EngineeringSkillsPage() {
         </div>
       </section>
 
-      {/* Section 0: split */}
+      {/* Section 0: split — white */}
       <section className="tsd-sec ">
         <div className="tsdw">
           <div className="tsd-grid2 ">
             <div className="tsd-copy reveal">
               <h2 className="tsd-h2">Assessments for diverse engineering disciplines</h2>
-              <p className="tsd-p">Engineering is a vast field, from software development to mechanical design. We offer a comprehensive range of assessments tailored to different specialties.</p>
+              <p className="tsd-p">Engineering is a vast field, encompassing various domains from software development to mechanical design. We offer a comprehensive range of assessments tailored to different engineering specialties.</p>
               <p className="tsd-p">Whether it&apos;s coding challenges, circuit design simulations or algorithmic problem-solving, our tests accurately evaluate candidates based on their specific expertise.</p>
-              <Link className="tsd-link" href="/test-library">Explore engineering tests<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
+              <Link className="tsd-link" href="/test-library">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
             </div>
             <div className="tsd-media reveal">
-              <div className="tsd-shot">
-                <div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/03/Product-image-1024x741.png")' }}></div>
+              <div className="tsd-shot" style={{ background: '#F3F6F9' }}>
+                <div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/03/Product-image-1024x741.png")' }}></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 1: split (flipped) */}
+      {/* Section 1: split (flipped) — sand */}
       <section className="tsd-sec tsd-sand">
         <div className="tsdw">
           <div className="tsd-grid2 tsd-flip">
             <div className="tsd-copy reveal">
               <h2 className="tsd-h2">Unearth engineering skills that matter beyond resumes</h2>
-              <p className="tsd-p">Our talent assessment tool lets you delve deeper into a candidate&apos;s abilities — providing insights into practical skills, adaptability and creativity.</p>
+              <p className="tsd-p">Our talent assessment tool empowers you to delve deeper into a candidate&apos;s abilities. Our engineering tests provide insights into their practical skills, adaptability and creativity.</p>
               <p className="tsd-p">Witness how candidates approach real-world challenges and make informed decisions about their compatibility with your team.</p>
             </div>
             <div className="tsd-media reveal">
-              <div className="tsd-shot">
-                <div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2023/03/Work-time-pana.png")' }}></div>
+              <div className="tsd-shot" style={{ background: '#FFF' }}>
+                <div className="tsd-shotimg" style={{ backgroundColor: '#FFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2023/03/Work-time-pana.png")' }}></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 2: split */}
+      {/* Section 2: split — white */}
       <section className="tsd-sec ">
         <div className="tsdw">
           <div className="tsd-grid2 ">
             <div className="tsd-copy reveal">
-              <h2 className="tsd-h2">Set engineering skill standards with data-driven insights</h2>
-              <p className="tsd-p">We don&apos;t just provide results — we deliver meaningful insights. Our platform offers performance analytics to help you decide the right fit for your team.</p>
-              <p className="tsd-p">Make informed decisions with comprehensive data that showcases a candidate&apos;s strengths and areas for growth, helping you build a team that sets new standards of excellence.</p>
-              <a className="tsd-link" href="#">See reporting &amp; analytics<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+              <h2 className="tsd-h2">Setting engineering skill standards with data-driven insights</h2>
+              <p className="tsd-p">We do not just provide results; we deliver meaningful insights. Our talent assessment platform offers performance analytics and results to help you decide the right fit for your team.</p>
+              <p className="tsd-p">Make informed decisions with comprehensive data that showcase a candidate&apos;s strengths and areas for growth, helping you build a team that sets new standards of excellence.</p>
+              <Link className="tsd-link" href="/product-features">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
             </div>
             <div className="tsd-media reveal">
-              <div className="tsd-shot">
-                <div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/06/affiliate-program_Join-the-Testlify-Partner-Program-1024x799.png")' }}></div>
+              <div className="tsd-shot" style={{ background: '#F3F6F9' }}>
+                <div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/06/affiliate-program_Join-the-Testlify-Partner-Program-1024x799.png")' }}></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 3: split (flipped) */}
+      {/* Section 3: split (flipped) — sand */}
       <section className="tsd-sec tsd-sand">
         <div className="tsdw">
           <div className="tsd-grid2 tsd-flip">
             <div className="tsd-copy reveal">
-              <h2 className="tsd-h2">Protecting candidate privacy and test integrity</h2>
-              <p className="tsd-p">Our talent assessment tool is GDPR compliant and we handle candidate data with the utmost care and privacy. Our tests are designed to prevent cheating and plagiarism, guaranteeing the integrity of assessment results — so you can trust the insights into a candidate&apos;s engineering skills.</p>
-              <Link className="tsd-link" href="/pricing">Try for free<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
+              <h2 className="tsd-h2">A user-focused experience for candidates</h2>
+              <p className="tsd-p">We believe assessments should be stress-free for candidates. Testlify&apos;s platform is intuitive, ensuring a seamless experience for test-takers. Our user-friendly interface allows candidates to focus on showcasing their skills rather than navigating complex systems. With our talent assessment tool, you&apos;re not just assessing candidates; you&apos;re offering them a chance to shine.</p>
             </div>
             <div className="tsd-media reveal">
-              <div className="tsd-shot">
-                <div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/03/Product-image-1-1024x741.png")' }}></div>
+              <div className="tsd-shot" style={{ background: '#FFF' }}>
+                <div className="tsd-shotimg" style={{ backgroundColor: '#FFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/06/Free-Download_Free-to-download-1024x1024.png")' }}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: split — white */}
+      <section className="tsd-sec ">
+        <div className="tsdw">
+          <div className="tsd-grid2 ">
+            <div className="tsd-copy reveal">
+              <h2 className="tsd-h2">Protecting candidate privacy and test integrity</h2>
+              <p className="tsd-p">Our talent assessment tool is GDPR compliant and we ensure candidate data is handled with the utmost care and privacy. Additionally, our tests are designed to prevent cheating and plagiarism, guaranteeing the integrity of assessment results. You can trust us to provide accurate and reliable insights into a candidate&apos;s engineering skills.</p>
+              <Link className="tsd-link" href="/company-legal">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
+            </div>
+            <div className="tsd-media reveal">
+              <div className="tsd-shot" style={{ background: '#F3F6F9' }}>
+                <div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/03/Product-image-1-1024x741.png")' }}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5: split (flipped) — sand */}
+      <section className="tsd-sec tsd-sand">
+        <div className="tsdw">
+          <div className="tsd-grid2 tsd-flip">
+            <div className="tsd-copy reveal">
+              <h2 className="tsd-h2">Seamless integration with your existing workflow</h2>
+              <p className="tsd-p">Integrating our talent assessment tool into your recruitment process is effortless. Our platform seamlessly integrates with popular ATS and HR systems, making it a seamless addition to your existing workflow. Elevate your engineering recruitment process without disrupting your team&apos;s routines.</p>
+              <Link className="tsd-link" href="/product-integrations">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
+            </div>
+            <div className="tsd-media reveal">
+              <div className="tsd-shot" style={{ background: '#FFF' }}>
+                <div className="tsd-shotimg" style={{ backgroundColor: '#FFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2023/03/Work-time-pana.png")' }}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: banner */}
+      <section className="tsd-sec tsd-flush">
+        <div className="tsdw">
+          <div className="reveal" style={{ position: 'relative', width: '100vw', marginLeft: 'calc(50% - 50vw)', background: '#1A1014', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 82% 50%, rgba(242,63,68,.36), transparent 55%)' }}></div>
+            <div style={{ position: 'absolute', top: '50%', right: '-30px', transform: 'translateY(-50%)', width: '500px', height: '500px', pointerEvents: 'none' }}>
+              <svg viewBox="0 0 480 480" width="100%" height="100%" fill="none">
+                <g opacity=".55" stroke="#F23F44" strokeWidth="1.6" strokeLinejoin="round">
+                  <polygon points="240,60 400,150 400,330 240,420 80,330 80,150"></polygon>
+                  <polygon points="240,140 330,190 330,290 240,340 150,290 150,190"></polygon>
+                  <line x1="240" y1="60" x2="240" y2="140"></line>
+                  <line x1="400" y1="150" x2="330" y2="190"></line>
+                  <line x1="400" y1="330" x2="330" y2="290"></line>
+                  <line x1="240" y1="420" x2="240" y2="340"></line>
+                  <line x1="80" y1="330" x2="150" y2="290"></line>
+                  <line x1="80" y1="150" x2="150" y2="190"></line>
+                </g>
+                <g fill="#F23F44">
+                  <circle cx="240" cy="60" r="6"></circle>
+                  <circle cx="400" cy="150" r="6"></circle>
+                  <circle cx="400" cy="330" r="6"></circle>
+                  <circle cx="240" cy="420" r="6"></circle>
+                  <circle cx="80" cy="330" r="6"></circle>
+                  <circle cx="80" cy="150" r="6"></circle>
+                </g>
+                <g fill="#fff" opacity=".45">
+                  <circle cx="240" cy="140" r="4"></circle>
+                  <circle cx="330" cy="190" r="4"></circle>
+                  <circle cx="330" cy="290" r="4"></circle>
+                  <circle cx="240" cy="340" r="4"></circle>
+                  <circle cx="150" cy="290" r="4"></circle>
+                  <circle cx="150" cy="190" r="4"></circle>
+                </g>
+              </svg>
+            </div>
+            <div style={{ position: 'relative', maxWidth: '1240px', margin: '0 auto', padding: '96px 28px', textAlign: 'center' }}>
+              <h2 className="tsd-h2" style={{ color: '#fff' }}>Unlock engineering potential with Testlify</h2>
+              <p className="tsd-lead" style={{ margin: '14px auto 0', maxWidth: '760px', color: '#C9B9BC' }}>Transform the way you hire engineering talent with Testlify. Say goodbye to traditional, subjective assessments and welcome a new era of accurate, data-driven evaluations. Join leading companies in harnessing the power of Testlify&apos;s talent assessment platform to build exceptional engineering teams. Start your journey today.</p>
+              <div style={{ marginTop: '30px' }}>
+                <Link href="/pricing" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#F23F44', color: '#fff', fontWeight: 700, fontSize: '15px', padding: '16px 32px', borderRadius: '999px', textDecoration: 'none', boxShadow: '0 14px 30px rgba(242,63,68,.4)' }}>Try for free<span>&rarr;</span></Link>
               </div>
             </div>
           </div>

@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -97,6 +97,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -148,19 +150,151 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
-const clockIcon = (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg>
+const check17 = (
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
 );
+const arrow16 = (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+);
+
+const cards = [
+  { title: 'Real-time feedback', iconD: 'M22 12h-4l-3 9L9 3l-3 9H2', desc: 'A dashboard displaying real-time candidate results you can share with your team to track progress.' },
+  { title: 'Create your own questions', iconD: 'M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z', desc: 'Add your own questions to expand your testing capability for specific roles.' },
+  { title: 'Candidate friendly', iconD: 'M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z', desc: 'Challenging but enjoyable assessments so candidates complete tests without frustration.' },
+  { title: 'Customizable', iconD: 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z', desc: 'Design assessments as you require — include specific cognitive tests for any role.' },
+  { title: 'Informed analysis', iconD: 'M12 20V10M18 20V4M6 20v-4', desc: 'Results that help you identify patterns, trends, strengths and weaknesses per candidate.' },
+  { title: 'Choose difficulty', iconD: 'M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6', desc: 'Three levels — easy, medium and hard — to test different levels of experience and skill.' },
+];
+
+type Split = {
+  h2: string;
+  body: string;
+  img: string;
+  shotBg: string;
+  flip: boolean;
+  sand: boolean;
+  cta?: { label: string; href: string };
+  bullets?: string[];
+};
+
+const splitBeforeCards: Split = {
+  h2: 'Identify top thinkers, fast learners and problem-solvers before the interview',
+  body: "Testlify offers a range of cognitive ability tests — numerical reasoning, verbal reasoning and quantitative aptitude — to thoroughly assess candidates' skills and ensure the best fit for your team.",
+  img: 'https://testlify.com/wp-content/uploads/2022/04/cognitive-ability-01-1-1024x837.png',
+  shotBg: '#F3F6F9',
+  flip: false,
+  sand: false,
+  cta: { label: 'View cognitive ability tests', href: '/test-library' },
+};
+
+const splitsAfterCards: Split[] = [
+  {
+    h2: 'Go beyond gut instinct and measure true potential',
+    body: 'Our cognitive ability assessment clearly shows how candidates reason, solve problems and process new information. Whether hiring for a fast-paced sales role or a data-heavy analyst position, it measures core cognitive skills that predict on-the-job performance — before you make the offer. Tests are crafted by subject-matter experts and rigorously tested to minimize bias.',
+    img: 'https://testlify.com/wp-content/uploads/2022/05/Accurate-Insights-1024x773.png',
+    shotBg: '#FFF',
+    flip: true,
+    sand: false,
+    bullets: [
+      'Timed questions to test mental agility',
+      'Covers logic, math, verbal reasoning and critical thinking',
+      'Instant, global-benchmarked scoring for data-driven decisions',
+      'Customize questions, timings and more per role',
+    ],
+  },
+  {
+    h2: 'Numerical reasoning test',
+    body: "In any technical position, the ability to analyze data and draw conclusions quickly is essential. Our numerical reasoning test evaluates a candidate's ability to solve tasks that require the interpretation of numbers, including identifying numerical patterns, tables, charts, graphs, and diagrams.",
+    img: 'https://testlify.com/wp-content/uploads/2022/05/Numerical-Reasoning-01-1024x559.png',
+    shotBg: '#F3F6F9',
+    flip: false,
+    sand: true,
+    cta: { label: 'Explore numerical reasoning test', href: '/test-library' },
+  },
+  {
+    h2: 'Critical & independent thinking',
+    body: "Employees who can solve problems independently and find new solutions to complex problems will always be an asset to your organization. Our critical thinking test evaluates candidates' abilities to solve three-part problems using deductive reasoning.",
+    img: 'https://testlify.com/wp-content/uploads/2022/05/Critical-Independent-Thinking-01-1024x559.png',
+    shotBg: '#FFF',
+    flip: true,
+    sand: false,
+    cta: { label: 'Explore critical thinking test', href: '/test-library' },
+  },
+  {
+    h2: 'Spatial reasoning',
+    body: "Different careers require unique aptitudes. This is true for candidates in STEM careers who need to understand, reason, and remember the spatial relationships among objects or space. Our cognitive assessment for hiring challenges candidates' spatial visualization skills using their memory to solve visual problems.",
+    img: 'https://testlify.com/wp-content/uploads/2022/05/Spatial-Ability-1024x559.png',
+    shotBg: '#F3F6F9',
+    flip: false,
+    sand: true,
+  },
+  {
+    h2: 'Problem-solving',
+    body: "Our problem-solving assessment measures candidates' ability to analyze information, think critically, and arrive at effective solutions quickly, even under pressure. It's designed to identify those who can turn obstacles into opportunities.",
+    img: 'https://testlify.com/wp-content/uploads/2022/05/Problem-solving-1024x559.png',
+    shotBg: '#FFF',
+    flip: true,
+    sand: false,
+  },
+  {
+    h2: 'Verbal reasoning',
+    body: 'The ability to reason verbally is a fundamental skill every employee needs, whether in the office or home. It applies to everything from reading an article, report writing, presentations, or pitch decks. Verbal Reasoning tests your ability to reason from words and reach valid conclusions.',
+    img: 'https://testlify.com/wp-content/uploads/2022/05/Verbal-Reasoning-1024x559.png',
+    shotBg: '#F3F6F9',
+    flip: false,
+    sand: true,
+  },
+  {
+    h2: 'Detailed reporting and global benchmarking',
+    body: "Get clear, actionable insights at a glance. Our reports break down each candidate's performance with easy-to-read visuals and in-depth analytics, so your team can quickly understand strengths, gaps, and how each candidate stacks up globally. Share reports effortlessly across your hiring team to streamline collaboration and speed decision-making.",
+    img: 'https://testlify.com/wp-content/uploads/2022/05/Intermediate-math-Test-01-1024x559.png',
+    shotBg: '#FFF',
+    flip: true,
+    sand: false,
+  },
+];
 
 const faqs = [
   { q: 'How is cognitive ability testing used in the hiring process?', a: 'Assessments that test cognitive ability are generally used to evaluate candidates as part of the pre-screening process. They evaluate cognitive aptitudes, problem-solving, critical thinking, working memory and more — giving organizations the data to compare and select the best talent while minimizing time-to-decision.' },
   { q: "Can cognitive testing predict a candidate's workplace performance?", a: "Testing cognitive ability can help predict whether a candidate will succeed in the workplace. Our tests evaluate a candidate's ability to learn, adapt to challenging work environments, find solutions, make decisions and more." },
   { q: 'What does a cognitive assessment consist of and what does it measure?', a: "Testlify's cognitive ability assessments evaluate various aptitudes including numerical reasoning, verbal reasoning, logical reasoning, spatial ability and working memory." },
   { q: 'What is the duration of cognitive ability tests?', a: 'Each test is about 10 minutes in duration, and you may use several. You can customize the assessment to test for more skills, which affects the total time.' },
+  { q: 'Are the cognitive ability tests available to view?', a: 'You will not be able to view the test unless you sign up. If you would like more information feel free to use the chatbot to discuss or send us any questions you might have to support@testlify.com.' },
   { q: 'How do I customize tests?', a: 'Assessments can be customized by adding any additional skill test from our library. These can be a combination of aptitude, language, programming, software, or role-specific skills.' },
   { q: "Why test a candidate's cognitive ability?", a: "Finding the best talent requires not only qualifications but also aptitude for the position. Testing an applicant's cognitive ability to solve problems gives you deeper insights into their actual ability, increasing your team's ability to compare candidates with real-time scoring beyond resumes." },
   { q: 'Are cognitive ability tests reliable?', a: 'Our cognitive aptitude tests are highly accurate and have been tested to ensure results are consistent even when taken again — minimizing complexity and resources needed while providing powerful insights for informed decisions.' },
+  { q: 'How do I schedule a demo?', a: 'You can schedule a demo by filling out the request for a demo and we will contact you to make arrangements. Click here to book a demo.' },
 ];
+
+function SplitSection({ s }: { s: Split }) {
+  return (
+    <section className={`tsd-sec ${s.sand ? 'tsd-sand' : ''}`}>
+      <div className="tsdw">
+        <div className={`tsd-grid2 ${s.flip ? 'tsd-flip' : ''}`}>
+          <div className="tsd-copy reveal">
+            <h2 className="tsd-h2">{s.h2}</h2>
+            <p className="tsd-p">{s.body}</p>
+            {s.bullets && (
+              <div className="tsd-bl">
+                {s.bullets.map((b, i) => (
+                  <div className="tsd-bi" key={i}>{check17}<span className="tsd-bt">{b}</span></div>
+                ))}
+              </div>
+            )}
+            {s.cta && (
+              <Link className="tsd-link" href={s.cta.href}>{s.cta.label}{arrow16}</Link>
+            )}
+          </div>
+          <div className="tsd-media reveal">
+            <div className="tsd-shot" style={{ background: s.shotBg }}>
+              <div className="tsd-shotimg" style={{ backgroundColor: s.shotBg, backgroundImage: `url("${s.img}")` }}></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function CognitiveAbilityTestsPage() {
   const [open, setOpen] = useState<Record<number, boolean>>({});
@@ -176,7 +310,7 @@ export default function CognitiveAbilityTestsPage() {
           <div className="tsd-copy reveal">
             <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Test type / Cognitive ability</span></div>
             <p className="eyebrow">Cognitive ability tests<b>.</b></p>
-            <h1 className="tsd-h1">Best cognitive ability tests for hiring smart</h1>
+            <h1 className="tsd-h1">Best <span className="tac">cognitive ability tests</span> for hiring smart</h1>
             <p className="tsd-lead">Resumes show experience. Cognitive tests reveal potential. Testlify&apos;s cognitive ability assessments evaluate logical reasoning, problem-solving and numerical ability — so you see how well a candidate can think, learn, reason and solve problems, and identify high-potential candidates with timed questions that test mental agility.</p>
             <div className="tsd-stats">
               <span className="tsd-statc">Logic · math · verbal</span>
@@ -221,66 +355,28 @@ export default function CognitiveAbilityTestsPage() {
       </section>
 
       {/* Section 0 — split */}
-      <section className="tsd-sec">
-        <div className="tsdw">
-          <div className="tsd-grid2">
-            <div className="tsd-copy reveal">
-              <h2 className="tsd-h2">Identify top thinkers, fast learners and problem-solvers before the interview</h2>
-              <p className="tsd-p">Testlify offers a range of cognitive ability tests — numerical reasoning, verbal reasoning and quantitative aptitude — to thoroughly assess candidates&apos; skills and ensure the best fit for your team.</p>
-              <Link className="tsd-link" href="/test-library">View cognitive ability tests<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
-            </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/04/cognitive-ability-01-1-1024x837.png")' }}></div></div></div>
-          </div>
-        </div>
-      </section>
+      <SplitSection s={splitBeforeCards} />
 
       {/* Section 1 — cards */}
       <section className="tsd-sec tsd-sand">
         <div className="tsdw">
           <div className="tsd-shead reveal"><p className="eyebrow">What&apos;s in it for you<b>.</b></p><h2 className="tsd-h2">Everything you need to test cognition at scale</h2><p className="tsd-lead">A complete toolkit for fast, fair cognitive screening.</p></div>
           <div className="tsd-cards">
-            <div className="tsd-card reveal"><div className="tsd-ic">{clockIcon}</div><p className="tsd-ct">Real-time feedback</p><p className="tsd-cd">A dashboard displaying real-time candidate results you can share with your team to track progress.</p></div>
-            <div className="tsd-card reveal"><div className="tsd-ic">{clockIcon}</div><p className="tsd-ct">Create your own questions</p><p className="tsd-cd">Add your own questions to expand your testing capability for specific roles.</p></div>
-            <div className="tsd-card reveal"><div className="tsd-ic">{clockIcon}</div><p className="tsd-ct">Candidate friendly</p><p className="tsd-cd">Challenging but enjoyable assessments so candidates complete tests without frustration.</p></div>
-            <div className="tsd-card reveal"><div className="tsd-ic">{clockIcon}</div><p className="tsd-ct">Customizable</p><p className="tsd-cd">Design assessments as you require — include specific cognitive tests for any role.</p></div>
-            <div className="tsd-card reveal"><div className="tsd-ic">{clockIcon}</div><p className="tsd-ct">Informed analysis</p><p className="tsd-cd">Results that help you identify patterns, trends, strengths and weaknesses per candidate.</p></div>
-            <div className="tsd-card reveal"><div className="tsd-ic">{clockIcon}</div><p className="tsd-ct">Choose difficulty</p><p className="tsd-cd">Three levels — easy, medium and hard — to test different levels of experience and skill.</p></div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 2 — split (flipped) */}
-      <section className="tsd-sec">
-        <div className="tsdw">
-          <div className="tsd-grid2 tsd-flip">
-            <div className="tsd-copy reveal">
-              <h2 className="tsd-h2">Go beyond gut instinct and measure true potential</h2>
-              <p className="tsd-p">Our cognitive ability assessment clearly shows how candidates reason, solve problems and process new information. Whether hiring for a fast-paced sales role or a data-heavy analyst position, it measures core cognitive skills that predict on-the-job performance — before you make the offer. Tests are crafted by subject-matter experts and rigorously tested to minimize bias.</p>
-              <div className="tsd-bl">
-                <div className="tsd-bi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span className="tsd-bt">Timed questions to test mental agility</span></div>
-                <div className="tsd-bi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span className="tsd-bt">Covers logic, math, verbal reasoning and critical thinking</span></div>
-                <div className="tsd-bi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span className="tsd-bt">Instant, global-benchmarked scoring for data-driven decisions</span></div>
-                <div className="tsd-bi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span className="tsd-bt">Customize questions, timings and more per role</span></div>
+            {cards.map((c, i) => (
+              <div className="tsd-card reveal" key={i}>
+                <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={c.iconD}></path></svg></div>
+                <p className="tsd-ct">{c.title}</p>
+                <p className="tsd-cd">{c.desc}</p>
               </div>
-            </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/05/Accurate-Insights-1024x773.png")' }}></div></div></div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Section 3 — cards */}
-      <section className="tsd-sec tsd-sand">
-        <div className="tsdw">
-          <div className="tsd-shead reveal"><p className="eyebrow">What we measure<b>.</b></p><h2 className="tsd-h2">The core cognitive skills we assess</h2><p className="tsd-lead">Five research-backed dimensions, mixed and matched per role.</p></div>
-          <div className="tsd-cards">
-            <div className="tsd-card reveal"><div className="tsd-ic">{clockIcon}</div><p className="tsd-ct">Numerical reasoning</p><p className="tsd-cd">Interpreting numbers, patterns, tables, charts, graphs and diagrams to draw conclusions quickly.</p></div>
-            <div className="tsd-card reveal"><div className="tsd-ic">{clockIcon}</div><p className="tsd-ct">Critical &amp; independent thinking</p><p className="tsd-cd">Solving three-part problems using deductive reasoning and finding new solutions independently.</p></div>
-            <div className="tsd-card reveal"><div className="tsd-ic">{clockIcon}</div><p className="tsd-ct">Spatial reasoning</p><p className="tsd-cd">Understanding and reasoning about spatial relationships — essential for STEM roles.</p></div>
-            <div className="tsd-card reveal"><div className="tsd-ic">{clockIcon}</div><p className="tsd-ct">Problem-solving</p><p className="tsd-cd">Analyzing information, thinking critically and arriving at effective solutions under pressure.</p></div>
-            <div className="tsd-card reveal"><div className="tsd-ic">{clockIcon}</div><p className="tsd-ct">Verbal reasoning</p><p className="tsd-cd">Reasoning from words to reach valid conclusions — for reports, presentations and pitch decks.</p></div>
-          </div>
-        </div>
-      </section>
+      {/* Sections 2–8 — splits */}
+      {splitsAfterCards.map((s, i) => (
+        <SplitSection s={s} key={i} />
+      ))}
 
       <section className="tsd-sec tsd-sand">
         <div className="tsdw">
@@ -307,7 +403,7 @@ export default function CognitiveAbilityTestsPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png" alt="JazzHR" /></div>
           </div>
-          <div className="itats-more reveal"><Link href="/integrations">View all ATS integrations<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link></div>
+          <div className="itats-more reveal"><Link href="/integrations">View all ATS integrations{arrow16}</Link></div>
         </div>
       </section>
 

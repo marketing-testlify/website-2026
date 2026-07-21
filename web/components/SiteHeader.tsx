@@ -51,7 +51,7 @@ const SOL: Group[] = [
     subs: [
       { label: 'Role specific', d: '4,500+ job-specific assessments', href: 'role-specific-tests.dc.html' },
       { label: 'Language', d: 'Proficiency across 16+ languages', href: 'language-tests.dc.html' },
-      { label: 'Programming', d: 'Real-world dev challenges', href: 'programming-tests.dc.html' },
+      { label: 'Programming', d: 'Real-world dev challenges', href: 'coding-tests.dc.html' },
       { label: 'Software skills', d: 'Tools & platform proficiency', href: 'software-skills-tests.dc.html' },
       { label: 'Personality & culture', d: 'Work style & culture fit', href: 'psychometric-tests.dc.html' },
       { label: 'Cognitive ability', d: 'Reasoning & problem-solving', href: 'cognitive-ability-tests.dc.html' },

@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -97,6 +97,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -156,13 +158,12 @@ const Arrow = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
 );
 
-const logos = ['LTIMindtree', 'Sonatafy', 'Thales', 'Third Bridge', 'Virtual', 'Cogitotech'];
-
 type Section = {
   h2: string;
   body: string[];
   bullets: string[];
   img: string;
+  shotBg: string;
   flip: boolean;
   sand: boolean;
   cta?: { label: string; href: string };
@@ -174,14 +175,16 @@ const sections: Section[] = [
     body: ["Testlify's role-specific tests are expertly built assessments tailored to actual job requirements across departments and seniority levels. They help you identify real talent — people who can not only talk the talk, but actually do the job."],
     bullets: ['500+ curated tests across roles and industries', 'Entry to executive-level options', 'Real-world scenarios and simulations', 'Custom test creation and combination', 'Secure, anti-cheating infrastructure', 'DEI-aligned for fair hiring', 'Instant reports with benchmark comparisons'],
     img: 'https://testlify.com/wp-content/uploads/2024/10/Candidate-comparison-2.png',
+    shotBg: '#F3F6F9',
     flip: false,
     sand: false,
   },
   {
-    h2: 'Why role-specific tests matter',
+    h2: 'Why role-specific tests matter?',
     body: ["Too often, hiring decisions rely on generic tests or surface-level interviews that don't reveal whether a candidate is truly fit for the role — leading to wasted interviews, frustrated teams and costly mis-hires.", "Our curated assessments dive deep into the real skills candidates need to succeed. Whether it's a Python developer, digital marketer or sales manager, we've got tests built for that exact job."],
     bullets: ['Tests aligned with day-to-day tasks', 'Role-ready challenges, not theoretical quizzes', 'Clear, actionable reports', 'Customizable for your exact job openings'],
     img: 'https://testlify.com/wp-content/uploads/2024/10/Less-guessing-better-assessing.png',
+    shotBg: '#FFF',
     flip: true,
     sand: true,
   },
@@ -190,6 +193,7 @@ const sections: Section[] = [
     body: ['Fast for you. Fair for candidates. Accurate for everyone. Each test is rigorously designed and constantly validated by experts and real-world performance data — and you can customize questions and difficulty while delivering a smooth, engaging candidate experience.'],
     bullets: ['Tests mapped to real job responsibilities', 'Role-based difficulty levels (junior to senior)', '30% faster screening cycles', 'Built-in anti-cheating and diversity measures'],
     img: 'https://testlify.com/wp-content/uploads/2024/10/Candidate-comparison-2.png',
+    shotBg: '#F3F6F9',
     flip: false,
     sand: false,
     cta: { label: 'Try for free', href: '/pricing' },
@@ -199,6 +203,7 @@ const sections: Section[] = [
     body: ["From tech to talent, sales to support, we've got it covered. With 500+ tests across 20+ departments and roles, Testlify offers one of the largest, most dynamic test libraries in the industry — browse by role, skill or domain."],
     bullets: ['Engineering — code-based, tech-stack-specific tests', 'Sales — real-world negotiation and communication tasks', 'Marketing — campaign analysis, content judgment, SEO skills', 'Customer support — scenario-based empathy and problem-solving', 'Finance & ops — accuracy, analytical thinking and tool familiarity', 'Product & design — prioritization, UX thinking and collaboration'],
     img: 'https://testlify.com/wp-content/uploads/2024/10/Less-guessing-better-assessing.png',
+    shotBg: '#FFF',
     flip: true,
     sand: true,
     cta: { label: 'View our test library', href: '/test-library' },
@@ -229,7 +234,7 @@ export default function RoleSpecificTestsPage() {
           <div className="tsd-copy reveal">
             <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Test type / Role specific</span></div>
             <p className="eyebrow">Role-specific tests<b>.</b></p>
-            <h1 className="tsd-h1">Role-specific tests that match real-world skills</h1>
+            <h1 className="tsd-h1"><span className="tac">Role-specific tests</span>{' '}that match real-world skills</h1>
             <p className="tsd-lead">The best candidates aren&apos;t just skilled — they&apos;re skilled for the job you&apos;re hiring for. Testlify&apos;s role-specific tests go beyond resumes to uncover true job-readiness, with assessments designed around real responsibilities, tools and tasks. Hire people who can hit the ground running from day one.</p>
             <div className="tsd-stats">
               <span className="tsd-statc">500+ roles covered</span>
@@ -264,18 +269,6 @@ export default function RoleSpecificTestsPage() {
         </div>
       </section>
 
-      <section className="tsd-trust reveal">
-        <div className="tsdw">
-          <p className="tsd-trust-l">Trusted by <strong>1,500+</strong> hiring teams worldwide</p>
-          <div className="tsd-marq-wrap">
-            <div className="tsd-marq">
-              {logos.map((lg, i) => <span className="tsd-marq-i" key={`a${i}`}>{lg}</span>)}
-              {logos.map((lg, i) => <span className="tsd-marq-i" key={`b${i}`}>{lg}</span>)}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {sections.map((s, i) => (
         <section className={`tsd-sec${s.sand ? ' tsd-sand' : ''}`} key={i}>
           <div className="tsdw">
@@ -290,7 +283,7 @@ export default function RoleSpecificTestsPage() {
                 </div>
                 {s.cta && <Link className="tsd-link" href={s.cta.href}>{s.cta.label}<Arrow /></Link>}
               </div>
-              <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: `url("${s.img}")` }}></div></div></div>
+              <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: s.shotBg }}><div className="tsd-shotimg" style={{ backgroundColor: s.shotBg, backgroundImage: `url("${s.img}")` }}></div></div></div>
             </div>
           </div>
         </section>

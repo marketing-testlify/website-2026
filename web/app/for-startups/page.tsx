@@ -97,6 +97,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -154,19 +156,15 @@ const CHECK = (
 const ARROW = (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
 );
-const CARDIC = (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg>
-);
-
 const logos = ['LTIMindtree', 'Sonatafy', 'Thales', 'Third Bridge', 'Virtual', 'Cogitotech'];
 
 const cards = [
-  { title: 'Information Technology', desc: 'Data scientists, ML/AI engineers, full-stack, DevOps, system engineers and more.' },
-  { title: 'Sales & Marketing', desc: 'Communication, aptitude and role-specific tests for go-to-market hires.' },
-  { title: 'Software Development', desc: '45+ languages, live coding and role-specific developer challenges.' },
-  { title: 'Cloud & Architecture', desc: 'Cloud engineering, system design and infrastructure knowledge.' },
-  { title: 'Financial Services', desc: 'Analytical thinking, accuracy and finance role-specific assessments.' },
-  { title: 'Cognitive & role-specific', desc: 'Cognitive ability, situational judgment, language and communication tests.' },
+  { title: 'Information Technology', iconD: 'M20 4H4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM20 13H4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2zM6 7h.01M6 16h.01', desc: 'Data scientists, ML/AI engineers, full-stack, DevOps, system engineers and more.' },
+  { title: 'Sales & Marketing', iconD: 'M23 6l-9.5 9.5-5-5L1 18M17 6h6v6', desc: 'Communication, aptitude and role-specific tests for go-to-market hires.' },
+  { title: 'Software Development', iconD: 'M16 18l6-6-6-6M8 6l-6 6 6 6', desc: '45+ languages, live coding and role-specific developer challenges.' },
+  { title: 'Cloud & Architecture', iconD: 'M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z', desc: 'Cloud engineering, system design and infrastructure knowledge.' },
+  { title: 'Financial Services', iconD: 'M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6', desc: 'Analytical thinking, accuracy and finance role-specific assessments.' },
+  { title: 'Cognitive & role-specific', iconD: 'M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z', desc: 'Cognitive ability, situational judgment, language and communication tests.' },
 ];
 
 const faqs = [
@@ -300,7 +298,7 @@ export default function ForStartupsPage() {
         <div className="tsd-cards">
           {cards.map((c, i) => (
             <div className="tsd-card reveal" key={i}>
-              <div className="tsd-ic">{CARDIC}</div>
+              <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={c.iconD}></path></svg></div>
               <p className="tsd-ct">{c.title}</p>
               <p className="tsd-cd">{c.desc}</p>
             </div>

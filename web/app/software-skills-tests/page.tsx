@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -97,6 +97,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -159,12 +161,36 @@ const Arrow = () => (
 const logos = ['LTIMindtree', 'Sonatafy', 'Thales', 'Third Bridge', 'Virtual', 'Cogitotech'];
 
 const cards = [
-  { title: 'Library of tests', desc: 'A vast library covering in-demand, job-specific skills. Select the skills and difficulty, then add them to your assessment.' },
-  { title: 'Custom questions', desc: 'Add your own questions to refine how you test — multiple-choice or video-based answers.' },
-  { title: 'Automate invitations', desc: 'Automate candidate invites from one dashboard with real-time feedback — no switching between tools.' },
-  { title: 'Enjoyable for candidates', desc: 'Tests designed to keep candidates motivated and encouraged to finish.' },
-  { title: 'Deeper insights', desc: 'Monitor assessments in real time and compare top-performing candidates to hire the best, simply.' },
-  { title: 'Hire at scale', desc: 'Scale teams faster and reliably with automated tests and the capacity to assess large volumes of candidates.' },
+  {
+    title: 'Library of tests',
+    iconD: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z',
+    desc: 'Testlify offers a vast library of tests that cover many job-specific skills that are in demand. Simply select the relevant skills to test, and the difficulty required, and add it to your assessment.',
+  },
+  {
+    title: 'Custom questions',
+    iconD: 'M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z',
+    desc: "Testlify allows you to easily add your own questions to further refine how you test a candidate's skills. You can choose between multiple-choice, and whether you want video-based answers.",
+  },
+  {
+    title: 'Automate invitations',
+    iconD: 'M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z',
+    desc: 'Automate candidate invites using our dashboard. No more switching between tools, manually managing invites or figuring out who has responded. Our interface gives you real-time feedback for easier management.',
+  },
+  {
+    title: 'Enjoyable for candidates',
+    iconD: 'M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z',
+    desc: 'Our tests are designed to offer an enjoyable experience for candidates. We want them to be motivated and encouraged to take the assessments and finish them.',
+  },
+  {
+    title: 'Deeper insights',
+    iconD: 'M12 20V10M18 20V4M6 20v-4',
+    desc: 'Monitor the progress of your assessments in real-time and see the top-performing candidates. Deeper insights into skills and aptitudes allow you to compare individuals and make hiring the best people simple.',
+  },
+  {
+    title: 'Hire at scale',
+    iconD: 'M20 4H4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM20 13H4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2zM6 7h.01M6 16h.01',
+    desc: 'Scale teams faster and reliably with automated tests and increase your capacity to assess large volumes of candidates. No longer do you or your team have to feel overwhelmed by the task of recruiting.',
+  },
 ];
 
 const faqs = [
@@ -191,8 +217,8 @@ export default function SoftwareSkillsTestsPage() {
           <div className="tsd-copy reveal">
             <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Test type / Software skills</span></div>
             <p className="eyebrow">Software skills tests<b>.</b></p>
-            <h1 className="tsd-h1">Hire job-ready talent with software skills tests</h1>
-            <p className="tsd-lead">Testlify&apos;s software skills test validates candidates&apos; proficiency with essential workplace tools like Microsoft Office, Canva, Slack and Google Workspace — so you hire people who are productive from day one.</p>
+            <h1 className="tsd-h1">Hire job-ready talent with <span className="tac">software skills tests</span></h1>
+            <p className="tsd-lead">Testlify&apos;s software skills test helps you validate candidates&apos; proficiency with essential workplace tools like Microsoft Office, Canva, Slack, and Google Workspace so you hire people who are productive from day one.</p>
             <div className="tsd-stats">
               <span className="tsd-statc">Real workplace tools</span>
               <span className="tsd-statc">Timed scenarios</span>
@@ -244,14 +270,15 @@ export default function SoftwareSkillsTestsPage() {
           <div className="tsd-grid2">
             <div className="tsd-copy reveal">
               <h2 className="tsd-h2">Start hiring with proof, not promises</h2>
-              <p className="tsd-p">Relying on resumes or self-assessments to gauge software fluency is a gamble. Candidates might claim proficiency in tools like Microsoft Office, Slack or Notion — but real skill is hard to fake when it&apos;s put to the test. It&apos;s faster, fairer and far more reliable than traditional screening.</p>
+              <p className="tsd-p">Relying on resumes or self-assessments to gauge software fluency is a gamble. Candidates might claim proficiency in tools like Microsoft Office, Slack, or Notion but real skill is hard to fake when it&apos;s put to the test. It&apos;s faster, fairer, and far more reliable than traditional screening.</p>
+              <p className="tsd-p">Testlify helps you bridge that gap by:</p>
               <div className="tsd-bl">
-                {['Simulate everyday tasks within the actual tools candidates use on the job', 'Timed, scenario-based questions to assess speed, accuracy and confidence', 'Instantly highlight top performers before you invest time in interviews'].map((b, i) => (
+                {['Simulating everyday tasks within actual tools candidates will use on the job', 'Offering timed, scenario-based questions to assess speed, accuracy, and confidence', 'Instantly highlighting your top performers before you invest time in interviews'].map((b, i) => (
                   <div className="tsd-bi" key={i}><Check /><span className="tsd-bt">{b}</span></div>
                 ))}
               </div>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/11/Risk-to-Reputation.png")' }}></div></div></div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#F3F6F9' }}><div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/11/Risk-to-Reputation.png")' }}></div></div></div>
           </div>
         </div>
       </section>
@@ -261,15 +288,20 @@ export default function SoftwareSkillsTestsPage() {
         <div className="tsdw">
           <div className="tsd-grid2 tsd-flip">
             <div className="tsd-copy reveal">
-              <h2 className="tsd-h2">Practical, interactive and built for the modern workplace</h2>
-              <p className="tsd-p">A real-world assessment of daily tasks, customized to your roles and tools. From formatting spreadsheets to building simple visuals or navigating a CRM, we replicate real workflows so you can assess what matters.</p>
-              <div className="tsd-bl">
-                {['Tool familiarity — can they use Excel shortcuts or Slack threads?', 'Execution quality — do they build documents cleanly and communicate clearly?', 'Efficiency — can they get things done under realistic conditions?'].map((b, i) => (
-                  <div className="tsd-bi" key={i}><Check /><span className="tsd-bt">{b}</span></div>
+              <h2 className="tsd-h2">Practical, interactive, and built for the modern workplace</h2>
+              <p className="tsd-p">Testlify&apos;s Software Skills Test is a real-world assessment of daily tasks, customized to your roles and tools.</p>
+              <p className="tsd-p">From formatting spreadsheets to building simple visuals or navigating a CRM, we replicate real workflows so you can assess:</p>
+              <div className="tsd-bl tsd-bl1">
+                {[
+                  { label: 'Tool familiarity', desc: 'Can the candidate use Excel shortcuts or Slack threads?' },
+                  { label: 'Execution quality', desc: 'Do they build documents cleanly and communicate clearly?' },
+                  { label: 'Efficiency', desc: 'Can they get things done under realistic conditions?' },
+                ].map((b, i) => (
+                  <div className="tsd-bi" key={i}><Check /><span className="tsd-bt">{b.label}<span className="tsd-bd">{b.desc}</span></span></div>
                 ))}
               </div>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/08/Reduce-Employee-Turnover-1024x1024.png")' }}></div></div></div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#FFF' }}><div className="tsd-shotimg" style={{ backgroundColor: '#FFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/08/Reduce-Employee-Turnover-1024x1024.png")' }}></div></div></div>
           </div>
         </div>
       </section>
@@ -280,12 +312,12 @@ export default function SoftwareSkillsTestsPage() {
           <div className="tsd-shead reveal">
             <p className="eyebrow">Why Testlify<b>.</b></p>
             <h2 className="tsd-h2">The better way to test job skills</h2>
-            <p className="tsd-lead">Increase the effectiveness of your hiring and save your team time — while making it simple.</p>
+            <p className="tsd-lead">Our skills assessments can dramatically increase the effectiveness of your hiring and save your recruitment team time and valuable resources, all while making it simple to do. It&apos;s never been simpler to test and compare candidates while making it easier for your team to collaborate and make hiring decisions faster.</p>
           </div>
           <div className="tsd-cards">
             {cards.map((c, i) => (
               <div className="tsd-card reveal" key={i}>
-                <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg></div>
+                <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={c.iconD}></path></svg></div>
                 <p className="tsd-ct">{c.title}</p>
                 <p className="tsd-cd">{c.desc}</p>
               </div>
@@ -300,7 +332,8 @@ export default function SoftwareSkillsTestsPage() {
           <div className="tsd-grid2">
             <div className="tsd-copy reveal">
               <h2 className="tsd-h2">From admins to marketers, know who&apos;s really job-ready</h2>
-              <p className="tsd-p">Whether it&apos;s sending professional emails, managing projects or updating spreadsheets, digital fluency is essential across teams. These aren&apos;t generic assessments — they&apos;re role-based, tool-specific and performance-focused.</p>
+              <p className="tsd-p">Whether it&apos;s sending professional emails, managing projects, or updating spreadsheets, digital fluency is essential across teams. These aren&apos;t generic assessments, they&apos;re role-based, tool-specific, and performance-focused.</p>
+              <p className="tsd-p">Our Software Skills Tests are designed for:</p>
               <div className="tsd-bl">
                 {['Administrative & executive assistants', 'Customer support & service reps', 'Marketing & social media coordinators', 'Project managers & ops staff', 'Sales & HR teams using CRM and communication tools'].map((b, i) => (
                   <div className="tsd-bi" key={i}><Check /><span className="tsd-bt">{b}</span></div>
@@ -308,7 +341,7 @@ export default function SoftwareSkillsTestsPage() {
               </div>
               <Link className="tsd-link" href="/pricing">Try for free<Arrow /></Link>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/04/Why-Testlify-01-1.png")' }}></div></div></div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#F3F6F9' }}><div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/04/Why-Testlify-01-1.png")' }}></div></div></div>
           </div>
         </div>
       </section>

@@ -23,9 +23,7 @@ function route(h: string): string {
   return '/' + s;
 }
 
-type ChipDef = { href: string; dot: string; children: React.ReactNode };
-
-function Chip({ href, dot, children }: ChipDef) {
+function Chip({ href, dot, children }: { href: string; dot: string; children?: React.ReactNode }) {
   return (
     <Link className="chip" href={route(href)}>
       <span className={`dot ${dot}`}></span>
@@ -82,15 +80,14 @@ export default function SitemapPage() {
               <h2>Product menu <span style={{ fontWeight: 500, fontSize: '12px', color: '#A9999C' }}>· 8</span></h2>
               <div className="sub">The Product mega-menu, in live order</div>
               <div className="grp">
-                <Chip href="ai-powered-talent-assessment-platform.dc.html" dot="d-b">Testlify AI</Chip>
-                <Chip href="ai-resume-screener.dc.html" dot="d-b">AI resume screener</Chip>
-                <Chip href="features.dc.html" dot="d-cm">Features</Chip>
-                <Chip href="video-interviewing-tool.dc.html" dot="d-cm">Video interviewing</Chip>
-                <Chip href="science.dc.html" dot="d-cm">Science behind tests</Chip>
-                <Chip href="demo.dc.html" dot="d-cm">Live product demo</Chip>
-                {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+                <Chip href="ai-powered-talent-assessment-platform.dc.html" dot="d-a">Testlify AI</Chip>
+                <Chip href="ai-resume-screener.dc.html" dot="d-a">AI resume screener</Chip>
+                <Chip href="features.dc.html" dot="d-a">Features</Chip>
+                <Chip href="video-interviewing-tool.dc.html" dot="d-a">Video interviewing</Chip>
+                <Chip href="science.dc.html" dot="d-a">Science behind tests</Chip>
+                <Chip href="demo.dc.html" dot="d-a">Live product demo</Chip>
                 <a className="chip" href="https://roadmap.testlify.com/" target="_blank" rel="noopener"><span className="dot d-a"></span>Roadmap <span style={{ color: '#A9999C' }}>(ext)</span></a>
-                <Chip href="integrations.dc.html" dot="d-cm">ATS integrations</Chip>
+                <Chip href="integrations.dc.html" dot="d-a">ATS integrations</Chip>
               </div>
               <div className="glabel">Also live (not in Product menu)</div>
               <div className="grp">
@@ -322,16 +319,16 @@ export default function SitemapPage() {
               <h2>Solutions · use cases (10) <span style={{ fontWeight: 500, fontSize: '12px', color: '#A9999C' }}>· live-match</span></h2>
               <div className="sub">Built from solution-usecase-template</div>
               <div className="grp">
-                <Chip href="lateral-hiring.dc.html" dot="d-cm">Lateral hiring</Chip>
-                <Chip href="diversity-and-inclusions.dc.html" dot="d-cm">Diversity &amp; inclusion</Chip>
-                <Chip href="volume-hiring.dc.html" dot="d-cm">Volume hiring</Chip>
-                <Chip href="remote-hiring.dc.html" dot="d-cm">Remote hiring</Chip>
-                <Chip href="blue-collar-hiring.dc.html" dot="d-cm">Blue collar hiring</Chip>
-                <Chip href="freelance-hiring.dc.html" dot="d-cm">Freelance hiring</Chip>
-                <Chip href="campus-hiring.dc.html" dot="d-cm">Campus hiring</Chip>
-                <Chip href="technical-hiring.dc.html" dot="d-cm">Technical hiring</Chip>
-                <Chip href="sales-hiring.dc.html" dot="d-cm">Sales hiring</Chip>
-                <Chip href="skills-validation.dc.html" dot="d-cm">Skills validation</Chip>
+                <Chip href="lateral-hiring.dc.html" dot="d-a">Lateral hiring</Chip>
+                <Chip href="diversity-and-inclusions.dc.html" dot="d-a">Diversity &amp; inclusion</Chip>
+                <Chip href="volume-hiring.dc.html" dot="d-a">Volume hiring</Chip>
+                <Chip href="remote-hiring.dc.html" dot="d-a">Remote hiring</Chip>
+                <Chip href="blue-collar-hiring.dc.html" dot="d-a">Blue collar hiring</Chip>
+                <Chip href="freelance-hiring.dc.html" dot="d-a">Freelance hiring</Chip>
+                <Chip href="campus-hiring.dc.html" dot="d-a">Campus hiring</Chip>
+                <Chip href="technical-hiring.dc.html" dot="d-a">Technical hiring</Chip>
+                <Chip href="sales-hiring.dc.html" dot="d-a">Sales hiring</Chip>
+                <Chip href="skills-validation.dc.html" dot="d-a">Skills validation</Chip>
               </div>
             </div>
 
@@ -339,17 +336,16 @@ export default function SitemapPage() {
               <h2>Solutions · test types (11) <span style={{ fontWeight: 500, fontSize: '12px', color: '#A9999C' }}>· live-match</span></h2>
               <div className="sub">Built from solution-testtype-template</div>
               <div className="grp">
-                <Chip href="role-specific-tests.dc.html" dot="d-cm">Role specific</Chip>
-                <Chip href="language-tests.dc.html" dot="d-cm">Language</Chip>
-                <Chip href="programming-tests.dc.html" dot="d-cm">Programming</Chip>
-                <Chip href="software-skills-tests.dc.html" dot="d-cm">Software skills</Chip>
-                <Chip href="psychometric-tests.dc.html" dot="d-cm">Personality &amp; culture</Chip>
-                <Chip href="cognitive-ability-tests.dc.html" dot="d-cm">Cognitive ability</Chip>
-                <Chip href="situational-judgment.dc.html" dot="d-cm">Situational judgment</Chip>
-                <Chip href="cefr-test.dc.html" dot="d-cm">CEFR</Chip>
-                <Chip href="typing-test.dc.html" dot="d-cm">Typing</Chip>
-                <Chip href="coding-tests.dc.html" dot="d-cm">Coding</Chip>
-                <Chip href="engineering-skills.dc.html" dot="d-cm">Engineering</Chip>
+                <Chip href="role-specific-tests.dc.html" dot="d-a">Role specific</Chip>
+                <Chip href="language-tests.dc.html" dot="d-a">Language</Chip>
+                <Chip href="coding-tests.dc.html" dot="d-a">Coding / Programming</Chip>
+                <Chip href="software-skills-tests.dc.html" dot="d-a">Software skills</Chip>
+                <Chip href="psychometric-tests.dc.html" dot="d-a">Personality &amp; culture</Chip>
+                <Chip href="cognitive-ability-tests.dc.html" dot="d-a">Cognitive ability</Chip>
+                <Chip href="situational-judgment.dc.html" dot="d-a">Situational judgment</Chip>
+                <Chip href="cefr-test.dc.html" dot="d-a">CEFR</Chip>
+                <Chip href="typing-test.dc.html" dot="d-a">Typing</Chip>
+                <Chip href="engineering-skills.dc.html" dot="d-a">Engineering</Chip>
                 <Chip href="process-knowledge-tests.dc.html" dot="d-cm">Process knowledge</Chip>
               </div>
             </div>
@@ -378,6 +374,7 @@ export default function SitemapPage() {
                 <Chip href="component-use-case-card.dc.html" dot="d-b">Use-case card</Chip>
                 <Chip href="component-cta-band.dc.html" dot="d-b">CTA band</Chip>
                 <Chip href="component-testimonials.dc.html" dot="d-b">Testimonials</Chip>
+                <Chip href="component-testimonials-cards.dc.html" dot="d-b">Testimonials cards</Chip>
                 <Chip href="component-recognition.dc.html" dot="d-b">Recognition band</Chip>
                 <Chip href="component-section-templates.dc.html" dot="d-b">Section templates <span style={{ color: '#A9999C' }}>(dev reference)</span></Chip>
               </div>

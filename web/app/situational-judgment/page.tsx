@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -97,6 +97,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -154,6 +156,7 @@ const Check = () => (
 
 type Section = {
   img: string;
+  shotBg: string;
   h2: string;
   body: string[];
   bullets?: string[];
@@ -165,19 +168,24 @@ type Section = {
 const sections: Section[] = [
   {
     img: 'https://testlify.com/wp-content/uploads/2022/10/Subject-assessment-1024x1024.png',
+    shotBg: '#F3F6F9',
     h2: 'Strategic relevance for hiring teams',
     body: [
-      "A Situational Judgment Test helps you see what a resume can't — how candidates respond to practical, high-pressure situations before you make the hire.",
-      "Our SJTs simulate the day-to-day decisions your team faces. From entry-level roles to leadership, you gain deeper insight into critical thinking, emotional intelligence and how well a candidate fits your team's culture.",
+      'When resumes blur together and interviews feel rehearsed, how do you really know how a candidate will perform on the job?',
+      'A Situational Judgment Test (SJT) helps you see what a resume can’t. These assessments reveal how candidates respond to practical, high-pressure situations before you make the hire.',
+      'At Testlify, our situational judgment tests are designed to simulate the day-to-day decisions your team faces. From entry-level roles to leadership, you’ll gain deeper insight into critical thinking, emotional intelligence, and how well a candidate fits your team’s culture.',
     ],
     bgClass: '',
     flipClass: '',
   },
   {
     img: 'https://testlify.com/wp-content/uploads/2022/11/Better-Skill-Set-Evaluation-Process.png',
+    shotBg: '#FFF',
     h2: 'Real scenarios, real insight, real talent',
     body: [
-      "Anyone can say they're a problem solver — our situational judgment assessment makes them prove it. We work with domain experts to craft assessments grounded in real-world situations tailored to your industry, role and expectations.",
+      'Anyone can say they’re a problem solver. Our situational judgment assessment makes them prove it. We work with domain experts to craft assessments grounded in real-world situations tailored to your industry, role, and expectations.',
+      'Whether you’re hiring junior professionals or evaluating leadership potential, situational judgment tests for managers and teams give you the clarity to hire with confidence. Because the best hires aren’t just technically skilled — they’re situationally smart.',
+      'Testlify helps you assess key decision-making skills such as:',
     ],
     bullets: [
       'Conflict resolution and interpersonal judgment',
@@ -190,24 +198,29 @@ const sections: Section[] = [
   },
   {
     img: 'https://testlify.com/wp-content/uploads/2022/11/Vast-Lib-1-1024x1024-1.png',
+    shotBg: '#F3F6F9',
     h2: 'Elevate your hiring game, not your workload',
     body: [
-      'You need smarter hiring, not more complexity. Our SJTs integrate effortlessly into your existing workflows with ready-to-use templates, customizable test paths and built-in automation — saving time while giving more reliable hiring signals.',
+      'You need smarter hiring, not more complexity.',
+      'That’s why our situational judgment tests integrate effortlessly into your existing hiring workflows. With ready-to-use templates, customizable test paths, and automation built in, you’ll save time while gaining more reliable hiring signals.',
+      'What you get:',
     ],
     bullets: [
       'A vast library of assessments',
       'Seamless ATS and HRMS integrations',
       'Tailored tests for any role or seniority',
-      'Automated scoring, insights and filtering',
+      'Automated scoring, insights, and filtering',
     ],
     bgClass: '',
     flipClass: '',
   },
   {
     img: 'https://testlify.com/wp-content/uploads/2024/02/How-to-simplify-candidate-screening-with-salesforce-test-1024x761.png',
+    shotBg: '#FFF',
     h2: 'A better experience for candidates means better talent for you',
     body: [
-      'Great talent has choices, and a frustrating assessment could mean they choose someone else. Our SJTs are intuitive, fast and fair — no trick questions, no jargon, just realistic scenarios, clear instructions and a polished experience.',
+      'Great talent has choices. And a frustrating assessment process could mean they choose someone else.',
+      'Our situational judgment tests for professionals are built to be intuitive, fast, and fair keeping top candidates engaged throughout. No trick questions. No jargon. Just realistic scenarios, clear instructions, and a polished user experience. When candidates enjoy the process, they’re more likely to say yes and speak highly of your brand.',
     ],
     bullets: [
       'Mobile-friendly and accessible',
@@ -219,9 +232,12 @@ const sections: Section[] = [
   },
   {
     img: 'https://testlify.com/wp-content/uploads/2022/10/team-1024x567.png',
+    shotBg: '#F3F6F9',
     h2: 'Actionable insights, not just scores',
     body: [
-      "A raw score can't tell the full story — our situational judgment assessments can. Get deep, contextual insight into how candidates think and respond, with a reporting dashboard that helps you compare candidates and refine your hiring strategy over time.",
+      'A raw score can’t tell the full story. But our situational judgment assessments can.',
+      'Get deep, contextual insights into how candidates think and respond. Our reporting dashboard breaks down individual scoring and report so you can compare candidates, identify patterns, and refine your hiring strategy over time.',
+      'Here’s what you’ll see:',
     ],
     bullets: [
       'Skill-by-skill breakdowns',
@@ -231,7 +247,19 @@ const sections: Section[] = [
     ],
     bgClass: '',
     flipClass: '',
-    cta: { label: 'Try for free', href: '/pricing' },
+  },
+  {
+    img: 'https://testlify.com/wp-content/uploads/2022/05/undraw_Predictive_analytics_re_wxt8.png',
+    shotBg: '#FFF',
+    h2: 'The smartest teams hire with Testlify',
+    body: [
+      'Top teams don’t guess. They test.',
+      'Whether you’re scaling a sales team, hiring people leaders, or filling high-impact roles, our situational judgment tests deliver clarity, speed, and confidence at every stage of the hiring journey.',
+      'Ready to see how it works?',
+    ],
+    bgClass: 'tsd-sand',
+    flipClass: 'tsd-flip',
+    cta: { label: 'Book a demo', href: '/contact' },
   },
 ];
 
@@ -255,7 +283,7 @@ const faqs = [
   { q: 'What skills can I test under situational judgment tests?', a: 'Based on the job role, you can test for business judgment, business communication, time management, business negotiation, critical thinking and business ethics.' },
   { q: 'How can I customize tests?', a: 'Any new skill test from our test library can be added to assessments to make them more unique. Just add the assessments relevant to the job role.' },
   { q: 'Are the situational judgment tests reliable?', a: 'Our situational judgment tests are extremely accurate and have been examined to verify that the results are reliable even after repeated administrations.' },
-  { q: 'Can I add multiple skills to my custom assessment?', a: "Absolutely, yes. Your job description will be used to create a custom assessment that asks questions about all the essential abilities you've listed." },
+  { q: 'Can I add multiple skills to my custom assessment?', a: 'Absolutely, yes. Your job description will be used to create a custom assessment that asks questions about all the essential abilities you’ve listed.' },
   { q: 'Does every candidate get the same questions?', a: 'Yes, it makes it much simpler to evaluate candidates. The MCQ options and question order are both randomized, and we have proctoring and anti-cheating systems in place.' },
   { q: 'How do I schedule a demo?', a: 'You can schedule a demo by filling out the request for a demo and we will contact you to make arrangements.' },
 ];
@@ -274,7 +302,7 @@ export default function SituationalJudgmentPage() {
           <div className="tsd-copy reveal">
             <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Test type / Situational judgment</span></div>
             <p className="eyebrow">Situational judgment tests<b>.</b></p>
-            <h1 className="tsd-h1">Test real-world thinking with situational judgment tests</h1>
+            <h1 className="tsd-h1">Test real-world thinking with <span className="tac">situational judgment tests</span></h1>
             <p className="tsd-lead">When resumes blur together and interviews feel rehearsed, how do you really know how a candidate will perform on the job? Situational Judgment Tests simulate the everyday decisions your team faces — giving you a lens into soft skills, critical thinking and cultural fit. It&apos;s not guesswork; it&apos;s predictive, practical hiring at scale.</p>
             <div className="tsd-stats">
               {stats.map((t) => (
@@ -326,9 +354,9 @@ export default function SituationalJudgmentPage() {
       </section>
 
       {sections.map((s, i) => (
-        <section className={'tsd-sec ' + s.bgClass} key={i}>
+        <section className={('tsd-sec ' + s.bgClass).trim()} key={i}>
           <div className="tsdw">
-            <div className={'tsd-grid2 ' + s.flipClass}>
+            <div className={('tsd-grid2 ' + s.flipClass).trim()}>
               <div className="tsd-copy reveal">
                 <h2 className="tsd-h2">{s.h2}</h2>
                 {s.body.map((para, pi) => (
@@ -346,8 +374,8 @@ export default function SituationalJudgmentPage() {
                 )}
               </div>
               <div className="tsd-media reveal">
-                <div className="tsd-shot">
-                  <div className="tsd-shotimg" style={{ backgroundImage: `url("${s.img}")` }}></div>
+                <div className="tsd-shot" style={{ background: s.shotBg }}>
+                  <div className="tsd-shotimg" style={{ backgroundColor: s.shotBg, backgroundImage: `url("${s.img}")` }}></div>
                 </div>
               </div>
             </div>

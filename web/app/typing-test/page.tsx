@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -28,9 +28,15 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
+.tsd-video{max-width:920px;margin:34px auto 0;}
+.tsd-vwrap{position:relative;display:block;border-radius:22px;overflow:hidden;border:1px solid #F0E2E3;background:#fff;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-vimg{height:460px !important;border-radius:0 !important;}
+.tsd-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;background:#F23F44;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 34px rgba(242,63,68,.45);transition:transform .25s ease;}
+.tsd-vwrap:hover .tsd-play{transform:translate(-50%,-50%) scale(1.08);}
+.tsd-play svg{margin-left:4px;}
 .tsd-logos{margin-top:40px;}
 /* animated IT hero graphic */
 .ithero-wrap{position:relative;}
@@ -97,6 +103,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -152,8 +160,18 @@ const CHECK = (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
 );
 
-type Section = {
+type VideoSection = {
+  kind: 'video';
+  video: string;
   img: string;
+  h2: string;
+  body: string[];
+};
+
+type SplitSection = {
+  kind: 'split';
+  img: string;
+  shotBg: string;
   h2: string;
   body: string[];
   bullets: string[];
@@ -162,35 +180,54 @@ type Section = {
   cta?: { label: string; href: string };
 };
 
+type Section = VideoSection | SplitSection;
+
+// bgToggle rhythm from DATA: video(none) → split(sand) → split(none) → split(sand) → split(none)
+// sflip only advances on split sections: Why(flat) → Customize(flip) → Score(flat) → Easy(flip)
 const SECTIONS: Section[] = [
   {
+    kind: 'video',
+    video: 'https://youtu.be/0OcH3hjhgDs?si=hwdfc-Ibbkf33By6',
+    img: 'https://testlify.com/wp-content/uploads/2026/03/Typing-Test.png',
+    h2: 'See how the typing test works',
+    body: ['Measure speed and accuracy with precision-designed typing tests. Perfect for roles where quick, error-free input is critical.'],
+  },
+  {
+    kind: 'split',
     img: 'https://testlify.com/wp-content/uploads/2024/11/Why-test-typing-speed-1.png',
+    shotBg: '#F3F6F9',
     h2: 'Why test typing speed?',
     body: ['Typing proficiency relates directly to productivity. Ensure workplace efficiency by assessing typing proficiency, comparing candidates objectively and gaining insights for informed hiring.'],
     bullets: ['Fast screening', 'Predict performance', 'Data-driven decisions', 'Standardized benchmarks'],
-    flip: false, sand: false,
+    flip: false, sand: true,
   },
   {
+    kind: 'split',
     img: 'https://testlify.com/wp-content/uploads/2024/11/Customize-your-typing-test-1-1024x1024.png',
+    shotBg: '#FFF',
     h2: 'Customize your typing test',
     body: ['Choose a time limit of 30, 60 or 120 seconds and a difficulty level of easy, medium or hard. Generate a paragraph to assess, or add your own custom paragraph.'],
     bullets: ['Time flexibility', 'Tailor difficulty level', 'Branded experience', 'Customizable paragraphs'],
-    flip: true, sand: true,
+    flip: true, sand: false,
   },
   {
+    kind: 'split',
     img: 'https://testlify.com/wp-content/uploads/2024/11/Score-reports-and-insights-1-1024x1024.png',
+    shotBg: '#F3F6F9',
     h2: 'Score reports and insights',
     body: ['Get words per minute (WPM), accuracy and more. Quickly identify skilled candidates through comparative analysis, making informed hiring decisions.'],
     bullets: ['Detailed breakdown', 'Comparative analysis', 'Identify top performers', 'Integration options'],
-    flip: false, sand: false,
+    flip: false, sand: true,
+    cta: { label: 'Learn more', href: '/product-features' },
   },
   {
+    kind: 'split',
     img: 'https://testlify.com/wp-content/uploads/2024/11/Easy-setup-administration-2-1024x1024.png',
+    shotBg: '#FFF',
     h2: 'Easy setup & administration',
     body: ['Send individual or bulk email invites and monitor test progress and completion. Accessible on any device, anywhere — Testlify simplifies candidate evaluation with mobile-friendly features.'],
     bullets: ['Invite candidates', 'Real-time tracking', 'Mobile-friendly', 'Seamless user experience'],
-    flip: true, sand: true,
-    cta: { label: 'Try for free', href: '/pricing' },
+    flip: true, sand: false,
   },
 ];
 
@@ -198,7 +235,7 @@ const FAQS = [
   { q: 'How long is a typing test assessment?', a: 'The length can vary, ranging from 30 to 120 seconds. The specific length can be customized by the test creator.' },
   { q: 'Can I choose my own passages for the typing test?', a: 'Yes — you can either use one of the passages provided by the platform or create your own by adding it to the text field provided.' },
   { q: 'How is my typing speed calculated?', a: 'Your typing speed is calculated by dividing the number of words typed by the time it took to type them. For example, 50 words in 1 minute is 50 words per minute.' },
-  { q: "How do I know if I passed the typing test?", a: "After completing the test, you'll see a screen showing your typing speed, accuracy and other metrics. A passing score is determined by the employer or test creator based on the job's requirements." },
+  { q: 'How do I know if I passed the typing test?', a: "After completing the test, you'll see a screen showing your typing speed, accuracy and other metrics. A passing score is determined by the employer or test creator based on the job's requirements." },
   { q: 'How does Testlify help in my hiring process?', a: "Testlify's AI-powered pre-hire assessments help companies measure the skills and job fitment of a candidate — enabling quick screening, eliminating bias and increasing recruiter productivity as a proven solution against high turnover." },
   { q: 'What types of questions are asked in the pre-employment assessment?', a: 'Questions depend on the industry and job role and can include MCQs, video-based questions and open-ended (written or short answer) questions, with programming questions for coding tests.' },
   { q: 'What are the different types of tests on Testlify?', a: 'Tests fall into three main types: Technical (programming, software, role-specific, DevOps, finance, accounting), Cognitive Ability (aptitude), and Personality & Culture and Situational Judgment tests.' },
@@ -219,8 +256,8 @@ export default function TypingTestPage() {
         <div className="tsd-copy reveal">
           <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Test type / Typing</span></div>
           <p className="eyebrow">Typing test<b>.</b></p>
-          <h1 className="tsd-h1">Streamline recruitment with a typing test</h1>
-          <p className="tsd-lead">The main challenge in hiring is often identifying the right candidate who not only has the right qualifications but also the right skills for the role. Evaluate candidates&apos; keyboard skills with Testlify&apos;s typing test and find the perfect fit for your needs — measuring speed and accuracy with precision.</p>
+          <h1 className="tsd-h1">Streamline recruitment with a <span className="tac">typing test</span></h1>
+          <p className="tsd-lead">The main challenge in hiring is often identifying the right candidate who not only has the right qualifications but also the right skills for the role. Evaluate candidates&apos; keyboard skills with Testlify&apos;s typing test and find the perfect fit for your needs.</p>
           <div className="tsd-stats">
             <span className="tsd-statc">WPM &amp; accuracy</span>
             <span className="tsd-statc">30/60/120s options</span>
@@ -258,25 +295,43 @@ export default function TypingTestPage() {
         </div>
       </div></section>
 
-      {SECTIONS.map((s, i) => (
-        <section key={i} className={`tsd-sec ${s.sand ? 'tsd-sand' : ''}`}><div className="tsdw">
-          <div className={`tsd-grid2 ${s.flip ? 'tsd-flip' : ''}`}>
-            <div className="tsd-copy reveal">
-              <h2 className="tsd-h2">{s.h2}</h2>
-              {s.body.map((para, pi) => <p key={pi} className="tsd-p">{para}</p>)}
-              <div className="tsd-bl">
-                {s.bullets.map((b, bi) => (
-                  <div key={bi} className="tsd-bi">{CHECK}<span className="tsd-bt">{b}</span></div>
-                ))}
+      {SECTIONS.map((s, i) => {
+        if (s.kind === 'video') {
+          return (
+            <section key={i} className="tsd-sec"><div className="tsdw">
+              <div className="tsd-shead reveal">
+                <h2 className="tsd-h2">{s.h2}</h2>
+                {s.body.map((para, pi) => <p key={pi} className="tsd-lead">{para}</p>)}
               </div>
-              {s.cta && (
-                <Link className="tsd-link" href={s.cta.href}>{s.cta.label}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
-              )}
+              <div className="tsd-video reveal">
+                <a className="tsd-vwrap" href={s.video} target="_blank" rel="noopener noreferrer">
+                  <div className="tsd-shotimg tsd-vimg" style={{ backgroundImage: `url("${s.img}")` }}></div>
+                  <span className="tsd-play"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"></path></svg></span>
+                </a>
+              </div>
+            </div></section>
+          );
+        }
+        return (
+          <section key={i} className={`tsd-sec ${s.sand ? 'tsd-sand' : ''}`}><div className="tsdw">
+            <div className={`tsd-grid2 ${s.flip ? 'tsd-flip' : ''}`}>
+              <div className="tsd-copy reveal">
+                <h2 className="tsd-h2">{s.h2}</h2>
+                {s.body.map((para, pi) => <p key={pi} className="tsd-p">{para}</p>)}
+                <div className="tsd-bl">
+                  {s.bullets.map((b, bi) => (
+                    <div key={bi} className="tsd-bi">{CHECK}<span className="tsd-bt">{b}</span></div>
+                  ))}
+                </div>
+                {s.cta && (
+                  <Link className="tsd-link" href={s.cta.href}>{s.cta.label}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
+                )}
+              </div>
+              <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: s.shotBg }}><div className="tsd-shotimg" style={{ backgroundColor: s.shotBg, backgroundImage: `url("${s.img}")` }}></div></div></div>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: `url("${s.img}")` }}></div></div></div>
-          </div>
-        </div></section>
-      ))}
+          </div></section>
+        );
+      })}
 
       <section className="tsd-sec tsd-sand"><div className="tsdw">
         <div className="tsd-shead reveal"><p className="eyebrow">Integrations<b>.</b></p><h2 className="tsd-h2">Testlify integrates seamlessly with 100+ ATS tools</h2><p className="tsd-lead">Streamline your hiring process from assessment to onboarding. Sync candidate data effortlessly, automate workflows, and gain deeper insights to make informed hiring decisions faster.</p></div>

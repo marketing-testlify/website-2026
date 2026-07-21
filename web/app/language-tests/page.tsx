@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -97,6 +97,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -158,6 +160,7 @@ const ArrowRt = () => (
 
 type Section = {
   img: string;
+  shotBg: string;
   h2: string;
   body: string[];
   bullets: string[];
@@ -169,41 +172,86 @@ type Section = {
 const sections: Section[] = [
   {
     img: 'https://testlify.com/wp-content/uploads/2024/11/Language-tests-for-8-languages-1024x1024.png',
-    h2: 'Why Language proficiency testing matters',
-    body: ["Your talent pool is global — your assessments should be too. Recruiters often rely on résumés or interviews to gauge fluency, but those don't tell the full story, and poor communication skills lead to misalignment, low productivity and lost deals. Our test goes beyond grammar quizzes."],
-    bullets: ['Real-life communication scenarios', 'CEFR-aligned scoring', 'Instant, easy-to-read reports', 'Hire across borders with no guesswork', 'Reduce early-stage attrition due to language gaps'],
+    shotBg: '#F3F6F9',
+    h2: 'Why does Language proficiency testing matter, and how does it work for you?',
+    body: [
+      'Your talent pool is global. Your assessments should be too.',
+      "Recruiters often rely on résumés or interviews to assess language fluency, but those don't always tell the full story. Poor communication skills can lead to misalignment, low productivity, and lost deals.",
+      "That's why our Language proficiency test goes beyond grammar quizzes.",
+      "Testlify solves this by giving you an objective, structured, and scalable way to measure real language proficiency. Here's how it works:",
+    ],
+    bullets: [
+      'Real-life communication scenarios',
+      'CEFR-aligned scoring',
+      'Instant, easy-to-read reports',
+      'Hire across borders with no guesswork',
+      'Test communication in real-world job scenarios',
+      'Get data-backed insights instantly',
+      'Reduce early-stage attrition due to language gaps',
+    ],
     flip: false,
     sand: false,
   },
   {
     img: 'https://testlify.com/wp-content/uploads/2024/11/Proficiency-levels-of-language-tests.png',
-    h2: 'Smart, structured and built to scale',
-    body: ['A fully automated, CEFR-aligned assessment that evaluates candidates across all four core areas: reading, writing, speaking and listening.'],
-    bullets: ['Cheat-proof testing — secure, proctored and compliant', '8 supported languages including English, Spanish, French, German, Mandarin, Japanese', 'Customizable proficiency levels — A1 to C2', 'Real-world, role-specific prompts', 'AI + human scoring — fast, accurate and fair', 'Instant reporting with visual breakdowns'],
+    shotBg: '#FFF',
+    h2: 'Smart, structured, and built to scale',
+    body: [
+      "Testlify's Language proficiency tests are a fully automated, CEFR-aligned assessment that evaluates candidates' language proficiency across all core areas: reading, writing, speaking, and listening.",
+    ],
+    bullets: [
+      'Cheat-proof testing: Secure, proctored, and compliant',
+      '8 supported languages: English, Spanish, French, German, Italian, Mandarin, Cantonese, Japanese',
+      'Customizable proficiency levels: A1 – C2 for beginner to advanced roles',
+      'Real-world scenarios: Role-specific prompts for sales, support, admin, and more',
+      'AI + human scoring: Fast, accurate, and fair',
+      'Instant reporting: Visual breakdowns and comparison tools',
+    ],
     flip: true,
     sand: true,
   },
   {
     img: 'https://testlify.com/wp-content/uploads/2024/11/Skills-assessments-in-7-languages-1024x1024.png',
-    h2: 'Where language testing makes the biggest impact',
-    body: ['From the frontline to leadership, language matters — use it for pre-hire screening, global mobility, employee upskilling and language benchmarking.'],
-    bullets: ['Customer support — fluent, empathetic responses for global service', 'Sales & business development — clear, persuasive communication', 'Training & instructional roles — effective knowledge transfer', 'Remote & distributed teams — collaboration across cultures', 'International relocations — language readiness before onboarding'],
+    shotBg: '#F3F6F9',
+    h2: 'Use cases: Where Language proficiency testing makes the biggest impact',
+    body: [
+      'From the frontline to leadership, language matters. Use Language proficiency tests for pre-hire screening, global mobility, employee upskilling, and language benchmarking.',
+      "Testlify's Language proficiency tests support a wide range of hiring needs:",
+    ],
+    bullets: [
+      'Customer support: Fluent, empathetic responses for global service',
+      'Sales & business development: Clear, persuasive communication',
+      'Training & instructional roles: Effective knowledge transfer',
+      'Remote & distributed teams: Collaboration across cultures and time zones',
+      'International relocations: Ensure language readiness before onboarding',
+    ],
     flip: false,
     sand: false,
   },
   {
     img: 'https://testlify.com/wp-content/uploads/2024/11/User-friendly-interface-seamless-experience-1-1024x1024.png',
-    h2: 'Fast, flexible tests that fit your workflow',
-    body: ['Your hiring process is complex — we make skills assessment simple. Built for fast-moving global teams and high-volume hiring.'],
-    bullets: ['Integration with your ATS', 'Send test invites in seconds', 'Candidate benchmarking', 'Real-time data for faster, smarter decisions'],
+    shotBg: '#FFF',
+    h2: 'Fast, flexible Language proficiency tests that fits your workflow',
+    body: [
+      "Your hiring process is complex, we make skills assessment simple. Testlify's Language proficiency tests are built for fast-moving global teams and high-volume hiring.",
+    ],
+    bullets: [
+      'Integration with your ATS',
+      'Send test invites in seconds',
+      'Candidate benchmarking',
+      'Use real-time data to make faster, smarter decisions',
+    ],
     flip: true,
     sand: true,
   },
   {
     img: 'https://testlify.com/wp-content/uploads/2023/07/Before-you-continue-01-2-17-1024x761.png',
+    shotBg: '#F3F6F9',
     h2: 'Build a fluent, high-performance workforce',
-    body: ["Testlify helps you identify candidates who can collaborate, lead and deliver — no matter where they're from. It's more than a test; it's a smarter way to build high-impact, multilingual teams."],
-    bullets: ['Save time', 'Eliminate bias', 'Hire with precision'],
+    body: [
+      "Testlify helps you identify candidates who can collaborate, lead, and deliver no matter where they're from. It's more than a test. It's a smarter way to build high-impact, multilingual teams.",
+    ],
+    bullets: ['Save time', 'Eliminate bias', 'Hire with precision.'],
     flip: false,
     sand: false,
     cta: { label: 'Try for free', href: '/pricing' },
@@ -215,13 +263,13 @@ const logos = ['LTIMindtree', 'Sonatafy', 'Thales', 'Third Bridge', 'Virtual', '
 const stats = ['30+ global languages', 'CEFR-aligned (A1–C2)', 'AI + human scoring'];
 
 const faqs = [
-  { q: 'How are language tests used in the hiring process?', a: 'Assessments that test language skills are generally used to evaluate candidates as part of the pre-screening process. These assessments evaluate various skills relevant to a job role and can include language tests as part of the overall assessment. The feedback then gives organizations the insights to compare and select the best talent for a role.' },
-  { q: "Can language tests predict a candidate's ability to communicate effectively?", a: "Testing a candidate's language skills can help predict whether a candidate is capable of communicating effectively in a specific language. Our tests evaluate a candidate's ability to read, understand and communicate in a specified language." },
-  { q: 'What is the duration of a test?', a: 'Each test evaluates one skill, and you may use several. Each is about 10 minutes in duration and can be customized to test for more skills, which affects the total assessment time.' },
-  { q: 'How do I customize tests?', a: 'Assessments can be customized by adding any additional skill test from our library. These can be a combination of aptitude, language, programming, software, or role-specific skills.' },
-  { q: 'Are language tests reliable?', a: 'Our language tests are highly accurate and have been tested to ensure their results are consistent even when taken again. They reduce the complexity of testing candidates, minimizing resources needed and providing powerful insights for informed decisions.' },
-  { q: "Why test a candidate's language skills?", a: "Testing an applicant's ability to communicate in a language gives you deeper insights into their actual ability and helps your selection process — increasing your team's ability to compare candidates with real-time scoring and insights that go beyond resumes." },
-  { q: 'How do I schedule a demo?', a: 'You can schedule a demo by filling out the request for a demo and we will contact you to make arrangements.' },
+  { q: 'How are language tests used in the hiring process?', a: 'Assessments that test language skills are generally used to evaluate candidates as part of the pre-screening process. These assessments evaluate various skills relevant to a job role and can include language tests as part of the overall assessment. The feedback from these tests can then give organizations the necessary insights to compare and select the best talent for a role.' },
+  { q: "Can language tests predict a candidate's ability to communicate effectively?", a: "Testing a candidate's language skills can help predict whether a candidate is capable of communicating effectively in a specific language. Our tests can evaluate a candidate's ability to read, understand, and communicate in a specified language." },
+  { q: 'What is the duration of a test?', a: 'Each test will evaluate one skill, and you may use several. Each are about 10 minutes in duration each. And can be customized to test for more skills which will affect the total time of an assessment.' },
+  { q: 'How do I customize tests?', a: 'Assessments can be customized by adding any additional skill test from our library of tests. These can be a combination of aptitude, language, programming, software, or role-specific skills.' },
+  { q: 'Are language tests reliable?', a: 'Our language tests are highly accurate and have been tested to ensure their results are consistent even when taken again. Language tests help reduce the complexity of testing candidates, minimizing the resources needed and providing powerful insights for organizations to make informed decisions.' },
+  { q: "Why test a candidate's language skills?", a: "Testing an applicant's ability to communicate in a language will give you deeper insights into their actual ability and help your selection process. This will ultimately increase your recruitment team's ability to compare candidate's skills with real-time scoring and insights that go beyond what they see on resumes." },
+  { q: 'How do I schedule a demo?', a: 'You can schedule a demo by filling out the request for a demo and we will contact you to make arrangements. Click here to book a demo.' },
 ];
 
 export default function LanguageTestsPage() {
@@ -238,7 +286,7 @@ export default function LanguageTestsPage() {
           <div className="tsd-copy reveal">
             <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Test type / Language</span></div>
             <p className="eyebrow">Language proficiency tests<b>.</b></p>
-            <h1 className="tsd-h1">Hire confidently with reliable Language proficiency tests</h1>
+            <h1 className="tsd-h1">Hire confidently with reliable <span className="tac">Language proficiency tests</span></h1>
             <p className="tsd-lead">Language fluency can make or break collaboration, customer interactions and team dynamics. Testlify&apos;s Language proficiency tests deliver precise, role-ready insights into candidates&apos; communication skills — so you hire people who understand and get things done, fluently, accurately and confidently.</p>
             <div className="tsd-stats">
               {stats.map((t) => (<span key={t} className="tsd-statc">{t}</span>))}
@@ -300,9 +348,8 @@ export default function LanguageTestsPage() {
                 )}
               </div>
               <div className="tsd-media reveal">
-                <div className="tsd-shot">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img className="tsd-shotimg" src={s.img} alt="" style={{ backgroundImage: `url("${s.img}")` }} />
+                <div className="tsd-shot" style={{ background: s.shotBg }}>
+                  <div className="tsd-shotimg" style={{ backgroundColor: s.shotBg, backgroundImage: `url("${s.img}")` }} />
                 </div>
               </div>
             </div>

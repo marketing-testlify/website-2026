@@ -14,7 +14,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -49,6 +49,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -108,8 +110,8 @@ const Check = () => (
 const Star = () => (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 18.6 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"></path></svg>
 );
-const CardIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg>
+const CardIcon = ({ d }: { d: string }) => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={d}></path></svg>
 );
 
 const Slot = () => <div className="tsd-slot" />;
@@ -122,9 +124,9 @@ const section1Bullets = [
 ];
 
 const cards = [
-  { title: 'Language & framework fluency', desc: 'Python, Java, JavaScript, Go, C#, SQL and 40+ more — test the exact stack of the role.' },
-  { title: 'Problem solving & DSA', desc: 'Algorithmic challenges reveal how candidates reason, optimize and handle edge cases.' },
-  { title: 'Live coding & debugging', desc: 'Pair on a live challenge, or have candidates fix broken code the way they would on the job.' },
+  { title: 'Language & framework fluency', iconD: 'M16 18l6-6-6-6M8 6l-6 6 6 6', desc: 'Python, Java, JavaScript, Go, C#, SQL and 40+ more — test the exact stack of the role.' },
+  { title: 'Problem solving & DSA', iconD: 'M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2z', desc: 'Algorithmic challenges reveal how candidates reason, optimize and handle edge cases.' },
+  { title: 'Live coding & debugging', iconD: 'M12 8a5 5 0 0 0-5 5v3a5 5 0 0 0 10 0v-3a5 5 0 0 0-5-5zM12 2v4M6 8 4 6M18 8l2-2M4 13H2M22 13h-2M6 18l-2 2M18 18l2 2', desc: 'Pair on a live challenge, or have candidates fix broken code the way they would on the job.' },
 ];
 
 const section2Bullets = [
@@ -174,7 +176,7 @@ export default function SolutionTesttypeTemplatePage() {
           <div className="tsd-copy reveal">
             <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Test type / Coding tests</span></div>
             <p className="eyebrow">Coding &amp; programming tests<b>.</b></p>
-            <h1 className="tsd-h1">Hire developers on proof of skill, not a resume</h1>
+            <h1 className="tsd-h1">Hire developers on <span className="tac">proof of skill</span>, not a resume</h1>
             <p className="tsd-lead">Put real code in front of candidates. Testlify&apos;s coding tests measure how developers actually build, debug and reason across 45+ languages — auto-scored, proctored and ready in minutes.</p>
             <div className="tsd-stats">
               <span className="tsd-statc">45+ programming languages</span>
@@ -225,7 +227,7 @@ export default function SolutionTesttypeTemplatePage() {
           <div className="tsd-cards">
             {cards.map((c) => (
               <div className="tsd-card reveal" key={c.title}>
-                <div className="tsd-ic"><CardIcon /></div>
+                <div className="tsd-ic"><CardIcon d={c.iconD} /></div>
                 <p className="tsd-ct">{c.title}</p>
                 <p className="tsd-cd">{c.desc}</p>
               </div>
