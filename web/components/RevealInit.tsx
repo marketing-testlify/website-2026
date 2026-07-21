@@ -18,8 +18,15 @@ export default function RevealInit() {
     const done = new WeakSet<Element>();
     const now = () => performance.now();
 
+    // data-delay uses two conventions across the design: decimals are seconds
+    // (e.g. "0.9" → 900ms), bare integers are already milliseconds (e.g. "80").
+    const delayMs = (el: HTMLElement) => {
+      const raw = el.getAttribute('data-delay') || '0';
+      return raw.includes('.') ? parseFloat(raw) * 1000 : parseFloat(raw);
+    };
+
     const animateReveal = (el: HTMLElement) => {
-      const delay = parseFloat(el.getAttribute('data-delay') || '0') * 1000;
+      const delay = delayMs(el);
       const dur = 620, startY = 28;
       const run = () => {
         const start = now();
@@ -66,7 +73,7 @@ export default function RevealInit() {
 
     const animateGrow = (el: HTMLElement) => {
       const target = parseFloat(el.getAttribute('data-h') || '0');
-      const delay = parseFloat(el.getAttribute('data-delay') || '0') * 1000;
+      const delay = delayMs(el);
       const run = () => {
         const start = now();
         const dur = 980;
