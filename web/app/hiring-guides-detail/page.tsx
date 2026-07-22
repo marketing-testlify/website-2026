@@ -56,7 +56,7 @@ a{text-decoration:none;color:inherit;}
 
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 ` }} />
-      <SiteHeader announcement="New guide · The 2026 skills-based hiring playbook" />
+      <SiteHeader announcement="New guide · The 2026 skills-based hiring playbook" announcementCta="Read now" />
       <article className="artwrap">
         <p className="crumb reveal in"><Link href="/blog">Blog</Link> &nbsp;·&nbsp; Hiring strategy</p>
         <h1 className="arttitle reveal in">The 2026 skills-based hiring playbook</h1>

@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaButton from '@/components/CtaButton';
 import CtaBand from '@/components/CtaBand';
+import SecuritySection from '@/components/SecuritySection';
+import Recognition from '@/components/Recognition';
 
 const CSS = `
 body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
@@ -185,6 +187,46 @@ const FAQS = [
   { q: 'How much does Testlify cost? Is there a free plan?', a: 'Testlify offers flexible pricing for businesses of all sizes, along with a free trial so you can explore the platform before choosing a plan. Contact our team for custom enterprise pricing.' },
 ];
 
+function Counter({ to, comma = false }: { to: number; comma?: boolean }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [val, setVal] = useState(0);
+  const done = useRef(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (ents) => {
+        ents.forEach((en) => {
+          if (en.isIntersecting && !done.current) {
+            done.current = true;
+            io.unobserve(en.target);
+            const dur = 1400;
+            let st: number | null = null;
+            const tick = (t: number) => {
+              if (st === null) st = t;
+              const p = Math.min(1, (t - st) / dur);
+              const e = 1 - Math.pow(1 - p, 3);
+              setVal(to * e);
+              if (p < 1) requestAnimationFrame(tick);
+              else setVal(to);
+            };
+            requestAnimationFrame(tick);
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [to, comma]);
+  const fmt = (n: number) => (comma ? Math.round(n).toLocaleString('en-US') : String(Math.round(n)));
+  return (
+    <span className="v" ref={ref}>
+      {fmt(val)}
+    </span>
+  );
+}
+
 const CheckSm = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
 );
@@ -241,8 +283,8 @@ export default function RecruitmentIndustryPage() {
       <section className="rc-sec rc-sand" style={{ padding: '44px 0' }}><div className="rcw">
         <div className="rc-statband rc-cnt reveal">
           <div className="rc-stat"><div className="rc-statn ink">4.8<span className="u">/5</span></div><div className="rc-statl">G2 rating across 538 verified reviews</div></div>
-          <div className="rc-stat"><div className="rc-statn ink">3,500<span className="u">+</span></div><div className="rc-statl">pre-built assessments for every role, ready to send</div></div>
-          <div className="rc-stat"><div className="rc-statn ink">4,500<span className="u">+</span></div><div className="rc-statl">roles covered by our employment assessments library</div></div>
+          <div className="rc-stat"><div className="rc-statn ink"><Counter to={3500} comma /><span className="u">+</span></div><div className="rc-statl">pre-built assessments for every role, ready to send</div></div>
+          <div className="rc-stat"><div className="rc-statn ink"><Counter to={4500} comma /><span className="u">+</span></div><div className="rc-statl">roles covered by our employment assessments library</div></div>
         </div>
       </div></section>
 
@@ -319,10 +361,10 @@ export default function RecruitmentIndustryPage() {
           <p className="rc-lead">The biggest fear with online assessment tools for recruitment is drop-off. Here&apos;s why it doesn&apos;t happen with Testlify.</p>
         </div>
         <div className="rc-statband four rc-cnt reveal">
-          <div className="rc-stat"><div className="rc-statn ink">15<span className="u"> min</span></div><div className="rc-statl">Average time to complete a skills assessment test</div></div>
-          <div className="rc-stat"><div className="rc-statn ink">78<span className="u">%</span></div><div className="rc-statl">Average candidate completion rate</div></div>
+          <div className="rc-stat"><div className="rc-statn ink"><Counter to={15} /><span className="u"> min</span></div><div className="rc-statl">Average time to complete a skills assessment test</div></div>
+          <div className="rc-stat"><div className="rc-statn ink"><Counter to={78} /><span className="u">%</span></div><div className="rc-statl">Average candidate completion rate</div></div>
           <div className="rc-stat"><div className="rc-statn ink">Any device</div><div className="rc-statl">No app, no account — mobile or desktop</div></div>
-          <div className="rc-stat"><div className="rc-statn ink">30<span className="u">+</span></div><div className="rc-statl">Multilingual: candidates assessed in their own language</div></div>
+          <div className="rc-stat"><div className="rc-statn ink"><Counter to={30} /><span className="u">+</span></div><div className="rc-statl">Multilingual: candidates assessed in their own language</div></div>
         </div>
       </div></section>
 
@@ -403,9 +445,9 @@ export default function RecruitmentIndustryPage() {
         <p className="rc-tquote reveal">&quot;We were spending 60% of recruiter time on screening calls that told us nothing a skills test couldn&apos;t have. Testlify cut that to near zero. Our shortlists are faster, and the people we interview are genuinely strong — not just confident on paper.&quot;</p>
         <div className="rc-tby reveal"><b>Head of Talent</b><span>Logistics Company</span></div>
         <div className="rc-tstats rc-cnt reveal">
-          <div className="rc-tstat"><div className="rc-tstatn">80<span className="u">%</span></div><div className="rc-tstatl">faster time-to-shortlist</div></div>
-          <div className="rc-tstat"><div className="rc-tstatn">3<span className="u">×</span></div><div className="rc-tstatl">faster time-to-hire</div></div>
-          <div className="rc-tstat"><div className="rc-tstatn">40<span className="u">%</span></div><div className="rc-tstatl">lower 90-day attrition</div></div>
+          <div className="rc-tstat"><div className="rc-tstatn"><Counter to={80} /><span className="u">%</span></div><div className="rc-tstatl">faster time-to-shortlist</div></div>
+          <div className="rc-tstat"><div className="rc-tstatn"><Counter to={3} /><span className="u">×</span></div><div className="rc-tstatl">faster time-to-hire</div></div>
+          <div className="rc-tstat"><div className="rc-tstatn"><Counter to={40} /><span className="u">%</span></div><div className="rc-tstatl">lower 90-day attrition</div></div>
         </div>
       </div></section>
 
@@ -435,6 +477,9 @@ export default function RecruitmentIndustryPage() {
         </div>
         <div className="rc-atsmore reveal"><Link href="/integrations">View all ATS integrations<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></Link></div>
       </div></section>
+
+      <SecuritySection eyebrow="Security" heading="Built to keep your organization secure" sub="Ensure the security of your recruitment data with top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits, and strong privacy protections." />
+      <Recognition bg="#FBF3EE" />
 
       <section className="rc-sec"><div className="rcw">
         <div className="rc-shead reveal"><p className="eyebrow">FAQ<b>.</b></p><h2 className="rc-h2" style={{ marginTop: '14px' }}>Frequently asked questions</h2></div>

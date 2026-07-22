@@ -85,7 +85,7 @@ export default function CompanyTrustCenterPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Testlify is SOC 2 Type II and ISO 27001 certified" />
+      <SiteHeader announcement="Testlify is SOC 2 Type II and ISO 27001 certified" announcementCta="View report" />
 
       <section className="tc-hero"><div className="tc-wrap" style={{ maxWidth: '840px' }}>
         <p className="tc-eyebrow tc-reveal">Trust center<b>.</b></p>

@@ -6,6 +6,9 @@ import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaButton from '@/components/CtaButton';
 import CtaBand from '@/components/CtaBand';
+import SecuritySection from '@/components/SecuritySection';
+import Recognition from '@/components/Recognition';
+import Testimonials from '@/components/Testimonials';
 
 const CSS = `
 *{box-sizing:border-box;}
@@ -498,7 +501,11 @@ export default function SaasIndustryPage() {
         <div className="rt-atsmore reveal"><Link href="/integrations">View all ATS integration<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link></div>
       </div></section>
 
-      <section className="rtsec"><div className="rtw">
+      <SecuritySection eyebrow="Security" heading="Built to keep your organization secure" sub="Ensure the security of your recruitment data with top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits, and strong privacy protections." />
+      <Recognition bg="#FBF3EE" />
+      <Testimonials eyebrow="Testimonials" heading="What our customers are saying about Testlify" />
+
+      <section className="rtsec rtsand"><div className="rtw">
         <div className="rt-shead reveal"><p className="eyebrow">FAQ<b>.</b></p><h2 className="rt-h2">Frequently asked questions (FAQs)</h2><p className="rt-lead">Want to know more about Testlify? Here are answers to the most commonly asked questions about our company.</p></div>
         <div className="rt-faqw">
           {faqs.map((f, i) => (

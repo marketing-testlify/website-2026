@@ -6,7 +6,7 @@ import CtaBand from '@/components/CtaBand';
 export default function WhiteLabelPage() {
   return (
     <>
-      <SiteHeader announcement="Make Testlify your own with white label" />
+      <SiteHeader announcement="Make Testlify your own with white label" announcementCta="Learn more" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: 860 }}>

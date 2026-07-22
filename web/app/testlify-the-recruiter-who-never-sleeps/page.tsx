@@ -25,7 +25,7 @@ export default function TestlifyTheRecruiterWhoNeverSleeps() {
 @media(max-width:920px){.arttitle{font-size:34px;letter-spacing:-1px;}.arthero{height:220px;}.prose p,.prose li{font-size:16.5px;}}
 ` }} />
 
-      <SiteHeader announcement="Meet Testlify AI — the recruiter who never sleeps" />
+      <SiteHeader announcement="Meet Testlify AI — the recruiter who never sleeps" announcementCta="See what's new" />
 
       <article className="artwrap">
         <p className="crumb reveal in"><Link href="/blog">Blog</Link> &nbsp;·&nbsp; AI &amp; hiring</p>

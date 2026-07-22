@@ -62,7 +62,7 @@ export default function AwardsPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Rated 4.7 on G2 by hiring teams worldwide" />
+      <SiteHeader announcement="Rated 4.7 on G2 by hiring teams worldwide" announcementCta="See reviews" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: "860px" }}>

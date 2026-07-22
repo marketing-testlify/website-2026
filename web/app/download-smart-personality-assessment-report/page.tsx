@@ -29,7 +29,7 @@ export default function Page() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Download a sample personality report" />
+      <SiteHeader announcement="Download a sample personality report" announcementCta="Try for free" />
 
       <section className="phero"><div className="wrap" style={{ maxWidth: '860px' }}>
         <p className="eyebrow reveal">Download the report<b>.</b></p>

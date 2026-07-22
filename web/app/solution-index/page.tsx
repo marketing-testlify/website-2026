@@ -104,7 +104,7 @@ export default function SolutionIndexPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="See how teams like yours hire with Testlify" />
+      <SiteHeader announcement="See how teams like yours hire with Testlify" announcementCta="Book a demo" />
 
       <section className="shero"><div className="wrap" style={{ maxWidth: '820px' }}>
         <p className="eyebrow reveal">Solutions<b>.</b></p>

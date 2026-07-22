@@ -98,7 +98,7 @@ export default function CostPerHireCalculatorPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Free HR tools — calculators, templates and interview kits, ready to use." />
+      <SiteHeader announcement="Free HR tools — calculators, templates and interview kits, ready to use." announcementCta="Browse tools" />
 
       <section className="tsec" style={{ background: 'radial-gradient(1000px 500px at 80% 4%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff' }}><div className="tw">
         <div className="tcrumb reveal"><Link href="/blog">Resources</Link><span>/</span><span>HR tools</span><span>/</span><span>Cost per hire calculator</span></div>

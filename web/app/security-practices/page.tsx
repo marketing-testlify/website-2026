@@ -6,7 +6,7 @@ import CtaBand from '@/components/CtaBand';
 export default function SecurityPracticesPage() {
   return (
     <>
-      <SiteHeader announcement="How we keep your data safe" />
+      <SiteHeader announcement="How we keep your data safe" announcementCta="Trust center" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: '860px' }}>

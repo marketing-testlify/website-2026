@@ -81,7 +81,7 @@ export default function HrToolsPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Free HR calculators & tools — cost-per-hire, time-to-hire, quality of hire and more" />
+      <SiteHeader announcement="Free HR calculators & tools — cost-per-hire, time-to-hire, quality of hire and more" announcementCta="Browse tools" />
 
       <section className="ht-hero">
         <div className="ht-wrap" style={{ maxWidth: 820 }}>

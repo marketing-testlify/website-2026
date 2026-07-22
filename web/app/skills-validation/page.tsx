@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -144,13 +144,13 @@ export default function SkillsValidationPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Testlify AI is here — screen, interview & score candidates automatically." />
+      <SiteHeader announcement="Testlify AI is here — screen, interview & score candidates automatically." announcementCta="See what's new →" />
 
       <section className="tsd-hero" data-screen-label="Hero"><div className="tsdw tsd-hgrid">
         <div className="tsd-copy reveal">
           <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Use case / Skills validation</span></div>
           <p className="eyebrow">For skills validation<b>.</b></p>
-          <h1 className="tsd-h1">Verify candidate skills before you hire with Testlify&apos;s skills validation software</h1>
+          <h1 className="tsd-h1">Verify candidate skills before you hire with Testlify&apos;s <span className="tac">skills validation software</span></h1>
           <p className="tsd-lead">Screen, assess, and shortlist candidates faster on demonstrated ability, backed by objective, proctored assessments. Replace guesswork with proof and make every skills-based hiring decision defensible.</p>
           <div className="tsd-stats">
             <span className="tsd-statc">1,700+ validated tests</span>
@@ -309,7 +309,7 @@ export default function SkillsValidationPage() {
         </div>
       </div></section>
 
-      <CtaBand />
+      <CtaBand eyebrow="Get started" heading="Ready to replace gut instinct with verified skills?" sub="Your next great hire is in your candidate pool right now. Testlify&apos;s assessments surface them in 30 minutes — no resume bias, no interview gut checks, no bad hire regret." />
       <SiteFooter />
     </>
   );

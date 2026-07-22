@@ -45,7 +45,7 @@ export default function InformationSecurityPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Our information security program" />
+      <SiteHeader announcement="Our information security program" announcementCta="Trust center" />
 
       <section className="phero"><div className="wrap" style={{ maxWidth: '860px' }}>
         <p className="eyebrow reveal">Information security<b>.</b></p>

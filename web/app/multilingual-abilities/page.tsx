@@ -7,7 +7,7 @@ import CtaBand from '@/components/CtaBand';
 export default function MultilingualAbilitiesPage() {
   return (
     <>
-      <SiteHeader announcement="Assess candidates in their language" />
+      <SiteHeader announcement="Assess candidates in their language" announcementCta="See languages" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: '860px' }}>

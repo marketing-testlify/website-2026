@@ -17,7 +17,7 @@ export default function PodcastPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="The Testlify podcast — hiring, unfiltered" />
+      <SiteHeader announcement="The Testlify podcast — hiring, unfiltered" announcementCta="Listen now" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: '860px' }}>

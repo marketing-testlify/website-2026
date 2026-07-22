@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
@@ -28,7 +27,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -150,13 +149,20 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
-const check = (
+const CardIcon = ({ d }: { d: string }) => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={d}></path></svg>
+);
+
+const ArrowLink = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+);
+
+const BulletCheck = () => (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
 );
 
-const arrow = (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-);
+const stats = ['Scale to 10,000+', 'SOC 2 · ISO · GDPR', 'Global benchmarking'];
+const logos = ['LTIMindtree', 'Sonatafy', 'Thales', 'Third Bridge', 'Virtual', 'Cogitotech'];
 
 const bullets1 = [
   '15+ question types for diverse roles',
@@ -177,7 +183,7 @@ const outcomeCards = [
   { title: 'Advanced analytics', iconD: 'M12 20V10M18 20V4M6 20v-4', desc: 'Go beyond pass/fail — candidate analytics, skill benchmarking and team-wide reporting for smarter decisions.' },
 ];
 
-const atsTiles = [
+const ats = [
   { src: 'https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png', alt: 'Workday' },
   { src: 'https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png', alt: 'SAP SuccessFactors' },
   { src: 'https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png', alt: 'Lever' },
@@ -190,21 +196,7 @@ const atsTiles = [
   { src: 'https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png', alt: 'JazzHR' },
 ];
 
-const logos = ['LTIMindtree', 'Sonatafy', 'Thales', 'Third Bridge', 'Virtual', 'Cogitotech'];
-
-const faqs = [
-  { q: 'Can Testlify handle high-volume, global hiring?', a: 'Yes. Testlify scales from 10 to 10,000 candidates across regions, roles and functions, with custom workflows for high-volume hiring and predictable pricing optimized for global operations.' },
-  { q: 'Is Testlify secure and compliant for enterprise data?', a: "Testlify's enterprise skills tests are SOC 2, GDPR and ISO certified, with robust security, data privacy and compliance for sensitive candidate data across global regions." },
-  { q: 'Can we control access for different stakeholders?', a: 'Yes. Role-based access and permissions give recruiters, hiring managers, L&D and finance different levels of access and control.' },
-  { q: 'Can we brand the candidate experience?', a: "Yes. Testlify's white-labeling lets you tailor the entire experience — from emails to assessments — to reflect your brand at scale." },
-];
-
-const heroImg = 'https://testlify.com/wp-content/uploads/2022/11/Contact-us.png';
-
 export default function EnterprisePage() {
-  const [open, setOpen] = useState<Record<number, boolean>>({});
-  const toggle = (i: number) => setOpen((s) => ({ ...s, [i]: !s[i] }));
-
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
@@ -218,17 +210,17 @@ export default function EnterprisePage() {
             <h1 className="tsd-h1">One-stop solution for <span className="tac">global enterprise hiring</span></h1>
             <p className="tsd-lead">Volume hiring? Cross-functional hiring? Global hiring? Internal mobility and reducing mis-hires at senior levels? Testlify&apos;s skills assessments for global enterprises have you covered — delivering accuracy, speed and scale so you identify top talent faster with zero guesswork.</p>
             <div className="tsd-stats">
-              <span className="tsd-statc">Scale to 10,000+</span>
-              <span className="tsd-statc">SOC 2 · ISO · GDPR</span>
-              <span className="tsd-statc">Global benchmarking</span>
+              {stats.map((t) => (
+                <span className="tsd-statc" key={t}>{t}</span>
+              ))}
             </div>
             <div className="tsd-ctas">
-              <CtaButton label="Book a demo" href="/contact" variant="primary" size="md" icon="arrow" magnetic />
+              <CtaButton label="Try for free" href="/pricing" variant="primary" size="md" icon="arrow" magnetic />
               <CtaButton label="Book a demo" href="/contact" variant="secondary" size="md" icon="play" />
             </div>
             <div className="tsd-ticks">
-              <span className="tsd-tick">{check}No credit card required</span>
-              <span className="tsd-tick">{check}7-day free trial</span>
+              <span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>No credit card required</span>
+              <span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>7-day free trial</span>
             </div>
           </div>
           <div className="tsd-media">
@@ -255,32 +247,41 @@ export default function EnterprisePage() {
           <p className="tsd-trust-l">Trusted by <strong>1,500+</strong> hiring teams worldwide</p>
           <div className="tsd-marq-wrap">
             <div className="tsd-marq">
-              {logos.map((lg, i) => (<span key={'a' + i} className="tsd-marq-i">{lg}</span>))}
-              {logos.map((lg, i) => (<span key={'b' + i} className="tsd-marq-i">{lg}</span>))}
+              {logos.map((lg, i) => (
+                <span className="tsd-marq-i" key={'a' + i}>{lg}</span>
+              ))}
+              {logos.map((lg, i) => (
+                <span className="tsd-marq-i" key={'b' + i}>{lg}</span>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 1 — split (white bg) */}
-      <section className="tsd-sec ">
+      {/* Section 0: split — A better way to assess enterprise talent */}
+      <section className="tsd-sec">
         <div className="tsdw">
-          <div className="tsd-grid2 ">
+          <div className="tsd-grid2">
             <div className="tsd-copy reveal">
               <h2 className="tsd-h2">A better way to assess enterprise talent</h2>
-              <p className="tsd-p">Assess thousands of candidates across regions, roles and functions — all in one platform. Whether you&apos;re hiring developers in Berlin or data analysts in Singapore, Testlify adapts to your needs, from role-specific assessments to global benchmarks.</p>
+              <p className="tsd-p">Assess thousands of candidates across regions, roles and functions, all in one platform. Testlify&apos;s enterprise-grade skills assessment platform is built for scale, speed and hiring precision.</p>
+              <p className="tsd-p">Whether you&apos;re hiring developers in Berlin or data analysts in Singapore, our platform adapts to your needs. From role-specific assessments to global benchmarks, Testlify&apos;s skills assessment for enterprise helps you hire with clarity.</p>
               <div className="tsd-bl">
-                {bullets1.map((b, i) => (
-                  <div className="tsd-bi" key={i}>{check}<span className="tsd-bt">{b}</span></div>
+                {bullets1.map((b) => (
+                  <div className="tsd-bi" key={b}><BulletCheck /><span className="tsd-bt">{b}</span></div>
                 ))}
               </div>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: `url("${heroImg}")` }}></div></div></div>
+            <div className="tsd-media reveal">
+              <div className="tsd-shot" style={{ background: '#F3F6F9' }}>
+                <div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/11/model-01-1024x737-1.png")' }}></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Section 2 — cards (sand bg) */}
+      {/* Section 1: cards — Outcomes */}
       <section className="tsd-sec tsd-sand">
         <div className="tsdw">
           <div className="tsd-shead reveal">
@@ -289,9 +290,9 @@ export default function EnterprisePage() {
             <p className="tsd-lead">Built for teams who value data, speed and hiring precision.</p>
           </div>
           <div className="tsd-cards">
-            {outcomeCards.map((c, i) => (
-              <div className="tsd-card reveal" key={i}>
-                <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={c.iconD}></path></svg></div>
+            {outcomeCards.map((c) => (
+              <div className="tsd-card reveal" key={c.title}>
+                <div className="tsd-ic"><CardIcon d={c.iconD} /></div>
                 <p className="tsd-ct">{c.title}</p>
                 <p className="tsd-cd">{c.desc}</p>
               </div>
@@ -300,16 +301,39 @@ export default function EnterprisePage() {
         </div>
       </section>
 
-      {/* Section 3 — split flipped (white bg) */}
-      <section className="tsd-sec ">
+      {/* Section 2: split (flipped) — White-labeling & employer branding */}
+      <section className="tsd-sec">
         <div className="tsdw">
           <div className="tsd-grid2 tsd-flip">
             <div className="tsd-copy reveal">
-              <h2 className="tsd-h2">White-labeling & employer branding</h2>
+              <h2 className="tsd-h2">White-labeling &amp; employer branding</h2>
               <p className="tsd-p">Tailor the entire candidate experience — from emails to assessments — to reflect your brand with Testlify&apos;s white-labeling. Own the hiring experience, maintain trust and deliver a premium, branded process at scale.</p>
-              <a className="tsd-link" href="#">Explore white-labeling{arrow}</a>
+              <Link className="tsd-link" href="/white-label">Explore more about white-labeling<ArrowLink /></Link>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: `url("${heroImg}")` }}></div></div></div>
+            <div className="tsd-media reveal">
+              <div className="tsd-shot" style={{ background: '#F3F6F9' }}>
+                <div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/06/Free-Download_Free-to-download-1024x1024.png")' }}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: split — Fully functional free trial */}
+      <section className="tsd-sec tsd-sand">
+        <div className="tsdw">
+          <div className="tsd-grid2">
+            <div className="tsd-copy reveal">
+              <h2 className="tsd-h2">Fully functional free trial</h2>
+              <p className="tsd-p">No credit cards required. Sign up for a free trial and see how Testlify&apos;s enterprise skills test works in the real world — access the candidate portal, evaluation card, reporting dashboard, proctoring features and more.</p>
+              <p className="tsd-p">Got stuck anywhere? Contact us and we&apos;ll resolve it immediately. We have a 4.8 rating on G2 for a reason.</p>
+              <Link className="tsd-link" href="/pricing">Try for free<ArrowLink /></Link>
+            </div>
+            <div className="tsd-media reveal">
+              <div className="tsd-shot" style={{ background: '#FFF' }}>
+                <div className="tsd-shotimg" style={{ backgroundColor: '#FFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/11/Vast-Lib-1-1024x1024-1.png")' }}></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -323,14 +347,14 @@ export default function EnterprisePage() {
             <p className="tsd-lead">Streamline your hiring process from assessment to onboarding. Sync candidate data effortlessly, automate workflows, and gain deeper insights to make informed hiring decisions faster.</p>
           </div>
           <div className="itats-grid reveal">
-            {atsTiles.map((t, i) => (
-              <div className="itats-tile" key={i}>
+            {ats.map((t) => (
+              <div className="itats-tile" key={t.alt}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={t.src} alt={t.alt} />
               </div>
             ))}
           </div>
-          <div className="itats-more reveal"><Link href="/integrations">View all ATS integrations{arrow}</Link></div>
+          <div className="itats-more reveal"><Link href="/integrations">View all ATS integrations<ArrowLink /></Link></div>
         </div>
       </section>
 
@@ -339,23 +363,6 @@ export default function EnterprisePage() {
       <Testimonials eyebrow="Testimonials" heading="What our customers are saying about Testlify" />
 
       <Recognition bg="#fff" />
-
-      <section className="tsd-sec tsd-sand">
-        <div className="tsdw">
-          <div className="tsd-shead reveal">
-            <p className="eyebrow">FAQ<b>.</b></p>
-            <h2 className="tsd-h2">Frequently asked questions (FAQs)</h2>
-          </div>
-          <div className="tsd-faqw">
-            {faqs.map((f, i) => (
-              <div className={`tsd-faq reveal ${open[i] ? 'tsd-open' : ''}`} key={i} onClick={() => toggle(i)}>
-                <div className="tsd-faqq">{f.q}<span className="tsd-faqx">+</span></div>
-                <div className="tsd-faqa">{f.a}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <CtaBand />
       <SiteFooter />

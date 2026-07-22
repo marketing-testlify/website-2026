@@ -49,7 +49,7 @@ export default function WriteForUsPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Share your HR expertise with 50,000+ recruiters" />
+      <SiteHeader announcement="Share your HR expertise with 50,000+ recruiters" announcementCta="Pitch a topic" />
 
       <section className="wfhero"><div className="wrap" style={{ maxWidth: '860px' }}>
         <p className="eyebrow reveal">Write for us<b>.</b></p>

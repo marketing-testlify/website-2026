@@ -128,7 +128,7 @@ export default function SciencePage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="New — AI chat-simulation interviews are live. Assess real judgement, not just answers." />
+      <SiteHeader announcement="New — AI chat-simulation interviews are live. Assess real judgement, not just answers." announcementCta="See how" />
 
       <section className="hero"><div className="wrap"><div className="herogrid">
         <div>

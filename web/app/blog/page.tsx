@@ -86,7 +86,7 @@ export default function BlogPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="New guide · The 2026 skills-based hiring playbook" />
+      <SiteHeader announcement="New guide · The 2026 skills-based hiring playbook" announcementCta="Read now" />
 
       <section className="bhero">
         <div className="wrap" style={{ maxWidth: '820px' }}>

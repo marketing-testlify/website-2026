@@ -109,7 +109,7 @@ export default function Page() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Check your device before a remote assessment" />
+      <SiteHeader announcement="Check your device before a remote assessment" announcementCta="Run check" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: '820px' }}>

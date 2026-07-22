@@ -142,7 +142,7 @@ export default function HrGlossaryPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="The HR Glossary — 500+ hiring & assessment terms, defined in plain English" />
+      <SiteHeader announcement="The HR Glossary — 500+ hiring & assessment terms, defined in plain English" announcementCta="Browse the A–Z" />
 
       <section className="gl-hero">
         <div className="gl-wrap" style={{ maxWidth: '820px' }}>

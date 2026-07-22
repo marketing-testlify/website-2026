@@ -111,7 +111,7 @@ export default function AboutPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="We're hiring across product, engineering and GTM" />
+      <SiteHeader announcement="We're hiring across product, engineering and GTM" announcementCta="See openings" />
       <section className="ahero">
         <div className="wrap" style={{ maxWidth: "840px" }}>
           <p className="eyebrow reveal">

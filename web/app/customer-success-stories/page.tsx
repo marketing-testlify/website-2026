@@ -61,7 +61,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 `,
         }}
       />
-      <SiteHeader announcement="Read how inDrive cut time-to-hire from 3 weeks to 1 week" />
+      <SiteHeader announcement="Read how inDrive cut time-to-hire from 3 weeks to 1 week" announcementCta="Read story" />
       <section className="chero">
         <div className="wrap" style={{ maxWidth: '820px' }}>
           <p className="eyebrow reveal">

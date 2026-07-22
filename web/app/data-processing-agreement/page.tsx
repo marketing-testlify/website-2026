@@ -32,7 +32,7 @@ export default function DataProcessingAgreementPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Your data, protected — SOC 2, ISO 27001, GDPR &amp; CCPA" />
+      <SiteHeader announcement="Your data, protected — SOC 2, ISO 27001, GDPR &amp; CCPA" announcementCta="Trust center" />
 
       <section className="legalhero"><div className="wrap">
         <p className="eyebrow">Legal<b>.</b></p>

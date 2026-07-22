@@ -95,7 +95,7 @@ export default function Page() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Testlify is SOC 2 Type II and ISO 27001 certified" />
+      <SiteHeader announcement="Testlify is SOC 2 Type II and ISO 27001 certified" announcementCta="View trust center" />
 
       <section className="cmp-hero"><div className="cmp-wrap" style={{ maxWidth: '860px' }}>
         <p className="cmp-eyebrow cmp-reveal">Trust center · Compliances<b>.</b></p>

@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -169,8 +169,10 @@ const faqs = [
   { q: 'What is pre-employment testing software?', a: "Pre-employment testing software is a powerful tool recruiters use to analyze prospective employees quickly and efficiently. Testlify's tests are carefully created to match your needs, with 200+ test libraries covering all recruitment tests." },
   { q: 'Why is pre-employment testing important?', a: 'It helps companies find candidates with relevant skills — saving time and money on training and increasing productivity — by testing on-the-job skills, identifying the best talent faster, building a diverse candidate pool and championing a data-driven HR culture.' },
   { q: 'How does Testlify help in my hiring process?', a: "Testlify's AI-powered pre-hire assessments measure the skills and job fitment of a candidate, enabling quick screening, eliminating bias and increasing recruiter productivity — a proven solution against high turnover." },
+  { q: 'How are the pre-employment tests created?', a: "Testlify's AI-powered pre-hire assessments help companies measure the skills and job fitment of a candidate. These tests allow for quick screening of candidates and eliminate bias in hiring, increasing the productivity of recruiters and hiring managers. Our unique assessment technology is a proven solution against high employee turnover rates." },
   { q: 'What types of questions are asked in the assessment?', a: 'Questions depend on the industry and role and can include MCQs, video-based questions and open-ended (written or short answer) questions, with programming questions for coding tests.' },
   { q: 'What types of tests are available on the platform?', a: 'Three main types: Technical (programming, software, role-specific, DevOps, finance, accounting), Cognitive Ability (aptitude), and Personality & Culture and Situational Judgment tests.' },
+  { q: 'How is Testlify different from other pre-employment tools?', a: 'Testlify is the finest talent assessment platform — we believe in giving all applicants an equal, unbiased opportunity to showcase their talent. Our assessments remove unconscious bias and surface hidden gems from underrepresented backgrounds, prioritize on-the-job skills over trick questions, use non-googleable questions and advanced proctoring, include video response questions for a 360° view, and are low-stress, adaptive tests that take just 30 minutes — keeping drop-off rates minimal.' },
 ];
 
 export default function SmallMediumBusinessesPage() {
@@ -192,7 +194,7 @@ export default function SmallMediumBusinessesPage() {
             <div className="tsd-stats">
               <span className="tsd-statc">50% faster time-to-hire</span>
               <span className="tsd-statc">3,000+ pre-built tests</span>
-              <span className="tsd-statc">No HR team needed</span>
+              <span className="tsd-statc">HR team not mandatory</span>
             </div>
             <div className="tsd-ctas">
               <CtaButton label="Try for free" href="/pricing" variant="primary" size="md" icon="arrow" magnetic />
@@ -262,9 +264,9 @@ export default function SmallMediumBusinessesPage() {
           </div>
           <div className="tsd-cards">
             {[
-              { title: 'Real-time candidate scoring', icon: 'M22 12h-4l-3 9L9 3l-3 9H2', desc: "Manage hundreds of candidate profiles with a single click and see who's progressing, instantly." },
-              { title: 'Candidate benchmarking', icon: 'M12 20V10M18 20V4M6 20v-4', desc: 'Connect with top prospects against job postings while candidates enjoy a simple, professional experience.' },
-              { title: 'Easy PDF reports', icon: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8', desc: 'Fully branded assessments and clear PDF reports built for hiring managers to act on fast.' },
+              { title: 'Real-time candidate scoring', icon: 'M22 12h-4l-3 9L9 3l-3 9H2', desc: 'Browsing through 10,000 candidate profiles while performing background checks and doing the necessary research to find the best match, if this sounds like something you are doing, let Testlify help you manage that and save time so that you can concentrate on other important tasks. \nTestlify, helps you manage hundreds of candidate profiles with a single click.' },
+              { title: 'Candidate benchmarking', icon: 'M12 20V10M18 20V4M6 20v-4', desc: 'The readings and results of our assessment tests help organizations to connect with the top prospects with reference to job postings or recommendations, and we work both ways too.  While the assessment delivers the best result and helps you find a suitable fit, the candidates enjoy the simple yet professional experience of giving the test.' },
+              { title: 'Easy PDF reports', icon: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8', desc: 'Introduce potential employees to your company with a fully branded examination. Include your logo and brand colors, make platform messaging specific, and use video introductions to explain your core principles. You can design a customized online recruitment process for your company using Testlify’s adaptable platform that will deliver exemplary results within no time.' },
             ].map((c, i) => (
               <div className="tsd-card reveal" key={i}>
                 <div className="tsd-ic"><CardIcon d={c.icon} /></div>

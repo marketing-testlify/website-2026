@@ -16,7 +16,7 @@ export default function KnowledgeBasePage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Free ebooks &amp; guides for hiring teams" />
+      <SiteHeader announcement="Free ebooks &amp; guides for hiring teams" announcementCta="Browse all" />
 
       <section className="phero"><div className="wrap" style={{ maxWidth: '860px' }}>
         <p className="eyebrow reveal">Ebooks &amp; guides<b>.</b></p>

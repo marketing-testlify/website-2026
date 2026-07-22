@@ -83,17 +83,17 @@ export default function SiteFooter() {
             <a href="https://roadmap.testlify.com/" target="_blank" rel="noopener" className="flink">Product roadmap</a>
           </div></div>
           <div><div className="sf-h">Test type</div><div className="sf-col">
-            <Link href="/solution-testtype-template" className="flink">Role specific tests</Link>
-            <Link href="/solution-testtype-template" className="flink">Language tests</Link>
-            <Link href="/solution-testtype-template" className="flink">Programming tests</Link>
-            <Link href="/solution-testtype-template" className="flink">Software skills tests</Link>
-            <Link href="/solution-testtype-template" className="flink">Cognitive ability tests</Link>
-            <Link href="/solution-testtype-template" className="flink">Situational judgment</Link>
-            <Link href="/solution-testtype-template" className="flink">CEFR test</Link>
-            <Link href="/solution-testtype-template" className="flink">Typing test</Link>
-            <Link href="/solution-testtype-template" className="flink">Coding tests</Link>
-            <Link href="/solution-testtype-template" className="flink">Psychometric tests</Link>
-            <Link href="/solution-testtype-template" className="flink">Engineering tests</Link>
+            <Link href="/role-specific-tests" className="flink">Role specific tests</Link>
+            <Link href="/language-tests" className="flink">Language tests</Link>
+            <Link href="/coding-tests" className="flink">Programming tests</Link>
+            <Link href="/software-skills-tests" className="flink">Software skills tests</Link>
+            <Link href="/cognitive-ability-tests" className="flink">Cognitive ability tests</Link>
+            <Link href="/situational-judgment" className="flink">Situational judgment</Link>
+            <Link href="/cefr-test" className="flink">CEFR test</Link>
+            <Link href="/typing-test" className="flink">Typing test</Link>
+            <Link href="/coding-tests" className="flink">Coding tests</Link>
+            <Link href="/psychometric-tests" className="flink">Psychometric tests</Link>
+            <Link href="/engineering-skills" className="flink">Engineering tests</Link>
             <Link href="/solution-testtype-template" className="flink">Process knowledge tests</Link>
           </div></div>
           <div><div className="sf-h">Resources</div><div className="sf-col">

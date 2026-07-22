@@ -109,7 +109,7 @@ export default function HiringGuidesPage() {
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <SiteHeader
-        announcement="Free hiring guides — job descriptions, interview questions & skills to test for 90+ roles"
+        announcement="Free hiring guides — job descriptions, interview questions & skills to test for 90+ roles" announcementCta="Browse guides"
       />
 
       <section className="hg-hero">

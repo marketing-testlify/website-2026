@@ -6,7 +6,7 @@ import CtaBand from '@/components/CtaBand';
 export default function SubjectMatterExpertsPage() {
   return (
     <>
-      <SiteHeader announcement="Join 500+ SMEs shaping the world's best assessments" />
+      <SiteHeader announcement="Join 500+ SMEs shaping the world's best assessments" announcementCta="Apply now" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: '860px' }}>

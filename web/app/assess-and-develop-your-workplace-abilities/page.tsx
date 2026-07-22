@@ -6,7 +6,7 @@ import CtaBand from '@/components/CtaBand';
 export default function AssessAndDevelopYourWorkplaceAbilitiesPage() {
   return (
     <>
-      <SiteHeader announcement="Assess and develop workplace abilities" />
+      <SiteHeader announcement="Assess and develop workplace abilities" announcementCta="Try for free" />
 
       <section className="phero"><div className="wrap" style={{ maxWidth: 860 }}>
         <p className="eyebrow reveal">Workplace abilities<b>.</b></p>

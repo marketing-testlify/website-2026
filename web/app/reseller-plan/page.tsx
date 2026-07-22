@@ -6,7 +6,7 @@ import CtaBand from '@/components/CtaBand';
 export default function ResellerPlanPage() {
   return (
     <>
-      <SiteHeader announcement="Resell Testlify and grow your revenue" />
+      <SiteHeader announcement="Resell Testlify and grow your revenue" announcementCta="Become a reseller" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: 860 }}>

@@ -63,7 +63,7 @@ export default function OurLeadershipPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="We're hiring across product, engineering and GTM" />
+      <SiteHeader announcement="We're hiring across product, engineering and GTM" announcementCta="See openings" />
 
       <section className="lhero"><div className="wrap" style={{ maxWidth: '860px' }}>
         <p className="eyebrow reveal">Our leadership<b>.</b></p>

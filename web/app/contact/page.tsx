@@ -66,7 +66,7 @@ export default function ContactPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Get a personalised walkthrough — see Testlify on your own roles." />
+      <SiteHeader announcement="Get a personalised walkthrough — see Testlify on your own roles." announcementCta="Book a demo" />
 
       <section className="hero"><div className="wrap">
         <div style={{ maxWidth: '720px' }}>

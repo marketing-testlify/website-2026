@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, CSSProperties } from 'react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -28,7 +28,13 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-sec.tsd-flush{padding:0 !important;}
+.tsd-clist{max-width:900px;margin:26px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:13px 40px;text-align:left;}
+.tsd-cli{display:flex;align-items:flex-start;gap:11px;font-size:15px;color:#5A4B4E;}
+.tsd-cli svg{flex:none;color:#1FA463;margin-top:2px;}
+@media(max-width:820px){.tsd-clist{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.tsd-clist{grid-template-columns:1fr;}}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -122,6 +128,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-open .tsd-faqa{display:block;}
 .tsd-open .tsd-faqx{transform:rotate(45deg);}
 .tsd-cta{background:#1A1014;color:#fff;padding:100px 0;text-align:center;}
+.tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
+.tsd-cta .tsd-ctas{justify-content:center;margin-top:30px;}
 .tsd-cta .tsd-h2{color:#fff;font-size:42px;}
 .tsd-cta .tsd-lead{color:#C9B9BC;max-width:640px;margin:20px auto 0;}
 .tsd-cta .tsd-tick{color:#C9B9BC;}
@@ -150,32 +158,57 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
-const CHECK = (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+const Arrow = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
 );
-const ARROW = (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-);
-const logos = ['LTIMindtree', 'Sonatafy', 'Thales', 'Third Bridge', 'Virtual', 'Cogitotech'];
 
-const cards = [
-  { title: 'Information Technology', iconD: 'M20 4H4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM20 13H4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2zM6 7h.01M6 16h.01', desc: 'Data scientists, ML/AI engineers, full-stack, DevOps, system engineers and more.' },
-  { title: 'Sales & Marketing', iconD: 'M23 6l-9.5 9.5-5-5L1 18M17 6h6v6', desc: 'Communication, aptitude and role-specific tests for go-to-market hires.' },
-  { title: 'Software Development', iconD: 'M16 18l6-6-6-6M8 6l-6 6 6 6', desc: '45+ languages, live coding and role-specific developer challenges.' },
-  { title: 'Cloud & Architecture', iconD: 'M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z', desc: 'Cloud engineering, system design and infrastructure knowledge.' },
-  { title: 'Financial Services', iconD: 'M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6', desc: 'Analytical thinking, accuracy and finance role-specific assessments.' },
-  { title: 'Cognitive & role-specific', iconD: 'M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z', desc: 'Cognitive ability, situational judgment, language and communication tests.' },
+type Bullet = { label: string; href?: string; desc?: string };
+type SplitCta = { label: string; href: string };
+type Section = {
+  kind: 'split' | 'list';
+  shotBg?: string;
+  img?: string;
+  h2: string;
+  body: string[];
+  bullets?: Bullet[];
+  cta?: SplitCta;
+  items?: string[];
+};
+
+const sections: Section[] = [
+  { kind: 'split', shotBg: '#F3F6F9', img: 'https://testlify.com/wp-content/uploads/2023/04/online-test-1.png', h2: 'Make your startup ready for effortless scaling', body: ['At scale, workflows, processes and controls are complicated. We understand it having worked with top Fortune 100 firms as well as rapidly expanding startups. We’ve your back when it comes to scaling, assessing and hiring with ease.', 'Create a standardized hiring rubric to scale without compromising quality. Raise the bar for skill across the organization to draw talented candidates.'] },
+  { kind: 'split', shotBg: '#FFF', img: 'https://testlify.com/wp-content/uploads/2022/10/Subject-assessment-300x300.png', h2: 'Identify skills beyond resumes', body: ['Resumes don’t showcase a candidate’s skill. Uncover a candidate’s true potential with objective skills assessments to reduce bias, expand your talent pool and achieve your hiring goals.'] },
+  { kind: 'split', shotBg: '#F3F6F9', img: 'https://testlify.com/wp-content/uploads/2023/02/Selecting-team.svg', h2: 'Avoid costly mis-hires', body: ['According to a LinkedIn survey, 89% of bad hires lack important skills such as adaptability, and time management & problem-solving skills. By testing and evaluating each candidate’s job-ready skills, you can avoid expensive mis-hires and make decisions for your startup with certainty.', 'With multiple question formats like spreadsheets, presentations, code challenges, and more, you can see how a candidate handles the challenges associated with the position.'] },
+  { kind: 'split', shotBg: '#FFF', img: 'https://testlify.com/wp-content/uploads/2022/11/Vast-Lib-1-1024x1024-1.png', h2: 'Reduce costs of hiring', body: ['Go beyond video interviews. One assessment can examine a variety of competencies, including technical or software-specific skills, and replace numerous hiring phases to make the process hassle-free.'], cta: { label: 'View our test library', href: '/test-library' } },
+  { kind: 'split', shotBg: '#FFF', img: 'https://testlify.com/wp-content/uploads/2022/11/model-01-1024x737-1.png', h2: 'Provide an immersive experience', body: ['Give job seekers a compelling reason to join your startup. Engage them in an insightful assessment that demonstrates what the position entails.'], cta: { label: 'Start free trial', href: '/pricing' } },
+  { kind: 'split', shotBg: '#F3F6F9', img: 'https://testlify.com/wp-content/uploads/2022/10/team-1024x567.png', h2: 'An efficient way to hire at scale', body: ['Testlify lets you quickly scale your teams and compete for the greatest talent with a seamless hiring experience. There isn’t a better way to accurately assess, evaluate and choose candidates with the right skills — while building a diverse team by default.'], cta: { label: 'More on diversity', href: '/diversity-and-inclusions' } },
+  { kind: 'split', shotBg: '#F3F6F9', img: 'https://testlify.com/wp-content/uploads/2022/10/Made-for-People.-Built-on-Science.svg', h2: 'Vast library of tests', body: ['Choose from a vast array of high-demand skills and aptitude tests to gain greater insights into candidates.', 'Select the skills that best suit a role and add customized questions as required.'], cta: { label: 'View our test library', href: '/test-library' } },
+  { kind: 'split', shotBg: '#FFF', img: 'https://testlify.com/wp-content/uploads/2023/01/stop-4.svg', h2: 'Automated assessments', body: ['No technical expertise needed — simply select from predefined roles and let Testlify take care of the rest.'], bullets: [{ label: 'Select from predefined roles' }, { label: 'Add additional tests as needed' }, { label: 'Add custom questions' }, { label: 'Add applicants and send invitations' }], cta: { label: 'Explore ATS integrations', href: '/integrations' } },
+  { kind: 'split', shotBg: '#F3F6F9', img: 'https://testlify.com/wp-content/uploads/2022/10/HD-Mobile-laptop-1024x657.png', h2: 'Our platform offers', body: ['Now your hiring team can share insights to easily compare high volumes of applicants and quickly shortlist the best talent — empowering informed decisions faster with industry-standard testing.'], bullets: [{ label: 'Choose from high-demand IT skills' }, { label: 'Add non-IT-related tests' }, { label: 'Assessments are all automated' }, { label: 'View progress in real-time' }, { label: 'Share results with your team' }, { label: 'Shortlist the best people' }] },
+  { kind: 'list', h2: 'Less guessing, better assessing!', body: ['Our talent assessments have predefined tests for IT roles including:'], items: ['Data Scientists', 'Machine Learning Engineers', 'Telecommunication Specialist', 'AI Engineers', 'Blockchain Developers', 'Data Analysts', 'Server engineers', 'System Engineers', 'System Administrators', 'Fullstack Engineer', 'Java Developers', 'GIS Specialists', 'IT Governance/Managers', 'Semiconductor Engineers', 'Wireless Network Engineers and more…'] },
 ];
 
 const faqs = [
   { q: 'How are talent assessments used in the hiring process?', a: 'Talent assessments are generally used to evaluate candidates as part of the pre-screening process. They evaluate various skills relevant to a job role, giving organizations the insights to compare and select the best talent for a role.' },
   { q: 'Are talent assessments reliable?', a: 'Our talent assessments are highly accurate and have been tested to ensure their results are consistent even when taken again — reducing complexity and resources needed while providing powerful insights for informed decisions.' },
-  { q: "Can talent assessments predict a candidate's performance in the workplace?", a: "Testing a candidate's technical skills and aptitudes can help predict whether they're capable of performing in a specific role. Our tests evaluate numerous skills including general aptitudes, language, programming, software and role-specific skills." },
+  { q: 'Can talent assessments predict a candidate’s performance in the workplace?', a: 'Testing a candidate’s technical skills and aptitudes can help predict whether they’re capable of performing in a specific role. Our tests evaluate numerous skills including general aptitudes, language, programming, software and role-specific skills.' },
   { q: 'How do I customize tests?', a: 'Assessments can be customized by adding any additional skill test from our library. These can be a combination of aptitude, language, programming, software or role-specific skills.' },
   { q: 'What is the duration of a test?', a: 'Each test evaluates one skill, and you may use several. Each is about 10 minutes in duration and can be customized to test for more skills, which affects the total time.' },
+  { q: 'How do I schedule a demo?', a: 'You can schedule a demo by filling out the request for a demo and we will contact you to make arrangements. Click here to book a demo.' },
 ];
 
-const atsTiles: { src: string; alt: string }[] = [
+const faqTitle = 'Frequently asked questions (FAQs)';
+const logos = ['LTIMindtree', 'Sonatafy', 'Thales', 'Third Bridge', 'Virtual', 'Cogitotech'];
+const stats = ['Launch in minutes', 'Standardized rubric', 'Scale without mis-hires'];
+
+const scores = [
+  { label: 'Versatility', w: '92%', delay: '.15s', v: 92 },
+  { label: 'Ownership', w: '90%', delay: '.3s', v: 90 },
+  { label: 'Problem solving', w: '86%', delay: '.45s', v: 86 },
+  { label: 'Speed to ship', w: '83%', delay: '.6s', v: 83 },
+];
+
+const atsLogos: { src: string; alt: string }[] = [
   { src: 'https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png', alt: 'Workday' },
   { src: 'https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png', alt: 'SAP SuccessFactors' },
   { src: 'https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png', alt: 'Lever' },
@@ -190,155 +223,210 @@ const atsTiles: { src: string; alt: string }[] = [
 
 export default function ForStartupsPage() {
   const [open, setOpen] = useState<Record<number, boolean>>({});
-  const toggle = (i: number) => setOpen((s) => ({ ...s, [i]: !s[i] }));
+  const toggleFaq = (i: number) => setOpen((s) => ({ ...s, [i]: !s[i] }));
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Testlify AI is here — screen, interview & score candidates automatically." />
+      <SiteHeader
+        announcement="Testlify AI is here — screen, interview & score candidates automatically."
+        homeHref="/"
+      />
 
-      <section className="tsd-hero" data-screen-label="Hero"><div className="tsdw tsd-hgrid">
-        <div className="tsd-copy reveal">
-          <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Company size / For startups</span></div>
-          <p className="eyebrow">For startups<b>.</b></p>
-          <h1 className="tsd-h1">Build great teams</h1>
-          <p className="tsd-lead">Testlify helps you develop a streamlined hiring process that candidates and hiring teams love — so you can find top talent from anywhere in the world and scale your startup with confidence.</p>
-          <div className="tsd-stats">
-            <span className="tsd-statc">Launch in minutes</span>
-            <span className="tsd-statc">Standardized rubric</span>
-            <span className="tsd-statc">Scale without mis-hires</span>
-          </div>
-          <div className="tsd-ctas">
-            <CtaButton label="Try for free" href="/pricing" variant="primary" size="md" icon="arrow" magnetic />
-            <CtaButton label="Book a demo" href="/contact" variant="secondary" size="md" icon="play" />
-          </div>
-          <div className="tsd-ticks"><span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>No credit card required</span><span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>7-day free trial</span></div>
-        </div>
-        <div className="tsd-media"><div className="ithero-wrap">
-          <div className="ithero-card">
-            <div className="ithero-top"><span className="ithero-dot r"></span><span className="ithero-dot y"></span><span className="ithero-dot g"></span><span className="ithero-file">candidate-report</span><span className="ithero-live">Match 91%</span></div>
-            <div className="rt-cand"><span className="rt-av">MC</span><div className="rt-ci"><span className="rt-nm">Maya Chen</span><span className="rt-role">Founding Engineer · Startup</span></div><span className="rt-fit">A-player</span></div>
-            <div className="ithero-scores">
-              <div className="ithero-scr"><span className="ithero-scl">Versatility</span><span className="ithero-scbar"><i style={{ '--w': '92%', animationDelay: '.15s' } as React.CSSProperties}></i></span><span className="ithero-scv">92</span></div>
-              <div className="ithero-scr"><span className="ithero-scl">Ownership</span><span className="ithero-scbar"><i style={{ '--w': '90%', animationDelay: '.3s' } as React.CSSProperties}></i></span><span className="ithero-scv">90</span></div>
-              <div className="ithero-scr"><span className="ithero-scl">Problem solving</span><span className="ithero-scbar"><i style={{ '--w': '86%', animationDelay: '.45s' } as React.CSSProperties}></i></span><span className="ithero-scv">86</span></div>
-              <div className="ithero-scr"><span className="ithero-scl">Speed to ship</span><span className="ithero-scbar"><i style={{ '--w': '83%', animationDelay: '.6s' } as React.CSSProperties}></i></span><span className="ithero-scv">83</span></div>
+      <section className="tsd-hero" data-screen-label="Hero">
+        <div className="tsdw tsd-hgrid">
+          <div className="tsd-copy reveal">
+            <div className="tsd-crumb">
+              <Link href="/solution-index">Solutions</Link>
+              <span>/</span>
+              <span>Company size / For startups</span>
             </div>
-          </div>
-          <div className="ithero-badge b1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Job-ready</div>
-          <div className="ithero-badge b2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>AI-scored</div>
-        </div></div>
-      </div></section>
-
-      <section className="tsd-trust reveal"><div className="tsdw">
-        <p className="tsd-trust-l">Trusted by <strong>1,500+</strong> hiring teams worldwide</p>
-        <div className="tsd-marq-wrap">
-          <div className="tsd-marq">
-            {logos.map((lg, i) => <span className="tsd-marq-i" key={`a${i}`}>{lg}</span>)}
-            {logos.map((lg, i) => <span className="tsd-marq-i" key={`b${i}`}>{lg}</span>)}
-          </div>
-        </div>
-      </div></section>
-
-      {/* Section 1 — split, white */}
-      <section className="tsd-sec "><div className="tsdw">
-        <div className="tsd-grid2 ">
-          <div className="tsd-copy reveal">
-            <h2 className="tsd-h2">Make your startup ready for effortless scaling</h2>
-            <p className="tsd-p">At scale, workflows, processes and controls get complicated. Having worked with top Fortune 100 firms and rapidly expanding startups, we&rsquo;ve got your back when it comes to scaling, assessing and hiring with ease.</p>
-            <p className="tsd-p">Create a standardized hiring rubric to scale without compromising quality, and raise the bar for skill across the organization to draw talented candidates.</p>
-          </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2023/04/online-test-1.png")' }}></div></div></div>
-        </div>
-      </div></section>
-
-      {/* Section 2 — split, flip, sand */}
-      <section className="tsd-sec tsd-sand"><div className="tsdw">
-        <div className="tsd-grid2 tsd-flip">
-          <div className="tsd-copy reveal">
-            <h2 className="tsd-h2">Identify skills beyond resumes</h2>
-            <p className="tsd-p">Resumes don&rsquo;t showcase a candidate&rsquo;s skill. Uncover a candidate&rsquo;s true potential with objective skills assessments — reducing bias, expanding your talent pool and helping you achieve your hiring goals.</p>
-          </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/10/Subject-assessment-300x300.png")' }}></div></div></div>
-        </div>
-      </div></section>
-
-      {/* Section 3 — split, white, bullets + cta */}
-      <section className="tsd-sec "><div className="tsdw">
-        <div className="tsd-grid2 ">
-          <div className="tsd-copy reveal">
-            <h2 className="tsd-h2">Avoid costly mis-hires and reduce hiring costs</h2>
-            <p className="tsd-p">89% of bad hires lack important skills like adaptability, time management and problem-solving. By testing each candidate&rsquo;s job-ready skills, you avoid expensive mis-hires and decide with certainty. One assessment can examine many competencies and replace numerous hiring phases.</p>
-            <div className="tsd-bl">
-              {['Multiple formats: spreadsheets, presentations, code challenges', 'Go beyond video interviews', 'One assessment, many competencies'].map((b, i) => (
-                <div className="tsd-bi" key={i}>{CHECK}<span className="tsd-bt">{b}</span></div>
+            <p className="eyebrow">For startups<b>.</b></p>
+            <h1 className="tsd-h1">Build a <span className="tac">great team</span> from day one</h1>
+            <p className="tsd-lead">Testlify assists you in developing a streamlined hiring process that candidates and hiring teams love, allowing you to find the top talent from anywhere in the world.</p>
+            <div className="tsd-stats">
+              {stats.map((t) => (
+                <span className="tsd-statc" key={t}>{t}</span>
               ))}
             </div>
-            <Link className="tsd-link" href="/test-library">View our test library{ARROW}</Link>
-          </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/11/Vast-Lib-1-1024x1024-1.png")' }}></div></div></div>
-        </div>
-      </div></section>
-
-      {/* Section 4 — split, flip, sand, cta */}
-      <section className="tsd-sec tsd-sand"><div className="tsdw">
-        <div className="tsd-grid2 tsd-flip">
-          <div className="tsd-copy reveal">
-            <h2 className="tsd-h2">An efficient way to hire at scale</h2>
-            <p className="tsd-p">Testlify lets you quickly scale your teams and compete for the greatest talent with a seamless hiring experience. There isn&rsquo;t a better way to accurately assess, evaluate and choose candidates with the right skills — while building a diverse team by default.</p>
-            <a className="tsd-link" href="#">More on diversity{ARROW}</a>
-          </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/10/team-1024x567.png")' }}></div></div></div>
-        </div>
-      </div></section>
-
-      {/* Section 5 — cards, white */}
-      <section className="tsd-sec "><div className="tsdw">
-        <div className="tsd-shead reveal"><p className="eyebrow">Ready to use<b>.</b></p><h2 className="tsd-h2">Predefined tests for a wide range of startup roles</h2><p className="tsd-lead">From your first engineer to your first sales hire.</p></div>
-        <div className="tsd-cards">
-          {cards.map((c, i) => (
-            <div className="tsd-card reveal" key={i}>
-              <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={c.iconD}></path></svg></div>
-              <p className="tsd-ct">{c.title}</p>
-              <p className="tsd-cd">{c.desc}</p>
+            <div className="tsd-ctas">
+              <CtaButton label="Try for free" href="/pricing" variant="primary" size="md" icon="arrow" magnetic={true} />
+              <CtaButton label="Book a demo" href="/contact" variant="secondary" size="md" icon="play" />
             </div>
-          ))}
-        </div>
-      </div></section>
-
-      {/* Integrations */}
-      <section className="tsd-sec tsd-sand"><div className="tsdw">
-        <div className="tsd-shead reveal"><p className="eyebrow">Integrations<b>.</b></p><h2 className="tsd-h2">Testlify integrates seamlessly with 100+ ATS tools</h2><p className="tsd-lead">Streamline your hiring process from assessment to onboarding. Sync candidate data effortlessly, automate workflows, and gain deeper insights to make informed hiring decisions faster.</p></div>
-        <div className="itats-grid reveal">
-          {atsTiles.map((t, i) => (
-            <div className="itats-tile" key={i}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={t.src} alt={t.alt} />
+            <div className="tsd-ticks">
+              <span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>No credit card required</span>
+              <span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>7-day free trial</span>
             </div>
-          ))}
+          </div>
+          <div className="tsd-media">
+            <div className="ithero-wrap">
+              <div className="ithero-card">
+                <div className="ithero-top"><span className="ithero-dot r" /><span className="ithero-dot y" /><span className="ithero-dot g" /><span className="ithero-file">candidate-report</span><span className="ithero-live">Match 91%</span></div>
+                <div className="rt-cand"><span className="rt-av">MC</span><div className="rt-ci"><span className="rt-nm">Maya Chen</span><span className="rt-role">Founding Engineer · Startup</span></div><span className="rt-fit">A-player</span></div>
+                <div className="ithero-scores">
+                  {scores.map((sc) => (
+                    <div className="ithero-scr" key={sc.label}>
+                      <span className="ithero-scl">{sc.label}</span>
+                      <span className="ithero-scbar"><i style={{ ['--w']: sc.w, animationDelay: sc.delay } as CSSProperties} /></span>
+                      <span className="ithero-scv">{sc.v}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="ithero-badge b1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>Job-ready</div>
+              <div className="ithero-badge b2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>AI-scored</div>
+            </div>
+          </div>
         </div>
-        <div className="itats-more reveal"><Link href="/integrations">View all ATS integrations{ARROW}</Link></div>
-      </div></section>
+      </section>
 
-      <SecuritySection eyebrow="Security" heading="Built to keep your organization secure" sub="Ensure the security of your recruitment data with top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits, and strong privacy protections." />
+      <section className="tsd-trust reveal">
+        <div className="tsdw">
+          <p className="tsd-trust-l">Trusted by <strong>1,500+</strong> hiring teams worldwide</p>
+          <div className="tsd-marq-wrap">
+            <div className="tsd-marq">
+              {logos.map((lg, i) => (
+                <span className="tsd-marq-i" key={`a-${i}`}>{lg}</span>
+              ))}
+              {logos.map((lg, i) => (
+                <span className="tsd-marq-i" key={`b-${i}`}>{lg}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {sections.map((s, i) => {
+        const bgClass = i % 2 === 1 ? 'tsd-sand' : '';
+        return (
+          <section className={`tsd-sec ${bgClass}`.trim()} key={i}>
+            <div className="tsdw">
+              {s.kind === 'split' && (() => {
+                const splitIndex = sections.slice(0, i + 1).filter((x) => x.kind === 'split').length - 1;
+                const flipClass = splitIndex % 2 === 1 ? 'tsd-flip' : '';
+                const hasDesc = !!(s.bullets && s.bullets.some((b) => b.desc));
+                const blClass = hasDesc ? 'tsd-bl tsd-bl1' : 'tsd-bl';
+                return (
+                  <div className={`tsd-grid2 ${flipClass}`.trim()}>
+                    <div className="tsd-copy reveal">
+                      <h2 className="tsd-h2">{s.h2}</h2>
+                      {s.body.map((para, pi) => (
+                        <p className="tsd-p" key={pi}>{para}</p>
+                      ))}
+                      {s.bullets && (
+                        <div className={blClass}>
+                          {s.bullets.map((b, bi) => (
+                            <div className="tsd-bi" key={bi}>
+                              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                              <span className="tsd-bt">
+                                {b.href ? <a href={b.href}>{b.label}</a> : b.label}
+                                {b.desc && <span className="tsd-bd">{b.desc}</span>}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {s.cta && (
+                        <Link className="tsd-link" href={s.cta.href}>{s.cta.label}<Arrow /></Link>
+                      )}
+                    </div>
+                    <div className="tsd-media reveal">
+                      <div className="tsd-shot" style={{ background: s.shotBg }}>
+                        <div className="tsd-shotimg" style={{ backgroundColor: s.shotBg, backgroundImage: `url("${s.img}")` }} data-bg={s.img} />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {s.kind === 'list' && (
+                <>
+                  <div className="tsd-shead reveal" style={{ textAlign: 'center' }}>
+                    <h2 className="tsd-h2">{s.h2}</h2>
+                    {s.body.map((para, pi) => (
+                      <p className="tsd-lead" style={{ marginLeft: 'auto', marginRight: 'auto' }} key={pi}>{para}</p>
+                    ))}
+                  </div>
+                  <div className="tsd-clist reveal">
+                    {s.items!.map((it, ii) => (
+                      <div className="tsd-cli" key={ii}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>{it}
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          </section>
+        );
+      })}
+
+      <section className="tsd-cta" style={{ position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: '50%', right: '-40px', transform: 'translateY(-50%)', width: '520px', height: '520px', pointerEvents: 'none', opacity: 0.9 }}>
+          <svg viewBox="0 0 480 480" width="100%" height="100%" fill="none"><g opacity=".45" stroke="#F23F44" strokeWidth="1.6" strokeLinejoin="round"><polygon points="240,60 400,150 400,330 240,420 80,330 80,150" /><polygon points="240,140 330,190 330,290 240,340 150,290 150,190" /><line x1="240" y1="60" x2="240" y2="140" /><line x1="400" y1="150" x2="330" y2="190" /><line x1="400" y1="330" x2="330" y2="290" /><line x1="240" y1="420" x2="240" y2="340" /><line x1="80" y1="330" x2="150" y2="290" /><line x1="80" y1="150" x2="150" y2="190" /></g><g fill="#F23F44"><circle cx="240" cy="60" r="6" /><circle cx="400" cy="150" r="6" /><circle cx="400" cy="330" r="6" /><circle cx="240" cy="420" r="6" /><circle cx="80" cy="330" r="6" /><circle cx="80" cy="150" r="6" /></g></svg>
+        </div>
+        <div style={{ position: 'absolute', top: '-120px', left: '-90px', width: '340px', height: '340px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(242,63,68,.18),transparent 70%)', pointerEvents: 'none' }} />
+        <div className="tsdw reveal" style={{ position: 'relative', zIndex: 1 }}>
+          <p className="eyebrow" style={{ color: '#F76A6E' }}>Get started<b style={{ color: '#F23F44' }}>.</b></p>
+          <h2 className="tsd-h2">Change the way you hire with Testlify</h2>
+          <p className="tsd-lead">Improve your hiring process and reduce the complexity of selecting people for any role — accurately evaluate languages, programming, software, cognitive ability and more.</p>
+          <div className="tsd-ctas">
+            <CtaButton label="Try for free" href="/pricing" variant="primary" size="lg" icon="arrow" magnetic={true} />
+            <CtaButton label="Book a demo" href="/contact" variant="light" size="lg" icon="play" />
+          </div>
+        </div>
+      </section>
+
+      <section className="tsd-sec tsd-sand">
+        <div className="tsdw">
+          <div className="tsd-shead reveal">
+            <p className="eyebrow">Integrations<b>.</b></p>
+            <h2 className="tsd-h2">Testlify integrates seamlessly with 100+ ATS tools</h2>
+            <p className="tsd-lead">Streamline your hiring process from assessment to onboarding. Sync candidate data effortlessly, automate workflows, and gain deeper insights to make informed hiring decisions faster.</p>
+          </div>
+          <div className="itats-grid reveal">
+            {atsLogos.map((l) => (
+              <div className="itats-tile" key={l.alt}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={l.src} alt={l.alt} />
+              </div>
+            ))}
+          </div>
+          <div className="itats-more reveal">
+            <Link href="/integrations">View all ATS integrations<Arrow /></Link>
+          </div>
+        </div>
+      </section>
+
+      <SecuritySection
+        eyebrow="Security"
+        heading="Built to keep your organization secure"
+        sub="Ensure the security of your recruitment data with top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits, and strong privacy protections."
+      />
 
       <Testimonials eyebrow="Testimonials" heading="What our customers are saying about Testlify" />
 
       <Recognition bg="#fff" />
 
-      <section className="tsd-sec tsd-sand"><div className="tsdw">
-        <div className="tsd-shead reveal"><p className="eyebrow">FAQ<b>.</b></p><h2 className="tsd-h2">Frequently asked questions (FAQs)</h2></div>
-        <div className="tsd-faqw">
-          {faqs.map((f, i) => (
-            <div className={`tsd-faq reveal ${open[i] ? 'tsd-open' : ''}`} key={i} onClick={() => toggle(i)}>
-              <div className="tsd-faqq">{f.q}<span className="tsd-faqx">+</span></div>
-              <div className="tsd-faqa">{f.a}</div>
-            </div>
-          ))}
+      <section className="tsd-sec tsd-sand">
+        <div className="tsdw">
+          <div className="tsd-shead reveal">
+            <p className="eyebrow">FAQ<b>.</b></p>
+            <h2 className="tsd-h2">{faqTitle}</h2>
+          </div>
+          <div className="tsd-faqw">
+            {faqs.map((f, i) => (
+              <div className={`tsd-faq reveal ${open[i] ? 'tsd-open' : ''}`.trim()} onClick={() => toggleFaq(i)} key={i}>
+                <div className="tsd-faqq">{f.q}<span className="tsd-faqx">+</span></div>
+                <div className="tsd-faqa">{f.a}</div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div></section>
+      </section>
 
       <CtaBand />
+
       <SiteFooter />
     </>
   );

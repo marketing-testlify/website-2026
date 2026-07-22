@@ -6,6 +6,8 @@ import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaButton from '@/components/CtaButton';
 import CtaBand from '@/components/CtaBand';
+import SecuritySection from '@/components/SecuritySection';
+import Recognition from '@/components/Recognition';
 
 const css = `
 *{box-sizing:border-box;}
@@ -405,6 +407,9 @@ export default function RealEstateIndustryPage() {
         </div>
         <div className="rt-atsmore reveal"><Link href="/integrations">View all ATS integration<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link></div>
       </div></section>
+
+      <SecuritySection eyebrow="Security" heading="Built to keep your organization secure" sub="Ensure the security of your recruitment data with top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits, and strong privacy protections." />
+      <Recognition bg="#FBF3EE" />
 
       <section className="rtsec"><div className="rtw">
         <div className="rt-shead reveal"><p className="eyebrow">FAQ<b>.</b></p><h2 className="rt-h2">Frequently asked questions (FAQs)</h2><p className="rt-lead">Here are answers to the most commonly asked questions about Testlify&apos;s skills assessment for the real estate industry.</p></div>

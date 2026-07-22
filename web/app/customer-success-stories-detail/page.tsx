@@ -125,7 +125,7 @@ export default function Page() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="See how Arch Advisory Group cut time-to-hire by 58%" />
+      <SiteHeader announcement="See how Arch Advisory Group cut time-to-hire by 58%" announcementCta="Read customer stories" />
 
       <section className="cs-hero"><div className="wrap">
         <p className="cs-crumb reveal in"><Link href="/customer-success-stories">Customers</Link><span className="sep">›</span><span>Professional services</span><span className="sep">›</span><span>Arch Advisory Group</span></p>

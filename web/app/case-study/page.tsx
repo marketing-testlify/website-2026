@@ -15,7 +15,7 @@ export default function CaseStudyPage() {
 @media(max-width:920px){.csgrid{grid-template-columns:1fr;}}
 ` }} />
 
-      <SiteHeader announcement="Real teams, real results with Testlify" />
+      <SiteHeader announcement="Real teams, real results with Testlify" announcementCta="Read stories" />
 
       <section className="phero"><div className="wrap" style={{ maxWidth: '860px' }}>
         <p className="eyebrow reveal">Case studies<b>.</b></p>

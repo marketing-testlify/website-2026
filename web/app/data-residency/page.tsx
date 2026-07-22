@@ -7,7 +7,7 @@ import CtaBand from '@/components/CtaBand';
 export default function DataResidencyPage() {
   return (
     <>
-      <SiteHeader announcement="Know where your data lives" />
+      <SiteHeader announcement="Know where your data lives" announcementCta="Trust center" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: '860px' }}>

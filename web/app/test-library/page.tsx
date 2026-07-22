@@ -436,7 +436,7 @@ export default function TestLibraryPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="3,500+ skills tests — every one validated by subject-matter experts" />
+      <SiteHeader announcement="3,500+ skills tests — every one validated by subject-matter experts" announcementCta="Browse library" />
 
       <section className="tl-hero">
         <div className="tl-blob"></div>

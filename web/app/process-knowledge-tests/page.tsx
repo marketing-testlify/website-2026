@@ -5,6 +5,8 @@ import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaButton from '@/components/CtaButton';
+import Testimonials from '@/components/Testimonials';
+import SecuritySection from '@/components/SecuritySection';
 import Recognition from '@/components/Recognition';
 import CtaBand from '@/components/CtaBand';
 
@@ -14,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -26,9 +28,11 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
+.tsd-shotimg{display:block;width:100%;height:380px;background-size:contain;background-repeat:no-repeat;background-position:center;}
+.tsd-shot.tsd-plain{background:transparent !important;border:0;box-shadow:none;}
+.tsd-shot.tsd-plain .tsd-shotimg{background-color:transparent !important;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
-.tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
 .tsd-logos-l{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#A9999C;margin:0 0 14px;}
 .tsd-logos-r{display:flex;gap:12px;flex-wrap:wrap;}
@@ -50,6 +54,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -97,71 +103,83 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .reveal{opacity:0;transform:translateY(26px);}
 .reveal.in{opacity:1;transform:none;}
 @media(max-width:960px){.tsd-hgrid,.tsd-grid2{grid-template-columns:1fr;gap:40px;}.tsd-flip .tsd-copy{order:1;}.tsd-flip .tsd-media{order:2;}.tsd-cards,.tsd-fgrid,.tsd-tgrid{grid-template-columns:1fr;}.tsd-steps{grid-template-columns:1fr 1fr;}.tsd-h1{font-size:38px;}.tsd-h2{font-size:27px;}.tsd-sec{padding:64px 0;}.tsd-bl{grid-template-columns:1fr;}.tsd-shot image-slot{height:280px;}}
+.ttp-herocard{position:relative;background:#fff;border:1px solid #F0E2E3;border-radius:20px;box-shadow:0 40px 90px rgba(110,11,14,.16);overflow:hidden;animation:ttpfloat 6s ease-in-out infinite;}
+@keyframes ttpfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.ttp-hc-top{display:flex;align-items:center;gap:7px;padding:14px 18px;border-bottom:1px solid #F4E9E9;background:#FCF6F5;}
+.ttp-dot{width:11px;height:11px;border-radius:50%;background:#FF5F57;}.ttp-dot.y{background:#FEBC2E;}.ttp-dot.g{background:#28C840;}
+.ttp-hc-title{font-size:12.5px;color:#8A7A7D;font-weight:600;margin-left:8px;}
+.ttp-hc-live{margin-left:auto;font-size:11.5px;font-weight:700;color:#1FA463;}
+.ttp-hc-body{padding:22px 22px 6px;display:flex;flex-direction:column;gap:17px;}
+.ttp-hc-row{display:flex;align-items:center;gap:14px;}
+.ttp-hc-av{flex:none;width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#FF7A52,#F23F44);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;}
+.ttp-hc-av.b{background:linear-gradient(135deg,#6E62F2,#9A8BFF);}.ttp-hc-av.c{background:linear-gradient(135deg,#2AA6F2,#67C9FF);}
+.ttp-hc-meta{flex:1;}
+.ttp-hc-nm{font-size:13.5px;font-weight:700;color:#1A1014;display:block;margin-bottom:7px;}
+.ttp-bar{height:8px;border-radius:6px;background:#F4E7E8;overflow:hidden;}
+.ttp-bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#FF7A52,#F23F44);}
+.ttp-hc-sc{font-size:15px;font-weight:800;color:#F23F44;width:32px;text-align:right;flex:none;}
+.ttp-hc-badge{margin:12px 22px 22px;display:inline-flex;align-items:center;gap:8px;background:#E8F6EE;color:#1FA463;font-weight:700;font-size:13px;padding:10px 15px;border-radius:12px;}
+.tsd-mtrust{padding:44px 0 58px;}
+.tsd-trust-l{text-align:center;font-size:13.5px;font-weight:600;letter-spacing:1.5px;color:#A9999C;text-transform:uppercase;margin:0 0 30px;}
+.tsd-trust-l strong{color:#F23F44;font-weight:800;}
+.tsd-marq-wrap{position:relative;max-width:1100px;margin:0 auto;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);}
+.tsd-marq{display:flex;width:max-content;gap:64px;animation:marquee 30s linear infinite;align-items:center;}
+.tsd-marq-i{font-size:24px;font-weight:700;color:#C9B9BC;letter-spacing:-.5px;white-space:nowrap;}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.itats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:44px;}
+.itats-tile{background:#fff;border:1px solid #F0E2E3;border-radius:14px;height:84px;display:flex;align-items:center;justify-content:center;padding:18px;box-shadow:0 10px 22px rgba(110,11,14,.06);transition:transform .3s,border-color .3s,box-shadow .3s;}
+.itats-tile:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 18px 34px rgba(110,11,14,.10);}
+.itats-tile img{max-width:100%;max-height:38px;object-fit:contain;}
+.itats-more{text-align:center;margin-top:34px;}
+.itats-more a{display:inline-flex;align-items:center;gap:8px;color:#F23F44;font-weight:700;font-size:15.5px;text-decoration:none;}
+@media(max-width:960px){.itats-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:560px){.itats-grid{grid-template-columns:repeat(2,1fr);}}
 
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
-const Bullet = () => (
+const Check = () => (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
 );
-const ClockIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg>
-);
-const ArrowIcon = () => (
+const Arrow = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
 );
-const Star = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 18.6 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"></path></svg>
-);
-const Stars = () => (
-  <div className="tsd-stars"><Star /><Star /><Star /><Star /><Star /></div>
-);
 
-const stats = ['3,500+ validated tests', '13+ question formats', '100+ ATS integrations'];
+const stats = [
+  { t: '20–30 min completion' },
+  { t: 'AI-generated from your SOPs' },
+  { t: 'Real-time results' },
+];
+
 const logos = ['Xneelo', 'Kimp', 'Endiprev', 'Virtual Gurus', 'HROne'];
 
 const cards = [
-  { title: 'Validated by experts', desc: 'Tests built and peer-reviewed by subject-matter experts.' },
-  { title: 'Objective scoring', desc: 'Consistent, benchmarked scoring for every candidate.' },
-  { title: 'Anti-cheat proctoring', desc: 'Webcam, full-screen and plagiarism detection keep results honest.' },
-  { title: 'Enterprise security & compliance', desc: 'SOC 2 Type II, ISO 27001 and GDPR compliant.' },
-  { title: 'Multilingual', desc: "Assess candidates in the language they're most comfortable in." },
-  { title: 'Fully integratable', desc: '100+ native ATS integrations plus an open API.' },
+  { title: 'Comprehensive assessment', icon: 'M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11', desc: "Evaluates employee's understanding of specific processes, workflows, and procedures." },
+  { title: 'Real-time feedback', icon: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z', desc: 'Provides immediate results and insights, allowing for quick identification of knowledge gaps.' },
+  { title: 'Compliance monitoring', icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', desc: 'Ensures adherence to industry standards and regulations by assessing knowledge of necessary protocols.' },
+  { title: 'Better learning opportunities', icon: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z', desc: 'Identify areas of development and provide support for further education and skill-building.' },
+  { title: 'Performance tracking', icon: 'M23 6l-9.5 9.5-5-5L1 18M17 6h6v6', desc: 'Monitor employee progress over time, measure improvements, and adjust training programs as needed.' },
+  { title: 'Niche-specific content', icon: 'M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z', desc: 'Tailored to industry standards and best practices, these tests ensure employees grasp essential aspects of their work environment.' },
 ];
 
 const bullets1 = [
-  'Standard operating procedures',
-  'Compliance & regulatory steps',
-  'Quality & safety processes',
-  'Workflow & handoff knowledge',
-  'Documentation standards',
-  'Continuous improvement',
+  'Identify knowledge gaps',
+  'Minimize errors in processes',
+  'Informed training decisions',
+  'Superior performance',
+  'Boost employee satisfaction',
 ];
-const bullets2 = [
-  'Scenario-based questions',
-  '13+ question formats',
-  'Role-specific process libraries',
-  'Auto-ranking by performance',
-];
-
-const testimonials = [
-  { quote: 'We cut first-round screening from days to hours. The shortlist Testlify hands us is genuinely job-ready.', name: 'Priya Nair', role: 'Head of TA, Fintech scale-up', initials: 'PN' },
-  { quote: 'Every applicant gets a fair, identical evaluation — no matter how many apply.', name: 'Marcus Bell', role: 'Talent Partner, SaaS', initials: 'MB' },
-  { quote: 'The proctoring and reporting gave our hiring managers confidence to trust scores over gut feel.', name: 'Sofia Ramirez', role: 'Recruiting Lead, Retail', initials: 'SR' },
-];
-
-const atsLogos = ['Greenhouse', 'Lever', 'Workday', 'BambooHR', 'Zoho Recruit', 'SAP SuccessFactors', 'Ashby', 'JazzHR'];
 
 const faqs = [
-  { q: 'What is a process knowledge test?', a: 'It measures how well a candidate understands the procedures, standards and workflows a role depends on — tested through realistic, scenario-based questions.' },
-  { q: 'Which roles is it best for?', a: 'Operations, manufacturing, finance, quality, compliance and any role where following the right process matters.' },
-  { q: 'How is candidate data secured?', a: 'All data is encrypted in transit and at rest with strict access controls. Testlify is SOC 2 Type II, ISO 27001 and GDPR compliant.' },
-  { q: 'Does Testlify integrate with our ATS?', a: 'Yes — 100+ native ATS integrations plus an open API, on every paid plan.' },
-  { q: 'Can tests be customized?', a: 'Yes. Tailor process tests to your specific procedures, standards and role requirements.' },
-  { q: 'Can it handle high-volume hiring?', a: 'Yes. Screen large candidate pools in hours without compromising quality.' },
+  { q: 'What are process knowledge tests?', a: 'Process knowledge tests (PKT) are performance review tests for existing employees. It is performed to analyze their understanding of specific workflows or processes ideal to their role or industry. In some cases, like lateral entry, process knowledge tests are conducted by employers to gauge new hires.' },
+  { q: 'What is an example of a knowledge test?', a: 'For instance, a manufacturing company uses a compliance protocol knowledge test to ensure employees are well-versed in safety regulations and procedures. The test covers emergency procedures, industry regulatory standards, and reporting requirements. By analyzing the results, the company can pinpoint if the employees need further training or promotion, identify skill or knowledge gaps, and update safety protocols as needed to enhance overall workplace safety.' },
+  { q: 'How do I customize tests?', a: 'Assessments can be customized by including any skill tests from our extensive library. Choose from a range of options like aptitude, language, programming, software, or role-specific skills to create a combination that fits your needs.' },
+  { q: "Why test a candidate's process knowledge?", a: 'Process knowledge testing of employees is crucial to understand and bridge any potential knowledge gaps. Companies will be able to assess and evaluate staff better and provide them with the opportunity for learning and development.' },
+  { q: 'How accurate are process knowledge tests?', a: "Process knowledge tests are highly accurate, providing a precise assessment of employees' understanding of specific processes and procedures. They are designed to reflect real-world scenarios and deliver reliable insights into knowledge gaps and training needs." },
+  { q: 'What is the duration of process knowledge tests?', a: 'The completion time for a knowledge test is approximately 20-30 minutes. Following this, the results will be available to the employer in real time.' },
 ];
 
-const ctaTicks = ['7-day free trial', '45+ languages', 'Cancel anytime'];
+const ctaTicks = ['7-day free trial', 'AI-generated questions', 'Cancel anytime'];
 
 export default function ProcessKnowledgeTestsPage() {
   const [open, setOpen] = useState<Record<number, boolean>>({});
@@ -172,16 +190,17 @@ export default function ProcessKnowledgeTestsPage() {
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <SiteHeader announcement="Testlify AI is here — screen, interview &amp; score candidates automatically." />
 
+      {/* Hero */}
       <section className="tsd-hero">
         <div className="tsdw tsd-hgrid">
           <div className="tsd-copy reveal">
             <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Test type / Process knowledge tests</span></div>
             <p className="eyebrow">Process knowledge tests<b>.</b></p>
-            <h1 className="tsd-h1">Process knowledge tests to hire people who know the how</h1>
-            <p className="tsd-lead">Assess whether candidates understand the processes, standards and workflows a role depends on — before they start, not after.</p>
+            <h1 className="tsd-h1">Assess employee competence with <span className="tac">process knowledge tests</span></h1>
+            <p className="tsd-lead">Identify knowledge gaps in your team and enhance skillsets with our process knowledge tests. Developed by industry experts and scientifically validated, this test helps reduce turnover, boost job satisfaction, and save valuable time and resources.</p>
             <div className="tsd-stats">
-              {stats.map((t) => (
-                <span className="tsd-statc" key={t}>{t}</span>
+              {stats.map((st) => (
+                <span className="tsd-statc" key={st.t}>{st.t}</span>
               ))}
             </div>
             <div className="tsd-ctas">
@@ -194,57 +213,69 @@ export default function ProcessKnowledgeTestsPage() {
             </div>
           </div>
           <div className="tsd-media reveal">
-            <div className="tsd-shot"><div className="tsd-shotimg"></div></div>
-          </div>
-        </div>
-        <div className="tsdw tsd-logos reveal">
-          <p className="tsd-logos-l">Trusted by 1,500+ hiring teams</p>
-          <div className="tsd-logos-r">
-            {logos.map((lg) => (
-              <span className="tsd-logo" key={lg}>{lg}</span>
-            ))}
+            <div className="ttp-herocard">
+              <div className="ttp-hc-top"><span className="ttp-dot"></span><span className="ttp-dot y"></span><span className="ttp-dot g"></span><span className="ttp-hc-title">Assessment report</span><span className="ttp-hc-live">● Live</span></div>
+              <div className="ttp-hc-body">
+                <div className="ttp-hc-row"><span className="ttp-hc-av">A</span><div className="ttp-hc-meta"><span className="ttp-hc-nm">Core competency</span><div className="ttp-bar"><i style={{ width: '94%' }}></i></div></div><span className="ttp-hc-sc">94</span></div>
+                <div className="ttp-hc-row"><span className="ttp-hc-av b">M</span><div className="ttp-hc-meta"><span className="ttp-hc-nm">Applied knowledge</span><div className="ttp-bar"><i style={{ width: '88%' }}></i></div></div><span className="ttp-hc-sc">88</span></div>
+                <div className="ttp-hc-row"><span className="ttp-hc-av c">S</span><div className="ttp-hc-meta"><span className="ttp-hc-nm">Accuracy &amp; compliance</span><div className="ttp-bar"><i style={{ width: '76%' }}></i></div></div><span className="ttp-hc-sc">76</span></div>
+              </div>
+              <div className="ttp-hc-badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Shortlist ready</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Section 1: split — num 1, bullets, cta */}
+      {/* Trust marquee */}
+      <section className="tsd-mtrust reveal">
+        <div className="tsdw">
+          <p className="tsd-trust-l">Trusted by <strong>1,500+</strong> hiring teams worldwide</p>
+          <div className="tsd-marq-wrap">
+            <div className="tsd-marq">
+              {logos.map((lg) => (<span className="tsd-marq-i" key={'a' + lg}>{lg}</span>))}
+              {logos.map((lg) => (<span className="tsd-marq-i" key={'b' + lg}>{lg}</span>))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 1: split — bullets + cta (shotBg #F3F6F9) */}
       <section className="tsd-sec ">
         <div className="tsdw">
           <div className="tsd-grid2 ">
             <div className="tsd-copy reveal">
-              <span className="tsd-num">1</span>
-              <h2 className="tsd-h2">Test real process understanding</h2>
-              <p className="tsd-p">Process knowledge tests measure how well candidates understand the standard procedures, compliance steps and workflows their role relies on — from operations to finance to quality.</p>
+              <h2 className="tsd-h2">Why use process knowledge tests?</h2>
+              <p className="tsd-p">Gain a comprehensive view of your team with process knowledge tests to identify and address skill gaps confidently. Real-time feedback helps enhance performance and drive continuous employee development.</p>
               <div className="tsd-bl">
                 {bullets1.map((label) => (
-                  <div className="tsd-bi" key={label}><Bullet /><span className="tsd-bt">{label}</span></div>
+                  <div className="tsd-bi" key={label}><Check /><span className="tsd-bt">{label}</span></div>
                 ))}
               </div>
-              <Link className="tsd-link" href="/test-library">Browse the test library<ArrowIcon /></Link>
+              <Link className="tsd-link" href="/how-testlify-works">Read more<Arrow /></Link>
             </div>
             <div className="tsd-media reveal">
-              <div className="tsd-shot"><div className="tsd-shotimg"></div></div>
+              <div className="tsd-shot " style={{ background: '#F3F6F9' }}>
+                <div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Why-use-process-knowledge-tests.png")' }}></div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 2: split — num 2, bullets, flipped */}
+      {/* Section 2: split — cta only, flipped, sand (shotBg #FFF) */}
       <section className="tsd-sec tsd-sand">
         <div className="tsdw">
           <div className="tsd-grid2 tsd-flip">
             <div className="tsd-copy reveal">
-              <span className="tsd-num">2</span>
-              <h2 className="tsd-h2">Assess with realistic, scenario-based questions</h2>
-              <p className="tsd-p">Go beyond recall. Scenario-based questions test whether candidates can apply the right process in real situations, and auto-rank them by accuracy.</p>
-              <div className="tsd-bl">
-                {bullets2.map((label) => (
-                  <div className="tsd-bi" key={label}><Bullet /><span className="tsd-bt">{label}</span></div>
-                ))}
-              </div>
+              <h2 className="tsd-h2">How to create process knowledge tests?</h2>
+              <p className="tsd-p">Simply upload your SOP document, and the system will analyze the details to generate custom questions specifically designed for your processes and workflows.</p>
+              <p className="tsd-p">Our cutting-edge AI technology ensures that each process knowledge test is tailored to match your unique operational needs.</p>
+              <Link className="tsd-link" href="/pricing">Try for free<Arrow /></Link>
             </div>
             <div className="tsd-media reveal">
-              <div className="tsd-shot"><div className="tsd-shotimg"></div></div>
+              <div className="tsd-shot " style={{ background: '#FFF' }}>
+                <div className="tsd-shotimg" style={{ backgroundColor: '#FFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/How-to-create-process-knowledge-tests.png")' }}></div>
+              </div>
             </div>
           </div>
         </div>
@@ -254,14 +285,14 @@ export default function ProcessKnowledgeTestsPage() {
       <section className="tsd-sec ">
         <div className="tsdw">
           <div className="tsd-shead reveal">
-            <p className="eyebrow">Why Testlify<b>.</b></p>
-            <h2 className="tsd-h2">Reliable, fair and built to scale</h2>
-            <p className="tsd-lead">Everything you need to assess process knowledge with confidence.</p>
+            <p className="eyebrow">Key features<b>.</b></p>
+            <h2 className="tsd-h2">Key features of process knowledge tests</h2>
+            <p className="tsd-lead">Explore the critical components that make process knowledge tests reliable and comprehensive.</p>
           </div>
           <div className="tsd-cards">
             {cards.map((c) => (
               <div className="tsd-card reveal" key={c.title}>
-                <div className="tsd-ic"><ClockIcon /></div>
+                <div className="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={c.icon}></path></svg></div>
                 <p className="tsd-ct">{c.title}</p>
                 <p className="tsd-cd">{c.desc}</p>
               </div>
@@ -270,46 +301,28 @@ export default function ProcessKnowledgeTestsPage() {
         </div>
       </section>
 
-      {/* Section 4: split — num 3, cta, sand */}
+      {/* Section 4: split — cta only, sand (shotBg #FFF) */}
       <section className="tsd-sec tsd-sand">
         <div className="tsdw">
           <div className="tsd-grid2 ">
             <div className="tsd-copy reveal">
-              <span className="tsd-num">3</span>
-              <h2 className="tsd-h2">Cost-effective at scale</h2>
-              <p className="tsd-p">Screen for process knowledge early to reduce mis-hires and onboarding time, with transparent pricing that scales with you.</p>
-              <Link className="tsd-link" href="/pricing">See pricing<ArrowIcon /></Link>
+              <h2 className="tsd-h2">Measure skill gaps and ensure better operational efficiency</h2>
+              <p className="tsd-p">Testlify&apos;s process knowledge tests empower you to identify areas for improvement, optimizing your workforce&apos;s capabilities into becoming valuable assets.</p>
+              <p className="tsd-p">Our tests provide actionable insights to enhance team performance and maintain industry standards efficiently.</p>
+              <Link className="tsd-link" href="/test-library">Browse the test library<Arrow /></Link>
             </div>
             <div className="tsd-media reveal">
-              <div className="tsd-shot"><div className="tsd-shotimg"></div></div>
+              <div className="tsd-shot " style={{ background: '#FFF' }}>
+                <div className="tsd-shotimg" style={{ backgroundColor: '#FFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/10/Measure-skill-gaps-and-ensure-better-operational-efficiency-1.png")' }}></div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials grid */}
-      <section className="tsd-sec">
-        <div className="tsdw">
-          <div className="tsd-shead reveal">
-            <p className="eyebrow">Loved by hiring teams<b>.</b></p>
-            <h2 className="tsd-h2">Recruiters who hire on proof</h2>
-          </div>
-          <div className="tsd-tgrid">
-            {testimonials.map((t) => (
-              <div className="tsd-tcard reveal" key={t.name}>
-                <Stars />
-                <p className="tsd-quote">{t.quote}</p>
-                <div className="tsd-author">
-                  <span className="tsd-avatar">{t.initials}</span>
-                  <span><span className="tsd-aname">{t.name}</span><span className="tsd-arole">{t.role}</span></span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Testimonials eyebrow="Loved by hiring teams" heading="Recruiters who hire on proof" />
 
-      {/* ATS grid */}
+      {/* ATS integrations */}
       <section className="tsd-sec tsd-sand">
         <div className="tsdw">
           <div className="tsd-shead reveal">
@@ -317,22 +330,37 @@ export default function ProcessKnowledgeTestsPage() {
             <h2 className="tsd-h2">Works with the ATS you already use</h2>
             <p className="tsd-lead">Push assessment results straight into your workflow with 100+ native, two-way integrations.</p>
           </div>
-          <div className="tsd-atsgrid reveal">
-            {atsLogos.map((a) => (
-              <span className="tsd-atslogo" key={a}>{a}</span>
-            ))}
-            <Link className="tsd-atsmore" href="/integrations">+100 more<ArrowIcon /></Link>
+          <div className="itats-grid reveal">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png" alt="Workday" /></div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png" alt="SAP SuccessFactors" /></div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png" alt="Lever" /></div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/SR-SAP-Logo.svg" alt="SmartRecruiters" /></div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png" alt="Recruitee" /></div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/logo.svg" alt="UKG Pro Recruiting" /></div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2024/09/BambooHR-Logo-1-2048x1152-2.png" alt="BambooHR" /></div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2023/03/629a0bbcb04c5ae587c411c2-1-1.png" alt="Greenhouse" /></div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2024/08/zoho-recruit-logo-1.png" alt="Zoho Recruit" /></div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png" alt="JazzHR" /></div>
           </div>
+          <div className="itats-more reveal"><Link href="/integrations">View all ATS integrations<Arrow /></Link></div>
         </div>
       </section>
 
-      {/* Trust band */}
-      <section className="tsd-trust">
-        <div className="tsdw tsd-trow reveal">
-          <div className="tsd-g2"><span className="tsd-g2n">4.7</span><span className="tsd-g2l">Rated 4.7 on G2<br />by 1,000+ reviewers</span></div>
-          <div className="tsd-badges"><span className="tsd-badge">SOC 2 TYPE II</span><span className="tsd-badge">ISO 27001</span><span className="tsd-badge">GDPR</span><span className="tsd-badge">CCPA</span><span className="tsd-badge">100+ ATS INTEGRATIONS</span></div>
-        </div>
-      </section>
+      <SecuritySection
+        eyebrow="Security"
+        heading="Built to keep your organization secure"
+        sub="Ensure the security of your recruitment data with top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits, and strong privacy protections."
+      />
 
       <Recognition bg="#FBF3EE" />
 
@@ -358,8 +386,8 @@ export default function ProcessKnowledgeTestsPage() {
       <section className="tsd-cta" id="demo">
         <div className="tsdw reveal">
           <p className="eyebrow" style={{ color: '#F76A6E' }}>Get started<b style={{ color: '#F23F44' }}>.</b></p>
-          <h2 className="tsd-h2">Hire people who know the process.</h2>
-          <p className="tsd-lead">Prove who understands the how before day one — start assessing process knowledge in minutes.</p>
+          <h2 className="tsd-h2">Assess competence. Close the gaps.</h2>
+          <p className="tsd-lead">Upload your SOPs and start assessing process knowledge in minutes — with real-time results and actionable insights.</p>
           <div className="tsd-ctas">
             <CtaButton label="Try for free" href="/pricing" variant="primary" size="lg" icon="arrow" magnetic />
             <CtaButton label="Book a demo" href="#" variant="light" size="lg" icon="play" />

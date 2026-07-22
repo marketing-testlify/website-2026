@@ -35,21 +35,28 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
   <div class="sfcta-c2"></div>
   <div class="sfcta-in">
     <p class="sfcta-eyebrow">{{ eyebrow }}<span style="color:#fff;">.</span></p>
-    <h2 class="sfcta-h">Your next great hire is already in <br>your pipeline</h2>
-    <p class="sfcta-p">Build your first assessment in about two minutes and start surfacing proven talent today — free for 7 days.</p>
+    <h2 class="sfcta-h">{{ heading }}</h2>
+    <p class="sfcta-p">{{ sub }}</p>
     <div class="sfcta-btns">
-      <a href="pricing.dc.html" class="sfcta-b1">Try for free<span>→</span></a>
-      <a href="contact.dc.html" class="sfcta-b2">Book a demo</a>
+      <a href="{{ b1href }}" class="sfcta-b1">{{ b1label }}<span>→</span></a>
+      <sc-if value="{{ hasB2 }}" hint-placeholder-val="{{ true }}"><a href="{{ b2href }}" class="sfcta-b2">{{ b2label }}</a></sc-if>
     </div>
     <div class="sfcta-trust"><span>✓ Full feature access</span><span>✓ No credit card required</span><span>✓ Cancel anytime</span></div>
   </div>
 </div></section>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:480},&quot;eyebrow&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Start hiring on skill&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:480},&quot;eyebrow&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Start hiring on skill&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heading&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Your next great hire is already in your pipeline&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;sub&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Build your first assessment in about two minutes and start surfacing proven talent today — free for 7 days.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;b1label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Try for free&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;b1href&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;pricing.dc.html&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;b2label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Book a demo&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;b2href&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;contact.dc.html&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;hideSecondary&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
   renderVals(){
-    return { eyebrow: this.props.eyebrow || 'Start hiring on skill' };
+    return {
+      eyebrow: this.props.eyebrow || 'Start hiring on skill',
+      heading: this.props.heading || 'Your next great hire is already in your pipeline',
+      sub: this.props.sub || 'Build your first assessment in about two minutes and start surfacing proven talent today — free for 7 days.',
+      b1label: this.props.b1label || 'Try for free', b1href: this.props.b1href || 'pricing.dc.html',
+      b2label: this.props.b2label || 'Book a demo', b2href: this.props.b2href || 'contact.dc.html',
+      hasB2: this.props.hideSecondary ? false : true
+    };
   }
 }
 </script>

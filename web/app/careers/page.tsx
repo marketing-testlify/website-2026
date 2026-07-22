@@ -72,7 +72,7 @@ export default function CareersPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Remote-first · 4-day onboarding · Real ownership" />
+      <SiteHeader announcement="Remote-first · 4-day onboarding · Real ownership" announcementCta="Why Testlify" />
 
       <section className="chero"><div className="wrap" style={{ maxWidth: 840 }}>
         <p className="eyebrow reveal">Careers<b>.</b></p>

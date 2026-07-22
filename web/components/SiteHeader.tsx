@@ -60,6 +60,7 @@ const SOL: Group[] = [
       { label: 'Typing', d: 'Speed & accuracy', href: 'typing-test.dc.html' },
       { label: 'Coding', d: 'Live coding, 45+ languages', href: 'coding-tests.dc.html' },
       { label: 'Engineering', d: 'Applied engineering skills', href: 'engineering-skills.dc.html' },
+      { label: 'Process knowledge', d: 'SOP & workflow competence', href: 'process-knowledge-tests.dc.html' },
     ],
   },
   {

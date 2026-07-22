@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:nowrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-shotimg.cover{background-size:cover;}
@@ -147,46 +147,66 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
-const stats = ['Blind screening', 'EEOC-defensible', '16+ languages'];
+function Check() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  );
+}
 
-type Split = {
-  h2: string;
-  body: string[];
-  img: string;
-  bgClass: string;
-  flip: boolean;
-};
+function CtaCheck() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F76A6E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  );
+}
 
-const sections: Split[] = [
+function ArrowRight() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
+    </svg>
+  );
+}
+
+type Section = { shotBg: string; img: string; h2: string; body: string[]; flipClass: string; bgClass: string };
+
+const sections: Section[] = [
   {
+    shotBg: '#F3F6F9',
+    img: 'https://testlify.com/wp-content/uploads/2023/07/Before-you-continue-01-2-16-1024x761.png',
     h2: 'Creating an inclusive work environment',
     body: [
       'We actively promote diversity and inclusion through ongoing education and training. We provide opportunities for employees to participate in workshops, seminars, and webinars focused on topics such as unconscious bias, cultural competence, and inclusive leadership.',
       'By equipping our team with the necessary knowledge and skills, we empower them to create a supportive and inclusive work environment for all.',
     ],
-    img: 'https://testlify.com/wp-content/uploads/2023/07/Before-you-continue-01-2-16-1024x761.png',
+    flipClass: '',
     bgClass: '',
-    flip: false,
   },
   {
+    shotBg: '#FFF',
+    img: 'https://testlify.com/wp-content/uploads/2023/03/Work-time-pana-300x300.png',
     h2: 'Advocating for equity and inclusion',
     body: [
       'We leverage our platform to amplify underrepresented communities and the impactful work they are doing. Whether it’s through highlighting customer case studies, featuring diverse voices in our annual events, or using our social media channels to showcase their achievements, we strive to create space for these communities to shine.',
       'By actively promoting equity and inclusion, we aim to contribute to a more equitable world, where everyone has equal opportunities to succeed and thrive.',
     ],
-    img: 'https://testlify.com/wp-content/uploads/2023/03/Work-time-pana-300x300.png',
+    flipClass: 'tsd-flip',
     bgClass: 'tsd-sand',
-    flip: true,
   },
   {
+    shotBg: '#F3F6F9',
+    img: 'https://testlify.com/wp-content/uploads/2023/03/Psychometric-Tests-2-266x300.png',
     h2: 'Amplifying underrepresented communities',
     body: [
       'Whether through customer case studies, our annual Testlify event speaker lineup, or the voices we uplift on social media, we strive to create space rather than occupy it.',
       'At Testlify, we are dedicated to creating an environment where everyone can thrive. We understand that diversity, inclusion, and belonging are integral to achieving excellence, and we are committed to continually improving and fostering a community where you can truly flourish. Together, let’s build a better future.',
     ],
-    img: 'https://testlify.com/wp-content/uploads/2023/03/Psychometric-Tests-2-266x300.png',
+    flipClass: '',
     bgClass: '',
-    flip: false,
   },
 ];
 
@@ -199,40 +219,33 @@ const faqs = [
   { q: 'How does Testlify amplify diverse perspectives?', a: 'We showcase minority-owned businesses, female founders, and BIPOC leaders through various channels.' },
 ];
 
+const stats = ['Blind screening', 'EEOC-defensible', '16+ languages'];
 const ctaTicks = ['7-day free trial', 'Unlimited assessments', 'Cancel anytime'];
 
-const Check = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-);
+const atsLogos: { src: string; alt: string }[] = [
+  { src: 'https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png', alt: 'Workday' },
+  { src: 'https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png', alt: 'SAP SuccessFactors' },
+  { src: 'https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png', alt: 'Lever' },
+  { src: 'https://testlify.com/wp-content/uploads/2025/10/SR-SAP-Logo.svg', alt: 'SmartRecruiters' },
+  { src: 'https://testlify.com/wp-content/uploads/2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png', alt: 'Recruitee' },
+  { src: 'https://testlify.com/wp-content/uploads/2025/10/logo.svg', alt: 'UKG Pro Recruiting' },
+  { src: 'https://testlify.com/wp-content/uploads/2024/09/BambooHR-Logo-1-2048x1152-2.png', alt: 'BambooHR' },
+  { src: 'https://testlify.com/wp-content/uploads/2023/03/629a0bbcb04c5ae587c411c2-1-1.png', alt: 'Greenhouse' },
+  { src: 'https://testlify.com/wp-content/uploads/2024/08/zoho-recruit-logo-1.png', alt: 'Zoho Recruit' },
+  { src: 'https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png', alt: 'JazzHR' },
+];
 
-function SplitSection({ s }: { s: Split }) {
-  return (
-    <section className={('tsd-sec ' + s.bgClass).trim()}>
-      <div className="tsdw">
-        <div className={('tsd-grid2 ' + (s.flip ? 'tsd-flip' : '')).trim()}>
-          <div className="tsd-copy reveal">
-            <h2 className="tsd-h2">{s.h2}</h2>
-            {s.body.map((para, pi) => (<p className="tsd-p" key={pi}>{para}</p>))}
-          </div>
-          <div className="tsd-media reveal">
-            <div className="tsd-shot">
-              <div className="tsd-shotimg" style={{ backgroundImage: `url("${s.img}")` }} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export default function DiversityAndInclusionsPage() {
+export default function Page() {
   const [open, setOpen] = useState<Record<number, boolean>>({});
-  const toggle = (i: number) => setOpen((prev) => ({ ...prev, [i]: !prev[i] }));
+  const toggle = (i: number) => setOpen((s) => ({ ...s, [i]: !s[i] }));
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Testlify AI is here — screen, interview & score candidates automatically." />
+      <SiteHeader
+        announcement="Testlify AI is here — screen, interview & score candidates automatically."
+        homeHref="/"
+      />
 
       <section className="tsd-hero" data-screen-label="Hero">
         <div className="tsdw tsd-hgrid">
@@ -246,45 +259,82 @@ export default function DiversityAndInclusionsPage() {
             <h1 className="tsd-h1">Fostering <span className="tac">diversity and inclusion</span></h1>
             <p className="tsd-lead">We’re dedicated to building a company you’ll be proud to grow with. At Testlify, we understand the significance of diversity, inclusion, and belonging (DI&amp;B) and consider them essential to our mission, not mere add-ons.</p>
             <div className="tsd-stats">
-              {stats.map((t) => (<span className="tsd-statc" key={t}>{t}</span>))}
+              {stats.map((t) => (
+                <span className="tsd-statc" key={t}>{t}</span>
+              ))}
             </div>
             <div className="tsd-ctas">
               <CtaButton label="Try for free" href="/pricing" variant="primary" size="md" icon="arrow" magnetic />
               <CtaButton label="Book a demo" href="#demo" variant="secondary" size="md" icon="play" />
             </div>
             <div className="tsd-ticks">
-              <span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>No credit card required</span>
-              <span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>7-day free trial</span>
+              <span className="tsd-tick"><Check />No credit card required</span>
+              <span className="tsd-tick"><Check />7-day free trial</span>
             </div>
           </div>
           <div className="tsd-media reveal">
             <div className="dih-wrap">
               <div className="dih-card">
                 <div className="dih-top">
-                  <span className="dih-dot r"></span>
-                  <span className="dih-dot y"></span>
-                  <span className="dih-dot g"></span>
+                  <span className="dih-dot r" />
+                  <span className="dih-dot y" />
+                  <span className="dih-dot g" />
                   <span className="dih-file">blind-shortlist</span>
-                  <span className="dih-live"><svg width="9" height="9" viewBox="0 0 24 24" fill="#1FA463"><circle cx="12" cy="12" r="12"></circle></svg>LIVE</span>
+                  <span className="dih-live"><svg width="9" height="9" viewBox="0 0 24 24" fill="#1FA463"><circle cx="12" cy="12" r="12" /></svg>LIVE</span>
                 </div>
                 <div className="dih-note">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>Identities hidden — ranked on skills only
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" /><line x1="1" y1="1" x2="23" y2="23" /></svg>
+                  Identities hidden — ranked on skills only
                 </div>
                 <div className="dih-list">
-                  <div className="dih-row"><span className="dih-av a">A</span><div className="dih-ci"><span className="dih-nm">Candidate A<span className="dih-pill">Top match</span></span><span className="dih-role">Applied · Product Designer</span></div><span className="dih-sc"><span className="dih-scbar"><i style={{ ['--w']: '96%', animationDelay: '.15s' } as React.CSSProperties}></i></span><span className="dih-scv">96</span></span></div>
-                  <div className="dih-row"><span className="dih-av b">B</span><div className="dih-ci"><span className="dih-nm">Candidate B</span><span className="dih-role">Applied · Product Designer</span></div><span className="dih-sc"><span className="dih-scbar"><i style={{ ['--w']: '91%', animationDelay: '.3s' } as React.CSSProperties}></i></span><span className="dih-scv">91</span></span></div>
-                  <div className="dih-row"><span className="dih-av c">C</span><div className="dih-ci"><span className="dih-nm">Candidate C</span><span className="dih-role">Applied · Product Designer</span></div><span className="dih-sc"><span className="dih-scbar"><i style={{ ['--w']: '88%', animationDelay: '.45s' } as React.CSSProperties}></i></span><span className="dih-scv">88</span></span></div>
-                  <div className="dih-row"><span className="dih-av d">D</span><div className="dih-ci"><span className="dih-nm">Candidate D</span><span className="dih-role">Applied · Product Designer</span></div><span className="dih-sc"><span className="dih-scbar"><i style={{ ['--w']: '84%', animationDelay: '.6s' } as React.CSSProperties}></i></span><span className="dih-scv">84</span></span></div>
+                  <div className="dih-row">
+                    <span className="dih-av a">A</span>
+                    <div className="dih-ci"><span className="dih-nm">Candidate A<span className="dih-pill">Top match</span></span><span className="dih-role">Applied · Product Designer</span></div>
+                    <span className="dih-sc"><span className="dih-scbar"><i style={{ '--w': '96%', animationDelay: '.15s' } as CSSProperties} /></span><span className="dih-scv">96</span></span>
+                  </div>
+                  <div className="dih-row">
+                    <span className="dih-av b">B</span>
+                    <div className="dih-ci"><span className="dih-nm">Candidate B</span><span className="dih-role">Applied · Product Designer</span></div>
+                    <span className="dih-sc"><span className="dih-scbar"><i style={{ '--w': '91%', animationDelay: '.3s' } as CSSProperties} /></span><span className="dih-scv">91</span></span>
+                  </div>
+                  <div className="dih-row">
+                    <span className="dih-av c">C</span>
+                    <div className="dih-ci"><span className="dih-nm">Candidate C</span><span className="dih-role">Applied · Product Designer</span></div>
+                    <span className="dih-sc"><span className="dih-scbar"><i style={{ '--w': '88%', animationDelay: '.45s' } as CSSProperties} /></span><span className="dih-scv">88</span></span>
+                  </div>
+                  <div className="dih-row">
+                    <span className="dih-av d">D</span>
+                    <div className="dih-ci"><span className="dih-nm">Candidate D</span><span className="dih-role">Applied · Product Designer</span></div>
+                    <span className="dih-sc"><span className="dih-scbar"><i style={{ '--w': '84%', animationDelay: '.6s' } as CSSProperties} /></span><span className="dih-scv">84</span></span>
+                  </div>
                 </div>
               </div>
-              <div className="dih-badge b1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Bias removed</div>
-              <div className="dih-badge b2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>EEOC-defensible</div>
+              <div className="dih-badge b1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>Bias removed</div>
+              <div className="dih-badge b2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>EEOC-defensible</div>
             </div>
           </div>
         </div>
       </section>
 
-      {sections.map((s, i) => (<SplitSection s={s} key={i} />))}
+      {sections.map((s, i) => (
+        <section className={('tsd-sec ' + s.bgClass).trim()} key={i}>
+          <div className="tsdw">
+            <div className={('tsd-grid2 ' + s.flipClass).trim()}>
+              <div className="tsd-copy reveal">
+                <h2 className="tsd-h2">{s.h2}</h2>
+                {s.body.map((para, pi) => (
+                  <p className="tsd-p" key={pi}>{para}</p>
+                ))}
+              </div>
+              <div className="tsd-media reveal">
+                <div className="tsd-shot" style={{ background: s.shotBg }}>
+                  <div className="tsd-shotimg" style={{ backgroundColor: s.shotBg, backgroundImage: `url("${s.img}")` }} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
 
       <section className="tsd-sec tsd-sand">
         <div className="tsdw">
@@ -294,28 +344,16 @@ export default function DiversityAndInclusionsPage() {
             <p className="tsd-lead">Native integrations with Workday, Greenhouse, Lever, iCIMS, and 97 more ATS platforms — no middleware, no data mapping required.</p>
           </div>
           <div className="itats-grid reveal">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png" alt="Workday" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png" alt="SAP SuccessFactors" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png" alt="Lever" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/SR-SAP-Logo.svg" alt="SmartRecruiters" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png" alt="Recruitee" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/logo.svg" alt="UKG Pro Recruiting" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2024/09/BambooHR-Logo-1-2048x1152-2.png" alt="BambooHR" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2023/03/629a0bbcb04c5ae587c411c2-1-1.png" alt="Greenhouse" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2024/08/zoho-recruit-logo-1.png" alt="Zoho Recruit" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="itats-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png" alt="JazzHR" /></div>
+            {atsLogos.map((lg) => (
+              <div className="itats-tile" key={lg.alt}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={lg.src} alt={lg.alt} />
+              </div>
+            ))}
           </div>
-          <div className="itats-more reveal"><Link href="/integrations">View all ATS integrations<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link></div>
+          <div className="itats-more reveal">
+            <Link href="/integrations">View all ATS integrations<ArrowRight /></Link>
+          </div>
         </div>
       </section>
 
@@ -325,7 +363,10 @@ export default function DiversityAndInclusionsPage() {
         sub="Ensure the security of your recruitment data with top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits, and strong privacy protections."
       />
 
-      <Testimonials eyebrow="Testimonials" heading="What our customers are saying about Testlify" />
+      <Testimonials
+        eyebrow="Testimonials"
+        heading="What our customers are saying about Testlify"
+      />
 
       <Recognition bg="#fff" />
 
@@ -357,7 +398,7 @@ export default function DiversityAndInclusionsPage() {
           </div>
           <div className="tsd-ticks">
             {ctaTicks.map((tk) => (
-              <span className="tsd-tick" key={tk}><Check />{tk}</span>
+              <span className="tsd-tick" key={tk}><CtaCheck />{tk}</span>
             ))}
           </div>
         </div>

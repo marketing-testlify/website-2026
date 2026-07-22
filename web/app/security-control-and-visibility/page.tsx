@@ -60,7 +60,7 @@ export default function Page() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Control and visibility, built in" />
+      <SiteHeader announcement="Control and visibility, built in" announcementCta="Trust center" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: "860px" }}>

@@ -16,7 +16,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -97,6 +97,8 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ic{width:44px;height:44px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .tsd-ct{font-size:17px;font-weight:700;margin:0;}
 .tsd-cd{font-size:14px;line-height:1.6;color:#6C5A5D;margin:8px 0 0;}
+.tsd-card,.tsd-fcard,.tsd-step,.tsd-tcard{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.tsd-card:hover,.tsd-fcard:hover,.tsd-step:hover,.tsd-tcard:hover{transform:translateY(-4px)!important;border-color:#FBD0D1;box-shadow:0 20px 40px rgba(110,11,14,.12);}
 .tsd-fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;}
 .tsd-fcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:26px 24px;}
 .tsd-fn{width:32px;height:32px;border-radius:9px;background:#1A1014;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-bottom:14px;}
@@ -180,7 +182,7 @@ export default function NonProfitsPage() {
           <div className="tsd-copy reveal">
             <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Company size / Non-profits</span></div>
             <p className="eyebrow">For non-profits<b>.</b></p>
-            <h1 className="tsd-h1">Affordable skills assessments for non-profits</h1>
+            <h1 className="tsd-h1">Affordable skills assessments for <span className="tac">non-profits</span></h1>
             <p className="tsd-lead">Nonprofits often grapple with tight budgets that limit competitive salaries and recruitment resources. Our affordable skills assessment solution helps modern talent teams identify qualified candidates at scale — ensuring a seamless fit with unique roles and organizational culture, without straining your finances.</p>
             <div className="tsd-stats">
               <span className="tsd-statc">25% non-profit discount</span>
@@ -233,14 +235,15 @@ export default function NonProfitsPage() {
           <div className="tsd-grid2">
             <div className="tsd-copy reveal">
               <h2 className="tsd-h2">Affordable talent assessment solutions for non-profits</h2>
-              <p className="tsd-p">Enhance your nonprofit&apos;s hiring success without stretching your budget. We offer a special 25% discount exclusively for non-profit organizations — full access to all assessments at a reduced rate, without compromising on quality.</p>
+              <p className="tsd-p">Enhance your nonprofit&apos;s hiring success — without stretching your budget. We&apos;re offering a special 25% discount exclusively for non-profit organizations. Access our full suite of assessments at a reduced rate, without compromising on quality.</p>
+              <p className="tsd-p">Elevate your impact with cost-effective hiring excellence.</p>
               <div className="tsd-bl">
                 {['Exclusive 25% discount — use code TESTLIFYCARES25', 'Budget-friendly, reliable solutions', 'Full access to all assessments', 'AI-powered interviews in video, audio & chat'].map((b, i) => (
                   <div className="tsd-bi" key={i}><Check /><span className="tsd-bt">{b}</span></div>
                 ))}
               </div>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/01/Highly-Competitive-Market-for-Talent.png-1.webp")' }}></div></div></div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#F3F6F9' }}><div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/01/Financial-Industry-1-1536x1117.png-1024x745.webp")' }}></div></div></div>
           </div>
         </div>
       </section>
@@ -258,7 +261,7 @@ export default function NonProfitsPage() {
                 ))}
               </div>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/10/Subject-assessment-1024x1024.png")' }}></div></div></div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#FFF' }}><div className="tsd-shotimg" style={{ backgroundColor: '#FFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2022/10/Subject-assessment-1024x1024.png")' }}></div></div></div>
           </div>
         </div>
       </section>
@@ -271,9 +274,8 @@ export default function NonProfitsPage() {
               <h2 className="tsd-h2">We understand non-profit roles</h2>
               <p className="tsd-p">In the challenging landscape of nonprofit management — from surpassing fundraising targets to prudent financial stewardship — flawless hiring is non-negotiable.</p>
               <p className="tsd-p">Discover candidates who not only meet but exceed performance targets, aligning seamlessly with your organizational culture, courtesy of our precision talent assessment solution.</p>
-              <Link className="tsd-link" href="/pricing">Try for free<Arrow /></Link>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg" style={{ backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/01/Financial-Industry-2.png.webp")' }}></div></div></div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#F3F6F9' }}><div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/01/Financial-Industry-2.png.webp")' }}></div></div></div>
           </div>
         </div>
       </section>

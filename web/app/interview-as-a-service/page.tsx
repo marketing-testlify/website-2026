@@ -6,7 +6,7 @@ import CtaBand from '@/components/CtaBand';
 export default function InterviewAsAServicePage() {
   return (
     <>
-      <SiteHeader announcement="Let our experts run your interviews" />
+      <SiteHeader announcement="Let our experts run your interviews" announcementCta="Learn more" />
 
       <section className="phero"><div className="wrap" style={{ maxWidth: '860px' }}>
         <p className="eyebrow reveal">Interview as a service<b>.</b></p>

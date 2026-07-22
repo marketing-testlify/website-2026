@@ -58,7 +58,7 @@ export default function ArchitectureOverviewPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="How Testlify is built" />
+      <SiteHeader announcement="How Testlify is built" announcementCta="Trust center" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: "860px" }}>

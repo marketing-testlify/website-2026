@@ -48,7 +48,7 @@ export default function ApiPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Build with the Testlify API" />
+      <SiteHeader announcement="Build with the Testlify API" announcementCta="Read the docs" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: 860 }}>

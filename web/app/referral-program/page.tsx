@@ -44,7 +44,7 @@ export default function ReferralProgramPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Refer a team, earn recurring commission" />
+      <SiteHeader announcement="Refer a team, earn recurring commission" announcementCta="Join the program" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: "860px" }}>

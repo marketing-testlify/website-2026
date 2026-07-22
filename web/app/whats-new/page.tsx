@@ -14,7 +14,7 @@ export default function WhatsNewPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="See the latest Testlify updates" />
+      <SiteHeader announcement="See the latest Testlify updates" announcementCta="What's new" />
 
       <section className="phero"><div className="wrap" style={{ maxWidth: '860px' }}>
         <p className="eyebrow reveal">What&apos;s new<b>.</b></p>

@@ -179,7 +179,7 @@ const sections: Section[] = [
   {
     bgClass: '',
     flip: false,
-    shotBg: '#fff',
+    shotBg: '#F3F6F9',
     img: 'https://testlify.com/wp-content/uploads/2022/09/Test-Libraries-dedicated-to-the-blockchain-Industry-1024x653.png',
     h2: 'Built for the people who build your business',
     body: [
@@ -203,7 +203,7 @@ const sections: Section[] = [
   {
     bgClass: 'tsd-sand',
     flip: true,
-    shotBg: '#fff',
+    shotBg: '#FFF',
     img: 'https://testlify.com/wp-content/uploads/2022/11/Better-Skill-Set-Evaluation-Process.png',
     h2: 'Assess technical expertise, workplace safety and protocols of blue-collar workers',
     body: [
@@ -215,7 +215,7 @@ const sections: Section[] = [
   {
     bgClass: '',
     flip: false,
-    shotBg: '#fff',
+    shotBg: '#F3F6F9',
     img: 'https://testlify.com/wp-content/uploads/2022/11/Difficulty-Scaling-Recruitment-Efforts-1024x1024-1.png',
     h2: 'Evaluate skills in multiple languages and varying literacy levels',
     body: [
@@ -232,7 +232,7 @@ const sections: Section[] = [
   {
     bgClass: 'tsd-sand',
     flip: true,
-    shotBg: '#fff',
+    shotBg: '#FFF',
     img: 'https://testlify.com/wp-content/uploads/2022/12/Get-deeper-insights-1.svg',
     h2: 'Hire blue-collar workers backed with data',
     body: [
@@ -244,7 +244,7 @@ const sections: Section[] = [
   {
     bgClass: '',
     flip: false,
-    shotBg: '#fff',
+    shotBg: '#F3F6F9',
     img: 'https://testlify.com/wp-content/uploads/2023/02/white-lable-1024x672.png',
     h2: 'Customize your assessments to meet your hiring needs',
     body: [

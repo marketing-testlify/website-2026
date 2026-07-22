@@ -98,7 +98,7 @@ export default function JobDescriptionTemplatesPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Free job description templates — copy-ready JDs for 90+ roles, then screen for the skills" />
+      <SiteHeader announcement="Free job description templates — copy-ready JDs for 90+ roles, then screen for the skills" announcementCta="Browse templates" />
 
       <section className="jd-hero">
         <div className="jd-wrap" style={{ maxWidth: '820px' }}>

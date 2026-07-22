@@ -14,7 +14,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-sec{padding:96px 0;}
 .tsd-sand{background:#FBF3EE;}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0;}.eyebrow b{color:#F23F44;}
-.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}
+.tsd-h1{font-size:52px;font-weight:800;letter-spacing:-1.4px;line-height:1.08;margin:16px 0 0;}.tsd-h1 .tac{color:#F23F44;}
 .tsd-h2{font-size:34px;font-weight:800;letter-spacing:-.8px;line-height:1.16;margin:14px 0 0;}
 .tsd-lead{font-size:17.5px;line-height:1.6;color:#5A4B4E;margin:20px 0 0;}
 .tsd-p{font-size:15.5px;line-height:1.64;color:#5A4B4E;margin:14px 0 0;}
@@ -147,14 +147,14 @@ export default function SolutionCompanyTemplatePage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Testlify AI is here — screen, interview & score candidates automatically." />
+      <SiteHeader announcement="Testlify AI is here — screen, interview & score candidates automatically." announcementCta="See what's new →" />
 
       <section className="tsd-hero">
         <div className="tsdw tsd-hgrid">
           <div className="tsd-copy reveal">
             <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Company / Enterprise</span></div>
             <p className="eyebrow">For enterprises<b>.</b></p>
-            <h1 className="tsd-h1">One-stop solution for global enterprise hiring</h1>
+            <h1 className="tsd-h1">One-stop solution for <span className="tac">global enterprise hiring</span></h1>
             <p className="tsd-lead">Volume, cross-functional and global hiring, internal mobility and senior roles — assess with accuracy, speed and scale, with zero guesswork.</p>
             <div className="tsd-stats">
               <span className="tsd-statc">3,500+ tests · 4,500+ roles</span>

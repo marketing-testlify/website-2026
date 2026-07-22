@@ -61,7 +61,7 @@ export default function RecruitingConversionRateCalculatorPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: calcCss }} />
-      <SiteHeader announcement="Free HR tools — calculators, templates and interview kits." />
+      <SiteHeader announcement="Free HR tools — calculators, templates and interview kits." announcementCta="Browse tools" />
 
       <section
         className="tsec"

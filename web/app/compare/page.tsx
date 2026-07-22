@@ -212,7 +212,7 @@ export default function ComparePage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Pay less per credit as your hiring volume grows — compare every plan." />
+      <SiteHeader announcement="Pay less per credit as your hiring volume grows — compare every plan." announcementCta="See pricing" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: 860 }}>

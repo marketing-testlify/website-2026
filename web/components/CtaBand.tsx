@@ -1,6 +1,25 @@
 import Link from 'next/link';
 
-export default function CtaBand({ eyebrow = 'Start hiring on skill' }: { eyebrow?: string }) {
+export default function CtaBand({
+  eyebrow = 'Start hiring on skill',
+  heading = 'Your next great hire is already in your pipeline',
+  sub = 'Build your first assessment in about two minutes and start surfacing proven talent today — free for 7 days.',
+  b1label = 'Try for free',
+  b1href = '/pricing',
+  b2label = 'Book a demo',
+  b2href = '/contact',
+  hideSecondary = false,
+}: {
+  eyebrow?: string;
+  heading?: string;
+  sub?: string;
+  b1label?: string;
+  b1href?: string;
+  b2label?: string;
+  b2href?: string;
+  hideSecondary?: boolean;
+}) {
+  const hasB2 = !hideSecondary;
   return (
     <>
       <style
@@ -36,19 +55,18 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
               {eyebrow}
               <span style={{ color: '#fff' }}>.</span>
             </p>
-            <h2 className="sfcta-h">
-              Your next great hire is already in <br />your pipeline
-            </h2>
-            <p className="sfcta-p">
-              Build your first assessment in about two minutes and start surfacing proven talent today — free for 7 days.
-            </p>
+            <h2 className="sfcta-h">{heading}</h2>
+            <p className="sfcta-p">{sub}</p>
             <div className="sfcta-btns">
-              <Link href="/pricing" className="sfcta-b1">
-                Try for free<span>→</span>
+              <Link href={b1href} className="sfcta-b1">
+                {b1label}
+                <span>→</span>
               </Link>
-              <Link href="/contact" className="sfcta-b2">
-                Book a demo
-              </Link>
+              {hasB2 ? (
+                <Link href={b2href} className="sfcta-b2">
+                  {b2label}
+                </Link>
+              ) : null}
             </div>
             <div className="sfcta-trust">
               <span>✓ Full feature access</span>

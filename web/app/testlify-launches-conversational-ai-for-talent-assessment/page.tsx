@@ -25,7 +25,7 @@ export default function Page() {
 @media(max-width:920px){.arttitle{font-size:34px;letter-spacing:-1px;}.arthero{height:220px;}.prose p,.prose li{font-size:16.5px;}}
 ` }} />
 
-      <SiteHeader announcement="New · Conversational AI for talent assessment" />
+      <SiteHeader announcement="New · Conversational AI for talent assessment" announcementCta="Read the announcement" />
 
       <article className="artwrap">
         <p className="crumb reveal in"><Link href="/blog">Blog</Link> &nbsp;·&nbsp; Product news</p>

@@ -250,7 +250,7 @@ export default function PricingPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="New · Pay less per credit as your hiring volume grows" />
+      <SiteHeader announcement="New · Pay less per credit as your hiring volume grows" announcementCta="Talk to sales" />
       <section className="phero"><div className="wrap" style={{ maxWidth: '1000px' }}>
         <p className="eyebrow reveal" style={{ marginBottom: '14px' }}>Pricing<b>.</b></p>
         <h1 className="h1 reveal" style={{ transitionDelay: '.04s' }}>Pay only for what you use</h1>

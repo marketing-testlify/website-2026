@@ -8,7 +8,7 @@ import CtaBand from '@/components/CtaBand';
 export default function ResponsibleHiringPage() {
   return (
     <>
-      <SiteHeader announcement="Hiring should be fair by design" />
+      <SiteHeader announcement="Hiring should be fair by design" announcementCta="How we do it" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: '860px' }}>

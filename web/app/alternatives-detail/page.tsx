@@ -152,7 +152,7 @@ export default function AlternativesDetailPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Comparing assessment platforms? See how Testlify stacks up — no annual contract, 3,500+ tests" />
+      <SiteHeader announcement="Comparing assessment platforms? See how Testlify stacks up — no annual contract, 3,500+ tests" announcementCta="Compare now" />
 
       <section className="ct-hero" ref={rootRef}><div className="ct-wrap">
         <div className="ct-crumb"><Link href="/blog">Resources</Link><span>/</span><Link href="/alternatives">Competitors</Link><span>/</span><span>Testlify vs {name}</span></div>

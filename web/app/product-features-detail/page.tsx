@@ -157,7 +157,7 @@ export default function ProductFeaturesDetailPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="New — real-time proctoring flags on every assessment" />
+      <SiteHeader announcement="New — real-time proctoring flags on every assessment" announcementCta="See all features" />
 
       <section className="ft-hero"><div className="wrap">
         <p className="ft-crumb reveal in"><Link href="/features">Features</Link><span className="sep">›</span><span>Assessment integrity</span><span className="sep">›</span><span>Anti-cheating &amp; proctoring</span></p>

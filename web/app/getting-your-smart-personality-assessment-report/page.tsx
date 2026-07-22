@@ -7,7 +7,7 @@ import CtaBand from '@/components/CtaBand';
 export default function GettingYourSmartPersonalityAssessmentReport() {
   return (
     <>
-      <SiteHeader announcement="Get your personality report in three steps" />
+      <SiteHeader announcement="Get your personality report in three steps" announcementCta="Try for free" />
 
       <section className="phero"><div className="wrap" style={{ maxWidth: '860px' }}>
         <p className="eyebrow reveal">Getting your report<b>.</b></p>

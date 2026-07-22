@@ -371,7 +371,7 @@ export default function InterviewsPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="AI video, audio and chat interviews — one platform, every role" />
+      <SiteHeader announcement="AI video, audio and chat interviews — one platform, every role" announcementCta="Browse interviews" />
 
       <section className="tl-hero">
         <div className="tl-blob"></div>
@@ -383,7 +383,7 @@ export default function InterviewsPage() {
               <p className="tl-sub" data-reveal="" data-delay="150">Discover ready-to-use interview questions for every role — designed for fast, consistent and effective candidate evaluation, scored automatically in video, audio and chat.</p>
               <div className="tl-hstats" data-reveal="" data-delay="190"><div className="tl-hstat"><b>500+</b><span>Ready-to-use interviews</span></div><div className="tl-hstat"><b>4,500+</b><span>Job roles</span></div><div className="tl-hstat"><b>15 min</b><span>Average length</span></div></div>
               <div className="tl-hbtns" data-reveal="" data-delay="230">
-                <CtaButton label="Try for free" href="pricing.dc.html" variant="primary" size="lg" icon="arrow" magnetic />
+                <CtaButton label="Try for free" href="/pricing" variant="primary" size="lg" icon="arrow" magnetic />
                 <CtaButton label="Book a demo" href="#" variant="secondary" size="lg" icon="play" />
               </div>
               <div className="tl-trust" data-reveal="" data-delay="270"><span><b>✓</b> 7-day free trial</span><span><b>✓</b> No credit card required</span></div>

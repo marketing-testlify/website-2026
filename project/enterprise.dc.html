@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -199,7 +199,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <sc-if value="{{ s.hasBullets }}" hint-placeholder-val="{{ false }}"><div class="{{ s.blClass }}"><sc-for list="{{ s.bullets }}" as="b" hint-placeholder-count="4"><div class="tsd-bi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="tsd-bt"><sc-if value="{{ b.hasHref }}" hint-placeholder-val="{{ false }}"><a href="{{ b.href }}">{{ b.label }}</a></sc-if><sc-if value="{{ b.noHref }}" hint-placeholder-val="{{ true }}">{{ b.label }}</sc-if><sc-if value="{{ b.hasDesc }}" hint-placeholder-val="{{ false }}"><span class="tsd-bd">{{ b.desc }}</span></sc-if></span></div></sc-for></div></sc-if>
 <sc-if value="{{ s.hasCta }}" hint-placeholder-val="{{ false }}"><a class="tsd-link" href="{{ s.cta.href }}">{{ s.cta.label }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></sc-if>
 </div>
-<div class="tsd-media reveal"><div class="tsd-shot"><sc-if value="{{ s.hasImg }}" hint-placeholder-val="{{ false }}"><div class="tsd-shotimg" data-bg="{{ s.img }}"></div></sc-if><sc-if value="{{ s.noImg }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ s.slotId }}" shape="rounded" radius="14" placeholder="Drop an image"></image-slot></sc-if></div></div>
+<div class="tsd-media reveal"><div class="tsd-shot" style="background:{{ s.shotBg }}"><sc-if value="{{ s.hasImg }}" hint-placeholder-val="{{ false }}"><div class="tsd-shotimg" style="background-color:{{ s.shotBg }}" data-bg="{{ s.img }}"></div></sc-if><sc-if value="{{ s.noImg }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ s.slotId }}" shape="rounded" radius="14" placeholder="Drop an image"></image-slot></sc-if></div></div>
 </div></sc-if>
 <sc-if value="{{ s.isCards }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2><sc-if value="{{ s.hasIntro }}" hint-placeholder-val="{{ false }}"><p class="tsd-lead">{{ s.intro }}</p></sc-if></div><div class="tsd-cards"><sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="3"><div class="tsd-card reveal"><div class="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ c.iconD }}"></path></svg></div><p class="tsd-ct">{{ c.title }}</p><p class="tsd-cd">{{ c.desc }}</p></div></sc-for></div></sc-if>
 <sc-if value="{{ s.isGrid }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2><sc-if value="{{ s.hasIntro }}" hint-placeholder-val="{{ false }}"><p class="tsd-lead">{{ s.intro }}</p></sc-if></div><div class="tsd-fgrid"><sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="6"><div class="tsd-fcard reveal"><div class="tsd-fn">{{ c.n }}</div><p class="tsd-ct">{{ c.title }}</p><p class="tsd-cd">{{ c.desc }}</p></div></sc-for></div></sc-if>
@@ -226,10 +226,6 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <dc-import name="component-security-section" eyebrow="Security" heading="Built to keep your organization secure" sub="Ensure the security of your recruitment data with top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits, and strong privacy protections." hint-size="100%,520px"></dc-import>
 <dc-import name="component-testimonials" eyebrow="Testimonials" heading="What our customers are saying about Testlify" hint-size="100%,560px"></dc-import>
 <dc-import name="component-recognition" bg="#fff" hint-size="100%,420px"></dc-import>
-<section class="tsd-sec tsd-sand"><div class="tsdw">
-<div class="tsd-shead reveal"><p class="eyebrow">FAQ<b>.</b></p><h2 class="tsd-h2">{{ faqTitle }}</h2></div>
-<div class="tsd-faqw"><sc-for list="{{ viewFaqs }}" as="f" hint-placeholder-count="6"><div class="tsd-faq reveal {{ f.openClass }}" onClick="{{ f.toggle }}"><div class="tsd-faqq">{{ f.q }}<span class="tsd-faqx">+</span></div><div class="tsd-faqa">{{ f.a }}</div></div></sc-for></div>
-</div></section>
 <dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
 <dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
 </x-dc>
@@ -266,12 +262,12 @@ class Component extends DCLogic {
       title:"One-stop solution for global enterprise hiring",
       accent:"global enterprise hiring",
       lead:"Volume hiring? Cross-functional hiring? Global hiring? Internal mobility and reducing mis-hires at senior levels? Testlify's skills assessments for global enterprises have you covered — delivering accuracy, speed and scale so you identify top talent faster with zero guesswork.",
-      ctaLabel:"Book a demo",
-      ctaHref:"contact.dc.html",
+      ctaLabel:"Try for free",
+      ctaHref:"pricing.dc.html",
       stats:[{t:"Scale to 10,000+"},{t:"SOC 2 · ISO · GDPR"},{t:"Global benchmarking"}],
       logos:["LTIMindtree","Sonatafy","Thales","Third Bridge","Virtual","Cogitotech"],
       sections:[
-        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/11/Contact-us.png", h2:"A better way to assess enterprise talent", body:["Assess thousands of candidates across regions, roles and functions — all in one platform. Whether you're hiring developers in Berlin or data analysts in Singapore, Testlify adapts to your needs, from role-specific assessments to global benchmarks."], bullets:[{label:"15+ question types for diverse roles"},{label:"3,000+ tests to assess 4,000+ roles"},{label:"45+ programming-language coding environments"},{label:"Custom workflows for high-volume hiring"},{label:"Global benchmarking to compare top talent"},{label:"Built-in 100+ ATS, Slack and API integrations"},{label:"Advanced anti-cheating and proctoring"}]},
+        {kind:"split", shotBg:"#F3F6F9", img:"https://testlify.com/wp-content/uploads/2022/11/model-01-1024x737-1.png", h2:"A better way to assess enterprise talent", body:["Assess thousands of candidates across regions, roles and functions, all in one platform. Testlify's enterprise-grade skills assessment platform is built for scale, speed and hiring precision.","Whether you're hiring developers in Berlin or data analysts in Singapore, our platform adapts to your needs. From role-specific assessments to global benchmarks, Testlify's skills assessment for enterprise helps you hire with clarity."], bullets:[{label:"15+ question types for diverse roles"},{label:"3,000+ tests to assess 4,000+ roles"},{label:"45+ programming-language coding environments"},{label:"Custom workflows for high-volume hiring"},{label:"Global benchmarking to compare top talent"},{label:"Built-in 100+ ATS, Slack and API integrations"},{label:"Advanced anti-cheating and proctoring"}]},
         {kind:"cards", eyebrow:"Outcomes", h2:"More than features — outcomes that matter", intro:"Built for teams who value data, speed and hiring precision.", cards:[
           {title:"Role-based access & permissions", icon:"M19 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zM7 11V7a5 5 0 0 1 10 0v4", desc:"Recruiters, hiring managers, L&D and finance each get the right level of access and control."},
           {title:"Reduce cost-per-hire", icon:"M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6", desc:"Automated screening and scoring save recruiter hours and eliminate external testing tools or agencies."},
@@ -280,7 +276,8 @@ class Component extends DCLogic {
           {title:"Enterprise-grade security", icon:"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z", desc:"SOC 2, GDPR and ISO certified, with strong data privacy and compliance across global regions."},
           {title:"Advanced analytics", icon:"M12 20V10M18 20V4M6 20v-4", desc:"Go beyond pass/fail — candidate analytics, skill benchmarking and team-wide reporting for smarter decisions."}
         ]},
-        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/11/Contact-us.png", h2:"White-labeling & employer branding", body:["Tailor the entire candidate experience — from emails to assessments — to reflect your brand with Testlify's white-labeling. Own the hiring experience, maintain trust and deliver a premium, branded process at scale."], cta:{label:"Explore white-labeling", href:"#"}}
+        {kind:"split", shotBg:"#F3F6F9", img:"https://testlify.com/wp-content/uploads/2022/06/Free-Download_Free-to-download-1024x1024.png", h2:"White-labeling & employer branding", body:["Tailor the entire candidate experience — from emails to assessments — to reflect your brand with Testlify's white-labeling. Own the hiring experience, maintain trust and deliver a premium, branded process at scale."], cta:{label:"Explore more about white-labeling", href:"white-label.dc.html"}},
+        {kind:"split", shotBg:"#FFF", img:"https://testlify.com/wp-content/uploads/2022/11/Vast-Lib-1-1024x1024-1.png", h2:"Fully functional free trial", body:["No credit cards required. Sign up for a free trial and see how Testlify's enterprise skills test works in the real world — access the candidate portal, evaluation card, reporting dashboard, proctoring features and more.","Got stuck anywhere? Contact us and we'll resolve it immediately. We have a 4.8 rating on G2 for a reason."], cta:{label:"Try for free", href:"pricing.dc.html"}}
       ],
       faqs:[
         {q:"Can Testlify handle high-volume, global hiring?", a:"Yes. Testlify scales from 10 to 10,000 candidates across regions, roles and functions, with custom workflows for high-volume hiring and predictable pricing optimized for global operations."},
@@ -298,7 +295,7 @@ class Component extends DCLogic {
       const v = Object.assign({}, s);
       v.isSplit = s.kind==='split'; v.isCards = s.kind==='cards'; v.isGrid = s.kind==='grid'; v.isSteps = s.kind==='steps'; v.isChips = s.kind==='chips';
       v.bgClass = bgToggle ? 'tsd-sand' : ''; bgToggle=!bgToggle;
-      if(v.isSplit){ v.flipClass = sflip ? 'tsd-flip' : ''; sflip=!sflip; v.slotId = 'tsd-slot-'+i; v.hasNum=false; v.hasCta=!!s.cta; v.img=s.img||''; v.hasImg=!!s.img; v.noImg=!s.img; }
+      if(v.isSplit){ v.flipClass = sflip ? 'tsd-flip' : ''; sflip=!sflip; v.slotId = 'tsd-slot-'+i; v.hasNum=false; v.hasCta=!!s.cta; v.img=s.img||''; v.hasImg=!!s.img; v.noImg=!s.img; v.shotBg=s.shotBg||'#fff'; }
       if(s.bullets){ const bs = s.bullets.map(b=> typeof b==='string'?{label:b}:b).map(b=>({label:b.label,href:b.href,desc:b.desc,hasHref:!!b.href,noHref:!b.href,hasDesc:!!b.desc})); v.bullets=bs; v.hasBullets=true; v.blClass = bs.some(b=>b.hasDesc) ? 'tsd-bl tsd-bl1' : 'tsd-bl'; } else { v.hasBullets=false; }
       if(s.cards){ v.cards = s.cards.map((c,ci)=>Object.assign({n:ci+1, iconD:c.icon||"M12 8v4l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"}, c)); }
       if(s.steps){ v.steps = s.steps.map((c,ci)=>Object.assign({n:ci+1}, c)); }

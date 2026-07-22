@@ -164,7 +164,7 @@ export default function LibraryBuildYourOwnPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Build a custom assessment in minutes — add your own questions, no code needed" />
+      <SiteHeader announcement="Build a custom assessment in minutes — add your own questions, no code needed" announcementCta="Start building" />
 
       <section className="by-hero" ref={rootRef}><div className="by-blob"></div><div className="by-wrap"><div className="by-hgrid">
         <div>

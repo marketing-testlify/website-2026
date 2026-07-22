@@ -48,7 +48,7 @@ export default function Page() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Free HR tools — calculators, templates and interview kits." />
+      <SiteHeader announcement="Free HR tools — calculators, templates and interview kits." announcementCta="Browse tools" />
 
       <section className="tsec" style={{ background: "radial-gradient(1000px 500px at 80% 4%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff" }}>
         <div className="tw">

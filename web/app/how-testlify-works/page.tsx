@@ -43,7 +43,7 @@ export default function HowTestlifyWorksPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="From role to hire in four simple steps" />
+      <SiteHeader announcement="From role to hire in four simple steps" announcementCta="Start free" />
 
       <section className="hwhero"><div className="wrap" style={{ maxWidth: '860px' }}>
         <p className="eyebrow reveal">How Testlify works<b>.</b></p>

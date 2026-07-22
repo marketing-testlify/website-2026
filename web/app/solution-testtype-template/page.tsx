@@ -5,6 +5,8 @@ import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaButton from '@/components/CtaButton';
+import Testimonials from '@/components/Testimonials';
+import SecuritySection from '@/components/SecuritySection';
 import Recognition from '@/components/Recognition';
 import CtaBand from '@/components/CtaBand';
 
@@ -26,7 +28,10 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
+.tsd-shotimg{display:block;width:100%;height:380px;background-size:contain;background-repeat:no-repeat;background-position:center;}
+.tsd-shot.tsd-plain{background:transparent !important;border:0;box-shadow:none;}
+.tsd-shot.tsd-plain .tsd-shotimg{background-color:transparent !important;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-logos{margin-top:40px;}
 .tsd-logos-l{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#A9999C;margin:0 0 14px;}
@@ -98,23 +103,54 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .reveal{opacity:0;transform:translateY(26px);}
 .reveal.in{opacity:1;transform:none;}
 @media(max-width:960px){.tsd-hgrid,.tsd-grid2{grid-template-columns:1fr;gap:40px;}.tsd-flip .tsd-copy{order:1;}.tsd-flip .tsd-media{order:2;}.tsd-cards,.tsd-fgrid,.tsd-tgrid{grid-template-columns:1fr;}.tsd-steps{grid-template-columns:1fr 1fr;}.tsd-h1{font-size:38px;}.tsd-h2{font-size:27px;}.tsd-sec{padding:64px 0;}.tsd-bl{grid-template-columns:1fr;}.tsd-shot image-slot{height:280px;}}
-.tsd-shot .tsd-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;background:#FDECEA;}
-@media(max-width:960px){.tsd-shot .tsd-slot{height:280px;}}
+.ttp-herocard{position:relative;background:#fff;border:1px solid #F0E2E3;border-radius:20px;box-shadow:0 40px 90px rgba(110,11,14,.16);overflow:hidden;animation:ttpfloat 6s ease-in-out infinite;}
+@keyframes ttpfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.ttp-hc-top{display:flex;align-items:center;gap:7px;padding:14px 18px;border-bottom:1px solid #F4E9E9;background:#FCF6F5;}
+.ttp-dot{width:11px;height:11px;border-radius:50%;background:#FF5F57;}.ttp-dot.y{background:#FEBC2E;}.ttp-dot.g{background:#28C840;}
+.ttp-hc-title{font-size:12.5px;color:#8A7A7D;font-weight:600;margin-left:8px;}
+.ttp-hc-live{margin-left:auto;font-size:11.5px;font-weight:700;color:#1FA463;}
+.ttp-hc-body{padding:22px 22px 6px;display:flex;flex-direction:column;gap:17px;}
+.ttp-hc-row{display:flex;align-items:center;gap:14px;}
+.ttp-hc-av{flex:none;width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#FF7A52,#F23F44);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;}
+.ttp-hc-av.b{background:linear-gradient(135deg,#6E62F2,#9A8BFF);}.ttp-hc-av.c{background:linear-gradient(135deg,#2AA6F2,#67C9FF);}
+.ttp-hc-meta{flex:1;}
+.ttp-hc-nm{font-size:13.5px;font-weight:700;color:#1A1014;display:block;margin-bottom:7px;}
+.ttp-bar{height:8px;border-radius:6px;background:#F4E7E8;overflow:hidden;}
+.ttp-bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#FF7A52,#F23F44);}
+.ttp-hc-sc{font-size:15px;font-weight:800;color:#F23F44;width:32px;text-align:right;flex:none;}
+.ttp-hc-badge{margin:12px 22px 22px;display:inline-flex;align-items:center;gap:8px;background:#E8F6EE;color:#1FA463;font-weight:700;font-size:13px;padding:10px 15px;border-radius:12px;}
+.tsd-mtrust{padding:44px 0 58px;}
+.tsd-trust-l{text-align:center;font-size:13.5px;font-weight:600;letter-spacing:1.5px;color:#A9999C;text-transform:uppercase;margin:0 0 30px;}
+.tsd-trust-l strong{color:#F23F44;font-weight:800;}
+.tsd-marq-wrap{position:relative;max-width:1100px;margin:0 auto;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);}
+.tsd-marq{display:flex;width:max-content;gap:64px;animation:marquee 30s linear infinite;align-items:center;}
+.tsd-marq-i{font-size:24px;font-weight:700;color:#C9B9BC;letter-spacing:-.5px;white-space:nowrap;}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.itats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:44px;}
+.itats-tile{background:#fff;border:1px solid #F0E2E3;border-radius:14px;height:84px;display:flex;align-items:center;justify-content:center;padding:18px;box-shadow:0 10px 22px rgba(110,11,14,.06);transition:transform .3s,border-color .3s,box-shadow .3s;}
+.itats-tile:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 18px 34px rgba(110,11,14,.10);}
+.itats-tile img{max-width:100%;max-height:38px;object-fit:contain;}
+.itats-more{text-align:center;margin-top:34px;}
+.itats-more a{display:inline-flex;align-items:center;gap:8px;color:#F23F44;font-weight:700;font-size:15.5px;text-decoration:none;}
+@media(max-width:960px){.itats-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:560px){.itats-grid{grid-template-columns:repeat(2,1fr);}}
 
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
+const ArrowRight = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+);
 const Check = () => (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-);
-const Star = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 18.6 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"></path></svg>
 );
 const CardIcon = ({ d }: { d: string }) => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={d}></path></svg>
 );
 
-const Slot = () => <div className="tsd-slot" />;
+const Slot = () => (
+  <div className="tsd-shotimg" style={{ height: '360px', background: '#FDECEA' }} />
+);
 
 const section1Bullets = [
   '45+ languages & frameworks',
@@ -144,13 +180,18 @@ const steps = [
 
 const chips = ['Python', 'JavaScript', 'TypeScript', 'Java', 'C#', 'C++', 'Go', 'Ruby', 'PHP', 'Swift', 'Kotlin', 'Rust', 'SQL', 'React', 'Node.js', 'Django'];
 
-const testimonials = [
-  { quote: 'We cut first-round screening from days to hours. The shortlist Testlify hands us is genuinely job-ready.', name: 'Priya Nair', role: 'Head of TA, Fintech scale-up', initials: 'PN' },
-  { quote: 'Every applicant gets a fair, identical evaluation — no matter how many apply.', name: 'Marcus Bell', role: 'Talent Partner, SaaS', initials: 'MB' },
-  { quote: 'The proctoring and reporting gave our hiring managers confidence to trust scores over gut feel.', name: 'Sofia Ramirez', role: 'Recruiting Lead, Retail', initials: 'SR' },
+const atsLogos = [
+  { src: 'https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png', alt: 'Workday' },
+  { src: 'https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png', alt: 'SAP SuccessFactors' },
+  { src: 'https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png', alt: 'Lever' },
+  { src: 'https://testlify.com/wp-content/uploads/2025/10/SR-SAP-Logo.svg', alt: 'SmartRecruiters' },
+  { src: 'https://testlify.com/wp-content/uploads/2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png', alt: 'Recruitee' },
+  { src: 'https://testlify.com/wp-content/uploads/2025/10/logo.svg', alt: 'UKG Pro Recruiting' },
+  { src: 'https://testlify.com/wp-content/uploads/2024/09/BambooHR-Logo-1-2048x1152-2.png', alt: 'BambooHR' },
+  { src: 'https://testlify.com/wp-content/uploads/2023/03/629a0bbcb04c5ae587c411c2-1-1.png', alt: 'Greenhouse' },
+  { src: 'https://testlify.com/wp-content/uploads/2024/08/zoho-recruit-logo-1.png', alt: 'Zoho Recruit' },
+  { src: 'https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png', alt: 'JazzHR' },
 ];
-
-const atsLogos = ['Greenhouse', 'Lever', 'Workday', 'BambooHR', 'Zoho Recruit', 'SAP SuccessFactors', 'Ashby', 'JazzHR'];
 
 const faqs = [
   { q: 'What are coding tests used for?', a: "Coding tests measure a developer's real programming ability — writing, running and debugging code — so you can screen for on-the-job skill instead of relying on resumes or trivia questions." },
@@ -187,9 +228,19 @@ export default function SolutionTesttypeTemplatePage() {
               <CtaButton label="Try for free" href="/pricing" variant="primary" size="md" icon="arrow" magnetic />
               <CtaButton label="Book a demo" href="#demo" variant="secondary" size="md" icon="play" />
             </div>
-            <div className="tsd-ticks"><span className="tsd-tick"><Check />No credit card required</span><span className="tsd-tick"><Check />7-day free trial</span></div>
+            <div className="tsd-ticks"><span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>No credit card required</span><span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>7-day free trial</span></div>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><Slot /></div></div>
+          <div className="tsd-media reveal">
+            <div className="ttp-herocard">
+              <div className="ttp-hc-top"><span className="ttp-dot"></span><span className="ttp-dot y"></span><span className="ttp-dot g"></span><span className="ttp-hc-title">Assessment report</span><span className="ttp-hc-live">● Live</span></div>
+              <div className="ttp-hc-body">
+                <div className="ttp-hc-row"><span className="ttp-hc-av">A</span><div className="ttp-hc-meta"><span className="ttp-hc-nm">Core competency</span><div className="ttp-bar"><i style={{ width: '94%' }}></i></div></div><span className="ttp-hc-sc">94</span></div>
+                <div className="ttp-hc-row"><span className="ttp-hc-av b">M</span><div className="ttp-hc-meta"><span className="ttp-hc-nm">Applied knowledge</span><div className="ttp-bar"><i style={{ width: '88%' }}></i></div></div><span className="ttp-hc-sc">88</span></div>
+                <div className="ttp-hc-row"><span className="ttp-hc-av c">S</span><div className="ttp-hc-meta"><span className="ttp-hc-nm">Accuracy &amp; compliance</span><div className="ttp-bar"><i style={{ width: '76%' }}></i></div></div><span className="ttp-hc-sc">76</span></div>
+              </div>
+              <div className="ttp-hc-badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Shortlist ready</div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -209,9 +260,9 @@ export default function SolutionTesttypeTemplatePage() {
                   </div>
                 ))}
               </div>
-              <Link className="tsd-link" href="/test-library">Browse coding tests<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
+              <Link className="tsd-link" href="/test-library">Browse coding tests<ArrowRight /></Link>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><Slot /></div></div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#fff' }}><Slot /></div></div>
           </div>
         </div>
       </section>
@@ -252,9 +303,9 @@ export default function SolutionTesttypeTemplatePage() {
                   </div>
                 ))}
               </div>
-              <Link className="tsd-link" href="/science">See how it works<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
+              <Link className="tsd-link" href="/science">See how it works<ArrowRight /></Link>
             </div>
-            <div className="tsd-media reveal"><div className="tsd-shot"><Slot /></div></div>
+            <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#fff' }}><Slot /></div></div>
           </div>
         </div>
       </section>
@@ -285,40 +336,25 @@ export default function SolutionTesttypeTemplatePage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="tsd-sec">
-        <div className="tsdw">
-          <div className="tsd-shead reveal"><p className="eyebrow">Loved by hiring teams<b>.</b></p><h2 className="tsd-h2">Recruiters who hire on proof</h2></div>
-          <div className="tsd-tgrid">
-            {testimonials.map((t) => (
-              <div className="tsd-tcard reveal" key={t.name}>
-                <div className="tsd-stars"><Star /><Star /><Star /><Star /><Star /></div>
-                <p className="tsd-quote">{t.quote}</p>
-                <div className="tsd-author"><span className="tsd-avatar">{t.initials}</span><span><span className="tsd-aname">{t.name}</span><span className="tsd-arole">{t.role}</span></span></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Testimonials eyebrow="Loved by hiring teams" heading="Recruiters who hire on proof" />
 
       {/* ATS logos (sand) */}
       <section className="tsd-sec tsd-sand">
         <div className="tsdw">
           <div className="tsd-shead reveal"><p className="eyebrow">Fits your stack<b>.</b></p><h2 className="tsd-h2">Works with the ATS you already use</h2><p className="tsd-lead">Push assessment results straight into your workflow with 100+ native, two-way integrations.</p></div>
-          <div className="tsd-atsgrid reveal">
-            {atsLogos.map((a) => (<span className="tsd-atslogo" key={a}>{a}</span>))}
-            <Link className="tsd-atsmore" href="/integrations">+100 more<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
+          <div className="itats-grid reveal">
+            {atsLogos.map((l) => (
+              <div className="itats-tile" key={l.alt}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={l.src} alt={l.alt} />
+              </div>
+            ))}
           </div>
+          <div className="itats-more reveal"><Link href="/integrations">View all ATS integrations<ArrowRight /></Link></div>
         </div>
       </section>
 
-      {/* Trust */}
-      <section className="tsd-trust">
-        <div className="tsdw tsd-trow reveal">
-          <div className="tsd-g2"><span className="tsd-g2n">4.7</span><span className="tsd-g2l">Rated 4.7 on G2<br />by 1,000+ reviewers</span></div>
-          <div className="tsd-badges"><span className="tsd-badge">SOC 2 TYPE II</span><span className="tsd-badge">ISO 27001</span><span className="tsd-badge">GDPR</span><span className="tsd-badge">CCPA</span><span className="tsd-badge">100+ ATS INTEGRATIONS</span></div>
-        </div>
-      </section>
+      <SecuritySection eyebrow="Security" heading="Built to keep your organization secure" sub="Ensure the security of your recruitment data with top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits, and strong privacy protections." />
 
       <Recognition bg="#FBF3EE" />
 

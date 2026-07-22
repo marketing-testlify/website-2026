@@ -35,7 +35,7 @@ export default function UnleashYourBrandsPotentialPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Make every assessment on-brand" />
+      <SiteHeader announcement="Make every assessment on-brand" announcementCta="See white label" />
 
       <section className="phero"><div className="wrap" style={{ maxWidth: '860px' }}>
         <p className="eyebrow reveal">Employer branding<b>.</b></p>

@@ -21,7 +21,7 @@ export default function ServiceLevelAgreementPage() {
 .legalnote p{font-size:14.5px;color:#6C5A5D;margin:0;}
 ` }} />
 
-      <SiteHeader announcement="Your data, protected — SOC 2, ISO 27001, GDPR & CCPA" />
+      <SiteHeader announcement="Your data, protected — SOC 2, ISO 27001, GDPR & CCPA" announcementCta="Trust center" />
 
       <section className="legalhero"><div className="wrap">
         <p className="eyebrow">Legal<b>.</b></p>

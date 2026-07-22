@@ -196,7 +196,7 @@ export default function InterviewsDetailPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="AI interviews — same questions, same rubric, for every candidate" />
+      <SiteHeader announcement="AI interviews — same questions, same rubric, for every candidate" announcementCta="Browse interviews" />
 
       <section className="dhero"><div className="wrap">
         <p className="crumb reveal in"><Link href="/">Home</Link><span className="sep">/</span><Link href="/interviews">Interviews</Link><span className="sep">/</span><span>Background Check</span></p>

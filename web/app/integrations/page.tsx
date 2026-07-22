@@ -111,7 +111,7 @@ export default function IntegrationsPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="New · Native two-way sync with Workday" />
+      <SiteHeader announcement="New · Native two-way sync with Workday" announcementCta="View integration" />
       <section className="ihero">
         <div className="wrap" style={{ maxWidth: '860px' }}>
           <p className="eyebrow reveal">Integrations<b>.</b></p>

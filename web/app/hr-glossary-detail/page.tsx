@@ -131,7 +131,7 @@ export default function HrGlossaryDetailPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="The HR Glossary — 500+ hiring & assessment terms, defined in plain English" />
+      <SiteHeader announcement="The HR Glossary — 500+ hiring & assessment terms, defined in plain English" announcementCta="Browse the A–Z" />
 
       <section className="gt-hero" ref={rootRef}>
         <div className="gt-wrap">

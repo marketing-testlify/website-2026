@@ -8,7 +8,7 @@ import CtaBand from '@/components/CtaBand';
 export default function SkillsAssessmentPlatformPage() {
   return (
     <>
-      <SiteHeader announcement="The finest talent assessment platform" />
+      <SiteHeader announcement="The finest talent assessment platform" announcementCta="Try for free" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: '860px' }}>

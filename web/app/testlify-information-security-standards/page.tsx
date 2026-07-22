@@ -39,7 +39,7 @@ export default function InformationSecurityStandardsPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="Our information security standards" />
+      <SiteHeader announcement="Our information security standards" announcementCta="Trust center" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: "860px" }}>

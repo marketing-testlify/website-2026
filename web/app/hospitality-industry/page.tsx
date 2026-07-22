@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -273,7 +273,7 @@ export default function HospitalityIndustryPage() {
             <h2 className="tsd-h2">Discover the power of Testlify in the hospitality industry</h2>
             <p className="tsd-p">Testlify is a cutting-edge talent assessment tool designed specifically for the hospitality industry. Our platform offers a range of scientifically validated assessments and simulations that provide deep insights into a candidate&rsquo;s abilities, personality traits, and job fit. By leveraging the power of data and analytics, Testlify revolutionizes the way you hire in the hospitality industry.</p>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot" style={{ backgroundColor: '#FFFFFF' }}><div className="tsd-shotimg" style={{ backgroundColor: '#FFFFFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/11/Discover-the-power-of-Testlify-in-the-hospitality-industry.png")' }}></div></div></div>
+          <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#F3F6F9' }}><div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/11/Discover-the-power-of-Testlify-in-the-hospitality-industry.png")' }}></div></div></div>
         </div>
       </div></section>
 
@@ -302,7 +302,7 @@ export default function HospitalityIndustryPage() {
             <p className="tsd-p">Limit the impact of bias and prejudice to build a diverse and inclusive workforce.</p>
             <Link className="tsd-link" href="/diversity-and-inclusions">More on diversity{ARROW}</Link>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot" style={{ backgroundColor: '#FFFFFF' }}><div className="tsd-shotimg" style={{ backgroundColor: '#FFFFFF', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/11/Foster-diversity.png")' }}></div></div></div>
+          <div className="tsd-media reveal"><div className="tsd-shot" style={{ background: '#F3F6F9' }}><div className="tsd-shotimg" style={{ backgroundColor: '#F3F6F9', backgroundImage: 'url("https://testlify.com/wp-content/uploads/2024/11/Foster-diversity.png")' }}></div></div></div>
         </div>
       </div></section>
 

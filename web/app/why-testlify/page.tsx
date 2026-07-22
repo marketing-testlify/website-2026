@@ -49,7 +49,7 @@ export default function WhyTestlifyPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="See why 1,500+ teams switched to Testlify" />
+      <SiteHeader announcement="See why 1,500+ teams switched to Testlify" announcementCta="Compare plans" />
 
       <section className="whero"><div className="wrap" style={{ maxWidth: '860px' }}>
         <p className="eyebrow reveal">Why Testlify<b>.</b></p>

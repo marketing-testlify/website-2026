@@ -58,7 +58,7 @@ export default function BlogDetailPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="New guide · The 2026 skills-based hiring playbook" />
+      <SiteHeader announcement="New guide · The 2026 skills-based hiring playbook" announcementCta="Read now" />
       <article className="artwrap">
         <p className="crumb reveal in"><Link href="/blog">Blog</Link> &nbsp;·&nbsp; Hiring strategy</p>
         <h1 className="arttitle reveal in">The 2026 skills-based hiring playbook</h1>

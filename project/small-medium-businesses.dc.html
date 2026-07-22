@@ -7,8 +7,8 @@
 </head>
 <body>
 <x-dc>
-<helmet data-dc-atomics>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<helmet data-dc-atomics="">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
 <style>
 body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
@@ -28,7 +28,7 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
 .tsd-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
 .tsd-statc{background:#fff;border:1px solid #F0E2E3;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#1A1014;box-shadow:0 8px 18px rgba(110,11,14,.06);}
-.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
+.tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:0;box-shadow:0 40px 90px rgba(110,11,14,.14);overflow:hidden;}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
 .tsd-logos{margin-top:40px;}
@@ -199,7 +199,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <sc-if value="{{ s.hasBullets }}" hint-placeholder-val="{{ false }}"><div class="{{ s.blClass }}"><sc-for list="{{ s.bullets }}" as="b" hint-placeholder-count="4"><div class="tsd-bi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span class="tsd-bt"><sc-if value="{{ b.hasHref }}" hint-placeholder-val="{{ false }}"><a href="{{ b.href }}">{{ b.label }}</a></sc-if><sc-if value="{{ b.noHref }}" hint-placeholder-val="{{ true }}">{{ b.label }}</sc-if><sc-if value="{{ b.hasDesc }}" hint-placeholder-val="{{ false }}"><span class="tsd-bd">{{ b.desc }}</span></sc-if></span></div></sc-for></div></sc-if>
 <sc-if value="{{ s.hasCta }}" hint-placeholder-val="{{ false }}"><a class="tsd-link" href="{{ s.cta.href }}">{{ s.cta.label }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></sc-if>
 </div>
-<div class="tsd-media reveal"><div class="tsd-shot"><sc-if value="{{ s.hasImg }}" hint-placeholder-val="{{ false }}"><div class="tsd-shotimg" data-bg="{{ s.img }}"></div></sc-if><sc-if value="{{ s.noImg }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ s.slotId }}" shape="rounded" radius="14" placeholder="Drop an image"></image-slot></sc-if></div></div>
+<div class="tsd-media reveal"><div class="tsd-shot" style="background:{{ s.shotBg }}"><sc-if value="{{ s.hasImg }}" hint-placeholder-val="{{ false }}"><div class="tsd-shotimg" style="background-color:{{ s.shotBg }}" data-bg="{{ s.img }}"></div></sc-if><sc-if value="{{ s.noImg }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ s.slotId }}" shape="rounded" radius="14" placeholder="Drop an image"></image-slot></sc-if></div></div>
 </div></sc-if>
 <sc-if value="{{ s.isCards }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2><sc-if value="{{ s.hasIntro }}" hint-placeholder-val="{{ false }}"><p class="tsd-lead">{{ s.intro }}</p></sc-if></div><div class="tsd-cards"><sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="3"><div class="tsd-card reveal"><div class="tsd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ c.iconD }}"></path></svg></div><p class="tsd-ct">{{ c.title }}</p><p class="tsd-cd">{{ c.desc }}</p></div></sc-for></div></sc-if>
 <sc-if value="{{ s.isGrid }}" hint-placeholder-val="{{ false }}"><div class="tsd-shead reveal"><p class="eyebrow">{{ s.eyebrow }}<b>.</b></p><h2 class="tsd-h2">{{ s.h2 }}</h2><sc-if value="{{ s.hasIntro }}" hint-placeholder-val="{{ false }}"><p class="tsd-lead">{{ s.intro }}</p></sc-if></div><div class="tsd-fgrid"><sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="6"><div class="tsd-fcard reveal"><div class="tsd-fn">{{ c.n }}</div><p class="tsd-ct">{{ c.title }}</p><p class="tsd-cd">{{ c.desc }}</p></div></sc-for></div></sc-if>
@@ -268,16 +268,16 @@ class Component extends DCLogic {
       lead:"Make faster, bias-free hiring decisions with expertly designed assessments tailored for small and growing businesses. Testlify is built for the agility and speed SMBs need without compromising on quality — identify top talent with ready-to-use tests, automated workflows and instant insights.",
       ctaLabel:"Try for free",
       ctaHref:"pricing.dc.html",
-      stats:[{t:"50% faster time-to-hire"},{t:"3,000+ pre-built tests"},{t:"No HR team needed"}],
+      stats:[{t:"50% faster time-to-hire"},{t:"3,000+ pre-built tests"},{t:"HR team not mandatory"}],
       logos:["LTIMindtree","Sonatafy","Thales","Third Bridge","Virtual","Cogitotech"],
       sections:[
-        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/10/Subject-assessment-1024x1024.png", h2:"One platform. Every skill you need", body:["Whether you're hiring a marketing generalist, sales associate, developer or customer support rep, we've got you covered."], bullets:[{label:"3,000+ pre-built tests"},{label:"Role-specific & industry-based"},{label:"Regularly updated by experts"},{label:"Soft skills, technical, cognitive & behavioral"}]},
+        {kind:"split", shotBg:"#F3F6F9", img:"https://testlify.com/wp-content/uploads/2022/10/Subject-assessment-1024x1024.png", h2:"One platform. Every skill you need", body:["Whether you're hiring a marketing generalist, sales associate, developer or customer support rep, we've got you covered."], bullets:[{label:"3,000+ pre-built tests"},{label:"Role-specific & industry-based"},{label:"Regularly updated by experts"},{label:"Soft skills, technical, cognitive & behavioral"}]},
         {kind:"cards", eyebrow:"Backed by data", h2:"Make decisions backed by data", intro:"In-depth analytics on every test — compare candidates fairly and avoid bad hires.", cards:[
-          {title:"Real-time candidate scoring", icon:"M22 12h-4l-3 9L9 3l-3 9H2", desc:"Manage hundreds of candidate profiles with a single click and see who's progressing, instantly."},
-          {title:"Candidate benchmarking", icon:"M12 20V10M18 20V4M6 20v-4", desc:"Connect with top prospects against job postings while candidates enjoy a simple, professional experience."},
-          {title:"Easy PDF reports", icon:"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8", desc:"Fully branded assessments and clear PDF reports built for hiring managers to act on fast."}
+          {title:"Real-time candidate scoring", icon:"M22 12h-4l-3 9L9 3l-3 9H2", desc:"Browsing through 10,000 candidate profiles while performing background checks and doing the necessary research to find the best match, if this sounds like something you are doing, let Testlify help you manage that and save time so that you can concentrate on other important tasks. \nTestlify, helps you manage hundreds of candidate profiles with a single click."},
+          {title:"Candidate benchmarking", icon:"M12 20V10M18 20V4M6 20v-4", desc:"The readings and results of our assessment tests help organizations to connect with the top prospects with reference to job postings or recommendations, and we work both ways too.  While the assessment delivers the best result and helps you find a suitable fit, the candidates enjoy the simple yet professional experience of giving the test."},
+          {title:"Easy PDF reports", icon:"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8", desc:"Introduce potential employees to your company with a fully branded examination. Include your logo and brand colors, make platform messaging specific, and use video introductions to explain your core principles. You can design a customized online recruitment process for your company using Testlify’s adaptable platform that will deliver exemplary results within no time."}
         ]},
-        {kind:"split", img:"https://testlify.com/wp-content/uploads/2022/11/Vast-Lib-1-1024x1024-1.png", h2:"A better experience for candidates too", body:["Keep top talent engaged with short, relevant, branded assessments that feel like an extension of your company culture."], bullets:[{label:"Mobile-friendly assessments"},{label:"Timed tests"},{label:"Custom welcome messages & branding"}]},
+        {kind:"split", shotBg:"#F3F6F9", img:"https://testlify.com/wp-content/uploads/2022/11/Vast-Lib-1-1024x1024-1.png", h2:"A better experience for candidates too", body:["Keep top talent engaged with short, relevant, branded assessments that feel like an extension of your company culture."], bullets:[{label:"Mobile-friendly assessments"},{label:"Timed tests"},{label:"Custom welcome messages & branding"}]},
         {kind:"cards", eyebrow:"Built for you", h2:"Built for teams that need results now", intro:"No HR department? No problem — anyone can launch tests in minutes.", cards:[
           {title:"Drag-and-drop test creation", icon:"M5 9 2 12l3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20", desc:"Intuitive design means founders, office managers and team leads can build tests fast."},
           {title:"100+ ATS integrations", icon:"M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1", desc:"Works out of the box with your existing tools and recruitment workflow."},
@@ -289,8 +289,10 @@ class Component extends DCLogic {
         {q:"What is pre-employment testing software?", a:"Pre-employment testing software is a powerful tool recruiters use to analyze prospective employees quickly and efficiently. Testlify's tests are carefully created to match your needs, with 200+ test libraries covering all recruitment tests."},
         {q:"Why is pre-employment testing important?", a:"It helps companies find candidates with relevant skills — saving time and money on training and increasing productivity — by testing on-the-job skills, identifying the best talent faster, building a diverse candidate pool and championing a data-driven HR culture."},
         {q:"How does Testlify help in my hiring process?", a:"Testlify's AI-powered pre-hire assessments measure the skills and job fitment of a candidate, enabling quick screening, eliminating bias and increasing recruiter productivity — a proven solution against high turnover."},
+        {q:"How are the pre-employment tests created?", a:"Testlify's AI-powered pre-hire assessments help companies measure the skills and job fitment of a candidate. These tests allow for quick screening of candidates and eliminate bias in hiring, increasing the productivity of recruiters and hiring managers. Our unique assessment technology is a proven solution against high employee turnover rates."},
         {q:"What types of questions are asked in the assessment?", a:"Questions depend on the industry and role and can include MCQs, video-based questions and open-ended (written or short answer) questions, with programming questions for coding tests."},
-        {q:"What types of tests are available on the platform?", a:"Three main types: Technical (programming, software, role-specific, DevOps, finance, accounting), Cognitive Ability (aptitude), and Personality & Culture and Situational Judgment tests."}
+        {q:"What types of tests are available on the platform?", a:"Three main types: Technical (programming, software, role-specific, DevOps, finance, accounting), Cognitive Ability (aptitude), and Personality & Culture and Situational Judgment tests."},
+        {q:"How is Testlify different from other pre-employment tools?", a:"Testlify is the finest talent assessment platform — we believe in giving all applicants an equal, unbiased opportunity to showcase their talent. Our assessments remove unconscious bias and surface hidden gems from underrepresented backgrounds, prioritize on-the-job skills over trick questions, use non-googleable questions and advanced proctoring, include video response questions for a 360° view, and are low-stress, adaptive tests that take just 30 minutes — keeping drop-off rates minimal."}
       ],
       faqTitle:"Frequently asked questions (FAQs)"
     };
@@ -302,7 +304,7 @@ class Component extends DCLogic {
       const v = Object.assign({}, s);
       v.isSplit = s.kind==='split'; v.isCards = s.kind==='cards'; v.isGrid = s.kind==='grid'; v.isSteps = s.kind==='steps'; v.isChips = s.kind==='chips';
       v.bgClass = bgToggle ? 'tsd-sand' : ''; bgToggle=!bgToggle;
-      if(v.isSplit){ v.flipClass = sflip ? 'tsd-flip' : ''; sflip=!sflip; v.slotId = 'tsd-slot-'+i; v.hasNum=false; v.hasCta=!!s.cta; v.img=s.img||''; v.hasImg=!!s.img; v.noImg=!s.img; }
+      if(v.isSplit){ v.flipClass = sflip ? 'tsd-flip' : ''; sflip=!sflip; v.slotId = 'tsd-slot-'+i; v.hasNum=false; v.hasCta=!!s.cta; v.img=s.img||''; v.hasImg=!!s.img; v.noImg=!s.img; v.shotBg=s.shotBg||'#fff'; }
       if(s.bullets){ const bs = s.bullets.map(b=> typeof b==='string'?{label:b}:b).map(b=>({label:b.label,href:b.href,desc:b.desc,hasHref:!!b.href,noHref:!b.href,hasDesc:!!b.desc})); v.bullets=bs; v.hasBullets=true; v.blClass = bs.some(b=>b.hasDesc) ? 'tsd-bl tsd-bl1' : 'tsd-bl'; } else { v.hasBullets=false; }
       if(s.cards){ v.cards = s.cards.map((c,ci)=>Object.assign({n:ci+1, iconD:c.icon||"M12 8v4l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"}, c)); }
       if(s.steps){ v.steps = s.steps.map((c,ci)=>Object.assign({n:ci+1}, c)); }

@@ -5,7 +5,7 @@ import CtaBand from '@/components/CtaBand';
 export default function DesignedForHighCompletionRatePage() {
   return (
     <>
-      <SiteHeader announcement="Assessments candidates actually finish" />
+      <SiteHeader announcement="Assessments candidates actually finish" announcementCta="Try for free" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: '860px' }}>

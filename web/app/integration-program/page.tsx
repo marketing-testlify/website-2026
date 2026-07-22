@@ -7,7 +7,7 @@ import CtaBand from '@/components/CtaBand';
 export default function IntegrationProgramPage() {
   return (
     <>
-      <SiteHeader announcement="Build a native Testlify integration" />
+      <SiteHeader announcement="Build a native Testlify integration" announcementCta="Get started" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: '860px' }}>

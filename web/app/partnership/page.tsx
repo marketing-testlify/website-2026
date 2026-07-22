@@ -6,7 +6,7 @@ import CtaBand from '@/components/CtaBand';
 export default function PartnershipPage() {
   return (
     <>
-      <SiteHeader announcement="Resell Testlify to your clients" />
+      <SiteHeader announcement="Resell Testlify to your clients" announcementCta="Partner with us" />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: 860 }}>
