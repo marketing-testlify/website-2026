@@ -180,7 +180,7 @@ export default function DemoPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Watch the demo — see skills-based hiring end to end in 3 minutes." announcementCta="Watch now" homeHref="core-home.dc.html" />
+      <SiteHeader announcement="Watch the demo — see skills-based hiring end to end in 3 minutes." announcementCta="Watch now" homeHref="/" />
 
       <section className="hero"><div className="wrap" style={{ textAlign: 'center', maxWidth: '900px' }}>
         <div className="reveal"><span className="pill"><span className="pilltag">LIVE DEMO</span> See it in action</span></div>

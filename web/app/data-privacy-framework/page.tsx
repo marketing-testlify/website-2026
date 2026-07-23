@@ -35,7 +35,7 @@ export default function DataPrivacyFrameworkPage() {
       <SiteHeader
         announcement="Your data, protected — SOC 2, ISO 27001, GDPR & CCPA"
         announcementCta="Trust center"
-        announcementHref="/trust"
+        announcementHref="/security"
         homeHref="/"
       />
 

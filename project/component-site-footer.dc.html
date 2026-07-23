@@ -20,11 +20,13 @@
 .sf a{text-decoration:none;}
 .sf{background:#1A1014;color:#C9B9BC;padding:66px 28px 34px;}
 .sf-in{max-width:1240px;margin:0 auto;}
-.sf-backed{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-bottom:36px;margin-bottom:40px;border-bottom:1px solid #3A2D30;}
+.sf-backed{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-bottom:36px;margin-bottom:40px;position:relative;}
+.sf-backed::after{content:"";position:absolute;left:50%;bottom:0;width:100vw;margin-left:-50vw;border-bottom:1px solid #3A2D30;}
 .sf-backed-l{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8A7A7D;}
 .bpill{display:flex;align-items:center;justify-content:center;height:48px;padding:0 14px;border-radius:12px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.16);}
 .bpill img{max-height:24px;max-width:108px;object-fit:contain;}
-.foot-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid #3A2D30;}
+.foot-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;position:relative;}
+.foot-grid::after{content:"";position:absolute;left:50%;bottom:0;width:100vw;margin-left:-50vw;border-bottom:1px solid #3A2D30;}
 .sf-brand{display:block;}
 .sf-brand img{height:30px;width:auto;display:block;}
 .sf-tag{font-size:15px;line-height:1.6;margin:16px 0 22px;max-width:280px;color:#A9999C;}
@@ -128,11 +130,11 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
       <a href="company-legal.dc.html" class="flink">GDPR compliance</a>
       <a href="company-legal.dc.html" class="flink">Cookie policy</a>
       <a href="company-legal.dc.html" class="flink">Security practices</a>
-      <a href="trust.dc.html" class="flink">Security</a>
+      <a href="https://trust.testlify.com/" target="_blank" rel="noopener" class="flink">Security</a>
       <a href="company-legal.dc.html" class="flink">Data processing agreement</a>
       <a href="company-legal.dc.html" class="flink">Data privacy framework</a>
       <a href="company-legal.dc.html" class="flink">CCPA</a>
-      <a href="trust.dc.html" class="flink">Trust center</a>
+      <a href="https://trust.testlify.com/" target="_blank" rel="noopener" class="flink">Trust center</a>
     </div></div>
     <div><div class="sf-h">Company</div><div class="sf-col">
       <a href="about.dc.html" class="flink">About us</a>
@@ -157,7 +159,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
     </div>
   </div><div class="sf-bottom" style="padding-top: 0px">
     <span>© 2026 Testlify. All rights reserved.</span>
-    <div class="sf-legal"><a href="company-legal.dc.html" class="flink">Privacy policy</a><a href="company-legal.dc.html" class="flink">Terms &amp; conditions</a><a href="trust.dc.html" class="flink">Security</a><a href="company-legal.dc.html" class="flink">GDPR</a><a href="company-legal.dc.html" class="flink">Cookie policy</a></div>
+    <div class="sf-legal"><a href="company-legal.dc.html" class="flink">Privacy policy</a><a href="company-legal.dc.html" class="flink">Terms &amp; conditions</a><a href="https://trust.testlify.com/" target="_blank" rel="noopener" class="flink">Security</a><a href="company-legal.dc.html" class="flink">GDPR</a><a href="company-legal.dc.html" class="flink">Cookie policy</a></div>
   </div>
 </div></footer>
 </x-dc>

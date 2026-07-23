@@ -2,8 +2,7 @@ import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 
-const legalCss = `
-/* Testlify legal / policy doc layout — pairs with site-base.css */
+const CSS = `
 .legalhero{padding:64px 28px 30px;background:linear-gradient(180deg,#FFF6F4,#fff);border-bottom:1px solid #F0E2E3;}
 .legalhero .wrap{max-width:900px;}
 .legalhero h1{font-size:44px;line-height:1.06;font-weight:800;letter-spacing:-1.4px;margin:10px 0 0;color:#1A1014;}
@@ -32,11 +31,12 @@ const legalCss = `
 export default function GdprCompliancePage() {
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: legalCss }} />
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <SiteHeader
         announcement="Your data, protected — SOC 2, ISO 27001, GDPR & CCPA"
         announcementCta="Trust center"
-        announcementHref="/trust"
+        announcementHref="/security"
+        homeHref="/"
       />
 
       <section className="legalhero"><div className="wrap">

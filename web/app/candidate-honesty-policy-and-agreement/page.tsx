@@ -32,7 +32,7 @@ export default function CandidateHonestyPolicyAndAgreement() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: legalCss }} />
-      <SiteHeader announcement="Your data, protected — SOC 2, ISO 27001, GDPR &amp; CCPA" announcementCta="Trust center" announcementHref="/trust" />
+      <SiteHeader announcement="Your data, protected — SOC 2, ISO 27001, GDPR &amp; CCPA" announcementCta="Trust center" announcementHref="/security" />
 
       <section className="legalhero"><div className="wrap">
         <p className="eyebrow">For candidates<b>.</b></p>

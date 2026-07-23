@@ -9,6 +9,7 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
 <style>
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -32,17 +33,24 @@ a{text-decoration:none;color:inherit;}
 .tag{border:1px solid #EFE2E3;background:#fff;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#6A5A5D;cursor:pointer;transition:all .2s ease;font-family:inherit;}
 .tag.on{background:#F23F44;color:#fff;border-color:#F23F44;}
 .feat{display:grid;grid-template-columns:1.1fr 1fr;gap:0;border:1px solid #EFE2E3;border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 24px 60px rgba(110,11,14,.08);}
-.featimg{min-height:340px;display:flex;align-items:flex-end;padding:28px;color:#fff;}
+.featimg{position:relative;min-height:340px;display:flex;align-items:flex-end;padding:28px;color:#fff;overflow:hidden;}
+.featimg image-slot,.postimg image-slot{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
+.pimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.featimg::after,.postimg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,16,20,0) 40%,rgba(26,16,20,.55));z-index:0;}
+.featimg .postcat,.postimg .postcat{position:relative;z-index:1;}
 .featbody{padding:40px;display:flex;flex-direction:column;}
 .bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
 .post{display:flex;flex-direction:column;background:#fff;border:1px solid #EFE2E3;border-radius:20px;overflow:hidden;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;}
 .post:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(110,11,14,.10);border-color:#F4D2D3;}
-.postimg{height:180px;display:flex;align-items:flex-end;padding:18px;}
+.postimg{position:relative;height:180px;display:flex;align-items:flex-end;padding:18px;overflow:hidden;}
 .postcat{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.28);padding:5px 11px;border-radius:999px;backdrop-filter:blur(4px);}
 .postbody{padding:22px;display:flex;flex-direction:column;flex:1;}
 .posttitle{font-size:18px;font-weight:700;letter-spacing:-.3px;line-height:1.3;margin:0 0 10px;}
 .postexc{font-size:14px;color:#6A5A5D;line-height:1.55;margin:0 0 18px;}
 .postmeta{font-size:12.5px;color:#9A878A;margin-top:auto;display:flex;gap:8px;align-items:center;}
+.loadmore{display:flex;justify-content:center;margin-top:44px;}
+.loadbtn{font-family:inherit;font-size:15px;font-weight:600;color:#F23F44;background:#fff;border:1.5px solid #F4D2D3;border-radius:999px;padding:14px 30px;cursor:pointer;transition:background .2s ease,transform .2s ease,box-shadow .2s ease;}
+.loadbtn:hover{background:#FFF0EF;transform:translateY(-2px);box-shadow:0 12px 26px rgba(242,63,68,.16);}
 @media(max-width:920px){
   .h1{font-size:40px;letter-spacing:-1.4px;}
   .h2{font-size:30px;}
@@ -61,17 +69,10 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
   <p class="eyebrow reveal">The Testlify blog<b>.</b></p>
   <h1 class="h1 reveal" style="transition-delay:.04s">Ideas for hiring on skill</h1>
   <p class="lead reveal" style="margin:20px auto 0;max-width:560px;transition-delay:.08s">Research, playbooks and practical guides for building a fairer, faster hiring process.</p>
-  <div class="reveal tagbar" style="transition-delay:.12s">
-    <button class="tag {{ t0 }}" onClick="{{ all }}">All</button>
-    <button class="tag {{ t1 }}" onClick="{{ hiring }}">Hiring strategy</button>
-    <button class="tag {{ t2 }}" onClick="{{ assess }}">Assessments</button>
-    <button class="tag {{ t3 }}" onClick="{{ ai }}">AI &amp; hiring</button>
-    <button class="tag {{ t4 }}" onClick="{{ dei }}">Diversity</button>
-  </div>
 </div></section>
 <section style="padding:24px 28px 0;"><div class="wrap">
   <a class="feat reveal" href="blog-detail.dc.html">
-    <div class="featimg" style="background:linear-gradient(150deg,#F23F44,#7A1418);"><span class="postcat">Featured · Hiring strategy</span></div>
+    <div class="featimg"><img class="pimg" src="https://picsum.photos/seed/testlify-feat/1040/720" alt="" loading="lazy"><span class="postcat">Featured · Hiring strategy</span></div>
     <div class="featbody">
       <h2 class="h2" style="font-size:30px;margin-bottom:14px;">The 2026 skills-based hiring playbook</h2>
       <p class="body" style="font-size:15.5px;">Degrees are fading as a hiring signal. Here's the complete framework for designing a skills-first process — from job design to scorecards — that actually predicts performance.</p>
@@ -80,29 +81,29 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
   </a>
 </div></section>
 <section class="sec"><div class="wrap">
+  <div class="reveal tagbar" style="margin-bottom:34px;">
+    <button class="tag {{ t0 }}" onClick="{{ all }}">All</button>
+    <button class="tag {{ t1 }}" onClick="{{ hiring }}">Hiring strategy</button>
+    <button class="tag {{ t2 }}" onClick="{{ assess }}">Assessments</button>
+    <button class="tag {{ t3 }}" onClick="{{ ai }}">AI &amp; hiring</button>
+    <button class="tag {{ t4 }}" onClick="{{ dei }}">Diversity</button>
+  </div>
   <div class="bgrid">
     <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
       <a class="post" href="blog-detail.dc.html">
-        <div class="postimg" style="{{ p.bg }}"><span class="postcat">{{ p.cat }}</span></div>
+        <div class="postimg"><img class="pimg" src="{{ p.img }}" alt="" loading="lazy"><span class="postcat">{{ p.cat }}</span></div>
         <div class="postbody"><h3 class="posttitle">{{ p.title }}</h3><p class="postexc">{{ p.excerpt }}</p><div class="postmeta"><span>{{ p.author }}</span><span>·</span><span>{{ p.read }}</span></div></div>
       </a>
     </sc-for>
   </div>
-</div></section>
-<section class="sec" style="background:#1A1014;color:#fff;text-align:center;"><div class="wrap" style="max-width:640px;">
-  <h2 class="h2 reveal" style="color:#fff;">Get the best of Testlify</h2>
-  <p class="lead reveal" style="color:rgba(255,255,255,.78);margin:16px auto 28px;transition-delay:.04s;">One practical hiring idea in your inbox, every other week. No fluff.</p>
-  <form class="reveal" onSubmit="{{ noop }}" style="display:flex;gap:10px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center;transition-delay:.08s;">
-    <input type="email" placeholder="you@company.com" style="flex:1;min-width:220px;padding:14px 18px;border-radius:12px;border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-family:inherit;font-size:15px;">
-    <button class="btn btn-primary" type="submit">Subscribe</button>
-  </form>
+  <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ true }}"><div class="loadmore"><button class="loadbtn" onClick="{{ loadMore }}">Load more articles</button></div></sc-if>
 </div></section>
 <dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
 <dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { tag:'all' };
+  state = { tag:'all', visible:6 };
   componentDidMount(){
     const sweep = ()=>{
       const vh = window.innerHeight || document.documentElement.clientHeight;
@@ -133,14 +134,24 @@ class Component extends DCLogic {
       {title:'The real cost of a bad hire (and how to avoid it)',cat:'Hiring strategy',group:'hiring',excerpt:'A bad hire can cost 30% of salary or more. Skills-first screening is the cheapest insurance you can buy.',author:'Sara Neeson',read:'5 min read',bg:'background:linear-gradient(150deg,#B8521A,#5A2208);'},
       {title:'Structured interviews: the playbook',cat:'Assessments',group:'assess',excerpt:'Unstructured interviews predict performance barely better than chance. Here is how to fix yours.',author:'Sneha Kulkarni',read:'8 min read',bg:'background:linear-gradient(150deg,#16607A,#08303D);'},
       {title:'Widen your funnel without lowering the bar',cat:'Diversity',group:'dei',excerpt:'Diversity and quality are not a trade-off. Skills-based hiring is how you get both at once.',author:'Maria Alvarez',read:'6 min read',bg:'background:linear-gradient(150deg,#C0242B,#6E0B0E);'},
+      {title:'Scorecards that actually predict performance',cat:'Assessments',group:'assess',excerpt:'Turn fuzzy gut-feel into a structured rubric every interviewer can apply consistently.',author:'Priya Nair',read:'7 min read',bg:'background:linear-gradient(150deg,#1F8A5B,#0C3D29);'},
+      {title:'Reducing time-to-hire without cutting corners',cat:'Hiring strategy',group:'hiring',excerpt:'Where the days really go in your funnel — and the three levers that move them most.',author:'Marcus Bell',read:'6 min read',bg:'background:linear-gradient(150deg,#2A6FDB,#16335E);'},
+      {title:'Prompting AI interviewers responsibly',cat:'AI & hiring',group:'ai',excerpt:'How to design AI-led screens that stay fair, explainable and candidate-friendly.',author:'Daniel Mwangi',read:'8 min read',bg:'background:linear-gradient(150deg,#6B3FA0,#2E1A4A);'},
+      {title:'Inclusive job ads: a practical checklist',cat:'Diversity',group:'dei',excerpt:'Small wording changes that measurably widen who applies — with examples.',author:'Sofia Ramirez',read:'5 min read',bg:'background:linear-gradient(150deg,#C0242B,#6E0B0E);'},
+      {title:'Benchmarking candidates the right way',cat:'Assessments',group:'assess',excerpt:'Raw scores mislead. Here is how to compare candidates against the role, not each other.',author:'Elena Costa',read:'7 min read',bg:'background:linear-gradient(150deg,#16607A,#08303D);'},
     ];
     const t = this.state.tag;
-    const posts = t==='all' ? DATA : DATA.filter(x=>x.group===t);
+    DATA.forEach((x,gi)=>{ x.img = 'https://picsum.photos/seed/tl-blog-'+(gi+1)+'/800/520'; });
+    const filtered = (t==='all' ? DATA : DATA.filter(x=>x.group===t)).map((x,i)=>Object.assign({slotId:'blog-'+x.group+'-'+i}, x));
+    const vis = this.state.visible;
+    const posts = filtered.slice(0, vis);
     const cls = (k)=> t===k ? 'on' : '';
+    const pick = (k)=>()=>this.setState({tag:k, visible:6});
     return {
-      posts,
+      posts, hasMore: filtered.length > vis,
+      loadMore:()=>this.setState(s=>({visible:s.visible+3})),
       t0:cls('all'),t1:cls('hiring'),t2:cls('assess'),t3:cls('ai'),t4:cls('dei'),
-      all:()=>this.setState({tag:'all'}), hiring:()=>this.setState({tag:'hiring'}), assess:()=>this.setState({tag:'assess'}), ai:()=>this.setState({tag:'ai'}), dei:()=>this.setState({tag:'dei'}),
+      all:pick('all'), hiring:pick('hiring'), assess:pick('assess'), ai:pick('ai'), dei:pick('dei'),
       noop:(e)=>e.preventDefault(),
     };
   }

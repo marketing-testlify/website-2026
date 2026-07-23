@@ -1,15 +1,20 @@
 import Link from 'next/link';
 
 const css = `
+/* ===========================================================
+   Site Footer — single source of truth for the global footer.
+   =========================================================== */
 .sf,.sf *{box-sizing:border-box;font-family:'Poppins',sans-serif;}
 .sf a{text-decoration:none;}
 .sf{background:#1A1014;color:#C9B9BC;padding:66px 28px 34px;}
 .sf-in{max-width:1240px;margin:0 auto;}
-.sf-backed{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-bottom:36px;margin-bottom:40px;border-bottom:1px solid #3A2D30;}
+.sf-backed{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-bottom:36px;margin-bottom:40px;position:relative;}
+.sf-backed::after{content:"";position:absolute;left:50%;bottom:0;width:100vw;margin-left:-50vw;border-bottom:1px solid #3A2D30;}
 .sf-backed-l{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8A7A7D;}
 .bpill{display:flex;align-items:center;justify-content:center;height:48px;padding:0 14px;border-radius:12px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.16);}
 .bpill img{max-height:24px;max-width:108px;object-fit:contain;}
-.foot-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid #3A2D30;}
+.foot-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;position:relative;}
+.foot-grid::after{content:"";position:absolute;left:50%;bottom:0;width:100vw;margin-left:-50vw;border-bottom:1px solid #3A2D30;}
 .sf-brand{display:block;}
 .sf-brand img{height:30px;width:auto;display:block;}
 .sf-tag{font-size:15px;line-height:1.6;margin:16px 0 22px;max-width:280px;color:#A9999C;}
@@ -118,11 +123,11 @@ export default function SiteFooter() {
             <Link href="/company-legal" className="flink">GDPR compliance</Link>
             <Link href="/company-legal" className="flink">Cookie policy</Link>
             <Link href="/company-legal" className="flink">Security practices</Link>
-            <Link href="/trust" className="flink">Security</Link>
+            <Link href="/security" className="flink">Security</Link>
             <Link href="/company-legal" className="flink">Data processing agreement</Link>
             <Link href="/company-legal" className="flink">Data privacy framework</Link>
             <Link href="/company-legal" className="flink">CCPA</Link>
-            <Link href="/trust" className="flink">Trust center</Link>
+            <Link href="/security" className="flink">Trust center</Link>
           </div></div>
           <div><div className="sf-h">Company</div><div className="sf-col">
             <Link href="/about" className="flink">About us</Link>
@@ -152,7 +157,7 @@ export default function SiteFooter() {
         </div>
         <div className="sf-bottom" style={{ paddingTop: '0px' }}>
           <span>© 2026 Testlify. All rights reserved.</span>
-          <div className="sf-legal"><Link href="/company-legal" className="flink">Privacy policy</Link><Link href="/company-legal" className="flink">Terms &amp; conditions</Link><Link href="/trust" className="flink">Security</Link><Link href="/company-legal" className="flink">GDPR</Link><Link href="/company-legal" className="flink">Cookie policy</Link></div>
+          <div className="sf-legal"><Link href="/company-legal" className="flink">Privacy policy</Link><Link href="/company-legal" className="flink">Terms &amp; conditions</Link><Link href="/security" className="flink">Security</Link><Link href="/company-legal" className="flink">GDPR</Link><Link href="/company-legal" className="flink">Cookie policy</Link></div>
         </div>
       </div>
     </footer>

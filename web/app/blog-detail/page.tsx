@@ -58,13 +58,21 @@ export default function BlogDetailPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="New guide · The 2026 skills-based hiring playbook" announcementCta="Read now" />
+      <SiteHeader
+        announcement="New guide · The 2026 skills-based hiring playbook"
+        announcementCta="Read now"
+      />
       <article className="artwrap">
         <p className="crumb reveal in"><Link href="/blog">Blog</Link> &nbsp;·&nbsp; Hiring strategy</p>
         <h1 className="arttitle reveal in">The 2026 skills-based hiring playbook</h1>
         <div className="artmeta reveal in"><span className="artav">SK</span><div><div className="artname">Sneha Kulkarni</div><div>Co-founder &amp; CPO</div></div><span>·</span><span>12 min read</span><span>·</span><span>June 2026</span></div>
       </article>
-      <div className="artwrap reveal in"><div className="arthero"></div></div>
+      <div className="artwrap reveal in">
+        <div className="arthero" style={{ overflow: 'hidden' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://picsum.photos/seed/testlify-feat/1480/760" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
+        </div>
+      </div>
       <div className="artwrap prose">
         <p className="reveal in">For most of the last century, the résumé was the hiring world&apos;s currency. A degree, a job title, a recognizable logo — these were the proxies we used to guess who could do the work. The problem is that proxies are exactly that: guesses. And they systematically miss great people.</p>
         <p className="reveal in">Skills-based hiring flips the model. Instead of asking &quot;who looks qualified?&quot;, it asks &quot;who can actually do this job?&quot; — and then measures it directly. This playbook walks through how to put that into practice, step by step.</p>
@@ -86,18 +94,32 @@ export default function BlogDetailPage() {
         <p className="reveal in">Teams that adopt this approach consistently report faster hiring, stronger performance from new hires, and noticeably more diverse pipelines. Not because they lowered the bar — but because they finally measured the right thing.</p>
         <div className="share reveal in"><span style={{ fontSize: '13.5px', fontWeight: 700, color: '#6A5A5D', marginRight: '6px' }}>Share</span><a className="sbtn" href="#">in</a><a className="sbtn" href="#">X</a><a className="sbtn" href="#">f</a><a className="sbtn" href="#">↗</a></div>
       </div>
-      <section className="related"><div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 36px' }}><p className="eyebrow reveal">Keep reading<b>.</b></p><h2 className="reveal" style={{ fontSize: '32px', fontWeight: 800, letterSpacing: '-1px', margin: 0 }}>Related articles</h2></div>
+      <section className="related">
+        <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 36px' }}><p className="eyebrow reveal">Keep reading<b>.</b></p><h2 className="reveal" style={{ fontSize: '32px', fontWeight: 800, letterSpacing: '-1px', margin: 0 }}>Related articles</h2></div>
         <div className="relgrid">
-          <Link className="relcard reveal" href="/blog-detail"><div className="relimg" style={{ background: 'linear-gradient(150deg,#2A6FDB,#16335E)' }}></div><div className="relbody"><h3 className="reltitle">How to write a job description that attracts skill</h3><p className="relmeta">Aditya Rao · 7 min read</p></div></Link>
-          <Link className="relcard reveal" style={{ transitionDelay: '.06s' }} href="/blog-detail"><div className="relimg" style={{ background: 'linear-gradient(150deg,#1F8A5B,#0C3D29)' }}></div><div className="relbody"><h3 className="reltitle">Designing assessments candidates actually finish</h3><p className="relmeta">Elena Costa · 6 min read</p></div></Link>
-          <Link className="relcard reveal" style={{ transitionDelay: '.12s' }} href="/blog-detail"><div className="relimg" style={{ background: 'linear-gradient(150deg,#6B3FA0,#2E1A4A)' }}></div><div className="relbody"><h3 className="reltitle">Will AI make hiring fairer — or worse?</h3><p className="relmeta">Daniel Mwangi · 9 min read</p></div></Link>
+          <Link className="relcard reveal" href="/blog-detail">
+            <div className="relimg" style={{ overflow: 'hidden' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://picsum.photos/seed/tl-blog-1/560/280" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
+            </div>
+            <div className="relbody"><h3 className="reltitle">How to write a job description that attracts skill</h3><p className="relmeta">Aditya Rao · 7 min read</p></div>
+          </Link>
+          <Link className="relcard reveal" style={{ transitionDelay: '.06s' }} href="/blog-detail">
+            <div className="relimg" style={{ overflow: 'hidden' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://picsum.photos/seed/tl-blog-2/560/280" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
+            </div>
+            <div className="relbody"><h3 className="reltitle">Designing assessments candidates actually finish</h3><p className="relmeta">Elena Costa · 6 min read</p></div>
+          </Link>
+          <Link className="relcard reveal" style={{ transitionDelay: '.12s' }} href="/blog-detail">
+            <div className="relimg" style={{ overflow: 'hidden' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://picsum.photos/seed/tl-blog-3/560/280" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
+            </div>
+            <div className="relbody"><h3 className="reltitle">Will AI make hiring fairer — or worse?</h3><p className="relmeta">Daniel Mwangi · 9 min read</p></div>
+          </Link>
         </div>
       </section>
-      <section style={{ background: '#1A1014', color: '#fff', textAlign: 'center', padding: '80px 28px' }}><div className="wrap" style={{ maxWidth: '640px' }}>
-        <h2 className="reveal" style={{ fontSize: '38px', fontWeight: 800, letterSpacing: '-1.2px', color: '#fff', margin: 0 }}>Put the playbook to work</h2>
-        <p className="reveal" style={{ fontSize: '19px', color: 'rgba(255,255,255,.78)', margin: '16px auto 28px', transitionDelay: '.04s' }}>Run your first skills-based assessment free — set up in minutes.</p>
-        <Link className="btn btn-primary reveal" href="/pricing" style={{ transitionDelay: '.08s' }}>Start free<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></Link>
-      </div></section>
       <CtaBand />
       <SiteFooter />
     </>

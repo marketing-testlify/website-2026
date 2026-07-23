@@ -2,7 +2,8 @@ import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 
-const CSS = `
+const legalCss = `
+/* Testlify legal / policy doc layout — pairs with site-base.css */
 .legalhero{padding:64px 28px 30px;background:linear-gradient(180deg,#FFF6F4,#fff);border-bottom:1px solid #F0E2E3;}
 .legalhero .wrap{max-width:900px;}
 .legalhero h1{font-size:44px;line-height:1.06;font-weight:800;letter-spacing:-1.4px;margin:10px 0 0;color:#1A1014;}
@@ -31,8 +32,12 @@ const CSS = `
 export default function DataProcessingAgreementPage() {
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Your data, protected — SOC 2, ISO 27001, GDPR &amp; CCPA" announcementCta="Trust center" />
+      <style dangerouslySetInnerHTML={{ __html: legalCss }} />
+      <SiteHeader
+        announcement="Your data, protected — SOC 2, ISO 27001, GDPR & CCPA"
+        announcementCta="Trust center"
+        announcementHref="/security"
+      />
 
       <section className="legalhero"><div className="wrap">
         <p className="eyebrow">Legal<b>.</b></p>

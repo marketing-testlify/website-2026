@@ -140,7 +140,7 @@ export default function Page() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement="New — AI chat-simulation interviews are live. Assess real judgement, not just answers." announcementCta="See how" homeHref="core-home.dc.html" />
+      <SiteHeader announcement="New — AI chat-simulation interviews are live. Assess real judgement, not just answers." announcementCta="See how" homeHref="/" />
 
       <section className="hero"><div className="wrap"><div className="herogrid">
         <div>
