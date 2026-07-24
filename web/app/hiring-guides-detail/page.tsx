@@ -96,13 +96,13 @@ const emails = [
 ];
 
 const tests = [
-  { name: 'Sales aptitude test', url: '/library-tests' },
-  { name: 'Customer relationship management test', url: '/library-tests' },
-  { name: 'B2B telesales test', url: '/library-tests' },
-  { name: 'Negotiation test', url: '/library-tests' },
-  { name: 'Communication test', url: '/library-tests' },
-  { name: 'Product management test', url: '/library-tests' },
-  { name: 'Time management test', url: '/library-tests' },
+  { name: 'Sales aptitude test', url: '/test-library' },
+  { name: 'Customer relationship management test', url: '/test-library' },
+  { name: 'B2B telesales test', url: '/test-library' },
+  { name: 'Negotiation test', url: '/test-library' },
+  { name: 'Communication test', url: '/test-library' },
+  { name: 'Product management test', url: '/test-library' },
+  { name: 'Time management test', url: '/test-library' },
 ];
 
 const genq = [
