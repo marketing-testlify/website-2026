@@ -109,7 +109,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
               <div className="sm-grp">
                 <a className="sm-chip" href="/blog"><span className="sm-dot sm-d-a" />Blog</a>
                 <a className="sm-chip" href="/blog-detail"><span className="sm-dot sm-d-a" />· detail</a>
-                <a className="sm-chip" href="/hiring-guides"><span className="sm-dot sm-d-b" />Hiring guides</a>
+                <a className="sm-chip" href="/hiring-guides"><span className="sm-dot sm-d-a" />Hiring guides</a>
                 <a className="sm-chip" href="/hiring-guides-detail"><span className="sm-dot sm-d-r" />· detail</a>
                 <a className="sm-chip" href="/hr-glossary"><span className="sm-dot sm-d-b" />HR glossary</a>
                 <a className="sm-chip" href="/hr-glossary-detail"><span className="sm-dot sm-d-r" />· detail</a>

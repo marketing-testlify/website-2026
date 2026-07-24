@@ -8,118 +8,387 @@ const css = `
 html{scroll-behavior:smooth;}
 body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
 a{text-decoration:none;color:inherit;}
-.wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
-.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8A7A7D;margin:0 0 18px;}
-.eyebrow b{color:#F23F44;font-weight:600;}
-.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;padding:14px 26px;border-radius:13px;transition:transform .25s ease, box-shadow .25s ease;cursor:pointer;border:none;}
+a:hover{color:#F23F44;}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 16px;}
+.eyebrow b{color:#F23F44;font-weight:700;}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:13px 26px;border-radius:13px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;cursor:pointer;border:none;font-family:inherit;}
 .btn-primary{background:#F23F44;color:#fff;box-shadow:0 12px 26px rgba(242,63,68,.30);}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(242,63,68,.40);}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(242,63,68,.40);color:#fff;}
+.btn-ghost{background:#fff;color:#1A1014;border:1.5px solid #EADDDE;}
+.btn-ghost:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(110,11,14,.12);border-color:#FBD0D1;color:#1A1014;}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
 .reveal.in{opacity:1;transform:none;}
-.artwrap{max-width:740px;margin:0 auto;padding:0 28px;}
-.crumb{font-size:13px;color:#9A878A;font-weight:600;margin:36px 0 22px;}
-.crumb a{color:#F23F44;}
-.arttitle{font-size:46px;line-height:1.08;font-weight:800;letter-spacing:-1.6px;margin:0 0 22px;}
-.artmeta{display:flex;align-items:center;gap:12px;font-size:13.5px;color:#9A878A;margin-bottom:30px;}
-.artav{width:42px;height:42px;border-radius:50%;background:#F23F44;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;}
-.artname{font-weight:700;color:#1A1014;font-size:14px;}
-.arthero{height:380px;border-radius:22px;background:linear-gradient(150deg,#F23F44,#7A1418);margin-bottom:44px;}
-.prose p{font-size:18px;line-height:1.75;color:#3A2C30;margin:0 0 24px;}
-.prose h2{font-size:30px;font-weight:800;letter-spacing:-.8px;margin:46px 0 18px;color:#1A1014;}
-.prose h3{font-size:22px;font-weight:700;letter-spacing:-.4px;margin:34px 0 12px;color:#1A1014;}
-.prose ul{margin:0 0 24px;padding-left:24px;}
-.prose li{font-size:18px;line-height:1.7;color:#3A2C30;margin-bottom:10px;}
-.prose strong{color:#1A1014;font-weight:700;}
-.pull{border-left:4px solid #F23F44;padding:6px 0 6px 24px;margin:32px 0;font-size:24px;line-height:1.45;font-weight:600;letter-spacing:-.4px;color:#1A1014;}
-.callout{background:#FBF3EE;border:1px solid #F4E1D6;border-radius:18px;padding:28px 30px;margin:36px 0;}
-.callout p{margin:0;font-size:16px;line-height:1.65;color:#3A2C30;}
-.share{display:flex;gap:10px;align-items:center;margin:48px 0;padding:24px 0;border-top:1px solid #F1E6E7;border-bottom:1px solid #F1E6E7;}
-.sbtn{width:42px;height:42px;border-radius:11px;border:1px solid #EFE2E3;display:flex;align-items:center;justify-content:center;color:#6A5A5D;font-weight:700;font-size:14px;transition:all .2s ease;}
-.sbtn:hover{border-color:#F2B7B9;color:#F23F44;transform:translateY(-2px);}
-.related{background:#FBF3EE;padding:72px 28px;margin-top:56px;}
-.relgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1100px;margin:0 auto;}
-.relcard{background:#fff;border:1px solid #EFE2E3;border-radius:18px;overflow:hidden;transition:transform .25s ease, box-shadow .25s ease;}
-.relcard:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(110,11,14,.10);}
-.relimg{height:140px;}
-.relbody{padding:20px;}
-.reltitle{font-size:16px;font-weight:700;line-height:1.35;margin:0 0 8px;}
-.relmeta{font-size:12.5px;color:#9A878A;}
+@property --bang{syntax:"<angle>";initial-value:0deg;inherits:false;}
+@keyframes runborder{to{--bang:360deg;}}
+.artwrap{max-width:760px;margin:0 auto;padding:0 28px;}
+.arttop{max-width:1120px;}
+.arttop .crumb{text-align:left;}
+.crumb{font-size:13px;color:#9A878A;font-weight:500;margin:34px 0 24px;display:flex;gap:9px;flex-wrap:wrap;align-items:center;}
+.crumb a{color:#8A7A7D;font-weight:600;}
+.crumb .sep{color:#C9B9BC;}
+.crumb .cur{color:#C9B9BC;}
+.catrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px;}
+.catpill{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#F23F44;background:#FFF0EF;border-radius:999px;padding:6px 14px;}
+.updated{font-size:13px;color:#9A878A;}
+.arttitle{font-size:38px;line-height:1.16;font-weight:800;letter-spacing:-1px;margin:0 0 18px;}
+.artlead{font-size:19px;line-height:1.6;color:#5A4B4E;margin:0 0 26px;}
+.artmeta{display:flex;align-items:center;justify-content:flex-end;gap:16px;font-size:13.5px;color:#9A878A;margin-bottom:6px;flex-wrap:wrap;}
+.rtime{display:inline-flex;align-items:center;gap:7px;}
+.catrow{margin-top:4px;}
+.share{display:flex;gap:9px;align-items:center;}
+.sbtn{width:38px;height:38px;border-radius:10px;border:1px solid #EFE2E3;display:flex;align-items:center;justify-content:center;color:#6A5A5D;font-weight:700;font-size:13px;transition:all .2s;}
+.sbtn:hover{border-color:#FBD0D1;color:#F23F44;transform:translateY(-2px);}
+.arthero{border-radius:20px;overflow:hidden;margin:18px 0 30px;width:100%;aspect-ratio:16/9;background:#FBF3EE;}
+.arthero img{width:100%;height:100%;object-fit:cover;display:block;}
+.toc{background:#FBF3EE;border:1px solid #F0E2E3;border-radius:18px;padding:24px 26px;margin:0 0 26px;}
+.toc h4{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A7A7D;margin:0 0 16px;padding-bottom:14px;border-bottom:1px solid #EADDDE;}
+.toc ol{margin:0;padding:0;list-style:none;counter-reset:toc;}
+.toc li{counter-increment:toc;position:relative;padding-left:32px;font-size:14.5px;line-height:1.45;margin-bottom:15px;color:#5A4B4E;}
+.toc li:last-child{margin-bottom:0;}
+.toc li::before{content:counter(toc);position:absolute;left:0;top:-1px;width:22px;height:22px;border-radius:7px;background:#FCE0DE;color:#F23F44;font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.toc a{color:#5A4B4E;transition:color .2s;}
+.toc a:hover{color:#F23F44;}
+.artbtns{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 40px;}
+.artlayout{max-width:1120px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:260px 1fr;gap:52px;align-items:start;}
+.tocside{position:sticky;top:104px;}
+.tocside .toc{margin:0;}
+.artmain{min-width:0;}
+@media(max-width:920px){ .artlayout{grid-template-columns:1fr;gap:0;padding:0;} .tocside{position:static;} .artmain{padding:0 28px;} }
+.aichips{border-top:1px solid #F1E6E7;border-bottom:1px solid #F1E6E7;padding:20px 0;margin:0 0 40px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.aichips .lbl{font-size:14px;font-weight:600;color:#6A5A5D;margin-right:2px;}
+.aichip{display:inline-flex;align-items:center;gap:8px;border:1px solid #EFE2E3;border-radius:999px;padding:7px 15px 7px 9px;font-size:13.5px;font-weight:600;color:#3A2C30;transition:all .2s;background:#fff;}
+.aichip img{width:20px;height:20px;border-radius:5px;object-fit:contain;}
+.aichip:hover{border-color:#FBD0D1;color:#F23F44;transform:translateY(-2px);box-shadow:0 8px 18px rgba(110,11,14,.08);}
+.pp{font-size:17.5px;line-height:1.75;color:#3A2C30;margin:0 0 22px;}
+.ph2{font-size:28px;font-weight:800;letter-spacing:-.6px;margin:46px 0 16px;color:#1A1014;scroll-margin-top:110px;}
+.ph3{font-size:20px;font-weight:700;letter-spacing:-.3px;margin:34px 0 12px;color:#1A1014;scroll-margin-top:110px;}
+.pul,.pol{margin:0 0 22px;padding-left:24px;}
+.pul li,.pol li{font-size:17px;line-height:1.7;color:#3A2C30;margin-bottom:9px;}
+.pimg{width:100%;border-radius:16px;margin:8px 0 30px;display:block;border:1px solid #F0E2E3;}
+.faqsec{max-width:760px;margin:56px auto 0;padding:0 28px;}
+.faqsec h2{font-size:28px;font-weight:800;letter-spacing:-.6px;margin:0;}
+.afaq{margin-top:22px;}
+.afaqi{border-bottom:1px solid #F0E2E3;padding:20px 2px;cursor:pointer;}
+.afaqq{display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:16px;font-weight:700;color:#1A1014;}
+.afaqx{width:28px;height:28px;border-radius:50%;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;flex:none;transition:transform .25s;}
+.afaqa{display:none;font-size:15.5px;line-height:1.65;color:#5A4B4E;margin-top:12px;}
+.afaqi.on .afaqa{display:block;}
+.afaqi.on .afaqx{transform:rotate(45deg);}
+.author{display:flex;gap:18px;align-items:flex-start;background:#FBF3EE;border:1px solid #F0E2E3;border-radius:18px;padding:26px 28px;max-width:760px;margin:44px auto 0;}
+.authorav{width:60px;height:60px;border-radius:50%;object-fit:cover;flex:none;}
+.authorname{font-size:17px;font-weight:700;margin:0;}
+.authorrole{font-size:13.5px;color:#8A7A7D;margin:3px 0 8px;}
+.authorbio{font-size:14.5px;line-height:1.6;color:#5A4B4E;margin:0 0 10px;}
+.authorli{font-size:13.5px;font-weight:600;color:#F23F44;}
+.related{background:#FBF3EE;padding:72px 28px;margin-top:60px;}
+.relhead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;max-width:1180px;margin:0 auto 32px;}
+.relhead h2{font-size:30px;font-weight:800;letter-spacing:-.9px;margin:0;}
+.relall{font-size:14.5px;font-weight:600;color:#F23F44;}
+.relgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1180px;margin:0 auto;}
+.relcard{position:relative;background:#fff;border:1px solid #EFE2E3;border-radius:18px;overflow:hidden;transition:box-shadow .3s, border-color .3s;}
+.relcard::before{content:"";position:absolute;inset:0;border-radius:18px;padding:1.8px;background:conic-gradient(from var(--bang),transparent 0deg,#FF7A52 35deg,#F23F44 80deg,transparent 150deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;pointer-events:none;z-index:3;}
+.relcard:hover{box-shadow:0 22px 46px rgba(110,11,14,.10);}
+.relcard:hover::before{opacity:1;animation:runborder 2.4s linear infinite;}
+.relimg{aspect-ratio:16/9;overflow:hidden;background:#FBF3EE;}
+.relimg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.2,.7,.3,1);}
+.relcard:hover .relimg img{transform:scale(1.06);}
+.relbody{padding:20px 20px 22px;}
+.relcat{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#F23F44;margin:0 0 9px;}
+.reltitle{font-size:16px;font-weight:700;line-height:1.35;margin:0;color:#1A1014;}
 @media(max-width:920px){
-  .arttitle{font-size:34px;letter-spacing:-1px;}
-  .arthero{height:220px;}
-  .prose p,.prose li{font-size:16.5px;}
-  .relgrid{grid-template-columns:1fr;}
+  .arttitle{font-size:33px;letter-spacing:-1px;}
+  .pp,.pul li,.pol li{font-size:16.5px;}
+  .ph2{font-size:25px;}
+  .relgrid{grid-template-columns:1fr 1fr;}
 }
-
-h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
+@media(max-width:620px){ .relgrid{grid-template-columns:1fr;} .artmeta{justify-content:flex-start;} }
+h1,h2,h3,h4,.eyebrow,.arttitle,.ph2,.ph3,.reltitle{text-wrap:balance;}p,li,.artlead,.pp,.authorbio,.afaqa{text-wrap:pretty;}/*om-balance-rule*/
 `;
+
+const U = 'https://testlify.com/wp-content/uploads/';
+
+const d = {
+  category: 'AI in recruitment',
+  title: 'How does Testlify’s AI scoring handle open-ended answers and code quality?',
+  excerpt:
+    'Explore how Testlify turns candidate responses and coding performance into clear, decision-ready hiring insights with AI scoring.',
+  date: '12 May 2026',
+  readTime: '7 min',
+  heroImg: U + '2026/05/April-blog-featured-images-for-blog-2026.png',
+  author: {
+    name: 'Reuben',
+    role: 'Content Writer',
+    avatar:
+      'https://secure.gravatar.com/avatar/5a79f1bd4bc5c17c9c2da3ce0104be9928196be8e1eb9a9bdf1e712dddc1c95e?s=120&d=mm&r=g',
+    li: 'https://www.linkedin.com/in/reuben-kurien-j-5673911a4/',
+    bio: 'Reuben John is a B2B content writer focused on HR and recruitment. His work explores hiring trends, skills-based recruitment, talent assessment, and the technologies shaping how companies find and hire talent.',
+  },
+  toc: [
+    { id: 'what-is-ai-scoring', label: 'What is AI scoring in candidate assessments?' },
+    { id: 'score-open-ended', label: 'How does Testlify score open-ended answers?' },
+    { id: 'open-ended-formats', label: 'Which open-ended formats does Testlify support?' },
+    { id: 'conversational-ai', label: 'How does conversational AI deepen open-ended scoring?' },
+    { id: 'grading-consistent', label: 'How does AI keep grading consistent across candidates?' },
+    { id: 'evaluate-code-quality', label: 'How does Testlify evaluate code quality?' },
+    { id: 'assessment-integrity', label: 'How does Testlify ensure assessment integrity?' },
+    { id: 'performance-report', label: 'What do hiring teams see in the performance report?' },
+    { id: 'why-matters', label: 'Why does AI scoring matter for modern HR teams?' },
+    { id: 'final-thoughts', label: 'Final thoughts' },
+  ],
+  intro: [
+    'Testlify’s AI scoring grades open-ended answers using Natural Language Processing, also known as NLP. The system reads each response and scores it on relevance, accuracy, depth, and clarity.',
+    'For code, Testlify runs every submission against multiple test cases. It checks correctness, efficiency, and structure across real-world scenarios.',
+    'HR teams then receive a detailed report. The report flags strengths, weaknesses, and clear areas for improvement for each candidate.',
+  ],
+  related: [
+    { title: 'What are the best practices for hiring data analysts using assessments?', cat: 'Candidate assessment', img: U + '2026/06/April-blog-featured-images-for-blog-2026-1024x576.png' },
+    { title: 'How to run role simulations through video interview prompts?', cat: 'AI interviews', img: U + '2026/05/How-to-run-role-simulations-1024x576.png' },
+    { title: 'What tools offer AI-generated questions for custom assessments?', cat: 'AI in recruitment', img: U + '2026/05/April-blog-featured-images-for-blog-2026-3-1024x576.png' },
+    { title: 'How to use AI in recruiting using Testlify', cat: 'AI in recruitment', img: U + '2026/03/How-to-use-AI-in-recruiting-using-Testlify-1024x576.png' },
+    { title: 'AI recruitment platforms: Buyer’s guide', cat: 'AI in recruitment', img: U + '2026/02/AI-recruitment-platforms-1024x576.png' },
+    { title: 'Will AI replace recruiters in 2026? The real answer', cat: 'AI in recruitment', img: U + '2026/02/Will-AI-replace-recruiters-in-2026-1024x576.png' },
+  ],
+};
+
+type Block =
+  | { t: 'h2'; id: string; x: string }
+  | { t: 'h3'; x: string }
+  | { t: 'p'; x: string }
+  | { t: 'ul'; items: string[] }
+  | { t: 'ol'; items: string[] }
+  | { t: 'img'; src: string; alt: string };
+
+const blocks: Block[] = [
+  { t: 'h2', id: 'what-is-ai-scoring', x: 'What is AI scoring in candidate assessments?' },
+  { t: 'p', x: 'AI scoring uses machine learning to grade test answers automatically. The system reads each candidate’s response and scores it against a defined rubric.' },
+  { t: 'p', x: 'HR leaders use AI scoring to remove human bias from early-stage screening. According to Gartner research, AI-driven assessment tools help reduce time-to-hire and improve quality of hire.' },
+  { t: 'img', src: U + '2025/11/Latest-blog-banner-for-testlify-1.png', alt: 'Testlify AI scoring' },
+  { t: 'h2', id: 'score-open-ended', x: 'How does Testlify score open-ended answers?' },
+  { t: 'p', x: 'Testlify uses NLP to read each open-ended answer and score its quality. The model checks for relevance, accuracy, structure, and reasoning depth.' },
+  { t: 'p', x: 'The platform does not rely on simple keyword matching. Instead, the AI understands meaning, context, and intent. A candidate who explains a concept in their own words still earns full marks. The system rewards clear reasoning, not memorized phrases.' },
+  { t: 'h2', id: 'open-ended-formats', x: 'Which open-ended formats does Testlify support?' },
+  { t: 'img', src: U + '2026/05/image-2-1024x583.png', alt: 'Open-ended question formats supported by Testlify' },
+  { t: 'p', x: 'Testlify supports several open-ended custom question formats inside a single assessment. Recruiters can mix these formats based on the role.' },
+  { t: 'ul', items: ['Short-answer text questions for evaluating clarity of thought.', 'Long-form essay questions to evaluate knowledge and critical-thinking skills.', 'Fill in the blank questions to assess applied knowledge and accuracy.', 'Coding questions for evaluating programming and technical problem-solving skills.', 'Typing assessments to measure typing speed and accuracy.', 'Chat AI interviews for interactive written problem-solving simulations.', 'File upload questions for collecting candidate assignment submissions.', 'Voice responses for assessing spoken communication and clarity.', 'Voice AI interviews for AI-driven conversational evaluations.', 'Video responses for evaluating presentation and communication skills.', 'Video AI interviews for structured behavioral and communication analysis.'] },
+  { t: 'h2', id: 'conversational-ai', x: 'How does conversational AI deepen open-ended scoring?' },
+  { t: 'p', x: 'Testlify’s conversational AI simulates real on-the-job scenarios such as having candidates handle billing disputes, calm angry customers, or pitch ideas to fictional buyers. The AI then evaluates each response across several dimensions such as relevance, communication clarity, tone, confidence, and emotional intelligence.' },
+  { t: 'p', x: 'Video AI adds another layer of insight. The AI interviewer guides candidates through the conversation while the system evaluates non-verbal cues alongside spoken responses.' },
+  { t: 'h2', id: 'grading-consistent', x: 'How does AI keep grading consistent across candidates?' },
+  { t: 'p', x: 'The AI grades every candidate using the same rubric and the same model. Human graders, on the other hand, get tired, biased, or distracted, but the model does not. Research from SHRM shows that online assessment tools can greatly reduce hiring bias.' },
+  { t: 'p', x: 'Testlify’s AI scoring acts as one such structured layer. Two candidates with similar answers receive similar scores, and background factors like name, gender, or school do not change the grade.' },
+  { t: 'h3', x: 'Can recruiters override the AI score?' },
+  { t: 'p', x: 'Yes. Testlify supports weighted scoring, so recruiters set the importance of each skill. Recruiters can also manually adjust AI-generated scores question by question. This blend of automation and human review keeps the final call in the recruiter’s hands.' },
+  { t: 'h3', x: 'What about answer quality and depth?' },
+  { t: 'p', x: 'The AI does not just check if an answer is right or wrong. It measures depth, reasoning, and clarity. A candidate who provides examples and trade-offs scores higher than one who gives surface-level answers. This rewards true expertise, not test-taking skill.' },
+  { t: 'h2', id: 'evaluate-code-quality', x: 'How does Testlify evaluate code quality?' },
+  { t: 'p', x: 'Testlify grades code through real execution, not visual review. Each submission runs inside a secure environment. Subject matter experts write the test cases in advance, and the platform runs every coding submission against them automatically.' },
+  { t: 'p', x: 'The system checks four core attributes of every submission:' },
+  { t: 'ol', items: ['Correctness across all defined test cases.', 'Efficiency in time and memory usage.', 'Code structure and readability.', 'Edge case handling for unusual inputs.'] },
+  { t: 'p', x: 'Testlify offers a wide range of programming tests covering 45-plus languages. The platform’s full library spans more than 3,500 tests across 4,500-plus job roles, covering Python, JavaScript, Java, Go, Rust, SQL, and many more.' },
+  { t: 'h3', x: 'How does Testlify test real-world coding skills?' },
+  { t: 'p', x: 'Testlify uses technical role-specific tests for senior roles. Real engineering work spans many files and folders, and a single-function test cannot measure that skill. Multi-file projects evaluate four real workplace skills:' },
+  { t: 'ul', items: ['Dependency management across files and modules.', 'File and folder organization for clean architecture.', 'Code reuse through functions and classes.', 'Debugging in a layered codebase.'] },
+  { t: 'p', x: 'The closer the test mirrors the job, the better the prediction of on-the-job success.' },
+  { t: 'h3', x: 'Can recruiters customize coding tests?' },
+  { t: 'p', x: 'Yes. The first option uses a default code structure, and the candidate fills in the missing logic — ideal for entry-level roles or screening at scale. The second lets the candidate write code from scratch, controlling structure, naming, and approach, which suits senior roles where design choices matter.' },
+  { t: 'h2', id: 'assessment-integrity', x: 'How does Testlify ensure assessment integrity?' },
+  { t: 'p', x: 'AI scoring only works if the work is genuinely the candidate’s own. Testlify combines AI scoring with AI-powered proctoring to ensure the integrity of the assessment, running integrity checks during every session:' },
+  { t: 'ul', items: ['Tab switching detection flags candidates who leave the test window.', 'Snapshot monitoring captures periodic webcam images.', 'Copy-paste tracking records pasted content from outside sources.'] },
+  { t: 'p', x: 'These signals appear in the recruiter’s report after the test, so HR teams can review flagged sessions before making a hiring decision.' },
+  { t: 'h2', id: 'performance-report', x: 'What do hiring teams see in the performance report?' },
+  { t: 'p', x: 'Testlify’s report does more than show a final score. It tells a story about each candidate’s strengths and gaps.' },
+  { t: 'img', src: U + '2026/05/image-3-1024x615.png', alt: 'Components of Testlify’s candidate performance report' },
+  { t: 'p', x: 'The AI Insights section analyzes the candidate’s interview answers and summarizes what they did well and where they fell short, giving HR teams a clear narrative for the hiring debrief. As a result, interviewers walk into the next round prepared.' },
+  { t: 'h2', id: 'why-matters', x: 'Why does AI scoring matter for modern HR teams?' },
+  { t: 'p', x: 'Three forces make AI scoring a hiring priority in 2026:' },
+  { t: 'ul', items: ['Volume of applicants: a single open role often draws hundreds of applicants, and manual screening cannot keep up. AI scoring handles unlimited candidates with no drop in consistency.', 'Fairness: compliance teams now demand audit trails for hiring decisions. AI scoring records every score, input, and rubric — a defensible paper trail.', 'Skill complexity: roles in AI, data, and engineering need deep skill checks. AI can instantly evaluate project work across thousands of applicants.'] },
+  { t: 'h3', x: 'How should HR leaders interpret AI scoring results?' },
+  { t: 'p', x: 'AI score is a signal, not a verdict, so HR leaders should treat AI scoring as one input in a multi-step decision. Use the score to answer three questions:' },
+  { t: 'ol', items: ['Does the candidate meet the minimum bar?', 'Where does the candidate excel?', 'What should the final interview cover?'] },
+  { t: 'p', x: 'AI scores are most effective when paired with human judgment, structured interviews, and role-specific assessments. The goal of AI scoring is to improve consistency, not to replace recruiter evaluation or hiring manager discretion.' },
+  { t: 'h2', id: 'final-thoughts', x: 'Final thoughts' },
+  { t: 'p', x: 'AI scoring has become the operating layer for fair, fast, and scalable hiring in 2026. Testlify brings this to life through a layered AI scoring system that converts raw assessment data into a decision-ready report per candidate.' },
+  { t: 'p', x: 'As a result, recruiters cut screening time, hiring managers walk into interviews prepared, and candidates get faster outcomes.' },
+];
+
+const aiTools = [
+  { name: 'ChatGPT', img: '/logos/chatgpt.png' },
+  { name: 'Gemini', img: '/logos/gemini.png' },
+  { name: 'Claude', img: '/logos/claude.png' },
+  { name: 'Grok', img: '/logos/grok.png' },
+  { name: 'Perplexity', img: '/logos/perplexity.png' },
+];
 
 export default function BlogDetailPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
       <SiteHeader
-        announcement="New guide · The 2026 skills-based hiring playbook"
-        announcementCta="Read now"
+        announcement="Insights for skills-first hiring teams"
+        announcementCta="Read the blog"
+        homeHref="/"
       />
-      <article className="artwrap">
-        <p className="crumb reveal in"><Link href="/blog">Blog</Link> &nbsp;·&nbsp; Hiring strategy</p>
-        <h1 className="arttitle reveal in">The 2026 skills-based hiring playbook</h1>
-        <div className="artmeta reveal in"><span className="artav">SK</span><div><div className="artname">Sneha Kulkarni</div><div>Co-founder &amp; CPO</div></div><span>·</span><span>12 min read</span><span>·</span><span>June 2026</span></div>
+
+      <article className="artwrap arttop">
+        <p className="crumb reveal in">
+          <Link href="/">Home</Link>
+          <span className="sep">/</span>
+          <Link href="/blog">Blog</Link>
+          <span className="sep">/</span>
+          <Link href="/blog">{d.category}</Link>
+          <span className="sep">/</span>
+          <span className="cur">{d.title}</span>
+        </p>
       </article>
-      <div className="artwrap reveal in">
-        <div className="arthero" style={{ overflow: 'hidden' }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="https://picsum.photos/seed/testlify-feat/1480/760" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
+
+      <div className="artlayout">
+        <aside className="tocside">
+          <div className="toc reveal in">
+            <h4>Table of contents</h4>
+            <ol>
+              {d.toc.map((t) => (
+                <li key={t.id}>
+                  <a href={`#${t.id}`}>{t.label}</a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </aside>
+        <div className="artmain">
+          <div className="catrow reveal in" style={{ marginBottom: 12 }}>
+            <span className="catpill">{d.category}</span>
+          </div>
+          <div
+            className="reveal in"
+            style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', margin: '0 0 16px', fontSize: 13, color: '#9A878A' }}
+          >
+            <span className="updated">Last updated on: {d.date}</span>
+            <span style={{ color: '#C9B9BC' }}>|</span>
+            <span className="rtime">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="9"></circle>
+                <polyline points="12 7 12 12 15 14"></polyline>
+              </svg>
+              {d.readTime}
+            </span>
+            <div className="share" style={{ marginLeft: 'auto' }}>
+              <a className="sbtn" href="#" aria-label="Facebook">f</a>
+              <a className="sbtn" href="#" aria-label="X">X</a>
+              <a className="sbtn" href="#" aria-label="LinkedIn">in</a>
+            </div>
+          </div>
+          <h1 className="arttitle reveal in">{d.title}</h1>
+          <div className="arthero reveal in">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={d.heroImg} alt={d.title} loading="lazy" />
+          </div>
+          <p className="artlead reveal in">{d.excerpt}</p>
+          {d.intro.map((p, i) => (
+            <p className="pp reveal in" key={i}>
+              {p}
+            </p>
+          ))}
+          <div className="aichips reveal in">
+            <span className="lbl">Summarise this post with:</span>
+            {aiTools.map((a) => (
+              <a className="aichip" href="#" key={a.name}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={a.img} alt={a.name} />
+                {a.name}
+              </a>
+            ))}
+          </div>
+          <div className="prose">
+            {blocks.map((b, i) => {
+              if (b.t === 'h2') {
+                return (
+                  <h2 className="ph2 reveal in" id={b.id} key={i}>
+                    {b.x}
+                  </h2>
+                );
+              }
+              if (b.t === 'h3') {
+                return (
+                  <h3 className="ph3 reveal in" key={i}>
+                    {b.x}
+                  </h3>
+                );
+              }
+              if (b.t === 'p') {
+                return (
+                  <p className="pp reveal in" key={i}>
+                    {b.x}
+                  </p>
+                );
+              }
+              if (b.t === 'ul') {
+                return (
+                  <ul className="pul reveal in" key={i}>
+                    {b.items.map((it, j) => (
+                      <li key={j}>{it}</li>
+                    ))}
+                  </ul>
+                );
+              }
+              if (b.t === 'ol') {
+                return (
+                  <ol className="pol reveal in" key={i}>
+                    {b.items.map((it, j) => (
+                      <li key={j}>{it}</li>
+                    ))}
+                  </ol>
+                );
+              }
+              if (b.t === 'img') {
+                return (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img className="pimg reveal in" src={b.src} alt={b.alt} loading="lazy" key={i} />
+                );
+              }
+              return null;
+            })}
+          </div>
         </div>
       </div>
-      <div className="artwrap prose">
-        <p className="reveal in">For most of the last century, the résumé was the hiring world&apos;s currency. A degree, a job title, a recognizable logo — these were the proxies we used to guess who could do the work. The problem is that proxies are exactly that: guesses. And they systematically miss great people.</p>
-        <p className="reveal in">Skills-based hiring flips the model. Instead of asking &quot;who looks qualified?&quot;, it asks &quot;who can actually do this job?&quot; — and then measures it directly. This playbook walks through how to put that into practice, step by step.</p>
-        <div className="pull reveal in">&quot;The best predictor of job performance isn&apos;t where someone worked — it&apos;s whether they can do the work in front of them.&quot;</div>
-        <h2 className="reveal in">1. Start with the work, not the wishlist</h2>
-        <p className="reveal in">Before you write a single requirement, define the three to five outcomes this role must deliver in its first year. Every assessment you design should map back to one of them. If a &quot;requirement&quot; doesn&apos;t connect to an outcome, cut it — it&apos;s almost certainly filtering on background, not ability.</p>
-        <h2 className="reveal in">2. Replace screening filters with signals</h2>
-        <p className="reveal in">Keyword filters and degree requirements are blunt instruments. They reject qualified people for the wrong reasons and let unqualified people through for the right ones. Replace them with structured signals:</p>
-        <ul className="reveal in">
-          <li><strong>Work-sample tests</strong> that mirror real tasks from the role.</li>
-          <li><strong>Cognitive and role-specific assessments</strong> validated against performance.</li>
-          <li><strong>Structured, scored interviews</strong> using the same rubric for every candidate.</li>
-        </ul>
-        <h2 className="reveal in">3. Make the candidate experience worth it</h2>
-        <p className="reveal in">A skills-first process asks more of candidates, so it has to give more back. Keep assessments under 30 minutes, explain why each step matters, and give every applicant a result. Completion rates — and your employer brand — depend on it.</p>
-        <div className="callout reveal in"><p><strong>Rule of thumb:</strong> if your assessment takes longer than the first interview would have, it&apos;s too long. Aim for high signal per minute of candidate time.</p></div>
-        <h2 className="reveal in">4. Score consistently, decide together</h2>
-        <p className="reveal in">The whole point of structure is comparability. Use the same rubric and the same scale for every candidate, collect scores independently before discussion, and let the evidence — not the loudest voice in the room — drive the decision.</p>
-        <p className="reveal in">Teams that adopt this approach consistently report faster hiring, stronger performance from new hires, and noticeably more diverse pipelines. Not because they lowered the bar — but because they finally measured the right thing.</p>
-        <div className="share reveal in"><span style={{ fontSize: '13.5px', fontWeight: 700, color: '#6A5A5D', marginRight: '6px' }}>Share</span><a className="sbtn" href="#">in</a><a className="sbtn" href="#">X</a><a className="sbtn" href="#">f</a><a className="sbtn" href="#">↗</a></div>
-      </div>
-      <section className="related">
-        <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 36px' }}><p className="eyebrow reveal">Keep reading<b>.</b></p><h2 className="reveal" style={{ fontSize: '32px', fontWeight: 800, letterSpacing: '-1px', margin: 0 }}>Related articles</h2></div>
-        <div className="relgrid">
-          <Link className="relcard reveal" href="/blog-detail">
-            <div className="relimg" style={{ overflow: 'hidden' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://picsum.photos/seed/tl-blog-1/560/280" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
-            </div>
-            <div className="relbody"><h3 className="reltitle">How to write a job description that attracts skill</h3><p className="relmeta">Aditya Rao · 7 min read</p></div>
-          </Link>
-          <Link className="relcard reveal" style={{ transitionDelay: '.06s' }} href="/blog-detail">
-            <div className="relimg" style={{ overflow: 'hidden' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://picsum.photos/seed/tl-blog-2/560/280" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
-            </div>
-            <div className="relbody"><h3 className="reltitle">Designing assessments candidates actually finish</h3><p className="relmeta">Elena Costa · 6 min read</p></div>
-          </Link>
-          <Link className="relcard reveal" style={{ transitionDelay: '.12s' }} href="/blog-detail">
-            <div className="relimg" style={{ overflow: 'hidden' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://picsum.photos/seed/tl-blog-3/560/280" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
-            </div>
-            <div className="relbody"><h3 className="reltitle">Will AI make hiring fairer — or worse?</h3><p className="relmeta">Daniel Mwangi · 9 min read</p></div>
-          </Link>
+
+      <section className="faqsec reveal">
+        <div className="author reveal">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="authorav" src={d.author.avatar} alt={d.author.name} loading="lazy" />
+          <div>
+            <p className="authorname">{d.author.name}</p>
+            <p className="authorrole">{d.author.role}</p>
+            <p className="authorbio">{d.author.bio}</p>
+            <a className="authorli" href={d.author.li} target="_blank" rel="noopener">
+              LinkedIn profile →
+            </a>
+          </div>
         </div>
       </section>
+
+      <section className="related">
+        <div className="relhead">
+          <h2 className="reveal">Related resources</h2>
+          <Link className="relall reveal" href="/blog">
+            View all →
+          </Link>
+        </div>
+        <div className="relgrid reveal">
+          {d.related.map((r, i) => (
+            <Link className="relcard" href="/blog-detail" key={i}>
+              <div className="relimg">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={r.img} alt={r.title} loading="lazy" />
+              </div>
+              <div className="relbody">
+                <p className="relcat">{r.cat}</p>
+                <h3 className="reltitle">{r.title}</h3>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <CtaBand />
       <SiteFooter />
     </>

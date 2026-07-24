@@ -13,6 +13,7 @@ html{scroll-behavior:smooth;}
 body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
 a{text-decoration:none;color:inherit;}
 .gl-wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+[data-reveal]{opacity:0;transform:translateY(24px);}
 .gl-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#F23F44;margin:0 0 16px;}
 .gl-eyebrow .dot{color:#F23F44;}
 /* hero */
@@ -65,35 +66,89 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 type Term = { term: string; short: string };
 
 const TERMS: Term[] = [
-  { term: 'Adverse Impact', short: 'When a hiring practice disproportionately screens out a protected group, even without intent to discriminate.' },
+  { term: 'Absenteeism', short: 'The habitual, unplanned absence of an employee from work, often tracked as a workforce health metric.' },
   { term: 'Applicant Tracking System (ATS)', short: 'Software that manages job applications and moves candidates through each hiring stage.' },
-  { term: 'Aptitude Test', short: 'An assessment that measures a candidate’s natural ability to learn or perform specific tasks.' },
-  { term: 'Assessment', short: 'A structured method of measuring a candidate’s skills, knowledge or traits against the job.' },
-  { term: 'Behavioral Interview', short: 'An interview technique that asks about past situations to predict future on-the-job behavior.' },
-  { term: 'Benchmarking', short: 'Comparing candidate scores against a role-specific or industry standard to judge fit.' },
-  { term: 'Blind Hiring', short: 'Removing identifying details from applications to reduce unconscious bias in screening.' },
-  { term: 'Candidate Experience', short: 'The overall impression a candidate forms of your company across the hiring process.' },
-  { term: 'Cognitive Ability Test', short: 'A test of reasoning, problem-solving and learning speed — a strong predictor of job performance.' },
-  { term: 'Competency', short: 'A measurable skill, knowledge area or behavior required to perform a role well.' },
-  { term: 'Cost Per Hire', short: 'The total recruiting spend divided by the number of hires made in a period.' },
-  { term: 'Culture Add', short: 'Hiring for the perspectives and strengths a candidate brings that your team currently lacks.' },
+  { term: 'At-Will Employment', short: 'An arrangement where either the employer or employee can end the relationship at any time, for any lawful reason.' },
+  { term: 'Attrition Rate', short: 'The rate at which employees leave an organization and are not replaced over a given period.' },
+  { term: 'Background Check', short: 'Verification of a candidate’s history — employment, education, criminal or credit records — before hiring.' },
+  { term: 'Benefits Administration', short: 'The process of creating, managing and updating the benefits an organization offers its employees.' },
+  { term: 'Bereavement Leave', short: 'Paid or unpaid time off granted to an employee following the death of a family member or loved one.' },
+  { term: 'Bradford Factor', short: 'A formula that weights frequent short absences more heavily than occasional long ones.' },
+  { term: 'Compa-Ratio', short: 'An employee’s pay expressed as a percentage of the midpoint of their salary range.' },
+  { term: 'Contingent Worker', short: 'A non-permanent worker — contractor, freelancer or temp — hired for a defined scope or period.' },
+  { term: 'Core Competencies', short: 'The defining skills and capabilities that give an organization or role its competitive edge.' },
+  { term: 'Déformation Professionnelle', short: 'The way a job shapes a person’s behavior and thinking, with both positive and negative effects.' },
+  { term: 'Deferred Compensation', short: 'Earnings set aside to be paid to an employee at a later date, such as retirement.' },
   { term: 'Diversity, Equity & Inclusion (DEI)', short: 'Practices that build a fair, representative and inclusive workforce.' },
-  { term: 'EEOC Compliance', short: 'Meeting U.S. Equal Employment Opportunity Commission rules against discriminatory hiring.' },
-  { term: 'Employer Branding', short: 'How a company presents itself as a place to work to attract and retain talent.' },
-  { term: 'Job Analysis', short: 'A systematic study of a role’s tasks and requirements to define what to assess.' },
-  { term: 'Job Simulation', short: 'A realistic task that mimics actual work so you can see how a candidate performs.' },
+  { term: 'Employee Engagement', short: 'The degree of emotional commitment employees have to their organization and its goals.' },
+  { term: 'Employer of Record (EOR)', short: 'A third-party company that legally employs workers on your behalf where you have no local entity.' },
+  { term: 'Exit Interview', short: 'A conversation with a departing employee to understand why they are leaving and improve retention.' },
+  { term: 'Full-Time Equivalent (FTE)', short: 'A unit that expresses a workload as the equivalent number of full-time employees.' },
+  { term: 'Garnishment', short: 'A legal process where a portion of an employee’s wages is withheld to pay a debt.' },
+  { term: 'Gig Economy', short: 'A labor market built on short-term, flexible and freelance work rather than permanent jobs.' },
+  { term: 'Grievance', short: 'A formal complaint raised by an employee about a workplace issue or breach of policy.' },
+  { term: 'Gross Pay', short: 'An employee’s total earnings before taxes and deductions are taken out.' },
+  { term: 'Headcount', short: 'The total number of employees on an organization’s payroll at a given time.' },
+  { term: 'Host-Country', short: 'The country where an organization operates, whose HR laws differ from the home country for assignments.' },
+  { term: 'Host-Country Nationals (HCNs)', short: 'Citizens or residents of the country where an organization operates, hired as local employees.' },
+  { term: 'Hosted Delivery Model', short: 'An internet-based HR software model offering scalability, cost savings and automatic updates.' },
+  { term: 'Human Capital Management (HCM)', short: 'The set of practices for recruiting, managing and developing an organization’s workforce.' },
+  { term: 'Independent Contractor', short: 'A self-employed worker engaged for a specific task, not treated as an employee for tax or benefits.' },
+  { term: 'Job Analysis', short: 'A systematic study of a role’s tasks and requirements to define what to assess and expect.' },
+  { term: 'Job Description', short: 'A written summary of a role’s duties, responsibilities, requirements and reporting lines.' },
+  { term: 'Job Sharing', short: 'A flexible arrangement where two part-time employees split one full-time role’s duties.' },
+  { term: 'Johari Window', short: 'A model for building self-awareness across open, hidden, blind and unknown areas of the self.' },
+  { term: 'Key Performance Indicator (KPI)', short: 'A measurable value that shows how effectively a person or team is meeting an objective.' },
+  { term: 'Knowledge Management', short: 'Capturing, organizing and sharing an organization’s collective knowledge and expertise.' },
+  { term: 'Learning Management System (LMS)', short: 'Software for delivering, tracking and managing employee training and courses.' },
+  { term: 'Leave of Absence', short: 'An approved period away from work, paid or unpaid, while remaining employed.' },
+  { term: 'Market Pricing', short: 'An HR technique to determine job value and set fair, data-driven compensation.' },
+  { term: 'Merit Increase', short: 'A pay raise awarded on the basis of an employee’s performance rather than tenure or cost of living.' },
+  { term: 'Net Pay', short: 'The amount an employee actually takes home after all taxes and deductions.' },
+  { term: 'Non-Compete Agreement', short: 'A contract restricting an employee from working for competitors for a set time after leaving.' },
+  { term: 'Offboarding', short: 'The structured process of separating an employee from an organization when they leave.' },
   { term: 'Onboarding', short: 'The process of integrating and equipping a new hire to be productive quickly.' },
-  { term: 'Predictive Validity', short: 'How well an assessment score actually forecasts future job performance.' },
-  { term: 'Proctoring', short: 'Monitoring an online assessment to keep results honest and defensible.' },
+  { term: 'Organizational Development', short: 'A planned effort to improve an organization’s effectiveness, culture and capacity to change.' },
+  { term: 'Performance Appraisal', short: 'A structured review of an employee’s job performance against expectations and goals.' },
+  { term: 'Position', short: 'A specific job or role within an organization, with its own duties and requirements.' },
+  { term: 'Probation Period', short: 'An initial trial phase of employment used to assess a new hire’s suitability.' },
   { term: 'Quality of Hire', short: 'A measure of the value a new hire adds, from performance to retention.' },
-  { term: 'Screening', short: 'The early filtering of applicants to identify who is worth a closer look.' },
-  { term: 'Situational Judgment Test', short: 'A test presenting realistic scenarios to assess decision-making and judgment.' },
-  { term: 'Skills-Based Hiring', short: 'Hiring on proven ability rather than degrees, titles or years of experience.' },
-  { term: 'Structured Interview', short: 'A consistent interview using the same questions and scoring for every candidate.' },
+  { term: 'Quiet Quitting', short: 'Doing only the minimum a job requires, without going above and beyond, due to disengagement.' },
+  { term: 'Recruitment', short: 'The end-to-end process of attracting, screening and selecting people for a role.' },
+  { term: 'Retention Rate', short: 'The percentage of employees who remain with an organization over a given period.' },
+  { term: 'Severance Pay', short: 'Compensation provided to an employee upon termination, often based on tenure.' },
+  { term: 'Succession Planning', short: 'Identifying and developing internal talent to fill key roles as they become vacant.' },
+  { term: 'Talent Management', short: 'The full strategy for attracting, developing, motivating and retaining high-performing employees.' },
   { term: 'Time to Hire', short: 'The number of days from a candidate applying to accepting an offer.' },
-  { term: 'Unconscious Bias', short: 'Automatic assumptions that influence hiring decisions without the recruiter realizing.' },
-  { term: 'Validity', short: 'The degree to which an assessment measures what it claims to measure.' },
-  { term: 'Work Sample Test', short: 'A hands-on task drawn from real job duties to evaluate practical skill.' },
+  { term: 'Traditional Authority', short: 'Governance based on customary laws, traditions and practices passed down through generations.' },
+  { term: 'Training', short: 'The process of acquiring knowledge, skills and abilities to perform a job more effectively.' },
+  { term: 'Training and Development', short: 'Ongoing efforts to build employees’ skills, knowledge and capabilities over time.' },
+  { term: 'Training Needs Analysis', short: 'Identifying the gap between current and desired performance to target training investment.' },
+  { term: 'Turnover Rate', short: 'The rate at which employees leave and are replaced within an organization.' },
+  { term: 'Unconscious Bias', short: 'Automatic assumptions that influence decisions without the person realizing it.' },
+  { term: 'Upskilling', short: 'Teaching existing employees new skills to keep pace with evolving role requirements.' },
+  { term: 'Vesting', short: 'The process by which an employee earns full rights to employer-provided benefits over time.' },
+  { term: 'Voluntary Turnover', short: 'Departures initiated by the employee, such as resignations, rather than the employer.' },
+  { term: 'Workforce Management Software', short: 'A tool for scheduling, staffing, time tracking and optimizing an organization’s workforce.' },
+  { term: 'Workforce Planning', short: 'Aligning an organization’s workforce with its future business needs and goals.' },
+  { term: 'Workforce Readiness', short: 'The skills, knowledge and attributes required for success in the workplace.' },
+  { term: 'Working Capital Management', short: 'Managing short-term assets and liabilities to balance liquidity with growth.' },
+  { term: 'Work-Life Balance', short: 'The equilibrium between an employee’s professional responsibilities and personal life.' },
+  { term: 'Workplace Bullying', short: 'Repeated behavior that undermines employees; addressed through policy and prevention.' },
+  { term: 'Workplace Democracy', short: 'A management style giving employees a say in decisions and how the company is run.' },
+  { term: 'Workplace Deviance', short: 'Behaviors that break organizational norms, from theft to harassment and unethical practices.' },
+  { term: 'Workplace Flexibility', short: 'Giving employees control over when, where and how they work for better balance.' },
+  { term: 'Workplace Gossip', short: 'The sharing of personal, unverified and often negative information about colleagues.' },
+  { term: 'Workplace Health Surveillance', short: 'Systematic monitoring of the health of workers exposed to specific job-related risks.' },
+  { term: 'Workplace Phobia', short: 'An anxiety disorder marked by intense fear and avoidance of work-related situations.' },
+  { term: 'Workplace Relationships', short: 'The connections and interactions between individuals in a professional setting.' },
+  { term: 'Workweek', short: 'Seven consecutive 24-hour periods set by an employer as the basis for pay and overtime.' },
+  { term: 'WorldatWork', short: 'A global non-profit for education, certification and research in compensation and total rewards.' },
+  { term: 'Wrongful Dismissal / Termination', short: 'Ending employment in a way that breaches the employment contract or the law.' },
+  { term: 'XML and HR-XML', short: 'A standardized markup format for structuring data; HR-XML applies it to human resources information.' },
+  { term: 'Yellow Dog Contract', short: 'An agreement barring an employee from joining a labor union while employed by the company.' },
+  { term: 'Zero-Based Budgeting', short: 'A budgeting method where every expense must be justified for each new period from a zero base.' },
+  { term: 'Zero-Hour Contract', short: 'An agreement with no guaranteed minimum hours; the worker is paid only for time worked.' },
 ];
 
 const TOTAL = 500;
@@ -142,7 +197,11 @@ export default function HrGlossaryPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="The HR Glossary — 500+ hiring & assessment terms, defined in plain English" announcementCta="Browse the A–Z" />
+      <SiteHeader
+        announcement="The HR Glossary — 500+ hiring & assessment terms, defined in plain English"
+        announcementCta="Browse the A–Z"
+        homeHref="/"
+      />
 
       <section className="gl-hero">
         <div className="gl-wrap" style={{ maxWidth: '820px' }}>
@@ -151,19 +210,19 @@ export default function HrGlossaryPage() {
             <span>/</span>
             <span>HR Glossary</span>
           </div>
-          <p className="gl-eyebrow">
+          <p className="gl-eyebrow" data-reveal="">
             The HR Glossary<span className="dot">.</span>
           </p>
-          <h1 className="gl-h1">
+          <h1 className="gl-h1" data-reveal="" data-delay="60">
             Every hiring term,
             <br />
             <em>defined in plain English</em>
           </h1>
-          <p className="gl-sub">
+          <p className="gl-sub" data-reveal="" data-delay="120">
             From adverse impact to zero-based hiring — an A–Z reference for recruiters and HR leaders,
             written to be actually useful, not academic.
           </p>
-          <div className="gl-search">
+          <div className="gl-search" data-reveal="" data-delay="170">
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="11" cy="11" r="7"></circle>
               <path d="M21 21l-4.3-4.3"></path>
@@ -175,7 +234,7 @@ export default function HrGlossaryPage() {
               onChange={(e) => setQuery(e.target.value)}
             />
           </div>
-          <p className="gl-count">
+          <p className="gl-count" data-reveal="" data-delay="210">
             Showing <b>{resultCount}</b> of {totalLabel} terms
           </p>
         </div>
@@ -233,7 +292,7 @@ export default function HrGlossaryPage() {
               </div>
             </div>
           ))}
-          <div className="gl-strip">
+          <div className="gl-strip" data-reveal="">
             <div>
               <h3>Can&apos;t find a term?</h3>
               <p>

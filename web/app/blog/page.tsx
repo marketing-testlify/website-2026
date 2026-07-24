@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
@@ -11,189 +11,274 @@ const CSS = `
 html{scroll-behavior:smooth;}
 body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
 a{text-decoration:none;color:inherit;}
+a:hover{color:#F23F44;}
 .wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
-.sec{padding:80px 28px;}
-.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8A7A7D;margin:0 0 18px;}
-.eyebrow b{color:#F23F44;font-weight:600;}
-.h1{font-size:56px;line-height:1.05;font-weight:800;letter-spacing:-2px;margin:0;color:#1A1014;}
-.h2{font-size:38px;line-height:1.1;font-weight:800;letter-spacing:-1.2px;margin:0;color:#1A1014;}
-.lead{font-size:19px;line-height:1.6;color:#5A4B4E;font-weight:400;}
-.body{font-size:16px;line-height:1.66;color:#5A4B4E;}
-.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;padding:14px 26px;border-radius:13px;transition:transform .25s ease, box-shadow .25s ease;cursor:pointer;border:none;}
+.sec{padding:72px 28px;}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 16px;}
+.eyebrow b{color:#F23F44;font-weight:700;}
+.h1{font-size:54px;line-height:1.05;font-weight:800;letter-spacing:-1.6px;margin:0;color:#1A1014;}
+.h1 .acc{color:#F23F44;}
+.lead{font-size:18px;line-height:1.62;color:#5A4B4E;font-weight:400;}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:13px 26px;border-radius:13px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;cursor:pointer;border:none;font-family:inherit;}
 .btn-primary{background:#F23F44;color:#fff;box-shadow:0 12px 26px rgba(242,63,68,.30);}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(242,63,68,.40);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(242,63,68,.40);color:#fff;}
+.herobtns{display:flex;gap:34px;align-items:center;justify-content:center;flex-wrap:wrap;}
+.tlink{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:15px;color:#F23F44;transition:gap .2s ease;}
+.tlink:hover{gap:11px;color:#F23F44;}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
 .reveal.in{opacity:1;transform:none;}
-.bhero{padding:60px 28px 30px;background:radial-gradient(1100px 520px at 50% -10%,#FFF0EE 0%,rgba(255,240,238,0) 62%),#fff;text-align:center;}
-.tagbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px;}
-.tag{border:1px solid #EFE2E3;background:#fff;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#6A5A5D;cursor:pointer;transition:all .2s ease;font-family:inherit;}
-.tag.on{background:#F23F44;color:#fff;border-color:#F23F44;}
-.feat{display:grid;grid-template-columns:1.1fr 1fr;gap:0;border:1px solid #EFE2E3;border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 24px 60px rgba(110,11,14,.08);}
-.featimg{position:relative;min-height:340px;display:flex;align-items:flex-end;padding:28px;color:#fff;overflow:hidden;}
-.pimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
-.featimg::after,.postimg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,16,20,0) 40%,rgba(26,16,20,.55));z-index:0;}
-.featimg .postcat,.postimg .postcat{position:relative;z-index:1;}
-.featbody{padding:40px;display:flex;flex-direction:column;}
-.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-.post{display:flex;flex-direction:column;background:#fff;border:1px solid #EFE2E3;border-radius:20px;overflow:hidden;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;}
-.post:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(110,11,14,.10);border-color:#F4D2D3;}
-.postimg{position:relative;height:180px;display:flex;align-items:flex-end;padding:18px;overflow:hidden;}
-.postcat{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.28);padding:5px 11px;border-radius:999px;backdrop-filter:blur(4px);}
-.postbody{padding:22px;display:flex;flex-direction:column;flex:1;}
-.posttitle{font-size:18px;font-weight:700;letter-spacing:-.3px;line-height:1.3;margin:0 0 10px;}
+@property --bang{syntax:"<angle>";initial-value:0deg;inherits:false;}
+@keyframes runborder{to{--bang:360deg;}}
+.bhero{padding:58px 28px 34px;background:radial-gradient(1100px 520px at 50% -10%,#FFF0EE 0%,rgba(255,240,238,0) 62%),#fff;text-align:center;}
+.ctrls{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:36px;}
+.bsearch{flex:1;min-width:260px;display:flex;align-items:center;gap:11px;background:#fff;border:1px solid #EFE2E3;border-radius:12px;padding:13px 16px;}
+.bsearch svg{flex:none;color:#A9999C;}
+.bsearch input{border:0;outline:0;font-family:inherit;font-size:14.5px;color:#1A1014;width:100%;background:transparent;}
+.bright{display:flex;gap:12px;align-items:center;}
+.bselect{position:relative;display:flex;align-items:center;}
+.bselect .bselic{position:absolute;left:15px;color:#8A7A7D;pointer-events:none;}
+.bselect select{appearance:none;-webkit-appearance:none;font-family:inherit;font-size:14.5px;font-weight:600;color:#1A1014;background:#fff;border:1px solid #EFE2E3;border-radius:12px;padding:13px 42px 13px 42px;cursor:pointer;outline:0;max-width:290px;transition:border-color .2s, box-shadow .2s;}
+.bselect select:hover{border-color:#FBD0D1;}
+.bselect select:focus{border-color:#F23F44;box-shadow:0 0 0 3px rgba(242,63,68,.13);}
+.bselect .bselcar{position:absolute;right:16px;color:#8A7A7D;pointer-events:none;transition:transform .2s;}
+.clearf{font-family:inherit;font-size:13.5px;font-weight:600;color:#F23F44;background:none;border:0;cursor:pointer;padding:8px;}
+.clearf:hover{text-decoration:underline;}
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.post{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #EFE2E3;border-radius:20px;overflow:hidden;transition:box-shadow .3s, border-color .3s;}
+.post::before{content:"";position:absolute;inset:0;border-radius:20px;padding:1.8px;background:conic-gradient(from var(--bang),transparent 0deg,#FF7A52 35deg,#F23F44 80deg,transparent 150deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;pointer-events:none;z-index:3;}
+.post:hover{box-shadow:0 22px 46px rgba(110,11,14,.10);}
+.post:hover::before{opacity:1;animation:runborder 2.4s linear infinite;}
+.postimg{position:relative;aspect-ratio:16/9;overflow:hidden;background:#FBF3EE;}
+.postimg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.2,.7,.3,1);}
+.post:hover .postimg img{transform:scale(1.06);}
+.postbody{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;}
+.postcat{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#F23F44;margin:0 0 11px;}
+.posttitle{font-size:17.5px;font-weight:700;letter-spacing:-.3px;line-height:1.32;margin:0 0 12px;color:#1A1014;}
 .postexc{font-size:14px;color:#6A5A5D;line-height:1.55;margin:0 0 18px;}
-.postmeta{font-size:12.5px;color:#9A878A;margin-top:auto;display:flex;gap:8px;align-items:center;}
-.loadmore{display:flex;justify-content:center;margin-top:44px;}
-.loadbtn{font-family:inherit;font-size:15px;font-weight:600;color:#F23F44;background:#fff;border:1.5px solid #F4D2D3;border-radius:999px;padding:14px 30px;cursor:pointer;transition:background .2s ease,transform .2s ease,box-shadow .2s ease;}
-.loadbtn:hover{background:#FFF0EF;transform:translateY(-2px);box-shadow:0 12px 26px rgba(242,63,68,.16);}
+.postmeta{font-size:12.5px;color:#9A878A;margin-top:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.nores{text-align:center;padding:60px 0;color:#8A7A7D;font-size:16px;}
+.pager{display:flex;gap:8px;justify-content:center;align-items:center;margin-top:48px;flex-wrap:wrap;}
+.pg{min-width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:11px;border:1px solid #EFE2E3;background:#fff;font-size:14px;font-weight:600;color:#6A5A5D;cursor:pointer;font-family:inherit;}
+.pg.on{background:#F23F44;color:#fff;border-color:#F23F44;}
+.pg:hover:not(.on){border-color:#FBD0D1;color:#1A1014;}
+.pgdots{color:#A9999C;padding:0 4px;}
 @media(max-width:920px){
-  .h1{font-size:40px;letter-spacing:-1.4px;}
-  .h2{font-size:30px;}
-  .sec{padding:60px 22px;}
-  .feat{grid-template-columns:1fr;}
-  .featimg{min-height:200px;}
-  .featbody{padding:28px;}
-  .bgrid{grid-template-columns:1fr;}
+  .h1{font-size:38px;letter-spacing:-1px;}
+  .sec{padding:56px 22px;}
+  .bgrid{grid-template-columns:1fr 1fr;}
 }
-
-h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
+@media(max-width:620px){ .bgrid{grid-template-columns:1fr;} .bright{width:100%;justify-content:space-between;} .bselect select{max-width:none;} }
+h1,h2,h3,h4,.h1,.h2,.h3,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote,.postexc{text-wrap:pretty;}/*om-balance-rule*/
 `;
+
+const U = 'https://testlify.com/wp-content/uploads/';
 
 type Post = {
   title: string;
-  cat: string;
-  group: string;
-  excerpt: string;
-  author: string;
+  cats: string[];
   read: string;
+  date: string;
+  excerpt: string;
   img: string;
 };
 
-const DATA: Post[] = [
-  { title: 'How to write a job description that attracts skill', cat: 'Hiring strategy', group: 'hiring', excerpt: 'Stop listing years of experience. Start describing the work — and watch your candidate quality jump.', author: 'Aditya Rao', read: '7 min read', img: 'https://picsum.photos/seed/tl-blog-1/800/520' },
-  { title: 'Designing assessments candidates actually finish', cat: 'Assessments', group: 'assess', excerpt: 'Completion rates make or break your funnel. Six research-backed ways to keep candidates engaged.', author: 'Elena Costa', read: '6 min read', img: 'https://picsum.photos/seed/tl-blog-2/800/520' },
-  { title: 'Will AI make hiring fairer — or worse?', cat: 'AI & hiring', group: 'ai', excerpt: 'A clear-eyed look at where AI helps remove bias, where it can amplify it, and how to stay in control.', author: 'Daniel Mwangi', read: '9 min read', img: 'https://picsum.photos/seed/tl-blog-3/800/520' },
-  { title: 'The real cost of a bad hire (and how to avoid it)', cat: 'Hiring strategy', group: 'hiring', excerpt: 'A bad hire can cost 30% of salary or more. Skills-first screening is the cheapest insurance you can buy.', author: 'Sara Neeson', read: '5 min read', img: 'https://picsum.photos/seed/tl-blog-4/800/520' },
-  { title: 'Structured interviews: the playbook', cat: 'Assessments', group: 'assess', excerpt: 'Unstructured interviews predict performance barely better than chance. Here is how to fix yours.', author: 'Sneha Kulkarni', read: '8 min read', img: 'https://picsum.photos/seed/tl-blog-5/800/520' },
-  { title: 'Widen your funnel without lowering the bar', cat: 'Diversity', group: 'dei', excerpt: 'Diversity and quality are not a trade-off. Skills-based hiring is how you get both at once.', author: 'Maria Alvarez', read: '6 min read', img: 'https://picsum.photos/seed/tl-blog-6/800/520' },
-  { title: 'Scorecards that actually predict performance', cat: 'Assessments', group: 'assess', excerpt: 'Turn fuzzy gut-feel into a structured rubric every interviewer can apply consistently.', author: 'Priya Nair', read: '7 min read', img: 'https://picsum.photos/seed/tl-blog-7/800/520' },
-  { title: 'Reducing time-to-hire without cutting corners', cat: 'Hiring strategy', group: 'hiring', excerpt: 'Where the days really go in your funnel — and the three levers that move them most.', author: 'Marcus Bell', read: '6 min read', img: 'https://picsum.photos/seed/tl-blog-8/800/520' },
-  { title: 'Prompting AI interviewers responsibly', cat: 'AI & hiring', group: 'ai', excerpt: 'How to design AI-led screens that stay fair, explainable and candidate-friendly.', author: 'Daniel Mwangi', read: '8 min read', img: 'https://picsum.photos/seed/tl-blog-9/800/520' },
-  { title: 'Inclusive job ads: a practical checklist', cat: 'Diversity', group: 'dei', excerpt: 'Small wording changes that measurably widen who applies — with examples.', author: 'Sofia Ramirez', read: '5 min read', img: 'https://picsum.photos/seed/tl-blog-10/800/520' },
-  { title: 'Benchmarking candidates the right way', cat: 'Assessments', group: 'assess', excerpt: 'Raw scores mislead. Here is how to compare candidates against the role, not each other.', author: 'Elena Costa', read: '7 min read', img: 'https://picsum.photos/seed/tl-blog-11/800/520' },
+const POSTS: Post[] = [
+  { title: 'Best practices for hiring data analysts using assessments?', cats: ['Candidate assessment', 'AI in recruitment'], read: '9 min read', date: '7 July 2026', excerpt: 'Discover a proven assessment-driven hiring process that helps recruiters identify, evaluate, and hire top-performing data analysts with confidence.', img: U + '2026/06/April-blog-featured-images-for-blog-2026.png' },
+  { title: 'What tools support voice responses for language proficiency testing?', cats: ['Candidate assessment'], read: '4 min read', date: '7 July 2026', excerpt: 'Compare the top language proficiency testing platforms that use voice responses to measure speaking ability, fluency, and job-ready communication skills.', img: U + '2026/06/April-blog-featured-images-for-blog-2026-12.png' },
+  { title: 'How do ATS-integrated assessments streamline hiring workflows?', cats: ['Candidate assessment'], read: '6 min read', date: '7 July 2026', excerpt: 'Discover how ATS-integrated assessments reduce hiring delays and help recruiters hire smarter.', img: U + '2026/05/April-blog-featured-images-for-blog-2026-12.png' },
+  { title: 'How to assess financial modeling and accounting skills pre-hire?', cats: ['Candidate assessment'], read: '11 min read', date: '7 July 2026', excerpt: 'Discover the best methods for evaluating accounting and finance skills of candidates pre-hire.', img: U + '2026/05/April-blog-featured-images-for-blog-2026-11.png' },
+  { title: 'How do assessment libraries cover niche skills?', cats: ['Candidate assessment'], read: '10 min read', date: '31 May 2026', excerpt: 'Learn how to use skill assessments to evaluate niche skills of candidates and uncover top talent.', img: U + '2026/05/April-blog-featured-images-for-blog-2026-10.png' },
+  { title: 'Which technical assessment platforms support in-browser coding with live proctoring?', cats: ['Candidate Screening', 'Talent assessment'], read: '11 min read', date: '7 July 2026', excerpt: 'Compare top technical assessment platforms with browser-based coding environments and live proctoring features.', img: U + '2026/05/April-blog-featured-images-for-blog-2026-9.png' },
+  { title: 'Language fairness in assessments: The complete guide for global hiring teams', cats: ['Candidate Screening'], read: '17 min read', date: '24 June 2026', excerpt: 'A complete guide for global hiring teams to ensure language fairness in assessments, improving candidate experience and diversity.', img: U + '2026/05/April-blog-featured-images-for-blog-2026-8.png' },
+  { title: 'What are key KPIs for measuring assessment impact on hiring?', cats: ['HR & recruitment'], read: '10 min read', date: '22 May 2026', excerpt: 'Measure hiring assessment impact with key KPIs like quality of hire, time-to-hire, candidate success rates, and retention.', img: U + '2026/05/What-are-key-KPIs-for-measuring-assessment-impact-on-hiring.png' },
+  { title: 'How to run role simulations through video interview prompts?', cats: ['AI interviews', 'AI in recruitment'], read: '8 min read', date: '24 June 2026', excerpt: 'Learn how to run role simulations through video interview prompts to assess real-world skills, communication, and job readiness.', img: U + '2026/05/How-to-run-role-simulations.png' },
+  { title: 'Best Pre-Hire Assessment Platforms for Enterprises: An Honest Buyer’s Guide (2026)', cats: ['Candidate Screening'], read: '20 min read', date: '29 May 2026', excerpt: 'Explore the best enterprise pre-hire assessment platforms that help recruiters make confident hiring decisions at scale.', img: U + '2026/05/April-blog-featured-images-for-blog-2026-7.png' },
+  { title: 'How do platforms handle GDPR compliance for candidate data?', cats: ['Hiring Risks & Safeguards'], read: '8 min read', date: '14 July 2026', excerpt: 'Learn how recruitment platforms handle GDPR compliance through secure data processing, consent management, and compliant hiring practices.', img: U + '2026/05/April-blog-featured-images-for-blog-2026-6.png' },
+  { title: 'What’s the best way to combine psychometric tests with skills tests?', cats: ['Candidate assessment'], read: '10 min read', date: '22 May 2026', excerpt: 'Discover how to combine psychometric tests with skills tests to evaluate personality, cognitive ability, and job readiness of candidates.', img: U + '2026/05/April-blog-featured-images-for-blog-2026-5.png' },
+  { title: 'How to assess ethical judgment and decision-making in hiring?', cats: ['HR & recruitment'], read: '7 min read', date: '15 May 2026', excerpt: 'Explore how to evaluate ethical judgment and decision-making of candidates in 2026.', img: U + '2026/05/April-blog-featured-images-for-blog-2026-4.png' },
+  { title: 'What tools offer AI-generated questions for custom assessments?', cats: ['AI in recruitment'], read: '9 min read', date: '24 June 2026', excerpt: 'Explore the leading AI assessment platforms that support the creation of AI-generated questions.', img: U + '2026/05/April-blog-featured-images-for-blog-2026-3.png' },
+  { title: 'How to create fair and objective hiring assessments for diverse candidates?', cats: ['Global Recruitment'], read: '14 min read', date: '13 July 2026', excerpt: 'Discover strategies for building objective hiring assessments that measure real skills while supporting diverse candidate pools.', img: U + '2026/05/April-blog-featured-images-for-blog-2026-2.png' },
+  { title: 'How do coding challenge platforms compare for developer hiring?', cats: ['Technical assessments', 'Tech recruitment'], read: '5 min read', date: '18 June 2026', excerpt: 'Compare the top coding challenge platforms and identify which one is best suited for developer hiring.', img: U + '2026/05/April-blog-featured-images-for-blog-2026-1.png' },
+  { title: 'How does Testlify’s AI scoring handle open-ended answers and code quality?', cats: ['AI in recruitment'], read: '7 min read', date: '18 June 2026', excerpt: 'Explore how Testlify turns candidate responses and coding performance into clear, decision-ready hiring insights with AI scoring.', img: U + '2026/05/April-blog-featured-images-for-blog-2026.png' },
+  { title: 'How to set up a proctored exam: A simple guide for secure online assessments', cats: ['Proctoring'], read: '10 min read', date: '24 June 2026', excerpt: 'Set up a proctored exam with Testlify using the right questions, proctoring controls, candidate rules, and review process.', img: U + '2026/05/How-to-set-up-a-proctored-exam.png' },
+  { title: 'Skills gap analysis tools: What HR teams should look for', cats: ['HR & recruitment'], read: '10 min read', date: '4 May 2026', excerpt: 'A practical guide to skills gap analysis tools, key features, tool types, and how HR teams can choose the right fit.', img: U + '2026/05/Skills-gap-analysis-tools.png' },
+  { title: 'Benefits of conducting a skills gap analysis', cats: ['HR & recruitment'], read: '9 min read', date: '4 May 2026', excerpt: 'Learn the benefits of skill gap analysis for hiring, training, workforce planning, and employee development.', img: U + '2026/05/Benefits-of-skills-gap-analysis.png' },
+  { title: '10 top social media recruiting tools', cats: ['HR & recruitment'], read: '11 min read', date: '24 June 2026', excerpt: 'Explore top social media recruiting tools, features, and strategies to attract passive talent, boost employer brand, and hire faster.', img: U + '2026/05/social-media-recruiting-tools.png' },
+  { title: 'Social media recruiting: Benefits, steps and best practices', cats: ['HR & recruitment'], read: '13 min read', date: '24 June 2026', excerpt: 'Master social media recruiting with this guide — platforms, strategies, tools, and tips to attract talent, build your brand, and hire faster.', img: U + '2026/05/Social-media-recruiting.png' },
+  { title: 'Top talent acquisition tools that integrate with existing HR systems', cats: ['HR tools'], read: '12 min read', date: '4 July 2026', excerpt: 'Discover top talent acquisition tools built for seamless integration. Compare features, benefits, and choose the right solution to streamline hiring.', img: U + '2026/05/Top-talent-acquisition-tools-that-integrate-with-existing-HR-systems.png' },
+  { title: 'What are the top-rated recruitment automation tools?', cats: ['HR tools'], read: '12 min read', date: '13 July 2026', excerpt: 'Explore top recruitment automation tools to streamline hiring, automate screening, and improve candidate experience. Find the best fit for your team.', img: U + '2026/05/top-rated-recruitment-automation-tools.png' },
+  { title: 'Types of recruitment technology shaping the future of recruitment', cats: ['Recruitment Technology'], read: '9 min read', date: '4 May 2026', excerpt: 'A simple guide to the types of recruitment technology, where each tool fits, and how hiring teams can use them better.', img: U + '2026/05/Types-of-recruitment-technology-shaping-the-future-of-recruitment.png' },
+  { title: 'Recruitment technology: Meaning, benefits and hiring use cases', cats: ['Recruitment Technology'], read: '13 min read', date: '1 July 2026', excerpt: 'Recruitment technology improves hiring with tools for sourcing, screening, assessments, interviews, communication, and analytics.', img: U + '2026/05/Recruitment-technology-Meaning-benefits-and-hiring-use-cases.png' },
+  { title: 'How do skills assessments correlate with on-the-job performance?', cats: ['Skill assessment'], read: '10 min read', date: '18 June 2026', excerpt: 'Learn why skills assessments correlate strongly with on-the-job performance and help teams improve their retention rate and quality of hire.', img: U + '2026/04/April-blog-featured-images-for-blog-2026-6.png' },
+  { title: 'What platforms offer white-labeling for talent assessments?', cats: ['Talent assessment', 'Employer branding'], read: '9 min read', date: '30 April 2026', excerpt: 'The global talent assessment market now sits near 25.37 billion USD with a 9.4 percent CAGR, and branded candidate experience has become a core buying criterion.', img: U + '2026/04/April-blog-featured-images-for-blog-2026-5.png' },
+  { title: 'How to use AI to tailor assessments to job descriptions', cats: ['Candidate assessment'], read: '11 min read', date: '30 April 2026', excerpt: 'Learn how to use AI to tailor assessments to job descriptions, enabling recruiters to accurately identify top talent.', img: U + '2026/04/April-blog-featured-images-for-blog-2026-4.png' },
+  { title: 'How to future-proof your workforce for 2030', cats: ['Workplace culture'], read: '5 min read', date: '30 April 2026', excerpt: 'Explore strategies to future-proof your workforce and stay ahead in a rapidly evolving job market by 2030.', img: U + '2026/04/How-to-future-proof-your-workforce-for-2030.jpg' },
 ];
 
-const TAGS: { key: string; label: string }[] = [
-  { key: 'all', label: 'All' },
-  { key: 'hiring', label: 'Hiring strategy' },
-  { key: 'assess', label: 'Assessments' },
-  { key: 'ai', label: 'AI & hiring' },
-  { key: 'dei', label: 'Diversity' },
+const CATS: { value: string; label: string }[] = [
+  { value: 'all', label: 'All categories' },
+  { value: 'HR & recruitment', label: 'HR & recruitment (1893)' },
+  { value: 'Skill assessment', label: 'Skill assessment (271)' },
+  { value: 'Hiring Guide', label: 'Hiring Guide (192)' },
+  { value: 'Candidate assessment', label: 'Candidate assessment (151)' },
+  { value: 'Interview questions', label: 'Interview questions (78)' },
+  { value: 'Competitor Comparisons', label: 'Competitor Comparisons (56)' },
+  { value: 'Alternatives', label: 'Alternatives (52)' },
+  { value: 'Workplace culture', label: 'Workplace culture (39)' },
+  { value: 'Talent assessment', label: 'Talent assessment (38)' },
+  { value: 'Employment and labor laws', label: 'Employment and labor laws (21)' },
+  { value: 'Hiring Risks & Safeguards', label: 'Hiring Risks & Safeguards (16)' },
+  { value: 'Remote hiring', label: 'Remote hiring (16)' },
+  { value: 'Employer branding', label: 'Employer branding (15)' },
+  { value: 'Proctoring', label: 'Proctoring (15)' },
+  { value: 'Tech recruitment', label: 'Tech recruitment (14)' },
+  { value: 'HR tools', label: 'HR tools (13)' },
+  { value: 'High volume hiring', label: 'High volume hiring (12)' },
+  { value: 'AI in recruitment', label: 'AI in recruitment (10)' },
+  { value: 'Candidate Screening', label: 'Candidate Screening (9)' },
+  { value: 'Talent Acquisition', label: 'Talent Acquisition (8)' },
+  { value: 'Technical assessments', label: 'Technical assessments (7)' },
+  { value: 'Global Recruitment', label: 'Global Recruitment (6)' },
+  { value: 'Recruitment Technology', label: 'Recruitment Technology (4)' },
+  { value: 'AI interviews', label: 'AI interviews (3)' },
 ];
 
 export default function BlogPage() {
-  const [tag, setTag] = useState('all');
-  const [visible, setVisible] = useState(6);
+  const [q, setQ] = useState('');
+  const [cat, setCat] = useState('all');
+  const qRef = useRef<HTMLInputElement>(null);
+  const catRef = useRef<HTMLSelectElement>(null);
 
-  const filtered = tag === 'all' ? DATA : DATA.filter((x) => x.group === tag);
-  const posts = filtered.slice(0, visible);
-  const hasMore = filtered.length > visible;
+  const posts = useMemo(() => {
+    const query = (q || '').trim().toLowerCase();
+    return POSTS
+      .filter((p) => (cat === 'all' || p.cats.indexOf(cat) >= 0) && (query === '' || p.title.toLowerCase().indexOf(query) >= 0))
+      .map((p) => ({ ...p, cat: p.cats[0] }));
+  }, [q, cat]);
 
-  const pick = (k: string) => {
-    setTag(k);
-    setVisible(6);
+  const hasNone = posts.length === 0;
+
+  const clear = () => {
+    if (qRef.current) qRef.current.value = '';
+    if (catRef.current) catRef.current.value = 'all';
+    setQ('');
+    setCat('all');
   };
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <SiteHeader
-        announcement="New guide · The 2026 skills-based hiring playbook"
-        announcementCta="Read now"
+        announcement="Insights for skills-first hiring teams"
+        announcementCta="Read the blog"
         homeHref="/"
       />
 
       <section className="bhero">
-        <div className="wrap" style={{ maxWidth: 820 }}>
+        <div className="wrap" style={{ maxWidth: 840 }}>
           <p className="eyebrow reveal">
-            The Testlify blog<b>.</b>
+            Blog<b>.</b>
           </p>
           <h1 className="h1 reveal" style={{ transitionDelay: '.04s' }}>
-            Ideas for hiring on skill
+            The Testlify <span className="acc">blog</span>
           </h1>
-          <p className="lead reveal" style={{ margin: '20px auto 0', maxWidth: 560, transitionDelay: '.08s' }}>
-            Research, playbooks and practical guides for building a fairer, faster hiring process.
+          <p className="lead reveal" style={{ margin: '20px auto 26px', maxWidth: 660, transitionDelay: '.08s' }}>
+            Discover expert tips and strategies on skills assessments, audio and video interviews, talent evaluation platforms, and modern recruitment. Get comprehensive HR insights to enhance your hiring processes.
           </p>
-        </div>
-      </section>
-
-      <section style={{ padding: '24px 28px 0' }}>
-        <div className="wrap">
-          <Link className="feat reveal" href="/blog-detail">
-            <div className="featimg">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="pimg" src="https://picsum.photos/seed/testlify-feat/1040/720" alt="" loading="lazy" />
-              <span className="postcat">Featured · Hiring strategy</span>
-            </div>
-            <div className="featbody">
-              <h2 className="h2" style={{ fontSize: 30, marginBottom: 14 }}>
-                The 2026 skills-based hiring playbook
-              </h2>
-              <p className="body" style={{ fontSize: 15.5 }}>
-                Degrees are fading as a hiring signal. Here&apos;s the complete framework for designing a skills-first process — from job design to scorecards — that actually predicts performance.
-              </p>
-              <div className="postmeta" style={{ marginTop: 24 }}>
-                <span>Sneha Kulkarni</span>
-                <span>·</span>
-                <span>12 min read</span>
-                <span>·</span>
-                <span>Jun 2026</span>
-              </div>
-            </div>
-          </Link>
-        </div>
-      </section>
-
-      <section className="sec">
-        <div className="wrap">
-          <div className="reveal tagbar" style={{ marginBottom: 34 }}>
-            {TAGS.map((t) => (
-              <button
-                key={t.key}
-                className={`tag ${tag === t.key ? 'on' : ''}`}
-                onClick={() => pick(t.key)}
-              >
-                {t.label}
-              </button>
-            ))}
+          <div className="herobtns reveal" style={{ transitionDelay: '.12s' }}>
+            <a className="btn btn-primary" href="https://app.testlify.com/register">
+              Try for free <span aria-hidden="true">→</span>
+            </a>
+            <Link className="tlink" href="/write-for-us">
+              Write for us <span aria-hidden="true">→</span>
+            </Link>
           </div>
-          <div className="bgrid">
+        </div>
+      </section>
+
+      <section className="sec" style={{ background: '#FBF3EE' }}>
+        <div className="wrap">
+          <div className="ctrls reveal">
+            <div className="bsearch">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input
+                type="text"
+                placeholder="Search articles"
+                ref={qRef}
+                onInput={(e) => setQ((e.target as HTMLInputElement).value)}
+              />
+            </div>
+            <div className="bright">
+              <div className="bselect">
+                <svg className="bselic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+                <select ref={catRef} onChange={(e) => setCat(e.target.value)}>
+                  {CATS.map((c) => (
+                    <option key={c.value} value={c.value}>
+                      {c.label}
+                    </option>
+                  ))}
+                </select>
+                <svg className="bselcar" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <button className="clearf" onClick={clear}>
+                Clear filter
+              </button>
+            </div>
+          </div>
+
+          <div className="bgrid reveal">
             {posts.map((p, i) => (
-              <Link className="post" href="/blog-detail" key={`${p.group}-${i}`}>
+              <Link className="post" href="/blog-detail" key={i}>
                 <div className="postimg">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img className="pimg" src={p.img} alt="" loading="lazy" />
-                  <span className="postcat">{p.cat}</span>
+                  <img src={p.img} alt={p.title} loading="lazy" />
                 </div>
                 <div className="postbody">
+                  <p className="postcat">{p.cat}</p>
                   <h3 className="posttitle">{p.title}</h3>
                   <p className="postexc">{p.excerpt}</p>
                   <div className="postmeta">
-                    <span>{p.author}</span>
-                    <span>·</span>
                     <span>{p.read}</span>
+                    <span>·</span>
+                    <span>{p.date}</span>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
-          {hasMore && (
-            <div className="loadmore">
-              <button className="loadbtn" onClick={() => setVisible((v) => v + 3)}>
-                Load more articles
+
+          {hasNone && (
+            <div className="nores">
+              No articles match your filter.{' '}
+              <button className="clearf" onClick={clear}>
+                Clear filter
               </button>
             </div>
           )}
+
+          <div className="pager reveal">
+            <span className="pg on">1</span>
+            <Link className="pg" href="/blog-detail">
+              2
+            </Link>
+            <Link className="pg" href="/blog-detail">
+              3
+            </Link>
+            <span className="pgdots">…</span>
+            <Link className="pg" href="/blog-detail">
+              98
+            </Link>
+            <Link className="pg" href="/blog-detail" style={{ width: 'auto', padding: '0 18px' }}>
+              Next →
+            </Link>
+          </div>
         </div>
       </section>
 

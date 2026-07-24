@@ -74,7 +74,7 @@ By company type (5): For startups→for-startups ☐ · SMB's→small-medium-bus
 - Our story → about.dc.html ✅
 - Contact us → contact.dc.html ✅
 - Our leadership → our-leadership ☐ (live has a separate page; build it — do NOT keep merged now that we match live)
-- Trust center → external redirect to https://trust.testlify.com/ (trust.dc.html deleted; all internal links point out)
+- Trust center → trust.dc.html ✅ (live /trust/)
 - Clients → clients ☐ (live /clients/ — distinct from customer-success-stories)
 - Partners → our-partners ☐
 - Job openings → job-openings ☐ (distinct from careers.dc.html; live /job-openings/)
