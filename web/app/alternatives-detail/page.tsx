@@ -392,39 +392,42 @@ export default function AlternativesDetailPage() {
             })}
           </div>
 
-          <div className="author reveal" style={{ marginTop: 40 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="authorav" src={author.avatar} alt={author.name} loading="lazy" />
-            <div>
-              <p className="authorname" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                {author.name}
-                <a
-                  href={author.li}
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="LinkedIn profile"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: 26,
-                    height: 26,
-                    borderRadius: 6,
-                    background: '#0A66C2',
-                    color: '#fff',
-                  }}
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.5h4.55V23H.22V8.5zM8.34 8.5h4.36v1.98h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 7v7.88h-4.55v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V23H8.34V8.5z"></path>
-                  </svg>
-                </a>
-              </p>
-              <p className="authorrole">{author.role}</p>
-              <p className="authorbio">{author.bio}</p>
-            </div>
-          </div>
         </div>
       </div>
+
+      <section className="faqsec reveal">
+        <div className="author reveal">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="authorav" src={author.avatar} alt={author.name} loading="lazy" />
+          <div>
+            <p className="authorname" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              {author.name}
+              <a
+                href={author.li}
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn profile"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: 26,
+                  height: 26,
+                  borderRadius: 6,
+                  background: '#0A66C2',
+                  color: '#fff',
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.5h4.55V23H.22V8.5zM8.34 8.5h4.36v1.98h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 7v7.88h-4.55v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V23H8.34V8.5z"></path>
+                </svg>
+              </a>
+            </p>
+            <p className="authorrole">{author.role}</p>
+            <p className="authorbio">{author.bio}</p>
+          </div>
+        </div>
+      </section>
 
       <section className="related">
         <div className="relhead">
@@ -433,7 +436,7 @@ export default function AlternativesDetailPage() {
         </div>
         <div className="relgrid reveal">
           {related.map((r) => (
-            <a className="relcard" href={r.href} key={r.title}>
+            <Link className="relcard" href="/alternatives-detail" key={r.title}>
               <div className="relimg">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={r.img} alt={r.title} loading="lazy" />
@@ -442,7 +445,7 @@ export default function AlternativesDetailPage() {
                 <p className="relcat">{r.cat}</p>
                 <h3 className="reltitle">{r.title}</h3>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

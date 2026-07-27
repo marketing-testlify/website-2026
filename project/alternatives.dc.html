@@ -43,22 +43,26 @@ a:hover{color:#F23F44;}
 .cp-sec{padding:52px 28px 90px;}
 .cp-count{font-size:13.5px;color:#8A7A7D;font-weight:500;margin:0 0 30px;text-align:center;}
 .cp-count b{color:#F23F44;font-weight:700;}
-.cp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.cp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 @property --bang{syntax:'<angle>';initial-value:0deg;inherits:false;}
 @keyframes runborder{to{--bang:360deg;}}
-.cp-card{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;background:#fff;border:1px solid #F2E6E7;border-radius:18px;padding:30px 22px;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s;}
-.cp-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(110,11,14,.10);}
-.cp-card::before{content:'';position:absolute;inset:0;border-radius:18px;padding:1.8px;background:conic-gradient(from var(--bang),transparent 0deg,#FF7A52 35deg,#F23F44 80deg,transparent 150deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;pointer-events:none;}
+.cp-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #EFE2E3;border-radius:20px;overflow:hidden;transition:box-shadow .3s,border-color .3s;}
+.cp-card::before{content:'';position:absolute;inset:0;z-index:2;border-radius:20px;padding:1.8px;background:conic-gradient(from var(--bang),transparent 0deg,#FF7A52 35deg,#F23F44 80deg,transparent 150deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;pointer-events:none;}
+.cp-img,.cp-body{position:relative;z-index:1;}
+.cp-card:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(110,11,14,.10);}
 .cp-card:hover::before{opacity:1;animation:runborder 2.4s linear infinite;}
-.cp-logo{height:52px;display:flex;align-items:center;justify-content:center;}
-.cp-logo img{max-height:52px;max-width:150px;object-fit:contain;}
-.cp-name{font-size:16px;font-weight:700;letter-spacing:-.2px;margin:0;}
-.cp-vs{display:block;font-size:12px;font-weight:700;color:#C9B9BC;letter-spacing:.08em;text-transform:uppercase;}
+.cp-img{position:relative;aspect-ratio:16/9;overflow:hidden;background:#FBF3EE center/cover no-repeat;transition:transform .55s cubic-bezier(.2,.7,.3,1);}
+.cp-card:hover .cp-img{transform:scale(1.06);}
+.cp-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;}
+.cp-cat{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#F23F44;margin:0 0 11px;}
+.cp-title{font-size:17.5px;font-weight:700;letter-spacing:-.3px;line-height:1.32;margin:0 0 12px;color:#1A1014;}
+.cp-exc{font-size:14px;color:#6A5A5D;line-height:1.55;margin:0 0 18px;}
+.cp-meta{font-size:12.5px;color:#9A878A;margin-top:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
 .cp-empty{text-align:center;padding:60px 20px;color:#8A7A7D;font-size:16px;}
 .cp-empty b{color:#1A1014;}
-@media(max-width:1000px){.cp-grid{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:760px){.cp-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:480px){.cp-h1{font-size:32px;}.cp-grid{grid-template-columns:1fr;}.cp-hero{padding:44px 22px 32px;}}
+@media(max-width:1000px){.cp-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.cp-grid{grid-template-columns:1fr;}}
+@media(max-width:480px){.cp-h1{font-size:32px;}.cp-hero{padding:44px 22px 32px;}}
 h1,h2,h3,h4,.cp-h1,.cp-eyebrow,.cp-name{text-wrap:balance;}p,li,.cp-sub{text-wrap:pretty;}/*om-balance-rule*/
 </style>
 </helmet>
@@ -78,17 +82,20 @@ h1,h2,h3,h4,.cp-h1,.cp-eyebrow,.cp-name{text-wrap:balance;}p,li,.cp-sub{text-wra
 <section class="cp-sec"><div class="cp-wrap">
 
 
-<sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}"><div class="cp-empty">No competitor matches “<b>{{ query }}</b>”. Try another name.</div></sc-if>
+<sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}"><div class="cp-empty">No comparison matches “<b>{{ query }}</b>”. Try another name.</div></sc-if>
 <div class="cp-search reveal">
 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
-<input type="text" placeholder="Competitor title search…" value="{{ query }}" onInput="{{ onSearch }}">
+<input type="text" placeholder="Search competitor comparisons…" value="{{ query }}" onInput="{{ onSearch }}">
 </div><div class="cp-grid reveal">
 <sc-for list="{{ comps }}" as="c" hint-placeholder-count="12">
-<a class="cp-card" href="{{ c.u }}">
-<div class="cp-logo">
-<img src="{{ c.img }}" alt="{{ c.n }}">
+<a class="cp-card" href="alternatives-detail.dc.html">
+<div class="cp-img" role="img" aria-label="{{ c.n }}" style="{{ c.imgStyle }}"></div>
+<div class="cp-body">
+<p class="cp-cat">Competitor Comparisons</p>
+<h3 class="cp-title">{{ c.n }}</h3>
+<p class="cp-exc">{{ c.excerpt }}</p>
+<div class="cp-meta"><span>{{ c.read }}</span><span>·</span><span>{{ c.date }}</span></div>
 </div>
-<div style="text-align:center;width:100%;"><span class="cp-vs">Testlify vs</span><p class="cp-name">{{ c.n }}</p></div>
 </a>
 </sc-for>
 </div>
@@ -102,48 +109,49 @@ class Component extends DCLogic {
   state = { query: '' };
 
   COMPS = [
-    { n: 'Coderbyte', img: 'https://testlify.com/wp-content/uploads/2024/10/coderbyte-logo.png', u: 'https://testlify.com/testlify-vs-coderbyte-detailed-comparison/' },
-    { n: 'Hiremojo', img: 'https://testlify.com/wp-content/uploads/2023/12/smallHMRSLogo.png', u: 'https://testlify.com/testlify-vs-hiremojo-detailed-comparison/' },
-    { n: 'Skillarena', img: 'https://testlify.com/wp-content/uploads/2023/12/Logo-02-1-scaled.jpg', u: 'https://testlify.com/best-skillsarena-alternative/' },
-    { n: 'Cappfinity', img: 'https://testlify.com/wp-content/uploads/2023/12/2023-Cappfinity-Logo-–-Navy-Yellow.svg', u: 'https://testlify.com/best-cappfinity-alternative/' },
-    { n: 'HackerRank', img: 'https://testlify.com/wp-content/uploads/2023/12/download-1.png', u: 'https://testlify.com/testlify-vs-hackerrank-detailed-comparison/' },
-    { n: 'Testinvite', img: 'https://testlify.com/wp-content/uploads/2023/12/testinvite-logo-5-bg-white-w200.webp', u: 'https://testlify.com/testlify-vs-testinvite-detailed-comparison/' },
-    { n: 'Indeed Hiring Platform', img: 'https://testlify.com/wp-content/uploads/2023/12/indeed-share-image-9581a8.png', u: 'https://testlify.com/indeed-alternatives/' },
-    { n: 'eSkill', img: 'https://testlify.com/wp-content/uploads/2023/12/eSkill-TM-Logo-1.svg', u: 'https://testlify.com/testlify-vs-eskill-detailed-comparison/' },
-    { n: 'Canditech', img: 'https://testlify.com/wp-content/uploads/2023/12/Canditech.svg', u: 'https://testlify.com/testlify-vs-canditech-detailed-comparison/' },
-    { n: 'HireVue', img: 'https://testlify.com/wp-content/uploads/2023/05/hireview.svg', u: 'https://testlify.com/testlify-vs-hirevue-detailed-comparison/' },
-    { n: 'Mettl', img: 'https://testlify.com/wp-content/uploads/2023/05/Mettl_Logo.png', u: 'https://testlify.com/testlify-vs-mercer-mettl-detailed-comparison/' },
-    { n: 'Maki people', img: 'https://testlify.com/wp-content/uploads/2023/05/619b58064e44dfeb661b3e7d_brand-1.svg', u: 'https://testlify.com/testlify-vs-maki-people-detailed-comparison/' },
-    { n: 'Vervoe', img: 'https://testlify.com/wp-content/uploads/2023/04/Vervoe-Blue-300x300-1.png', u: 'https://testlify.com/testlify-vs-vervoe-detailed-comparison/' },
-    { n: 'Testgorilla', img: 'https://testlify.com/wp-content/uploads/2023/06/testgorilla-logo.png', u: 'https://testlify.com/testlify-vs-testgorilla-detailed-comparison/' },
-    { n: 'Psychometrics', img: 'https://testlify.com/wp-content/uploads/2023/05/psychometrics.png', u: 'https://testlify.com/psychometrics-alternatives/' },
-    { n: 'ASC Smarter Assessment', img: 'https://testlify.com/wp-content/uploads/2023/05/ASC.webp', u: 'https://testlify.com/asc-smarter-assessment-alternatives/' },
-    { n: 'TalentLyft', img: 'https://testlify.com/wp-content/uploads/2023/05/talentlyft.svg', u: 'https://testlify.com/testlify-vs-talentlyft-detailed-comparison/' },
-    { n: 'Codility', img: 'https://testlify.com/wp-content/uploads/2023/05/codility.webp', u: 'https://testlify.com/testlify-vs-codility-detailed-comparison/' },
-    { n: 'Zapilio', img: 'https://testlify.com/wp-content/uploads/2023/05/zapilio.svg', u: 'https://testlify.com/testlify-vs-zapilio-detailed-comparison/' },
-    { n: 'TalentClick', img: 'https://testlify.com/wp-content/uploads/2023/05/talentclick.png', u: 'https://testlify.com/testlify-vs-talentclick-detailed-comparison/' },
-    { n: 'Wired2Perform', img: 'https://testlify.com/wp-content/uploads/2023/05/wired2perform.jpg', u: 'https://testlify.com/wired2perform-alternatives/' },
-    { n: 'Verensics', img: 'https://testlify.com/wp-content/uploads/2023/05/verensics.png', u: 'https://testlify.com/verensics-alternatives/' },
-    { n: 'UbiAptitude', img: 'https://testlify.com/wp-content/uploads/2023/05/ubiaptitude.svg', u: 'https://testlify.com/testlify-vs-ubiaptitude-detailed-comparison/' },
-    { n: 'Traitify', img: 'https://testlify.com/wp-content/uploads/2023/05/traitify.svg', u: 'https://testlify.com/traitify-alternatives/' },
-    { n: 'Total Testing', img: 'https://testlify.com/wp-content/uploads/2023/05/totaltesting.jpg', u: 'https://testlify.com/testlify-vs-total-testing-detailed-comparison/' },
-    { n: 'ThriveMap', img: 'https://testlify.com/wp-content/uploads/2023/05/thrivemap.svg', u: 'https://testlify.com/testlify-vs-thrivemap-detailed-comparison/' },
-    { n: 'Thrive', img: 'https://testlify.com/wp-content/uploads/2023/05/thrive.png', u: 'https://testlify.com/testlify-vs-thrive-detailed-comparison/' },
-    { n: 'The Talent Games', img: 'https://testlify.com/wp-content/uploads/2023/05/thetalentgames.png', u: 'https://testlify.com/testlify-vs-the-talent-games-detailed-comparison/' },
-    { n: 'TestLibra', img: 'https://testlify.com/wp-content/uploads/2023/05/testlibra.png', u: 'https://testlify.com/testlibra-alternatives/' },
-    { n: 'TestGenius', img: 'https://testlify.com/wp-content/uploads/2023/05/testgenius.png', u: 'https://testlify.com/testlify-vs-testgenius-detailed-comparison/' }
+    { n: 'Testlify vs Testwise: Comparison guide for recruiters', img: 'https://testlify.com/wp-content/uploads/2026/03/Testlify-vs-GL-Education.png', read: '14 min read', date: '18 June 2026', excerpt: 'Compare Testlify vs Testwise across features, integrations, candidate experience, and pricing.' },
+    { n: 'Testlify vs Symphony Talent: Which Is Better in 2026?', img: 'https://testlify.com/wp-content/uploads/2026/01/Testlify-vs-Symphony-Talent.png', read: '9 min read', date: '3 July 2026', excerpt: 'Discover which talent assessment platform: Testlify or Symphony Talent best suits your hiring needs by reading our expert comparison blog.' },
+    { n: 'Testlify vs TestTrick: Which skills assessment platform is best for recruiters?', img: 'https://testlify.com/wp-content/uploads/2025/12/Testlify-vs-TestTrick-1.png', read: '11 min read', date: '18 June 2026', excerpt: 'Explore our in-depth comparison blog to find out whether Testlify or TestTrick is the right skills assessment platform for your hiring goals.' },
+    { n: 'Testlify vs CodeSignal: Which Talent Assessment Platform is Best for You?', img: 'https://testlify.com/wp-content/uploads/2025/10/Testlify-vs-CodeSignal.png', read: '11 min read', date: '18 June 2026', excerpt: 'Explore our expert comparison article to find out which skills assessment platform: Testlify or CodeSignal best aligns with your hiring needs.' },
+    { n: 'Testlify vs. Equip: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/09/Testlify-vs-Equip.png', read: '11 min read', date: '18 June 2026', excerpt: 'Testlify vs. Equip: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Harver: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/09/Testlify-vs-Harver.png', read: '11 min read', date: '18 June 2026', excerpt: 'Testlify vs. Harver: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Talview: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/09/Testlify-vs-Talview.png', read: '10 min read', date: '18 June 2026', excerpt: 'Testlify vs. Talview: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Cangrade: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/09/Testlify-vs-Cangrade.png', read: '11 min read', date: '18 June 2026', excerpt: 'Testlify vs. Cangrade: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs Test Partnership: Comparison Guide for HR Teams', img: 'https://testlify.com/wp-content/uploads/2025/09/Testlify-vs-Test-Partnership.png', read: '9 min read', date: '6 July 2026', excerpt: 'Testlify vs. Test Partnership: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs Alva Labs: Which Skills Assessment Platform Wins in 2026?', img: 'https://testlify.com/wp-content/uploads/2025/09/Testlify-vs-Alva-Labs.png', read: '8 min read', date: '2 July 2026', excerpt: 'Testlify vs. Alva Labs: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Pixonality: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/09/Testlify-vs-Pixonality.png', read: '12 min read', date: '18 June 2026', excerpt: 'Testlify vs. Pixonality: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Perspect AI: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/09/Testlify-vs-PerspectAI.png', read: '12 min read', date: '18 June 2026', excerpt: 'Testlify vs. Perspect AI: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Evalgator: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/09/Testlify-vs-Evalgator.png', read: '12 min read', date: '18 June 2026', excerpt: 'Testlify vs. Evalgator: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Peoplogica Skills: Detailed comparison', img: 'https://testlify.com/wp-content/uploads/2025/09/Testlify-vs-Peoplogica-Skills.png', read: '16 min read', date: '24 July 2026', excerpt: 'Testlify vs. Peoplogica Skills: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Predictive Index: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/09/Testlify-vs-Predictve-Index.png', read: '13 min read', date: '18 June 2026', excerpt: 'Testlify vs. Predictive Index: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Sova: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/09/Testlify-vs-Sova.png', read: '12 min read', date: '18 June 2026', excerpt: 'Testlify vs. Sova: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs Glider AI: Best Skills Assessment Platform 2026', img: 'https://testlify.com/wp-content/uploads/2025/09/Testlify-vs.-Glider-AI.png', read: '7 min read', date: '5 July 2026', excerpt: 'Testlify vs. Glider AI: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Criteria Corp: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/08/Testlify-vs-Criteria-Corp.png', read: '13 min read', date: '18 June 2026', excerpt: 'Testlify vs. Criteria Corp: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. WeCP: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/08/Testlify-vs-WeCP.png', read: '12 min read', date: '25 June 2026', excerpt: 'Testlify vs. WeCP: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Xobin: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/08/Testlify-vs-Xobin.png', read: '13 min read', date: '18 June 2026', excerpt: 'Testlify vs. Xobin: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Saville Assessment: Which Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/08/Testlify-vs-Saville.png', read: '12 min read', date: '18 June 2026', excerpt: 'Testlify vs. Saville: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs Talogy: Skills Assessment Platform Comparison', img: 'https://testlify.com/wp-content/uploads/2025/08/Testlify-vs-Talogy.png', read: '8 min read', date: '11 July 2026', excerpt: 'Testlify vs. Talogy: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Hire Success: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/08/Testlify-vs-Hire-Success.png', read: '12 min read', date: '18 June 2026', excerpt: 'Testlify vs. Hire Success: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Testgrid: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/08/Testlify-vs-TestGrid-1.png', read: '12 min read', date: '18 June 2026', excerpt: 'Testlify vs. Testgrid: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Testello: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/08/Testlify-vs-Testello.png', read: '12 min read', date: '18 June 2026', excerpt: 'Testlify vs. Testello: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. TalentLyft: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/08/Testlify-vs-Talentlyft.png', read: '13 min read', date: '18 June 2026', excerpt: 'Testlify vs. TalentLyft: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Skillmeter: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/08/Testlify-vs-Skillmeter.png', read: '11 min read', date: '18 June 2026', excerpt: 'Testlify vs. Skillmeter: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. Talentate: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/08/Testlify-vs-Talentate.png', read: '11 min read', date: '18 June 2026', excerpt: 'Testlify vs. Talentate: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. TalentLens: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/08/Testlify-vs-TalentLens.png', read: '12 min read', date: '18 June 2026', excerpt: 'Testlify vs. TalentLens: Discover which skills assessment platform best suits your hiring needs.' },
+    { n: 'Testlify vs. TalentMesh: Which Skills Assessment Platform is Best for HR Teams?', img: 'https://testlify.com/wp-content/uploads/2025/08/Testlify-vs-TalentMesh-1.png', read: '11 min read', date: '18 June 2026', excerpt: 'Testlify vs. TalentMesh: Discover which skills assessment platform best suits your hiring needs.' }
   ];
 
   onSearch(e) { this.setState({ query: e && e.target ? e.target.value : '' }); }
 
   renderVals() {
     const q = (this.state.query || '').trim().toLowerCase();
-    const comps = this.COMPS.filter(c => !q || c.n.toLowerCase().includes(q));
+    const comps = this.COMPS.filter(c => !q || c.n.toLowerCase().includes(q))
+      .map(c => ({ ...c, imgStyle: { backgroundImage: 'url("' + c.img + '")' } }));
     return {
       query: this.state.query, onSearch: (e) => this.onSearch(e),
       comps,
       resultCount: comps.length,
-      totalLabel: q ? String(comps.length) : '150+',
+      totalLabel: q ? String(comps.length) : String(this.COMPS.length),
       isEmpty: comps.length === 0
     };
   }
