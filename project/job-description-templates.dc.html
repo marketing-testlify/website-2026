@@ -120,7 +120,7 @@ class Component extends DCLogic {
     const groups = [];
     this.DATA.forEach(g => {
       const roles = g.roles
-        .map(s => { const i = s.indexOf('|'); const n = s.slice(0, i); return { n, u: this.B + s.slice(i + 1) + '/' }; })
+        .map(s => { const i = s.indexOf('|'); const n = s.slice(0, i); return { n, u: 'job-description-templates-detail.dc.html' }; })
         .filter(r => !q || r.n.toLowerCase().includes(q) || g.cat.toLowerCase().includes(q));
       total += g.roles.length;
       if (roles.length) groups.push({ cat: g.cat, count: roles.length, roles });
