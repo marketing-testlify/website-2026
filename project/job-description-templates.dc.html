@@ -8,20 +8,23 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="./reveal.js"></script>
 <style>
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
 a{text-decoration:none;color:inherit;}
+a:hover{color:#F23F44;}
 .jd-wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
-[data-reveal]{opacity:0;transform:translateY(24px);}
-.jd-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#F23F44;margin:0 0 16px;}
-.jd-eyebrow .dot{color:#F23F44;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.jd-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 16px;}
+.jd-eyebrow b{color:#F23F44;font-weight:700;}
 .jd-crumb{font-size:13px;color:#8A7A7D;display:flex;gap:8px;align-items:center;justify-content:center;margin-bottom:18px;}
 .jd-crumb a:hover{color:#F23F44;}
-.jd-hero{position:relative;overflow:hidden;padding:62px 28px 44px;background:radial-gradient(1000px 460px at 50% -12%,#FFF0EE 0%,rgba(255,240,238,0) 62%),#fff;text-align:center;}
-.jd-h1{font-size:52px;line-height:1.05;font-weight:800;letter-spacing:-1.6px;margin:0;}
+.jd-hero{position:relative;overflow:hidden;padding:62px 28px 40px;background:radial-gradient(1000px 460px at 50% -12%,#FFF0EE 0%,rgba(255,240,238,0) 62%),#fff;text-align:center;}
+.jd-h1{font-size:46px;line-height:1.08;font-weight:800;letter-spacing:-1.4px;margin:0;}
 .jd-h1 em{font-style:normal;color:#F23F44;}
 .jd-sub{font-size:18px;line-height:1.6;color:#5A4B4E;margin:18px auto 0;max-width:600px;}
 .jd-search{display:flex;align-items:center;gap:11px;max-width:520px;margin:28px auto 0;background:#fff;border:1.5px solid #F0E2E3;border-radius:14px;padding:13px 18px;box-shadow:0 12px 30px rgba(110,11,14,.07);transition:border-color .2s,box-shadow .2s;}
@@ -29,148 +32,106 @@ a{text-decoration:none;color:inherit;}
 .jd-search svg{color:#B29A9E;flex:none;}
 .jd-search input{border:0;outline:0;font-family:inherit;font-size:16px;color:#1A1014;background:transparent;width:100%;}
 .jd-search input::placeholder{color:#B29A9E;}
-.jd-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:22px;}
-.jd-tab{border:1px solid #EFE2E3;background:#fff;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#6A5A5D;cursor:pointer;font-family:inherit;transition:all .18s;}
-.jd-tab:hover{border-color:#FBD0D1;color:#F23F44;}
-.jd-tab.on{background:#F23F44;color:#fff;border-color:#F23F44;}
-/* how strip */
-.jd-strip{background:#FBF3EE;padding:34px 28px;}
-.jd-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1000px;margin:0 auto;}
-.jd-step{display:flex;gap:14px;align-items:flex-start;}
-.jd-sn{flex:none;width:32px;height:32px;border-radius:50%;background:#F23F44;color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;}
-.jd-step b{display:block;font-size:15px;font-weight:700;margin:3px 0 3px;}
-.jd-step span{font-size:13.5px;line-height:1.5;color:#7C6A6D;}
-.jd-sec{padding:52px 28px 90px;}
-.jd-count{font-size:13.5px;color:#8A7A7D;font-weight:500;margin:0 0 22px;text-align:center;}
+.jd-sec{padding:48px 28px 90px;}
+.jd-count{font-size:13.5px;color:#8A7A7D;font-weight:500;margin:0 0 34px;text-align:center;}
 .jd-count b{color:#F23F44;font-weight:700;}
-.jd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.jd-card{display:flex;flex-direction:column;background:#fff;border:1px solid #F2E6E7;border-radius:18px;padding:24px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
-.jd-card:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
-.jd-doc{width:44px;height:44px;border-radius:12px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-.jd-cat{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A9999C;margin:0 0 6px;}
-.jd-ct{font-size:17px;font-weight:700;letter-spacing:-.3px;margin:0 0 7px;}
-.jd-cd{font-size:14px;line-height:1.55;color:#7C6A6D;margin:0 0 16px;}
-.jd-go{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#F23F44;}
-.jd-go svg{transition:transform .25s;}
-.jd-card:hover .jd-go svg{transform:translateX(3px);}
+.jd-group{margin-bottom:46px;scroll-margin-top:90px;}
+.jd-gh{display:flex;align-items:center;gap:16px;margin:0 0 22px;}
+.jd-gh h2{font-size:20px;font-weight:800;letter-spacing:-.4px;margin:0;white-space:nowrap;}
+.jd-gh .line{flex:1;height:1px;background:#F0E2E3;}
+.jd-gh .cnt{font-size:12.5px;font-weight:700;color:#C9B9BC;}
+.jd-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:2px 28px;}
+.jd-role{display:flex;align-items:center;gap:9px;padding:9px 4px;font-size:14.5px;color:#4A3B3E;border-bottom:1px solid #F7EFEF;transition:color .18s;}
+.jd-role:hover{color:#F23F44;}
+.jd-role svg{color:#E0B9BC;flex:none;transition:transform .2s,color .2s;}
+.jd-role:hover svg{color:#F23F44;transform:translateX(2px);}
 .jd-empty{text-align:center;padding:60px 20px;color:#8A7A7D;font-size:16px;}
 .jd-empty b{color:#1A1014;}
-@media(max-width:1000px){.jd-grid{grid-template-columns:repeat(2,1fr);}.jd-steps{grid-template-columns:1fr;gap:16px;}}
-@media(max-width:640px){.jd-h1{font-size:36px;}.jd-grid{grid-template-columns:1fr;}.jd-hero{padding:44px 22px 34px;}}
-
-h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
+@media(max-width:900px){.jd-roles{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.jd-h1{font-size:32px;}.jd-roles{grid-template-columns:1fr;}.jd-hero{padding:44px 22px 32px;}}
+h1,h2,h3,h4,.jd-h1,.jd-eyebrow{text-wrap:balance;}p,li,.jd-sub{text-wrap:pretty;}/*om-balance-rule*/
 </style>
 </helmet>
-<dc-import name="component-site-header" announcement="Free job description templates — copy-ready JDs for 90+ roles, then screen for the skills" announcement-cta="Browse templates" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+<dc-import name="component-site-header" announcement="Free job description templates — copy-ready JDs for 500+ roles, then screen for the skills" announcement-cta="Browse templates" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
 
-<section class="jd-hero" ref="{{ rootRef }}"><div class="jd-wrap" style="max-width:820px;">
+<section class="jd-hero"><div class="jd-wrap" style="max-width:820px;">
 <div class="jd-crumb"><a href="blog.dc.html">Resources</a><span>/</span><span>Job description templates</span></div>
-<p class="jd-eyebrow" data-reveal="">JD templates<span class="dot">.</span></p>
-<h1 class="jd-h1" data-reveal="" data-delay="60">Role-ready job descriptions,<br><em>in minutes</em></h1>
-<p class="jd-sub" data-reveal="" data-delay="120">Copy-ready, inclusive job descriptions for 90+ roles — structured to attract the right people and mapped to the skills you'll actually test for.</p>
-<div class="jd-search" data-reveal="" data-delay="170">
+<p class="jd-eyebrow reveal">JD templates<b>.</b></p>
+<h1 class="jd-h1 reveal">Job description templates: <em>the complete list</em></h1>
+<p class="jd-sub reveal">Use these copy-ready job description templates to attract the best candidates — then turn each JD's skills into a Testlify assessment.</p>
+<div class="jd-search reveal">
 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
-<input type="text" placeholder="Search 90+ JD templates…" value="{{ query }}" onInput="{{ onSearch }}">
-</div>
-<div class="jd-tabs" data-reveal="" data-delay="210">
-<sc-for list="{{ cats }}" as="c" hint-placeholder-count="6"><button class="jd-tab {{ c.cls }}" onClick="{{ c.sel }}">{{ c.label }}</button></sc-for>
+<input type="text" placeholder="Search 500+ job description templates…" value="{{ query }}" onInput="{{ onSearch }}">
 </div>
 </div></section>
 
-<section class="jd-strip" data-reveal=""><div class="jd-wrap"><div class="jd-steps">
-<div class="jd-step"><span class="jd-sn">1</span><div><b>Pick a template</b><span>Choose the role and copy the full, structured JD.</span></div></div>
-<div class="jd-step"><span class="jd-sn">2</span><div><b>Make it yours</b><span>Swap in your company, perks and must-have skills.</span></div></div>
-<div class="jd-step"><span class="jd-sn">3</span><div><b>Screen for the skills</b><span>Turn the JD's skills into a Testlify assessment in one click.</span></div></div>
-</div></div></section>
-
 <section class="jd-sec"><div class="jd-wrap">
-<p class="jd-count" data-reveal="">Showing <b>{{ resultCount }}</b> of {{ totalLabel }} templates</p>
+<p class="jd-count reveal">Showing <b>{{ resultCount }}</b> of {{ totalLabel }} templates</p>
 <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}"><div class="jd-empty">No templates match “<b>{{ query }}</b>”. Try another role or <a href="contact.dc.html" style="color:#F23F44;font-weight:700">request one</a>.</div></sc-if>
-<div class="jd-grid">
-<sc-for list="{{ jds }}" as="j" hint-placeholder-count="9">
-<a class="jd-card" href="{{ j.href }}">
-<div class="jd-doc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="13" y2="17"></line></svg></div>
-<p class="jd-cat">{{ j.cat }}</p>
-<p class="jd-ct">{{ j.role }} JD</p>
-<p class="jd-cd">{{ j.desc }}</p>
-<span class="jd-go">Copy template<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-</a>
+<sc-for list="{{ groups }}" as="g" hint-placeholder-count="6">
+<div class="jd-group reveal">
+<div class="jd-gh"><h2>{{ g.cat }}</h2><span class="line"></span><span class="cnt">{{ g.count }}</span></div>
+<div class="jd-roles">
+<sc-for list="{{ g.roles }}" as="r" hint-placeholder-count="9">
+<a class="jd-role" href="{{ r.u }}">{{ r.n }}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
 </sc-for>
 </div>
+</div>
+</sc-for>
 </div></section>
 
 <dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
 <dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
-
 </x-dc>
-<script type="text/x-dc" data-dc-script>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  rootRef = React.createRef();
-  state = { query: '', cat: 'All' };
+  state = { query: '' };
+  B = 'https://testlify.com/job-description-templates/';
 
-  componentDidMount() {
-    const base = this.rootRef.current;
-    const root = (base && base.getRootNode && base.getRootNode()) || document;
-    const animateReveal = (el, delay) => {
-      const dur = 620, startY = 24;
-      let start = null;
-      const tick = (t) => {
-        if (start === null) start = t;
-        const p = Math.min(1, (t - start) / dur);
-        const e = 1 - Math.pow(1 - p, 3);
-        el.style.opacity = String(e);
-        el.style.transform = 'translateY(' + (startY * (1 - e)).toFixed(2) + 'px)';
-        if (p < 1) requestAnimationFrame(tick);
-        else { el.style.opacity = '1'; el.style.transform = 'none'; }
-      };
-      setTimeout(() => requestAnimationFrame(tick), delay);
-    };
-    this._reveal = () => {
-      root.querySelectorAll('[data-reveal]').forEach(el => {
-        if (el.__done) return; el.__done = true;
-        animateReveal(el, parseInt(el.getAttribute('data-delay') || '0', 10));
-      });
-    };
-    requestAnimationFrame(() => requestAnimationFrame(this._reveal));
-  }
+  DATA = [
+    { cat: 'Accounting', roles: ['Accountant|accountant','Accounting Assistant|accounting-assistant','Accounting Clerk|accounting-clerk','Accounting Manager|accounting-manager','Accounting Specialist|accounting-specialist','Accounts Payable Clerk|accounts-payable-clerk','Accounts Payable Specialist|accounts-payable-specialist','Accounts Receivable Clerk|accounts-receivable-clerk','Assistant Accountant|assistant-accountant','Billing Clerk|billing-clerk','Billing Specialist|billing-specialist','Bookkeeper|bookkeeper','Budget Analyst|budget-analyst','Business Analyst|business-analyst','Business Systems Analyst|business-systems-analyst','Collection Specialist|collection-specialist','Cost Accountant|cost-accountant','Credit Analyst|credit-analyst','Junior Accountant|junior-accountant','Loan Officer|loan-officer','Loan Processor|loan-processor','Management Accountant|management-accountant','Mortgage Loan Processor|mortgage-loan-processor','Senior Accountant|senior-accountant','Staff Accountant|staff-accountant','Tax Manager|tax-manager','Treasurer|treasurer'] },
+    { cat: 'Administrative', roles: ['Administration Manager|administration-manager','Administrative Assistant|administrative-assistant','Administrative Coordinator|administrative-coordinator','Assistant Director|assistant-director','Assistant General Manager|assistant-general-manager','Assistant Manager|assistant-manager','Assistant Project Manager|assistant-project-manager','Assistant Store Manager|assistant-store-manager','Associate Product Manager|associate-product-manager','Branch Manager|branch-manager','Business Consultant|business-consultant','Business Development Consultant|business-development-consultant','Business Manager|business-manager','Chief Administrative Officer|chief-administrative-officer','Chief Executive Officer (CEO)|chief-executive-officer-ceo','Chief Operating Officer (COO)|chief-operating-officer-coo','Consultant|consultant','Contract Administrator|contract-administrator','Contract Manager|contract-manager','Data Entry Clerk|data-entry-clerk','Data Entry Operator|data-entry-operator','Director of Operations|director-of-operations','District Manager|district-manager','Executive Administrative Assistant|executive-administrative-assistant','Executive Assistant|executive-assistant','Executive Director|executive-director','Executive Secretary|executive-secretary','File Clerk|file-clerk','General Manager|general-manager','Healthcare Administrator|healthcare-administrator','Implementation Consultant|implementation-consultant','Office Administrator|office-administrator','Office Assistant|office-assistant','Office Clerk|office-clerk','Office Coordinator|office-coordinator','Office Manager|office-manager','Operations Analyst|operations-analyst','Operations Associate|operations-associate','Operations Manager|operations-manager','Payroll Administrator|payroll-administrator','Personal Assistant|personal-assistant','Product Manager|product-manager','Product Specialist|product-specialist','Program Coordinator|program-coordinator','Program Director|program-director','Project Coordinator|project-coordinator','Project Manager|project-manager','Senior Administrative Assistant|senior-administrative-assistant','Team Leader|team-leader'] },
+    { cat: 'Customer service', roles: ['Advertising Account Executive|advertising-account-executive','Call Center Manager|call-center-manager','Call Center Representative|call-center-representative','Call Center Supervisor|call-center-supervisor','Computer Technician|computer-technician','Customer Service Associate|customer-service-associate','Customer Service Manager|customer-service-manager','Customer Service Representative|customer-service-representative','Customer Service Specialist|customer-service-specialist','Customer Service Supervisor|customer-service-supervisor','Customer Success Manager|customer-success-manager','Event Coordinator|event-coordinator','Event Manager|event-manager','Field Service Engineer|field-service-engineer','Field Service Representative|field-service-representative','Field Service Technician|field-service-technician','Flight Attendant|flight-attendant','Front Desk Representative|front-desk-representative','Guest Relations Manager|guest-relations-manager','Help Desk Manager|help-desk-manager','Help Desk Specialist|help-desk-specialist','IT Help Desk Technician|it-help-desk-technician','IT Technical Support|it-technical-support','Maid|maid','Order Picker|order-picker','Receptionist|receptionist','Relationship Manager|relationship-manager','Secretary|secretary','Service Delivery Manager|service-delivery-manager','Technical Support Engineer|technical-support-engineer'] },
+    { cat: 'Design', roles: ['Art Director|art-director','Creative Director or Art Director|creative-director-or-art-director','Design Director|design-director','Design Engineer|design-engineer','Game Artist|game-artist','Interaction Designer|interaction-designer','Interior Designer|interior-designer','UI-UX Designer|ui-ux-designer','UX Research Specialist|ux-research-specialist','Video Specialist|video-specialist','Web Designer|web-designer'] },
+    { cat: 'Education', roles: ['Babysitter|babysitter','Child Care Teacher|child-care-teacher','Corporate Trainer|corporate-trainer','Corporate Travel Manager|corporate-travel-manager','Instructional Designer|instructional-designer','Kindergarten Teacher|kindergarten-teacher','Preschool Teacher|preschool-teacher','School Counselor|school-counselor','Teacher|teacher','Technical Trainer|technical-trainer','Training Coordinator|training-coordinator','Training Manager|training-manager','Training Specialist|training-specialist'] },
+    { cat: 'Engineering', roles: ['Architect|architect','Audio Engineer|audio-engineer','Auto Mechanics|auto-mechanics','Automation Engineer|automation-engineer','Chemical Engineer|chemical-engineer','Civil Engineer|civil-engineer','CNC Operator|cnc-operator','Construction Estimator|construction-estimator','Construction Expediter|construction-expediter','Construction Foreman|construction-foreman','Construction Laborer|construction-laborer','Construction Manager|construction-manager','Construction Project Manager|construction-project-manager','Construction Superintendent|construction-superintendent','Construction Worker|construction-worker','Controls Engineer|controls-engineer','Diesel Mechanic|diesel-mechanic','Director of Engineering|director-of-engineering','Drafter|drafter','Electrical Engineer|electrical-engineer','Electrician|electrician','Embedded Software Engineer|embedded-software-engineer','Engineering Manager|engineering-manager','Environmental Engineer|environmental-engineer','Environmental Health and Safety Coordinator|environmental-health-and-safety-coordinator','Environmental Health and Safety Engineer|environmental-health-and-safety-engineer','Firmware Engineer|firmware-engineer','Hardware Engineer|hardware-engineer','Petroleum Engineer|petroleum-engineer','Process Engineer|process-engineer','Product Designer|product-designer','Product Engineer|product-engineer','Project Engineer|project-engineer','Quality Engineer|quality-engineer','Robotics Engineer|robotics-engineer','SAP Developer|sap-developer','Structural Engineer|structural-engineer','Supplier Quality Engineer|supplier-quality-engineer','Surveyor|surveyor'] },
+    { cat: 'Finance', roles: ['Assistant Controller|assistant-controller','Bank Teller|bank-teller','Chief Financial Officer|chief-financial-officer','Chief Financial Officer (CFO)|chief-financial-officer-cfo','Controller|controller','Debt Collector|debt-collector','Director of Finance|director-of-finance','Estimator|estimator','Finance Business Partner|finance-business-partner','Financial Accountant|financial-accountant','Financial Advisor|financial-advisor','Financial Analyst|financial-analyst','Financial Controller|financial-controller','Financial Manager|financial-manager','Insurance Agent|insurance-agent','Insurance Broker|insurance-broker','Investment Analyst|investment-analyst'] },
+    { cat: 'Healthcare', roles: ['Cardiologist|cardiologist','Caregiver|caregiver','Case Manager|case-manager','Certified Nursing Assistant|certified-nursing-assistant','Claims Examiner|claims-examiner','Clinical Director|clinical-director','Clinical Pharmacist|clinical-pharmacist','Clinical Research Associate|clinical-research-associate','Cosmetologist|cosmetologist','Dental Assistant|dental-assistant','Dental Hygienist|dental-hygienist','Dermatologist|dermatologist','Dietary Aide|dietary-aide','Director of Nursing|director-of-nursing','Endocrinologist|endocrinologist','General Practitioner|general-practitioner','Guidance Counselor|guidance-counselor','Gynecologist|gynecologist','Histopathologist|histopathologist','Home Health Aide|home-health-aide','Hospice Nurse|hospice-nurse','Hospitality Manager|hospitality-manager','Lab Assistant|lab-assistant','Lab Technician|lab-technician','LPN|lpn','Medical Administrative|medical-administrative','Medical Assistant|medical-assistant','Medical Office Manager|medical-office-manager','Neonatologist|neonatologist','Neurologist|neurologist','Nurse|nurse','Nursing Supervisor|nursing-supervisor','Nutritionist|nutritionist','Occupational Therapist|occupational-therapist','Operating Room Nurse|operating-room-nurse','Ophthalmologist|ophthalmologist','Orthopedic Surgeon|orthopedic-surgeon','Paramedic|paramedic','Pedodontist|pedodontist','Personal Care Assistant|personal-care-assistant','Pharmaceutical Sales Representative|pharmaceutical-sales-representative','Pharmacist|pharmacist','Pharmacy Technician|pharmacy-technician','Physical Therapist|physical-therapist','Physical Therapist Assistant|physical-therapist-assistant','Physician|physician','Physician Assistant|physician-assistant','Physiotherapist|physiotherapist','Plastic Surgeon|plastic-surgeon','Psychiatrist|psychiatrist-2','Psychologist|psychologist','Radiologist|radiologist','Registered Nurse|registered-nurse','Respiratory Therapist|respiratory-therapist','Social Worker|social-worker','Spa Therapist|spa-therapist','Urologist|urologist'] },
+    { cat: 'Hospitality and tourism', roles: ['Animator|animator','Barista|barista','Bartender|bartender','Cabin Crew|cabin-crew','Chef|chef','Chef de Partie|chef-de-partie','Executive Chef|executive-chef','Food and Beverage Manager|food-and-beverage-manager','Food Expeditor|food-expeditor','Head Chef|head-chef','Hotel Concierge|hotel-concierge','Hotel Manager|hotel-manager','Kitchen Manager|kitchen-manager','Line Cook|line-cook','Pastry Chef|pastry-chef','Prep Cook|prep-cook','Restaurant General Manager|restaurant-general-manager','Restaurant Server|restaurant-server','Shift Manager|shift-manager','Sous Chef|sous-chef','Travel Agent|travel-agent','Travel Consultant|travel-consultant','Wait Staff|wait-staff','Waiter or Waitress|waiter-or-waitress'] },
+    { cat: 'Human resources (HR)', roles: ['Benefits Administrator|benefits-administrator','Compensation and Benefits Specialist|compensation-and-benefits-specialist','Executive Recruiter|executive-recruiter','HR Administrative Assistant|hr-administrative-assistant','HR Consultant|hr-consultant','HR Coordinator|hr-coordinator','HR Generalist|hr-generalist','HR Officer|hr-officer','Human Resource Assistant|human-resource-assistant','Human Resource Director|human-resource-director','Human Resource Manager|human-resource-manager','Human Resources Business Partner|human-resources-business-partner','Human Resources Specialist|human-resources-specialist','Job Coach|job-coach','Recruiter|recruiter','Recruiting Coordinator|recruiting-coordinator','Recruitment Consultant|recruitment-consultant','Recruitment Manager|recruitment-manager','Recruitment Marketing Specialist|recruitment-marketing-specialist','Staffing Coordinator|staffing-coordinator','Talent Acquisition (TA) Manager|talent-acquisition-ta-manager','Talent Acquisition Specialist|talent-acquisition-specialist','Vice President (VP) of HR|vice-president-vp-of-hr','Volunteer Coordinator|volunteer-coordinator'] },
+    { cat: 'Information technology (IT)', roles: ['.Net developer|net-developer','Analyst|analyst','Analyst Programmer|analyst-programmer','Android Developer|android-developer','AngularJS Developer|angularjs-developer','Application Developer|application-developer','Application Security Engineer|application-security-engineer','Back-end Developer|back-end-developer','Back-end Drupal Developer|back-end-drupal-developer','Back-End Web Developer|back-end-web-developer','Backbone.js Developer|backbone-js-developer','Big Data Engineer|big-data-engineer','Bootstrap Developer|bootstrap-developer','Business Intelligence (BI) Developer|business-intelligence-bi-developer','Business Intelligence Analyst|business-intelligence-analyst','C Developer|c-developer','C# Developer|c-sharp-developer','C++ Developer|c-plus-plus-developer','CakePHP Developer|cakephp-developer','Chief Information Officer (CIO)|chief-information-officer-cio','Chief Information Security Officer|chief-information-security-officer','Chief Technology Officer (CTO)|chief-technology-officer-cto','Cloud Architect|cloud-architect','Cloud Engineer|cloud-engineer','CoffeeScript Developer|coffeescript-developer','Cyber Security Analyst|cyber-security-analyst','Data Analyst|data-analyst','Data Architect|data-architect','Data Coordinator|data-coordinator','Data Engineer|data-engineer','Data Manager|data-manager','Data Scientist|data-scientist','Database Administrator (DBA)|database-administrator-dba','Database Developer|database-developer','DevOps Engineer|devops-engineer','Ember.js Developer|ember-js-developer','Enterprise Architect|enterprise-architect','ETL Developer|etl-developer','Front Office Manager|front-office-manager','Front-end Drupal Developer|front-end-drupal-developer','Full Stack Developer|full-stack-developer','Game Animator|game-animator','Game Developer|game-developer','Game Programmer|game-programmer','Go Developer|go-developer','Graphic Designer|graphic-designer','HTML5 Developer|html5-developer','iOS developer|ios-developer','IT Consultant|it-consultant','IT Coordinator|it-coordinator','IT Director|it-director','IT Manager|it-manager','IT Technician|it-technician','J2EE Developer|j2ee-developer','Java Developer|java-developer','JavaScript Developer|javascript-developer','jQuery Developer|jquery-developer','Junior Software Developer|junior-software-developer','Linux Administrator|linux-administrator','Machine Learning Engineer|machine-learning-engineer','Machine Learning Expert|machine-learning-expert','MEAN Stack Developer|mean-stack-developer','Middleware Developer|middleware-developer','Mobile Developer|mobile-developer','MongoDB Developer|mongodb-developer','MySQL Developer|mysql-developer','Network Administrator|network-administrator','Network Engineer|network-engineer','Network Manager|network-manager','Network Technician|network-technician','Node.js Developer|node-js-developer','NoSQL Developer|nosql-developer','Penetration Testing Expert|penetration-testing-expert','PHP / Laravel Developer|php-laravel-developer','PHP Developer|php-developer','Process Analyst|process-analyst','Product Owner|product-owner','Program Manager|program-manager','Programmer|programmer','Python Developer|python-developer','Python Web Developer|phyton-web-developer','Quality Assurance (QA) Engineer|quality-assurance-qa-engineer','React.js Developer|react-js-developer','Ruby on Rails Developer|ruby-on-rails-developer','SAP Technical Consultant|sap-technical-consultant','Scrum Master|scrum-master','Senior DevOps Engineer|senior-devops-engineer','Software Architect|software-architect','Software Engineer|software-engineer','Software Engineer Intern|software-engineer-intern','Software Security Engineer|software-security-engineer','Software Tester|software-tester','SQL Developer|sql-developer','SQL Server DBA|sql-server-dba','Swift Developer|swift-developer','System Analyst|system-analyst','System Security Engineer|system-security-engineer','System Security Expert|system-security-expert','Systems Engineer|systems-engineer','Telecommunications Specialist|telecommunications-specialist','Test Engineer|test-engineer','TypeScript Developer|typescript-developer','UI Designer|ui-designer','Unity or Unity3D Developer|unity-or-unity3d-developer','Validation Engineer|validation-engineer','Web Analyst|web-analyst','Web Developer|web-developer','Web Master|web-master','WordPress Developer|wordpress-developer'] },
+    { cat: 'Legal', roles: ['Associate Attorney|associate-attorney','Compliance Manager|compliance-manager','Compliance Officer|compliance-officer','Corporate Attorney|corporate-attorney','Criminal Investigator|criminal-investigator','Fraud Investigator|fraud-investigator','General Counsel|general-counsel','Internal Auditor|internal-auditor','Legal Assistant|legal-assistant','Legal Counsel|legal-counsel','Legal Secretary|legal-secretary','Litigation Paralegal|litigation-paralegal','Paralegal|paralegal','Police Officer|police-officer','Security Guard|security-guard','Security Manager|security-manager','Security Officer|security-officer'] },
+    { cat: 'Marketing', roles: ['Blog Manager|blog-manager','Brand Ambassador|brand-ambassador','Brand Manager|brand-manager','Central Marketing Delivery Representative|central-marketing-delivery-representative','Channel Marketing Manager|channel-marketing-manager','Chief Marketing Officer (CMO)|chief-marketing-officer-cmo','Community Manager|community-manager','Content Manager|content-manager','Content Marketing Manager|content-marketing-manager','Conversion Optimization Specialist|conversion-optimization-specialist','Copywriter|copywriter','Copywriter & Editorial Director|copywriter-editorial-director','Creative Director|creative-director','Customer Intelligence Manager|customer-intelligence-manager','Customer Marketing Manager|customer-marketing-manager','Customer Retention & Nurture Flow Specialists|customer-retention-nurture-flow-specialists','Database Marketing Manager|database-marketing-manager','Digital Account Manager|digital-account-manager','Digital Editor|digital-editor','Digital Marketing Director|digital-marketing-director','Digital Marketing Executive|digital-marketing-executive','Digital Marketing Manager|digital-marketing-manager','Digital Marketing Specialist|digital-marketing-specialist','Digital Marketing Strategist|digital-marketing-strategist','Digital Media Specialist|digital-media-specialist','Digital Project Manager|digital-project-manager','Director of Marketing Analytics|director-of-marketing-analytics','Editor|editor','Email Marketing Manager|email-marketing-manager','Event Planner|event-planner','Inbound Marketing Manager|inbound-marketing-manager','Influencer Marketing Specialist|influencer-marketing-specialist','IT Journalist|it-journalist','Journalist|journalist','Lead Nurturing Specialist|lead-nurturing-specialist','Market Research Analyst|market-research-analyst','Marketeer|marketeer','Marketing Analyst|marketing-analyst','Marketing Assistant|marketing-assistant','Marketing Associate|marketing-associate','Marketing Consultant|marketing-consultant','Marketing Coordinator|marketing-coordinator','Marketing Director|marketing-director','Marketing Executive|marketing-executive','Marketing Growth Hacker|marketing-growth-hacker','Marketing Intern|marketing-intern','Marketing Manager|marketing-manager','Marketing Operations Analyst|marketing-operations-analyst','Marketing Operations Manager|marketing-operations-manager','Marketing Specialist|marketing-specialist','Marketing Strategist|marketing-strategist','Outreach and Partnerships Manager|outreach-and-partnerships-manager','Paid Marketing Manager|paid-marketing-manager','Photographer|photographer','Product Marketing Manager|product-marketing-manager','Product Marketing Manager – Sales Enablement|product-marketing-manager-sales-enablement','Promoter|promoter','Search Engine Marketing Specialist (SEO/SEM)|search-engine-marketing-specialist-seo-sem','SEO Consultant|seo-consultant','SEO Developer|seo-developer','SEO Manager|seo-manager','Social Media Coordinator|social-media-coordinator','Social Media Manager|social-media-manager','Social Media Specialist|social-media-specialist','Social Media Strategist|social-media-strategist','Technical Writer|technical-writer','Telemarketer|telemarketer','Telesales Representative|telesales-representative','Traffic Acquisition Manager|traffic-acquisition-manager','Vice President (VP) of Content|vice-president-vp-of-content','Vice President (VP) of Marketing|vice-president-vp-of-marketing','Vice President (VP) of Product Marketing|vice-president-vp-of-product-marketing','Web Editor|web-editor','Website Content Manager|website-content-manager'] },
+    { cat: 'Media & public relations (PR)', roles: ['Assistant Editor|assistant-editor','Camera Operator|camera-operator','Casting Director|casting-director','Communications Manager|communications-manager','Communications Specialist|communications-specialist','Copy Editor|copy-editor','Costume Designer|costume-designer','Fashion Editor|fashion-editor','Makeup Artist|makeup-artist','Managing Editor|managing-editor','Media & Analyst Relations Manager|media-analyst-relations-manager','Media Director|media-director','News Producer|news-producer','Photo Editor|photo-editor','Political Analyst|political-analyst','Production Assistant|production-assistant','Public Relations Intern|public-relations-intern','Public Relations Manager (PR Manager)|public-relations-manager-pr-manager','Public Relations Specialist|public-relations-specialist','Reporter|reporter','Sound Engineer|sound-engineer','Translator|translator','Video Editor|video-editor'] },
+    { cat: 'Production', roles: ['Assembler|assembler','Assistant Game Producer|assistant-game-producer','Fabricator|fabricator','Machinist|machinist','Plant Manager|plant-manager','Production Planner|production-planner','Production Supervisor|production-supervisor','Quality Assurance (QA) Specialist|quality-assurance-qa-specialist','Quality Assurance Manager|quality-assurance-manager','Quality Inspector|quality-inspector','Quality Manager|quality-manager','Release Engineer|release-engineer'] },
+    { cat: 'Property management', roles: ['Carpenter|carpenter','Cleaner|cleaner','Custodian|custodian','Facilities Director|facilities-director','Facilities Manager|facilities-manager','Forklift Operator|forklift-operator','Handyman|handyman','Housekeeper|housekeeper','Janitor|janitor','Janitor/Cleaner|janitor-cleaner','Maintenance Engineer|maintenance-engineer','Maintenance Manager|maintenance-manager','Maintenance Supervisor|maintenance-supervisor','Maintenance Technician|maintenance-technician','Maintenance Worker|maintenance-worker','Painter|painter','Plumber|plumber','Property Manager|property-manager'] },
+    { cat: 'Public service & security', roles: ['Firefighter|firefighter','Public Relations (PR) Executive|public-relations-pr-executive','Safety Coordinator|safety-coordinator','Safety Manager|safety-manager','Safety Officer|safety-officer'] },
+    { cat: 'Real estate', roles: ['Leasing Agent|leasing-agent','Leasing Consultant|leasing-consultant','Real Estate Agent|real-estate-agent','Real Estate Appraiser|real-estate-appraiser','Real Estate Broker|real-estate-broker'] },
+    { cat: 'Retail', roles: ['Area Manager|area-manager','Cashier|cashier','Category Manager|category-manager','Merchandiser|merchandiser','Retail Buyer|retail-buyer','Retail Manager|retail-manager','Retail Sales Associate|retail-sales-associate'] },
+    { cat: 'Sales', roles: ['Account Director|account-director','Account Executive|account-executive','Account Manager|account-manager','Area Sales Manager|area-sales-manager','Business Development Associate|business-development-associate','Business Development Director|business-development-director','Business Development Executive|business-development-executive','Business Development Manager|business-development-manager','Business Development Representative|business-development-representative','Buyer|buyer','Commercial Director|commercial-director','Commercial Manager|commercial-manager','Engagement Manager|engagement-manager','Field Sales Representative|field-sales-representative','Inside Sales Manager|inside-sales-manager','Inside Sales Representative|inside-sales-representative','Insurance Sales Representative|insurance-sales-representative','Key Account Manager|key-account-manager','National Account Manager|national-account-manager','National Sales Manager|national-sales-manager','Outbound Sales|outbound-sales','Outside Sales Representative|outside-sales-representative','Regional Field Marketing Manager|regional-field-marketing-manager','Regional Sales Manager|regional-sales-manager','Sales Account Executive|sales-account-executive','Sales Account Manager|sales-account-manager','Sales Advisor|sales-advisor','Sales Assistant|sales-assistant','Sales Associate|sales-associate','Sales Consultant|sales-consultant','Sales Coordinator|sales-coordinator','Sales Development Representative|sales-development-representative','Sales Director|sales-director','Sales Engineer|sales-engineer','Sales Executive|sales-executive','Sales Manager|sales-manager','Sales Operations Analyst|sales-operations-analyst','Sales Representative|sales-representative','Sales Support Specialist|sales-support-specialist','Sales Training Specialist|sales-training-specialist','Strategic Account Manager|strategic-account-manager','Technical Account Manager|technical-account-manager','Territory Manager|territory-manager','Visual Merchandiser|visual-merchandiser'] },
+    { cat: 'Supply chain and logistics', roles: ['Delivery Driver|delivery-driver','Dispatcher|dispatcher','Driver|driver','Inventory Manager|inventory-manager','Procurement Manager|procurement-manager','Procurement Specialist|procurement-specialist','Purchasing Agent|purchasing-agent','Purchasing Manager|purchasing-manager','Receiving Clerk|receiving-clerk','Shipping Clerk|shipping-clerk','Shipping Manager|shipping-manager','Sourcing Manager|sourcing-manager','Supply Chain Analyst|supply-chain-analyst','Supply Chain Engineer|supply-chain-engineer','Supply Chain Manager|supply-chain-manager','Truck Driver|truck-driver','Warehouse Associate|warehouse-associate','Warehouse Manager|warehouse-manager','Warehouse Supervisor|warehouse-supervisor','Warehouse Worker|warehouse-worker'] }
+  ];
 
-  onSearch(e) { this.setState({ query: e && e.target ? e.target.value : '' }); requestAnimationFrame(() => this._reveal && this._reveal()); }
-  setCat(c) { this.setState({ cat: c }); requestAnimationFrame(() => this._reveal && this._reveal()); }
+  onSearch(e) { this.setState({ query: e && e.target ? e.target.value : '' }); }
 
   renderVals() {
-    const JDS = [
-      { role:'Software Engineer', cat:'Engineering', desc:'Responsibilities, must-have skills and seniority variants for backend, frontend and full-stack.' },
-      { role:'DevOps Engineer', cat:'Engineering', desc:'CI/CD, cloud and reliability responsibilities with a skills-first requirements section.' },
-      { role:'QA Engineer', cat:'Engineering', desc:'Manual and automation testing duties, tools and the quality skills to screen for.' },
-      { role:'Product Manager', cat:'Product', desc:'Ownership, prioritisation and cross-functional responsibilities, ready to customise.' },
-      { role:'Data Analyst', cat:'Data', desc:'SQL, reporting and stakeholder duties with a clear required-skills list.' },
-      { role:'Data Scientist', cat:'Data', desc:'Modelling, experimentation and communication responsibilities for data hires.' },
-      { role:'UX Designer', cat:'Design', desc:'Research, interaction and prototyping duties with portfolio expectations.' },
-      { role:'Graphic Designer', cat:'Design', desc:'Brand, layout and production responsibilities, plus the craft skills to test.' },
-      { role:'Digital Marketer', cat:'Marketing', desc:'Channels, analytics and campaign ownership in a copy-ready JD.' },
-      { role:'Content Writer', cat:'Marketing', desc:'Editorial, SEO and voice responsibilities with a writing-skills checklist.' },
-      { role:'Sales Representative', cat:'Sales', desc:'Pipeline, quota and closing responsibilities, ready to tailor to your motion.' },
-      { role:'Customer Success Manager', cat:'Sales', desc:'Onboarding, retention and expansion duties with the CS skills to screen for.' },
-      { role:'HR Manager', cat:'Operations', desc:'People-ops, compliance and culture responsibilities in a structured template.' },
-      { role:'Administrative Assistant', cat:'Operations', desc:'Scheduling, coordination and communication duties, ready to publish.' },
-      { role:'Virtual Assistant', cat:'Operations', desc:'Remote support responsibilities with a clear, inclusive requirements section.' }
-    ];
     const q = (this.state.query || '').trim().toLowerCase();
-    const cat = this.state.cat;
-    let list = JDS;
-    if (cat !== 'All') list = list.filter(j => j.cat === cat);
-    if (q) list = list.filter(j => j.role.toLowerCase().includes(q) || j.desc.toLowerCase().includes(q) || j.cat.toLowerCase().includes(q));
-    const jds = list.map(j => Object.assign({ href:'resource-detail-template.dc.html' }, j));
-
-    const catNames = ['All','Engineering','Product','Data','Design','Marketing','Sales','Operations'];
-    const cats = catNames.map(c => ({ label:c, cls: cat===c?'on':'', sel: () => this.setCat(c) }));
-
+    let total = 0;
+    const groups = [];
+    this.DATA.forEach(g => {
+      const roles = g.roles
+        .map(s => { const i = s.indexOf('|'); const n = s.slice(0, i); return { n, u: this.B + s.slice(i + 1) + '/' }; })
+        .filter(r => !q || r.n.toLowerCase().includes(q) || g.cat.toLowerCase().includes(q));
+      total += g.roles.length;
+      if (roles.length) groups.push({ cat: g.cat, count: roles.length, roles });
+    });
+    const shown = groups.reduce((a, g) => a + g.roles.length, 0);
     return {
-      rootRef: this.rootRef,
       query: this.state.query, onSearch: (e) => this.onSearch(e),
-      jds, cats,
-      resultCount: jds.length, totalLabel: (q || cat!=='All') ? String(jds.length) : '90+',
-      isEmpty: jds.length === 0
+      groups,
+      resultCount: shown,
+      totalLabel: q ? String(shown) : '500+',
+      isEmpty: shown === 0
     };
   }
 }

@@ -13,6 +13,7 @@ html{scroll-behavior:smooth;}
 body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
 a{text-decoration:none;color:inherit;}
 .ht-wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+[data-reveal]{opacity:0;transform:translateY(24px);}
 .ht-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#F23F44;margin:0 0 16px;}
 .ht-eyebrow .dot{color:#F23F44;}
 .ht-crumb{font-size:13px;color:#8A7A7D;display:flex;gap:8px;align-items:center;justify-content:center;margin-bottom:18px;}
@@ -26,13 +27,16 @@ a{text-decoration:none;color:inherit;}
 .ht-tab:hover{border-color:#FBD0D1;color:#F23F44;}
 .ht-tab.on{background:#F23F44;color:#fff;border-color:#F23F44;}
 .ht-sec{padding:56px 28px 40px;}
-.ht-sec.sand{background:#FBF3EE;}
 .ht-shead{margin:0 auto 30px;max-width:760px;}
 .ht-h2{font-size:27px;font-weight:800;letter-spacing:-.6px;margin:0;}
 .ht-h2p{font-size:15.5px;line-height:1.55;color:#6C5A5D;margin:10px 0 0;}
 .ht-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.ht-card{display:flex;flex-direction:column;background:#fff;border:1px solid #F2E6E7;border-radius:18px;padding:24px 24px 22px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
-.ht-card:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
+@property --bang{syntax:'<angle>';initial-value:0deg;inherits:false;}
+@keyframes runborder{to{--bang:360deg;}}
+.ht-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #F2E6E7;border-radius:18px;padding:24px 24px 22px;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s;}
+.ht-card::before{content:'';position:absolute;inset:0;border-radius:18px;padding:1.8px;background:conic-gradient(from var(--bang),transparent 0deg,#FF7A52 35deg,#F23F44 80deg,transparent 150deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;pointer-events:none;}
+.ht-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(110,11,14,.10);}
+.ht-card:hover::before{opacity:1;animation:runborder 2.4s linear infinite;}
 .ht-ic{width:46px;height:46px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .ht-tag{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A9999C;margin:0 0 8px;}
 .ht-ct{font-size:17px;font-weight:700;letter-spacing:-.3px;margin:0 0 7px;}
@@ -45,8 +49,7 @@ a{text-decoration:none;color:inherit;}
 .ht-band p{font-size:16px;line-height:1.6;color:#D8C5C8;margin:16px auto 26px;max-width:520px;}
 @media(max-width:1000px){.ht-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:640px){.ht-h1{font-size:36px;}.ht-grid{grid-template-columns:1fr;}.ht-hero{padding:44px 22px 34px;}}
-
-h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
+h1,h2,h3,h4,.ht-h1,.ht-eyebrow,.ht-h2{text-wrap:balance;}p,li,.ht-sub,.ht-cd{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
 type Kind = 'calc' | 'gen';
@@ -54,24 +57,27 @@ type Tool = { title: string; tag: string; kind: Kind; desc: string; cta: string 
 
 const TOOLS: Tool[] = [
   { title: 'Cost per hire calculator', tag: 'Calculator', kind: 'calc', desc: 'Add up every recruiting cost from job posting to onboarding and get your true cost per hire.', cta: 'Calculate' },
-  { title: 'Time to hire calculator', tag: 'Calculator', kind: 'calc', desc: 'Measure the average days from a role opening to an accepted offer, and spot the bottlenecks.', cta: 'Calculate' },
+  { title: 'Average time to hire calculator', tag: 'Calculator', kind: 'calc', desc: 'Measure the average days from a role opening to an accepted offer, and spot the bottlenecks.', cta: 'Calculate' },
   { title: 'Quality of hire calculator', tag: 'Calculator', kind: 'calc', desc: 'Score new hires on performance and retention to prove the value each one adds.', cta: 'Calculate' },
   { title: 'Attrition rate calculator', tag: 'Calculator', kind: 'calc', desc: 'Track the percentage of employees leaving over any time frame to catch turnover early.', cta: 'Calculate' },
-  { title: 'eNPS calculator', tag: 'Calculator', kind: 'calc', desc: 'Measure employee satisfaction and engagement to gauge workplace morale at a glance.', cta: 'Calculate' },
+  { title: 'Employee NPS calculator', tag: 'Calculator', kind: 'calc', desc: 'Measure employee satisfaction and engagement to gauge workplace morale at a glance.', cta: 'Calculate' },
   { title: 'Applicant funnel calculator', tag: 'Calculator', kind: 'calc', desc: 'See candidate progress through each stage and optimise your conversion rates.', cta: 'Calculate' },
-  { title: 'Offer acceptance rate calculator', tag: 'Calculator', kind: 'calc', desc: 'Measure the percentage of candidates who accept your offers and improve close rates.', cta: 'Calculate' },
+  { title: 'Cost of employee turnover calculator', tag: 'Calculator', kind: 'calc', desc: 'Quantify what losing an employee really costs, from backfill to lost productivity.', cta: 'Calculate' },
   { title: 'Sourcing channel efficiency', tag: 'Calculator', kind: 'calc', desc: 'Find which recruitment channels bring in the highest-quality candidates for the spend.', cta: 'Calculate' },
+  { title: 'Remote work cost savings', tag: 'Calculator', kind: 'calc', desc: 'Estimate the savings of a remote or hybrid setup versus fully in-office.', cta: 'Calculate' },
   { title: 'Recruiting conversion rate', tag: 'Calculator', kind: 'calc', desc: 'Track how effectively candidates move through each step of your hiring pipeline.', cta: 'Calculate' },
+  { title: 'Interview-to-offer ratio', tag: 'Calculator', kind: 'calc', desc: 'Measure how many interviews it takes to make one offer and streamline your funnel.', cta: 'Calculate' },
+  { title: 'Job offer acceptance rate', tag: 'Calculator', kind: 'calc', desc: 'Measure the percentage of candidates who accept your offers and improve close rates.', cta: 'Calculate' },
+  { title: 'Hiring manager satisfaction', tag: 'Calculator', kind: 'calc', desc: 'Gauge how satisfied hiring managers are with recruiting to align the whole team.', cta: 'Calculate' },
   { title: 'AI job description generator', tag: 'Generator', kind: 'gen', desc: 'Create detailed, inclusive job listings in seconds with the right keywords and responsibilities.', cta: 'Generate' },
-  { title: 'Interview question generator', tag: 'Generator', kind: 'gen', desc: 'Get structured, scorable questions mapped to the exact skills a role requires.', cta: 'Generate' },
-  { title: 'Interview scorecard builder', tag: 'Generator', kind: 'gen', desc: 'Build a consistent rating scale and scorecard so every candidate is judged the same way.', cta: 'Build' },
+  { title: 'AI interview question generator', tag: 'Generator', kind: 'gen', desc: 'Get structured, scorable questions mapped to the exact skills a role requires.', cta: 'Generate' },
 ];
 
-const titleMap: Record<string, string> = { all: 'All HR tools', calc: 'HR calculators', gen: 'Generators & builders' };
+const titleMap: Record<string, string> = { all: 'All HR tools', calc: 'HR calculators', gen: 'Generators' };
 const introMap: Record<string, string> = {
-  all: 'Every free calculator, generator and template in one place. Pick a tool and get an answer in under a minute.',
+  all: 'Every free calculator and generator in one place. Pick a tool and get an answer in under a minute.',
   calc: 'Plug in your numbers and benchmark the metrics that decide how fast and how well you hire.',
-  gen: 'Generate role-ready job descriptions, interview kits and scorecards in seconds.',
+  gen: 'Generate role-ready job descriptions and interview kits in seconds.',
 };
 
 export default function HrToolsPage() {
@@ -81,7 +87,7 @@ export default function HrToolsPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Free HR calculators & tools — cost-per-hire, time-to-hire, quality of hire and more" announcementCta="Browse tools" />
+      <SiteHeader announcement="Free HR calculators & generators — cost-per-hire, time-to-hire, quality of hire and more" announcementCta="Browse tools" />
 
       <section className="ht-hero">
         <div className="ht-wrap" style={{ maxWidth: 820 }}>
@@ -94,12 +100,10 @@ export default function HrToolsPage() {
             Free HR tools<span className="dot">.</span>
           </p>
           <h1 className="ht-h1 reveal">
-            Stop guessing your
-            <br />
-            <em>hiring numbers</em>
+            Stop guessing your <em>hiring numbers</em>
           </h1>
           <p className="ht-sub reveal">
-            Free calculators and templates to measure, benchmark and improve every stage of your hiring — no sign-up, no catch. Simplify and automate your most complex HR tasks.
+            Free calculators and generators to measure, benchmark and improve every stage of your hiring — no sign-up, no catch.
           </p>
           <div className="ht-tabs reveal">
             <button className={`ht-tab ${filter === 'all' ? 'on' : ''}`} onClick={() => setFilter('all')}>All tools</button>
@@ -111,11 +115,11 @@ export default function HrToolsPage() {
 
       <section className="ht-sec">
         <div className="ht-wrap">
-          <div className="ht-shead">
+          <div className="ht-shead reveal">
             <h2 className="ht-h2">{titleMap[filter]}</h2>
             <p className="ht-h2p">{introMap[filter]}</p>
           </div>
-          <div className="ht-grid">
+          <div className="ht-grid reveal">
             {tools.map((t) => (
               <Link className="ht-card" href="/hr-tools-detail" key={t.title}>
                 <div className="ht-ic">

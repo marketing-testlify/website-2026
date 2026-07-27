@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
@@ -128,25 +131,27 @@ const rejection = [
 ];
 
 const faqs = [
-  { q: 'What type of questions are asked in account executive interviews?', a: '“Questions often focus on sales experience, client relationship management, negotiation skills, teamwork, problem-solving, and industry knowledge — e.g. “Describe your previous sales experience,” “How do you approach prospecting?” and “Share an example of a deal you closed.”' },
+  { q: 'What type of questions are asked in account executive interviews?', a: 'Questions often focus on sales experience, client relationship management, negotiation skills, teamwork, problem-solving, and industry knowledge — e.g. “Describe your previous sales experience,” “How do you approach prospecting?” and “Share an example of a deal you closed.”' },
   { q: 'What are the hard skills of an account executive?', a: 'Prospecting, lead generation, negotiation, closing deals, account management, CRM software proficiency, product knowledge, and industry-specific expertise.' },
   { q: 'How do you check the resume of an account executive?', a: 'Look for relevant sales experience, quantifiable achievements, industry knowledge, CRM proficiency, communication skills, and evidence of successful client relationships or revenue generation.' },
   { q: 'How do you hire an account executive?', a: 'Define your requirements, advertise on job boards and social media, screen resumes for relevant experience, conduct structured interviews to assess fit and skills, check references, and negotiate terms of employment.' },
 ];
 
 const tabs = [
-  { label: 'How to hire', anchor: '#howto' },
-  { label: 'Job description', anchor: '#jd' },
-  { label: 'Job boards', anchor: '#jobboards' },
-  { label: 'Social media outreach', anchor: '#social' },
-  { label: 'Email templates', anchor: '#emails' },
-  { label: 'Skills assessment', anchor: '#assessment' },
-  { label: 'General interview questions', anchor: '#genq' },
-  { label: 'Technical interview questions', anchor: '#techq' },
-  { label: 'Rejection email', anchor: '#rejection' },
+  { label: 'How to hire', anchor: '#howto', cls: 'on' },
+  { label: 'Job description', anchor: '#jd', cls: '' },
+  { label: 'Job boards', anchor: '#jobboards', cls: '' },
+  { label: 'Social media outreach', anchor: '#social', cls: '' },
+  { label: 'Email templates', anchor: '#emails', cls: '' },
+  { label: 'Skills assessment', anchor: '#assessment', cls: '' },
+  { label: 'General interview questions', anchor: '#genq', cls: '' },
+  { label: 'Technical interview questions', anchor: '#techq', cls: '' },
+  { label: 'Rejection email', anchor: '#rejection', cls: '' },
 ];
 
 export default function HiringGuidesDetailPage() {
+  const [faqOpen, setFaqOpen] = useState<number | null>(0);
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: `
@@ -155,7 +160,8 @@ html{scroll-behavior:smooth;}
 body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
 a{text-decoration:none;color:inherit;}
 a:hover{color:#F23F44;}
-.hg-wrap{max-width:820px;margin:0 auto;padding:0 28px;}
+.hg-wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+.hg-narrow{max-width:820px;}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);}
 .reveal.in{opacity:1;transform:none;}
 /* hero */
@@ -164,15 +170,22 @@ a:hover{color:#F23F44;}
 .hg-back svg{transition:transform .2s;}
 .hg-back:hover svg{transform:translateX(-3px);}
 .hg-h1{font-size:44px;line-height:1.08;font-weight:800;letter-spacing:-1.4px;margin:0;}
-.hg-intro{font-size:17px;line-height:1.7;color:#5A4B4E;margin:22px 0 0;}
-/* tab list */
-.hg-tabsbar{position:sticky;top:64px;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid #F0E2E3;}
-.hg-tabs{display:flex;flex-wrap:wrap;gap:6px 20px;padding:16px 0;}
-.hg-tab{font-size:14px;font-weight:600;color:#6C5A5D;white-space:nowrap;}
-.hg-tab:hover{color:#F23F44;}
+.hg-intro{font-size:17px;line-height:1.7;color:#5A4B4E;margin:22px 0 0;max-width:820px;}
+/* sidebar layout */
+.hg-layout{display:grid;grid-template-columns:210px 1fr;gap:60px;align-items:start;}
+.hg-side{position:sticky;top:96px;background:#FBF3EE;border:1px solid #F0E2E3;border-radius:18px;padding:24px 26px;}
+.hg-side h4{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A7A7D;margin:0 0 16px;padding-bottom:14px;border-bottom:1px solid #EADDDE;}
+.hg-sidelist{margin:0;padding:0;list-style:none;counter-reset:hgtoc;}
+.hg-sideitem{counter-increment:hgtoc;position:relative;padding-left:32px;font-size:14.5px;line-height:1.45;margin-bottom:15px;}
+.hg-sideitem:last-child{margin-bottom:0;}
+.hg-sideitem::before{content:counter(hgtoc);position:absolute;left:0;top:-1px;width:22px;height:22px;border-radius:7px;background:#FCE0DE;color:#F23F44;font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.hg-sidelink{font-size:14.5px;font-weight:600;color:#5A4B4E;transition:color .2s;}
+.hg-sidelink:hover{color:#F23F44;}
+.hg-sidelink.on{color:#1A1014;}
+.hg-main{max-width:780px;}
 /* body prose */
 .hg-body{padding:40px 28px 30px;}
-.hg-sec{scroll-margin-top:132px;margin-bottom:20px;}
+.hg-sec{scroll-margin-top:120px;margin-bottom:20px;}
 .hg-h2{font-size:26px;font-weight:800;letter-spacing:-.5px;margin:44px 0 16px;color:#1A1014;}
 .hg-h3{font-size:18px;font-weight:700;letter-spacing:-.2px;margin:26px 0 10px;color:#1A1014;}
 .hg-p{font-size:16px;line-height:1.72;color:#4A3B3E;margin:0 0 16px;}
@@ -187,11 +200,16 @@ a:hover{color:#F23F44;}
 .hg-qq{font-size:16px;font-weight:700;color:#1A1014;margin:22px 0 8px;}
 .hg-qlbl{font-weight:700;color:#1A1014;}
 .hg-faq .hg-h3{margin:22px 0 8px;}
-@media(max-width:820px){.hg-h1{font-size:32px;letter-spacing:-1px;}.hg-tabsbar{top:56px;}.hg-body{padding:32px 22px 24px;}}
+.hg-faqitem{border-bottom:1px solid #F0E2E3;}
+.hg-faqq{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;cursor:pointer;font-size:16px;font-weight:700;color:#1A1014;}
+.hg-faqicon{flex-shrink:0;color:#8A7A7D;transition:transform .25s;}
+.hg-faqa{padding:0 0 20px;margin:0;}
+@media(max-width:900px){.hg-layout{grid-template-columns:1fr;}.hg-side{position:static;}.hg-main{max-width:none;}}
+@media(max-width:820px){.hg-h1{font-size:32px;letter-spacing:-1px;}.hg-body{padding:32px 22px 24px;}}
 h1,h2,h3,h4,.hg-h1,.hg-h2,.hg-h3{text-wrap:balance;}p,li,.hg-p,.hg-intro,.hg-pre{text-wrap:pretty;}/*om-balance-rule*/
 ` }} />
       <SiteHeader
-        announcement="Free hiring guides — job descriptions, interview questions & skills to test for 90+ roles"
+        announcement="Free hiring guides — job descriptions, interview questions &amp; skills to test for 90+ roles"
         announcementCta="Browse guides"
         homeHref="/"
       />
@@ -202,138 +220,150 @@ h1,h2,h3,h4,.hg-h1,.hg-h2,.hg-h3{text-wrap:balance;}p,li,.hg-p,.hg-intro,.hg-pre
         <p className="hg-intro reveal">{intro}</p>
       </div></section>
 
-      <div className="hg-tabsbar"><div className="hg-wrap"><div className="hg-tabs">
-        {tabs.map((t) => (
-          <a key={t.anchor} className="hg-tab" href={t.anchor}>{t.label}</a>
-        ))}
+      <div className="hg-body"><div className="hg-wrap"><div className="hg-layout">
+
+        <aside className="hg-side">
+          <h4>On this page</h4>
+          <ol className="hg-sidelist">
+            {tabs.map((t) => (
+              <li key={t.anchor} className="hg-sideitem"><a className={`hg-sidelink ${t.cls}`} href={t.anchor}>{t.label}</a></li>
+            ))}
+          </ol>
+        </aside>
+
+        <div className="hg-main">
+
+          <div className="hg-sec" id="howto">
+            <h2 className="hg-h2 reveal">How to hire {roleArticle}</h2>
+            {howtoLead.map((p, i) => (
+              <p key={i} className="hg-p reveal">{p}</p>
+            ))}
+            <h3 className="hg-h3 reveal">Key steps in hiring {roleArticle}</h3>
+            <ol className="hg-ol reveal">
+              {steps.map((s, i) => (
+                <li key={i}>{s}</li>
+              ))}
+            </ol>
+            <h3 className="hg-h3 reveal">Pro tips for hiring {roleArticle}</h3>
+            <ol className="hg-ol reveal">
+              {protips.map((p, i) => (
+                <li key={i}><b>{p.title}</b> {p.body}</li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="hg-sec" id="jd">
+            <h2 className="hg-h2 reveal">Job description template for {roleArticle}</h2>
+            <p className="hg-jdrow reveal"><b>Title:</b> {jd.title}</p>
+            <p className="hg-jdrow reveal"><b>Location:</b> {jd.location}</p>
+            <h3 className="hg-h3 reveal">Overview</h3>
+            <p className="hg-p reveal">{jd.overview}</p>
+            <h3 className="hg-h3 reveal">Requirements</h3>
+            <ul className="hg-ul reveal">
+              {jd.requirements.map((r, i) => (
+                <li key={i}>{r}</li>
+              ))}
+            </ul>
+            <h3 className="hg-h3 reveal">Responsibilities</h3>
+            <ul className="hg-ul reveal">
+              {jd.responsibilities.map((r, i) => (
+                <li key={i}>{r}</li>
+              ))}
+            </ul>
+            <h3 className="hg-h3 reveal">Benefits</h3>
+            <ul className="hg-ul reveal">
+              {jd.benefits.map((r, i) => (
+                <li key={i}>{r}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="hg-sec" id="jobboards">
+            <h2 className="hg-h2 reveal">Job boards to source the best candidates</h2>
+            <ol className="hg-ol reveal">
+              {jobboards.map((b, i) => (
+                <li key={i}><b>{b.name}:</b> {b.desc}</li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="hg-sec" id="social">
+            <h2 className="hg-h2 reveal">Social media shoutout templates</h2>
+            {social.map((s) => (
+              <p key={s.n} className="hg-p reveal"><b>Template {s.n}:</b> {s.text}</p>
+            ))}
+          </div>
+
+          <div className="hg-sec" id="emails">
+            <h2 className="hg-h2 reveal">Outreach email templates to attract candidates</h2>
+            {emails.map((e) => (
+              <div key={e.n} className="reveal">
+                <p className="hg-tlabel">Template {e.n}</p>
+                <p className="hg-jdrow"><b>Subject:</b> {e.subject}</p>
+                <p className="hg-pre">{e.body}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="hg-sec" id="assessment">
+            <h2 className="hg-h2 reveal">Relevant assessment tests</h2>
+            <ul className="hg-ul reveal">
+              {tests.map((t, i) => (
+                <li key={i}><Link href={t.url}>{t.name}</Link></li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="hg-sec" id="genq">
+            <h2 className="hg-h2 reveal">5 general interview questions</h2>
+            {genq.map((q, i) => (
+              <div key={i} className="reveal">
+                <p className="hg-qq">{q.q}</p>
+                <p className="hg-p"><span className="hg-qlbl">Why this question matters:</span> {q.why}</p>
+                <p className="hg-p"><span className="hg-qlbl">What to listen for:</span> {q.listen}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="hg-sec" id="techq">
+            <h2 className="hg-h2 reveal">5 technical interview questions</h2>
+            {techq.map((q, i) => (
+              <div key={i} className="reveal">
+                <p className="hg-qq">{q.q}</p>
+                <p className="hg-p"><span className="hg-qlbl">Why this question matters:</span> {q.why}</p>
+                <p className="hg-p"><span className="hg-qlbl">What to listen for:</span> {q.listen}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="hg-sec" id="rejection">
+            <h2 className="hg-h2 reveal">Rejection email templates</h2>
+            {rejection.map((r) => (
+              <div key={r.n} className="reveal">
+                <p className="hg-tlabel">Template {r.n}</p>
+                <p className="hg-pre">{r.body}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
       </div></div></div>
 
-      <div className="hg-body"><div className="hg-wrap">
-
-        <div className="hg-sec" id="howto">
-          <h2 className="hg-h2 reveal">How to hire {roleArticle}</h2>
-          {howtoLead.map((p, i) => (
-            <p key={i} className="hg-p reveal">{p}</p>
-          ))}
-          <h3 className="hg-h3 reveal">Key steps in hiring {roleArticle}</h3>
-          <ol className="hg-ol reveal">
-            {steps.map((s, i) => (
-              <li key={i}>{s}</li>
-            ))}
-          </ol>
-          <h3 className="hg-h3 reveal">Pro tips for hiring {roleArticle}</h3>
-          <ol className="hg-ol reveal">
-            {protips.map((p, i) => (
-              <li key={i}><b>{p.title}</b> {p.body}</li>
-            ))}
-          </ol>
-        </div>
-
-        <div className="hg-sec" id="jd">
-          <h2 className="hg-h2 reveal">Job description template for {roleArticle}</h2>
-          <p className="hg-jdrow reveal"><b>Title:</b> {jd.title}</p>
-          <p className="hg-jdrow reveal"><b>Location:</b> {jd.location}</p>
-          <h3 className="hg-h3 reveal">Overview</h3>
-          <p className="hg-p reveal">{jd.overview}</p>
-          <h3 className="hg-h3 reveal">Requirements</h3>
-          <ul className="hg-ul reveal">
-            {jd.requirements.map((r, i) => (
-              <li key={i}>{r}</li>
-            ))}
-          </ul>
-          <h3 className="hg-h3 reveal">Responsibilities</h3>
-          <ul className="hg-ul reveal">
-            {jd.responsibilities.map((r, i) => (
-              <li key={i}>{r}</li>
-            ))}
-          </ul>
-          <h3 className="hg-h3 reveal">Benefits</h3>
-          <ul className="hg-ul reveal">
-            {jd.benefits.map((r, i) => (
-              <li key={i}>{r}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="hg-sec" id="jobboards">
-          <h2 className="hg-h2 reveal">Job boards to source the best candidates</h2>
-          <ol className="hg-ol reveal">
-            {jobboards.map((b, i) => (
-              <li key={i}><b>{b.name}:</b> {b.desc}</li>
-            ))}
-          </ol>
-        </div>
-
-        <div className="hg-sec" id="social">
-          <h2 className="hg-h2 reveal">Social media shoutout templates</h2>
-          {social.map((s) => (
-            <p key={s.n} className="hg-p reveal"><b>Template {s.n}:</b> {s.text}</p>
-          ))}
-        </div>
-
-        <div className="hg-sec" id="emails">
-          <h2 className="hg-h2 reveal">Outreach email templates to attract candidates</h2>
-          {emails.map((e) => (
-            <div key={e.n} className="reveal">
-              <p className="hg-tlabel">Template {e.n}</p>
-              <p className="hg-jdrow"><b>Subject:</b> {e.subject}</p>
-              <p className="hg-pre">{e.body}</p>
+      <div className="hg-sec hg-faq hg-narrow" id="faqs">
+        <h2 className="hg-h2 reveal">Frequently asked questions</h2>
+        {faqs.map((f, i) => {
+          const isOpen = faqOpen === i;
+          return (
+            <div key={i} className="hg-faqitem reveal">
+              <div className="hg-faqq" onClick={() => setFaqOpen(isOpen ? null : i)}>
+                <span>{f.q}</span>
+                <svg className="hg-faqicon" style={isOpen ? { transform: 'rotate(180deg)' } : undefined} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+              </div>
+              {isOpen && <p className="hg-p hg-faqa">{f.a}</p>}
             </div>
-          ))}
-        </div>
-
-        <div className="hg-sec" id="assessment">
-          <h2 className="hg-h2 reveal">Relevant assessment tests</h2>
-          <ul className="hg-ul reveal">
-            {tests.map((t, i) => (
-              <li key={i}><Link href={t.url}>{t.name}</Link></li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="hg-sec" id="genq">
-          <h2 className="hg-h2 reveal">5 general interview questions</h2>
-          {genq.map((q, i) => (
-            <div key={i} className="reveal">
-              <p className="hg-qq">{q.q}</p>
-              <p className="hg-p"><span className="hg-qlbl">Why this question matters:</span> {q.why}</p>
-              <p className="hg-p"><span className="hg-qlbl">What to listen for:</span> {q.listen}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="hg-sec" id="techq">
-          <h2 className="hg-h2 reveal">5 technical interview questions</h2>
-          {techq.map((q, i) => (
-            <div key={i} className="reveal">
-              <p className="hg-qq">{q.q}</p>
-              <p className="hg-p"><span className="hg-qlbl">Why this question matters:</span> {q.why}</p>
-              <p className="hg-p"><span className="hg-qlbl">What to listen for:</span> {q.listen}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="hg-sec" id="rejection">
-          <h2 className="hg-h2 reveal">Rejection email templates</h2>
-          {rejection.map((r) => (
-            <div key={r.n} className="reveal">
-              <p className="hg-tlabel">Template {r.n}</p>
-              <p className="hg-pre">{r.body}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="hg-sec hg-faq" id="faqs">
-          <h2 className="hg-h2 reveal">Frequently asked questions</h2>
-          {faqs.map((f, i) => (
-            <div key={i} className="reveal">
-              <h3 className="hg-h3">{f.q}</h3>
-              <p className="hg-p">{f.a}</p>
-            </div>
-          ))}
-        </div>
-
-      </div></div>
+          );
+        })}
+      </div>
 
       <CtaBand />
       <SiteFooter />

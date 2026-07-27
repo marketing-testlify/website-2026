@@ -110,15 +110,15 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
                 <a className="sm-chip" href="/blog"><span className="sm-dot sm-d-a" />Blog</a>
                 <a className="sm-chip" href="/blog-detail"><span className="sm-dot sm-d-a" />· detail</a>
                 <a className="sm-chip" href="/hiring-guides"><span className="sm-dot sm-d-a" />Hiring guides</a>
-                <a className="sm-chip" href="/hiring-guides-detail"><span className="sm-dot sm-d-r" />· detail</a>
+                <a className="sm-chip" href="/hiring-guides-detail"><span className="sm-dot sm-d-a" />· detail</a>
                 <a className="sm-chip" href="/hr-glossary"><span className="sm-dot sm-d-b" />HR glossary</a>
-                <a className="sm-chip" href="/hr-glossary-detail"><span className="sm-dot sm-d-r" />· detail</a>
-                <a className="sm-chip" href="/knowledge-base"><span className="sm-dot sm-d-cm" />Ebooks</a>
-                <a className="sm-chip" href="/podcast"><span className="sm-dot sm-d-cm" />Podcasts</a>
+                <a className="sm-chip" href="/hr-glossary-detail"><span className="sm-dot sm-d-a" />· detail</a>
+                <a className="sm-chip" href="/knowledge-base"><span className="sm-dot sm-d-a" />Ebooks</a>
+                <a className="sm-chip" href="/podcast"><span className="sm-dot sm-d-a" />Podcasts</a>
                 <a className="sm-chip" href="/customer-success-stories"><span className="sm-dot sm-d-a" />Customer stories</a>
-                <a className="sm-chip" href="/job-description-templates"><span className="sm-dot sm-d-b" />JD templates</a>
-                <a className="sm-chip" href="/alternatives"><span className="sm-dot sm-d-b" />Competitors</a>
-                <a className="sm-chip" href="/alternatives-detail"><span className="sm-dot sm-d-r" />· detail</a>
+                <a className="sm-chip" href="/job-description-templates"><span className="sm-dot sm-d-a" />JD templates</a>
+                <a className="sm-chip" href="/alternatives"><span className="sm-dot sm-d-a" />Competitors</a>
+                <a className="sm-chip" href="/alternatives-detail"><span className="sm-dot sm-d-a" />· detail</a>
                 <a className="sm-chip" href="/sitemap"><span className="sm-dot sm-d-a" />Sitemap</a>
               </div>
               <div className="sm-glabel">HR tools</div>
@@ -279,8 +279,8 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
                 <a className="sm-chip" href="/comeet"><span className="sm-dot sm-d-cm" />Comeet</a>
                 <a className="sm-chip" href="/testlify-the-recruiter-who-never-sleeps"><span className="sm-dot sm-d-cm" />Blog · never sleeps</a>
                 <a className="sm-chip" href="/testlify-launches-conversational-ai-for-talent-assessment"><span className="sm-dot sm-d-cm" />Blog · conversational AI</a>
-                <a className="sm-chip" href="/knowledge-base"><span className="sm-dot sm-d-cm" />Ebooks</a>
-                <a className="sm-chip" href="/podcast"><span className="sm-dot sm-d-cm" />Podcast</a>
+                <a className="sm-chip" href="/knowledge-base"><span className="sm-dot sm-d-a" />Ebooks</a>
+                <a className="sm-chip" href="/podcast"><span className="sm-dot sm-d-a" />Podcast</a>
                 <a className="sm-chip" href="/referral-program"><span className="sm-dot sm-d-cm" />Referral program</a>
                 <a className="sm-chip" href="/partnership"><span className="sm-dot sm-d-cm" />Partnership program</a>
                 <a className="sm-chip" href="/integration-program"><span className="sm-dot sm-d-cm" />Integration program</a>
@@ -395,10 +395,10 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
               <div className="sm-grp">
                 <a className="sm-chip" href="/resource-list-template"><span className="sm-dot sm-d-r" />List / index</a>
                 <a className="sm-chip" href="/resource-detail-template"><span className="sm-dot sm-d-r" />Article / detail</a>
-                <a className="sm-chip" href="/hiring-guides-detail"><span className="sm-dot sm-d-r" />Hiring guide detail</a>
+                <a className="sm-chip" href="/hiring-guides-detail"><span className="sm-dot sm-d-a" />Hiring guide detail</a>
                 <a className="sm-chip" href="/hr-tools-detail"><span className="sm-dot sm-d-r" />Tool / calculator</a>
-                <a className="sm-chip" href="/alternatives-detail"><span className="sm-dot sm-d-r" />Competitor</a>
-                <a className="sm-chip" href="/hr-glossary-detail"><span className="sm-dot sm-d-r" />Glossary term</a>
+                <a className="sm-chip" href="/alternatives-detail"><span className="sm-dot sm-d-a" />Competitor</a>
+                <a className="sm-chip" href="/hr-glossary-detail"><span className="sm-dot sm-d-a" />Glossary term</a>
               </div>
             </div>
 
@@ -406,7 +406,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 
           <div style={{ marginTop: 26, background: "#fff", border: "1px solid #F0E2E3", borderRadius: 16, padding: "22px 24px", fontSize: 13, color: "#5A4B4E", lineHeight: 1.8 }}>
             <b style={{ color: "#1A1014" }}>Merges applied to the IA:</b>
-            {" "}Testlify AI + platform hub · AI interviews + video interviewing · Science + Trust → “Why it works” · 27 feature pages → 1 Features page · About + leadership (13 → 1) · Trust subpages → tabs · 3 programs → Partners · ebooks + podcasts → Blog · contact + book-a-demo → 1.
+            {" "}Testlify AI + platform hub · AI interviews + video interviewing · Science + Trust → "Why it works" · 27 feature pages → 1 Features page · About + leadership (13 → 1) · Trust subpages → tabs · 3 programs → Partners · ebooks + podcasts → Blog · contact + book-a-demo → 1.
             <br /><br />
             <b style={{ color: "#1A1014" }}>Header &amp; footer now match this IA.</b> Pre-change versions saved to <code>backup pages/Site Header -pre-IA-.dc.html</code> and <code>Site Footer -pre-IA-.dc.html</code>.
             <br /><br />
