@@ -75,7 +75,7 @@ type Group = { cat: string; count: number; roles: Role[] };
 export default function JobDescriptionTemplatesPage() {
   const [query, setQuery] = useState('');
 
-  const { groups, resultCount, totalLabel, isEmpty } = useMemo(() => {
+  const { groups, isEmpty } = useMemo(() => {
     const q = query.trim().toLowerCase();
     let shown = 0;
     const groups: Group[] = [];
@@ -117,16 +117,14 @@ export default function JobDescriptionTemplatesPage() {
 
       <section className="jd-hero">
         <div className="jd-wrap" style={{ maxWidth: 820 }}>
-          <div className="jd-crumb">
-            <Link href="/blog">Resources</Link>
-            <span>/</span>
-            <span>Job description templates</span>
-          </div>
           <p className="jd-eyebrow reveal">
             JD templates<b>.</b>
           </p>
           <h1 className="jd-h1 reveal">
-            Job description templates: <em>the complete list</em>
+            We have hundreds of&nbsp;<br />
+            <span style={{ color: 'rgb(242, 63, 68)', letterSpacing: '-1.4px' }}>Job Descriptions&nbsp;</span>
+            <span style={{ letterSpacing: '-1.4px' }}>ready for you!&nbsp;</span>
+            <br />
           </h1>
           <p className="jd-sub reveal">
             Use these copy-ready job description templates to attract the best candidates — then turn each JD&apos;s skills into a Testlify assessment.
@@ -146,12 +144,8 @@ export default function JobDescriptionTemplatesPage() {
         </div>
       </section>
 
-      <section className="jd-sec">
+      <section className="jd-sec" style={{ paddingTop: 0 }}>
         <div className="jd-wrap">
-          <p className="jd-count reveal">
-            Showing <b>{resultCount}</b> of {totalLabel} templates
-          </p>
-
           {isEmpty && (
             <div className="jd-empty">
               No templates match &ldquo;<b>{query}</b>&rdquo;. Try another role or{' '}
