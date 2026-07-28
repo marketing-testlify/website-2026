@@ -8,69 +8,166 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./site-base.css">
 <script src="./reveal.js"></script>
 <style>
+.hero{padding:72px 28px 88px;background:radial-gradient(1100px 540px at 78% 6%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff;position:relative;overflow:hidden;}
+.herogrid{display:grid;grid-template-columns:1.02fr 1.1fr;gap:60px;align-items:center;}
+.pill{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #F4D9DA;border-radius:999px;padding:7px 15px 7px 8px;font-size:13px;font-weight:600;color:#A8323A;box-shadow:0 6px 16px rgba(110,11,14,.08);}
+.pilltag{background:#F23F44;color:#fff;font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:999px;}
+.heroctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:30px;}
+.trust{display:flex;align-items:center;gap:13px;flex-wrap:wrap;font-size:13.5px;color:#8A7A7D;font-weight:600;margin-top:26px;}
+.acc{color:#F23F44;}
+.herochk{display:flex;flex-direction:column;gap:11px;margin-top:26px;}
+.herochk div{display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:600;color:#4A3B3E;}
+.herochk svg{flex:none;color:#F23F44;}
+.mock{background:#fff;border:1px solid #F0E2E3;border-radius:20px;box-shadow:0 40px 90px rgba(110,11,14,.16);overflow:hidden;}
+.mocktop{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid #F4ECEC;background:#FCFAFA;}
+.mc{width:11px;height:11px;border-radius:50%;}
+.mockbar{margin-left:12px;flex:1;height:26px;border-radius:8px;background:#F3EAEA;display:flex;align-items:center;padding:0 12px;font-size:11.5px;color:#A9999C;font-weight:500;}
+.mockbody{padding:0;}
+.mockbody img{width:100%;display:block;}
+@media(max-width:960px){.herogrid{grid-template-columns:1fr !important;gap:44px;}.hero{padding:44px 22px 60px;}}
 .tourrow{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
 .tourrow.flip .tourtxt{order:2;}
-.shot{border-radius:20px;border:1px solid #F0E2E3;background:linear-gradient(160deg,#FFF6F4,#FBEDEA);height:320px;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 30px rgba(110,11,14,.10);}
-.shot span{font-size:14px;font-weight:600;color:#B4938F;}
-@media(max-width:920px){.tourrow{grid-template-columns:1fr;gap:28px;}.tourrow.flip .tourtxt{order:0;}}
+.shot{border-radius:20px;border:1px solid #F0E2E3;background:#fff;height:340px;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 30px rgba(110,11,14,.10);overflow:hidden;padding:20px;}
+.shot img{width:100%;height:100%;object-fit:contain;}
+.pt-sub3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px;}
+.pt-sub3 .card{background:#fff;border:1px solid #F2E6E7;border-radius:16px;padding:24px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.pt-sub3 .card:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
+.pt-sub3 .cic{width:42px;height:42px;border-radius:11px;background:#FFF0F0;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.pt-sub3 h3{font-size:17px;font-weight:700;letter-spacing:-.2px;margin:0 0 8px;}
+.pt-sub3 p{font-size:14.5px;line-height:1.6;color:#5A4B4E;margin:0;}
+.pt-pair{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+.pt-pcard{background:#fff;border:1px solid #F2E6E7;border-radius:18px;padding:28px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.pt-pcard:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
+.pt-pshot{border-radius:14px;overflow:hidden;height:190px;margin-bottom:20px;background:#FBF3EE;display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:12px;}
+.pt-pshot img{width:100%;height:100%;object-fit:contain;}
+.pt-pcard h3{font-size:18px;font-weight:700;margin:0 0 8px;letter-spacing:-.2px;}
+.pt-pcard p{font-size:14.5px;line-height:1.6;color:#5A4B4E;margin:0;}
+.intg-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.intg-tile{display:flex;align-items:center;justify-content:center;height:88px;background:#fff;border:1px solid #F2E6E7;border-radius:16px;padding:16px 20px;transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;}
+.intg-tile:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
+.intg-tile img{max-width:100%;max-height:40px;object-fit:contain;}
+@media(max-width:920px){.tourrow{grid-template-columns:1fr;gap:28px;}.tourrow.flip .tourtxt{order:0;}.pt-sub3{grid-template-columns:1fr;}.pt-pair{grid-template-columns:1fr;}.intg-grid{grid-template-columns:repeat(2,1fr);}}
 </style>
 </helmet>
 <dc-import name="component-site-header" announcement="Take the 2-minute product tour" announcement-cta="Start free" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
 
-<section class="phero"><div class="wrap" style="max-width:860px;">
-  <p class="eyebrow reveal">Product tour<b>.</b></p>
-  <h1 class="h1 reveal" style="transition-delay:.04s">See Testlify<br>in action</h1>
-  <p class="lead reveal" style="margin:22px auto 0;max-width:640px;transition-delay:.08s">A quick walk through the platform — from building an assessment to reading a ranked, evidence-backed shortlist. No sign-up required.</p>
-  <div class="reveal btnrow" style="margin-top:30px;transition-delay:.12s;">
-    <dc-import name="component-cta-button" label="Try for free" href="#" variant="primary" size="md" icon="arrow" hint-size="160px,52px"></dc-import>
-    <dc-import name="component-cta-button" label="Book a live demo" href="demo.dc.html" variant="ghost" size="md" icon="play" hint-size="180px,52px"></dc-import>
+<section class="hero"><div class="wrap"><div class="herogrid">
+  <div>
+    <div class="reveal" style="transition-delay:.02s"><span class="pill"><span class="pilltag">PRODUCT TOUR</span> 2-minute walkthrough</span></div>
+    <h1 class="h1 reveal" style="margin-top:22px;transition-delay:.06s">Finest talent <span class="acc">assessment platform.</span></h1>
+    <p class="lead reveal" style="margin-top:22px;max-width:500px;transition-delay:.1s">See how Testlify takes you from job posting to verified shortlist — build an assessment, screen candidates and read results, end to end.</p>
+    <div class="heroctas reveal" style="transition-delay:.16s"><dc-import name="component-cta-button" label="Try for free" href="pricing.dc.html" variant="primary" size="md" icon="arrow" hint-size="160px,52px"></dc-import><dc-import name="component-cta-button" label="Book a demo" href="demo.dc.html" variant="secondary" size="md" icon="play" hint-size="160px,52px"></dc-import></div>
+    <div class="trust reveal" style="transition-delay:.2s"><span style="display:inline-flex;align-items:center;gap:7px;"><span style="color:#F23F44;font-weight:700;">✓</span>7-day free trial</span><span style="display:inline-flex;align-items:center;gap:7px;"><span style="color:#F23F44;font-weight:700;">✓</span>No credit card required</span></div>
   </div>
-</div></section>
+  <div class="reveal" style="transition-delay:.12s">
+    <div class="mock">
+      <div class="mocktop"><span class="mc" style="background:#FF5F57"></span><span class="mc" style="background:#FEBC2E"></span><span class="mc" style="background:#28C840"></span><span class="mockbar">app.testlify.com/tour</span></div>
+      <div class="mockbody"><img src="https://testlify.com/wp-content/uploads/2023/03/12-1024x759.png" alt="Testlify platform overview"></div>
+    </div>
+  </div>
+</div></div></section>
 
-<section class="sec"><div class="wrap tourrow reveal">
+<section class="sec"><div class="wrap" style="max-width:760px;margin:0 auto 48px;text-align:center;">
+  <p class="eyebrow reveal">How Testlify works<b>.</b></p>
+  <h2 class="h2 reveal" style="margin-bottom:16px;transition-delay:.04s;">Real-time programming evaluation to simulate real-world coding scenarios</h2>
+  <p class="lead reveal" style="transition-delay:.08s;">Testlify's unique AI-powered assessment technology is a proven solution against high employee turnover rates. Automate the laborious processes from 'Apply' to 'Hire' with a fun, engaging assessment process that ensures minimal drop-off throughout your recruitment funnel.</p>
+</div>
+<div class="wrap tourrow reveal">
   <div class="tourtxt">
-    <p class="eyebrow">Step 1<b>.</b></p>
-    <h2 class="h2" style="margin-bottom:18px;">Build an assessment in minutes</h2>
-    <p class="body">Start from 3,500+ validated tests or mix your own questions — coding, cognitive, personality, role-specific. Add AI video, audio or chat interviews with one click.</p>
+    <h3 style="font-size:19px;font-weight:700;margin:0 0 10px;">Real-time programming evaluation</h3>
+    <p class="body" style="margin:0 0 22px;">Candidates showcase their programming skills in a simulated real-world coding environment.</p>
+    <h3 style="font-size:19px;font-weight:700;margin:0 0 10px;">Comprehensive reporting system</h3>
+    <p class="body" style="margin:0 0 22px;">Detailed insights into a candidate's performance, so you can make informed decisions for technical positions.</p>
+    <h3 style="font-size:19px;font-weight:700;margin:0 0 10px;">Wide range of languages &amp; frameworks</h3>
+    <p class="body" style="margin:0;">Create tests that match the technical requirements of your specific positions.</p>
   </div>
-  <div class="shot"><span>Assessment builder</span></div>
+  <div class="shot"><img src="https://testlify.com/wp-content/uploads/2024/08/Real-time-programming-evaluation-to-simulate-real-world-coding-scenarios-1-1-1024x764.jpg" alt="Real-time programming evaluation"></div>
 </div></section>
 
-<section class="sec" style="background:#FBF3EE;"><div class="wrap tourrow flip reveal">
-  <div class="tourtxt">
-    <p class="eyebrow">Step 2<b>.</b></p>
-    <h2 class="h2" style="margin-bottom:18px;">Invite candidates anywhere</h2>
-    <p class="body">Share a link, upload a CSV or trigger invites straight from your ATS. Candidates take a clean, mobile-friendly assessment with anti-cheat proctoring built in.</p>
-  </div>
-  <div class="shot"><span>Candidate experience</span></div>
+<section class="sec" style="background:#FBF3EE;"><div class="wrap" style="max-width:680px;margin:0 auto 40px;text-align:center;">
+  <p class="eyebrow reveal">No more guessing<b>.</b></p>
+  <h2 class="h2 reveal" style="margin-bottom:14px;transition-delay:.04s;">Find the hidden gems in every shortlist</h2>
+  <p class="lead reveal" style="transition-delay:.08s;">Identifying the best performer overall isn't always the way to find the ideal employee. Dig deeper into applicant results and view detailed score breakdowns by talent — then discuss and compare with hiring managers to identify the ideal candidate quickly.</p>
+</div>
+<div class="wrap pt-sub3 reveal">
+  <div class="card"><div class="cic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-4.35-4.35"></path><circle cx="11" cy="11" r="7"></circle></svg></div><h3>Insights</h3><p>Complete candidate report cards with a detailed summary per skill — analyze individual responses and contrast candidates side by side.</p></div>
+  <div class="card"><div class="cic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg></div><h3>Distribution of scores</h3><p>Check whether your assessment is too easy, too difficult, or just right, and adjust it for the best completion rates.</p></div>
+  <div class="card"><div class="cic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></div><h3>Evaluation and review</h3><p>Review each question — in-depth insights flag which need to change and obstacles candidates needed to overcome.</p></div>
 </div></section>
 
-<section class="sec"><div class="wrap tourrow reveal">
-  <div class="tourtxt">
-    <p class="eyebrow">Step 3<b>.</b></p>
-    <h2 class="h2" style="margin-bottom:18px;">Read a ranked shortlist</h2>
-    <p class="body">Every response is scored objectively and benchmarked. Compare candidates like-for-like and move forward with evidence, not gut feel.</p>
+<section class="sec"><div class="wrap" style="max-width:680px;margin:0 auto 40px;text-align:center;">
+  <p class="eyebrow reveal">Live coding &amp; white label<b>.</b></p>
+  <h2 class="h2 reveal" style="transition-delay:.04s;">Assess real skill, wearing your brand</h2>
+</div>
+<div class="wrap pt-pair reveal">
+  <div class="pt-pcard">
+    <div class="pt-pshot"><img src="https://testlify.com/wp-content/uploads/2023/03/live-coding-test-interview-1024x776.png" alt="Live coding test interview"></div>
+    <h3>Live coding tests</h3>
+    <p>Set up a coding assessment that lets candidates write and execute code within the platform — evaluating problem-solving ability, coding efficiency and debugging skill.</p>
   </div>
-  <div class="shot"><span>Results dashboard</span></div>
+  <div class="pt-pcard">
+    <div class="pt-pshot"><img src="https://testlify.com/wp-content/uploads/2023/02/white-lable-1024x672.png" alt="White-labeled assessment"></div>
+    <h3>White label</h3>
+    <p>Customize assessments with your own branding for a seamless, professional candidate experience that reflects positively on your organization.</p>
+  </div>
 </div></section>
 
-<section class="sec darkcta"><div class="wrap" style="max-width:720px;">
-  <h2 class="h2 reveal">Ready to try it yourself?</h2>
-  <p class="lead reveal" style="margin:18px auto 30px;transition-delay:.04s;">Start free — no credit card. Run your first assessment in minutes.</p>
-  <div class="reveal btnrow" style="transition-delay:.08s;">
-    <dc-import name="component-cta-button" label="Try for free" href="#" variant="light" size="md" icon="arrow" hint-size="160px,52px"></dc-import>
-    <dc-import name="component-cta-button" label="See how it works" href="how-testlify-works.dc.html" variant="outline-light" size="md" icon="none" hint-size="180px,52px"></dc-import>
-  </div>
-</div></section>
+<section class="sec"><div class="wrap" style="max-width:680px;margin:0 auto 44px;text-align:center;">
+  <p class="eyebrow reveal">Integrations<b>.</b></p>
+  <h2 class="h2 reveal" style="margin-bottom:14px;transition-delay:.04s;">Testlify integrates seamlessly with 100+ ATS tools</h2>
+  <p class="lead reveal" style="transition-delay:.08s;">Native integrations with Workday, Greenhouse, Lever, iCIMS and 97 more ATS platforms — no middleware, no data mapping required.</p>
+</div>
+<div class="wrap reveal intg-grid">
+  <div class="intg-tile"><img src="https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png" alt="Workday"></div>
+  <div class="intg-tile"><img src="https://testlify.com/wp-content/uploads/2023/03/629a0bbcb04c5ae587c411c2-1-1.png" alt="Greenhouse"></div>
+  <div class="intg-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png?wsr" alt="Lever"></div>
+  <div class="intg-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/SR-SAP-Logo.svg" alt="SmartRecruiters"></div>
+  <div class="intg-tile"><img src="https://testlify.com/wp-content/uploads/2024/09/BambooHR-Logo-1-2048x1152-2.png" alt="BambooHR"></div>
+  <div class="intg-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png?wsr" alt="SuccessFactors"></div>
+  <div class="intg-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/logo.svg" alt="UKG"></div>
+  <div class="intg-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png?wsr" alt="Recruitee"></div>
+  <div class="intg-tile"><img src="https://testlify.com/wp-content/uploads/2024/08/zoho-recruit-logo-1.png" alt="Zoho Recruit"></div>
+  <div class="intg-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png?wsr" alt="JazzHR"></div>
+</div>
+<div class="wrap reveal" style="text-align:center;margin-top:26px;"><a href="product-integrations.dc.html" style="display:inline-flex;align-items:center;gap:8px;color:#F23F44;font-weight:600;font-size:16px;">View all ATS integrations<span>→</span></a></div>
+</section>
+
+<div class="sec" style="background:#FBF3EE;padding:96px 0;"><dc-import name="component-security-section" eyebrow="Security" heading="Built to keep your organization secure" sub="Top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits and strong privacy protections." hint-size="100%,420px"></dc-import></div>
+
+<dc-import name="component-testimonials" bg="#fff" hint-size="100%,480px"></dc-import>
+
+<dc-import name="component-recognition" bg="#FBF3EE" hint-size="100%,420px"></dc-import>
+
+<section class="sec"><div class="wrap" style="max-width:640px;margin:0 auto;text-align:center;">
+  <p class="eyebrow reveal">FAQ<b>.</b></p>
+  <h2 class="h2 reveal" style="transition-delay:.04s;">Frequently asked questions</h2>
+</div>
+<div class="reveal wrap" style="max-width:820px;margin:34px auto 0;"><dc-import name="component-faq" items="{{ faqItems }}" hint-size="100%,480px"></dc-import></div>
+</section>
 
 <dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
 <dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
-
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}"></script>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){
+    return {
+      faqItems: [
+        { q: 'What is Testlify?', a: "Testlify is the talent assessment platform helping companies hire the best talent quickly, easily, accurately and affordably. We take the stress out of finding the best candidates with analysis that's accurate, automated and unbiased." },
+        { q: 'What is pre-employment testing software?', a: "Pre-employment testing software analyzes prospective employees quickly and efficiently. Testlify's 3,500+ tests are carefully created to match your needs, covering all major recruitment requirements." },
+        { q: 'Why is pre-employment testing important?', a: 'Pre-employment testing helps companies find candidates with relevant skills, saving time and training costs while increasing productivity — testing on-the-job skills, finding top talent faster, building diverse pipelines and championing a data-driven HR culture.' },
+        { q: 'How does Testlify help in my hiring process?', a: "Testlify's AI-powered pre-hire assessments measure a candidate's skills and job fit, enabling quick, bias-free screening that increases recruiter and hiring-manager productivity." },
+        { q: 'What are the different types of questions asked in the assessment?', a: 'Questions depend on the industry and role, and can include MCQs, video-based questions and open-ended written answers, alongside programming questions for coding tests.' },
+        { q: 'What are the different types of tests on Testlify?', a: 'Tests fall into three main types: Technical Tests (programming, software, role-specific, DevOps, finance, accounting), Cognitive Ability Tests, and Personality, Culture & Situational Judgment Tests.' },
+        { q: 'How is Testlify different from other pre-employment tools?', a: 'Testlify removes unconscious bias from screening, prioritizes on-the-job skills over trick questions, and uses non-googleable questions, advanced proctoring and video responses in low-stress, adaptive tests that take just 30 minutes.' }
+      ]
+    };
+  }
+}
+</script>
 </body>
 </html>

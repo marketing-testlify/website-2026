@@ -60,7 +60,7 @@ const vendors = [
   { name: 'PeopleForce', logo: 'https://testlify.com/wp-content/uploads/2023/10/PeopleForce-1024x769.png', pricing: 'Contact PeopleForce for pricing', free: 'Free 14-day trial', suitable: 'Small / medium businesses', paras: [
     'An all-in-one HR platform streamlining leave management, self-service, recruiting, and workflow automation — chosen by over 700 companies worldwide.',
   ] },
-].map((v, i) => ({ ...v, rank: i + 1 }));
+];
 
 const css = `
 *{box-sizing:border-box;}
@@ -68,56 +68,47 @@ html{scroll-behavior:smooth;}
 body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
 a{text-decoration:none;color:inherit;}
 a:hover{color:#F23F44;}
-.tw{max-width:1200px;margin:0 auto;padding:0 28px;}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+.hct-wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);}
 .reveal.in{opacity:1;transform:none;}
-.tcrumb{font-size:13.5px;font-weight:600;color:#F23F44;display:inline-flex;align-items:center;gap:8px;margin:0 0 20px;}
-.tcrumb svg{transition:transform .2s;}
-.tcrumb:hover svg{transform:translateX(-3px);}
-.thero{padding:44px 28px 0;background:radial-gradient(1000px 480px at 80% -10%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff;}
-.teyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A7A7D;margin:0 0 14px;}
-.teyebrow b{color:#F23F44;}
-.th1{font-size:42px;line-height:1.1;font-weight:800;letter-spacing:-1.2px;margin:0 0 18px;color:#1A1014;max-width:820px;}
-.tlead{font-size:19px;line-height:1.6;color:#5A4B4E;max-width:760px;margin:0 0 34px;}
-.tbody-wrap{padding:34px 28px 40px;}
-.tlayout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:48px;align-items:start;}
-.tside{position:sticky;top:96px;display:flex;flex-direction:column;gap:20px;}
-.tcard{background:#FBF3EE;border:1px solid #F0E2E3;border-radius:18px;padding:24px 26px;}
-.tcard h4{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A7A7D;margin:0 0 16px;padding-bottom:14px;border-bottom:1px solid #EADDDE;}
-.toclist{margin:0;padding:0;list-style:none;}
-.tocitem{font-size:14.5px;line-height:1.4;margin-bottom:13px;}
-.tocitem:last-child{margin-bottom:0;}
-.toclink{color:#5A4B4E;transition:color .2s;}
-.toclink:hover{color:#F23F44;}
-.thire h5{font-size:16px;font-weight:800;letter-spacing:-.3px;margin:0 0 8px;color:#1A1014;}
-.thire p{font-size:14px;line-height:1.6;color:#5A4B4E;margin:0 0 16px;}
-.tlink{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#F23F44;}
-.tlink svg{transition:transform .2s;}
-.tlink:hover svg{transform:translateX(3px);}
-.tmain{max-width:800px;min-width:0;}
-.tbody{font-size:16.5px;line-height:1.75;color:#4A3B3E;margin:0 0 18px;}
-.tbody:last-child{margin-bottom:0;}
-.tsec{scroll-margin-top:110px;margin-bottom:42px;}
-.th2{font-size:26px;font-weight:800;letter-spacing:-.5px;color:#1A1014;margin:0 0 20px;}
-.tchk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px;}
-.tchk li{display:flex;align-items:flex-start;gap:14px;font-size:15.5px;line-height:1.65;color:#5A4B4E;}
-.tchk svg{color:#F23F44;flex:none;margin-top:3px;}
-.vrank{display:flex;flex-direction:column;gap:16px;}
-.vcard{position:relative;background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:26px 26px 26px 74px;transition:transform .25s,box-shadow .25s,border-color .25s;}
-.vcard:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(110,11,14,.08);border-color:#F4D2D3;}
-.vrankn{position:absolute;left:22px;top:26px;width:34px;height:34px;border-radius:10px;background:#FFF0EF;color:#F23F44;font-weight:800;font-size:14.5px;display:flex;align-items:center;justify-content:center;}
-.vhead{display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap;}
-.vhead img{width:48px;height:48px;object-fit:contain;border-radius:9px;background:#fff;padding:5px;border:1px solid #F0E2E3;}
-.vhead h3{font-size:18px;font-weight:800;letter-spacing:-.3px;margin:0;color:#1A1014;}
-.vmeta{display:flex;flex-wrap:wrap;gap:10px;margin-left:auto;}
-.vpill{font-size:11.5px;font-weight:700;color:#5A4B4E;background:#FBF3EE;border:1px solid #F0E2E3;border-radius:999px;padding:5px 12px;}
-.vcard p{font-size:14.5px;line-height:1.65;color:#5A4B4E;margin:0 0 10px;}
+.hct-hero{padding:44px 28px 30px;background:radial-gradient(900px 420px at 50% -18%,#FFF0EE 0%,rgba(255,240,238,0) 64%),#fff;}
+.hct-back{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#F23F44;margin-bottom:22px;}
+.hct-back svg{transition:transform .2s;}
+.hct-back:hover svg{transform:translateX(-3px);}
+.hct-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 14px;}
+.hct-eyebrow b{color:#F23F44;font-weight:700;}
+.hct-h1{font-size:44px;line-height:1.08;font-weight:800;letter-spacing:-1.4px;margin:0;max-width:820px;}
+.hct-sub{font-size:18px;line-height:1.6;color:#5A4B4E;margin:18px 0 0;max-width:720px;}
+.hct-body{padding:36px 28px 40px;}
+.hct-main{max-width:800px;margin:0 auto;min-width:0;}
+.hct-p{font-size:16px;line-height:1.72;color:#4A3B3E;margin:0 0 18px;}
+.hct-sec{scroll-margin-top:110px;margin-bottom:34px;}
+.hct-h2{font-size:26px;font-weight:800;letter-spacing:-.5px;margin:0 0 16px;color:#1A1014;}
+.hct-chk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+.hct-chk li{display:flex;align-items:flex-start;gap:14px;font-size:15px;line-height:1.62;color:#5A4B4E;}
+.hct-chk svg{color:#F23F44;flex:none;margin-top:2px;}
+.vrank{display:flex;flex-direction:column;gap:20px;}
+.vcard{position:relative;background:#fff;border:1px solid #F0E2E3;border-radius:20px;padding:28px;box-shadow:0 14px 30px rgba(110,11,14,.05);transition:transform .25s,box-shadow .25s,border-color .25s;}
+.vcard:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(110,11,14,.09);border-color:#F4D2D3;}
+.vlogowrap{width:56px;height:56px;border-radius:12px;border:1px solid #F0E2E3;overflow:hidden;flex:none;}
+.vlogowrap img{width:100%;height:100%;object-fit:cover;}
+.vhead{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.vhead h3{font-size:20px;font-weight:800;letter-spacing:-.4px;margin:0;color:#1A1014;}
+.vmeta{display:flex;flex-wrap:wrap;margin-bottom:18px;border:1px solid #F0E2E3;border-radius:12px;overflow:hidden;}
+.vpill{flex:1;min-width:120px;padding:10px 16px;border-right:1px solid #F0E2E3;background:#FBF3EE;font-size:13px;color:#1A1014;font-weight:600;}
+.vpill:last-child{border-right:0;}
+.vpill b{display:block;color:#8A7A7D;font-weight:700;text-transform:uppercase;font-size:10px;letter-spacing:.05em;margin-bottom:3px;}
+.vcard p{font-size:14.5px;line-height:1.68;color:#5A4B4E;margin:0 0 10px;}
 .vcard p:last-child{margin-bottom:0;}
-.tmore{border-top:1px solid #F0E2E3;padding-top:26px;}
-.tmore h3{font-size:20px;font-weight:800;letter-spacing:-.4px;margin:0 0 8px;}
-.tmore p{font-size:15px;line-height:1.6;color:#5A4B4E;margin:0 0 14px;}
-@media(max-width:860px){.tlayout{grid-template-columns:1fr;}.tside{position:static;}.tmain{max-width:none;}.th1{font-size:30px;}.vcard{padding-left:26px;}.vrankn{position:static;margin-bottom:12px;}.vmeta{margin-left:0;}}
-h1,h2,h3,h4,.th1,.th2,.teyebrow{text-wrap:balance;}p,li,.tbody,.tlead{text-wrap:pretty;}
+.hct-more{border-top:1px solid #F0E2E3;padding-top:26px;}
+.hct-more h3{font-size:20px;font-weight:800;letter-spacing:-.4px;margin:0 0 8px;}
+.hct-more p{font-size:15px;line-height:1.6;color:#5A4B4E;margin:0 0 14px;}
+.hct-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#F23F44;}
+.hct-link svg{transition:transform .2s;}
+.hct-link:hover svg{transform:translateX(3px);}
+@media(max-width:600px){.vcard{grid-template-columns:1fr;}.vlogowrap{width:64px;height:64px;}}
+@media(max-width:860px){.hct-h1{font-size:32px;letter-spacing:-1px;}}
+h1,h2,h3,h4,.hct-h1,.hct-h2,.hct-eyebrow{text-wrap:balance;}p,li,.hct-p,.hct-sub{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
 export default function Page() {
@@ -130,97 +121,78 @@ export default function Page() {
         homeHref="/"
       />
 
-      <section className="thero">
-        <div className="tw">
-          <a className="tcrumb reveal in" href="/hr-tools">
+      <section className="hct-hero">
+        <div className="hct-wrap">
+          <a className="hct-back reveal in" href="/hr-tools">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
             Back to HR tools
           </a>
-          <p className="teyebrow reveal in">HR software guide<b>.</b></p>
-          <h1 className="th1 reveal in">{title}</h1>
-          <p className="tlead reveal in">{intro[0]}</p>
+          <p className="hct-eyebrow reveal">HR software guide<b>.</b></p>
+          <h1 className="hct-h1 reveal">{title}</h1>
+          <p className="hct-sub reveal">{intro[0]}</p>
         </div>
       </section>
 
-      <div className="tbody-wrap">
-        <div className="tw">
-          <div className="tlayout">
-            <aside className="tside">
-              <div className="tcard">
-                <h4>On this page</h4>
-                <ul className="toclist">
-                  <li className="tocitem"><a className="toclink" href="#benefits">Benefits of {titleLower}</a></li>
-                  <li className="tocitem"><a className="toclink" href="#features">Features of {titleLower}</a></li>
-                  <li className="tocitem"><a className="toclink" href="#vendors">{vendorHeading}</a></li>
-                </ul>
-              </div>
-              <div className="tcard thire">
-                <h5>Looking to hire for this role?</h5>
-                <p>Explore validated tests to identify the best candidates for HR and operations roles.</p>
-                <a className="tlink" href="/test-library">View all tests
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-            </aside>
+      <div className="hct-body">
+        <div className="hct-wrap">
+          <div className="hct-main">
+            {introRest.map((p, i) => (
+              <p className="hct-p reveal" key={i}>{p}</p>
+            ))}
 
-            <div className="tmain">
-              {introRest.map((p, i) => (
-                <p className="tbody reveal" key={i}>{p}</p>
-              ))}
+            <div className="hct-sec" id="benefits">
+              <h2 className="hct-h2 reveal">Benefits of {titleLower}</h2>
+              <ul className="hct-chk reveal">
+                {benefits.map((p, i) => (
+                  <li key={i}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-              <div className="tsec" id="benefits">
-                <h2 className="th2 reveal">Benefits of {titleLower}</h2>
-                <ul className="tchk reveal">
-                  {benefits.map((p, i) => (
-                    <li key={i}>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="hct-sec" id="features">
+              <h2 className="hct-h2 reveal">Features of {titleLower}</h2>
+              <ul className="hct-chk reveal">
+                {features.map((p, i) => (
+                  <li key={i}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-              <div className="tsec" id="features">
-                <h2 className="th2 reveal">Features of {titleLower}</h2>
-                <ul className="tchk reveal">
-                  {features.map((p, i) => (
-                    <li key={i}>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="tsec" id="vendors">
-                <h2 className="th2 reveal">{vendorHeading}</h2>
-                <div className="vrank">
-                  {vendors.map((v) => (
-                    <div className="vcard reveal" key={v.name}>
-                      <span className="vrankn">{v.rank}</span>
-                      <div className="vhead">
+            <div className="hct-sec" id="vendors">
+              <h2 className="hct-h2 reveal">{vendorHeading}</h2>
+              <div className="vrank">
+                {vendors.map((v) => (
+                  <div className="vcard reveal" key={v.name}>
+                    <div className="vhead">
+                      <div className="vlogowrap">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={v.logo} alt={v.name} loading="lazy" />
-                        <h3>{v.name}</h3>
-                        <div className="vmeta">
-                          <span className="vpill">{v.pricing}</span>
-                          <span className="vpill">Free: {v.free}</span>
-                          <span className="vpill">{v.suitable}</span>
-                        </div>
                       </div>
-                      {v.paras.map((p, i) => (
-                        <p key={i}>{p}</p>
-                      ))}
+                      <h3>{v.name}</h3>
                     </div>
-                  ))}
-                </div>
+                    <div className="vmeta">
+                      <span className="vpill"><b>Pricing</b>{v.pricing}</span>
+                      <span className="vpill"><b>Free</b>{v.free}</span>
+                      <span className="vpill"><b>Best for</b>{v.suitable}</span>
+                    </div>
+                    {v.paras.map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="tmore reveal">
+            <div className="hct-more reveal">
               <h3>Looking for more HR tools?</h3>
               <p>Explore calculators, templates, and category guides across the full HR toolkit.</p>
-              <a className="tlink" href="/hr-tools">Browse all HR tools
+              <a className="hct-link" href="/hr-tools">Browse all HR tools
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
             </div>

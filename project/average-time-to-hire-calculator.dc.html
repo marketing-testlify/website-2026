@@ -8,95 +8,175 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./site-base.css">
-<link rel="stylesheet" href="./calc.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <script src="./reveal.js"></script>
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+a{text-decoration:none;color:inherit;}
+a:hover{color:#F23F44;}
+.atth-wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.atth-hero{padding:44px 28px 30px;background:radial-gradient(900px 420px at 50% -18%,#FFF0EE 0%,rgba(255,240,238,0) 64%),#fff;}
+.atth-back{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#F23F44;margin-bottom:22px;}
+.atth-back svg{transition:transform .2s;}
+.atth-back:hover svg{transform:translateX(-3px);}
+.atth-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 14px;}
+.atth-eyebrow b{color:#F23F44;font-weight:700;}
+.atth-h1{font-size:44px;line-height:1.08;font-weight:800;letter-spacing:-1.4px;margin:0;max-width:820px;}
+.atth-sub{font-size:18px;line-height:1.6;color:#5A4B4E;margin:18px 0 0;max-width:720px;}
+.atth-body{padding:36px 28px 40px;}
+.atth-p{font-size:16px;line-height:1.72;color:#4A3B3E;margin:0 0 18px;}
+.atth-sec{scroll-margin-top:110px;margin-bottom:34px;}
+.atth-h2{font-size:26px;font-weight:800;letter-spacing:-.5px;margin:0 0 16px;color:#1A1014;}
+.atth-calc{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:34px;box-shadow:0 20px 44px rgba(110,11,14,.08);}
+.atth-row{display:grid;grid-template-columns:1fr 1fr 120px 40px;gap:14px;align-items:end;margin-bottom:14px;}
+.atth-field label{display:block;font-size:12.5px;font-weight:700;color:#1A1014;margin-bottom:8px;}
+.atth-field input{width:100%;border:1.5px solid #EADDDE;border-radius:10px;padding:11px 14px;font-family:inherit;font-size:14.5px;font-weight:600;color:#1A1014;background:#FCFAFA;}
+.atth-field input:focus{outline:none;border-color:#F23F44;background:#fff;}
+.atth-days{font-size:14.5px;font-weight:700;color:#F23F44;padding:11px 0;text-align:center;}
+.atth-rm{width:36px;height:36px;border-radius:9px;border:1.5px solid #EADDDE;background:#fff;color:#8A7A7D;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s;}
+.atth-rm:hover{border-color:#F23F44;color:#F23F44;}
+.atth-addrow{display:flex;gap:14px;align-items:center;margin:8px 0 24px;}
+.atth-add{background:#fff;border:1.5px dashed #F0B9BA;color:#F23F44;border-radius:11px;padding:11px 20px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;}
+.atth-add:hover{background:#FFF4F3;}
+.atth-hiresfield{max-width:220px;margin-bottom:24px;}
+.atth-calcbtn{background:#F23F44;color:#fff;border:0;border-radius:11px;padding:13px 24px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+.atth-calcbtn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(242,63,68,.28);}
+.atth-result{margin-top:26px;border-top:1px solid #F0E2E3;padding-top:22px;text-align:center;}
+.atth-rlabel{font-size:13.5px;font-weight:700;color:#8A7A7D;margin:0 0 8px;}
+.atth-rbig{font-size:52px;font-weight:800;color:#F23F44;margin:0;letter-spacing:-1px;}
+.atth-rsub{font-size:14.5px;color:#6C5A5D;margin:8px 0 0;}
+.atth-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.atth-step{background:#fff;border:1px solid #F2E6E7;border-radius:18px;padding:26px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.atth-step:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
+.atth-stepno{width:34px;height:34px;border-radius:10px;background:#FFF0F0;color:#F23F44;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.atth-step h3{font-size:17px;font-weight:700;letter-spacing:-.2px;margin:0 0 8px;}
+.atth-step p{font-size:14.5px;line-height:1.62;color:#5A4B4E;margin:0;}
+.atth-formula{background:#FBF3EE;border:1px solid #F0E2E3;border-radius:14px;padding:20px 24px;font-size:16px;font-weight:600;color:#1A1014;margin:0 0 16px;}
+.atth-chk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+.atth-chk li{display:flex;align-items:flex-start;gap:14px;font-size:15px;line-height:1.62;color:#5A4B4E;}
+.atth-chk svg{color:#F23F44;flex:none;margin-top:2px;}
+@media(max-width:860px){.atth-h1{font-size:32px;letter-spacing:-1px;}.atth-row{grid-template-columns:1fr;}.atth-steps{grid-template-columns:1fr;}}
+h1,h2,h3,h4,h5,.atth-h1,.atth-h2,.atth-eyebrow{text-wrap:balance;}p,li,.atth-p,.atth-sub{text-wrap:pretty;}/*om-balance-rule*/
+</style>
 </helmet>
 <dc-import name="component-site-header" announcement="Free HR tools — calculators, templates and interview kits." announcement-cta="Browse tools" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
 
-<section class="tsec" style="background:radial-gradient(1000px 500px at 80% 4%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff;"><div class="tw">
-  <div class="tcrumb reveal"><a href="blog.dc.html">Resources</a><span>/</span><a href="hr-tools.dc.html">HR tools</a><span>/</span><span>Average time to hire calculator</span></div>
-  <div style="max-width:720px;">
-    <p class="eyebrow reveal">Average time to hire<b>.</b></p>
-    <h1 class="th1 reveal" style="transition-delay:.04s;">Calculate your average time to hire</h1>
-    <p class="tlead reveal" style="transition-delay:.08s;">Add up the days-to-hire across your recent roles and the number of hires to see your average — and how skills screening can shorten it.</p>
-  </div>
+<section class="atth-hero"><div class="atth-wrap">
+<a class="atth-back" href="hr-tools.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>Back to HR tools</a>
+<p class="atth-eyebrow reveal">Average time to hire calculator<b>.</b></p>
+<h1 class="atth-h1 reveal">Average time-to-hire calculator</h1>
+<p class="atth-sub reveal">Use this free average time to hire calculator to determine the average time it takes to fill a position. No sign-up is required.</p>
 </div></section>
 
-<section class="tsec" style="background:#FBF3EE;padding-top:40px;"><div class="tw">
-  <div class="tcalc reveal">
-    <div class="tcard">
-      <p class="eyebrow" style="margin-bottom:22px;">Your numbers<b>.</b></p>
-      <div class="tfield"><label>Total days to hire <span class="thint">summed across roles</span></label><input class="tinput" type="number" min="0" value="{{ days }}" onInput="{{ onDays }}"></div>
-      <div class="tfield" style="margin-bottom:0;"><label>Number of hires</label><input class="tinput" type="number" min="1" value="{{ hires }}" onInput="{{ onHires }}"></div>
-    </div>
-    <div class="tresult">
-      <p class="trlabel">Average time to hire</p>
-      <p class="trbig">{{ result }}</p>
-      <p class="trsub">{{ note }}</p>
-      <div class="trbreak">
-        <div class="trrow"><span>Total days</span><span>{{ days }}</span></div>
-        <div class="trrow"><span>Hires</span><span>{{ hires }}</span></div>
-        <div class="trrow"><span>Industry benchmark</span><span>~36 days</span></div>
-      </div>
-    </div>
-  </div>
+<section style="background:#FBF3EE;padding:36px 28px;"><div class="atth-wrap">
+<div class="atth-calc reveal">
+<p class="atth-eyebrow" style="margin-bottom:22px;">Time to hire for each candidate<b>.</b></p>
+<sc-for list="{{ rows }}" as="row" hint-placeholder-count="1">
+<div class="atth-row">
+<div class="atth-field"><label>Date of application</label><input type="date" value="{{ row.applied }}" onInput="{{ row.onApplied }}"></div>
+<div class="atth-field"><label>Date of offer acceptance</label><input type="date" value="{{ row.accepted }}" onInput="{{ row.onAccepted }}"></div>
+<div><label style="display:block;font-size:12.5px;font-weight:700;color:#1A1014;margin-bottom:8px;">Time to hire</label><div class="atth-days">{{ row.days }}</div></div>
+<button class="atth-rm" onClick="{{ row.onRemove }}" aria-label="Remove candidate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+</div>
+</sc-for>
+<div class="atth-addrow"><button class="atth-add" onClick="{{ onAddRow }}">+ Add candidate</button></div>
+<div class="atth-hiresfield atth-field"><label>Number of hires</label><input type="number" min="1" value="{{ hires }}" onInput="{{ onHires }}"></div>
+<button class="atth-calcbtn" onClick="{{ onCalculate }}">Calculate average time-to-hire</button>
+<div class="atth-result">
+<p class="atth-rlabel">Average time to hire is</p>
+<p class="atth-rbig">{{ result }}<span style="font-size:22px;font-weight:700;color:#1A1014;"> days</span></p>
+<p class="atth-rsub">{{ note }}</p>
+</div>
+</div>
 </div></section>
 
-<section class="tsec"><div class="tw">
-  <div style="max-width:640px;">
-    <p class="eyebrow reveal">How it works<b>.</b></p>
-    <h2 class="th2 reveal" style="transition-delay:.04s;">Time to hire, explained</h2>
-    <p class="tlead reveal" style="transition-delay:.08s;">Time to hire measures the days from a candidate entering your pipeline to accepting an offer, averaged across roles. The industry sits around 36 days — screening on skill early is one of the fastest ways to cut it.</p>
-  </div>
-  <div class="tsteps">
-    <div class="tstep reveal"><div class="tstepn">1</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Sum the days</h3><p class="tbody" style="margin:0;font-size:14.5px;">Add the days-to-hire for each role you filled.</p></div>
-    <div class="tstep reveal" style="transition-delay:.06s;"><div class="tstepn">2</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Count the hires</h3><p class="tbody" style="margin:0;font-size:14.5px;">The number of roles filled in the same period.</p></div>
-    <div class="tstep reveal" style="transition-delay:.12s;"><div class="tstepn">3</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">See the average</h3><p class="tbody" style="margin:0;font-size:14.5px;">Compare against the ~36-day benchmark.</p></div>
-  </div>
-</div></section>
+<div class="atth-body"><div class="atth-wrap"><div>
 
-<section class="tsec" style="background:#FBF3EE;"><div class="tw">
-  <div style="max-width:640px;">
-    <p class="eyebrow reveal">Why it matters<b>.</b></p>
-    <h2 class="th2 reveal" style="transition-delay:.04s;">Why use an average time to hire calculator?</h2>
-  </div>
-  <ul class="chk reveal" style="margin-top:30px;max-width:760px;">
-    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Improved efficiency:</b> spot bottlenecks in the hiring process and streamline recruitment stages.</li>
-    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Better candidate experience:</b> a shorter time-to-hire means transparent communication and swift decisions.</li>
-    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Data-driven decisions:</b> compare hiring times across roles and adjust strategy accordingly.</li>
-    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Resource allocation:</b> know which roles take longer to fill and plan support accordingly.</li>
-    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Talent retention:</b> a lengthy process risks losing candidates to other offers — track and shorten it.</li>
-  </ul>
-</div></section>
-<section class="tsec"><div class="tw">
-  <div style="max-width:640px;margin:0 auto;text-align:center;"><p class="eyebrow reveal">FAQ<b>.</b></p><h2 class="th2 reveal" style="transition-delay:.04s;">Frequently asked questions</h2></div>
+<div class="atth-sec">
+<h2 class="atth-h2 reveal">What is average time to hire?</h2>
+<p class="atth-p reveal">The average time to hire is an important recruitment metric that measures the total time it takes to fill a job, from when the job opening is posted to when a candidate accepts the job offer. It helps analyze the efficiency of the hiring process.</p>
+<p class="atth-p reveal">A shorter time to hire indicates an efficient hiring process, while a longer duration indicates potential challenges or bottlenecks in the recruitment workflow.</p>
+</div>
+
+<div class="atth-sec" id="how-it-works">
+<h2 class="atth-h2 reveal">How does average time to hire calculator work?</h2>
+<div class="atth-steps reveal">
+<div class="atth-step"><div class="atth-stepno">1</div><h3>Data collection</h3><p>The calculator needs information on the time it takes to fill each position, from the time the job is posted to the time a candidate accepts the offer.</p></div>
+<div class="atth-step"><div class="atth-stepno">2</div><h3>Calculation process</h3><p>Sum the total days it took to fill all positions and divide by the number of positions to calculate the average time to hire.</p></div>
+<div class="atth-step"><div class="atth-stepno">3</div><h3>Output</h3><p>The calculator provides the average time to hire, helping organizations understand how quickly they can attract and secure talent.</p></div>
+</div>
+</div>
+
+<div class="atth-sec">
+<h2 class="atth-h2 reveal">Average time to hire calculator formula</h2>
+<p class="atth-p reveal">Average time to hire = (Total days to hire for all positions) / (Number of positions filled)</p>
+<div class="atth-formula reveal">For example: 20 + 30 + 40 days across 3 hires = 90 days ÷ 3 = <b>30 days average time to hire</b>.</div>
+</div>
+
+<div class="atth-sec">
+<h2 class="atth-h2 reveal">Why should you use an average time to hire calculator?</h2>
+<ul class="atth-chk reveal">
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Improved efficiency:</b> identify bottlenecks in the hiring process and streamline recruitment stages to reduce delays.</span></li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Better candidate experience:</b> a shorter time-to-hire means transparent communication and swift hiring decisions candidates prefer.</span></li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Data-driven decision-making:</b> compare hiring times across roles and adjust your hiring strategies strategically.</span></li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Resource allocation:</b> know which roles take longer to fill so HR teams can plan support accordingly.</span></li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Talent retention:</b> shorten a lengthy hiring process to secure top candidates before they accept other offers.</span></li>
+</ul>
+</div>
+
+</div></div></div>
+
+<section style="background:#FBF3EE;padding:96px 28px;">
+  <div style="max-width:640px;margin:0 auto;text-align:center;"><p class="atth-eyebrow reveal">FAQ<b>.</b></p><h2 class="atth-h2 reveal">Frequently asked questions</h2></div>
   <div class="reveal" style="max-width:820px;margin:34px auto 0;"><dc-import name="component-faq" items="{{ faqItems }}" hint-size="100%,380px"></dc-import></div>
-</div></section>
+</section>
 
 <dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
 <dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
-
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900}}">
+<script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { days: 216, hires: 6 };
-  num(v){ const n=parseFloat(v); return isNaN(n)||n<0?0:n; }
+  constructor(props){
+    super(props);
+    this.state = { rows: [{ id: 1, applied: '', accepted: '' }], hires: 1, calculated: false };
+    this.nextId = 2;
+  }
+  daysBetween(a, b){
+    if(!a || !b) return 0;
+    const d1 = new Date(a), d2 = new Date(b);
+    const diff = Math.round((d2 - d1) / 86400000);
+    return diff > 0 ? diff : 0;
+  }
+  addRow(){ this.setState(s => ({ rows: [...s.rows, { id: this.nextId++, applied: '', accepted: '' }] })); }
+  removeRow(id){ this.setState(s => ({ rows: s.rows.length > 1 ? s.rows.filter(r => r.id !== id) : s.rows })); }
+  updateRow(id, field, value){ this.setState(s => ({ rows: s.rows.map(r => r.id === id ? { ...r, [field]: value } : r) })); }
   renderVals(){
-    const days=this.num(this.state.days), hires=Math.max(1,this.num(this.state.hires));
-    const avg=days/hires;
+    const totalDays = this.state.rows.reduce((sum, r) => sum + this.daysBetween(r.applied, r.accepted), 0);
+    const hires = parseFloat(this.state.hires) || this.state.rows.length;
+    const avg = hires ? Math.round(totalDays / hires) : 0;
     return {
-      days:this.state.days, hires:this.state.hires,
-      onDays:(e)=>this.setState({days:e.target.value}),
-      onHires:(e)=>this.setState({hires:e.target.value}),
-      result:avg.toFixed(1)+' days',
-      note: avg<=36 ? 'Faster than the ~36-day industry benchmark.' : 'Slower than the ~36-day benchmark — room to speed up.',
+      rows: this.state.rows.map(r => ({
+        applied: r.applied, accepted: r.accepted,
+        days: this.daysBetween(r.applied, r.accepted),
+        onApplied: (e) => this.updateRow(r.id, 'applied', e.target.value),
+        onAccepted: (e) => this.updateRow(r.id, 'accepted', e.target.value),
+        onRemove: () => this.removeRow(r.id)
+      })),
+      hires: this.state.hires,
+      onHires: (e) => this.setState({ hires: e.target.value }),
+      onAddRow: () => this.addRow(),
+      onCalculate: () => this.setState({ calculated: true }),
+      result: this.state.calculated ? avg : 0,
+      note: this.state.calculated ? (avg <= 36 ? 'Faster than the ~36-day industry benchmark.' : 'Slower than the ~36-day benchmark — room to speed up.') : 'Enter dates and click Calculate.',
       faqItems: [
-        { q: 'How long does the average job take to hire?', a: 'The average time to hire is typically around 30-45 days, varying by role, industry and how quickly candidates are evaluated.' },
-        { q: 'How do you calculate time to recruit?', a: 'Measure the days from when a job is posted to when an offer is accepted, then average across roles to track recruitment efficiency.' },
-        { q: 'What is the time to hire KPI?', a: 'The time to hire KPI measures the time taken to fill a position, from job posting to candidate acceptance — an indicator of hiring-process efficiency.' },
-        { q: 'How to improve time-to-hire?', a: 'Streamline your recruitment process, use technology for faster candidate screening, maintain a strong talent pool, and communicate clearly with candidates and hiring managers.' },
+        { q: 'How long does the average job take to hire?', a: 'The average time to hire varies, but it typically takes around 30-45 days. This can differ depending on the role, industry, and how quickly candidates are evaluated.' },
+        { q: 'How do you calculate time to recruit?', a: 'Time to recruit is calculated by measuring the days from when a job is posted to when an offer is accepted, helping to track the efficiency of your recruitment process.' },
+        { q: 'What is the time to hire KPI?', a: 'The time to hire KPI is a key metric used to measure the time taken to fill a position, from job posting to candidate acceptance. It indicates the efficiency of your hiring process.' },
+        { q: 'How to improve time-to-hire?', a: 'To improve time-to-hire, streamline your recruitment process, use technology for faster candidate screening, maintain a strong talent pool, and communicate clearly with both candidates and hiring managers.' },
         { q: 'What is the average time-to-hire?', a: 'According to SHRM, the average time to hire is 24 days between screening candidates and accepting a job offer.' }
       ]
     };

@@ -29,8 +29,8 @@ html{scroll-behavior:smooth;}
 .aiq-field input,.aiq-field select{border:0;outline:0;background:transparent;font-family:inherit;font-size:13.5px;color:#1A1014;min-width:0;width:100%;text-overflow:ellipsis;}
 .aiq-gobtn{display:inline-flex;white-space:nowrap;align-items:center;gap:8px;background:linear-gradient(97deg,#7B77E9 0%,#9B8CEE 52%,#C293EA 100%);color:#fff;border:0;border-radius:11px;padding:12px 20px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s;}
 .aiq-gobtn:hover{filter:saturate(1.06);transform:translateY(-2px);box-shadow:0 12px 26px rgba(96,88,200,.30);}
-.aiq-pills{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0;}
-.aiq-pill{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#5A4B4E;background:#fff;border:1px solid #EADDDE;border-radius:100px;padding:8px 16px;}
+.aiq-pills{display:flex;gap:26px;flex-wrap:wrap;margin:22px 0 0;}
+.aiq-pill{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#6C5A5D;}
 .aiq-body{padding:36px 28px 40px;}
 .aiq-main{max-width:none;margin:0;min-width:0;}
 .aiq-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#F23F44;}
@@ -57,11 +57,14 @@ html{scroll-behavior:smooth;}
 .aiq-chk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
 .aiq-chk li{display:flex;align-items:flex-start;gap:14px;font-size:15px;line-height:1.62;color:#5A4B4E;}
 .aiq-chk svg{color:#F23F44;flex:none;margin-top:2px;}
-.aiq-steps{display:flex;flex-direction:column;gap:22px;}
-.aiq-step{display:flex;gap:16px;align-items:flex-start;}
-.aiq-stepno{flex:none;width:34px;height:34px;border-radius:10px;background:#F23F44;color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;}
-.aiq-step h3{font-size:17px;font-weight:700;letter-spacing:-.2px;margin:0 0 6px;}
+.aiq-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.aiq-step{background:#fff;border:1px solid #F2E6E7;border-radius:18px;padding:26px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.aiq-step:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
+.aiq-stepno{flex:none;width:34px;height:34px;border-radius:10px;background:#FFF0F0;color:#F23F44;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;}
+.aiq-stephead{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.aiq-step h3{font-size:17px;font-weight:700;letter-spacing:-.2px;margin:0;}
 .aiq-step p{font-size:15px;line-height:1.62;color:#5A4B4E;margin:0;}
+@media(max-width:900px){.aiq-steps{grid-template-columns:1fr;}}
 .aiq-more{border-top:1px solid #F0E2E3;padding-top:26px;}
 .aiq-more h3{font-size:20px;font-weight:800;letter-spacing:-.4px;margin:0 0 8px;}
 .aiq-more p{font-size:15px;line-height:1.6;color:#5A4B4E;margin:0 0 14px;}
@@ -69,25 +72,9 @@ html{scroll-behavior:smooth;}
 h1,h2,h3,h4,h5,.aiq-h1,.aiq-h2,.aiq-eyebrow{text-wrap:balance;}p,li,.aiq-p,.aiq-sub{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
-type Question = {
-  n: number;
-  tag: string;
-  text: string;
-  answer: string;
-};
-
-const QUESTION_BANK = (role: string, lvl: string) => [
-  { tag: 'Behavioral', text: `Tell me about a time your work made a measurable difference in a ${role.toLowerCase()} role.`, answer: 'Look for a specific situation, the action they took, and a quantified result — not a generic description of duties.' },
-  { tag: 'Technical', text: `How do you approach your work when the requirements for a ${role.toLowerCase()} role are ambiguous or changing?`, answer: 'Strong answers show a process: clarify assumptions, confirm priorities with stakeholders, and adapt as new information arrives.' },
-  { tag: 'Situational', text: `Imagine a stakeholder disagrees with a decision you made as a ${role.toLowerCase()}. How do you handle it?`, answer: 'Listen for calm, evidence-based persuasion and a willingness to compromise when the stakeholder raises a valid point.' },
-  { tag: 'Behavioral', text: `Describe the hardest problem you've solved in a ${role.toLowerCase()} position.`, answer: 'Look for ownership of the problem end-to-end and a clear explanation of the trade-offs they considered.' },
-  { tag: 'Technical', text: `What tools, frameworks or methods do you rely on most as a ${role.toLowerCase()}, and why?`, answer: 'Good answers justify the choice against alternatives rather than just naming tools.' },
-  { tag: 'Situational', text: `You're under a tight deadline as a ${role.toLowerCase()} and something is slipping. What do you prioritise?`, answer: 'Look for a clear prioritization framework (impact vs. effort, or business risk) rather than a vague promise to just work harder.' },
-  { tag: 'Competency-based', text: `Give an example of feedback that improved how you work as a ${role.toLowerCase()}. What changed?`, answer: 'Strong candidates describe a concrete behavior change, not just that they "took the feedback well."' },
-  { tag: 'Fact-based', text: `How would you measure success in this ${role.toLowerCase()} position?`, answer: 'Look for specific, role-relevant metrics rather than vague statements like "doing a good job."' },
-  { tag: 'Skill-based', text: `A ${lvl.toLowerCase()} teammate asks you to explain a core part of the ${role.toLowerCase()} role. How do you coach them?`, answer: 'Good answers show patience, simplification of complex ideas, and checking for understanding.' },
-  { tag: 'Behavioral', text: `Tell me about a decision you got wrong as a ${role.toLowerCase()}. What did you learn?`, answer: 'Look for genuine reflection and a specific change in behavior afterward, not a humble-brag disguised as a mistake.' },
-];
+const LEVELS = ['Intern', 'Junior', 'Mid-Level', 'Senior', 'Lead', 'Manager', 'C-Level'];
+const TYPES = ['All question types', 'Technical', 'Behavioral', 'Competency-based', 'Fact-based', 'Situational', 'Skill-based'];
+const LANGUAGES = ['English', 'Spanish', 'French', 'German', 'Chinese', 'Japanese', 'Korean', 'Italian', 'Portuguese', 'Russian', 'Arabic'];
 
 const FAQS = [
   { q: 'What is an interview question generator?', a: 'An interview question generator is an AI-powered tool that creates role-specific interview questions based on inputs such as job title, seniority level, and required skills. It helps recruiters and hiring managers quickly prepare structured, relevant interview questions without starting from scratch.' },
@@ -102,17 +89,11 @@ const FAQS = [
   { q: "Are AI-generated interview questions enough to make better hiring decisions?", a: "AI-generated interview questions are a strong starting point, but questions alone don't guarantee better hiring outcomes. To make interviews truly effective, questions must be paired with structured evaluation methods such as scorecards, clear success criteria, and consistent benchmarking." },
 ];
 
-const TYPES = ['All question types', 'Technical', 'Behavioral', 'Competency-based', 'Fact-based', 'Situational', 'Skill-based'];
-const LEVELS = ['Intern', 'Junior', 'Mid-Level', 'Senior', 'Lead', 'Manager', 'C-Level'];
-const LANGUAGES = ['English', 'Spanish', 'French', 'German', 'Chinese', 'Japanese', 'Korean', 'Italian', 'Portuguese', 'Russian', 'Arabic'];
-
 export default function AiInterviewQuestionGeneratorPage() {
   const [role, setRole] = useState('Product Manager');
   const [level, setLevel] = useState('Mid-Level');
   const [type, setType] = useState('All question types');
   const [language, setLanguage] = useState('English');
-  const [showAnswers, setShowAnswers] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [generating, setGenerating] = useState(false);
 
   const onGenerate = () => {
@@ -125,17 +106,6 @@ export default function AiInterviewQuestionGeneratorPage() {
       }
     }, 650);
   };
-
-  const onCopy = () => {
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const roleLabel = role || 'this role';
-  const bank = QUESTION_BANK(roleLabel, level);
-  const filtered = type === 'All question types' ? bank : bank.filter((q) => q.tag === type);
-  const list = filtered.length ? filtered : bank;
-  const questions: Question[] = list.map((q, i) => ({ n: i + 1, tag: q.tag, text: q.text, answer: q.answer }));
 
   return (
     <>
@@ -155,6 +125,16 @@ export default function AiInterviewQuestionGeneratorPage() {
           <p className="aiq-eyebrow reveal">AI interview question generator<b>.</b></p>
           <h1 className="aiq-h1 reveal"><em>Free AI interview question</em> generator</h1>
           <p className="aiq-sub reveal">Create role-specific interview questions for free — tailored to any role, skill, seniority or industry.</p>
+          <div className="aiq-pills reveal">
+            <span className="aiq-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Save time</span>
+            <span className="aiq-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Customized questions</span>
+            <span className="aiq-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Built-in answers</span>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ background: '#FBF3EE', padding: '36px 28px' }}>
+        <div className="aiq-wrap">
           <div className="aiq-bar reveal">
             <label className="aiq-field">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"></path></svg>
@@ -183,49 +163,27 @@ export default function AiInterviewQuestionGeneratorPage() {
               {generating ? 'Generating…' : 'Generate now'}
             </button>
           </div>
-          <div className="aiq-pills reveal">
-            <span className="aiq-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1FA463" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Save time</span>
-            <span className="aiq-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1FA463" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Customized questions</span>
-            <span className="aiq-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1FA463" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Built-in answers</span>
-          </div>
         </div>
       </section>
 
       <div className="aiq-body">
         <div className="aiq-wrap">
           <div className="aiq-main">
-            <div className="aiq-sec" id="generated">
-              <div className="aiq-gen">
-                <span className="aiq-genlbl">Generated questions ({questions.length})</span>
-                <div className="aiq-genacts">
-                  <button className={`aiq-ghost${showAnswers ? ' on' : ''}`} onClick={() => setShowAnswers((s) => !s)}>
-                    {showAnswers ? 'Hide answers' : 'Show answers'}
-                  </button>
-                  <button className="aiq-ghost" onClick={onCopy}>
-                    {copied ? 'Copied' : 'Copy'}
-                  </button>
-                </div>
-              </div>
-              <div className="aiq-out">
-                {questions.map((q) => (
-                  <div className="qitem" key={q.n}>
-                    <div className="qn">{q.n}</div>
-                    <div>
-                      <span className="qtag">{q.tag}</span>
-                      <p className="qtext">{q.text}</p>
-                      {showAnswers && <p className="qans">{q.answer}</p>}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             <div className="aiq-sec" id="how-it-works">
               <h2 className="aiq-h2 reveal">How to use an AI interview question generator</h2>
               <div className="aiq-steps reveal">
-                <div className="aiq-step"><div className="aiq-stepno">1</div><div><h3>Enter the job title</h3><p>Start by typing the role you&apos;re hiring for. Our generator analyzes the job and its key skills to create questions tailored specifically to that position.</p></div></div>
-                <div className="aiq-step"><div className="aiq-stepno">2</div><div><h3>Customize the interview</h3><p>Optionally, select the seniority level and the type of questions you want — technical, behavioral, situational or skill-based — to match the candidate&apos;s experience and the role.</p></div></div>
-                <div className="aiq-step"><div className="aiq-stepno">3</div><div><h3>Generate &amp; use questions</h3><p>Click Generate and get ready-to-use interview questions with sample answers. Review, tweak if needed, and conduct faster, smarter interviews.</p></div></div>
+                <div className="aiq-step">
+                  <div className="aiq-stephead"><div className="aiq-stepno">1</div><h3>Enter the job title</h3></div>
+                  <p>Start by typing the role you&apos;re hiring for. Our generator analyzes the job and its key skills to create questions tailored specifically to that position.</p>
+                </div>
+                <div className="aiq-step">
+                  <div className="aiq-stephead"><div className="aiq-stepno">2</div><h3>Customize the interview</h3></div>
+                  <p>Optionally, select the seniority level and the type of questions you want — technical, behavioral, situational or skill-based — to match the candidate&apos;s experience and the role.</p>
+                </div>
+                <div className="aiq-step">
+                  <div className="aiq-stephead"><div className="aiq-stepno">3</div><h3>Generate &amp; use questions</h3></div>
+                  <p>Click Generate and get ready-to-use interview questions with sample answers. Review, tweak if needed, and conduct faster, smarter interviews.</p>
+                </div>
               </div>
             </div>
 

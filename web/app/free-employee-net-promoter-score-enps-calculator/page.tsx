@@ -7,60 +7,69 @@ import SiteFooter from '@/components/SiteFooter';
 import CtaBand from '@/components/CtaBand';
 import FAQ from '@/components/FAQ';
 
-const calcCss = `
-.tw{max-width:1180px;margin:0 auto;padding:0 28px;}
-.tsec{padding:88px 28px;}
-.th1{font-size:52px;line-height:1.06;font-weight:800;letter-spacing:-1.6px;margin:0;color:#1A1014;}
-.th2{font-size:34px;line-height:1.12;font-weight:800;letter-spacing:-1px;margin:0;color:#1A1014;}
-.tlead{font-size:19px;line-height:1.6;color:#5A4B4E;margin:16px 0 0;}
-.tbody{font-size:16px;line-height:1.66;color:#5A4B4E;}
-.tcrumb{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:#A9999C;margin:0 0 18px;}
-.tcrumb a{color:#F23F44;}
-.tcalc{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;align-items:stretch;}
-.tcard{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:32px;box-shadow:0 20px 44px rgba(110,11,14,.08);}
-.tfield{margin-bottom:20px;}
-.tfield label{display:block;font-size:13.5px;font-weight:700;color:#1A1014;margin-bottom:8px;}
-.tfield .thint{font-weight:500;color:#8A7A7D;font-size:12px;margin-left:6px;}
-.tinput{width:100%;height:50px;border:1.5px solid #EADDDE;border-radius:12px;padding:0 16px;font-family:inherit;font-size:16px;font-weight:600;color:#1A1014;background:#FCFAFA;transition:border-color .2s,box-shadow .2s;}
-.tinput:focus{outline:none;border-color:#F23F44;box-shadow:0 0 0 4px rgba(242,63,68,.12);background:#fff;}
-.tprefix{position:relative;}
-.tprefix .tsym{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:700;color:#A9999C;font-size:15px;}
-.tprefix .tinput{padding-left:32px;}
-.tprefix.suf .tsym{left:auto;right:14px;}
-.tprefix.suf .tinput{padding-left:16px;padding-right:34px;}
-.tresult{background:linear-gradient(160deg,#1A1014,#2A1418);border-radius:22px;padding:34px;color:#fff;display:flex;flex-direction:column;justify-content:center;}
-.trlabel{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C9A9AB;margin:0;}
-.trbig{font-size:64px;font-weight:800;letter-spacing:-2px;line-height:1;margin:12px 0 0;background:linear-gradient(180deg,#fff,#FFC9BD);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.trsub{font-size:14.5px;color:#C2B1B4;margin:14px 0 0;line-height:1.5;}
-.trbreak{margin-top:22px;padding-top:20px;border-top:1px solid #3A2529;display:flex;flex-direction:column;gap:10px;}
-.trrow{display:flex;align-items:center;justify-content:space-between;font-size:13.5px;}
-.trrow span:first-child{color:#A38E92;}
-.trrow span:last-child{font-weight:700;color:#F1E7E8;}
-.tsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
-.tstep{background:#fff;border:1px solid #F2E6E7;border-radius:18px;padding:26px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
-.tstep:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
-.tstepn{width:34px;height:34px;border-radius:10px;background:#FFF0F0;color:#F23F44;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-.trelgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px;}
-.trelcard{background:#fff;border:1px solid #F2E6E7;border-radius:16px;padding:22px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
-.trelcard:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
-.trelic{width:40px;height:40px;border-radius:11px;background:#FFF0F0;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-.trelt{font-size:15.5px;font-weight:700;color:#1A1014;margin:0 0 4px;}
-.treld{font-size:13px;color:#8A7A7D;margin:0;line-height:1.45;}
-@media(max-width:900px){.tcalc{grid-template-columns:1fr;}.th1{font-size:38px;letter-spacing:-1px;}.th2{font-size:28px;}.tsec{padding:64px 22px;}.tsteps{grid-template-columns:1fr;}.trelgrid{grid-template-columns:1fr 1fr;}}
+const css = `
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+.enp-wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+.enp-hero{padding:44px 28px 30px;background:radial-gradient(900px 420px at 50% -18%,#FFF0EE 0%,rgba(255,240,238,0) 64%),#fff;}
+.enp-back{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#F23F44;margin-bottom:22px;}
+.enp-back svg{transition:transform .2s;}
+.enp-back:hover svg{transform:translateX(-3px);}
+.enp-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 14px;}
+.enp-eyebrow b{color:#F23F44;font-weight:700;}
+.enp-h1{font-size:44px;line-height:1.08;font-weight:800;letter-spacing:-1.4px;margin:0;max-width:820px;}
+.enp-sub{font-size:18px;line-height:1.6;color:#5A4B4E;margin:18px 0 0;max-width:720px;}
+.enp-body{padding:36px 28px 40px;}
+.enp-p{font-size:16px;line-height:1.72;color:#4A3B3E;margin:0 0 18px;}
+.enp-sec{scroll-margin-top:110px;margin-bottom:34px;}
+.enp-h2{font-size:26px;font-weight:800;letter-spacing:-.5px;margin:0 0 16px;color:#1A1014;}
+.enp-calc{display:grid;grid-template-columns:1fr 1fr;gap:30px;background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:34px;box-shadow:0 20px 44px rgba(110,11,14,.08);}
+.enp-field{margin-bottom:16px;}
+.enp-field:last-child{margin-bottom:0;}
+.enp-field label{display:block;font-size:13.5px;font-weight:700;color:#1A1014;margin-bottom:8px;}
+.enp-field label span{font-weight:500;color:#8A7A7D;}
+.enp-field input{width:100%;border:1.5px solid #EADDDE;border-radius:10px;padding:11px 14px;font-family:inherit;font-size:14.5px;font-weight:600;color:#1A1014;background:#FCFAFA;}
+.enp-field input:focus{outline:none;border-color:#F23F44;background:#fff;}
+.enp-result{background:#FBF3EE;border:1px solid #F0E2E3;border-radius:16px;padding:26px;text-align:center;display:flex;flex-direction:column;justify-content:center;}
+.enp-result p{margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8A7A7D;}
+.enp-result .n{font-size:44px;font-weight:800;letter-spacing:-1.4px;color:#F23F44;}
+.enp-result .note{margin-top:8px;font-size:13.5px;font-weight:500;color:#5A4B4E;text-transform:none;letter-spacing:0;}
+.enp-breakdown{margin-top:16px;border-top:1px solid #F0E2E3;padding-top:14px;display:flex;flex-direction:column;gap:8px;}
+.enp-brow{display:flex;justify-content:space-between;font-size:13px;color:#5A4B4E;}
+.enp-brow b{color:#1A1014;font-weight:700;}
+.enp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.enp-step{background:#fff;border:1px solid #F2E6E7;border-radius:18px;padding:26px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.enp-step:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
+.enp-stephead{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.enp-stepno{flex:none;width:34px;height:34px;border-radius:10px;background:#FFF0F0;color:#F23F44;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;}
+.enp-step h3{font-size:17px;font-weight:700;letter-spacing:-.2px;margin:0;}
+.enp-step p{font-size:15px;line-height:1.62;color:#5A4B4E;margin:0;}
+.enp-formula{background:#FBF3EE;border:1px solid #F0E2E3;border-radius:14px;padding:20px 24px;font-size:17px;font-weight:700;color:#1A1014;margin:0 0 20px;text-align:center;}
+.enp-chk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+.enp-chk li{display:flex;align-items:flex-start;gap:14px;font-size:15px;line-height:1.62;color:#5A4B4E;}
+.enp-chk svg{color:#F23F44;flex:none;margin-top:2px;}
+.enp-bench{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.enp-benchcard{background:#fff;border:1px solid #F2E6E7;border-radius:16px;padding:18px 16px;}
+.enp-benchcard .t{font-size:15px;font-weight:800;color:#F23F44;margin:0 0 8px;}
+.enp-benchcard .d{font-size:13px;line-height:1.5;color:#5A4B4E;margin:0;}
+@media(max-width:1000px){.enp-bench{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:900px){.enp-steps{grid-template-columns:1fr;}}
+@media(max-width:860px){.enp-h1{font-size:32px;letter-spacing:-1px;}.enp-calc{grid-template-columns:1fr;}}
+h1,h2,h3,h4,h5,.enp-h1,.enp-h2,.enp-eyebrow{text-wrap:balance;}p,li,.enp-p,.enp-sub{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
 const FAQ_ITEMS = [
   {
     q: 'How is the employee NPS score calculated?',
-    a: 'eNPS is calculated by subtracting the percentage of Detractors from the percentage of Promoters, based on employee responses.',
+    a: 'eNPS is calculated by subtracting the percentage of Detractors from Promoters based on employee responses to how likely they are to recommend your company.',
   },
   {
-    q: 'What is the best eNPS calculator?',
-    a: 'Testlify’s eNPS calculator provides accurate scores and compares them to industry benchmarks, offering valuable insight into employee engagement.',
+    q: 'What is the best Employee Net Promoter Score (eNPS) calculator?',
+    a: 'Testlify’s eNPS calculator is the best. It provides accurate scores and compares them to industry benchmarks, offering valuable insights into employee engagement.',
   },
   {
     q: 'How do you measure employee Net Promoter Score?',
-    a: 'Ask employees how likely they are to recommend your company. Responses are categorized, and the score is calculated by subtracting Detractors from Promoters.',
+    a: 'eNPS is measured by asking employees how likely they are to recommend your company. Responses are categorized, and the score is calculated by subtracting Detractors from Promoters.',
   },
   {
     q: 'What is the formula for eNPS?',
@@ -103,261 +112,253 @@ export default function FreeEmployeeNetPromoterScoreEnpsCalculatorPage() {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: calcCss }} />
+      <style dangerouslySetInnerHTML={{ __html: css }} />
       <SiteHeader
         announcement="Free HR tools — calculators, templates and interview kits."
         announcementCta="Browse tools"
         homeHref="/"
       />
 
-      <section
-        className="tsec"
-        style={{
-          background:
-            'radial-gradient(1000px 500px at 80% 4%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff',
-        }}
-      >
-        <div className="tw">
-          <div className="tcrumb reveal">
-            <Link href="/blog">Resources</Link>
-            <span>/</span>
-            <Link href="/hr-tools">HR tools</Link>
-            <span>/</span>
-            <span>eNPS calculator</span>
-          </div>
-          <div style={{ maxWidth: 720 }}>
-            <p className="eyebrow reveal">
-              Employee NPS calculator<b>.</b>
-            </p>
-            <h1 className="th1 reveal" style={{ transitionDelay: '.04s' }}>
-              Calculate your employee NPS
-            </h1>
-            <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>
-              Enter how many employees are promoters, passives and detractors to see
-              your eNPS — a quick pulse on how likely your people are to recommend
-              working with you.
-            </p>
-          </div>
+      <section className="enp-hero">
+        <div className="enp-wrap">
+          <Link className="enp-back" href="/hr-tools">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M11 6l-6 6 6 6"></path>
+            </svg>
+            Back to HR tools
+          </Link>
+          <p className="enp-eyebrow reveal">
+            Employee NPS calculator<b>.</b>
+          </p>
+          <h1 className="enp-h1 reveal">
+            Best free <span style={{ color: '#F23F44' }}>Employee Net Promoter Score (eNPS)</span> calculator
+          </h1>
+          <p className="enp-sub reveal">
+            Measure employee loyalty and satisfaction with our simple eNPS calculator. Get quick
+            insights into your workforce and improve workplace culture.
+          </p>
         </div>
       </section>
 
-      <section className="tsec" style={{ background: '#FBF3EE', paddingTop: 40 }}>
-        <div className="tw">
-          <div className="tcalc reveal">
-            <div className="tcard">
-              <p className="eyebrow" style={{ marginBottom: 22 }}>
-                Your survey<b>.</b>
-              </p>
-              <div className="tfield">
-                <label>
-                  Promoters <span className="thint">scored 9–10</span>
-                </label>
-                <input
-                  className="tinput"
-                  type="number"
-                  min="0"
-                  value={prom}
-                  onChange={(e) => setProm(e.target.value)}
-                />
-              </div>
-              <div className="tfield">
-                <label>
-                  Passives <span className="thint">scored 7–8</span>
-                </label>
-                <input
-                  className="tinput"
-                  type="number"
-                  min="0"
-                  value={pass}
-                  onChange={(e) => setPass(e.target.value)}
-                />
-              </div>
-              <div className="tfield" style={{ marginBottom: 0 }}>
-                <label>
-                  Detractors <span className="thint">scored 0–6</span>
-                </label>
-                <input
-                  className="tinput"
-                  type="number"
-                  min="0"
-                  value={detr}
-                  onChange={(e) => setDetr(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="tresult">
-              <p className="trlabel">Your eNPS</p>
-              <p className="trbig">{result}</p>
-              <p className="trsub">{note}</p>
-              <div className="trbreak">
-                <div className="trrow">
-                  <span>Total responses</span>
-                  <span>{total}</span>
+      <div className="enp-body">
+        <div className="enp-wrap">
+          <div>
+            <div className="enp-sec">
+              <div className="enp-calc reveal">
+                <div>
+                  <div className="enp-field">
+                    <label>
+                      Promoters <span>scored 9–10</span>
+                    </label>
+                    <input
+                      type="number"
+                      min="0"
+                      value={prom}
+                      onChange={(e) => setProm(e.target.value)}
+                    />
+                  </div>
+                  <div className="enp-field">
+                    <label>
+                      Passives <span>scored 7–8</span>
+                    </label>
+                    <input
+                      type="number"
+                      min="0"
+                      value={pass}
+                      onChange={(e) => setPass(e.target.value)}
+                    />
+                  </div>
+                  <div className="enp-field">
+                    <label>
+                      Detractors <span>scored 0–6</span>
+                    </label>
+                    <input
+                      type="number"
+                      min="0"
+                      value={detr}
+                      onChange={(e) => setDetr(e.target.value)}
+                    />
+                  </div>
                 </div>
-                <div className="trrow">
-                  <span>% Promoters</span>
-                  <span>{promPct}</span>
-                </div>
-                <div className="trrow">
-                  <span>% Detractors</span>
-                  <span>{detrPct}</span>
+                <div className="enp-result">
+                  <p>Your eNPS</p>
+                  <span className="n">{result}</span>
+                  <p className="note">{note}</p>
+                  <div className="enp-breakdown">
+                    <div className="enp-brow">
+                      <span>Total responses</span>
+                      <b>{total}</b>
+                    </div>
+                    <div className="enp-brow">
+                      <span>% Promoters</span>
+                      <b>{promPct}</b>
+                    </div>
+                    <div className="enp-brow">
+                      <span>% Detractors</span>
+                      <b>{detrPct}</b>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <div className="enp-sec" id="how-it-works">
+              <h2 className="enp-h2 reveal">How to use the Employee Net Promoter Score (eNPS) calculator</h2>
+              <div className="enp-steps reveal">
+                <div className="enp-step">
+                  <div className="enp-stephead">
+                    <div className="enp-stepno">1</div>
+                    <h3>Input employee responses</h3>
+                  </div>
+                  <p>Ask employees to rate, &quot;On a scale of 0 to 10, how likely are you to recommend this company?&quot;</p>
+                </div>
+                <div className="enp-step">
+                  <div className="enp-stephead">
+                    <div className="enp-stepno">2</div>
+                    <h3>Categorize responses</h3>
+                  </div>
+                  <p>Divide the responses into Promoters (9–10), Passives (7–8), and Detractors (0–6).</p>
+                </div>
+                <div className="enp-step">
+                  <div className="enp-stephead">
+                    <div className="enp-stepno">3</div>
+                    <h3>Calculate eNPS score</h3>
+                  </div>
+                  <p>Subtract the percentage of Detractors from Promoters to get the eNPS score.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="enp-sec">
+              <h2 className="enp-h2 reveal">What is an Employee Net Promoter Score (eNPS)?</h2>
+              <p className="enp-p reveal">
+                The Employee Net Promoter Score (eNPS) is a recruitment metric that measures
+                employee engagement and loyalty within an organization. eNPS assesses how likely
+                employees are to recommend their workplaces to others, including friends and
+                family. The eNPS score will be between -100 and 100.
+              </p>
+            </div>
+
+            <div className="enp-sec">
+              <h2 className="enp-h2 reveal">How does an Employee Net Promoter Score (eNPS) calculator work?</h2>
+              <p className="enp-p reveal">
+                An eNPS calculator is the best tool to quantify employee satisfaction based on
+                survey responses. Here&apos;s how it works in detail:
+              </p>
+              <p className="enp-p reveal">
+                <b>Survey questions:</b> employees are asked a single question — &quot;On a scale
+                of 0 to 10, how likely are you to recommend this company to others as a
+                workplace?&quot;
+              </p>
+              <p className="enp-p reveal">
+                <b>Categorization of responses:</b> Promoters score 9 or 10 and are loyal and
+                enthusiastic. Passives score 7 or 8 — satisfied but not enthusiastic enough to be
+                promoters. Detractors score 0 to 6 — unhappy, and may discourage others from
+                joining.
+              </p>
+              <p className="enp-p reveal">
+                <b>Percentage calculation:</b> after gathering responses, the percentage of
+                employees in each category is calculated based on the total number of respondents.
+              </p>
+              <p className="enp-formula reveal">eNPS = % of Promoters − % of Detractors</p>
+              <p className="enp-p reveal">
+                For example, if 70% of respondents are Promoters and 10% are Detractors, eNPS =
+                70% − 10% = 60. The score ranges from -100 (all Detractors) to +100 (all
+                Promoters) — a higher score shows greater employee engagement and satisfaction.
+              </p>
+            </div>
+
+            <div className="enp-sec">
+              <h2 className="enp-h2 reveal">Why use the Employee Net Promoter Score (eNPS) calculator?</h2>
+              <ul className="enp-chk reveal">
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                  <span>
+                    <b>Measure employee satisfaction:</b> eNPS helps you determine how happy
+                    employees are with their jobs, giving a good sense of overall satisfaction and
+                    morale.
+                  </span>
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                  <span>
+                    <b>Identify engagement levels:</b> the eNPS score shows how many employees are
+                    Promoters, Passives, or Detractors — helping you spot areas that might need
+                    improvement.
+                  </span>
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                  <span>
+                    <b>Benchmarking and comparisons:</b> compare eNPS scores across teams or
+                    locations to spot areas needing extra attention.
+                  </span>
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                  <span>
+                    <b>Track changes over time:</b> measuring eNPS regularly helps you see if your
+                    efforts to improve workplace culture are making a difference.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="enp-sec">
+              <h2 className="enp-h2 reveal">What is a good Employee Net Promoter Score (eNPS)?</h2>
+              <p className="enp-p reveal">A good eNPS typically falls between 10 and 30:</p>
+              <div className="enp-bench reveal">
+                <div className="enp-benchcard">
+                  <p className="t">-100 to 0</p>
+                  <p className="d">
+                    More detractors than promoters, which could point to issues with employee
+                    engagement, management, or company culture.
+                  </p>
+                </div>
+                <div className="enp-benchcard">
+                  <p className="t">0 to 10</p>
+                  <p className="d">A balance between promoters and detractors, indicating room for improvement.</p>
+                </div>
+                <div className="enp-benchcard">
+                  <p className="t">10 to 30</p>
+                  <p className="d">A positive work environment with good employee engagement and satisfaction.</p>
+                </div>
+                <div className="enp-benchcard">
+                  <p className="t">30 to 50</p>
+                  <p className="d">Above average, showing effective strategies to boost employee engagement and loyalty.</p>
+                </div>
+                <div className="enp-benchcard">
+                  <p className="t">50+</p>
+                  <p className="d">Excellent, suggesting an outstanding employee experience and a culture encouraging advocacy.</p>
+                </div>
+              </div>
+              <p className="enp-p reveal" style={{ marginTop: 18 }}>
+                Note: eNPS scores can vary based on factors like industry and company size. It&apos;s
+                important to compare your score with similar companies to understand where you
+                stand.
+              </p>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="tsec">
-        <div className="tw">
-          <div style={{ maxWidth: 640 }}>
-            <p className="eyebrow reveal">
-              How it works<b>.</b>
-            </p>
-            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
-              eNPS, explained
-            </h2>
-            <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>
-              eNPS subtracts the percentage of detractors from the percentage of
-              promoters. It ranges from -100 to +100. Anything above 0 is good; above
-              30 is excellent.
-            </p>
-          </div>
-          <div className="tsteps">
-            <div className="tstep reveal">
-              <div className="tstepn">1</div>
-              <h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>
-                Ask one question
-              </h3>
-              <p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>
-                &quot;How likely are you to recommend us as a place to work?&quot;
-                (0–10).
-              </p>
-            </div>
-            <div className="tstep reveal" style={{ transitionDelay: '.06s' }}>
-              <div className="tstepn">2</div>
-              <h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>
-                Group responses
-              </h3>
-              <p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>
-                Promoters (9–10), passives (7–8), detractors (0–6).
-              </p>
-            </div>
-            <div className="tstep reveal" style={{ transitionDelay: '.12s' }}>
-              <div className="tstepn">3</div>
-              <h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>
-                See your score
-              </h3>
-              <p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>
-                % promoters minus % detractors gives your eNPS.
-              </p>
-            </div>
-          </div>
+      <section style={{ background: '#FBF3EE', padding: '96px 28px' }}>
+        <div style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
+          <p className="enp-eyebrow reveal">
+            FAQ<b>.</b>
+          </p>
+          <h2 className="enp-h2 reveal">Frequently asked questions</h2>
         </div>
-      </section>
-
-      <section className="tsec" style={{ background: '#FBF3EE' }}>
-        <div className="tw">
-          <div style={{ maxWidth: 640 }}>
-            <p className="eyebrow reveal">
-              Benchmarks<b>.</b>
-            </p>
-            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
-              What is a good eNPS?
-            </h2>
-          </div>
-          <div
-            className="trelgrid reveal"
-            style={{ gridTemplateColumns: 'repeat(5,1fr)' }}
-          >
-            <div className="trelcard">
-              <p className="trelt">-100 to 0</p>
-              <p className="treld">
-                More detractors than promoters — engagement or culture issues.
-              </p>
-            </div>
-            <div className="trelcard">
-              <p className="trelt">0 to 10</p>
-              <p className="treld">
-                A balance between promoters and detractors — room to improve.
-              </p>
-            </div>
-            <div className="trelcard">
-              <p className="trelt">10 to 30</p>
-              <p className="treld">
-                A positive work environment with good engagement.
-              </p>
-            </div>
-            <div className="trelcard">
-              <p className="trelt">30 to 50</p>
-              <p className="treld">
-                Above average — effective engagement and loyalty strategies.
-              </p>
-            </div>
-            <div className="trelcard">
-              <p className="trelt">50+</p>
-              <p className="treld">Excellent — an outstanding employee experience.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="tsec">
-        <div className="tw">
-          <div style={{ maxWidth: 640 }}>
-            <p className="eyebrow reveal">
-              Why it matters<b>.</b>
-            </p>
-            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
-              Why use the eNPS calculator?
-            </h2>
-          </div>
-          <ul className="chk reveal" style={{ marginTop: 30, maxWidth: 760 }}>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 6L9 17l-5-5"></path>
-              </svg>
-              <b>Measure employee satisfaction:</b> get a clear sense of overall morale
-              from one simple question.
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 6L9 17l-5-5"></path>
-              </svg>
-              <b>Identify engagement levels:</b> see how many promoters, passives and
-              detractors you have.
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 6L9 17l-5-5"></path>
-              </svg>
-              <b>Benchmark and compare:</b> compare eNPS across teams or locations to
-              spot where attention is needed.
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 6L9 17l-5-5"></path>
-              </svg>
-              <b>Track changes over time:</b> measure regularly to see if culture
-              efforts are actually working.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section className="tsec" style={{ background: '#FBF3EE' }}>
-        <div className="tw">
-          <div style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
-            <p className="eyebrow reveal">
-              FAQ<b>.</b>
-            </p>
-            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
-              Frequently asked questions
-            </h2>
-          </div>
-          <div className="reveal" style={{ maxWidth: 820, margin: '34px auto 0' }}>
-            <FAQ items={FAQ_ITEMS} />
-          </div>
+        <div className="reveal" style={{ maxWidth: 820, margin: '34px auto 0' }}>
+          <FAQ items={FAQ_ITEMS} />
         </div>
       </section>
 

@@ -431,11 +431,7 @@ export default function Page() {
         </div>
       </section>
 
-      <CtaBand
-        eyebrow="Get started"
-        heading="Cut through the noise. Hire with clarity."
-        sub="Resumes don't tell you everything. Prove who can actually do the job — start screening at scale in minutes."
-      />
+      <CtaBand />
       <SiteFooter />
     </>
   );

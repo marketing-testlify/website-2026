@@ -116,19 +116,19 @@ const RES: Group[] = [
     subs: [
       { label: 'AI Interview question generator', d: 'Generate role-ready questions', href: 'ai-interview-question-generator.dc.html' },
       { label: 'AI Job description generator', d: 'Draft JDs in seconds', href: 'job-description-generator.dc.html' },
-      { label: 'Cost per hire calculator', d: '', href: 'cost-per-hire-calculator.dc.html' },
-      { label: 'Attrition rate calculator', d: '', href: 'attrition-rate-calculator.dc.html' },
-      { label: 'Employee NPS calculator', d: '', href: 'free-employee-net-promoter-score-enps-calculator.dc.html' },
-      { label: 'Applicant funnel calculator', d: '', href: 'applicant-funnel-calculator.dc.html' },
-      { label: 'Average Time to Hire', d: '', href: 'average-time-to-hire-calculator.dc.html' },
-      { label: 'Employee turnover', d: '', href: 'cost-of-employee-turnover-calculator.dc.html' },
-      { label: 'Sourcing channel efficiency', d: '', href: 'sourcing-channel-efficiency-calculator.dc.html' },
-      { label: 'Remote work cost savings', d: '', href: 'remote-work-cost-savings-calculator.dc.html' },
-      { label: 'Quality of hire calculator', d: '', href: 'quality-of-hire-calculator.dc.html' },
-      { label: 'Interview-to-hire offer', d: '', href: 'interview-to-offer-ratio-calculator.dc.html' },
-      { label: 'Recruiting conversion rate', d: '', href: 'recruiting-conversion-rate-calculator.dc.html' },
-      { label: 'Job offer acceptance rate', d: '', href: 'job-offer-acceptance-rate-calculator.dc.html' },
-      { label: 'Hiring manager satisfaction', d: '', href: 'hiring-manager-satisfaction-calculator.dc.html' },
+      { label: 'Cost per hire calculator', d: 'True cost of every recruit', href: 'cost-per-hire-calculator.dc.html' },
+      { label: 'Attrition rate calculator', d: 'Track how fast people leave', href: 'attrition-rate-calculator.dc.html' },
+      { label: 'Employee NPS calculator', d: 'Measure loyalty & satisfaction', href: 'free-employee-net-promoter-score-enps-calculator.dc.html' },
+      { label: 'Applicant funnel calculator', d: 'Spot drop-off by stage', href: 'applicant-funnel-calculator.dc.html' },
+      { label: 'Average Time to Hire', d: 'Days from post to offer', href: 'average-time-to-hire-calculator.dc.html' },
+      { label: 'Employee turnover', d: 'Cost of replacing an employee', href: 'cost-of-employee-turnover-calculator.dc.html' },
+      { label: 'Sourcing channel efficiency', d: 'Best-performing source', href: 'sourcing-channel-efficiency-calculator.dc.html' },
+      { label: 'Remote work cost savings', d: 'Office vs remote savings', href: 'remote-work-cost-savings-calculator.dc.html' },
+      { label: 'Quality of hire calculator', d: 'Score your recent hires', href: 'quality-of-hire-calculator.dc.html' },
+      { label: 'Interview-to-hire offer', d: 'Interviews per offer made', href: 'interview-to-offer-ratio-calculator.dc.html' },
+      { label: 'Recruiting conversion rate', d: 'Applicants to hires, by stage', href: 'recruiting-conversion-rate-calculator.dc.html' },
+      { label: 'Job offer acceptance rate', d: 'Offers accepted vs declined', href: 'job-offer-acceptance-rate-calculator.dc.html' },
+      { label: 'Hiring manager satisfaction', d: 'Score the hiring experience', href: 'hiring-manager-satisfaction-calculator.dc.html' },
     ],
   },
   {
@@ -498,14 +498,23 @@ export default function SiteHeader({
                       { i: 0, t: 'Learn', d: 'Blog, guides, glossary & podcast', icon: <><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></> },
                       { i: 1, t: 'HR tools', d: 'AI generators & 13 calculators', icon: <><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></> },
                       { i: 2, t: 'Programs', d: 'Referral, partnership & integrations', icon: <><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></> },
-                    ].map((it) => (
-                      <div key={it.i} className={`mlrich ${resAcc === it.i ? 'on' : ''}`} onMouseEnter={() => setResAcc(it.i)}>
-                        <span className="mlic">
-                          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{it.icon}</svg>
-                        </span>
-                        <span><span className="mlt">{it.t}</span><span className="mld">{it.d}</span></span>
-                      </div>
-                    ))}
+                    ].map((it) =>
+                      it.i === 1 ? (
+                        <a key={it.i} className={`mlrich ${resAcc === it.i ? 'on' : ''}`} href={rw('hr-tools.dc.html')} onMouseEnter={() => setResAcc(it.i)}>
+                          <span className="mlic">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{it.icon}</svg>
+                          </span>
+                          <span><span className="mlt">{it.t}</span><span className="mld">{it.d}</span></span>
+                        </a>
+                      ) : (
+                        <div key={it.i} className={`mlrich ${resAcc === it.i ? 'on' : ''}`} onMouseEnter={() => setResAcc(it.i)}>
+                          <span className="mlic">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{it.icon}</svg>
+                          </span>
+                          <span><span className="mlt">{it.t}</span><span className="mld">{it.d}</span></span>
+                        </div>
+                      )
+                    )}
                   </div>
                   <div className="ppane">
                     {resActive.subs.map((s, idx) => (

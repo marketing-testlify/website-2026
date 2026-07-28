@@ -1,351 +1,254 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaBand from '@/components/CtaBand';
-import CtaButton from '@/components/CtaButton';
 import FAQ from '@/components/FAQ';
 
-const calcCss = `
-.tw{max-width:1180px;margin:0 auto;padding:0 28px;}
-.tsec{padding:88px 28px;}
-.th1{font-size:52px;line-height:1.06;font-weight:800;letter-spacing:-1.6px;margin:0;color:#1A1014;}
-.th2{font-size:34px;line-height:1.12;font-weight:800;letter-spacing:-1px;margin:0;color:#1A1014;}
-.tlead{font-size:19px;line-height:1.6;color:#5A4B4E;margin:16px 0 0;}
-.tbody{font-size:16px;line-height:1.66;color:#5A4B4E;}
-.tcrumb{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:#A9999C;margin:0 0 18px;}
-.tcrumb a{color:#F23F44;}
-.tcalc{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;align-items:stretch;}
-.tcard{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:32px;box-shadow:0 20px 44px rgba(110,11,14,.08);}
-.tfield{margin-bottom:20px;}
-.tfield label{display:block;font-size:13.5px;font-weight:700;color:#1A1014;margin-bottom:8px;}
-.tfield .thint{font-weight:500;color:#8A7A7D;font-size:12px;margin-left:6px;}
-.tinput{width:100%;height:50px;border:1.5px solid #EADDDE;border-radius:12px;padding:0 16px;font-family:inherit;font-size:16px;font-weight:600;color:#1A1014;background:#FCFAFA;transition:border-color .2s,box-shadow .2s;}
-.tinput:focus{outline:none;border-color:#F23F44;box-shadow:0 0 0 4px rgba(242,63,68,.12);background:#fff;}
-.tsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
-.tstep{background:#fff;border:1px solid #F2E6E7;border-radius:18px;padding:26px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
-.tstep:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
-.tstepn{width:34px;height:34px;border-radius:10px;background:#FFF0F0;color:#F23F44;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-@media(max-width:900px){.tsteps{grid-template-columns:1fr;}}
-.genout{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:34px 36px;box-shadow:0 20px 44px rgba(110,11,14,.08);}
-.jdh{font-size:26px;font-weight:800;letter-spacing:-.6px;margin:0 0 4px;color:#1A1014;}
-.jdmeta{font-size:13.5px;color:#8A7A7D;font-weight:600;margin:0 0 22px;}
-.jdsh{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#F23F44;margin:22px 0 10px;}
-.jdp{font-size:15px;line-height:1.65;color:#5A4B4E;margin:0;}
-.jdul{margin:0;padding-left:20px;}
-.jdul li{font-size:15px;line-height:1.6;color:#5A4B4E;margin-bottom:7px;}
-.tselect{width:100%;height:50px;border:1.5px solid #EADDDE;border-radius:12px;padding:0 14px;font-family:inherit;font-size:15px;font-weight:600;color:#1A1014;background:#FCFAFA;}
-.tselect:focus{outline:none;border-color:#F23F44;box-shadow:0 0 0 4px rgba(242,63,68,.12);background:#fff;}
-@media(max-width:900px){.tcalc{grid-template-columns:1fr;}.th1{font-size:38px;letter-spacing:-1px;}.th2{font-size:28px;}.tsec{padding:64px 22px;}}
+const CSS = `
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+a{text-decoration:none;color:inherit;}
+a:hover{color:#F23F44;}
+.jdg-wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.jdg-hero{padding:44px 28px 30px;background:radial-gradient(900px 420px at 50% -18%,#FFF0EE 0%,rgba(255,240,238,0) 64%),#fff;}
+.jdg-back{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#F23F44;margin-bottom:22px;}
+.jdg-back svg{transition:transform .2s;}
+.jdg-back:hover svg{transform:translateX(-3px);}
+.jdg-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 14px;}
+.jdg-eyebrow b{color:#F23F44;font-weight:700;}
+.jdg-h1{font-size:44px;line-height:1.08;font-weight:800;letter-spacing:-1.4px;margin:0;}
+.jdg-sub{font-size:18px;line-height:1.6;color:#5A4B4E;margin:18px 0 0;max-width:720px;}
+.jdg-ticks{display:flex;gap:26px;flex-wrap:wrap;margin:22px 0 0;}
+.jdg-tick{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#6C5A5D;}
+.jdg-bar{display:grid;grid-template-columns:1.2fr 1.2fr 1.1fr 1.1fr auto;align-items:center;gap:10px;margin:26px 0 0;background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:14px 16px;box-shadow:0 12px 30px rgba(110,11,14,.07);max-width:1060px;}
+.jdg-field{display:flex;align-items:center;gap:9px;border:1.5px solid #F0E2E3;border-radius:11px;padding:9px 12px;background:#fff;transition:border-color .2s;}
+.jdg-field:focus-within{border-color:#FBD0D1;}
+.jdg-field svg{color:#B29A9E;flex:none;}
+.jdg-field input,.jdg-field select{border:0;outline:0;background:transparent;font-family:inherit;font-size:13.5px;color:#1A1014;min-width:0;width:100%;text-overflow:ellipsis;}
+.jdg-gobtn{display:inline-flex;white-space:nowrap;align-items:center;gap:8px;background:linear-gradient(97deg,#7B77E9 0%,#9B8CEE 52%,#C293EA 100%);color:#fff;border:0;border-radius:11px;padding:12px 20px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+.jdg-gobtn:hover{filter:saturate(1.06);transform:translateY(-2px);box-shadow:0 12px 26px rgba(96,88,200,.30);}
+.jdg-gencard{max-width:1060px;margin:22px 0 0;background:#fff;border:1px solid #F0E2E3;border-radius:16px;box-shadow:0 12px 30px rgba(110,11,14,.07);overflow:hidden;}
+.jdg-gchead{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#FBF3EE;border-bottom:1px solid #F0E2E3;padding:12px 20px;}
+.jdg-gcbody{padding:22px 26px 26px;max-height:520px;overflow-y:auto;}
+.jdg-gcbody h4{font-size:15px;font-weight:800;letter-spacing:-.2px;color:#1A1014;margin:20px 0 8px;}
+.jdg-gcbody h4:first-child{margin-top:0;}
+.jdg-gcbody p{font-size:14px;line-height:1.65;color:#5A4B4E;margin:0;}
+.jdg-gcbody ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px;}
+.jdg-gcbody li{font-size:14px;line-height:1.6;color:#5A4B4E;}
+.jdg-body{padding:36px 28px 40px;}
+.jdg-main{max-width:none;margin:0;min-width:0;}
+.jdg-p{font-size:16px;line-height:1.72;color:#4A3B3E;margin:0 0 18px;}
+.jdg-gen{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#FBF3EE;border:1px solid #F0E2E3;border-radius:14px;padding:12px 16px;margin:0 0 34px;scroll-margin-top:110px;}
+.jdg-genlbl{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8A7A7D;}
+.jdg-genacts{display:flex;align-items:center;gap:10px;}
+.jdg-ghost{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1.5px solid #F0E2E3;border-radius:10px;padding:8px 14px;font-family:inherit;font-size:13.5px;font-weight:600;color:#5A4B4E;cursor:pointer;transition:border-color .2s,color .2s,transform .2s;}
+.jdg-ghost:hover{border-color:#FBD0D1;color:#F23F44;transform:translateY(-1px);}
+.jdg-sec{scroll-margin-top:110px;margin-bottom:34px;}
+.jdg-h2{font-size:26px;font-weight:800;letter-spacing:-.5px;margin:0 0 16px;color:#1A1014;}
+.jdg-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.jdg-step{background:#fff;border:1px solid #F2E6E7;border-radius:18px;padding:26px;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;}
+.jdg-step:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
+.jdg-stephead{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.jdg-stepno{flex:none;width:34px;height:34px;border-radius:10px;background:#FFF0F0;color:#F23F44;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;}
+.jdg-step h3{font-size:17px;font-weight:700;letter-spacing:-.2px;margin:0;}
+.jdg-step p{font-size:15px;line-height:1.62;color:#5A4B4E;margin:0;}
+.jdg-more{border-top:1px solid #F0E2E3;padding-top:26px;}
+.jdg-more h3{font-size:20px;font-weight:800;letter-spacing:-.4px;margin:0 0 8px;}
+.jdg-more p{font-size:15px;line-height:1.6;color:#5A4B4E;margin:0 0 14px;}
+.jdg-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#F23F44;}
+.jdg-link svg{transition:transform .2s;}
+.jdg-link:hover svg{transform:translateX(3px);}
+@media(max-width:900px){.jdg-steps{grid-template-columns:1fr;}}
+@media(max-width:860px){.jdg-h1{font-size:32px;letter-spacing:-1px;}.jdg-bar{grid-template-columns:1fr;}}
+h1,h2,h3,h4,h5,.jdg-h1,.jdg-h2,.jdg-eyebrow{text-wrap:balance;}p,li,.jdg-p,.jdg-sub{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
 const FAQ_ITEMS = [
-  {
-    q: 'What is a job description and why is it important?',
-    a: "A job description describes a position’s key roles, responsibilities, and qualifications. It helps attract the right candidates and sets clear expectations for employers and employees.",
-  },
-  {
-    q: 'What is the ideal length of a job description?',
-    a: 'The ideal length of a job description is typically 300-700 words or no more than two pages. It should be concise yet detailed, covering responsibilities, skills, and qualifications.',
-  },
-  {
-    q: 'How to write a job description with AI?',
-    a: "Simply provide details like title, industry, language, and company name. Testlify’s AI Job Description Generator creates tailored, professional descriptions in seconds, saving time and effort.",
-  },
-  {
-    q: 'What is a generative AI job description?',
-    a: 'A generative AI job description is created using AI technology. It ensures clarity, accuracy, and relevance, mimicking the quality of a professionally written description.',
-  },
-  {
-    q: 'How do I write a job description?',
-    a: "Job descriptions often take over 2 hours to craft. With Testlify’s job description generator, enter key details like job title and industry, then click to instantly create high-quality, tailored JDs.",
-  },
-  {
-    q: 'Which is the best AI job description generator tool?',
-    a: "Testlify’s AI job description generator is built for accuracy, simplicity, and human-like, professional descriptions tailored to your needs.",
-  },
+  { q: 'What is a job description and why is it important?', a: 'A job description describes a position’s key roles, responsibilities, and qualifications. It helps attract the right candidates and sets clear expectations for employers and employees.' },
+  { q: 'What is the ideal length of a job description?', a: 'The ideal length of a job description is typically 300-700 words or no more than two pages. It should be concise yet detailed, covering responsibilities, skills, and qualifications.' },
+  { q: 'How to write a job description with AI?', a: 'Simply provide details like title, industry, language, and company name. Testlify’s AI Job Description Generator creates tailored, professional descriptions in seconds, saving time and effort.' },
+  { q: 'What is a generative AI job description?', a: 'A generative AI job description is created using AI technology. It ensures clarity, accuracy, and relevance, mimicking the quality of a professionally written description.' },
+  { q: 'How do I write a job description?', a: 'Job descriptions often take over 2 hours to craft. With Testlify’s job description generator, enter key details like job title and industry, then click to instantly create high-quality, tailored JDs.' },
+  { q: 'Which is the best AI job description generator tool?', a: 'Testlify’s AI job description generator is the best due to its accuracy, simplicity, and ability to create human-like, professional descriptions tailored to your needs.' },
 ];
 
 export default function JobDescriptionGeneratorPage() {
-  const [title, setTitle] = useState('Senior Product Designer');
-  const [company, setCompany] = useState('Acme');
-  const [location, setLocation] = useState('Remote');
-  const [type, setType] = useState('Full-time');
-  const [skills, setSkills] = useState('UX design, prototyping, design systems');
+  const [jobTitle, setJobTitle] = useState('');
+  const [company, setCompany] = useState('');
+  const [industry, setIndustry] = useState('');
+  const [language, setLanguage] = useState('English');
+  const [copied, setCopied] = useState(false);
+  const [generating, setGenerating] = useState(false);
+  const [generated, setGenerated] = useState(false);
 
-  const { displayTitle, displayCompany, displayLocation, about, responsibilities, requirements, hiring } =
-    useMemo(() => {
-      const t = title || 'This role';
-      const c = company || 'Our company';
-      const l = location || 'Remote';
-      const skillList = (skills || '')
-        .split(',')
-        .map((x) => x.trim())
-        .filter(Boolean);
-      const skillsPhrase = skillList.length
-        ? skillList.slice(0, 3).join(', ')
-        : 'the core skills for this role';
-      const aboutText = `${c} is looking for a ${t} to join our team in ${l}. You'll play a key role in our success, bringing strong ${skillsPhrase} and a bias for impact. We hire for what people can do — so if you can prove the skills, we want to meet you.`;
-      const resp = [
-        `Own and deliver work that draws on ${skillList[0] || 'your core skills'} day to day.`,
-        `Collaborate across teams to move projects from idea to done.`,
-        `Raise the bar on quality and share what you learn with the team.`,
-        `Measure your impact and iterate based on results, not opinions.`,
-      ];
-      const reqs = [
-        skillList.length
-          ? `Proven strength in ${skillsPhrase}.`
-          : 'Proven strength in the core skills for this role.',
-        `Experience delivering results in a ${type.toLowerCase()} setting.`,
-        `Clear communication and a collaborative, ownership mindset.`,
-        `A track record you can demonstrate — we assess skills, not just resumes.`,
-      ];
-      const hiringText = `Shortlisted candidates complete a short skills assessment so everyone gets a fair, objective shot — no gut-feel screening. We aim to keep the process quick and respectful of your time.`;
-      return {
-        displayTitle: t,
-        displayCompany: c,
-        displayLocation: l,
-        about: aboutText,
-        responsibilities: resp,
-        requirements: reqs,
-        hiring: hiringText,
-      };
-    }, [title, company, location, type, skills]);
+  const onGenerate = () => {
+    setGenerating(true);
+    setTimeout(() => {
+      setGenerating(false);
+      setGenerated(true);
+      const el = document.getElementById('generated');
+      if (el) {
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 110, behavior: 'smooth' });
+      }
+    }, 700);
+  };
+
+  const onCopy = () => {
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const title = jobTitle || 'UX Designer';
+  const companyName = company || 'HNR';
+  const industryName = industry || 'Product';
+
+  const genOverview = `As a ${title} at ${companyName}, you will be responsible for creating user-centered designs that enhance the experience of our products. You will collaborate with cross-functional teams to understand user needs, conduct research, and develop innovative design solutions that align with business objectives. Your work will directly impact the usability and accessibility of our products, ensuring an engaging and intuitive user experience.`;
+  const genResponsibilities = [
+    'Conduct user research and usability testing to inform design decisions',
+    'Create wireframes, prototypes, and high-fidelity mockups to visualize design solutions',
+    'Collaborate with product managers, developers, and stakeholders to ensure alignment on user requirements',
+    'Develop and maintain design systems and guidelines to ensure consistency across products',
+    `Stay updated on industry trends and best practices in ${industryName.toLowerCase()} design and advocate for user-focused design within the organization`,
+  ];
+  const genRequired = `Bachelor's degree in Design, Human-Computer Interaction, or a related field, with a minimum of 3 years of experience in ${title.toLowerCase()} design. Strong portfolio showcasing design processes and outcomes, proficiency in design tools such as Sketch, Figma, or Adobe Creative Suite, and strong understanding of user-centered design principles and methodologies.`;
+  const genPreferred = 'Experience with accessibility standards and inclusive design, familiarity with front-end development (HTML/CSS/JavaScript), understanding of analytics and usability testing tools, and excellent communication and collaboration skills.';
+  const genConditions = `The ${title} will work in a collaborative, fast-paced environment. Remote work flexibility is available, with regular team meetings and design reviews conducted via video conferencing. The role may require occasional travel to meet with stakeholders or attend design workshops.`;
+  const genBenefits = [
+    'Competitive salary of XXXXX annually',
+    'Health insurance benefits',
+    'Paid time off (PTO)',
+    'Professional development opportunities',
+    'Retirement savings plan',
+  ];
+  const genAbout = `${companyName} is a leading innovator in the ${industryName.toLowerCase()} industry, dedicated to transforming user experiences through cutting-edge design and technology. Our mission is to enhance everyday interactions by creating user-friendly solutions that meet the evolving needs of our customers. Join us in our commitment to excellence and user satisfaction.`;
+
+  const genLabel = generating ? 'Generating…' : generated ? 'Regenerate' : 'Generate now';
+  const copyLabel = copied ? 'Copied' : 'Copy';
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: calcCss }} />
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <SiteHeader
         announcement="Free HR tools — calculators, templates and interview kits."
         announcementCta="Browse tools"
         homeHref="/"
       />
 
-      <section
-        className="tsec"
-        style={{
-          background:
-            'radial-gradient(1000px 500px at 80% 4%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff',
-        }}
-      >
-        <div className="tw">
-          <div className="tcrumb reveal">
-            <Link href="/blog">Resources</Link>
-            <span>/</span>
-            <Link href="/hr-tools">HR tools</Link>
-            <span>/</span>
-            <span>Job description generator</span>
-          </div>
-          <div style={{ maxWidth: 720 }}>
-            <p className="eyebrow reveal">
-              Job description generator<b>.</b>
-            </p>
-            <h1 className="th1 reveal" style={{ transitionDelay: '.04s' }}>
-              Write a great job description, fast
-            </h1>
-            <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>
-              Fill in a few details and get a clear, structured, skills-first job
-              description you can copy, tweak and post in minutes.
-            </p>
-          </div>
+      <section className="jdg-hero"><div className="jdg-wrap">
+        <Link className="jdg-back" href="/hr-tools"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>Back to HR tools</Link>
+        <p className="jdg-eyebrow reveal">AI job description generator<b>.</b></p>
+        <h1 className="jdg-h1 reveal">Free AI job description generator</h1>
+        <p className="jdg-sub reveal">Enter details and craft the perfect job descriptions for any role with one click.</p>
+        <div className="jdg-ticks reveal">
+          <span className="jdg-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>DEI optimized</span>
+          <span className="jdg-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>No sign-ups required</span>
+          <span className="jdg-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Bias free job description</span>
         </div>
-      </section>
+      </div></section>
 
-      <section className="tsec" style={{ background: '#FBF3EE', paddingTop: 40 }}>
-        <div className="tw">
-          <div className="tcalc reveal" style={{ gridTemplateColumns: '0.85fr 1.15fr' }}>
-            <div className="tcard" style={{ alignSelf: 'start' }}>
-              <p className="eyebrow" style={{ marginBottom: 22 }}>
-                The role<b>.</b>
-              </p>
-              <div className="tfield">
-                <label>Job title</label>
-                <input
-                  className="tinput"
-                  type="text"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                />
-              </div>
-              <div className="tfield">
-                <label>Company</label>
-                <input
-                  className="tinput"
-                  type="text"
-                  value={company}
-                  onChange={(e) => setCompany(e.target.value)}
-                />
-              </div>
-              <div className="tfield">
-                <label>Location</label>
-                <input
-                  className="tinput"
-                  type="text"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                />
-              </div>
-              <div className="tfield">
-                <label>Employment type</label>
-                <select
-                  className="tselect"
-                  value={type}
-                  onChange={(e) => setType(e.target.value)}
-                >
-                  <option value="Full-time">Full-time</option>
-                  <option value="Part-time">Part-time</option>
-                  <option value="Contract">Contract</option>
-                  <option value="Internship">Internship</option>
-                </select>
-              </div>
-              <div className="tfield" style={{ marginBottom: 0 }}>
-                <label>
-                  Key skills <span className="thint">comma separated</span>
-                </label>
-                <input
-                  className="tinput"
-                  type="text"
-                  value={skills}
-                  onChange={(e) => setSkills(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="genout">
-              <p className="jdh">{displayTitle}</p>
-              <p className="jdmeta">
-                {displayCompany} · {displayLocation} · {type}
-              </p>
-              <p className="jdsh">About the role</p>
-              <p className="jdp">{about}</p>
-              <p className="jdsh">What you&apos;ll do</p>
-              <ul className="jdul">
-                {responsibilities.map((r, i) => (
-                  <li key={i}>{r}</li>
-                ))}
-              </ul>
-              <p className="jdsh">What you&apos;ll bring</p>
-              <ul className="jdul">
-                {requirements.map((req, i) => (
-                  <li key={i}>{req}</li>
-                ))}
-              </ul>
-              <p className="jdsh">How we hire</p>
-              <p className="jdp">{hiring}</p>
-            </div>
-          </div>
+      <section style={{ background: '#FBF3EE', padding: '36px 28px 8px' }}><div className="jdg-wrap">
+        <div className="jdg-bar reveal">
+          <label className="jdg-field">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"></path></svg>
+            <input type="text" placeholder="Job title" value={jobTitle} onInput={(e) => setJobTitle((e.target as HTMLInputElement).value)} />
+          </label>
+          <label className="jdg-field">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"></path><path d="M10 12h4"></path></svg>
+            <input type="text" placeholder="Company name" value={company} onInput={(e) => setCompany((e.target as HTMLInputElement).value)} />
+          </label>
+          <label className="jdg-field">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21V9l6-4v16"></path><path d="M9 21V13h12v8"></path><path d="M13 17h4"></path></svg>
+            <input type="text" placeholder="Industry" value={industry} onInput={(e) => setIndustry((e.target as HTMLInputElement).value)} />
+          </label>
+          <label className="jdg-field">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a15 15 0 010 18 15 15 0 010-18z"></path></svg>
+            <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+              <option>English</option>
+              <option>Spanish</option>
+              <option>French</option>
+              <option>German</option>
+              <option>Chinese</option>
+              <option>Japanese</option>
+              <option>Korean</option>
+              <option>Italian</option>
+              <option>Portuguese</option>
+              <option>Russian</option>
+            </select>
+          </label>
+          <button className="jdg-gobtn" onClick={onGenerate}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"></path></svg>{genLabel}</button>
         </div>
-      </section>
 
-      <section className="tsec">
-        <div className="tw">
-          <div style={{ maxWidth: 640 }}>
-            <p className="eyebrow reveal">
-              How it works<b>.</b>
-            </p>
-            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
-              How to use the job description generator
-            </h2>
+        <div className="jdg-gencard reveal" id="generated">
+          <div className="jdg-gchead">
+            <span className="jdg-genlbl">Generated Template</span>
+            <div className="jdg-genacts">
+              <button className="jdg-ghost" onClick={onCopy}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"></path></svg>{copyLabel}</button>
+              <button className="jdg-ghost"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"></path></svg>Edit</button>
+            </div>
           </div>
-          <div className="tsteps">
-            <div className="tstep reveal">
-              <div className="tstepn">1</div>
-              <h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>
-                Enter job details
-              </h3>
-              <p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>
-                Fill in the job title, company name, and industry. These details help
-                tailor the description to your specific needs.
-              </p>
-            </div>
-            <div className="tstep reveal" style={{ transitionDelay: '.06s' }}>
-              <div className="tstepn">2</div>
-              <h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>
-                Choose your language
-              </h3>
-              <p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>
-                Select from English, Spanish, French, German and 6 more languages for
-                multilingual, global hiring.
-              </p>
-            </div>
-            <div className="tstep reveal" style={{ transitionDelay: '.12s' }}>
-              <div className="tstepn">3</div>
-              <h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>
-                Generate &amp; let AI do the rest
-              </h3>
-              <p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>
-                Hit Generate and get a compelling, industry-specific job description in
-                seconds.
-              </p>
-            </div>
+          <div className="jdg-gcbody">
+            <h4>Job Title</h4>
+            <p>{title}</p>
+            <h4>Job Overview</h4>
+            <p>{genOverview}</p>
+            <h4>Key Responsibilities</h4>
+            <ul>{genResponsibilities.map((it, i) => <li key={i}>{it}</li>)}</ul>
+            <h4>Required Skills and Qualifications</h4>
+            <p>{genRequired}</p>
+            <h4>Preferred Skills</h4>
+            <p>{genPreferred}</p>
+            <h4>Working Conditions</h4>
+            <p>{genConditions}</p>
+            <h4>Compensation and Benefits</h4>
+            <ul>{genBenefits.map((it, i) => <li key={i}>{it}</li>)}</ul>
+            <h4>About the Company</h4>
+            <p>{genAbout}</p>
           </div>
         </div>
-      </section>
+      </div></section>
 
-      <section className="tsec" style={{ background: '#FBF3EE' }}>
-        <div className="tw">
-          <div style={{ maxWidth: 640 }}>
-            <p className="eyebrow reveal">
-              Why it matters<b>.</b>
-            </p>
-            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
-              Why use an AI-generated job description?
-            </h2>
-            <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>
-              Writing one job description takes over two hours — and 99% of job
-              descriptions end up unnecessarily long and tedious. Candidates spend under
-              5 seconds deciding if a listing is worth reading, so a bloated JD can cost
-              you your best applicants.
-            </p>
-            <p className="tlead reveal" style={{ transitionDelay: '.1s' }}>
-              An AI-generated job description saves time, optimizes for the right
-              keywords and skills, and stays concise enough to actually get read.
-            </p>
-          </div>
-        </div>
-      </section>
+      <div className="jdg-body"><div className="jdg-wrap">
+        <div className="jdg-main">
 
-      <section className="tsec">
-        <div className="tw">
-          <div style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
-            <p className="eyebrow reveal">
-              FAQ<b>.</b>
-            </p>
-            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
-              Frequently asked questions
-            </h2>
-          </div>
-          <div className="reveal" style={{ maxWidth: 820, margin: '34px auto 0' }}>
-            <FAQ items={FAQ_ITEMS} />
-          </div>
-        </div>
-      </section>
-
-      <section className="tsec">
-        <div className="tw">
-          <div style={{ maxWidth: 640 }}>
-            <p className="eyebrow reveal">
-              Then hire on skill<b>.</b>
-            </p>
-            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
-              A great JD deserves a fair process
-            </h2>
-            <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>
-              Once your role is live, screen applicants on verified skill — not just
-              what&apos;s on the resume — with Testlify&apos;s 3,500+ validated tests.
-            </p>
-            <div className="reveal" style={{ marginTop: 26 }}>
-              <CtaButton
-                label="Browse the test library"
-                href="/test-library"
-                variant="primary"
-                size="md"
-                icon="arrow"
-              />
+          <div className="jdg-sec" id="how-it-works">
+            <h2 className="jdg-h2 reveal">How to use the job description generator</h2>
+            <div className="jdg-steps reveal">
+              <div className="jdg-step"><div className="jdg-stephead"><div className="jdg-stepno">1</div><h3>Enter job details</h3></div><p>Start by filling in the job title, company name, and industry. These details help tailor the job description to your specific needs.</p></div>
+              <div className="jdg-step"><div className="jdg-stephead"><div className="jdg-stepno">2</div><h3>Choose your preferred language</h3></div><p>Select the language for your job description from options like Russian, Portuguese, Italian, Korean, Japanese, Chinese, German, French, Spanish, or English. Pick the one that suits your audience best.</p></div>
+              <div className="jdg-step"><div className="jdg-stephead"><div className="jdg-stepno">3</div><h3>Click &apos;generate&apos; and let AI do the rest</h3></div><p>Once all fields are complete, hit the &apos;Generate&apos; button. Watch as the AI creates a compelling, industry-specific job description in seconds.</p></div>
             </div>
           </div>
+
+          <div className="jdg-sec">
+            <h2 className="jdg-h2 reveal">Easy and best way to create professional job descriptions</h2>
+            <p className="jdg-p reveal">Crafting job descriptions doesn&apos;t have to be a challenge. Simplify job description writing with Testlify&apos;s free AI generator. Attract the right talent by creating professional, detailed, engaging job descriptions.</p>
+          </div>
+
+          <div className="jdg-sec">
+            <h2 className="jdg-h2 reveal">How does it work?</h2>
+            <p className="jdg-p reveal">Provide a few key details, and receive a polished, professional job description crafted to meet your specific needs — with precision and quality. Made by humans for humans.</p>
+          </div>
+
+          <div className="jdg-sec">
+            <h2 className="jdg-h2 reveal">Why use an AI-generated job descriptor?</h2>
+            <p className="jdg-p reveal">Creating one job description (JD) takes more than two hours. Additionally, studies show that 99% of job descriptions are unnecessarily lengthy and tedious. This could prevent you from hiring top talents.</p>
+            <p className="jdg-p reveal">Candidates spend 4.97 seconds on average reading through job descriptions to decide if it&apos;s a good match for them or not. If your job description is not optimized for the right keywords and skills or is painfully lengthy, your ideal candidate might not read it.</p>
+            <p className="jdg-p reveal">Using an AI-generated job description can help you save time, optimize content for relevant keywords and skills, and craft concise, engaging JDs that effectively attract top talent.</p>
+            <p className="jdg-p reveal">Testlify uses advanced AI technologies to craft the perfect, professional job descriptions that feel as if they were crafted by a human expert. Try now!</p>
+          </div>
+
         </div>
+      </div></div>
+
+      <section style={{ background: '#FBF3EE', padding: '96px 28px' }}>
+        <div style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}><p className="jdg-eyebrow reveal">FAQ<b>.</b></p><h2 className="jdg-h2 reveal">Frequently asked questions (FAQs)</h2></div>
+        <div className="reveal" style={{ maxWidth: 820, margin: '34px auto 0' }}><FAQ items={FAQ_ITEMS} /></div>
       </section>
 
       <CtaBand />

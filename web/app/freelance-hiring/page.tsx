@@ -353,11 +353,7 @@ export default function FreelanceHiringPage() {
         </div>
       </section>
 
-      <CtaBand
-        eyebrow="Get started"
-        heading="Cut through the noise, hire with clarity."
-        sub="Resumes don't tell you everything! Testlify gives you the insights you need to hire the right people with skills assessments that are accurate, automated, and unbiased."
-      />
+      <CtaBand />
       <SiteFooter />
     </>
   );
