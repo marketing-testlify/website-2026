@@ -20,24 +20,33 @@ a:hover{color:#F23F44;}
 .cs-crumb{font-size:13px;color:#9A878A;font-weight:600;margin:0 0 22px;}
 .cs-eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#F23F44;margin:0 0 14px;}
 .cs-h1{font-size:40px;line-height:1.14;font-weight:800;letter-spacing:-1.3px;margin:0;max-width:900px;}
-.cs-snap{display:flex;flex-wrap:wrap;gap:0;margin:36px 0 0;border:1px solid #F0E2E3;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 14px 30px rgba(110,11,14,.06);}
+.cs-snap{display:flex;flex-wrap:wrap;gap:0;margin:36px 0 0;border:1px solid #F0E2E3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 14px 30px rgba(110,11,14,.06);}
 .cs-snap .s{flex:1;min-width:160px;padding:20px 24px;border-right:1px solid #F4E7E8;}
 .cs-snap .s:last-child{border-right:0;}
-.cs-snap .k{font-size:12px;color:#9A878A;font-weight:600;margin:0 0 6px;}
-.cs-snap .v{font-size:15px;color:#1A1014;font-weight:700;line-height:1.35;}
-.cs-heroimg{margin:40px 0 0;border-radius:22px 22px 0 0;overflow:hidden;aspect-ratio:16/7;background:#FBF3EE;}
+.cs-snap .khead{display:flex;align-items:center;gap:9px;margin:0 0 6px;}
+.cs-snap .ic{flex:none;width:28px;height:28px;border-radius:8px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;}
+.cs-snap .ic svg{width:15px;height:15px;}
+.cs-snap .k{font-size:11.5px;color:#9A878A;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin:0;line-height:1.2;}
+.cs-snap .v{font-size:15px;color:#1A1014;font-weight:700;line-height:1.25;margin:0;}
+@media(max-width:920px){.cs-snap{flex-direction:column;}.cs-snap .s{border-right:0;border-bottom:1px solid #F4E7E8;}.cs-snap .s:last-child{border-bottom:0;}}
+.cs-heroimg{margin:40px 0 0;border-radius:22px 22px 0 0;overflow:hidden;aspect-ratio:16/7;background:#FBF3EE center/cover no-repeat;}
 .cs-heroimg img{width:100%;height:100%;object-fit:cover;display:block;}
 .sec{padding:72px 28px;}
 .sec.sand{background:#FBF3EE;}
-.cs-cso{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.cs-csocard{background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:28px 26px;box-shadow:0 16px 30px rgba(110,11,14,.06);}
-.cs-csocard h3{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F23F44;margin:0 0 14px;}
-.cs-csocard p{font-size:15px;line-height:1.6;color:#5A4B4E;margin:0;}
-.cs-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid #F0E2E3;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 20px 46px rgba(110,11,14,.08);}
-.cs-metric{padding:36px 32px;border-right:1px solid #F4E7E8;}
-.cs-metric:last-child{border-right:0;}
-.cs-metric .n{font-size:46px;font-weight:800;letter-spacing:-1.6px;color:#F23F44;line-height:1;}
-.cs-metric .l{font-size:14.5px;color:#5A4B4E;margin-top:12px;line-height:1.45;}
+.cs-cso{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.cs-csocard{position:relative;overflow:hidden;background:#fff;border:1px solid #F0E2E3;border-radius:20px;padding:34px 30px;box-shadow:0 20px 40px rgba(110,11,14,.08);}
+.cs-csocard::before{content:'';position:absolute;top:0;left:30px;right:30px;height:3px;border-radius:0 0 3px 3px;background:linear-gradient(90deg,#FF7A52,#F23F44);}
+.cs-csoglyph{position:absolute;right:-14px;bottom:-22px;width:104px;height:104px;color:#FBEAEA;z-index:0;}
+.cs-csocard h3,.cs-csocard p{position:relative;z-index:1;}
+.cs-csocard h3{font-size:13.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#F23F44;margin:0 0 16px;}
+.cs-csocard p{font-size:18px;line-height:1.5;color:#1A1014;font-weight:600;letter-spacing:-.2px;margin:0;}
+.cs-metrics{display:grid;grid-template-columns:repeat(3,1fr);}
+.cs-metric{text-align:center;padding:4px 22px;}
+.cs-metric+.cs-metric{border-left:1px solid #EFE3E4;}
+.cs-metric .n{font-size:34px;font-weight:700;letter-spacing:-1px;line-height:1;color:#1A1014;font-variant-numeric:tabular-nums;}
+.cs-metric .l{font-size:14px;color:#6C5A5D;font-weight:500;margin-top:10px;line-height:1.45;}
+@media(max-width:960px){.cs-metrics{grid-template-columns:1fr 1fr;row-gap:34px;}.cs-metric+.cs-metric{border-left:none;}}
+@media(max-width:560px){.cs-metrics{grid-template-columns:1fr;}}
 .cs-block{max-width:760px;margin:0 auto 40px;}
 .cs-block:last-child{margin-bottom:0;}
 .cs-block h2{font-size:27px;font-weight:800;letter-spacing:-.7px;color:#1A1014;margin:0 0 16px;}
@@ -56,155 +65,236 @@ a:hover{color:#F23F44;}
 .cs-relcard::before{content:'';position:absolute;inset:0;border-radius:18px;padding:1.8px;background:conic-gradient(from var(--bang),transparent 0deg,#FF7A52 35deg,#F23F44 80deg,transparent 150deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;pointer-events:none;z-index:3;}
 .cs-relcard:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(110,11,14,.10);}
 .cs-relcard:hover::before{opacity:1;animation:runborder 2.4s linear infinite;}
-.cs-relimg{aspect-ratio:16/10;overflow:hidden;background:#FBF3EE;}
-.cs-relimg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.3,1);}
-.cs-relcard:hover .cs-relimg img{transform:scale(1.05);}
+.cs-relimg{aspect-ratio:16/10;overflow:hidden;background:#FBF3EE center/cover no-repeat;transition:transform .5s cubic-bezier(.2,.7,.3,1);}
+.cs-relcard:hover .cs-relimg{transform:scale(1.05);}
 .cs-relbody{padding:20px 22px 24px;}
 .cs-reltitle{font-size:15px;font-weight:700;line-height:1.4;margin:0;color:#1A1014;}
 @media(max-width:920px){.cs-h1{font-size:31px;}.cs-cso,.cs-metrics,.cs-caps,.cs-relgrid{grid-template-columns:1fr;}.cs-metric{border-right:0;border-bottom:1px solid #F4E7E8;}.cs-metric:last-child{border-bottom:0;}.sec{padding:52px 22px;}}
 h1,h2,h3,h4,.cs-h1,.cs-h2,.eyebrow{text-wrap:balance;}p,li,.cs-block p{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
-const company = 'inDrive';
-const announcement = 'How inDrive cut time-to-hire from 3 weeks to 1 week with Testlify';
-const headline = 'How inDrive cut time-to-hire from 3 weeks to 1 week and increased L&D participation by 82% with Testlify';
-const heroImg = 'https://testlify.com/wp-content/uploads/2025/11/female-driver-hand-holding-phone-with-interface-navigator-screen-1-scaled.jpg';
+const FACT_ICONS: Record<string, React.ReactNode> = {
+  'Company size': (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 21h18M5 21V7l7-4 7 4v14" /><path d="M10 12h4" />
+    </svg>
+  ),
+  'Headquarters': (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" />
+    </svg>
+  ),
+  'Industry': (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 21V9l6-4v16" /><path d="M9 21V13h12v8" /><path d="M13 17h4" />
+    </svg>
+  ),
+  'Use case': (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+    </svg>
+  ),
+};
 
-const facts = [
-  { k: 'Company size', v: '1,001–5,000 employees' },
-  { k: 'Headquarters', v: 'Mountain View, California' },
-  { k: 'Industry', v: 'IT Services & IT Consulting' },
-  { k: 'Use case', v: 'Global hiring' },
+const CAP_ICONS: React.ReactNode[] = [
+  (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="4" width="18" height="14" rx="2" /><path d="M3 9h18" /><path d="M8 14h4" />
+    </svg>
+  ),
+  (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 016.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+    </svg>
+  ),
+  (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.77z" />
+    </svg>
+  ),
 ];
 
-const challenge = 'Candidate evaluations were entirely manual, consuming 85% of hiring effort, with no shared standard for assessing English proficiency or skills across a globally distributed workforce.';
-const solution = 'Testlify introduced structured assessments covering English proficiency, domain-specific skills and personality, with automated workflows handling invitations, tracking and reporting.';
-const outcome = 'Time-to-hire dropped from 3 weeks to 1 week, recruiter efficiency improved 4x, and for the first time inDrive had real data to build its L&D programs around.';
-
-const metrics = [
-  { n: '67%', l: 'Faster time-to-hire: 3 weeks to 1 week' },
-  { n: '82%', l: 'Increase in L&D participation' },
-  { n: '4x', l: 'Improvement in recruiter efficiency' },
-];
-
-const story = [
-  {
-    kicker: 'Details',
-    heading: 'A global workforce. No shared standard for hiring or development.',
-    paras: [
-      'inDrive was founded in 2013 in Yakutsk, Russia, and grew into a $1.23 billion platform with operations across Latin America, Africa, Central Asia and beyond. The company hires around 1,000 people each year across a workforce of over 5,000, with 350+ applicants per role on average. Every one of those candidates was being evaluated manually — no structured assessment, no consistent way to measure whether a candidate met the requirements of the role, and no shared standard for English proficiency across markets where language ability varied significantly.',
-      'Candidate evaluations and skill assessments accounted for 85% of the hiring team’s total effort, and hiring a single role took three weeks on average. On the development side, the People team had no baseline data on the skills of employees already in the business — training programs were designed and run without knowing who actually needed them.',
-    ],
-  },
-  {
-    kicker: 'How Testlify was implemented',
-    heading: 'Structured screening for candidates. A skills baseline for employees.',
-    paras: [
-      'For hiring, inDrive used Testlify to assess candidates on domain-specific skills; English proficiency using the CEFR international standard; and personality. Assessments were completed before any recruiter time was spent, and automated workflows handled invitations, tracked completions and surfaced results. Over 1,300 people were assessed for English proficiency alone, giving inDrive a consistent language standard across every market it hired in.',
-      'For existing employees, Testlify gave the People team a structured way to identify skill gaps across Product, Marketing and Technology departments. With real data on where gaps existed, L&D programs could be targeted at the people who needed them rather than run as a broadcast — the shift that drove the 82% increase in participation.',
-    ],
-  },
-  {
-    kicker: 'Results',
-    heading: 'Hiring that took 3 weeks now takes 1. Development programs that ran blind now run on data.',
-    paras: [
-      'The hiring team went from spending 85% of their effort on manual evaluations to running a fully automated screening process. Recruiters became 4x more efficient, and quality of hire improved by 40%, measured by better role fit among candidates who came through the structured process.',
-      'On the L&D side, participation rose 82% as programs became targeted rather than generic, and employees engaged with development that was relevant to their actual gaps.',
-    ],
-  },
-];
-
-const capabilities = [
-  { t: 'Role-specific evaluations', d: 'Tailored assessments across roles, ensuring candidates met both technical and cultural requirements for globally distributed teams.' },
-  { t: 'Automated workflows', d: 'Candidate invitations, completion tracking and results reporting handled end-to-end without recruiter involvement.' },
-  { t: 'Employee skill evaluation', d: 'Structured assessments used to identify skill gaps across existing teams, directing L&D investment where it was needed.' },
-];
-
-const related = [
-  { title: 'How Eleserv delivered 1,000+ candidate assessments with near-zero technical errors', company: 'Eleserv', img: 'https://testlify.com/wp-content/uploads/2026/06/Eleserv-Talent-Solutions.png', href: 'https://testlify.com/customer-success-stories/eleserv/' },
-  { title: 'How Procurement Garage transformed client skill evaluation with Testlify', company: 'Procurement Garage', img: 'https://testlify.com/wp-content/uploads/2025/11/Procurement-Garage-1024x683.png', href: 'https://testlify.com/customer-success-stories/procurement-garage/' },
-  { title: 'How Hamat cut time-to-hire by 50% and brought hiring fully in-house with Testlify', company: 'Hamat', img: 'https://testlify.com/wp-content/uploads/2025/11/Hamat-1024x683.png', href: 'https://testlify.com/customer-success-stories/hamat/' },
-];
-
-const showRelated = true;
+const data = {
+  announcement: 'How Ashesi University built one objective bar for graduate admissions with Testlify',
+  company: 'Ashesi University',
+  headline: 'How Ashesi University built one objective bar for graduate admissions with Testlify',
+  heroImg: 'https://testlify.com/wp-content/uploads/2026/07/medium-shot-graduate-student-scaled.jpg',
+  facts: [
+    { k: 'Company size', v: '501-1,000 employees' },
+    { k: 'Headquarters', v: 'Berekuso, Ghana' },
+    { k: 'Industry', v: 'Higher education' },
+    { k: 'Use case', v: 'Graduate admissions screening' },
+  ],
+  challenge:
+    'Graduate applicants arrive from many countries and universities, so transcripts, degrees, and interviews could not be compared to one fair, objective standard.',
+  solution:
+    'A standard battery of Testlify assessments — cognitive skills, English, critical thinking, and aptitude — that every applicant sits before a decision is made.',
+  outcome:
+    'Six ready-made Testlify libraries build one rigorous aptitude, English, and reasoning screen that every graduate applicant sits, with no test-writing from scratch.',
+  metrics: [
+    { n: '122', l: 'Graduate applicants invited to assess' },
+    { n: '90%', l: 'Completed their assessment (110 of 122)' },
+    { n: '7,900+', l: 'Scored responses across the applicant pool' },
+  ],
+  story: [
+    {
+      heading: 'A values-driven university, and no fair way to compare applicants',
+      paras: [
+        'Ashesi University is one of Africa’s most respected private universities. Based in Berekuso, Ghana, it is known for a liberal-arts education built around ethics, leadership, and entrepreneurship, and it draws students from across the continent. Its graduate programs, led by the Ashesi MBA, attract applicants from many countries and undergraduate institutions.',
+        'That diversity is the hard part of admissions. A transcript from one country does not mean the same thing as a transcript from another, degrees and grading scales differ, and an interview rewards the confident applicant more than the capable one. The admissions team had no objective, consistent way to judge the aptitude, English, and critical thinking a graduate program actually demands, so strong applicants were hard to tell apart from well-presented ones.',
+      ],
+    },
+    {
+      heading: 'One assessment every applicant sits',
+      paras: [
+        'Ashesi’s Graduate Admissions team built a standard set of assessments on Testlify and asks every applicant to sit them. Rather than reading documents that do not compare, admissions now sees each candidate answer the same cognitive, English, critical-thinking, analytical, and quantitative-aptitude questions, then compares people on the same objective evidence.',
+        'The team assembled that screen from six ready-made Testlify libraries, from Critical Thinking and Analytical Skills to Quantitative Aptitude, Logical Reasoning, and English, so it did not have to write a graduate entrance exam from scratch. Because Ashesi runs on .edu.gh addresses, Testlify’s engineering team also adapted onboarding for education-domain sign-ups. What matters to admissions is simpler: one repeatable bar, applied the same way to every applicant.',
+      ],
+    },
+    {
+      heading: 'A repeatable admissions standard, now expanding',
+      paras: [
+        'The standard holds because applicants actually complete it. Of 122 graduate applicants invited, 110 finished their assessment, a 90% completion rate, and the pool logged roughly 7,900 scored responses. Near-universal follow-through means admissions decisions rest on complete, comparable evidence rather than on who submitted the most polished file.',
+        'The clearest proof the approach works is that Ashesi keeps building on it. The university renewed its subscription into another year, and in mid-2026 its admissions team began setting up a new Testlify assessment — a timed multiple-choice section, a written error-spotting exercise, and an essay — to screen applicants for a new graduate Law program. What began as one MBA admissions screen is becoming Ashesi’s standard way to evaluate graduate applicants across programs.',
+      ],
+    },
+  ],
+  capabilities: [
+    { t: 'Standardized assessment battery', d: 'Every graduate applicant sits the same tests, so admissions compares candidates like for like.' },
+    { t: 'Ready-made skill libraries', d: 'Six Testlify libraries build a rigorous aptitude, English, and reasoning screen with no test-writing from scratch.' },
+    { t: 'Custom assessment setup', d: 'Testlify support helps the team build program-specific assessments for new intakes like the graduate Law program.' },
+  ],
+  related: [
+    { title: 'How Infojini built one technical screening standard for every candidate submittal', company: 'Infojini', img: 'https://testlify.com/wp-content/uploads/2026/07/Infojini.png', href: '/customer-success-stories' },
+    { title: 'How Benore Logistics built one hiring standard, from the dispatch desk to the executive suite', company: 'Benore Logistics', img: 'https://testlify.com/wp-content/uploads/2026/07/Benore-logistic.png', href: '/customer-success-stories' },
+    { title: 'How World Connection standardized bilingual screening across client programs', company: 'World Connection', img: 'https://testlify.com/wp-content/uploads/2026/07/World-connection.png', href: '/customer-success-stories' },
+  ],
+  showRelated: true,
+};
 
 export default function Page() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement={announcement} announcementCta="Read customer stories" homeHref="/" />
+      <SiteHeader announcement={data.announcement} announcementCta="Read customer stories" homeHref="/" />
 
-      <section className="cs-hero"><div className="wrap">
-        <p className="cs-crumb reveal in"><Link href="/customer-success-stories">Customer success stories</Link> › {company}</p>
-        <p className="cs-eyebrow reveal in">Customer story</p>
-        <h1 className="cs-h1 reveal in">{headline}</h1>
-        <div className="cs-snap reveal in">
-          {facts.map((f, i) => (
-            <div className="s" key={i}><p className="k">{f.k}</p><p className="v">{f.v}</p></div>
-          ))}
-        </div>
-        <div className="cs-heroimg reveal in">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={heroImg} alt={company} loading="lazy" />
-        </div>
-      </div></section>
-
-      <section className="sec"><div className="wrap">
-        <div className="cs-cso">
-          <div className="cs-csocard reveal"><h3>Challenge</h3><p>{challenge}</p></div>
-          <div className="cs-csocard reveal"><h3>Solution</h3><p>{solution}</p></div>
-          <div className="cs-csocard reveal"><h3>Outcome</h3><p>{outcome}</p></div>
-        </div>
-      </div></section>
-
-      <section className="sec sand"><div className="wrap">
-        <div className="cs-metrics reveal">
-          {metrics.map((m, i) => (
-            <div className="cs-metric" key={i}><div className="n">{m.n}</div><div className="l">{m.l}</div></div>
-          ))}
-        </div>
-      </div></section>
-
-      <section className="sec"><div className="wrap">
-        {story.map((b, i) => (
-          <div className="cs-block reveal" key={i}>
-            <p className="cs-kick">{b.kicker}</p>
-            <h2>{b.heading}</h2>
-            {b.paras.map((p, j) => <p key={j}>{p}</p>)}
-          </div>
-        ))}
-      </div></section>
-
-      <section className="sec sand"><div className="wrap">
-        <div className="cs-shead"><p className="eyebrow reveal">Capabilities<b>.</b></p><h2 className="cs-h2 reveal">What {company} used</h2></div>
-        <div className="cs-caps">
-          {capabilities.map((c, i) => (
-            <div className="cs-cap reveal" key={i}>
-              <div className="cs-capic">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+      <section className="cs-hero">
+        <div className="wrap">
+          <p className="cs-crumb reveal in">
+            <Link href="/">Home</Link> / <Link href="/customer-success-stories">Success Story</Link> / {data.headline}
+          </p>
+          <p className="cs-eyebrow reveal in">Customer story</p>
+          <h1 className="cs-h1 reveal in">{data.headline}</h1>
+          <div className="cs-snap reveal in">
+            {data.facts.map((f) => (
+              <div className="s" key={f.k}>
+                <div className="khead">
+                  <span className="ic">{FACT_ICONS[f.k] || FACT_ICONS['Use case']}</span>
+                  <p className="k">{f.k}</p>
+                </div>
+                <p className="v">{f.v}</p>
               </div>
-              <h3>{c.t}</h3>
-              <p>{c.d}</p>
+            ))}
+          </div>
+          <div className="cs-heroimg reveal in" role="img" aria-label={data.company} style={{ backgroundImage: `url("${data.heroImg}")` }} />
+        </div>
+      </section>
+
+      <section className="sec sand">
+        <div className="wrap">
+          <div className="cs-cso">
+            <div className="cs-csocard reveal">
+              <svg className="cs-csoglyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}>
+                <circle cx="12" cy="12" r="9"></circle><line x1="12" y1="8" x2="12" y2="13"></line><circle cx="12" cy="16.2" r=".2" fill="currentColor" stroke="none"></circle>
+              </svg>
+              <h3>Challenge</h3>
+              <p>{data.challenge}</p>
+            </div>
+            <div className="cs-csocard reveal">
+              <svg className="cs-csoglyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}>
+                <path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+              </svg>
+              <h3>Solution</h3>
+              <p>{data.solution}</p>
+            </div>
+            <div className="cs-csocard reveal">
+              <svg className="cs-csoglyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}>
+                <path d="M3 3v18h18"></path><path d="M7 15l4-6 4 3 5-8"></path>
+              </svg>
+              <h3>Outcome</h3>
+              <p>{data.outcome}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="sec" style={{ paddingTop: 44, paddingBottom: 44 }}>
+        <div className="wrap">
+          <div className="cs-metrics reveal">
+            {data.metrics.map((m) => (
+              <div className="cs-metric" key={m.l}>
+                <div className="n">{m.n}</div>
+                <div className="l">{m.l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="sec">
+        <div className="wrap">
+          {data.story.map((b) => (
+            <div className="cs-block reveal" key={b.heading}>
+              <h2>{b.heading}</h2>
+              {b.paras.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
           ))}
         </div>
-      </div></section>
+      </section>
 
-      {showRelated && (
-        <section className="sec"><div className="wrap">
-          <div className="cs-shead"><p className="eyebrow reveal">More stories<b>.</b></p><h2 className="cs-h2 reveal">More success stories</h2></div>
-          <div className="cs-relgrid">
-            {related.map((r, i) => (
-              <a className="cs-relcard reveal" href={r.href} key={i}>
-                <div className="cs-relimg">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={r.img} alt={r.company} loading="lazy" />
-                </div>
-                <div className="cs-relbody"><h3 className="cs-reltitle">{r.title}</h3></div>
-              </a>
+      <section className="sec sand">
+        <div className="wrap">
+          <div className="cs-shead">
+            <p className="eyebrow reveal">
+              Capabilities<b>.</b>
+            </p>
+            <h2 className="cs-h2 reveal">What {data.company} used</h2>
+          </div>
+          <div className="cs-caps">
+            {data.capabilities.map((c, i) => (
+              <div className="cs-cap reveal" key={c.t}>
+                <div className="cs-capic">{CAP_ICONS[i % CAP_ICONS.length]}</div>
+                <h3>{c.t}</h3>
+                <p>{c.d}</p>
+              </div>
             ))}
           </div>
-        </div></section>
+        </div>
+      </section>
+
+      {data.showRelated && (
+        <section className="sec">
+          <div className="wrap">
+            <div className="cs-shead">
+              <p className="eyebrow reveal">
+                More stories<b>.</b>
+              </p>
+              <h2 className="cs-h2 reveal">More success stories</h2>
+            </div>
+            <div className="cs-relgrid">
+              {data.related.map((r) => (
+                <Link className="cs-relcard reveal" href={r.href} key={r.title}>
+                  <div className="cs-relimg" role="img" aria-label={r.company} style={{ backgroundImage: `url("${r.img}")` }} />
+                  <div className="cs-relbody">
+                    <h3 className="cs-reltitle">{r.title}</h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
       )}
 
       <CtaBand />
