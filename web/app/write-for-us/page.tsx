@@ -214,29 +214,52 @@ export default function WriteForUsPage() {
             </p>
           </div>
           <div className="intg-grid reveal" style={{ transitionDelay: '.12s' }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="intg-tile"><img src="https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png" alt="Workday" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="intg-tile"><img src="https://testlify.com/wp-content/uploads/2023/03/629a0bbcb04c5ae587c411c2-1-1.png" alt="Greenhouse" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="intg-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png?wsr" alt="Lever" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="intg-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/SR-SAP-Logo.svg" alt="SmartRecruiters" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="intg-tile"><img src="https://testlify.com/wp-content/uploads/2024/09/BambooHR-Logo-1-2048x1152-2.png" alt="BambooHR" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="intg-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png?wsr" alt="SuccessFactors" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="intg-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/logo.svg" alt="UKG" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="intg-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png?wsr" alt="Recruitee" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="intg-tile"><img src="https://testlify.com/wp-content/uploads/2024/08/zoho-recruit-logo-1.png" alt="Zoho Recruit" /></div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="intg-tile"><img src="https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png?wsr" alt="JazzHR" /></div>
+            <div className="intg-tile">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png" alt="Workday" />
+            </div>
+            <div className="intg-tile">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://testlify.com/wp-content/uploads/2023/03/629a0bbcb04c5ae587c411c2-1-1.png" alt="Greenhouse" />
+            </div>
+            <div className="intg-tile">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png?wsr" alt="Lever" />
+            </div>
+            <div className="intg-tile">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://testlify.com/wp-content/uploads/2025/10/SR-SAP-Logo.svg" alt="SmartRecruiters" />
+            </div>
+            <div className="intg-tile">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://testlify.com/wp-content/uploads/2024/09/BambooHR-Logo-1-2048x1152-2.png" alt="BambooHR" />
+            </div>
+            <div className="intg-tile">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png?wsr" alt="SuccessFactors" />
+            </div>
+            <div className="intg-tile">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://testlify.com/wp-content/uploads/2025/10/logo.svg" alt="UKG" />
+            </div>
+            <div className="intg-tile">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://testlify.com/wp-content/uploads/2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png?wsr"
+                alt="Recruitee"
+              />
+            </div>
+            <div className="intg-tile">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://testlify.com/wp-content/uploads/2024/08/zoho-recruit-logo-1.png" alt="Zoho Recruit" />
+            </div>
+            <div className="intg-tile">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png?wsr" alt="JazzHR" />
+            </div>
           </div>
           <div className="reveal" style={{ textAlign: 'center', marginTop: '26px', transitionDelay: '.16s' }}>
-            <a className="lnk" href="/product-integrations" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontWeight: 600 }}>View all ATS integrations<span>→</span></a>
+            <a className="lnk" href="/integrations" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontWeight: 600 }}>View all ATS integrations<span>→</span></a>
           </div>
         </div>
       </section>

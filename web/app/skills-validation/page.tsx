@@ -309,7 +309,7 @@ export default function SkillsValidationPage() {
         </div>
       </div></section>
 
-      <CtaBand eyebrow="Get started" heading="Ready to replace gut instinct with verified skills?" sub="Your next great hire is in your candidate pool right now. Testlify&apos;s assessments surface them in 30 minutes — no resume bias, no interview gut checks, no bad hire regret." />
+      <CtaBand />
       <SiteFooter />
     </>
   );
