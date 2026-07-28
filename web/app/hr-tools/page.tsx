@@ -1,7 +1,3 @@
-'use client';
-
-import { useState } from 'react';
-import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaButton from '@/components/CtaButton';
@@ -12,103 +8,99 @@ const CSS = `
 html{scroll-behavior:smooth;}
 body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
 a{text-decoration:none;color:inherit;}
-.ht-wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
-[data-reveal]{opacity:0;transform:translateY(24px);}
-.ht-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#F23F44;margin:0 0 16px;}
-.ht-eyebrow .dot{color:#F23F44;}
+a:hover{color:#F23F44;}
+.ht-wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.ht-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 16px;}
+.ht-eyebrow b{color:#F23F44;}
 .ht-crumb{font-size:13px;color:#8A7A7D;display:flex;gap:8px;align-items:center;justify-content:center;margin-bottom:18px;}
 .ht-crumb a:hover{color:#F23F44;}
 .ht-hero{position:relative;overflow:hidden;padding:62px 28px 46px;background:radial-gradient(1000px 460px at 50% -12%,#FFF0EE 0%,rgba(255,240,238,0) 62%),#fff;text-align:center;}
-.ht-h1{font-size:52px;line-height:1.05;font-weight:800;letter-spacing:-1.6px;margin:0;}
+.ht-h1{font-size:48px;line-height:1.08;font-weight:800;letter-spacing:-1.5px;margin:0;}
 .ht-h1 em{font-style:normal;color:#F23F44;}
-.ht-sub{font-size:18px;line-height:1.6;color:#5A4B4E;margin:18px auto 0;max-width:600px;}
-.ht-tabs{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:30px;}
-.ht-tab{border:1px solid #EFE2E3;background:#fff;border-radius:999px;padding:9px 18px;font-size:13.5px;font-weight:600;color:#6A5A5D;cursor:pointer;font-family:inherit;transition:all .18s;}
-.ht-tab:hover{border-color:#FBD0D1;color:#F23F44;}
-.ht-tab.on{background:#F23F44;color:#fff;border-color:#F23F44;}
+.ht-sub{font-size:18px;line-height:1.6;color:#5A4B4E;margin:18px auto 0;max-width:660px;}
+.ht-btns{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap;}
+.ht-hero .ctabtn .cta-play{width:24px!important;height:24px!important;}
+.ht-hero .ctabtn.v-primary,.ht-hero .ctabtn.v-light{border:1.5px solid transparent!important;}
 .ht-sec{padding:56px 28px 40px;}
-.ht-shead{margin:0 auto 30px;max-width:760px;}
-.ht-h2{font-size:27px;font-weight:800;letter-spacing:-.6px;margin:0;}
-.ht-h2p{font-size:15.5px;line-height:1.55;color:#6C5A5D;margin:10px 0 0;}
-.ht-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.ht-shead{margin:0 auto 34px;max-width:760px;text-align:center;}
+.ht-h2{font-size:28px;font-weight:800;letter-spacing:-.6px;margin:0;}
+.ht-list{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 @property --bang{syntax:'<angle>';initial-value:0deg;inherits:false;}
 @keyframes runborder{to{--bang:360deg;}}
-.ht-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #F2E6E7;border-radius:18px;padding:24px 24px 22px;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s;}
+.ht-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #F2E6E7;border-radius:18px;overflow:hidden;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s;}
 .ht-card::before{content:'';position:absolute;inset:0;border-radius:18px;padding:1.8px;background:conic-gradient(from var(--bang),transparent 0deg,#FF7A52 35deg,#F23F44 80deg,transparent 150deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;pointer-events:none;}
 .ht-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(110,11,14,.10);}
 .ht-card:hover::before{opacity:1;animation:runborder 2.4s linear infinite;}
-.ht-ic{width:46px;height:46px;border-radius:13px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
-.ht-tag{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A9999C;margin:0 0 8px;}
-.ht-ct{font-size:17px;font-weight:700;letter-spacing:-.3px;margin:0 0 7px;}
-.ht-cd{font-size:14px;line-height:1.55;color:#7C6A6D;margin:0 0 18px;}
+.ht-thumb{aspect-ratio:16/9;background:#FBF3EE;transition:transform .55s cubic-bezier(.2,.7,.3,1);}
+.ht-thumb.icon{background-size:contain;background-position:center;background-repeat:no-repeat;padding:34px;background-color:#FFF8F7;}
+.ht-thumb.photo{background-size:cover;background-position:center;}
+.ht-card:hover .ht-thumb{transform:scale(1.04);}
+.ht-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1;}
+.ht-tag{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#A9999C;margin:0 0 8px;}
+.ht-ct{font-size:18px;font-weight:700;letter-spacing:-.3px;margin:0 0 8px;}
+.ht-cd{font-size:14px;line-height:1.6;color:#7C6A6D;margin:0 0 18px;}
 .ht-go{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#F23F44;}
 .ht-go svg{transition:transform .25s;}
 .ht-card:hover .ht-go svg{transform:translateX(3px);}
-.ht-band{background:radial-gradient(900px 400px at 50% 0%,#2A1417,#1A1014);color:#fff;padding:70px 28px;text-align:center;}
-.ht-band h2{font-size:32px;font-weight:800;letter-spacing:-.8px;margin:0;}
-.ht-band p{font-size:16px;line-height:1.6;color:#D8C5C8;margin:16px auto 26px;max-width:520px;}
-@media(max-width:1000px){.ht-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:640px){.ht-h1{font-size:36px;}.ht-grid{grid-template-columns:1fr;}.ht-hero{padding:44px 22px 34px;}}
+@media(max-width:820px){.ht-list{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.ht-list{grid-template-columns:1fr;}}
+@media(max-width:640px){.ht-h1{font-size:34px;}.ht-hero{padding:44px 22px 0;}}
 h1,h2,h3,h4,.ht-h1,.ht-eyebrow,.ht-h2{text-wrap:balance;}p,li,.ht-sub,.ht-cd{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
-type Kind = 'calc' | 'gen';
-type Tool = { title: string; tag: string; kind: Kind; desc: string; cta: string };
+const U = 'https://testlify.com/wp-content/uploads/';
 
-const TOOLS: Tool[] = [
-  { title: 'Cost per hire calculator', tag: 'Calculator', kind: 'calc', desc: 'Add up every recruiting cost from job posting to onboarding and get your true cost per hire.', cta: 'Calculate' },
-  { title: 'Average time to hire calculator', tag: 'Calculator', kind: 'calc', desc: 'Measure the average days from a role opening to an accepted offer, and spot the bottlenecks.', cta: 'Calculate' },
-  { title: 'Quality of hire calculator', tag: 'Calculator', kind: 'calc', desc: 'Score new hires on performance and retention to prove the value each one adds.', cta: 'Calculate' },
-  { title: 'Attrition rate calculator', tag: 'Calculator', kind: 'calc', desc: 'Track the percentage of employees leaving over any time frame to catch turnover early.', cta: 'Calculate' },
-  { title: 'Employee NPS calculator', tag: 'Calculator', kind: 'calc', desc: 'Measure employee satisfaction and engagement to gauge workplace morale at a glance.', cta: 'Calculate' },
-  { title: 'Applicant funnel calculator', tag: 'Calculator', kind: 'calc', desc: 'See candidate progress through each stage and optimise your conversion rates.', cta: 'Calculate' },
-  { title: 'Cost of employee turnover calculator', tag: 'Calculator', kind: 'calc', desc: 'Quantify what losing an employee really costs, from backfill to lost productivity.', cta: 'Calculate' },
-  { title: 'Sourcing channel efficiency', tag: 'Calculator', kind: 'calc', desc: 'Find which recruitment channels bring in the highest-quality candidates for the spend.', cta: 'Calculate' },
-  { title: 'Remote work cost savings', tag: 'Calculator', kind: 'calc', desc: 'Estimate the savings of a remote or hybrid setup versus fully in-office.', cta: 'Calculate' },
-  { title: 'Recruiting conversion rate', tag: 'Calculator', kind: 'calc', desc: 'Track how effectively candidates move through each step of your hiring pipeline.', cta: 'Calculate' },
-  { title: 'Interview-to-offer ratio', tag: 'Calculator', kind: 'calc', desc: 'Measure how many interviews it takes to make one offer and streamline your funnel.', cta: 'Calculate' },
-  { title: 'Job offer acceptance rate', tag: 'Calculator', kind: 'calc', desc: 'Measure the percentage of candidates who accept your offers and improve close rates.', cta: 'Calculate' },
-  { title: 'Hiring manager satisfaction', tag: 'Calculator', kind: 'calc', desc: 'Gauge how satisfied hiring managers are with recruiting to align the whole team.', cta: 'Calculate' },
-  { title: 'AI job description generator', tag: 'Generator', kind: 'gen', desc: 'Create detailed, inclusive job listings in seconds with the right keywords and responsibilities.', cta: 'Generate' },
-  { title: 'AI interview question generator', tag: 'Generator', kind: 'gen', desc: 'Get structured, scorable questions mapped to the exact skills a role requires.', cta: 'Generate' },
-];
-
-const titleMap: Record<string, string> = { all: 'All HR tools', calc: 'HR calculators', gen: 'Generators' };
-const introMap: Record<string, string> = {
-  all: 'Every free calculator and generator in one place. Pick a tool and get an answer in under a minute.',
-  calc: 'Plug in your numbers and benchmark the metrics that decide how fast and how well you hire.',
-  gen: 'Generate role-ready job descriptions and interview kits in seconds.',
+type Tool = {
+  title: string;
+  kind: 'photo' | 'icon';
+  img: string;
+  href: string;
+  desc: string;
 };
 
-export default function HrToolsPage() {
-  const [filter, setFilter] = useState<'all' | Kind>('all');
-  const tools = filter === 'all' ? TOOLS : TOOLS.filter((t) => t.kind === filter);
+const TOOLS: Tool[] = [
+  { title: 'Applicant tracking systems', kind: 'photo', img: U + '2023/08/Hr-tool-1-2-1024x576.jpg', href: '/hr-tools-applicant-tracking-systems', desc: 'Applicant Tracking Systems manage and streamline recruitment processes, from posting jobs to candidate selection.' },
+  { title: 'Benefits administration', kind: 'icon', img: U + '2023/08/2.svg', href: '/hr-tools-category-detail', desc: 'Benefits Administration oversees employee benefits, such as healthcare and retirement plans, ensuring smooth delivery and compliance with company policies.' },
+  { title: 'Core HR', kind: 'photo', img: U + '2023/08/Hr-tool-1-1-1024x576.jpg', href: '/hr-tools-category-detail', desc: 'Core HR oversees fundamental employee information, payroll, perks, and adherence to regulations in organizational management.' },
+  { title: 'Corporate learning management systems', kind: 'photo', img: U + '2023/08/Hr-tool-2-1-1024x576.jpg', href: '/hr-tools-category-detail', desc: 'Corporate LMS: Platforms for training, skill development, and knowledge sharing within organizations, enhancing employee growth.' },
+  { title: 'Course authoring', kind: 'photo', img: U + '2023/08/Hr-tool-1-3-1024x576.jpg', href: '/hr-tools-category-detail', desc: 'Course authoring is crafting interactive online courses, integrating multimedia, assessments, and interactivity for effective e-learning experiences.' },
+  { title: 'Employee monitoring', kind: 'icon', img: U + '2023/08/5-1.svg', href: '/hr-tools-category-detail', desc: 'Employee Monitoring observes work-related activities to enhance productivity, ensure compliance, and protect company assets while respecting privacy and trust.' },
+  { title: 'Employee recognition', kind: 'photo', img: U + '2023/08/Hr-tool-4-1-1024x576.jpg', href: '/hr-tools-category-detail', desc: 'Employee recognition: Acknowledging and celebrating employee achievements and contributions to boost morale, engagement, and overall workplace satisfaction.' },
+  { title: 'Human resource management systems', kind: 'icon', img: U + '2023/08/1.svg', href: '/hr-tools-category-detail', desc: 'Human Resource Management Systems streamline HR processes, from recruitment to payroll, fostering efficiency & employee engagement.' },
+  { title: 'Job search sites', kind: 'photo', img: U + '2023/08/Hr-tool-6-1024x576.jpg', href: '/hr-tools-category-detail', desc: 'Digital platforms connecting job seekers with employers, offering listings, applications, and resources for efficient and targeted employment searches.' },
+  { title: 'Learning experience platforms', kind: 'photo', img: U + '2023/08/Hr-tool-2-3-1024x576.jpg', href: '/hr-tools-category-detail', desc: 'Learning Experience Platforms (LXPs) are digital environments offering diverse content, personalization, and social interaction for comprehensive online learning.' },
+  { title: 'Performance management', kind: 'icon', img: U + '2023/08/6-2.svg', href: '/hr-tools-category-detail', desc: 'Performance Management assesses employee performance, sets goals, provides feedback, and improves overall productivity and development within organizations for success.' },
+  { title: 'Recruitment marketing', kind: 'photo', img: U + '2023/08/Hr-tool-5-1024x576.jpg', href: '/hr-tools-category-detail', desc: 'Recruitment Marketing: Strategies to attract, engage, and convert potential candidates into job applicants using marketing techniques.' },
+  { title: 'Time tracking', kind: 'icon', img: U + '2023/08/4-1.svg', href: '/hr-tools-category-detail', desc: 'Time Tracking accurately records employee work hours, enhancing productivity, billing accuracy, and payroll efficiency within organizations of all sizes.' },
+  { title: 'Workforce management', kind: 'icon', img: U + '2023/08/3-1.svg', href: '/hr-tools-category-detail', desc: 'Workforce Management optimizes employee productivity and scheduling, aligning skills and tasks to meet business needs efficiently and effectively.' },
+];
 
+export default function HrToolsPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Free HR calculators & generators — cost-per-hire, time-to-hire, quality of hire and more" announcementCta="Browse tools" />
+      <SiteHeader
+        announcement="Free HR calculators & generators — cost-per-hire, time-to-hire, quality of hire and more"
+        announcementCta="Browse tools"
+        homeHref="/"
+      />
 
       <section className="ht-hero">
         <div className="ht-wrap" style={{ maxWidth: 820 }}>
-          <div className="ht-crumb">
-            <Link href="/blog">Resources</Link>
-            <span>/</span>
-            <span>HR tools</span>
-          </div>
-          <p className="ht-eyebrow reveal">
-            Free HR tools<span className="dot">.</span>
+          <p className="ht-eyebrow reveal in">
+            HR tools<b>.</b>
           </p>
-          <h1 className="ht-h1 reveal">
-            Stop guessing your <em>hiring numbers</em>
+          <h1 className="ht-h1 reveal in">
+            Top HR tools for <em>streamlined workforce management</em>
           </h1>
-          <p className="ht-sub reveal">
-            Free calculators and generators to measure, benchmark and improve every stage of your hiring — no sign-up, no catch.
+          <p className="ht-sub reveal in">
+            Discover the most effective HR tools that streamline employee management, enhance communication, and optimize administrative tasks. Elevate your HR processes with these cutting-edge solutions.
           </p>
-          <div className="ht-tabs reveal">
-            <button className={`ht-tab ${filter === 'all' ? 'on' : ''}`} onClick={() => setFilter('all')}>All tools</button>
-            <button className={`ht-tab ${filter === 'calc' ? 'on' : ''}`} onClick={() => setFilter('calc')}>Calculators</button>
-            <button className={`ht-tab ${filter === 'gen' ? 'on' : ''}`} onClick={() => setFilter('gen')}>Generators</button>
+          <div className="ht-btns reveal in">
+            <CtaButton label="Try for free" href="https://app.testlify.com/register" variant="primary" size="lg" icon="arrow" magnetic />
+            <CtaButton label="Book a demo" href="https://hs.testlify.com/meetings/testlify/demo" variant="secondary" size="lg" icon="play" />
           </div>
         </div>
       </section>
@@ -116,43 +108,29 @@ export default function HrToolsPage() {
       <section className="ht-sec">
         <div className="ht-wrap">
           <div className="ht-shead reveal">
-            <h2 className="ht-h2">{titleMap[filter]}</h2>
-            <p className="ht-h2p">{introMap[filter]}</p>
+            <h2 className="ht-h2">Top 18 Human Resource (HR) software — 2025 pricing &amp; comparison</h2>
           </div>
-          <div className="ht-grid reveal">
-            {tools.map((t) => (
-              <Link className="ht-card" href="/hr-tools-detail" key={t.title}>
-                <div className="ht-ic">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="4" y="2" width="16" height="20" rx="2"></rect>
-                    <line x1="8" y1="6" x2="16" y2="6"></line>
-                    <line x1="8" y1="10" x2="16" y2="10"></line>
-                    <line x1="8" y1="14" x2="12" y2="14"></line>
-                  </svg>
+          <div className="ht-list reveal">
+            {TOOLS.map((t) => (
+              <a className="ht-card" href={t.href} key={t.title}>
+                <div
+                  className={`ht-thumb ${t.kind}`}
+                  style={{ backgroundImage: `url("${t.img}")` }}
+                ></div>
+                <div className="ht-body">
+                  <p className="ht-tag">HR software</p>
+                  <p className="ht-ct">{t.title}</p>
+                  <p className="ht-cd">{t.desc}</p>
+                  <span className="ht-go">
+                    Read more
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </span>
                 </div>
-                <p className="ht-tag">{t.tag}</p>
-                <p className="ht-ct">{t.title}</p>
-                <p className="ht-cd">{t.desc}</p>
-                <span className="ht-go">
-                  {t.cta}
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
-                </span>
-              </Link>
+              </a>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="ht-band">
-        <div className="ht-wrap">
-          <h2>Numbers point the way. Testlify gets you there.</h2>
-          <p>Calculators show the gap. Skills-based assessments close it — screen faster, shortlist better and cut cost per hire for real.</p>
-          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <CtaButton label="Try for free" href="/pricing" variant="light" size="lg" icon="arrow" magnetic />
-            <CtaButton label="Book a demo" href="/contact" variant="ghost" size="lg" icon="play" />
           </div>
         </div>
       </section>

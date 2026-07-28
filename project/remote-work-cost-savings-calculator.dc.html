@@ -58,6 +58,25 @@
   </div>
 </div></section>
 
+<section class="tsec" style="background:#FBF3EE;"><div class="tw">
+  <div style="max-width:640px;">
+    <p class="eyebrow reveal">Why it matters<b>.</b></p>
+    <h2 class="th2 reveal" style="transition-delay:.04s;">Why use a remote work cost savings calculator?</h2>
+  </div>
+  <ul class="chk reveal" style="margin-top:30px;max-width:760px;">
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Understand financial impact:</b> get a clearer picture of savings from cutting office space and commuting expenses.</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Budgeting and planning:</b> adjust budgets or allocate resources more efficiently.</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Cost reduction:</b> evaluate savings potential to make informed decisions about office space.</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Employee preferences:</b> decide how many remote days to offer based on company goals.</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Support sustainability:</b> calculate reductions in commuting emissions and office energy use.</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Enhance satisfaction:</b> reinvest savings into remote tools, wellness programs or incentives.</li>
+  </ul>
+</div></section>
+<section class="tsec"><div class="tw">
+  <div style="max-width:640px;margin:0 auto;text-align:center;"><p class="eyebrow reveal">FAQ<b>.</b></p><h2 class="th2 reveal" style="transition-delay:.04s;">Frequently asked questions</h2></div>
+  <div class="reveal" style="max-width:820px;margin:34px auto 0;"><dc-import name="component-faq" items="{{ faqItems }}" hint-size="100%,380px"></dc-import></div>
+</div></section>
+
 <dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
 <dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
 
@@ -78,7 +97,13 @@ class Component extends DCLogic {
       onShare:(e)=>this.setState({share:e.target.value}),
       result:this.money(total),
       perEmp:this.money(perEmp),
-      note:'Estimated savings on office space, utilities and equipment per year.'
+      note:'Estimated savings on office space, utilities and equipment per year.',
+      faqItems: [
+        { q: 'What is a Hybrid Work ROI calculator?', a: 'A tool that estimates the return on investment by balancing in-office and remote work costs to show the financial benefits of hybrid work models.' },
+        { q: 'How much does remote work save?', a: 'Remote work can save companies 20-30% on office space, utilities, and commuting reimbursements, varying by role and location.' },
+        { q: 'How do I calculate cost savings?', a: 'Add up reduced expenses like office rent, utilities, cleaning, and commute reimbursements, then subtract any new remote work costs.' },
+        { q: 'How to calculate Remote ROI?', a: 'Compare total remote work savings against remote-related costs to determine net financial benefits and ROI of remote work policies.' }
+      ]
     };
   }
 }

@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaBand from '@/components/CtaBand';
+import FAQ from '@/components/FAQ';
 
 const CSS = `
 :root{--ink:#1A1014;--body:#5A4B4E;--muted:#8A7A7D;--coral:#F23F44;}
@@ -41,47 +42,94 @@ const CSS = `
 .tsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;}
 .tstep{background:#fff;border:1px solid #F2E6E7;border-radius:16px;padding:26px;}
 .tstepn{width:38px;height:38px;border-radius:100px;background:#FFF0EF;color:var(--coral);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.chk{list-style:none;margin:0;padding:0;display:grid;gap:16px;}
+.chk li{display:flex;align-items:flex-start;gap:14px;font-size:15px;line-height:1.6;color:var(--body);}
+.chk li svg{flex-shrink:0;margin-top:2px;color:var(--coral);}
+.chk li b{color:var(--ink);}
 @media (max-width:820px){.tcalc{grid-template-columns:1fr;}.tsteps{grid-template-columns:1fr;}.th1{font-size:38px;}}
 /*om-balance-rule*/
 h1,h2,h3,h4,.th1,.th2,.eyebrow{text-wrap:balance;}
 p,li,.tbody,.tlead,.trsub{text-wrap:pretty;}
 `;
 
+const FAQ_ITEMS = [
+  {
+    q: 'How to calculate quality of hire?',
+    a: 'Combine scores for performance, productivity, engagement, and retention, then divide by the number of metrics used to find the average.',
+  },
+  {
+    q: 'How is the hire rate calculated?',
+    a: 'Divide total hires in a time frame by total candidates or job openings, then multiply by 100 to measure your recruitment success rate.',
+  },
+  {
+    q: 'What is the quality of fill?',
+    a: 'It measures how well a new hire meets job requirements, enhances team performance, and aligns with company culture after onboarding.',
+  },
+  {
+    q: 'What is the Interview to Hire Ratio?',
+    a: 'The average number of interviews needed to make one hire, showing efficiency in selecting the right candidates.',
+  },
+];
+
+function clamp(v: string): number {
+  let n = parseFloat(v);
+  if (isNaN(n) || n < 0) n = 0;
+  if (n > 100) n = 100;
+  return n;
+}
+
 export default function QualityOfHireCalculatorPage() {
   const [perf, setPerf] = useState('82');
   const [ramp, setRamp] = useState('75');
   const [ret, setRet] = useState('88');
 
-  const num = (v: string) => {
-    let n = parseFloat(v);
-    if (isNaN(n) || n < 0) n = 0;
-    if (n > 100) n = 100;
-    return n;
-  };
-
-  const nPerf = num(perf), nRamp = num(ramp), nRet = num(ret);
-  const idx = Math.round((nPerf + nRamp + nRet) / 3);
-  let note = 'Solid quality of hire.';
-  if (idx >= 85) note = 'Excellent — your hiring is producing high performers.';
-  else if (idx < 60) note = 'Room to improve — assess skills more rigorously up front.';
-  const result = idx + '/100';
+  const { result, note } = useMemo(() => {
+    const nPerf = clamp(perf);
+    const nRamp = clamp(ramp);
+    const nRet = clamp(ret);
+    const idx = Math.round((nPerf + nRamp + nRet) / 3);
+    let n = 'Solid quality of hire.';
+    if (idx >= 85) n = 'Excellent — your hiring is producing high performers.';
+    else if (idx < 60) n = 'Room to improve — assess skills more rigorously up front.';
+    return { result: idx + '/100', note: n };
+  }, [perf, ramp, ret]);
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Free HR tools — calculators, templates and interview kits." announcementCta="Browse tools" />
+      <SiteHeader
+        announcement="Free HR tools — calculators, templates and interview kits."
+        announcementCta="Browse tools"
+        homeHref="/"
+      />
 
-      <section className="tsec" style={{ background: 'radial-gradient(1000px 500px at 80% 4%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff' }}>
+      <section
+        className="tsec"
+        style={{
+          background:
+            'radial-gradient(1000px 500px at 80% 4%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff',
+        }}
+      >
         <div className="tw">
           <div className="tcrumb reveal">
-            <Link href="/blog">Resources</Link><span>/</span>
-            <Link href="/hr-tools">HR tools</Link><span>/</span>
+            <Link href="/blog">Resources</Link>
+            <span>/</span>
+            <Link href="/hr-tools">HR tools</Link>
+            <span>/</span>
             <span>Quality of hire calculator</span>
           </div>
           <div style={{ maxWidth: 720 }}>
-            <p className="eyebrow reveal">Quality of hire calculator<b>.</b></p>
-            <h1 className="th1 reveal" style={{ transitionDelay: '.04s' }}>Measure your quality of hire</h1>
-            <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>Score new hires on performance, ramp speed and retention to get a single quality-of-hire index — the metric that proves whether your hiring is actually working.</p>
+            <p className="eyebrow reveal">
+              Quality of hire calculator<b>.</b>
+            </p>
+            <h1 className="th1 reveal" style={{ transitionDelay: '.04s' }}>
+              Measure your quality of hire
+            </h1>
+            <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>
+              Score new hires on performance, ramp speed and retention to get a single
+              quality-of-hire index — the metric that proves whether your hiring is
+              actually working.
+            </p>
           </div>
         </div>
       </section>
@@ -90,19 +138,79 @@ export default function QualityOfHireCalculatorPage() {
         <div className="tw">
           <div className="tcalc reveal">
             <div className="tcard">
-              <p className="eyebrow" style={{ marginBottom: 22 }}>Rate each factor <span style={{ fontWeight: 500, color: '#8A7A7D', textTransform: 'none', letterSpacing: 0 }}>(0–100)</span></p>
-              <div className="tfield"><label>Job performance</label><div className="tprefix suf"><span className="tsym">/100</span><input className="tinput" type="number" min="0" max="100" value={perf} onInput={(e) => setPerf((e.target as HTMLInputElement).value)} /></div></div>
-              <div className="tfield"><label>Ramp-up speed</label><div className="tprefix suf"><span className="tsym">/100</span><input className="tinput" type="number" min="0" max="100" value={ramp} onInput={(e) => setRamp((e.target as HTMLInputElement).value)} /></div></div>
-              <div className="tfield" style={{ marginBottom: 0 }}><label>Retention / engagement</label><div className="tprefix suf"><span className="tsym">/100</span><input className="tinput" type="number" min="0" max="100" value={ret} onInput={(e) => setRet((e.target as HTMLInputElement).value)} /></div></div>
+              <p className="eyebrow" style={{ marginBottom: 22 }}>
+                Rate each factor{' '}
+                <span
+                  style={{
+                    fontWeight: 500,
+                    color: '#8A7A7D',
+                    textTransform: 'none',
+                    letterSpacing: 0,
+                  }}
+                >
+                  (0–100)
+                </span>
+              </p>
+              <div className="tfield">
+                <label>Job performance</label>
+                <div className="tprefix suf">
+                  <span className="tsym">/100</span>
+                  <input
+                    className="tinput"
+                    type="number"
+                    min="0"
+                    max="100"
+                    value={perf}
+                    onChange={(e) => setPerf(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="tfield">
+                <label>Ramp-up speed</label>
+                <div className="tprefix suf">
+                  <span className="tsym">/100</span>
+                  <input
+                    className="tinput"
+                    type="number"
+                    min="0"
+                    max="100"
+                    value={ramp}
+                    onChange={(e) => setRamp(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="tfield" style={{ marginBottom: 0 }}>
+                <label>Retention / engagement</label>
+                <div className="tprefix suf">
+                  <span className="tsym">/100</span>
+                  <input
+                    className="tinput"
+                    type="number"
+                    min="0"
+                    max="100"
+                    value={ret}
+                    onChange={(e) => setRet(e.target.value)}
+                  />
+                </div>
+              </div>
             </div>
             <div className="tresult">
               <p className="trlabel">Quality of hire index</p>
               <p className="trbig">{result}</p>
               <p className="trsub">{note}</p>
               <div className="trbreak">
-                <div className="trrow"><span>Job performance</span><span>{perf}</span></div>
-                <div className="trrow"><span>Ramp-up speed</span><span>{ramp}</span></div>
-                <div className="trrow"><span>Retention</span><span>{ret}</span></div>
+                <div className="trrow">
+                  <span>Job performance</span>
+                  <span>{perf}</span>
+                </div>
+                <div className="trrow">
+                  <span>Ramp-up speed</span>
+                  <span>{ramp}</span>
+                </div>
+                <div className="trrow">
+                  <span>Retention</span>
+                  <span>{ret}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -112,14 +220,112 @@ export default function QualityOfHireCalculatorPage() {
       <section className="tsec">
         <div className="tw">
           <div style={{ maxWidth: 640 }}>
-            <p className="eyebrow reveal">How it works<b>.</b></p>
-            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>Quality of hire, explained</h2>
-            <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>Quality of hire blends how well new hires perform, how quickly they ramp, and how long they stay. Averaging these gives a single index you can track over time — and skills-based hiring is proven to lift it.</p>
+            <p className="eyebrow reveal">
+              How it works<b>.</b>
+            </p>
+            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
+              Quality of hire, explained
+            </h2>
+            <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>
+              Quality of hire blends how well new hires perform, how quickly they ramp,
+              and how long they stay. Averaging these gives a single index you can track
+              over time — and skills-based hiring is proven to lift it.
+            </p>
           </div>
           <div className="tsteps">
-            <div className="tstep reveal"><div className="tstepn">1</div><h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>Score performance</h3><p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>How well new hires deliver against role expectations.</p></div>
-            <div className="tstep reveal" style={{ transitionDelay: '.06s' }}><div className="tstepn">2</div><h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>Score ramp &amp; retention</h3><p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>How fast they got productive and whether they stay engaged.</p></div>
-            <div className="tstep reveal" style={{ transitionDelay: '.12s' }}><div className="tstepn">3</div><h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>Get your index</h3><p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>The average is your quality-of-hire index out of 100.</p></div>
+            <div className="tstep reveal">
+              <div className="tstepn">1</div>
+              <h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>
+                Score performance
+              </h3>
+              <p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>
+                How well new hires deliver against role expectations.
+              </p>
+            </div>
+            <div className="tstep reveal" style={{ transitionDelay: '.06s' }}>
+              <div className="tstepn">2</div>
+              <h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>
+                Score ramp &amp; retention
+              </h3>
+              <p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>
+                How fast they got productive and whether they stay engaged.
+              </p>
+            </div>
+            <div className="tstep reveal" style={{ transitionDelay: '.12s' }}>
+              <div className="tstepn">3</div>
+              <h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>
+                Get your index
+              </h3>
+              <p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>
+                The average is your quality-of-hire index out of 100.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="tsec" style={{ background: '#FBF3EE' }}>
+        <div className="tw">
+          <div style={{ maxWidth: 640 }}>
+            <p className="eyebrow reveal">
+              Why it matters<b>.</b>
+            </p>
+            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
+              Why measure quality of hire?
+            </h2>
+          </div>
+          <ul className="chk reveal" style={{ marginTop: 30, maxWidth: 760 }}>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Identify weak points:</b> see where hiring is falling short, whether low
+              performers or poor culture fit, and target improvements.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Make data-driven decisions:</b> see which sources or processes deliver
+              the best hires and invest budget accordingly.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Increase retention, cut costs:</b> high-quality hires stay longer and
+              perform better, lowering turnover and hiring costs.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Improve hiring ROI:</b> connect hiring results directly to business
+              impact like ramp-up time and productivity.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Make hiring a strategic advantage:</b> shift from filling roles to
+              building a long-term talent strategy.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="tsec">
+        <div className="tw">
+          <div style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
+            <p className="eyebrow reveal">
+              FAQ<b>.</b>
+            </p>
+            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
+              Frequently asked questions
+            </h2>
+          </div>
+          <div className="reveal" style={{ maxWidth: 820, margin: '34px auto 0' }}>
+            <FAQ items={FAQ_ITEMS} />
           </div>
         </div>
       </section>

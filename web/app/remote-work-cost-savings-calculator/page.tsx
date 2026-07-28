@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaBand from '@/components/CtaBand';
+import FAQ from '@/components/FAQ';
 
 const calcCss = `
 .tw{max-width:1180px;margin:0 auto;padding:0 28px;}
@@ -42,32 +43,59 @@ const calcCss = `
 @media(max-width:900px){.tcalc{grid-template-columns:1fr;}.th1{font-size:38px;letter-spacing:-1px;}.th2{font-size:28px;}.tsec{padding:64px 22px;}.tsteps{grid-template-columns:1fr;}}
 `;
 
+const FAQ_ITEMS = [
+  {
+    q: 'What is a Hybrid Work ROI calculator?',
+    a: 'A tool that estimates the return on investment by balancing in-office and remote work costs to show the financial benefits of hybrid work models.',
+  },
+  {
+    q: 'How much does remote work save?',
+    a: 'Remote work can save companies 20-30% on office space, utilities, and commuting reimbursements, varying by role and location.',
+  },
+  {
+    q: 'How do I calculate cost savings?',
+    a: 'Add up reduced expenses like office rent, utilities, cleaning, and commute reimbursements, then subtract any new remote work costs.',
+  },
+  {
+    q: 'How to calculate Remote ROI?',
+    a: 'Compare total remote work savings against remote-related costs to determine net financial benefits and ROI of remote work policies.',
+  },
+];
+
+function num(v: string): number {
+  const n = parseFloat(v);
+  return isNaN(n) || n < 0 ? 0 : n;
+}
+
+function money(n: number): string {
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
 export default function RemoteWorkCostSavingsCalculatorPage() {
   const [emp, setEmp] = useState('50');
   const [office, setOffice] = useState('11000');
   const [share, setShare] = useState('100');
 
-  const num = (v: string) => {
-    const n = parseFloat(v);
-    return isNaN(n) || n < 0 ? 0 : n;
-  };
-  const money = (n: number) => '$' + Math.round(n).toLocaleString('en-US');
-
-  const empNum = num(emp);
-  const officeNum = num(office);
-  const shareNum = Math.min(100, num(share));
-  const perEmpVal = (officeNum * shareNum) / 100;
-  const totalVal = perEmpVal * empNum;
-
-  const result = money(totalVal);
-  const perEmp = money(perEmpVal);
-  const note =
-    'Estimated savings on office space, utilities and equipment per year.';
+  const { result, perEmp } = useMemo(() => {
+    const empNum = num(emp);
+    const officeNum = num(office);
+    const shareNum = Math.min(100, num(share));
+    const perEmployee = (officeNum * shareNum) / 100;
+    const total = perEmployee * empNum;
+    return {
+      result: money(total),
+      perEmp: money(perEmployee),
+    };
+  }, [emp, office, share]);
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: calcCss }} />
-      <SiteHeader announcement="Free HR tools — calculators, templates and interview kits." announcementCta="Browse tools" />
+      <SiteHeader
+        announcement="Free HR tools — calculators, templates and interview kits."
+        announcementCta="Browse tools"
+        homeHref="/"
+      />
 
       <section
         className="tsec"
@@ -92,9 +120,8 @@ export default function RemoteWorkCostSavingsCalculatorPage() {
               Calculate your remote work savings
             </h1>
             <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>
-              Remote and hybrid teams save on office space, utilities and
-              equipment. Enter your numbers to estimate your annual savings from
-              going remote.
+              Remote and hybrid teams save on office space, utilities and equipment.
+              Enter your numbers to estimate your annual savings from going remote.
             </p>
           </div>
         </div>
@@ -114,7 +141,6 @@ export default function RemoteWorkCostSavingsCalculatorPage() {
                   type="number"
                   min="0"
                   value={emp}
-                  onInput={(e) => setEmp((e.target as HTMLInputElement).value)}
                   onChange={(e) => setEmp(e.target.value)}
                 />
               </div>
@@ -129,9 +155,6 @@ export default function RemoteWorkCostSavingsCalculatorPage() {
                     type="number"
                     min="0"
                     value={office}
-                    onInput={(e) =>
-                      setOffice((e.target as HTMLInputElement).value)
-                    }
                     onChange={(e) => setOffice(e.target.value)}
                   />
                 </div>
@@ -148,9 +171,6 @@ export default function RemoteWorkCostSavingsCalculatorPage() {
                     min="0"
                     max="100"
                     value={share}
-                    onInput={(e) =>
-                      setShare((e.target as HTMLInputElement).value)
-                    }
                     onChange={(e) => setShare(e.target.value)}
                   />
                 </div>
@@ -159,7 +179,9 @@ export default function RemoteWorkCostSavingsCalculatorPage() {
             <div className="tresult">
               <p className="trlabel">Estimated annual savings</p>
               <p className="trbig">{result}</p>
-              <p className="trsub">{note}</p>
+              <p className="trsub">
+                Estimated savings on office space, utilities and equipment per year.
+              </p>
               <div className="trbreak">
                 <div className="trrow">
                   <span>Savings per employee</span>
@@ -189,10 +211,9 @@ export default function RemoteWorkCostSavingsCalculatorPage() {
               Remote savings, explained
             </h2>
             <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>
-              We multiply your per-employee office cost by the share of time
-              worked remotely, then across your team. Hiring remotely also widens
-              your talent pool — skills-based assessment makes that fair and
-              reliable.
+              We multiply your per-employee office cost by the share of time worked
+              remotely, then across your team. Hiring remotely also widens your talent
+              pool — skills-based assessment makes that fair and reliable.
             </p>
           </div>
           <div className="tsteps">
@@ -223,6 +244,79 @@ export default function RemoteWorkCostSavingsCalculatorPage() {
                 Scaled by how much time is spent remote.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="tsec" style={{ background: '#FBF3EE' }}>
+        <div className="tw">
+          <div style={{ maxWidth: 640 }}>
+            <p className="eyebrow reveal">
+              Why it matters<b>.</b>
+            </p>
+            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
+              Why use a remote work cost savings calculator?
+            </h2>
+          </div>
+          <ul className="chk reveal" style={{ marginTop: 30, maxWidth: 760 }}>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Understand financial impact:</b> get a clearer picture of savings from
+              cutting office space and commuting expenses.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Budgeting and planning:</b> adjust budgets or allocate resources more
+              efficiently.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Cost reduction:</b> evaluate savings potential to make informed
+              decisions about office space.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Employee preferences:</b> decide how many remote days to offer based on
+              company goals.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Support sustainability:</b> calculate reductions in commuting emissions
+              and office energy use.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Enhance satisfaction:</b> reinvest savings into remote tools, wellness
+              programs or incentives.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="tsec">
+        <div className="tw">
+          <div style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
+            <p className="eyebrow reveal">
+              FAQ<b>.</b>
+            </p>
+            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
+              Frequently asked questions
+            </h2>
+          </div>
+          <div className="reveal" style={{ maxWidth: 820, margin: '34px auto 0' }}>
+            <FAQ items={FAQ_ITEMS} />
           </div>
         </div>
       </section>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<script src="./reveal.js"></script>
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+a{text-decoration:none;color:inherit;}
+a:hover{color:#F23F44;}
+.tw{max-width:1200px;margin:0 auto;padding:0 28px;}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.tcrumb{font-size:13.5px;font-weight:600;color:#F23F44;display:inline-flex;align-items:center;gap:8px;margin:0 0 20px;}
+.tcrumb svg{transition:transform .2s;}
+.tcrumb:hover svg{transform:translateX(-3px);}
+.thero{padding:44px 28px 0;background:radial-gradient(1000px 480px at 80% -10%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff;}
+.teyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A7A7D;margin:0 0 14px;}
+.teyebrow b{color:#F23F44;}
+.th1{font-size:42px;line-height:1.1;font-weight:800;letter-spacing:-1.2px;margin:0 0 18px;color:#1A1014;max-width:820px;}
+.tlead{font-size:19px;line-height:1.6;color:#5A4B4E;max-width:760px;margin:0 0 34px;}
+.tbody-wrap{padding:34px 28px 40px;}
+.tlayout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:48px;align-items:start;}
+.tside{position:sticky;top:96px;display:flex;flex-direction:column;gap:20px;}
+.tcard{background:#FBF3EE;border:1px solid #F0E2E3;border-radius:18px;padding:24px 26px;}
+.tcard h4{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A7A7D;margin:0 0 16px;padding-bottom:14px;border-bottom:1px solid #EADDDE;}
+.toclist{margin:0;padding:0;list-style:none;}
+.tocitem{font-size:14.5px;line-height:1.4;margin-bottom:13px;}
+.tocitem:last-child{margin-bottom:0;}
+.toclink{color:#5A4B4E;transition:color .2s;}
+.toclink:hover{color:#F23F44;}
+.thire h5{font-size:16px;font-weight:800;letter-spacing:-.3px;margin:0 0 8px;color:#1A1014;}
+.thire p{font-size:14px;line-height:1.6;color:#5A4B4E;margin:0 0 16px;}
+.tlink{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#F23F44;}
+.tlink svg{transition:transform .2s;}
+.tlink:hover svg{transform:translateX(3px);}
+.tmain{max-width:800px;min-width:0;}
+.tbody{font-size:16.5px;line-height:1.75;color:#4A3B3E;margin:0 0 18px;}
+.tbody:last-child{margin-bottom:0;}
+.tsec{scroll-margin-top:110px;margin-bottom:42px;}
+.th2{font-size:26px;font-weight:800;letter-spacing:-.5px;color:#1A1014;margin:0 0 20px;}
+.tchk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px;}
+.tchk li{display:flex;align-items:flex-start;gap:14px;font-size:15.5px;line-height:1.65;color:#5A4B4E;}
+.tchk svg{color:#F23F44;flex:none;margin-top:3px;}
+.vrank{display:flex;flex-direction:column;gap:16px;}
+.vcard{position:relative;background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:26px 26px 26px 74px;transition:transform .25s,box-shadow .25s,border-color .25s;}
+.vcard:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(110,11,14,.08);border-color:#F4D2D3;}
+.vrankn{position:absolute;left:22px;top:26px;width:34px;height:34px;border-radius:10px;background:#FFF0EF;color:#F23F44;font-weight:800;font-size:14.5px;display:flex;align-items:center;justify-content:center;}
+.vhead{display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap;}
+.vhead img{width:48px;height:48px;object-fit:contain;border-radius:9px;background:#fff;padding:5px;border:1px solid #F0E2E3;}
+.vhead h3{font-size:18px;font-weight:800;letter-spacing:-.3px;margin:0;color:#1A1014;}
+.vmeta{display:flex;flex-wrap:wrap;gap:10px;margin-left:auto;}
+.vpill{font-size:11.5px;font-weight:700;color:#5A4B4E;background:#FBF3EE;border:1px solid #F0E2E3;border-radius:999px;padding:5px 12px;}
+.vcard p{font-size:14.5px;line-height:1.65;color:#5A4B4E;margin:0 0 10px;}
+.vcard p:last-child{margin-bottom:0;}
+.tmore{border-top:1px solid #F0E2E3;padding-top:26px;}
+.tmore h3{font-size:20px;font-weight:800;letter-spacing:-.4px;margin:0 0 8px;}
+.tmore p{font-size:15px;line-height:1.6;color:#5A4B4E;margin:0 0 14px;}
+@media(max-width:860px){.tlayout{grid-template-columns:1fr;}.tside{position:static;}.tmain{max-width:none;}.th1{font-size:30px;}.vcard{padding-left:26px;}.vrankn{position:static;margin-bottom:12px;}.vmeta{margin-left:0;}}
+h1,h2,h3,h4,.th1,.th2,.teyebrow{text-wrap:balance;}p,li,.tbody,.tlead{text-wrap:pretty;}/*om-balance-rule*/
+</style>
+</helmet>
+<dc-import name="component-site-header" announcement="Free HR tools — calculators, templates and category guides, ready to use." announcement-cta="Browse tools" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+
+<section class="thero"><div class="tw">
+<a class="tcrumb reveal in" href="hr-tools.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>Back to HR tools</a>
+<p class="teyebrow reveal in">HR software guide<b>.</b></p>
+<h1 class="th1 reveal in">{{ title }}</h1>
+<p class="tlead reveal in">{{ intro.0 }}</p>
+</div></section>
+
+<div class="tbody-wrap"><div class="tw"><div class="tlayout">
+
+<aside class="tside">
+<div class="tcard">
+<h4>On this page</h4>
+<ul class="toclist">
+<li class="tocitem"><a class="toclink" href="#benefits">Benefits of {{ titleLower }}</a></li>
+<li class="tocitem"><a class="toclink" href="#features">Features of {{ titleLower }}</a></li>
+<li class="tocitem"><a class="toclink" href="#vendors">{{ vendorHeading }}</a></li>
+</ul>
+</div>
+<div class="tcard thire">
+<h5>Looking to hire for this role?</h5>
+<p>Explore validated tests to identify the best candidates for HR and operations roles.</p>
+<a class="tlink" href="test-library.dc.html">View all tests<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+</div>
+</aside>
+
+<div class="tmain">
+<sc-for list="{{ introRest }}" as="p" hint-placeholder-count="3"><p class="tbody reveal">{{ p }}</p></sc-for>
+
+<div class="tsec" id="benefits">
+<h2 class="th2 reveal">Benefits of {{ titleLower }}</h2>
+<ul class="tchk reveal"><sc-for list="{{ benefits }}" as="p" hint-placeholder-count="3">
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>{{ p }}</span></li>
+</sc-for></ul>
+</div>
+
+<div class="tsec" id="features">
+<h2 class="th2 reveal">Features of {{ titleLower }}</h2>
+<ul class="tchk reveal"><sc-for list="{{ features }}" as="p" hint-placeholder-count="3">
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span>{{ p }}</span></li>
+</sc-for></ul>
+</div>
+
+<div class="tsec" id="vendors">
+<h2 class="th2 reveal">{{ vendorHeading }}</h2>
+<div class="vrank">
+<sc-for list="{{ vendors }}" as="v" hint-placeholder-count="10">
+<div class="vcard reveal"><span class="vrankn">{{ v.rank }}</span>
+<div class="vhead"><img src="{{ v.logo }}" alt="{{ v.name }}" loading="lazy"><h3>{{ v.name }}</h3>
+<div class="vmeta"><span class="vpill">{{ v.pricing }}</span><span class="vpill">Free: {{ v.free }}</span><span class="vpill">{{ v.suitable }}</span></div></div>
+<sc-for list="{{ v.paras }}" as="p" hint-placeholder-count="2"><p>{{ p }}</p></sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div class="tmore reveal">
+<h3>Looking for more HR tools?</h3>
+<p>Explore calculators, templates, and category guides across the full HR toolkit.</p>
+<a class="tlink" href="hr-tools.dc.html">Browse all HR tools<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+</div>
+</div>
+
+</div></div></div>
+
+<dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:900},&quot;pageData&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;object&quot;}}">
+class Component extends DCLogic {
+  DEFAULT = {
+    title: 'Human resource management system',
+    intro: [
+      'A Human Resource Management System (HRMS) is a comprehensive software system that enables organisations to manage their human resources operations more effectively. It operates as a centralised platform for integrating diverse HR tasks, improving operations and increasing overall efficiency.',
+      'An HRMS includes capabilities like employee information management, which allows for the secure storing and retrieval of staff data. It simplifies recruitment and onboarding by assisting organisations in quickly sourcing, screening, and hiring new personnel. Time and attendance tracking ensures that employee work hours are accurately recorded, assisting with payroll accuracy and compliance.',
+      'The payroll administration section of the system automates salary computations, tax deductions, and direct deposits, eliminating errors and administrative workload. Employees can enrol in and administer company-provided benefits such as health insurance and retirement plans through benefits administration.',
+      'Goal setting, regular feedback, and performance reviews are made easier with performance management systems, fostering employee growth and engagement. Learning and development elements aid in the identification of skill gaps and the delivery of training programmes.'
+    ],
+    benefits: [
+      'A Human Resource Management System (HRMS) provides various advantages to businesses. It improves productivity and accuracy in operations such as personnel data management, payroll processing, and benefits administration by streamlining HR processes. Employee self-service portals enable employees to update information, access pay stubs, and request time off, thereby decreasing administrative burdens.',
+      'HRMS improves compliance by automating labour rules, tax regulations, and reporting activities. It centralises employee data, improving data security and reducing errors. Employee growth and engagement are fostered through performance management tools that allow for fair evaluation and feedback.',
+      'Analytics can help with strategic decision-making by providing insights into workforce patterns. Data consistency is ensured through integration with other systems such as payroll and accounting. Remote work assistance and mobile accessibility enable modern work environments.'
+    ],
+    features: [
+      'Employee information management, recruitment and onboarding tools, time and attendance tracking, and payroll management are all components of a Human Resource Management System (HRMS). It includes modules for benefit administration, performance management, and learning and development. Employee self-service portals enable employees to access personal information and request time off.',
+      'HRMS helps to ensure compliance by automating activities linked to labour laws and regulations. Document management guarantees the safe keeping of critical HR documents. Analytics provide information on worker trends and performance indicators.',
+      'Data consistency is ensured through integration with other corporate systems. Mobile access and remote work support are designed to meet the needs of modern workplaces. Through complete solutions for personnel management, engagement, and compliance, an HRMS centralises HR operations, improves data accuracy, reduces administrative strain, and supports strategic decision-making.'
+    ],
+    vendorHeading: 'Top 10 Human resource (HR) software \u2014 2025 pricing & comparison',
+    vendors: [
+      { name: 'Rippling', logo: 'https://testlify.com/wp-content/uploads/2023/08/rippling.webp', pricing: '$125/month per user', free: 'Yes', suitable: 'Small / medium businesses', paras: [
+        'Rippling offers a consolidated hub for businesses to manage HR, IT, and Finance on a global scale. It unifies various workforce systems that are typically dispersed within a company, including payroll, expenses, benefits, and technology resources.',
+        'Using Rippling, you can hire a new employee across the globe and swiftly establish their payroll, corporate card, computer setup, benefits, and integrate third-party apps like Slack and Microsoft 365 \u2014 in under 90 seconds.' ] },
+      { name: 'BambooHR', logo: 'https://testlify.com/wp-content/uploads/2023/08/bamboohr.jpg', pricing: '$8.75/month per user', free: 'Yes', suitable: 'Small / medium businesses', paras: [
+        'BambooHR ensures a unified and streamlined experience that eliminates inefficiencies. It automates crucial functions, tasks, and integrations, using a singular data source.',
+        'It consolidates employee, payroll, time, and benefit data into a centralized platform, ensuring precise information, security, and effective coordination.' ] },
+      { name: 'Paylocity', logo: 'https://testlify.com/wp-content/uploads/2023/08/paylocity-removebg-preview.jpg', pricing: 'Contact Paylocity for pricing', free: 'Yes', suitable: 'Small / medium businesses', paras: [
+        'A comprehensive software platform that gives HR professionals a convenient way to handle daily responsibilities in payroll, benefits, talent, and workforce management, backed by a dedicated company culture.' ] },
+      { name: 'ADP Workforce Now', logo: 'https://testlify.com/wp-content/uploads/2023/08/adp-workforce-now-removebg-preview.jpg', pricing: 'Contact ADP for pricing', free: 'Yes', suitable: 'Medium businesses', paras: [
+        'A cloud HR suite built on a unified database, encompassing HR, Payroll, Benefits, Talent Management, Time & Labor, Learning, and Analytics \u2014 flexible enough to add features as your organization grows.' ] },
+      { name: 'isolved', logo: 'https://testlify.com/wp-content/uploads/2023/08/isolved-svg.jpeg', pricing: 'Contact isolved for pricing', free: 'Yes', suitable: 'Small / medium businesses', paras: [
+        'A leader in HCM technology serving People Heroes across HR, payroll, and benefits, disseminated to over 6 million employees and 168,000 employers across all 50 states.' ] },
+      { name: 'Paycom', logo: 'https://testlify.com/wp-content/uploads/2023/08/paycom-removebg-preview.jpg', pricing: 'Contact Paycom for pricing', free: 'Yes', suitable: 'Small / medium businesses', paras: [
+        'User-friendly HR and payroll technology empowering employees with direct access to their data, including Beti\u00ae, letting employees manage and correct their own payroll before submission.' ] },
+      { name: 'Personio', logo: 'https://testlify.com/wp-content/uploads/2023/08/personio-svg.jpg', pricing: '\u20ac95/user/month', free: 'Yes', suitable: 'Medium / large businesses', paras: [
+        'The People Operating System for SMEs of 10\u20132,000 employees, supporting over 8,000 clients across Europe with HR, recruitment, and payroll in one platform.' ] },
+      { name: 'Workday HCM', logo: 'https://testlify.com/wp-content/uploads/2023/08/workday-hcm-removebg-preview.jpg', pricing: 'Contact Workday for pricing', free: 'Yes', suitable: 'Medium / large businesses', paras: [
+        'A unified cloud system for workforce planning, talent management, and payroll, built on AI and machine learning, used by over 10,000 enterprises including more than half of the Fortune 500.' ] },
+      { name: 'HROne', logo: 'https://testlify.com/wp-content/uploads/2023/08/uneecops-hrone-svg.jpg', pricing: 'Contact HROne for pricing', free: 'Yes', suitable: 'Small / medium businesses', paras: [
+        'A forward-looking HCM suite that automates HR procedures and generates actionable insights, saving time for over 900 enterprises across 20+ industries.' ] },
+      { name: 'PeopleForce', logo: 'https://testlify.com/wp-content/uploads/2023/10/PeopleForce-1024x769.png', pricing: 'Contact PeopleForce for pricing', free: 'Free 14-day trial', suitable: 'Small / medium businesses', paras: [
+        'An all-in-one HR platform streamlining leave management, self-service, recruiting, and workflow automation \u2014 chosen by over 700 companies worldwide.' ] }
+    ]
+  };
+
+  renderVals() {
+    const d = Object.assign({}, this.DEFAULT, this.props.pageData || {});
+    const intro = d.intro || [];
+    return {
+      title: d.title,
+      titleLower: d.title.charAt(0).toLowerCase() + d.title.slice(1),
+      intro, introRest: intro.slice(1),
+      benefits: d.benefits, features: d.features,
+      vendorHeading: d.vendorHeading,
+      vendors: (d.vendors || []).map((v, i) => ({ ...v, rank: i + 1 }))
+    };
+  }
+}
+</script>
+</body>
+</html>

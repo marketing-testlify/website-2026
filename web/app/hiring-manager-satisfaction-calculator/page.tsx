@@ -5,6 +5,7 @@ import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaBand from '@/components/CtaBand';
+import FAQ from '@/components/FAQ';
 
 const CSS = `
 :root{--ink:#1A1014;--body:#5A4B4E;--muted:#8A7A7D;--coral:#F23F44;}
@@ -36,11 +37,30 @@ const CSS = `
 .tsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;}
 .tstep{background:#fff;border:1px solid #F2E6E7;border-radius:16px;padding:26px;}
 .tstepn{width:38px;height:38px;border-radius:100px;background:#FFF0EF;color:var(--coral);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
-@media (max-width:820px){.tcalc{grid-template-columns:1fr;}.tsteps{grid-template-columns:1fr;}.th1{font-size:38px;}}
+.chk{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:18px 32px;}
+.chk li{display:flex;align-items:flex-start;gap:12px;font-size:15px;line-height:1.6;color:var(--body);}
+.chk li svg{flex:none;color:var(--coral);margin-top:2px;}
+.chk li b{color:var(--ink);}
+@media (max-width:820px){.tcalc{grid-template-columns:1fr;}.tsteps{grid-template-columns:1fr;}.th1{font-size:38px;}.chk{grid-template-columns:1fr;}}
 /*om-balance-rule*/
 h1,h2,h3,h4,.th1,.th2,.eyebrow{text-wrap:balance;}
 p,li,.tbody,.tlead,.trsub{text-wrap:pretty;}
 `;
+
+const faqItems = [
+  {
+    q: 'How to calculate hiring manager satisfaction?',
+    a: 'Divide satisfied hiring managers (rated “Meets” or “Exceeds” expectations) by total hiring managers, multiply by 100 for the satisfaction rate.',
+  },
+  {
+    q: 'What is the formula for candidate satisfaction?',
+    a: 'Candidate satisfaction = (Number of satisfied candidates ÷ Total candidates surveyed) × 100.',
+  },
+  {
+    q: 'How to measure hiring effectiveness?',
+    a: 'Track metrics like time-to-fill, quality of hire, offer acceptance rate, and hiring manager satisfaction to assess overall recruitment success.',
+  },
+];
 
 export default function HiringManagerSatisfactionCalculatorPage() {
   const [sat, setSat] = useState('17');
@@ -87,11 +107,11 @@ export default function HiringManagerSatisfactionCalculatorPage() {
               <p className="eyebrow" style={{ marginBottom: 22 }}>Your survey<b>.</b></p>
               <div className="tfield">
                 <label>Satisfied respondents</label>
-                <input className="tinput" type="number" min={0} value={sat} onInput={(e) => setSat((e.target as HTMLInputElement).value)} onChange={(e) => setSat(e.target.value)} />
+                <input className="tinput" type="number" min={0} value={sat} onChange={(e) => setSat(e.target.value)} />
               </div>
               <div className="tfield" style={{ marginBottom: 0 }}>
                 <label>Total respondents</label>
-                <input className="tinput" type="number" min={1} value={tot} onInput={(e) => setTot((e.target as HTMLInputElement).value)} onChange={(e) => setTot(e.target.value)} />
+                <input className="tinput" type="number" min={1} value={tot} onChange={(e) => setTot(e.target.value)} />
               </div>
             </div>
             <div className="tresult">
@@ -119,6 +139,33 @@ export default function HiringManagerSatisfactionCalculatorPage() {
             <div className="tstep reveal"><div className="tstepn">1</div><h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>Survey your managers</h3><p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>Ask if they were satisfied with candidate quality.</p></div>
             <div className="tstep reveal" style={{ transitionDelay: '.06s' }}><div className="tstepn">2</div><h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>Count the satisfied</h3><p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>How many responded positively out of the total.</p></div>
             <div className="tstep reveal" style={{ transitionDelay: '.12s' }}><div className="tstepn">3</div><h3 className="th2" style={{ fontSize: 19, marginBottom: 8 }}>See the score</h3><p className="tbody" style={{ margin: 0, fontSize: 14.5 }}>Aim to stay above the 80% healthy benchmark.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="tsec" style={{ background: '#FBF3EE' }}>
+        <div className="tw">
+          <div style={{ maxWidth: 640 }}>
+            <p className="eyebrow reveal">Why it matters<b>.</b></p>
+            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>Why track hiring manager satisfaction?</h2>
+          </div>
+          <ul className="chk reveal" style={{ marginTop: 30, maxWidth: 760 }}>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Improve collaboration:</b> between recruiters and hiring managers.</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Enhance candidate quality:</b> align sourcing and screening with role-specific expectations.</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Spot process issues early:</b> unclear job descriptions or mismatched candidate profiles.</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Build trust:</b> between HR and business units by delivering hires who meet or exceed expectations.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="tsec">
+        <div className="tw">
+          <div style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
+            <p className="eyebrow reveal">FAQ<b>.</b></p>
+            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>Frequently asked questions</h2>
+          </div>
+          <div className="reveal" style={{ maxWidth: 820, margin: '34px auto 0' }}>
+            <FAQ items={faqItems} />
           </div>
         </div>
       </section>

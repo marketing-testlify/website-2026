@@ -56,6 +56,9 @@ a{text-decoration:none;color:inherit;}
 .trelic{width:40px;height:40px;border-radius:11px;background:#FFF0F0;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
 .trelt{font-size:15.5px;font-weight:700;color:#1A1014;margin:0 0 4px;}
 .treld{font-size:13px;color:#8A7A7D;margin:0;line-height:1.45;}
+.chk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+.chk li{display:flex;align-items:flex-start;gap:14px;font-size:15px;line-height:1.62;color:#5A4B4E;}
+.chk svg{color:#F23F44;flex:none;margin-top:2px;}
 @media(max-width:900px){.tcalc{grid-template-columns:1fr;}.th1{font-size:38px;letter-spacing:-1px;}.th2{font-size:28px;}.tsec{padding:64px 22px;}.tsteps{grid-template-columns:1fr;}.trelgrid{grid-template-columns:1fr 1fr;}}
 
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
@@ -66,8 +69,8 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
   <div class="tcrumb reveal"><a href="blog.dc.html">Resources</a><span>/</span><span>HR tools</span><span>/</span><span>{{ toolName }}</span></div>
   <div style="max-width:720px;">
     <p class="eyebrow reveal">{{ eyebrow }}<b>.</b></p>
-    <h1 class="th1 reveal" style="transition-delay:.04s;">{{ title }}</h1>
-    <p class="tlead reveal" style="transition-delay:.08s;">{{ lead }}</p>
+    <h1 class="th1 reveal" style="transition-delay:.04s;">Cost per hire (CPH) calculator</h1>
+    <p class="tlead reveal" style="transition-delay:.08s;">Discover the true cost of recruitment with our cost-per-hire (CPH) calculator, aligned with the CPHC Standard. It breaks down internal and external recruitment costs for better-informed hiring decisions.</p>
   </div>
 </div></section>
 <section class="tsec" style="background:#FBF3EE;padding-top:40px;"><div class="tw">
@@ -97,13 +100,45 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
     <p class="tlead reveal" style="transition-delay:.08s;">Cost per hire adds up everything you spend to fill a role — internal and external — and divides it by the number of hires. Lower it by screening on skill earlier and cutting time-to-shortlist.</p>
   </div>
   <div class="tsteps">
-    <div class="tstep reveal"><div class="tstepn">1</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Add your costs</h3><p class="tbody" style="margin:0;font-size:14.5px;">Internal (recruiter time, referrals, ATS) plus external (agencies, ads, job boards).</p></div>
-    <div class="tstep reveal" style="transition-delay:.06s;"><div class="tstepn">2</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Enter total hires</h3><p class="tbody" style="margin:0;font-size:14.5px;">The number of roles you actually filled over the same period.</p></div>
-    <div class="tstep reveal" style="transition-delay:.12s;"><div class="tstepn">3</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">See your number</h3><p class="tbody" style="margin:0;font-size:14.5px;">Compare against the ~$4,700 benchmark and find where to trim.</p></div>
+    <div class="tstep reveal"><div class="tstepn">1</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Input internal recruitment costs</h3><p class="tbody" style="margin:0;font-size:14.5px;">Fill in internal hiring expenses — consulting services, sourcing, operational costs, bonuses and more.</p></div>
+    <div class="tstep reveal" style="transition-delay:.06s;"><div class="tstepn">2</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Enter external recruitment costs</h3><p class="tbody" style="margin:0;font-size:14.5px;">Add external expenses like agency commissions and job-board spend for a comprehensive total.</p></div>
+    <div class="tstep reveal" style="transition-delay:.12s;"><div class="tstepn">3</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Add the total number of hires</h3><p class="tbody" style="margin:0;font-size:14.5px;">Specify how many employees you hired during the chosen timeframe.</p></div>
+    <div class="tstep reveal" style="transition-delay:.18s;"><div class="tstepn">4</div><h3 class="th2" style="font-size:19px;margin-bottom:8px;">Hit calculate for your result</h3><p class="tbody" style="margin:0;font-size:14.5px;">See your cost per hire within seconds, benchmarked against the industry average.</p></div>
   </div>
 </div></section>
 <section class="tsec" style="background:#FBF3EE;"><div class="tw">
-  <div style="max-width:640px;margin:0 auto;text-align:center;"><p class="eyebrow reveal">FAQ<b>.</b></p><h2 class="th2 reveal" style="transition-delay:.04s;">Cost per hire, answered</h2></div>
+  <div style="max-width:720px;">
+    <p class="eyebrow reveal">Definition<b>.</b></p>
+    <h2 class="th2 reveal" style="transition-delay:.04s;">What is cost-per-hire (CPH)?</h2>
+    <p class="tlead reveal" style="transition-delay:.08s;">Cost-per-hire (CPH) is a key recruiting metric that tracks the total cost of hiring a new employee — including advertising costs, recruitment agency fees, employee referrals, and the salaries of HR staff involved in the hiring process.</p>
+  </div>
+</div></section>
+<section class="tsec"><div class="tw">
+  <div style="max-width:720px;">
+    <p class="eyebrow reveal">The formula<b>.</b></p>
+    <h2 class="th2 reveal" style="transition-delay:.04s;">How does the cost-per-hire calculator work?</h2>
+    <p class="tlead reveal" style="transition-delay:.08s;">CPH = (External costs + Internal costs) ÷ Total number of hires in a period.</p>
+    <p class="tbody reveal" style="transition-delay:.1s;"><b>External recruitment costs:</b> expenses from outside sources — recruitment agency fees, advertising, recruitment technology, candidate travel, and pre-employment screening.</p>
+    <p class="tbody reveal" style="transition-delay:.14s;margin-top:14px;"><b>Internal recruitment costs:</b> expenses from within the company — HR/recruiter salaries, internal job boards, referral rewards, interview costs, and recruiter travel.</p>
+    <p class="tbody reveal" style="transition-delay:.18s;margin-top:14px;">For instance, if a company spends $40,000 recruiting and hiring ten employees, the cost-per-hire is $4,000. Monitoring CPH over time helps identify trends and areas for improvement.</p>
+  </div>
+</div></section>
+<section class="tsec" style="background:#FBF3EE;"><div class="tw">
+  <div style="max-width:640px;">
+    <p class="eyebrow reveal">Why it matters<b>.</b></p>
+    <h2 class="th2 reveal" style="transition-delay:.04s;">Why use a cost-per-hire calculator?</h2>
+    <p class="tlead reveal" style="transition-delay:.08s;">A cost-per-hire calculator is a strategic tool that improves hiring efficiency and supports informed decision-making in HR practices.</p>
+  </div>
+  <ul class="chk reveal" style="margin-top:30px;max-width:760px;">
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Better tracking:</b> Track all recruitment costs, including hidden ones, for clearer budgeting and resource planning.</span></li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Benchmarking:</b> Compare your hiring costs with industry standards or competitors to assess recruitment efficiency.</span></li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Continuous improvement:</b> Regular CPH measurements help HR teams evaluate and refine hiring strategies over time.</span></li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Budget planning:</b> Knowing your average cost per hire makes predicting recruitment expenses and financial planning easier.</span></li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Identifying improvement areas:</b> Analyzing CPH highlights high-cost areas, helping refine recruitment and cut unnecessary spend.</span></li>
+  </ul>
+</div></section>
+<section class="tsec"><div class="tw">
+  <div style="max-width:640px;margin:0 auto;text-align:center;"><p class="eyebrow reveal">FAQ<b>.</b></p><h2 class="th2 reveal" style="transition-delay:.04s;">Frequently asked questions</h2></div>
   <div class="reveal" style="max-width:820px;margin:34px auto 0;"><dc-import name="component-faq" items="{{ faqItems }}" hint-size="100%,380px"></dc-import></div>
 </div></section>
 <section class="tsec"><div class="tw">
@@ -167,10 +202,9 @@ class Component extends DCLogic {
       resultNote: note,
       totalSpend: this.money(total),
       faqItems: [
-        { q: 'What is a good cost per hire?', a: 'The average cost per hire sits around $4,700, though it varies widely by role, seniority and industry. Anything meaningfully below that with strong quality of hire is a healthy sign.' },
-        { q: 'What should I include in cost per hire?', a: 'Add every internal cost (recruiter time, referral bonuses, ATS and tooling) and every external cost (agency fees, job-board ads, sourcing), then divide by the number of hires in the same period.' },
-        { q: 'How can I reduce cost per hire?', a: 'Screen on verified skill earlier to cut agency reliance and time-to-shortlist, reduce bad hires with structured assessments, and automate manual screening so recruiters spend time only on qualified candidates.' },
-        { q: 'Does cost per hire include onboarding?', a: 'No — cost per hire covers recruiting spend up to the point of hire. Onboarding and training are tracked separately as part of overall cost of hire.' }
+        { q: 'What are the factors that affect cost-per-hire?', a: 'Position level (senior roles often have higher CPH due to more complex interview processes), type of position (high-demand roles like engineers or data scientists can raise CPH), and recruitment strategy (more intensive strategies for senior or specialized roles increase CPH).' },
+        { q: 'How does employee turnover impact cost-per-hire calculations?', a: 'Turnover significantly raises CPH — replacing an employee can cost half to twice their salary. A high turnover rate means more frequent hiring, which directly increases CPH through recurring job-posting, recruiting event, training and onboarding costs.' },
+        { q: 'What are the components of cost-per-hire?', a: 'External costs: recruitment events, job advertising, background screening, candidate travel and lodging, agency and search firm fees. Internal costs: interviewing time, recruitment training, internal systems, employee referral bonuses, and recruiter salaries.' }
       ],
       relatedTools: [
         { t: 'Time to hire calculator', d: 'Measure your average time to fill', href: 'hr-tools.dc.html' },

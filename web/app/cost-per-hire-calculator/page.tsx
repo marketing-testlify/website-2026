@@ -54,6 +54,9 @@ a{text-decoration:none;color:inherit;}
 .trelic{width:40px;height:40px;border-radius:11px;background:#FFF0F0;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
 .trelt{font-size:15.5px;font-weight:700;color:#1A1014;margin:0 0 4px;}
 .treld{font-size:13px;color:#8A7A7D;margin:0;line-height:1.45;}
+.chk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+.chk li{display:flex;align-items:flex-start;gap:14px;font-size:15px;line-height:1.62;color:#5A4B4E;}
+.chk svg{color:#F23F44;flex:none;margin-top:2px;}
 @media(max-width:900px){.tcalc{grid-template-columns:1fr;}.th1{font-size:38px;letter-spacing:-1px;}.th2{font-size:28px;}.tsec{padding:64px 22px;}.tsteps{grid-template-columns:1fr;}.trelgrid{grid-template-columns:1fr 1fr;}}
 
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
@@ -67,10 +70,9 @@ const relatedTools = [
 ];
 
 const faqItems = [
-  { q: 'What is a good cost per hire?', a: 'The average cost per hire sits around $4,700, though it varies widely by role, seniority and industry. Anything meaningfully below that with strong quality of hire is a healthy sign.' },
-  { q: 'What should I include in cost per hire?', a: 'Add every internal cost (recruiter time, referral bonuses, ATS and tooling) and every external cost (agency fees, job-board ads, sourcing), then divide by the number of hires in the same period.' },
-  { q: 'How can I reduce cost per hire?', a: 'Screen on verified skill earlier to cut agency reliance and time-to-shortlist, reduce bad hires with structured assessments, and automate manual screening so recruiters spend time only on qualified candidates.' },
-  { q: 'Does cost per hire include onboarding?', a: 'No — cost per hire covers recruiting spend up to the point of hire. Onboarding and training are tracked separately as part of overall cost of hire.' },
+  { q: 'What are the factors that affect cost-per-hire?', a: 'Position level (senior roles often have higher CPH due to more complex interview processes), type of position (high-demand roles like engineers or data scientists can raise CPH), and recruitment strategy (more intensive strategies for senior or specialized roles increase CPH).' },
+  { q: 'How does employee turnover impact cost-per-hire calculations?', a: 'Turnover significantly raises CPH — replacing an employee can cost half to twice their salary. A high turnover rate means more frequent hiring, which directly increases CPH through recurring job-posting, recruiting event, training and onboarding costs.' },
+  { q: 'What are the components of cost-per-hire?', a: 'External costs: recruitment events, job advertising, background screening, candidate travel and lodging, agency and search firm fees. Internal costs: interviewing time, recruitment training, internal systems, employee referral bonuses, and recruiter salaries.' },
 ];
 
 function num(v: string | number): number {
@@ -98,14 +100,18 @@ export default function CostPerHireCalculatorPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Free HR tools — calculators, templates and interview kits, ready to use." announcementCta="Browse tools" />
+      <SiteHeader
+        announcement="Free HR tools — calculators, templates and interview kits, ready to use."
+        announcementCta="Browse tools"
+        homeHref="/"
+      />
 
       <section className="tsec" style={{ background: 'radial-gradient(1000px 500px at 80% 4%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff' }}><div className="tw">
         <div className="tcrumb reveal"><Link href="/blog">Resources</Link><span>/</span><span>HR tools</span><span>/</span><span>Cost per hire calculator</span></div>
         <div style={{ maxWidth: '720px' }}>
           <p className="eyebrow reveal">Cost per hire calculator<b>.</b></p>
-          <h1 className="th1 reveal" style={{ transitionDelay: '.04s' }}>Calculate your true cost per hire</h1>
-          <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>Add your recruiting spend and the number of roles you filled — see your real cost per hire instantly, and how it compares to the industry benchmark.</p>
+          <h1 className="th1 reveal" style={{ transitionDelay: '.04s' }}>Cost per hire (CPH) calculator</h1>
+          <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>Discover the true cost of recruitment with our cost-per-hire (CPH) calculator, aligned with the CPHC Standard. It breaks down internal and external recruitment costs for better-informed hiring decisions.</p>
         </div>
       </div></section>
 
@@ -113,9 +119,9 @@ export default function CostPerHireCalculatorPage() {
         <div className="tcalc reveal">
           <div className="tcard">
             <p className="eyebrow" style={{ marginBottom: '22px' }}>Your numbers<b>.</b></p>
-            <div className="tfield"><label>Internal recruiting cost <span className="thint">salaries, referrals, tools</span></label><div className="tprefix"><span className="tsym">$</span><input className="tinput" type="number" min="0" value={internal} onInput={(e) => setInternal((e.target as HTMLInputElement).value)} onChange={(e) => setInternal(e.target.value)} /></div></div>
-            <div className="tfield"><label>External recruiting cost <span className="thint">agencies, job boards, ads</span></label><div className="tprefix"><span className="tsym">$</span><input className="tinput" type="number" min="0" value={external} onInput={(e) => setExternal((e.target as HTMLInputElement).value)} onChange={(e) => setExternal(e.target.value)} /></div></div>
-            <div className="tfield" style={{ marginBottom: '0' }}><label>Total hires <span className="thint">in the period</span></label><input className="tinput" type="number" min="1" value={hires} onInput={(e) => setHires((e.target as HTMLInputElement).value)} onChange={(e) => setHires(e.target.value)} /></div>
+            <div className="tfield"><label>Internal recruiting cost <span className="thint">salaries, referrals, tools</span></label><div className="tprefix"><span className="tsym">$</span><input className="tinput" type="number" min="0" value={internal} onChange={(e) => setInternal(e.target.value)} /></div></div>
+            <div className="tfield"><label>External recruiting cost <span className="thint">agencies, job boards, ads</span></label><div className="tprefix"><span className="tsym">$</span><input className="tinput" type="number" min="0" value={external} onChange={(e) => setExternal(e.target.value)} /></div></div>
+            <div className="tfield" style={{ marginBottom: '0' }}><label>Total hires <span className="thint">in the period</span></label><input className="tinput" type="number" min="1" value={hires} onChange={(e) => setHires(e.target.value)} /></div>
           </div>
           <div className="tresult">
             <p className="trlabel">Cost per hire</p>
@@ -137,14 +143,49 @@ export default function CostPerHireCalculatorPage() {
           <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>Cost per hire adds up everything you spend to fill a role — internal and external — and divides it by the number of hires. Lower it by screening on skill earlier and cutting time-to-shortlist.</p>
         </div>
         <div className="tsteps">
-          <div className="tstep reveal"><div className="tstepn">1</div><h3 className="th2" style={{ fontSize: '19px', marginBottom: '8px' }}>Add your costs</h3><p className="tbody" style={{ margin: '0', fontSize: '14.5px' }}>Internal (recruiter time, referrals, ATS) plus external (agencies, ads, job boards).</p></div>
-          <div className="tstep reveal" style={{ transitionDelay: '.06s' }}><div className="tstepn">2</div><h3 className="th2" style={{ fontSize: '19px', marginBottom: '8px' }}>Enter total hires</h3><p className="tbody" style={{ margin: '0', fontSize: '14.5px' }}>The number of roles you actually filled over the same period.</p></div>
-          <div className="tstep reveal" style={{ transitionDelay: '.12s' }}><div className="tstepn">3</div><h3 className="th2" style={{ fontSize: '19px', marginBottom: '8px' }}>See your number</h3><p className="tbody" style={{ margin: '0', fontSize: '14.5px' }}>Compare against the ~$4,700 benchmark and find where to trim.</p></div>
+          <div className="tstep reveal"><div className="tstepn">1</div><h3 className="th2" style={{ fontSize: '19px', marginBottom: '8px' }}>Input internal recruitment costs</h3><p className="tbody" style={{ margin: '0', fontSize: '14.5px' }}>Fill in internal hiring expenses — consulting services, sourcing, operational costs, bonuses and more.</p></div>
+          <div className="tstep reveal" style={{ transitionDelay: '.06s' }}><div className="tstepn">2</div><h3 className="th2" style={{ fontSize: '19px', marginBottom: '8px' }}>Enter external recruitment costs</h3><p className="tbody" style={{ margin: '0', fontSize: '14.5px' }}>Add external expenses like agency commissions and job-board spend for a comprehensive total.</p></div>
+          <div className="tstep reveal" style={{ transitionDelay: '.12s' }}><div className="tstepn">3</div><h3 className="th2" style={{ fontSize: '19px', marginBottom: '8px' }}>Add the total number of hires</h3><p className="tbody" style={{ margin: '0', fontSize: '14.5px' }}>Specify how many employees you hired during the chosen timeframe.</p></div>
+          <div className="tstep reveal" style={{ transitionDelay: '.18s' }}><div className="tstepn">4</div><h3 className="th2" style={{ fontSize: '19px', marginBottom: '8px' }}>Hit calculate for your result</h3><p className="tbody" style={{ margin: '0', fontSize: '14.5px' }}>See your cost per hire within seconds, benchmarked against the industry average.</p></div>
         </div>
       </div></section>
 
       <section className="tsec" style={{ background: '#FBF3EE' }}><div className="tw">
-        <div style={{ maxWidth: '640px', margin: '0 auto', textAlign: 'center' }}><p className="eyebrow reveal">FAQ<b>.</b></p><h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>Cost per hire, answered</h2></div>
+        <div style={{ maxWidth: '720px' }}>
+          <p className="eyebrow reveal">Definition<b>.</b></p>
+          <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>What is cost-per-hire (CPH)?</h2>
+          <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>Cost-per-hire (CPH) is a key recruiting metric that tracks the total cost of hiring a new employee — including advertising costs, recruitment agency fees, employee referrals, and the salaries of HR staff involved in the hiring process.</p>
+        </div>
+      </div></section>
+
+      <section className="tsec"><div className="tw">
+        <div style={{ maxWidth: '720px' }}>
+          <p className="eyebrow reveal">The formula<b>.</b></p>
+          <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>How does the cost-per-hire calculator work?</h2>
+          <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>CPH = (External costs + Internal costs) ÷ Total number of hires in a period.</p>
+          <p className="tbody reveal" style={{ transitionDelay: '.1s' }}><b>External recruitment costs:</b> expenses from outside sources — recruitment agency fees, advertising, recruitment technology, candidate travel, and pre-employment screening.</p>
+          <p className="tbody reveal" style={{ transitionDelay: '.14s', marginTop: '14px' }}><b>Internal recruitment costs:</b> expenses from within the company — HR/recruiter salaries, internal job boards, referral rewards, interview costs, and recruiter travel.</p>
+          <p className="tbody reveal" style={{ transitionDelay: '.18s', marginTop: '14px' }}>For instance, if a company spends $40,000 recruiting and hiring ten employees, the cost-per-hire is $4,000. Monitoring CPH over time helps identify trends and areas for improvement.</p>
+        </div>
+      </div></section>
+
+      <section className="tsec" style={{ background: '#FBF3EE' }}><div className="tw">
+        <div style={{ maxWidth: '640px' }}>
+          <p className="eyebrow reveal">Why it matters<b>.</b></p>
+          <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>Why use a cost-per-hire calculator?</h2>
+          <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>A cost-per-hire calculator is a strategic tool that improves hiring efficiency and supports informed decision-making in HR practices.</p>
+        </div>
+        <ul className="chk reveal" style={{ marginTop: '30px', maxWidth: '760px' }}>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Better tracking:</b> Track all recruitment costs, including hidden ones, for clearer budgeting and resource planning.</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Benchmarking:</b> Compare your hiring costs with industry standards or competitors to assess recruitment efficiency.</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Continuous improvement:</b> Regular CPH measurements help HR teams evaluate and refine hiring strategies over time.</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Budget planning:</b> Knowing your average cost per hire makes predicting recruitment expenses and financial planning easier.</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><span><b>Identifying improvement areas:</b> Analyzing CPH highlights high-cost areas, helping refine recruitment and cut unnecessary spend.</span></li>
+        </ul>
+      </div></section>
+
+      <section className="tsec"><div className="tw">
+        <div style={{ maxWidth: '640px', margin: '0 auto', textAlign: 'center' }}><p className="eyebrow reveal">FAQ<b>.</b></p><h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>Frequently asked questions</h2></div>
         <div className="reveal" style={{ maxWidth: '820px', margin: '34px auto 0' }}><FAQ items={faqItems} /></div>
       </div></section>
 

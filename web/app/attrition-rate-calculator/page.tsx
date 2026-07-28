@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaBand from '@/components/CtaBand';
+import FAQ from '@/components/FAQ';
 
 const calcCss = `
 .tw{max-width:1180px;margin:0 auto;padding:0 28px;}
@@ -42,28 +43,43 @@ const calcCss = `
 @media(max-width:900px){.tcalc{grid-template-columns:1fr;}.th1{font-size:38px;letter-spacing:-1px;}.th2{font-size:28px;}.tsec{padding:64px 22px;}.tsteps{grid-template-columns:1fr;}}
 `;
 
+const FAQ_ITEMS = [
+  { q: 'How do you calculate the attrition rate?', a: 'Attrition rate = (Number of separations ÷ Average number of employees) × 100.' },
+  { q: 'What is 10% attrition?', a: 'A 10% attrition rate means that for every 100 employees, 10 leave the company over a year.' },
+  { q: 'Is 20% attrition high?', a: 'A 20% attrition rate is generally considered high, depending on your industry and company size. Check your onboarding process if new-hire attrition exceeds 15% in the first 6 months.' },
+  { q: 'How do you prevent employee attrition?', a: 'A clear job description, a positive workplace culture, a recruitment process focused on skills, and strong employee engagement all help keep attrition low.' },
+];
+
+function num(v: string): number {
+  const n = parseFloat(v);
+  return isNaN(n) || n < 0 ? 0 : n;
+}
+
 export default function AttritionRateCalculatorPage() {
   const [left, setLeft] = useState('8');
   const [avg, setAvg] = useState('120');
 
-  const num = (v: string) => {
-    const n = parseFloat(v);
-    return isNaN(n) || n < 0 ? 0 : n;
-  };
-
-  const leftNum = num(left);
-  const avgNum = Math.max(1, num(avg));
-  const rate = (leftNum / avgNum) * 100;
-  const result = rate.toFixed(1) + '%';
-  const note =
-    rate <= 10
-      ? 'At or below the 10% healthy benchmark — a stable team.'
-      : 'Above the 10% benchmark — worth investigating why people leave.';
+  const { result, note } = useMemo(() => {
+    const leftNum = num(left);
+    const avgNum = Math.max(1, num(avg));
+    const rate = (leftNum / avgNum) * 100;
+    return {
+      result: rate.toFixed(1) + '%',
+      note:
+        rate <= 10
+          ? 'At or below the 10% healthy benchmark — a stable team.'
+          : 'Above the 10% benchmark — worth investigating why people leave.',
+    };
+  }, [left, avg]);
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: calcCss }} />
-      <SiteHeader announcement="Free HR tools — calculators, templates and interview kits." announcementCta="Browse tools" />
+      <SiteHeader
+        announcement="Free HR tools — calculators, templates and interview kits."
+        announcementCta="Browse tools"
+        homeHref="/"
+      />
 
       <section
         className="tsec"
@@ -111,7 +127,6 @@ export default function AttritionRateCalculatorPage() {
                   type="number"
                   min="0"
                   value={left}
-                  onInput={(e) => setLeft((e.target as HTMLInputElement).value)}
                   onChange={(e) => setLeft(e.target.value)}
                 />
               </div>
@@ -125,7 +140,6 @@ export default function AttritionRateCalculatorPage() {
                   type="number"
                   min="1"
                   value={avg}
-                  onInput={(e) => setAvg((e.target as HTMLInputElement).value)}
                   onChange={(e) => setAvg(e.target.value)}
                 />
               </div>
@@ -196,6 +210,103 @@ export default function AttritionRateCalculatorPage() {
                 Compare against the &lt;10% healthy benchmark.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="tsec" style={{ background: '#FBF3EE' }}>
+        <div className="tw">
+          <div style={{ maxWidth: 720 }}>
+            <p className="eyebrow reveal">
+              Definition<b>.</b>
+            </p>
+            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
+              What is attrition rate?
+            </h2>
+            <p className="tlead reveal" style={{ transitionDelay: '.08s' }}>
+              The attrition rate is the percentage of employees who leave your
+              organization compared to the total number of employees during a specific
+              period. It helps you understand workplace culture, employee job
+              satisfaction, and whether your compensation is fair.
+            </p>
+            <p className="tbody reveal" style={{ transitionDelay: '.1s', marginTop: 14 }}>
+              <b>Worked example:</b> a company had 150 employees at the start, 140 at the
+              end, and 18 left during the quarter. Average headcount = (150+140)÷2 = 145.
+              Attrition rate = (18÷145)×100 ≈ 12.41%.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="tsec">
+        <div className="tw">
+          <div style={{ maxWidth: 640 }}>
+            <p className="eyebrow reveal">
+              Why it matters<b>.</b>
+            </p>
+            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
+              How does tracking attrition help your business?
+            </h2>
+          </div>
+          <ul className="chk reveal" style={{ marginTop: 30, maxWidth: 760 }}>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Understand employee retention:</b> a high attrition rate (usually over
+              20%) can point to job satisfaction, culture or compensation issues.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Identify problems early:</b> a spike can signal poor management, lack of
+              growth, or low morale before it compounds.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Assess workplace culture:</b> turnover often directly reflects how
+              engaged and happy employees are.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Measure HR strategy effectiveness:</b> if recruitment and retention
+              programs are working, attrition should trend down.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Improve hiring practices:</b> high turnover often means candidates
+              weren&apos;t a good fit — refine recruitment and onboarding.
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+              <b>Manage cost:</b> high attrition is costly — hiring, training and
+              onboarding new employees adds up fast.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="tsec" style={{ background: '#FBF3EE' }}>
+        <div className="tw">
+          <div style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
+            <p className="eyebrow reveal">
+              FAQ<b>.</b>
+            </p>
+            <h2 className="th2 reveal" style={{ transitionDelay: '.04s' }}>
+              Frequently asked questions
+            </h2>
+          </div>
+          <div className="reveal" style={{ maxWidth: 820, margin: '34px auto 0' }}>
+            <FAQ items={FAQ_ITEMS} />
           </div>
         </div>
       </section>

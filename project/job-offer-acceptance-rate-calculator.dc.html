@@ -57,6 +57,18 @@
   </div>
 </div></section>
 
+<section class="tsec" style="background:#FBF3EE;"><div class="tw">
+  <div style="max-width:720px;">
+    <p class="eyebrow reveal">Definition<b>.</b></p>
+    <h2 class="th2 reveal" style="transition-delay:.04s;">What is offer acceptance rate?</h2>
+    <p class="tlead reveal" style="transition-delay:.08s;">Offer acceptance rate measures the percentage of job offers accepted by candidates. It signals how appealing your offers are on salary, benefits, role fit and company brand. A low rate can point to uncompetitive pay, unclear roles, or a poor candidate experience.</p>
+  </div>
+</div></section>
+<section class="tsec"><div class="tw">
+  <div style="max-width:640px;margin:0 auto;text-align:center;"><p class="eyebrow reveal">FAQ<b>.</b></p><h2 class="th2 reveal" style="transition-delay:.04s;">Frequently asked questions</h2></div>
+  <div class="reveal" style="max-width:820px;margin:34px auto 0;"><dc-import name="component-faq" items="{{ faqItems }}" hint-size="100%,380px"></dc-import></div>
+</div></section>
+
 <dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
 <dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
 
@@ -73,7 +85,12 @@ class Component extends DCLogic {
       onAcc:(e)=>this.setState({acc:e.target.value}),
       onMade:(e)=>this.setState({made:e.target.value}),
       result:rate.toFixed(0)+'%',
-      note: rate>=85 ? 'Above the 85% benchmark — a strong candidate experience.' : 'Below 85% — review pay, speed and candidate experience.'
+      note: rate>=85 ? 'Above the 85% benchmark — a strong candidate experience.' : 'Below 85% — review pay, speed and candidate experience.',
+      faqItems: [
+        { q: 'How do you calculate the offer acceptance rate?', a: 'Divide the number of accepted offers by the total offers made, then multiply by 100 to get the acceptance rate as a percentage.' },
+        { q: 'What is a good offer acceptance rate?', a: 'A good offer acceptance rate is typically 85–90% or higher, indicating your offers are competitive and appealing to top candidates.' },
+        { q: 'How do you calculate acceptance ratio?', a: 'Acceptance ratio is the number of accepted offers divided by total offers made, shown as a ratio (e.g., 9:10) rather than a percentage.' }
+      ]
     };
   }
 }
