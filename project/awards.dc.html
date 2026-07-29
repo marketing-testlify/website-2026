@@ -14,41 +14,68 @@
 </helmet>
 <dc-import name="component-site-header" announcement="Rated 4.7 on G2 by hiring teams worldwide" announcement-cta="See reviews" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
 
-<section class="phero"><div class="wrap" style="max-width:860px;">
-  <p class="eyebrow reveal">Awards &amp; recognition<b>.</b></p>
-  <h1 class="h1 reveal" style="transition-delay:.04s">Recognized by the<br>people who use it</h1>
-  <p class="lead reveal" style="margin:22px auto 0;max-width:640px;transition-delay:.08s">Testlify is consistently ranked among the top talent assessment platforms — by review sites, industry bodies and, most importantly, the recruiters who use it every day.</p>
-</div></section>
+<style>
+.presstabs{display:flex;justify-content:center;gap:8px;margin:0 0 30px;}
+.presstab{font-size:14px;font-weight:600;color:#8A7A7D;text-decoration:none;padding:9px 18px;border-radius:999px;}
+.presstab.on{background:#fff;color:#1A1014;box-shadow:0 4px 14px rgba(110,11,14,.10);}
+.badgegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.badgecard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;padding:22px 18px;text-align:center;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s;box-shadow:0 16px 30px rgba(110,11,14,.10);}
+.badgecard:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(110,11,14,.12);}
+.badgecard img{max-width:100%;max-height:140px;object-fit:contain;margin-bottom:14px;}
+.badgecard p{font-size:13.5px;font-weight:600;color:#1A1014;margin:0;line-height:1.4;}
+@media(max-width:960px){.badgegrid{grid-template-columns:repeat(2,1fr)!important;}}
+</style>
 
-<section style="padding:10px 28px 0;"><div class="wrap">
-  <div class="statrow reveal">
-    <div class="stat"><div class="statn">4.7</div><div class="statl">average on G2</div></div>
-    <div class="stat"><div class="statn">50,000+</div><div class="statl">recruiters</div></div>
-    <div class="stat"><div class="statn">Top 50</div><div class="statl">HR products</div></div>
-    <div class="stat"><div class="statn">High</div><div class="statl">performer badges</div></div>
+<section class="phero"><div class="wrap" style="max-width:860px;">
+  <div class="presstabs reveal"><a class="presstab" href="press-room.dc.html">Latest press</a><a class="presstab on" href="awards.dc.html">Awards and recognition</a><a class="presstab" href="press-kit.dc.html">Press kit</a></div>
+  <p class="eyebrow reveal" style="transition-delay:.04s;">Awards &amp; recognition<b>.</b></p>
+  <h1 class="h1 reveal" style="transition-delay:.08s">Celebrating the <span style="color:#F23F44;">milestones</span> that drive us forward</h1>
+  <p class="lead reveal" style="margin:22px auto 0;max-width:640px;transition-delay:.12s">Every recognition reflects the trust our customers place in Testlify and our commitment to building a better hiring experience for teams worldwide.</p>
+  <div class="reveal" style="margin-top:36px;transition-delay:.16s;max-width:420px;margin-left:auto;margin-right:auto;">
+    <img src="https://testlify.com/wp-content/uploads/2026/05/Celebrating-the-milestones-that-drive-us-forward-1-867x1024.png" alt="Celebrating the milestones that drive us forward" style="width:100%;border-radius:16px;box-shadow:0 16px 30px rgba(110,11,14,.10);">
   </div>
 </div></section>
 
-<dc-import name="component-recognition" hint-size="100%,420px"></dc-import>
+<section class="sec"><div class="wrap">
+  <div class="center-head">
+    <p class="eyebrow reveal">Recognition<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">Industry recognition</h2>
+  </div>
+  <div class="badgegrid reveal">
+    <div class="badgecard"><img src="./badges/badge1.png" alt="High performer enterprise badge"><p>Spring 2026 — High performer enterprise</p></div>
+    <div class="badgecard"><img src="./badges/badge2.png" alt="High performer badge"><p>Spring 2026 — High performer</p></div>
+    <div class="badgecard"><img src="./badges/badge3.png" alt="Leader badge"><p>Spring 2026 — Leader</p></div>
+    <div class="badgecard"><img src="./badges/badge4.png" alt="Users most likely to recommend badge"><p>Spring 2026 — Users most likely to recommend</p></div>
+    <div class="badgecard"><img src="./badges/trust1.png" alt="Trust Radius Buyer's choice badge"><p>Trust Radius — Buyer's choice 2025</p></div>
+    <div class="badgecard"><img src="./badges/trust2.png" alt="Trust Radius Top rated badge"><p>Trust Radius — Top rated 2025</p></div>
+    <div class="badgecard"><img src="./badges/g2best1.png" alt="Best meets requirement G2 badge"><p>Spring 2026 — Best meets requirement G2</p></div>
+    <div class="badgecard"><img src="./badges/g2best2.png" alt="Best relationship G2 badge"><p>Spring 2026 — Best relationship G2</p></div>
+  </div>
+</div></section>
 
 <section class="sec" style="background:#FBF3EE;"><div class="wrap">
   <div class="center-head">
-    <p class="eyebrow reveal">Highlights<b>.</b></p>
-    <h2 class="h2 reveal" style="transition-delay:.04s">A few we're proud of</h2>
+    <p class="eyebrow reveal">Recognition<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">Partnerships &amp; leadership recognition</h2>
   </div>
-  <div class="grid3">
-    <div class="card reveal"><span class="cic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.5 13.5L17 22l-5-3-5 3 1.5-8.5"></path></svg></span><h3 class="h3" style="font-size:18px;margin-bottom:8px;">G2 High Performer</h3><p class="body" style="font-size:14px;">Awarded across multiple assessment and interviewing categories, quarter after quarter.</p></div>
-    <div class="card reveal" style="transition-delay:.06s"><span class="cic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1L12 16.9 5.7 21l2.3-7.1-6-4.5h7.6z"></path></svg></span><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Founder Award, beelieve 2024</h3><p class="body" style="font-size:14px;">Recognized for visionary leadership shaping the future of the subscription industry.</p></div>
-    <div class="card reveal" style="transition-delay:.12s"><span class="cic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></span><h3 class="h3" style="font-size:18px;margin-bottom:8px;">Backed by the best</h3><p class="body" style="font-size:14px;">SHRM Labs, Google for Startups, Microsoft for Startups and NVIDIA Inception.</p></div>
+  <div class="badgegrid reveal">
+    <div class="badgecard"><img src="./badges/shrm.png" alt="SHRM Labs badge"><p>SHRM Labs workplace innovator program</p></div>
+    <div class="badgecard"><img src="./badges/google.png" alt="Google for Startups badge"><p>Google for startups</p></div>
+    <div class="badgecard"><img src="./badges/ms.png" alt="Microsoft for Startups badge"><p>Microsoft for startups</p></div>
+    <div class="badgecard"><img src="./badges/nvidia.png" alt="NVIDIA Inception badge"><p>NVIDIA inception program</p></div>
+    <div class="badgecard"><img src="./badges/chargebee.png" alt="Chargebee Founder Award"><p>Chargebee founder award</p></div>
+    <div class="badgecard"><img src="./badges/mompreneur.png" alt="Mompreneur Award"><p>Mompreneur award</p></div>
   </div>
 </div></section>
 
-<section class="sec darkcta"><div class="wrap" style="max-width:720px;">
-  <h2 class="h2 reveal">See why teams rate us</h2>
-  <p class="lead reveal" style="margin:18px auto 30px;transition-delay:.04s;">Read real reviews or try Testlify free and judge for yourself.</p>
-  <div class="reveal btnrow" style="transition-delay:.08s;">
-    <dc-import name="component-cta-button" label="Try for free" href="#" variant="light" size="md" icon="arrow" hint-size="160px,52px"></dc-import>
-    <dc-import name="component-cta-button" label="Read stories" href="customer-success-stories.dc.html" variant="outline-light" size="md" icon="none" hint-size="150px,52px"></dc-import>
+<section class="sec"><div class="wrap">
+  <div class="center-head">
+    <p class="eyebrow reveal">Recognition<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">Workplace &amp; certification recognition</h2>
+  </div>
+  <div class="badgegrid reveal" style="grid-template-columns:repeat(2,minmax(0,260px));justify-content:center;">
+    <div class="badgecard"><img src="./badges/workday.png" alt="Workday integration partner badge"><p>Innovation partner &amp; certified integration partner with Workday</p></div>
+    <div class="badgecard"><img src="./badges/sap.png" alt="SAP partner badge"><p>SAP partner</p></div>
   </div>
 </div></section>
 

@@ -106,7 +106,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 <dc-import name="component-site-header" announcement="Testlify AI is here — screen, interview &amp; score candidates automatically." home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
 <section class="tsd-hero" data-screen-label="Hero"><div class="tsdw tsd-hgrid">
 <div class="tsd-copy reveal">
-<div class="tsd-crumb"><a href="solution-index.dc.html">Solutions</a><span>/</span><span>{{ crumb }}</span></div>
+<div class="tsd-crumb"><a href="{{ crumbRootHref }}">{{ crumbRoot }}</a><span>/</span><span>{{ crumb }}</span></div>
 <p class="eyebrow">{{ eyebrow }}<b>.</b></p>
 <h1 class="tsd-h1">{{ titlePre }}<span style="color:#F23F44;">{{ titleAccent }}</span></h1>
 <p class="tsd-lead">{{ lead }}</p>
@@ -259,7 +259,7 @@ class Component extends DCLogic {
     const viewAwards = awardsRaw.map(a=>({ t:a.t, s:a.s }));
     const atsLogos = (P.atsLogos!=null) ? P.atsLogos : ATS_D;
     return {
-      crumb:P.crumb, eyebrow:P.eyebrow, title:P.title, titlePre:_pre, titleAccent:_acc, lead:P.lead, heroImg:P.heroImg||'', hasHeroImg:!!P.heroImg, noHeroImg:!P.heroImg,
+      crumb:P.crumb, crumbRoot:P.crumbRoot||'Solutions', crumbRootHref:P.crumbRootHref||'solution-index.dc.html', eyebrow:P.eyebrow, title:P.title, titlePre:_pre, titleAccent:_acc, lead:P.lead, heroImg:P.heroImg||'', hasHeroImg:!!P.heroImg, noHeroImg:!P.heroImg,
       ctaLabel:P.ctaLabel||'Try for free', ctaHref:P.ctaHref||'pricing.dc.html',
       stats:P.stats||[], hasStats:!!(P.stats&&P.stats.length),
       logos:P.logos||[], hasLogos:!!(P.logos&&P.logos.length),

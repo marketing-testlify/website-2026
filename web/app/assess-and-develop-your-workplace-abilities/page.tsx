@@ -1,32 +1,208 @@
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaButton from '@/components/CtaButton';
+import SecuritySection from '@/components/SecuritySection';
+import Testimonials from '@/components/Testimonials';
+import Recognition from '@/components/Recognition';
+import FAQ from '@/components/FAQ';
 import CtaBand from '@/components/CtaBand';
+
+const CSS = `
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+.sec{padding:96px 28px;}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 18px;}
+.eyebrow b{color:#F23F44;font-weight:600;}
+.h1{font-size:54px;line-height:1.08;font-weight:800;letter-spacing:-1.8px;margin:0;color:#1A1014;}
+.h2{font-size:42px;line-height:1.08;font-weight:800;letter-spacing:-1.4px;margin:0;color:#1A1014;}
+.lead{font-size:18px;line-height:1.6;color:#5A4B4E;margin:0;}
+.hero{padding:72px 28px 88px;background:radial-gradient(1100px 540px at 78% 6%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff;position:relative;overflow:hidden;}
+.herogrid{display:grid;grid-template-columns:1.02fr 1.1fr;gap:60px;align-items:center;}
+.pill{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #F4D9DA;border-radius:999px;padding:7px 15px 7px 8px;font-size:13px;font-weight:600;color:#A8323A;box-shadow:0 6px 16px rgba(110,11,14,.08);}
+.pilltag{background:#F23F44;color:#fff;font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:999px;}
+.heroctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:30px;}
+.trust{display:flex;align-items:center;gap:13px;flex-wrap:wrap;font-size:13.5px;color:#8A7A7D;font-weight:600;margin-top:26px;}
+.herofig{border-radius:22px;overflow:hidden;box-shadow:0 30px 70px rgba(110,11,14,.14);border:1px solid #F0E2E3;}
+.herofig img{display:block;width:100%;height:auto;}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.chk{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
+.chk li{position:relative;padding-left:32px;font-size:15px;line-height:1.55;color:#5A4B4E;}
+.chk li>svg{position:absolute;left:0;top:2px;color:#22A05B;}
+.numlist{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:18px;}
+.numlist li{position:relative;padding-left:44px;font-size:15px;line-height:1.55;color:#5A4B4E;}
+.numlist .n{position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:#FFF0EF;color:#F23F44;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;}
+.numlist b{color:#1A1014;}
+.figcard{border-radius:18px;overflow:hidden;border:1px solid #F0E2E3;box-shadow:0 16px 30px rgba(110,11,14,.10);}
+.figcard img{display:block;width:100%;height:auto;}
+.cardgrid5{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px;}
+.card{background:#fff;border:1px solid #F0E2E3;border-radius:18px;padding:24px 20px;box-shadow:0 16px 30px rgba(110,11,14,.10);transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s;}
+.card:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(110,11,14,.12);}
+.cic{width:40px;height:40px;border-radius:12px;background:#FFF0EF;color:#F23F44;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.intg-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.intg-tile{display:flex;align-items:center;justify-content:center;height:88px;background:#fff;border:1px solid #F2E6E7;border-radius:16px;padding:16px 20px;transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;}
+.intg-tile:hover{transform:translateY(-4px);border-color:#FBD0D1;box-shadow:0 16px 34px rgba(110,11,14,.10);}
+.intg-tile img{max-width:100%;max-height:40px;object-fit:contain;}
+.intglink{display:inline-flex;align-items:center;gap:8px;color:#F23F44;font-weight:700;font-size:15px;text-decoration:none;}
+.intglink:hover{color:#A91E23;}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+@media(max-width:960px){.herogrid,.split,.intg-grid,.cardgrid5{grid-template-columns:1fr!important;}}
+h1,h2,h3,.h1,.h2{text-wrap:balance;}p,li,.lead{text-wrap:pretty;}
+`;
+
+const faqItems = [
+  { q: 'What are on-the-job skills tests?', a: "Assessments designed to simulate real-life work environments and evaluate candidates' abilities to perform specific job-related tasks." },
+  { q: 'How long do the tests take?', a: 'The length varies depending on the job requirements and nature of the role.' },
+  { q: 'How are the tests scored?', a: 'Tests are scored based on predetermined criteria such as accuracy, speed, and quality of work, then compared to the benchmark set for each test.' },
+  { q: 'How do you ensure the tests are fair and objective?', a: 'Tests are designed and validated by subject matter experts, and scoring is done by automated software that eliminates subjective bias.' },
+  { q: 'What kind of tests are available?', a: 'Technical skills, cognitive abilities, and personality traits — recruiters can choose the tests that match their job requirements.' },
+  { q: 'What happens after the tests are completed?', a: 'Recruiters can review results, compare them to the benchmark set for each test, and use the insights to make informed hiring decisions.' },
+  { q: 'How secure is the Testlify platform?', a: 'Testlify takes security measures to protect candidate data and maintain confidentiality — data privacy and security are taken very seriously.' },
+];
 
 export default function AssessAndDevelopYourWorkplaceAbilitiesPage() {
   return (
     <>
-      <SiteHeader announcement="Assess and develop workplace abilities" announcementCta="Try for free" />
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
+      <SiteHeader
+        announcement="Testlify AI is here — screen, interview & score candidates automatically."
+        announcementCta="See what's new →"
+        homeHref="/"
+      />
 
-      <section className="phero"><div className="wrap" style={{ maxWidth: 860 }}>
-        <p className="eyebrow reveal">Workplace abilities<b>.</b></p>
-        <h1 className="h1 reveal" style={{ transitionDelay: '.04s' }}>Assess and develop<br />real workplace skills</h1>
-        <p className="lead reveal" style={{ margin: '22px auto 0', maxWidth: 640, transitionDelay: '.08s' }}>Go beyond the resume. Measure the abilities that actually predict on-the-job success — and use the insights to hire, onboard and grow your people.</p>
-        <div className="reveal btnrow" style={{ marginTop: 30, transitionDelay: '.12s' }}>
-          <CtaButton label="Try for free" href="#" variant="primary" size="md" icon="arrow" />
-          <CtaButton label="Browse tests" href="/test-library" variant="secondary" size="md" icon="none" />
+      <section className="hero" data-screen-label="Hero"><div className="wrap"><div className="herogrid">
+        <div>
+          <div className="reveal" style={{ transitionDelay: '.02s' }}><span className="pill"><span className="pilltag">ON-THE-JOB TESTING</span> Real skills, real scenarios</span></div>
+          <h1 className="h1 reveal" style={{ marginTop: 22, transitionDelay: '.06s' }}>Assess and develop your <span style={{ color: '#F23F44' }}>workplace abilities</span></h1>
+          <p className="lead reveal" style={{ marginTop: 22, maxWidth: 540, transitionDelay: '.1s' }}>Are you tired of hiring candidates who don&apos;t meet the skill requirements for your company&apos;s roles? At Testlify, we understand the challenges that come with finding the right talent — that&apos;s why we built a platform that lets recruiters assess candidates&apos; skills with on-the-job skills tests.</p>
+          <div className="heroctas reveal" style={{ transitionDelay: '.14s' }}>
+            <CtaButton label="Try for free" href="/pricing" variant="primary" size="md" icon="arrow" magnetic />
+            <CtaButton label="Book a Demo" href="/contact" variant="secondary" size="md" icon="play" />
+          </div>
+          <div className="trust reveal" style={{ transitionDelay: '.18s' }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}><span style={{ color: '#F23F44', fontWeight: 700 }}>✓</span>7-day free trial</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}><span style={{ color: '#F23F44', fontWeight: 700 }}>✓</span>No credit card required</span>
+          </div>
+        </div>
+        <div className="reveal" style={{ transitionDelay: '.1s' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://testlify.com/wp-content/uploads/2023/03/Group-251.png" alt="Workplace abilities" style={{ display: 'block', width: '100%', height: 'auto' }} />
+        </div>
+      </div></div></section>
+
+      <section className="sec" style={{ background: '#FBF3EE' }} data-screen-label="On the job skills tests"><div className="wrap split">
+        <div className="reveal">
+          <p className="eyebrow">How it works<b>.</b></p>
+          <h2 className="h2">Our on-the-job skills tests</h2>
+          <ul className="chk">
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Choose a test:</b> Select from a range of tests that match your job requirements, including technical skills, cognitive abilities, and personality traits.</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Invite candidates:</b> Invite candidates to take the test via email, or share the link on your company&apos;s website.</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Analyze results:</b> Once candidates have completed the test, review their results for valuable insights into their skills and abilities.</li>
+          </ul>
+          <div style={{ marginTop: 26 }}><a href="/library-tests" className="intglink">View all tests<span>→</span></a></div>
+        </div>
+        <div className="figcard reveal" style={{ transitionDelay: '.06s' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://testlify.com/wp-content/uploads/2023/03/Our-on-the-job-skills-tests-1024x566.png" alt="Our on the job skills tests" />
         </div>
       </div></section>
 
-      <section className="sec"><div className="wrap">
-        <div className="center-head">
-          <p className="eyebrow reveal">What you can measure<b>.</b></p>
-          <h2 className="h2 reveal" style={{ transitionDelay: '.04s' }}>The abilities that matter</h2>
+      <section className="sec" data-screen-label="Choosing Testlify"><div className="wrap split">
+        <div className="figcard reveal">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://testlify.com/wp-content/uploads/2023/03/Group-253-1-1024x779.png" alt="Choosing Testlify" />
         </div>
-        <div className="grid3">
-          <div className="card reveal"><span className="cic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.663 17h4.673M12 3v1M12 17v4M5 12H4M20 12h-1"></path><circle cx="12" cy="12" r="4"></circle></svg></span><h3 className="h3" style={{ fontSize: 18, marginBottom: 8 }}>Cognitive ability</h3><p className="body" style={{ fontSize: 14 }}>Problem-solving, reasoning and learning agility that predict performance.</p></div>
-          <div className="card reveal" style={{ transitionDelay: '.06s' }}><span className="cic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></span><h3 className="h3" style={{ fontSize: 18, marginBottom: 8 }}>Personality &amp; culture</h3><p className="body" style={{ fontSize: 14 }}>How a person works, collaborates and fits with your team and values.</p></div>
-          <div className="card reveal" style={{ transitionDelay: '.12s' }}><span className="cic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span><h3 className="h3" style={{ fontSize: 18, marginBottom: 8 }}>Role-specific skills</h3><p className="body" style={{ fontSize: 14 }}>Hands-on tests for the exact skills each role demands.</p></div>
+        <div className="reveal" style={{ transitionDelay: '.06s' }}>
+          <p className="eyebrow">Why Testlify<b>.</b></p>
+          <h2 className="h2">Choosing Testlify for your pre-hiring assessments</h2>
+          <ul className="chk">
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Save time:</b> Assess candidates&apos; skills quickly and efficiently, without lengthy interviews or multiple rounds of assessments.</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Improve candidate experience:</b> On-the-job skills tests give candidates a realistic preview of the job and help them prepare for interviews.</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Make data-driven decisions:</b> Objective data helps you make informed decisions when hiring candidates.</li>
+          </ul>
+          <div style={{ marginTop: 26 }}><a href="/product-features" className="intglink">View all Features<span>→</span></a></div>
+        </div>
+      </div></section>
+
+      <section className="sec" style={{ background: '#FBF3EE' }} data-screen-label="Comprehensive tests"><div className="wrap">
+        <div style={{ maxWidth: 760, margin: '0 auto', textAlign: 'center' }}>
+          <p className="eyebrow reveal" style={{ justifyContent: 'center' }}>Test coverage<b>.</b></p>
+          <h2 className="h2 reveal" style={{ transitionDelay: '.04s' }}>Comprehensive tests to evaluate a wide range of skills</h2>
+          <p className="lead reveal" style={{ marginTop: 16, transitionDelay: '.08s' }}>Testlify offers a wide range of on-the-job skills tests to evaluate candidates&apos; abilities in different areas — technical skills, cognitive abilities, and personality traits, giving recruiters a complete picture of each candidate&apos;s capabilities.</p>
+        </div>
+        <div className="cardgrid5 reveal" style={{ transitionDelay: '.1s' }}>
+          <div className="card"><div className="cic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div><h3 style={{ fontSize: 16, fontWeight: 700, margin: '0 0 8px' }}>Technical skills tests</h3><p style={{ fontSize: 13.5, lineHeight: 1.55, color: '#5A4B4E', margin: 0 }}>Evaluate proficiency in programming, software development, web design, and data analytics.</p></div>
+          <div className="card"><div className="cic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 10v6M4.2 4.2l4.2 4.2m7.2 7.2 4.2 4.2M1 12h6m10 0h6M4.2 19.8l4.2-4.2m7.2-7.2 4.2-4.2"></path></svg></div><h3 style={{ fontSize: 16, fontWeight: 700, margin: '0 0 8px' }}>Cognitive abilities tests</h3><p style={{ fontSize: 13.5, lineHeight: 1.55, color: '#5A4B4E', margin: 0 }}>Assess problem-solving skills, critical thinking, logical reasoning, and numerical aptitude.</p></div>
+          <div className="card"><div className="cic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div><h3 style={{ fontSize: 16, fontWeight: 700, margin: '0 0 8px' }}>Situational judgment tests</h3><p style={{ fontSize: 13.5, lineHeight: 1.55, color: '#5A4B4E', margin: 0 }}>Evaluate responses to hypothetical scenarios likely encountered in the workplace.</p></div>
+          <div className="card"><div className="cic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="6" y1="8" x2="6" y2="8"></line><line x1="10" y1="8" x2="10" y2="8"></line></svg></div><h3 style={{ fontSize: 16, fontWeight: 700, margin: '0 0 8px' }}>Typing tests</h3><p style={{ fontSize: 13.5, lineHeight: 1.55, color: '#5A4B4E', margin: 0 }}>Assess typing speed and accuracy — important for data entry or transcription roles.</p></div>
+          <div className="card"><div className="cic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div><h3 style={{ fontSize: 16, fontWeight: 700, margin: '0 0 8px' }}>Job-specific tests</h3><p style={{ fontSize: 13.5, lineHeight: 1.55, color: '#5A4B4E', margin: 0 }}>Evaluate abilities in specific industries or roles — accounting, sales, customer service and more.</p></div>
+        </div>
+      </div></section>
+
+      <section className="sec" data-screen-label="Assess employees"><div className="wrap split">
+        <div className="figcard reveal">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://testlify.com/wp-content/uploads/2023/03/Group-250-1-1024x606.png" alt="Assessing existing employees" />
+        </div>
+        <div className="reveal" style={{ transitionDelay: '.06s' }}>
+          <p className="eyebrow">Employee development<b>.</b></p>
+          <h2 className="h2">Assessing your existing employees&apos; skills with Testlify</h2>
+          <ul className="chk">
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Identify skill gaps:</b> Use assessments to identify skill gaps and develop targeted training programs.</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Provide valuable feedback:</b> Detailed feedback on strengths and weaknesses enables constructive coaching.</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Improve retention:</b> Supported, invested employees are more likely to stay long-term.</li>
+          </ul>
+          <div style={{ marginTop: 26 }}><a href="/product-features" className="intglink">Learn more<span>→</span></a></div>
+        </div>
+      </div></section>
+
+      <section className="sec" style={{ background: '#FBF3EE' }} data-screen-label="Start assessing"><div className="wrap" style={{ maxWidth: 720, textAlign: 'center' }}>
+        <p className="eyebrow reveal" style={{ justifyContent: 'center' }}>Get started<b>.</b></p>
+        <h2 className="h2 reveal" style={{ transitionDelay: '.04s' }}>Start assessing your candidates&apos; skills today</h2>
+        <p className="lead reveal" style={{ marginTop: 16, transitionDelay: '.08s' }}>Are you ready to start assessing your candidates&apos; skills with Testlify? Sign up today and get access to our range of on-the-job skills tests — assess skills quickly and efficiently, while providing valuable insights to help candidates improve.</p>
+        <div className="reveal" style={{ marginTop: 26, transitionDelay: '.12s' }}>
+          <CtaButton label="Try for free" href="/pricing" variant="primary" size="md" icon="arrow" magnetic />
+        </div>
+      </div></section>
+
+      <section className="sec" style={{ background: '#FBF3EE' }} data-screen-label="ATS integrations"><div className="wrap">
+        <div style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto 44px' }}>
+          <p className="eyebrow reveal" style={{ justifyContent: 'center' }}>Integrations<b>.</b></p>
+          <h2 className="h2 reveal" style={{ transitionDelay: '.06s' }}>Testlify integrates seamlessly with 100+ ATS tools</h2>
+          <p className="lead reveal" style={{ marginTop: 14, transitionDelay: '.12s' }}>Native integrations with Workday, Greenhouse, Lever, iCIMS, and 97 more ATS platforms — no middleware, no data mapping required.</p>
+        </div>
+        <div className="intg-grid reveal" style={{ transitionDelay: '.16s' }}>
+          <div className="intg-tile">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://testlify.com/wp-content/uploads/2024/09/Workday_Inc.-Logo.wine_-1-2048x1365-2.png" alt="Workday" /></div>
+          <div className="intg-tile">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://testlify.com/wp-content/uploads/2023/03/629a0bbcb04c5ae587c411c2-1-1.png" alt="Greenhouse" /></div>
+          <div className="intg-tile">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://testlify.com/wp-content/uploads/2025/10/Lever_Employ_Logo_Horizontal_Turquoise_Black-300x43-1.png?wsr" alt="Lever" /></div>
+          <div className="intg-tile">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://testlify.com/wp-content/uploads/2025/10/SR-SAP-Logo.svg" alt="SmartRecruiters" /></div>
+          <div className="intg-tile">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://testlify.com/wp-content/uploads/2024/09/BambooHR-Logo-1-2048x1152-2.png" alt="BambooHR" /></div>
+          <div className="intg-tile">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://testlify.com/wp-content/uploads/2025/10/Successfactors-Logo-Vector.svg-.png?wsr" alt="SuccessFactors" /></div>
+          <div className="intg-tile">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://testlify.com/wp-content/uploads/2025/10/logo.svg" alt="UKG" /></div>
+          <div className="intg-tile">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://testlify.com/wp-content/uploads/2025/10/681b1f74457e6f968fdaaa8d_MASTER_RECRUITEE_COLOUR_PREFERRED-LOGO-TO-USE-1024x313.png?wsr" alt="Recruitee" /></div>
+          <div className="intg-tile">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://testlify.com/wp-content/uploads/2024/08/zoho-recruit-logo-1.png" alt="Zoho Recruit" /></div>
+          <div className="intg-tile">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://testlify.com/wp-content/uploads/2025/10/JazzHR_Employ_Logo_Horizontal_Purple_Black-1024x131.png?wsr" alt="JazzHR" /></div>
+        </div>
+        <div className="reveal" style={{ textAlign: 'center', marginTop: 26, transitionDelay: '.2s' }}><a href="/integrations" className="intglink">View all ATS integrations<span>→</span></a></div>
+      </div></section>
+
+      <SecuritySection
+        eyebrow="Security"
+        heading="Built to keep your organization secure"
+        sub="Top-tier admin management, enhanced security integrations, stringent data governance, comprehensive compliance audits and strong privacy protections."
+      />
+
+      <Testimonials />
+
+      <Recognition />
+
+      <section className="sec" style={{ background: '#FBF3EE' }} data-screen-label="FAQ"><div className="wrap" style={{ maxWidth: 840 }}>
+        <div style={{ textAlign: 'center', marginBottom: 44 }}>
+          <p className="eyebrow reveal" style={{ justifyContent: 'center' }}>FAQ<b>.</b></p>
+          <h2 className="h2 reveal" style={{ transitionDelay: '.04s' }}>Frequently asked questions (FAQs)</h2>
+        </div>
+        <div className="reveal">
+          <FAQ items={faqItems} />
         </div>
       </div></section>
 

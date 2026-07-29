@@ -14,39 +14,82 @@
 </helmet>
 <dc-import name="component-site-header" announcement="Press &amp; media enquiries welcome" announcement-cta="Contact press" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
 
+<style>
+.presstabs{display:flex;justify-content:center;gap:8px;margin:0 0 30px;}
+.presstab{font-size:14px;font-weight:600;color:#8A7A7D;text-decoration:none;padding:9px 18px;border-radius:999px;}
+.presstab.on{background:#fff;color:#1A1014;box-shadow:0 4px 14px rgba(110,11,14,.10);}
+.newsrow{display:flex;flex-direction:column;gap:0;}
+.newsitem{display:grid;grid-template-columns:120px 1fr auto;gap:20px;align-items:center;padding:22px 0;border-bottom:1px solid #F0E2E3;}
+.newsitem:last-child{border-bottom:none;}
+.newsdate{font-size:13px;color:#8A7A7D;font-weight:600;}
+.newstitle{font-size:16px;font-weight:700;color:#1A1014;line-height:1.4;}
+.newslink{font-size:14px;font-weight:700;color:#F23F44;text-decoration:none;white-space:nowrap;}
+.newslink:hover{color:#A91E23;}
+@media(max-width:720px){.newsitem{grid-template-columns:1fr;gap:6px;}}
+</style>
+
 <section class="phero"><div class="wrap" style="max-width:860px;">
-  <p class="eyebrow reveal">Press kit<b>.</b></p>
-  <h1 class="h1 reveal" style="transition-delay:.04s">Everything you<br>need to tell our story</h1>
-  <p class="lead reveal" style="margin:22px auto 0;max-width:640px;transition-delay:.08s">Logos, brand assets, company facts and executive bios — all in one place. Writing about Testlify? Grab what you need or reach out to our team.</p>
-  <div class="reveal btnrow" style="margin-top:30px;transition-delay:.12s;">
-    <dc-import name="component-cta-button" label="Download brand assets" href="brand.dc.html" variant="primary" size="md" icon="arrow" hint-size="220px,52px"></dc-import>
-    <dc-import name="component-cta-button" label="Contact press" href="contact.dc.html" variant="ghost" size="md" icon="none" hint-size="150px,52px"></dc-import>
+  <div class="presstabs reveal"><a class="presstab" href="press-room.dc.html">Latest press</a><a class="presstab" href="awards.dc.html">Awards and recognition</a><a class="presstab on" href="press-kit.dc.html">Press kit</a></div>
+  <p class="eyebrow reveal" style="transition-delay:.04s;">Press &amp; media<b>.</b></p>
+  <h1 class="h1 reveal" style="transition-delay:.08s">Assets for press &amp; <span style="color:#F23F44;">media</span></h1>
+  <p class="lead reveal" style="margin:22px auto 0;max-width:640px;transition-delay:.12s">Explore Testlify's official press kit, including brand guidelines, logos, product visuals, executive headshots, company facts, and media-ready resources.</p>
+  <div class="grid2 reveal" style="margin-top:36px;transition-delay:.16s;max-width:640px;margin-left:auto;margin-right:auto;">
+    <img src="https://testlify.com/wp-content/uploads/2026/05/Assets-for-press-media-867x1024.png" alt="Assets for press media" style="width:100%;border-radius:16px;box-shadow:0 16px 30px rgba(110,11,14,.10);">
+    <img src="https://testlify.com/wp-content/uploads/2026/05/Press-and-media-kit-867x1024.png" alt="Press and media kit" style="width:100%;border-radius:16px;box-shadow:0 16px 30px rgba(110,11,14,.10);">
   </div>
 </div></section>
 
 <section class="sec"><div class="wrap">
   <div class="center-head">
-    <p class="eyebrow reveal">Company facts<b>.</b></p>
-    <h2 class="h2 reveal" style="transition-delay:.04s">Testlify at a glance</h2>
+    <p class="eyebrow reveal">Downloads<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">Press and media kit</h2>
   </div>
   <div class="grid4">
-    <div class="card reveal" style="text-align:center;"><div class="statn" style="font-size:36px;">2021</div><p class="body" style="font-size:13.5px;margin-top:10px;">Founded</p></div>
-    <div class="card reveal" style="transition-delay:.05s;text-align:center;"><div class="statn" style="font-size:36px;">100+</div><p class="body" style="font-size:13.5px;margin-top:10px;">Team members</p></div>
-    <div class="card reveal" style="transition-delay:.1s;text-align:center;"><div class="statn" style="font-size:36px;">3,500+</div><p class="body" style="font-size:13.5px;margin-top:10px;">Validated tests</p></div>
-    <div class="card reveal" style="transition-delay:.15s;text-align:center;"><div class="statn" style="font-size:36px;">1,500+</div><p class="body" style="font-size:13.5px;margin-top:10px;">Hiring teams</p></div>
+    <div class="card reveal"><h3 class="h3" style="font-size:16px;margin-bottom:8px;">Testlify brand assets</h3><a class="lnk" href="https://testlify.com/wp-content/uploads/2026/05/Testlify-Brand-Assets.zip" target="_blank" rel="noopener" style="font-size:14px;">Download →</a></div>
+    <div class="card reveal" style="transition-delay:.05s;"><h3 class="h3" style="font-size:16px;margin-bottom:8px;">Executive leadership headshots</h3><a class="lnk" href="https://testlify.com/wp-content/uploads/2026/05/Executive-leadership-headshots.zip" target="_blank" rel="noopener" style="font-size:14px;">Download →</a></div>
+    <div class="card reveal" style="transition-delay:.1s;"><h3 class="h3" style="font-size:16px;margin-bottom:8px;">About Testlify demo video</h3><a class="lnk" href="https://www.youtube.com/watch?v=MV2FFw_mDuE" target="_blank" rel="noopener" style="font-size:14px;">Watch now →</a></div>
+    <div class="card reveal" style="transition-delay:.12s;"><h3 class="h3" style="font-size:16px;margin-bottom:8px;">About Testlify interview library</h3><a class="lnk" href="https://www.youtube.com/watch?v=N63GktITauw" target="_blank" rel="noopener" style="font-size:14px;">Watch now →</a></div>
+    <div class="card reveal" style="transition-delay:.15s;"><h3 class="h3" style="font-size:16px;margin-bottom:8px;">Founder bios &amp; company boilerplate</h3><a class="lnk" href="https://docs.google.com/document/d/1z0wRm7Alt1eL_AJ3xzMc3_mxzt5Xi3d820jLbSb4ios/export?format=pdf" target="_blank" rel="noopener" style="font-size:14px;">Download →</a></div>
   </div>
 </div></section>
 
-<section class="sec" style="background:#FBF3EE;"><div class="wrap split">
-  <div class="reveal">
-    <p class="eyebrow">Boilerplate<b>.</b></p>
-    <h2 class="h2" style="margin-bottom:20px;">About Testlify</h2>
-    <p class="body">Testlify is an AI-native, skills-based talent assessment platform helping companies hire the best talent quickly, easily and affordably. With 3,500+ validated tests, AI video, audio and chat interviews, and 100+ ATS integrations, Testlify replaces resume guesswork with verified skill.</p>
-    <p class="body" style="margin-top:14px;">Founded in 2021 and backed by SHRM Labs, Google for Startups, Microsoft for Startups and NVIDIA Inception, Testlify serves 1,500+ hiring teams across 50+ industries and 150+ countries.</p>
+<section class="sec" style="background:#FBF3EE;"><div class="wrap">
+  <div class="center-head">
+    <p class="eyebrow reveal">Learn more<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">Resources for modern hiring teams</h2>
   </div>
-  <div class="reveal" style="transition-delay:.08s;">
-    <div class="card" style="margin-bottom:16px;"><h3 class="h3" style="font-size:17px;margin-bottom:6px;">Media enquiries</h3><p class="body" style="font-size:14px;">Reach our communications team for interviews, quotes and data requests.</p><a class="lnk" href="contact.dc.html" style="display:inline-block;margin-top:10px;font-size:14px;">press@testlify.com →</a></div>
-    <div class="card"><h3 class="h3" style="font-size:17px;margin-bottom:6px;">Awards &amp; recognition</h3><p class="body" style="font-size:14px;">See the badges, medals and honours Testlify has earned.</p><a class="lnk" href="awards.dc.html" style="display:inline-block;margin-top:10px;font-size:14px;">View awards →</a></div>
+  <div class="grid3" style="margin-top:36px;">
+    <div class="card reveal"><h3 class="h3" style="font-size:15.5px;margin-bottom:10px;">What are the top platforms for pre-hire assessments in enterprises?</h3><a class="lnk" href="https://testlify.com/top-10-pre-hire-assessment-platforms-for-enterprises/" target="_blank" rel="noopener" style="font-size:14px;">Read the article →</a></div>
+    <div class="card reveal" style="transition-delay:.05s;"><h3 class="h3" style="font-size:15.5px;margin-bottom:10px;">Best skills assessment question libraries: 3500+ skills coverage (Tech &amp; non-tech)</h3><a class="lnk" href="https://testlify.com/best-skills-assessment-question-libraries/" target="_blank" rel="noopener" style="font-size:14px;">Read the article →</a></div>
+    <div class="card reveal" style="transition-delay:.1s;"><h3 class="h3" style="font-size:15.5px;margin-bottom:10px;">How does skills mapping enable skills-based organizations?</h3><a class="lnk" href="https://testlify.com/skills-based-organizations/" target="_blank" rel="noopener" style="font-size:14px;">Read the article →</a></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="center-head">
+    <p class="eyebrow reveal">HR tools<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">Free tools &amp; calculators for HR teams</h2>
+  </div>
+  <div class="grid3" style="margin-top:36px;">
+    <div class="card reveal"><h3 class="h3" style="font-size:15.5px;margin-bottom:10px;">Free AI job description generator</h3><a class="lnk" href="job-description-generator.dc.html" style="font-size:14px;">Try now →</a></div>
+    <div class="card reveal" style="transition-delay:.05s;"><h3 class="h3" style="font-size:15.5px;margin-bottom:10px;">Attrition rate calculator</h3><a class="lnk" href="attrition-rate-calculator.dc.html" style="font-size:14px;">Calculate attrition rates →</a></div>
+    <div class="card reveal" style="transition-delay:.1s;"><h3 class="h3" style="font-size:15.5px;margin-bottom:10px;">Employee Net Promoter Score (eNPS) calculator</h3><a class="lnk" href="free-employee-net-promoter-score-enps-calculator.dc.html" style="font-size:14px;">Know eNPS →</a></div>
+  </div>
+  <div class="reveal" style="text-align:center;margin-top:26px;transition-delay:.15s;"><a class="lnk" href="resource-tools-detail.dc.html">Browse 12+ free hiring calculators →</a></div>
+</div></section>
+
+<section class="sec" style="background:#FBF3EE;"><div class="wrap">
+  <div class="center-head">
+    <p class="eyebrow reveal">About<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">About Testlify</h2>
+  </div>
+  <div class="reveal" style="max-width:760px;margin:0 auto;transition-delay:.08s;">
+    <p class="body">Testlify is a leading AI-native skills assessment and interviewing platform helping companies hire faster, smarter, and more confidently.</p>
+    <p class="body" style="margin-top:14px;">With a library of 3,500+ technical and non-technical skill assessments, Testlify helps companies identify top talent across engineering, sales, customer support, marketing, operations, and more.</p>
+    <p class="body" style="margin-top:14px;">Trusted by 40,000+ recruiters and 1,500+ companies across 50+ countries, Testlify supports organizations of all sizes in building stronger, fairer, and more efficient hiring processes. The platform is built with enterprise-grade security and compliance standards, including SOC 2, GDPR, and ISO certifications.</p>
+    <p class="body" style="margin-top:14px;">Testlify has also been recognized through leading industry programs and startup ecosystems, including SHRM Labs' Workplace Innovator Program, and is backed by industry leaders and HR innovators shaping the future of work.</p>
+    <p class="body" style="margin-top:14px;">From startups to global enterprises, Testlify is helping teams reduce bias, improve hiring quality, and make confident talent decisions at scale.</p>
+    <p class="body" style="margin-top:14px;">For the latest company announcements, media coverage, awards, and brand resources, visit the <a class="lnk" href="press-room.dc.html">Testlify Press &amp; Media page</a>.</p>
   </div>
 </div></section>
 

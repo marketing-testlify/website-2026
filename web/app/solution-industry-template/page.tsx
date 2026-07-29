@@ -8,7 +8,7 @@ import CtaButton from '@/components/CtaButton';
 import Recognition from '@/components/Recognition';
 import CtaBand from '@/components/CtaBand';
 
-const CSS = `
+const css = `
 body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsdw{max-width:1240px;margin:0 auto;padding:0 28px;}
 .tsd-sec{padding:96px 0;}
@@ -29,7 +29,6 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 .tsd-shot{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:10px;box-shadow:0 40px 90px rgba(110,11,14,.14);}
 .tsd-shot image-slot{display:block;width:100%;height:360px;border-radius:14px;overflow:hidden;}
 .tsd-shotimg{display:block;width:100%;height:360px;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#fff;border-radius:14px;}
-.tsd-slot{display:block;width:100%;height:360px;border-radius:14px;background:#FBF3EE;}
 .tsd-logos{margin-top:40px;}
 .tsd-logos-l{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#A9999C;margin:0 0 14px;}
 .tsd-logos-r{display:flex;gap:12px;flex-wrap:wrap;}
@@ -102,23 +101,40 @@ body{margin:0;font-family:'Poppins',sans-serif;color:#1A1014;background:#fff;}
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
-const Check = () => (
+const CHK = (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
 );
 
-const Star = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 18.6 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"></path></svg>
+const ARROW = (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
 );
 
-const ClockIcon = () => (
+const CIRCLE_CLOCK = (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 2"></path></svg>
+);
+
+const STAR = (
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 18.6 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"></path></svg>
 );
 
 const stats = ['3,500+ validated tests', '45+ coding languages', '100+ ATS integrations'];
 const logos = ['LTIMindtree', 'Sonatafy', 'Thales', 'Third Bridge', 'Cogitotech'];
 
-const section1Bullets = ['Full-stack development', 'Frontend (React, Angular, Vue)', 'Backend (Node.js, Java, Python)', 'Data science & analytics', 'QA & automation', 'DevOps & cloud'];
-const section2Bullets = ['Role-specific tests with 15+ question types', 'Mix coding, real-world and logic tasks', 'Simulate frontend, backend, data & DevOps scenarios', 'Auto-rank by performance and efficiency'];
+const bullets1 = [
+  'Full-stack development',
+  'Frontend (React, Angular, Vue)',
+  'Backend (Node.js, Java, Python)',
+  'Data science & analytics',
+  'QA & automation',
+  'DevOps & cloud',
+];
+
+const bullets2 = [
+  'Role-specific tests with 15+ question types',
+  'Mix coding, real-world and logic tasks',
+  'Simulate frontend, backend, data & DevOps scenarios',
+  'Auto-rank by performance and efficiency',
+];
 
 const cards = [
   { title: 'Real-world coding environments', desc: 'Interactive IDEs across 45+ stacks that mirror day-to-day engineering work.' },
@@ -154,32 +170,46 @@ export default function SolutionIndustryTemplatePage() {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Testlify AI is here — screen, interview & score candidates automatically." />
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+      <SiteHeader
+        announcement="Testlify AI is here — screen, interview & score candidates automatically."
+        homeHref="/"
+      />
 
-      <section className="tsd-hero" data-screen-label="Hero"><div className="tsdw tsd-hgrid">
-        <div className="tsd-copy reveal">
-          <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Industry / IT &amp; technology</span></div>
-          <p className="eyebrow">For IT teams<b>.</b></p>
-          <h1 className="tsd-h1">The all-in-one talent assessment platform built for <span style={{ color: '#F23F44' }}>IT teams</span></h1>
-          <p className="tsd-lead">From developers and DevOps to data analysts, assess real-world skills, cut hiring time in half, and build high-performing tech teams faster.</p>
-          <div className="tsd-stats">
-            {stats.map((st, i) => (<span className="tsd-statc" key={i}>{st}</span>))}
+      <section className="tsd-hero" data-screen-label="Hero">
+        <div className="tsdw tsd-hgrid">
+          <div className="tsd-copy reveal">
+            <div className="tsd-crumb"><Link href="/solution-index">Solutions</Link><span>/</span><span>Industry / IT & technology</span></div>
+            <p className="eyebrow">For IT teams<b>.</b></p>
+            <h1 className="tsd-h1">The all-in-one talent assessment platform built for <span style={{ color: '#F23F44' }}>IT teams</span></h1>
+            <p className="tsd-lead">From developers and DevOps to data analysts, assess real-world skills, cut hiring time in half, and build high-performing tech teams faster.</p>
+            <div className="tsd-stats">
+              {stats.map((s) => (
+                <span className="tsd-statc" key={s}>{s}</span>
+              ))}
+            </div>
+            <div className="tsd-ctas">
+              <CtaButton label="Try for free" href="/pricing" variant="primary" size="md" icon="arrow" magnetic />
+              <CtaButton label="Book a demo" href="#demo" variant="secondary" size="md" icon="play" />
+            </div>
+            <div className="tsd-ticks">
+              <span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>No credit card required</span>
+              <span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>7-day free trial</span>
+            </div>
           </div>
-          <div className="tsd-ctas">
-            <CtaButton label="Try for free" href="/pricing" variant="primary" size="md" icon="arrow" magnetic />
-            <CtaButton label="Book a demo" href="#demo" variant="secondary" size="md" icon="play" />
-          </div>
-          <div className="tsd-ticks"><span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>No credit card required</span><span className="tsd-tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F23F44" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>7-day free trial</span></div>
+          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg"></div></div></div>
         </div>
-        <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-slot"></div></div></div>
-      </div>
-        <div className="tsdw tsd-logos reveal"><p className="tsd-logos-l">Trusted by 1,500+ hiring teams</p><div className="tsd-logos-r">
-          {logos.map((lg, i) => (<span className="tsd-logo" key={i}>{lg}</span>))}
-        </div></div>
+        <div className="tsdw tsd-logos reveal">
+          <p className="tsd-logos-l">Trusted by 1,500+ hiring teams</p>
+          <div className="tsd-logos-r">
+            {logos.map((lg) => (
+              <span className="tsd-logo" key={lg}>{lg}</span>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* Section 1 — split, num 1 */}
+      {/* Section 0 — split, num 1 */}
       <section className="tsd-sec"><div className="tsdw">
         <div className="tsd-grid2">
           <div className="tsd-copy reveal">
@@ -187,17 +217,17 @@ export default function SolutionIndustryTemplatePage() {
             <h2 className="tsd-h2">Hire the right tech talent with real-world skill validation</h2>
             <p className="tsd-p">Assessments designed by developers, for developers. Interactive coding environments and 45+ language challenges mimic on-the-job responsibilities — so you see how candidates actually work, not just what they claim.</p>
             <div className="tsd-bl">
-              {section1Bullets.map((b, i) => (
-                <div className="tsd-bi" key={i}><Check /><span className="tsd-bt">{b}</span></div>
+              {bullets1.map((b) => (
+                <div className="tsd-bi" key={b}>{CHK}<span className="tsd-bt">{b}</span></div>
               ))}
             </div>
-            <Link className="tsd-link" href="/test-library">Explore IT assessments<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
+            <a className="tsd-link" href="/test-library">Explore IT assessments{ARROW}</a>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-slot"></div></div></div>
+          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg"></div></div></div>
         </div>
       </div></section>
 
-      {/* Section 2 — split flipped, sand, num 2 */}
+      {/* Section 1 — split flip, sand */}
       <section className="tsd-sec tsd-sand"><div className="tsdw">
         <div className="tsd-grid2 tsd-flip">
           <div className="tsd-copy reveal">
@@ -205,22 +235,26 @@ export default function SolutionIndustryTemplatePage() {
             <h2 className="tsd-h2">Assess tech talent in one platform with 15+ interactive question types</h2>
             <p className="tsd-p">Combine MCQs, live coding simulations, system design and debugging tasks into a single assessment. Auto-rank candidates by performance, accuracy and efficiency.</p>
             <div className="tsd-bl">
-              {section2Bullets.map((b, i) => (
-                <div className="tsd-bi" key={i}><Check /><span className="tsd-bt">{b}</span></div>
+              {bullets2.map((b) => (
+                <div className="tsd-bi" key={b}>{CHK}<span className="tsd-bt">{b}</span></div>
               ))}
             </div>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-slot"></div></div></div>
+          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg"></div></div></div>
         </div>
       </div></section>
 
-      {/* Section 3 — cards */}
+      {/* Section 2 — cards, white */}
       <section className="tsd-sec"><div className="tsdw">
-        <div className="tsd-shead reveal"><p className="eyebrow">Why Testlify<b>.</b></p><h2 className="tsd-h2">Enterprise-ready. Scalable. Built for global tech hiring</h2><p className="tsd-lead">Everything a modern engineering org needs to hire on proof, not resumes.</p></div>
+        <div className="tsd-shead reveal">
+          <p className="eyebrow">Why Testlify<b>.</b></p>
+          <h2 className="tsd-h2">Enterprise-ready. Scalable. Built for global tech hiring</h2>
+          <p className="tsd-lead">Everything a modern engineering org needs to hire on proof, not resumes.</p>
+        </div>
         <div className="tsd-cards">
-          {cards.map((c, i) => (
-            <div className="tsd-card reveal" key={i}>
-              <div className="tsd-ic"><ClockIcon /></div>
+          {cards.map((c) => (
+            <div className="tsd-card reveal" key={c.title}>
+              <div className="tsd-ic">{CIRCLE_CLOCK}</div>
               <p className="tsd-ct">{c.title}</p>
               <p className="tsd-cd">{c.desc}</p>
             </div>
@@ -228,54 +262,67 @@ export default function SolutionIndustryTemplatePage() {
         </div>
       </div></section>
 
-      {/* Section 4 — split, sand, num 3 */}
+      {/* Section 3 — split, sand, num 3 */}
       <section className="tsd-sec tsd-sand"><div className="tsdw">
         <div className="tsd-grid2">
           <div className="tsd-copy reveal">
             <span className="tsd-num">3</span>
             <h2 className="tsd-h2">Cost-effective at scale</h2>
             <p className="tsd-p">Reduce cost-per-hire and recruiter hours through automation, with scalable, transparent pricing. Fewer mis-hires means measurable ROI on every requisition.</p>
-            <Link className="tsd-link" href="/pricing">See pricing<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
+            <a className="tsd-link" href="/pricing">See pricing{ARROW}</a>
           </div>
-          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-slot"></div></div></div>
+          <div className="tsd-media reveal"><div className="tsd-shot"><div className="tsd-shotimg"></div></div></div>
         </div>
       </div></section>
 
-      {/* Testimonials */}
       <section className="tsd-sec"><div className="tsdw">
         <div className="tsd-shead reveal"><p className="eyebrow">Loved by hiring teams<b>.</b></p><h2 className="tsd-h2">Recruiters who hire on proof</h2></div>
         <div className="tsd-tgrid">
-          {testimonials.map((t, i) => (
-            <div className="tsd-tcard reveal" key={i}>
-              <div className="tsd-stars"><Star /><Star /><Star /><Star /><Star /></div>
+          {testimonials.map((t) => (
+            <div className="tsd-tcard reveal" key={t.name}>
+              <div className="tsd-stars">{STAR}{STAR}{STAR}{STAR}{STAR}</div>
               <p className="tsd-quote">{t.quote}</p>
-              <div className="tsd-author"><span className="tsd-avatar">{t.initials}</span><span><span className="tsd-aname">{t.name}</span><span className="tsd-arole">{t.role}</span></span></div>
+              <div className="tsd-author">
+                <span className="tsd-avatar">{t.initials}</span>
+                <span><span className="tsd-aname">{t.name}</span><span className="tsd-arole">{t.role}</span></span>
+              </div>
             </div>
           ))}
         </div>
       </div></section>
 
-      {/* ATS band */}
       <section className="tsd-sec tsd-sand"><div className="tsdw">
-        <div className="tsd-shead reveal"><p className="eyebrow">Fits your stack<b>.</b></p><h2 className="tsd-h2">Works with the ATS you already use</h2><p className="tsd-lead">Push assessment results straight into your workflow with 100+ native, two-way integrations.</p></div>
+        <div className="tsd-shead reveal">
+          <p className="eyebrow">Fits your stack<b>.</b></p>
+          <h2 className="tsd-h2">Works with the ATS you already use</h2>
+          <p className="tsd-lead">Push assessment results straight into your workflow with 100+ native, two-way integrations.</p>
+        </div>
         <div className="tsd-atsgrid reveal">
-          {atsLogos.map((a, i) => (<span className="tsd-atslogo" key={i}>{a}</span>))}
-          <Link className="tsd-atsmore" href="/integrations">+100 more<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></Link>
+          {atsLogos.map((a) => (
+            <span className="tsd-atslogo" key={a}>{a}</span>
+          ))}
+          <a className="tsd-atsmore" href="/integrations">+100 more{ARROW}</a>
         </div>
       </div></section>
 
       <section className="tsd-trust"><div className="tsdw tsd-trow reveal">
         <div className="tsd-g2"><span className="tsd-g2n">4.7</span><span className="tsd-g2l">Rated 4.7 on G2<br />by 1,000+ reviewers</span></div>
-        <div className="tsd-badges"><span className="tsd-badge">SOC 2 TYPE II</span><span className="tsd-badge">ISO 27001</span><span className="tsd-badge">GDPR</span><span className="tsd-badge">CCPA</span><span className="tsd-badge">100+ ATS INTEGRATIONS</span></div>
+        <div className="tsd-badges">
+          <span className="tsd-badge">SOC 2 TYPE II</span>
+          <span className="tsd-badge">ISO 27001</span>
+          <span className="tsd-badge">GDPR</span>
+          <span className="tsd-badge">CCPA</span>
+          <span className="tsd-badge">100+ ATS INTEGRATIONS</span>
+        </div>
       </div></section>
 
-      <Recognition bg="#FBF3EE" />
+      <Recognition />
 
       <section className="tsd-sec"><div className="tsdw">
         <div className="tsd-shead reveal"><p className="eyebrow">FAQ<b>.</b></p><h2 className="tsd-h2">Frequently asked questions</h2></div>
         <div className="tsd-faqw">
           {faqs.map((f, i) => (
-            <div className={`tsd-faq reveal ${open[i] ? 'tsd-open' : ''}`} key={i} onClick={() => toggle(i)}>
+            <div className={'tsd-faq reveal' + (open[i] ? ' tsd-open' : '')} key={f.q} onClick={() => toggle(i)}>
               <div className="tsd-faqq">{f.q}<span className="tsd-faqx">+</span></div>
               <div className="tsd-faqa">{f.a}</div>
             </div>
@@ -292,8 +339,8 @@ export default function SolutionIndustryTemplatePage() {
           <CtaButton label="Book a demo" href="#" variant="light" size="lg" icon="play" />
         </div>
         <div className="tsd-ticks">
-          {ctaTicks.map((tk, i) => (
-            <span className="tsd-tick" key={i}><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F76A6E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>{tk}</span>
+          {ctaTicks.map((tk) => (
+            <span className="tsd-tick" key={tk}><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F76A6E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>{tk}</span>
           ))}
         </div>
       </div></section>
