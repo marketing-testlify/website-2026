@@ -78,12 +78,12 @@ export default function SiteFooter() {
             <Link href="/test-library" className="flink">Test library</Link>
             <Link href="/integrations" className="flink">ATS integrations</Link>
             <Link href="/science" className="flink">Science</Link>
-            <Link href="/features#reporting" className="flink">Analytics</Link>
-            <Link href="/features#developers" className="flink">API</Link>
-            <Link href="/pricing" className="flink">Reseller plan</Link>
+            <Link href="/reporting-analytics" className="flink">Analytics</Link>
+            <Link href="/api" className="flink">API</Link>
+            <Link href="/reseller-plan" className="flink">Reseller plan</Link>
             <Link href="/features" className="flink">Features</Link>
-            <a href="https://roadmap.testlify.com/" target="_blank" rel="noopener" className="flink">What&apos;s new</a>
-            <Link href="/features" className="flink">White label</Link>
+            <Link href="/whats-new" className="flink">What&apos;s new</Link>
+            <Link href="/white-label" className="flink">White label</Link>
             <Link href="/video-interviewing-tool" className="flink">Video interviewing</Link>
             <a href="https://roadmap.testlify.com/" target="_blank" rel="noopener" className="flink">Product roadmap</a>
           </div></div>
@@ -103,13 +103,13 @@ export default function SiteFooter() {
           </div></div>
           <div><div className="sf-h">Resources</div><div className="sf-col">
             <Link href="/blog" className="flink">Blog</Link>
-            <Link href="/careers" className="flink">Join Testlify SME</Link>
-            <Link href="/our-partners" className="flink">Integration program</Link>
+            <Link href="/subject-matter-experts" className="flink">Join Testlify SME</Link>
+            <Link href="/integration-program" className="flink">Integration program</Link>
             <Link href="/sitemap" className="flink">Sitemap</Link>
-            <Link href="/blog" className="flink">Knowledge base</Link>
-            <Link href="/blog" className="flink">Podcast</Link>
-            <Link href="/our-partners" className="flink">Referral program</Link>
-            <Link href="/our-partners" className="flink">Partnership program</Link>
+            <Link href="/knowledge-base" className="flink">Knowledge base</Link>
+            <Link href="/podcast" className="flink">Podcast</Link>
+            <Link href="/referral-program" className="flink">Referral program</Link>
+            <Link href="/partnership" className="flink">Partnership program</Link>
             <Link href="/customer-success-stories" className="flink">Success stories</Link>
             <Link href="/alternatives" className="flink">Competitors</Link>
             <Link href="/hiring-guides" className="flink">Hiring guides</Link>
@@ -117,27 +117,27 @@ export default function SiteFooter() {
             <Link href="/hr-tools" className="flink">HR tools</Link>
           </div></div>
           <div><div className="sf-h">Terms</div><div className="sf-col">
-            <Link href="/company-legal" className="flink">Privacy policy</Link>
-            <Link href="/company-legal" className="flink">Terms &amp; conditions</Link>
-            <Link href="/company-legal" className="flink">Refund policy</Link>
-            <Link href="/company-legal" className="flink">GDPR compliance</Link>
-            <Link href="/company-legal" className="flink">Cookie policy</Link>
-            <Link href="/company-legal" className="flink">Security practices</Link>
-            <Link href="/security" className="flink">Security</Link>
-            <Link href="/company-legal" className="flink">Data processing agreement</Link>
-            <Link href="/company-legal" className="flink">Data privacy framework</Link>
-            <Link href="/company-legal" className="flink">CCPA</Link>
-            <Link href="/security" className="flink">Trust center</Link>
+            <Link href="/privacy-policy" className="flink">Privacy policy</Link>
+            <Link href="/terms" className="flink">Terms &amp; conditions</Link>
+            <Link href="/fair-refund-policy" className="flink">Refund policy</Link>
+            <Link href="/gdpr-compliance" className="flink">GDPR compliance</Link>
+            <Link href="/cookie-policy" className="flink">Cookie policy</Link>
+            <Link href="/security-practices" className="flink">Security practices</Link>
+            <a href="https://trust.testlify.com/" target="_blank" rel="noopener" className="flink">Security</a>
+            <Link href="/data-processing-agreement" className="flink">Data processing agreement</Link>
+            <Link href="/data-privacy-framework" className="flink">Data privacy framework</Link>
+            <Link href="/ccpa" className="flink">CCPA</Link>
+            <a href="https://trust.testlify.com/" target="_blank" rel="noopener" className="flink">Trust center</a>
           </div></div>
           <div><div className="sf-h">Company</div><div className="sf-col">
             <Link href="/about" className="flink">About us</Link>
             <Link href="/careers" className="flink">Careers</Link>
-            <Link href="/careers" className="flink">For subject matter experts</Link>
+            <Link href="/subject-matter-experts" className="flink">For subject matter experts</Link>
             <Link href="/customer-success-stories" className="flink">Clients</Link>
             <Link href="/our-partners" className="flink">Our partners</Link>
-            <Link href="/about" className="flink">Press room</Link>
-            <Link href="/about" className="flink">Investors</Link>
-            <Link href="/careers" className="flink">Write for us</Link>
+            <Link href="/press-room" className="flink">Press room</Link>
+            <Link href="/investors" className="flink">Investors</Link>
+            <Link href="/write-for-us" className="flink">Write for us</Link>
             <Link href="/contact" className="flink">Contact us</Link>
             <a href="https://help.testlify.com/" target="_blank" rel="noopener" className="flink">Help center</a>
           </div></div>
@@ -157,7 +157,7 @@ export default function SiteFooter() {
         </div>
         <div className="sf-bottom" style={{ paddingTop: '0px' }}>
           <span>© 2026 Testlify. All rights reserved.</span>
-          <div className="sf-legal"><Link href="/company-legal" className="flink">Privacy policy</Link><Link href="/company-legal" className="flink">Terms &amp; conditions</Link><Link href="/security" className="flink">Security</Link><Link href="/company-legal" className="flink">GDPR</Link><Link href="/company-legal" className="flink">Cookie policy</Link></div>
+          <div className="sf-legal"><Link href="/privacy-policy" className="flink">Privacy policy</Link><Link href="/terms" className="flink">Terms &amp; conditions</Link><a href="https://trust.testlify.com/" target="_blank" rel="noopener" className="flink">Security</a><Link href="/gdpr-compliance" className="flink">GDPR</Link><Link href="/cookie-policy" className="flink">Cookie policy</Link></div>
         </div>
       </div>
     </footer>

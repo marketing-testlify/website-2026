@@ -8,64 +8,186 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./site-base.css">
 <script src="./reveal.js"></script>
 <style>
 .swatch{border-radius:16px;padding:20px;height:120px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;font-weight:600;font-size:13px;border:1px solid rgba(0,0,0,.05);}
 .swcode{font-size:12px;opacity:.85;font-weight:500;}
-.logobox{background:#fff;border:1px solid #EFE2E3;border-radius:16px;height:130px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;letter-spacing:-.6px;color:#1A1014;}
-.logobox.dark{background:#1A1014;color:#fff;}
+.chk li>svg{position:absolute;left:0;top:2px;color:#22A05B;}
+.dontlist{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
+.dontlist li{position:relative;padding-left:32px;font-size:15px;line-height:1.55;color:#5A4B4E;}
+.dontlist li>svg{position:absolute;left:0;top:2px;color:#F23F44;}
+.instrcard{background:#fff;border:1px solid #F0E2E3;border-radius:14px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start;box-shadow:0 16px 30px rgba(110,11,14,.10);margin-bottom:14px;}
+.instrcard svg{flex:none;margin-top:2px;}
+.instrcard p{margin:0;font-size:15px;line-height:1.55;color:#5A4B4E;}
+.dontgrid{display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+.dontcol h3{font-size:15px;font-weight:700;margin:0 0 18px;}
+.dontcard{background:#fff;border:1px solid #F0E2E3;border-radius:16px;overflow:hidden;box-shadow:0 16px 30px rgba(110,11,14,.10);margin-bottom:22px;}
+.dontcard img{display:block;width:100%;height:150px;object-fit:contain;padding:14px;box-sizing:border-box;}
+.dontcap{padding:0 16px 16px;font-size:13.5px;font-weight:600;color:#1A1014;display:flex;align-items:center;gap:8px;}
+.dontcap svg{flex:none;}
+.logostack{display:flex;flex-direction:column;gap:16px;}
+.logobox{background:#fff;border:1px solid #EFE2E3;border-radius:16px;height:130px;display:flex;align-items:center;justify-content:center;}
+.logobox.dark{background:#1A1014;}
+.hero{padding:72px 28px 48px;background:radial-gradient(1100px 540px at 78% 6%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff;position:relative;overflow:hidden;}
+.herogrid{display:grid;grid-template-columns:1.02fr 1.1fr;gap:60px;align-items:center;}
+.pill{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #F4D9DA;border-radius:999px;padding:7px 15px 7px 8px;font-size:13px;font-weight:600;color:#A8323A;box-shadow:0 6px 16px rgba(110,11,14,.08);}
+.pilltag{background:#F23F44;color:#fff;font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:999px;}
+.heroctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:30px;}
+.trust{display:flex;align-items:center;gap:13px;flex-wrap:wrap;font-size:13.5px;color:#8A7A7D;font-weight:600;margin-top:26px;}
+.herofig{border-radius:22px;overflow:hidden;box-shadow:0 30px 70px rgba(110,11,14,.14);border:1px solid #F0E2E3;}
+.herofig img{display:block;width:100%;height:auto;}
+@media(max-width:960px){.herogrid,.dontgrid{grid-template-columns:1fr!important;}}
 </style>
 </helmet>
 <dc-import name="component-site-header" announcement="Using the Testlify brand? Start here." announcement-cta="Contact us" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
 
-<section class="phero"><div class="wrap" style="max-width:860px;">
-  <p class="eyebrow reveal">Brand guidelines<b>.</b></p>
-  <h1 class="h1 reveal" style="transition-delay:.04s">Our brand,<br>used well</h1>
-  <p class="lead reveal" style="margin:22px auto 0;max-width:640px;transition-delay:.08s">The Testlify logo, colours and type — and how to use them. Please keep our brand consistent so it stays recognisable everywhere it appears.</p>
+<section class="hero" data-screen-label="Hero"><div class="wrap"><div class="herogrid">
+  <div>
+    <div class="reveal" style="transition-delay:.02s"><span class="pill"><span class="pilltag">BRAND GUIDELINES</span> Our brand, used well</span></div>
+    <h1 class="h1 reveal" style="margin-top:22px;transition-delay:.06s">Our brand,<br><span style="color:#F23F44;">used well</span></h1>
+    <p class="lead reveal" style="margin-top:22px;max-width:520px;transition-delay:.1s">Welcome to the official Testlify Brand Guidelines. This document is designed to ensure that our brand is used consistently across all platforms and materials. Please follow these guidelines when using Testlify's logo, typography, colors, and other brand assets.</p>
+  </div>
+  <div class="herofig reveal" style="transition-delay:.1s"><img src="./brand-hero-graphic.png" alt="Testlify brand mark: color palette, typography and logo"></div>
+</div></div></section>
+
+<section class="sec"><div class="wrap split">
+  <div class="reveal">
+    <p class="eyebrow">Logo<b>.</b></p>
+    <h2 class="h2" style="margin-bottom:16px;">Approved logo versions</h2>
+    <p class="body">We offer two primary logo variations:</p>
+    <ul class="chk">
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Full-color logo:</b> Use on white or light backgrounds for maximum visibility.</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><b>Reversed/white logo:</b> Use on dark or colored backgrounds when the full-color logo doesn't contrast well.</li>
+    </ul>
+    <p class="body" style="margin-top:14px;">Ensure the logo is used exactly as provided and avoid creating your own versions.</p>
+    <div style="margin-top:22px;"><a class="lnk" href="https://testlify.com/wp-content/uploads/2026/05/Testlify-logo-files.zip" target="_blank" rel="noopener">Download logos →</a></div>
+  </div>
+  <div class="logostack reveal" style="transition-delay:.06s">
+    <div class="logobox" style="padding:24px;"><img src="https://testlify.com/wp-content/uploads/2024/03/Testlify-Logo.png" alt="Testlify full-color logo" style="height:40px;width:auto;display:block;"></div>
+    <div class="logobox dark" style="padding:24px;"><img src="brand/testlify-logo-white.svg" alt="Testlify reversed white logo" style="height:40px;width:auto;display:block;"></div>
+  </div>
+</div></section>
+
+<section class="sec" style="background:#FBF3EE;"><div class="wrap split">
+  <div class="figcard reveal" style="border-radius:18px;overflow:hidden;border:1px solid #F0E2E3;box-shadow:0 16px 30px rgba(110,11,14,.10);background:#fff;padding:30px;"><img src="https://testlify.com/wp-content/uploads/2025/10/Favicon.png" alt="Testlify favicon" style="display:block;width:100%;max-width:160px;margin:0 auto;"></div>
+  <div class="reveal" style="transition-delay:.06s">
+    <p class="eyebrow">Favicon<b>.</b></p>
+    <h2 class="h2" style="margin-bottom:16px;">Favicon usage</h2>
+    <p class="body">For small-scale uses like social media avatars or browser tabs, use the Testlify favicon or the simplified icon version of our logo. It should retain the logo's integrity at smaller sizes.</p>
+    <div style="margin-top:22px;"><a class="lnk" href="https://testlify.com/wp-content/uploads/2026/05/Testlify-favicon-files.zip" target="_blank" rel="noopener">Download favicon →</a></div>
+  </div>
 </div></section>
 
 <section class="sec"><div class="wrap">
-  <div class="center-head" style="text-align:left;max-width:none;">
-    <p class="eyebrow reveal">Logo<b>.</b></p>
-    <h2 class="h2 reveal" style="transition-delay:.04s">The Testlify mark</h2>
+  <div class="center-head">
+    <p class="eyebrow reveal">Wordmark<b>.</b></p>
+    <h2 class="h2 reveal" style="transition-delay:.04s">Do's and don'ts: wordmark</h2>
   </div>
-  <div class="grid2 reveal" style="grid-template-columns:1fr 1fr;">
-    <div class="logobox">Testlify</div>
-    <div class="logobox dark">Testlify</div>
+  <div class="dontgrid reveal">
+    <div class="dontcol">
+      <h3 style="color:#F23F44;">✕ Don't</h3>
+      <div class="dontcard"><img src="badges/dont-stretch.png" alt="Don't stretch or alter wordmark"><div class="dontcap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F23F44" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>Don't stretch or alter the wordmark in any way</div></div>
+      <div class="dontcard"><img src="badges/dont-favicon.png" alt="Don't use favicon as primary branding"><div class="dontcap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F23F44" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>Don't use the favicon as the primary branding</div></div>
+      <div class="dontcard"><img src="badges/dont-crop.png" alt="Don't crop wordmarks"><div class="dontcap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F23F44" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>Don't crop wordmarks</div></div>
+    </div>
+    <div class="dontcol">
+      <h3 style="color:#22A05B;">✓ Do</h3>
+      <div class="dontcard"><img src="badges/do-provided.png" alt="Use provided logo files without modification"><div class="dontcap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22A05B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Use the provided logo files without modification</div></div>
+      <div class="dontcard"><img src="badges/do-contrast.png" alt="Ensure logo visible with good contrast"><div class="dontcap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22A05B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Ensure the logo is visible with good contrast</div></div>
+      <div class="dontcard"><img src="badges/do-spacing.png" alt="Use established spacing rules"><div class="dontcap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22A05B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Use the established spacing rules</div></div>
+    </div>
   </div>
-  <p class="body reveal" style="margin-top:18px;">Give the logo clear space, never stretch or recolour it, and use the reversed version on dark backgrounds only.</p>
 </div></section>
 
 <section class="sec" style="background:#FBF3EE;"><div class="wrap">
+  <p class="eyebrow">Logo usage<b>.</b></p>
+  <h2 class="h2" style="margin-bottom:36px;">How to use our logos</h2>
+  <div class="split" style="align-items:start;">
+  <div class="reveal">
+    <p class="body" style="font-weight:700;color:#1A1014;">Do:</p>
+    <div style="margin-top:20px;">
+      <div class="instrcard"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22A05B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><p>Use the provided logo files without modification (no stretching, distortion, or color changes).</p></div>
+      <div class="instrcard"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22A05B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><p>Ensure the logo is clear and visible on backgrounds with sufficient contrast.</p></div>
+      <div class="instrcard"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22A05B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><p>Use the logo consistently across all platforms and media.</p></div>
+      <div class="instrcard"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22A05B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><p>Give the logo sufficient breathing room and place it in a prominent but balanced way.</p></div>
+      <div class="instrcard"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22A05B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><p>Respect the clear-space and minimum size rules.</p></div>
+      <div class="instrcard"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22A05B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg><p>Use the reversed logo version on dark backgrounds for best visibility.</p></div>
+    </div>
+  </div><div class="reveal" style="transition-delay:.06s">
+    <p class="body" style="font-weight:700;color:#1A1014;">Don't:</p>
+    <div style="margin-top:20px;">
+      <div class="instrcard"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F23F44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"></path></svg><p>Don't stretch, distort, or rotate the logo.</p></div>
+      <div class="instrcard"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F23F44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"></path></svg><p>Don't change the logo's color or add effects like gradients or textures.</p></div>
+      <div class="instrcard"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F23F44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"></path></svg><p>Don't place the logo over busy images or backgrounds without sufficient clear space.</p></div>
+      <div class="instrcard"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F23F44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"></path></svg><p>Don't use the logo as part of your own branding, unless authorized.</p></div>
+    </div>
+  </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
   <div class="center-head" style="text-align:left;max-width:none;">
     <p class="eyebrow reveal">Colour<b>.</b></p>
     <h2 class="h2 reveal" style="transition-delay:.04s">Our palette</h2>
   </div>
   <div class="grid4 reveal">
-    <div class="swatch" style="background:#F23F44;">Coral<span class="swcode">#F23F44</span></div>
-    <div class="swatch" style="background:#FF7A52;">Bright<span class="swcode">#FF7A52</span></div>
+    <div class="swatch" style="background:#F23F44;">Primary<span class="swcode">#F23F44</span></div>
+    <div class="swatch" style="background:#A91E23;">Dark primary<span class="swcode">#A91E23</span></div>
+    <div class="swatch" style="background:#6E0B0E;">Darkest<span class="swcode">#6E0B0E</span></div>
+    <div class="swatch" style="background:#F76A6E;">Medium<span class="swcode">#F76A6E</span></div>
+    <div class="swatch" style="background:#FBA3A5;color:#6E0B0E;">Light<span class="swcode">#FBA3A5</span></div>
+    <div class="swatch" style="background:#FDD5D6;color:#A91E23;">Lighter<span class="swcode">#FDD5D6</span></div>
+    <div class="swatch" style="background:#FFF0F0;color:#8A7A7D;">Lightest<span class="swcode">#FFF0F0</span></div>
     <div class="swatch" style="background:#1A1014;">Ink<span class="swcode">#1A1014</span></div>
-    <div class="swatch" style="background:#FBF3EE;color:#8A7A7D;">Sand<span class="swcode">#FBF3EE</span></div>
   </div>
+  <ul class="chk" style="margin-top:30px;max-width:820px;">
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>The primary color (#F23F44) should dominate brand visuals where you want a strong impact — logo, call-to-action buttons, key icons.</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Use dark primary (#A91E23) for hover, active states, or when the primary color needs more depth.</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Use darkest (#6E0B0E) sparingly for backgrounds or overlays that require bold contrast.</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Use medium (#F76A6E) for secondary highlights, banners, or subtle dividers that complement the primary color.</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Use light (#FBA3A5) and lighter (#FDD5D6) for softer backgrounds, cards, and accents when you want a subtle brand hint without overwhelming.</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Use lightest (#FFF0F0) as a base background to maintain warmth and visual consistency across designs.</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Reserve the bright primary for key touchpoints — avoid overusing it in large background areas unless balanced with neutral tones.</li>
+  </ul>
+</div></section>
+
+<section class="sec" style="background:#FBF3EE;"><div class="wrap split">
+  <div class="reveal">
+    <p class="eyebrow">Partnerships<b>.</b></p>
+    <h2 class="h2" style="margin-bottom:16px;">Co-branding and partnerships</h2>
+    <p class="body">When partnering with other companies or brands:</p>
+    <ul class="chk">
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Keep the Testlify logo balanced with partner logos, maintaining equal size and appropriate clear space.</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Do not alter the logo in any way when used alongside other logos.</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Always submit co-branded materials for approval before public release.</li>
+    </ul>
+  </div>
+  <div class="figcard reveal" style="transition-delay:.06s;border-radius:18px;overflow:hidden;border:1px solid #F0E2E3;box-shadow:0 16px 30px rgba(110,11,14,.10);background:#fff;padding:20px;"><img src="https://testlify.com/wp-content/uploads/2025/10/Co-Branding-and-Partnerships-1024x223.png" alt="Co-branding and partnerships" style="display:block;width:100%;"></div>
 </div></section>
 
 <section class="sec"><div class="wrap split">
   <div class="reveal">
     <p class="eyebrow">Typography<b>.</b></p>
     <h2 class="h2" style="margin-bottom:20px;">Poppins, everywhere</h2>
-    <p class="body">Testlify uses Poppins across the entire brand — from headlines to body copy. Weights 400 to 800 give us range while staying unmistakably us.</p>
+    <p class="body">Use Poppins for all headlines, sub-headings and body text. Avoid using more than one or two additional fonts. Keep Poppins as the anchor for consistency. Don't use decorative fonts for body text; maintain readability and clarity.</p>
     <div style="margin-top:24px;">
       <p style="font-family:'Poppins';font-weight:800;font-size:42px;letter-spacing:-1.4px;margin:0;">Aa Bb Cc</p>
       <p style="font-family:'Poppins';font-weight:400;font-size:18px;color:#5A4B4E;margin:8px 0 0;">The quick brown fox jumps over the lazy dog.</p>
     </div>
   </div>
-  <div class="reveal" style="transition-delay:.08s;background:linear-gradient(160deg,#FFF4F3,#FBE9E9);border:1px solid #F6DCDD;border-radius:24px;padding:40px;">
-    <p class="h3" style="font-size:22px;line-height:1.4;font-weight:600;">Need vector logos, product screenshots or something specific? Reach out and we'll send the full brand pack.</p>
-    <div style="margin-top:24px;">
-      <dc-import name="component-cta-button" label="Request assets" href="contact.dc.html" variant="primary" size="md" icon="arrow" hint-size="180px,52px"></dc-import>
-    </div>
+  <div class="figcard reveal" style="transition-delay:.06s;border-radius:18px;overflow:hidden;border:1px solid #F0E2E3;box-shadow:0 16px 30px rgba(110,11,14,.10);"><img src="https://testlify.com/wp-content/uploads/2025/10/Typography.png" alt="Typography" style="display:block;width:100%;"></div>
+</div></section>
+
+<section class="sec" style="background:#FBF3EE;"><div class="wrap grid2" style="max-width:900px;">
+  <div class="card reveal">
+    <h3 class="h3" style="font-size:18px;margin-bottom:10px;">Contact</h3>
+    <p class="body" style="font-size:14.5px;">For support inquiries, reach us at <a class="lnk" href="mailto:support@testlify.com">support@testlify.com</a>. For sales or partnership discussions, contact <a class="lnk" href="mailto:sales@testlify.com">sales@testlify.com</a>. You can also reach us by phone at +1 (844) 755-8378. For permission to use our logos or questions about these guidelines, contact <a class="lnk" href="mailto:support@testlify.com">support@testlify.com</a>.</p>
+  </div>
+  <div class="card reveal" style="transition-delay:.05s;">
+    <h3 class="h3" style="font-size:18px;margin-bottom:10px;">Press releases</h3>
+    <p class="body" style="font-size:14.5px;">When mentioning our company in press materials, please identify Testlify as an AI-powered skills assessment and interviewing platform. Our mission is to help companies hire the best talent quickly, fairly, and efficiently. Questions beyond these cases: <a class="lnk" href="mailto:press@testlify.com">press@testlify.com</a> or +1 (844) 755-8378.</p>
   </div>
 </div></section>
 
