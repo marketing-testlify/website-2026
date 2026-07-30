@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./site-base.css">
+<script src="./reveal.js"></script>
+<style>
+.hero{padding:72px 28px 88px;background:radial-gradient(1100px 540px at 78% 6%,#FFF0EE 0%,rgba(255,240,238,0) 60%),#fff;position:relative;overflow:hidden;}
+.bad-herogrid{display:grid;grid-template-columns:1.02fr 1.1fr;gap:60px;align-items:center;}
+.pill{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #F4D9DA;border-radius:999px;padding:7px 15px 7px 8px;font-size:13px;font-weight:600;color:#A8323A;box-shadow:0 6px 16px rgba(110,11,14,.06);}
+.pilltag{background:#F23F44;color:#fff;font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:999px;}
+.acc{color:#F23F44;}
+.heroctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:30px;}
+.trust{display:flex;align-items:center;gap:13px;flex-wrap:wrap;font-size:13.5px;color:#8A7A7D;font-weight:600;margin-top:26px;}
+.bad-trust-l{text-align:center;font-size:13.5px;font-weight:600;letter-spacing:1.5px;color:#A9999C;text-transform:uppercase;margin:0 0 30px;}
+.bad-marq-wrap{position:relative;max-width:1100px;margin:0 auto;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);}
+.bad-marq{display:flex;width:max-content;gap:70px;animation:badmarquee 26s linear infinite;align-items:center;}
+@keyframes badmarquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.bad-marq img{height:46px;max-width:150px;object-fit:contain;filter:grayscale(100%);opacity:.75;transition:filter .25s,opacity .25s;}
+.bad-marq img:hover{filter:none;opacity:1;}
+@media(max-width:960px){.bad-herogrid{grid-template-columns:1fr !important;gap:44px;}.hero{padding:44px 22px 60px;}}
+.form{background:#fff;border:1px solid #F0E2E3;border-radius:22px;padding:34px;box-shadow:0 40px 90px rgba(110,11,14,.16);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:13px;font-weight:600;color:#2A1A1D;margin-bottom:7px;}
+.field input{width:100%;font-family:inherit;font-size:15px;color:#1A1014;padding:13px 15px;border:1.5px solid #EEDFE0;border-radius:12px;background:#FEFCFB;box-sizing:border-box;transition:border-color .2s,box-shadow .2s;}
+.field input:focus{outline:none;border-color:#F23F44;box-shadow:0 0 0 4px rgba(242,63,68,.12);}
+.submit{width:100%;border:0;font-family:inherit;cursor:pointer;background:#F23F44;color:#fff;font-weight:700;font-size:16px;padding:15px;border-radius:13px;box-shadow:0 12px 26px rgba(242,63,68,.3);transition:transform .2s;}
+.submit:hover{transform:translateY(-2px);}
+.ok{background:#EAF8F0;border:1px solid #BFE8D2;color:#1B7F4B;border-radius:14px;padding:22px;font-size:15px;font-weight:600;text-align:center;}
+@media(max-width:700px){.bad-logos{gap:24px;}.frow{grid-template-columns:1fr;}}
+</style>
+</helmet>
+<dc-import name="component-site-header" announcement="Get a personalised walkthrough — see Testlify on your own roles." announcement-cta="Book a demo" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+
+<section class="hero"><div class="wrap" style="max-width:1180px;"><div class="bad-herogrid">
+  <div style="text-align:left;">
+    <div class="reveal" style="transition-delay:.02s"><span class="pill"><span class="pilltag">DEMO</span> Personalised walkthrough</span></div>
+    <h1 class="h1 reveal" style="margin-top:22px;transition-delay:.06s">Book a demo and<br><span class="acc">streamline</span> your hiring!</h1>
+    <p class="lead reveal" style="margin-top:22px;max-width:480px;transition-delay:.1s">Unlock the potential of our platform, delve into the features, and explore affordable pricing plans that align with your recruitment strategy.</p>
+    <div class="heroctas reveal" style="transition-delay:.14s"><dc-import name="component-cta-button" label="Try for free" href="pricing.dc.html" variant="primary" size="md" icon="arrow" magnetic="true" hint-size="150px,52px"></dc-import><dc-import name="component-cta-button" label="Contact us" href="contact.dc.html" variant="secondary" size="md" icon="none" hint-size="150px,52px"></dc-import></div>
+    <div class="trust reveal" style="transition-delay:.18s"><span style="display:inline-flex;align-items:center;gap:7px;"><span style="color:#F23F44;font-weight:700;">✓</span>No credit card required</span><span style="display:inline-flex;align-items:center;gap:7px;"><span style="color:#F23F44;font-weight:700;">✓</span>Used by 1,500+ teams</span></div>
+  </div>
+  <div>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div class="ok reveal">Thanks — we'll be in touch shortly to schedule your personal demo.</div>
+    </sc-if>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+    <form class="form reveal" onSubmit="{{ onSubmit }}">
+      <div class="frow">
+        <div class="field"><label>First name</label><input type="text" required placeholder="Jane"></div>
+        <div class="field"><label>Last name</label><input type="text" required placeholder="Doe"></div>
+      </div>
+      <div class="field"><label>Email</label><input type="email" required placeholder="jane@company.com"></div>
+      <div class="field"><label>Phone number</label><input type="tel" required placeholder="(555) 123-4567"></div>
+      <button type="submit" class="submit">Book your personal demo</button>
+    </form>
+    </sc-if>
+  </div>
+</div>
+<p class="bad-trust-l reveal" style="margin-top:56px;transition-delay:.2s;">Trusted by <strong style="color:#F23F44;font-weight:800;">1,500+</strong> hiring teams worldwide</p>
+<div class="bad-marq-wrap reveal" style="transition-delay:.22s;"><div class="bad-marq">
+  <img src="https://testlify.com/wp-content/uploads/2023/06/logo.psd_0006_xneelo.jpg" alt="Xneelo">
+  <img src="https://testlify.com/wp-content/uploads/2023/06/db133d44-cc80-4cf2-b33e-9338dd329384.png" alt="Ascensos">
+  <img src="https://testlify.com/wp-content/uploads/2023/06/logo.psd_0000_Kimp.jpg" alt="Kimp">
+  <img src="https://testlify.com/wp-content/uploads/2023/06/IMG_20230627_235816.jpg" alt="Endiprev">
+  <img src="https://testlify.com/wp-content/uploads/2024/01/logo-removebg-preview-1-1.png" alt="Newjaisa">
+  <img src="https://testlify.com/wp-content/uploads/2023/06/join.png" alt="Join">
+  <img src="https://testlify.com/wp-content/uploads/2023/09/virtual-gurus.jpeg" alt="Virtual Gurus">
+  <img src="https://testlify.com/wp-content/uploads/2023/06/logo.psd_0006_xneelo.jpg" alt="Xneelo">
+  <img src="https://testlify.com/wp-content/uploads/2023/06/db133d44-cc80-4cf2-b33e-9338dd329384.png" alt="Ascensos">
+  <img src="https://testlify.com/wp-content/uploads/2023/06/logo.psd_0000_Kimp.jpg" alt="Kimp">
+  <img src="https://testlify.com/wp-content/uploads/2023/06/IMG_20230627_235816.jpg" alt="Endiprev">
+  <img src="https://testlify.com/wp-content/uploads/2024/01/logo-removebg-preview-1-1.png" alt="Newjaisa">
+  <img src="https://testlify.com/wp-content/uploads/2023/06/join.png" alt="Join">
+  <img src="https://testlify.com/wp-content/uploads/2023/09/virtual-gurus.jpeg" alt="Virtual Gurus">
+</div></div>
+</div></section>
+
+<dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false };
+  renderVals(){
+    return {
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

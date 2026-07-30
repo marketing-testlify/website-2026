@@ -1,3 +1,5 @@
+'use client';
+
 import { Fragment } from 'react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
@@ -49,6 +51,12 @@ tr.grp td{background:#1A1014;color:#fff;font-weight:700;font-size:12px;letter-sp
 .mini{font-size:12px;color:#8A7A7D;}
 .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:3px 8px;border-radius:99px;background:#FFF4E6;color:#C7791B;}
 @media(max-width:960px){.h1{font-size:38px;letter-spacing:-1.2px;}.h2{font-size:28px;}.sec{padding:60px 22px;}.phero{padding:44px 22px 30px;}}
+.darkcta{background:#1A1014;color:#fff;text-align:center;}
+.darkcta .h2{color:#fff;}
+.darkcta .lead{color:rgba(255,255,255,.78);}
+.btnrow{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.cta-light{background:#fff;color:#F23F44;box-shadow:0 10px 22px rgba(0,0,0,.2);}
+.cta-light:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(0,0,0,.28);}
 
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `;
@@ -212,7 +220,11 @@ export default function ComparePage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <SiteHeader announcement="Pay less per credit as your hiring volume grows — compare every plan." announcementCta="See pricing" />
+      <SiteHeader
+        announcement="Pay less per credit as your hiring volume grows — compare every plan."
+        announcementCta="See pricing"
+        homeHref="/"
+      />
 
       <section className="phero">
         <div className="wrap" style={{ maxWidth: 860 }}>
@@ -220,12 +232,20 @@ export default function ComparePage() {
             Compare plans<b>.</b>
           </p>
           <h1 className="h1 reveal" style={{ transitionDelay: '.04s' }}>
-            Compare and find a perfect<br />plan that <span className="acc">suits your need.</span>
+            Compare and find a perfect
+            <br />
+            plan that <span className="acc">suits your need.</span>
           </h1>
           <p className="lead reveal" style={{ margin: '20px auto 0', maxWidth: 660, transitionDelay: '.08s' }}>
-            Go through the detailed plan comparison to find the perfect fit for your organization&apos;s talent assessment needs. Discover key features, pricing structures, and benefits to make an informed decision in unleashing your team&apos;s full potential.
+            Go through the detailed plan comparison to find the perfect fit for your organization&apos;s talent
+            assessment needs. Discover key features, pricing structures, and benefits to make an informed decision
+            in unleashing your team&apos;s full potential.
           </p>
-          <Link className="pl-cta cta-primary reveal" href="/pricing" style={{ marginTop: 24, fontSize: 15, padding: '14px 28px', transitionDelay: '.12s' }}>
+          <Link
+            className="pl-cta cta-primary reveal"
+            href="/pricing"
+            style={{ marginTop: 24, fontSize: 15, padding: '14px 28px', transitionDelay: '.12s' }}
+          >
             View plans
           </Link>
         </div>
@@ -243,12 +263,16 @@ export default function ComparePage() {
                   <th>
                     <div className="pl-name">Standard Plan</div>
                     <div className="pl-bill">Everything you need to start hiring on skills</div>
-                    <Link className="pl-cta cta-ghost" href="/pricing">View plans</Link>
+                    <Link className="pl-cta cta-ghost" href="/pricing">
+                      View plans
+                    </Link>
                   </th>
                   <th className="cell-hot">
                     <div className="pl-name hot">Custom Plan</div>
                     <div className="pl-bill">Tailored for scale, security &amp; compliance</div>
-                    <Link className="pl-cta cta-primary" href="/contact">Contact sales</Link>
+                    <Link className="pl-cta cta-primary" href="/contact">
+                      Contact sales
+                    </Link>
                   </th>
                 </tr>
               </thead>
@@ -280,36 +304,28 @@ export default function ComparePage() {
           <div className="reveal" style={{ textAlign: 'center', marginTop: 22 }}>
             <p className="mini">
               All plans include a 7-day free trial — no credit card required ·{' '}
-              <Link href="/pricing" className="acc" style={{ fontWeight: 600 }}>See full pricing →</Link>
+              <Link href="/pricing" className="acc" style={{ fontWeight: 600 }}>
+                See full pricing →
+              </Link>
             </p>
           </div>
         </div>
       </section>
 
-      <section className="sec" style={{ background: '#FBF3EE' }}>
-        <div className="wrap">
-          <div
-            className="reveal"
-            style={{
-              maxWidth: 900,
-              margin: '0 auto',
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: 20,
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              background: '#1A1014',
-              borderRadius: 24,
-              padding: '40px 44px',
-            }}
-          >
-            <div style={{ maxWidth: 520 }}>
-              <h2 className="h2" style={{ color: '#fff', fontSize: 28 }}>Looking for an unlimited credit plan?</h2>
-              <p className="body" style={{ color: '#C2B1B4', margin: '12px 0 0' }}>
-                For high-volume hiring, our unlimited plan gives you full platform access with no per-credit limits. Talk to sales for a custom quote.
-              </p>
-            </div>
-            <Link className="pl-cta cta-primary" href="/contact" style={{ fontSize: 15, padding: '14px 26px' }}>
+      <section className="sec" style={{ background: '#1A1014' }}>
+        <div className="wrap" style={{ maxWidth: 720, textAlign: 'center' }}>
+          <p className="eyebrow reveal" style={{ justifyContent: 'center', color: '#C9B9BC' }}>
+            Need more<b style={{ color: '#F23F44' }}>.</b>
+          </p>
+          <h2 className="h2 reveal" style={{ color: '#fff', marginTop: 14, transitionDelay: '.04s' }}>
+            Looking for an unlimited credit plan?
+          </h2>
+          <p className="lead reveal" style={{ color: '#C9B9BC', margin: '16px auto 30px', transitionDelay: '.08s' }}>
+            For high-volume hiring, our unlimited plan gives you full platform access with no per-credit limits.
+            Talk to sales for a custom quote.
+          </p>
+          <div className="reveal btnrow" style={{ transitionDelay: '.12s' }}>
+            <Link className="pl-cta cta-light" href="/contact" style={{ fontSize: 15, padding: '14px 28px' }}>
               Contact sales →
             </Link>
           </div>
@@ -319,8 +335,12 @@ export default function ComparePage() {
       <section className="sec">
         <div className="wrap" style={{ maxWidth: 840 }}>
           <div style={{ textAlign: 'center', marginBottom: 44 }}>
-            <p className="eyebrow reveal" style={{ justifyContent: 'center' }}>FAQ<b>.</b></p>
-            <h2 className="h2 reveal" style={{ transitionDelay: '.04s' }}>Pricing questions, answered</h2>
+            <p className="eyebrow reveal" style={{ justifyContent: 'center' }}>
+              FAQ<b>.</b>
+            </p>
+            <h2 className="h2 reveal" style={{ transitionDelay: '.04s' }}>
+              Pricing questions, answered
+            </h2>
           </div>
           <div className="reveal">
             <FAQ items={faqItems} />
