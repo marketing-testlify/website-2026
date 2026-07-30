@@ -29,25 +29,34 @@ export default function Page() {
 
       <article className="artwrap">
         <p className="crumb reveal in"><Link href="/blog">Blog</Link> &nbsp;·&nbsp; Product news</p>
-        <h1 className="arttitle reveal in">Testlify launches conversational AI for talent assessment</h1>
-        <div className="artmeta reveal in"><span className="artav">TL</span><div><div className="artname">Testlify Team</div><div>Product</div></div><span>·</span><span>4 min read</span><span>·</span><span>July 2026</span></div>
+        <h1 className="arttitle reveal in">Testlify launches conversational AI interviews to redefine talent assessment at scale</h1>
+        <div className="artmeta reveal in"><span className="artav">TL</span><div><div className="artname">Testlify Team</div><div>Product</div></div><span>·</span><span>4 min read</span><span>·</span><span>June 11, 2025</span></div>
       </article>
       <div className="artwrap reveal in"><div className="arthero"></div></div>
       <div className="artwrap prose">
-        <p className="reveal in">Today we&apos;re launching conversational AI across Testlify — bringing automated, scored video, audio and chat interviews to the platform teams already use to assess skills. It&apos;s the biggest step yet toward our mission: helping hiring teams stop guessing and start proving who can actually do the job.</p>
-        <div className="pull reveal in">&quot;Every candidate deserves a fair, consistent conversation. Now every team can offer one — at any scale.&quot;</div>
-        <h2 className="reveal in">What&apos;s new</h2>
-        <p className="reveal in">Conversational AI interviews let you screen and interview candidates automatically, in the format that fits the role:</p>
+        <p className="reveal in">Bensalem, PA – 11th June 2025 – Testlify, a renowned talent assessment platform trusted by over 1,500+ teams across 50+ countries, has launched its latest innovation, Conversational AI Interviews in video, audio, and text formats.</p>
+        <p className="reveal in">This game-changing feature is designed to help companies streamline candidate evaluation with real-time, scenario-based interviews powered by AI. Testlify continues to elevate the hiring experience for leading global brands, including LTIMindtree, Solvay, InDrive, and Ditto Insurance, among many others.</p>
+        <p className="reveal in">With this launch, Testlify is redefining how enterprises and staffing firms assess talent — faster, smarter, and more accurately than ever before.</p>
+        <h2 className="reveal in">Solving a long-standing hiring problem</h2>
+        <p className="reveal in">Traditional interviews often fail to predict how candidates will perform in real workplace situations. Static Q&amp;As, interviewer bias, and inconsistent evaluation frameworks have long hindered effective hiring.</p>
+        <p className="reveal in">Testlify&apos;s Conversational AI solves this by replicating real-world challenges in a controlled, AI-driven environment. So recruiters can evaluate candidates not just for what they know, but how they act under pressure.</p>
+        <div className="pull reveal in">&quot;Too often, interviews only scratch the surface. We built this conversational AI engine to go deeper, revealing the mindset, adaptability, and real-world judgment of each candidate before they&apos;re hired.&quot; — Abhishek Shah, Founder of Testlify</div>
+        <h2 className="reveal in">Explore the power of multi-format conversational AI</h2>
+        <p className="reveal in">The platform&apos;s latest release includes three advanced formats:</p>
         <ul className="reveal in">
-          <li><strong>Video interviews</strong> for roles where presence and communication matter.</li>
-          <li><strong>Audio interviews</strong> for quick, low-friction spoken screening.</li>
-          <li><strong>Chat interviews</strong> for asynchronous, text-based assessment at scale.</li>
+          <li><strong>Chat AI</strong> — engage candidates in realistic, text-based workplace scenarios, like resolving a billing dispute or calming an irate customer. This helps recruiters assess problem-solving, written communication, and critical thinking in real time.</li>
+          <li><strong>Voice AI</strong> — allow candidates to respond to dynamic, voice-based interview prompts tailored to roles in sales, customer support, or technical helpdesks, capturing verbal fluency, tone, and persuasion skills in action.</li>
+          <li><strong>Video AI</strong> — AI avatars guide candidates through complex job scenarios via asynchronous video interviews. Employers can now analyze non-verbal communication, confidence, and emotional intelligence with ease.</li>
         </ul>
-        <p className="reveal in">Every interview is scored against a structured rubric, so candidates are compared like-for-like — no drift between reviewers, no unstructured gut calls.</p>
-        <h2 className="reveal in">Why it matters</h2>
-        <p className="reveal in">Interviews are where hiring is slowest and most inconsistent. By automating the early rounds and scoring them objectively, teams reclaim hours, widen their funnels, and keep every decision defensible — while candidates get a faster, fairer experience.</p>
+        <p className="reveal in">All formats are meticulously crafted to reflect real-life job functions, whether it&apos;s managing a missed delivery, leading a team meeting, or troubleshooting a product issue. Each interview simulates realistic stakes, offering employers a deeper and more predictive lens on candidate performance.</p>
+        <h2 className="reveal in">A game-changer for enterprise hiring teams</h2>
+        <p className="reveal in">With hiring becoming increasingly distributed, inconsistent interviews slow down decisions and introduce bias. Testlify&apos;s Conversational AI brings consistency, objectivity, and scale to every candidate interaction without sacrificing the human element.</p>
+        <p className="reveal in">&quot;We&apos;re not just testing skills, we&apos;re uncovering true potential,&quot; Abhishek Shah added. &quot;Our clients can now build stronger teams by hiring people who don&apos;t just look good on paper, but thrive in real-world environments.&quot;</p>
         <h2 className="reveal in">Available now</h2>
-        <p className="reveal in">Conversational AI is rolling out across Testlify plans today, on top of the 3,500+ validated tests, AI resume screening and 100+ ATS integrations you already know. One platform, from application to offer.</p>
+        <p className="reveal in">Testlify&apos;s Conversational AI interviews are now live and available to all users across plans. Companies can start building customized, role-specific interviews in minutes or explore the platform with a free trial.</p>
+        <h2 className="reveal in">About Testlify</h2>
+        <p className="reveal in">Testlify is a fast-growing, AI-powered skills assessment and interviewing platform that helps companies hire better, faster, and more objectively. With a test library of 3,500+ assessments covering 4,500+ job roles in 50+ countries, Testlify enables organizations to screen, assess, and interview candidates using real-world scenarios that go far beyond resumes.</p>
+        <p className="reveal in">To learn more or start your free trial, visit <a href="https://testlify.com/" style={{ color: '#F23F44', fontWeight: 700 }}>testlify.com</a>.</p>
       </div>
 
       <section className="sec darkcta" style={{ marginTop: '56px' }}><div className="wrap" style={{ maxWidth: '640px' }}>

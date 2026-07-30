@@ -30,26 +30,30 @@ export default function TestlifyTheRecruiterWhoNeverSleeps() {
       <article className="artwrap">
         <p className="crumb reveal in"><Link href="/blog">Blog</Link> &nbsp;·&nbsp; AI &amp; hiring</p>
         <h1 className="arttitle reveal in">Testlify: the recruiter who never sleeps</h1>
-        <div className="artmeta reveal in"><span className="artav">TL</span><div><div className="artname">Testlify Team</div><div>Product</div></div><span>·</span><span>6 min read</span><span>·</span><span>July 2026</span></div>
+        <div className="artmeta reveal in"><span className="artav">TL</span><div><div className="artname">Testlify Team</div><div>Product</div></div><span>·</span><span>6 min read</span><span>·</span><span>Oct. 15, 2025</span></div>
       </article>
       <div className="artwrap reveal in"><div className="arthero"></div></div>
       <div className="artwrap prose">
-        <p className="reveal in">Recruiting has a math problem. There are always more applicants than hours in the day, and the highest-leverage work — actually evaluating whether someone can do the job — is the first thing to get squeezed. So teams fall back on shortcuts: skim the résumé, trust the logo, run a quick call, hope for the best.</p>
-        <p className="reveal in">What if the evaluation never had to wait? What if every applicant, at any hour, could be screened fairly and consistently the moment they applied?</p>
-        <div className="pull reveal in">&quot;AI doesn&apos;t replace the recruiter. It gives them back the hours they spend guessing.&quot;</div>
-        <h2 className="reveal in">Screening that runs around the clock</h2>
-        <p className="reveal in">Testlify AI assesses candidates automatically — skills tests, resume screening and conversational interviews — and scores them against the same structured rubric every time. A candidate who applies at 2am gets the same fair, thorough evaluation as one who applies at 2pm.</p>
-        <p className="reveal in">By the time a recruiter sits down, the pile of PDFs has become a ranked shortlist with evidence attached: skill scores, breakdowns and integrity flags. The work that used to eat a morning is already done.</p>
-        <h2 className="reveal in">Consistent, and defensible</h2>
-        <p className="reveal in">A tireless recruiter is only valuable if it&apos;s also a fair one. Because every candidate is measured the same way, the output is consistent and EEOC-defensible — no drift between reviewers, no gut calls that can&apos;t be explained.</p>
-        <ul className="reveal in">
-          <li><strong>Faster:</strong> shortlists ready before you open your inbox.</li>
-          <li><strong>Fairer:</strong> the same structured bar for everyone.</li>
-          <li><strong>Defensible:</strong> every decision backed by evidence.</li>
-        </ul>
-        <h2 className="reveal in">The recruiter&apos;s job gets better</h2>
-        <p className="reveal in">This isn&apos;t about removing humans from hiring. It&apos;s about removing the parts humans shouldn&apos;t be doing — the repetitive, bias-prone first pass — so recruiters can spend their time where it matters: building relationships, selling the role, and making great final decisions with better information.</p>
-        <p className="reveal in">That&apos;s the promise of a recruiter who never sleeps. Not fewer people in hiring — better hiring, for everyone.</p>
+        <p className="reveal in">Bensalem, Pennsylvania/San Francisco, California, Oct. 15, 2025 (GLOBE NEWSWIRE) — Testlify, the talent assessment and interviewing platform trusted by over 1,500+ teams globally, today announced the launch of its newest innovation — AI Conversational Interviews, an intelligent, always-available interviewer that transforms how organizations screen and evaluate talent.</p>
+        <p className="reveal in">This AI-powered feature brings the efficiency of automation and the empathy of conversation together, enabling recruiters to conduct consistent, unbiased, and data-driven interviews at scale.</p>
+        <div className="pull reveal in">&quot;We wanted to reimagine how interviews could be conducted not just faster, but fairer. Our AI Conversational Interviews act like a recruiter who never sleeps or judges you. It listens, adapts, and asks meaningful questions that reveal a candidate&apos;s real potential.&quot; — Abhishek Shah, Founder of Testlify</div>
+        <h2 className="reveal in">From scheduling headaches to smart conversations</h2>
+        <p className="reveal in">Recruiters spend countless hours scheduling, coordinating, and conducting interviews, often with inconsistent outcomes. Testlify&apos;s AI Conversational Interviews eliminate this friction. The system conducts structured, one-on-one interviews with candidates across time zones, evaluates responses using natural language processing (NLP), and scores candidates based on communication, reasoning, technical knowledge, and behavioral indicators.</p>
+        <p className="reveal in">What sets Testlify apart is its multi-format interview capability — candidates can interact with the AI interviewer via audio, video, or chat, ensuring flexibility and comfort across different roles and regions. Taking it a step further, Testlify&apos;s AI can even call candidates directly on their phones, making the process truly accessible and removing the dependency on high-end devices or internet connectivity.</p>
+        <p className="reveal in">For candidates, the experience feels natural and engaging. They can complete the interview anytime, anywhere, and in the format that suits them best. For hiring teams, it means unbiased evaluations, faster decisions, and a consistent benchmark across all candidates.</p>
+        <h2 className="reveal in">Making hiring more human through AI</h2>
+        <p className="reveal in">Unlike traditional chatbots, Testlify&apos;s conversational AI is designed to go beyond scripted Q&amp;A. It adapts dynamically to candidate responses, probes deeper when needed, and maintains a conversational tone that feels human.</p>
+        <p className="reveal in">The AI also ensures fairness and objectivity by removing unconscious bias that often creeps into human interviews. Every response is evaluated using standardized rubrics, ensuring equal opportunity for all candidates — regardless of background or communication style.</p>
+        <p className="reveal in">&quot;We&apos;ve seen early adopters cut their screening time by over 60% while improving candidate experience,&quot; said Shah. &quot;It&apos;s not about replacing recruiters. It&apos;s about empowering them to focus on high-value decisions rather than repetitive tasks.&quot;</p>
+        <h2 className="reveal in">Integrating seamlessly into the hiring flow</h2>
+        <p className="reveal in">The AI Conversational Interviews feature integrates natively within Testlify&apos;s existing assessment platform, allowing teams to combine technical, cognitive, and behavioral evaluations into one unified workflow. The results feed directly into Testlify&apos;s analytics dashboard, giving recruiters clear insights into candidate strengths, weaknesses, and role fit.</p>
+        <p className="reveal in">Early customers from technology, staffing, and enterprise sectors have reported significant improvements in both interview efficiency and hiring quality.</p>
+        <h2 className="reveal in">A step forward for skills-based hiring</h2>
+        <p className="reveal in">With the launch of AI Conversational Interviews, Testlify continues to lead the shift toward skills-based, bias-free recruitment. This innovation is another step in the company&apos;s mission to help businesses hire with confidence, speed, and fairness, powered by data, not assumptions.</p>
+        <h2 className="reveal in">About Testlify</h2>
+        <p className="reveal in">Testlify is an AI-powered talent assessment and interviewing platform designed for high-volume, high-velocity hiring. With enterprise-grade proctoring, advanced analytics, and seamless integrations, Testlify enables organizations to make smarter, faster, and fairer hiring decisions at scale. Testlify currently serves 1,500+ customers across 50+ countries, trusted by global enterprises like Veeam, UBA, LTI Mindtree, Airtel, Shell, PODS, inDrive, and more.</p>
+        <p className="reveal in">For more information, visit <a href="https://testlify.com/" style={{ color: '#F23F44', fontWeight: 700 }}>testlify.com</a>.</p>
+        <p className="reveal in"><strong>Media Contact:</strong><br />Akash Patange<br />Director of Marketing, Testlify<br />press@testlify.com</p>
       </div>
 
       <section className="sec darkcta" style={{ marginTop: '56px' }}><div className="wrap" style={{ maxWidth: '640px' }}>
