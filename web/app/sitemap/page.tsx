@@ -128,7 +128,7 @@ const SITEMAP_PAGES: PageEntry[] = [
   { slug: 'pricing', title: 'Pricing' },
   { slug: 'privacy-policy', title: 'Privacy Policy' },
   { slug: 'process-knowledge-tests', title: 'Process Knowledge Tests' },
-  { slug: 'product-feature-anti-cheating-and-proctoring', title: 'Product Feature Anti Cheating And Proctoring' },
+  { slug: 'anti-cheating-and-proctoring', title: 'Anti-cheating & proctoring' },
   { slug: 'product-features-detail', title: 'Product Features Detail' },
   { slug: 'product-skill-assessments', title: 'Product Skill Assessments' },
   { slug: 'product-tour', title: 'Product Tour' },
