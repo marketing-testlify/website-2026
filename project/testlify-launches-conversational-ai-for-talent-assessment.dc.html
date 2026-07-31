@@ -13,55 +13,58 @@
 <script src="./reveal.js"></script>
 <style>
 .artwrap{max-width:740px;margin:0 auto;padding:0 28px;}
-.crumb{font-size:13px;color:#9A878A;font-weight:600;margin:36px 0 22px;}
-.crumb a{color:#F23F44;}
-.arttitle{font-size:46px;line-height:1.08;font-weight:800;letter-spacing:-1.6px;margin:0 0 22px;}
-.artmeta{display:flex;align-items:center;gap:12px;font-size:13.5px;color:#9A878A;margin-bottom:30px;}
-.artav{width:42px;height:42px;border-radius:50%;background:#F23F44;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;}
-.artname{font-weight:700;color:#1A1014;font-size:14px;}
-.arthero{height:360px;border-radius:22px;background:linear-gradient(150deg,#6B3FA0,#2E1A4A);margin-bottom:44px;}
+.crumb{font-size:13px;color:#8A7A7D;font-weight:600;display:flex;gap:8px;align-items:center;margin:36px 0 22px;}
+.crumb a{color:#8A7A7D;text-decoration:none;}
+.crumb a:hover{color:#F23F44;}
+.arttitle{font-size:44px;line-height:1.12;font-weight:800;letter-spacing:-1.4px;margin:0 0 22px;color:#1A1014;}
+.artmeta{display:flex;align-items:center;gap:12px;font-size:13.5px;color:#9A878A;margin-bottom:30px;flex-wrap:wrap;}
+.arthero{border-radius:22px;overflow:hidden;margin-bottom:44px;border:1px solid #F0E2E3;box-shadow:0 16px 30px rgba(110,11,14,.10);}
+.arthero img{display:block;width:100%;height:auto;}
 .prose p{font-size:18px;line-height:1.75;color:#3A2C30;margin:0 0 24px;}
-.prose h2{font-size:30px;font-weight:800;letter-spacing:-.8px;margin:46px 0 18px;color:#1A1014;}
-.prose ul{margin:0 0 24px;padding-left:24px;}
-.prose li{font-size:18px;line-height:1.7;color:#3A2C30;margin-bottom:10px;}
+.prose h2{font-size:28px;font-weight:800;letter-spacing:-.6px;margin:44px 0 18px;color:#1A1014;}
+.prose h3{font-size:20px;font-weight:700;letter-spacing:-.3px;margin:32px 0 10px;color:#1A1014;}
 .prose strong{color:#1A1014;font-weight:700;}
-.pull{border-left:4px solid #F23F44;padding:6px 0 6px 24px;margin:32px 0;font-size:24px;line-height:1.45;font-weight:600;letter-spacing:-.4px;color:#1A1014;}
-@media(max-width:920px){.arttitle{font-size:34px;letter-spacing:-1px;}.arthero{height:220px;}.prose p,.prose li{font-size:16.5px;}}
+.pull{border-left:4px solid #F23F44;padding:6px 0 6px 24px;margin:32px 0;font-size:22px;line-height:1.45;font-weight:600;letter-spacing:-.4px;color:#1A1014;font-style:italic;}
+.share{display:flex;gap:10px;align-items:center;margin:48px 0;padding:24px 0;border-top:1px solid #F1E6E7;border-bottom:1px solid #F1E6E7;}
+.sbtn{width:42px;height:42px;border-radius:11px;border:1px solid #EFE2E3;display:flex;align-items:center;justify-content:center;color:#6A5A5D;font-weight:700;font-size:14px;transition:all .2s ease;}
+.sbtn:hover{border-color:#F2B7B9;color:#F23F44;transform:translateY(-2px);}
+@media(max-width:920px){.arttitle{font-size:30px;letter-spacing:-1px;}.prose p{font-size:16.5px;}}
 </style>
 </helmet>
-<dc-import name="component-site-header" announcement="New · Conversational AI for talent assessment" announcement-cta="Read the announcement" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+<dc-import name="component-site-header" announcement="Press release · Conversational AI interviews" announcement-cta="Read now" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
 
 <article class="artwrap">
-  <p class="crumb reveal in"><a href="blog.dc.html">Blog</a> &nbsp;·&nbsp; Product news</p>
-  <h1 class="arttitle reveal in">Testlify launches conversational AI for talent assessment</h1>
-  <div class="artmeta reveal in"><span class="artav">TL</span><div><div class="artname">Testlify Team</div><div>Product</div></div><span>·</span><span>4 min read</span><span>·</span><span>July 2026</span></div>
+  <h1 class="arttitle reveal" style="margin-top:36px;">Testlify launches conversational AI interviews to redefine talent assessment at scale</h1>
+  <div class="artmeta reveal" style="transition-delay:.08s"><span>Bensalem, PA</span><span>·</span><span>June 11, 2025</span><span>·</span><span>3 min read</span></div>
 </article>
-<div class="artwrap reveal in"><div class="arthero"></div></div>
+<div class="artwrap reveal" style="transition-delay:.1s"><div class="arthero"><img src="https://testlify.com/wp-content/uploads/2025/06/Testlify-Launches-Conversational-AI-Interviews.png" alt="Testlify launches conversational AI interviews"></div></div>
 <div class="artwrap prose">
-  <p class="reveal in">Today we're launching conversational AI across Testlify — bringing automated, scored video, audio and chat interviews to the platform teams already use to assess skills. It's the biggest step yet toward our mission: helping hiring teams stop guessing and start proving who can actually do the job.</p>
-  <div class="pull reveal in">"Every candidate deserves a fair, consistent conversation. Now every team can offer one — at any scale."</div>
-  <h2 class="reveal in">What's new</h2>
-  <p class="reveal in">Conversational AI interviews let you screen and interview candidates automatically, in the format that fits the role:</p>
-  <ul class="reveal in">
-    <li><strong>Video interviews</strong> for roles where presence and communication matter.</li>
-    <li><strong>Audio interviews</strong> for quick, low-friction spoken screening.</li>
-    <li><strong>Chat interviews</strong> for asynchronous, text-based assessment at scale.</li>
-  </ul>
-  <p class="reveal in">Every interview is scored against a structured rubric, so candidates are compared like-for-like — no drift between reviewers, no unstructured gut calls.</p>
-  <h2 class="reveal in">Why it matters</h2>
-  <p class="reveal in">Interviews are where hiring is slowest and most inconsistent. By automating the early rounds and scoring them objectively, teams reclaim hours, widen their funnels, and keep every decision defensible — while candidates get a faster, fairer experience.</p>
-  <h2 class="reveal in">Available now</h2>
-  <p class="reveal in">Conversational AI is rolling out across Testlify plans today, on top of the 3,500+ validated tests, AI resume screening and 100+ ATS integrations you already know. One platform, from application to offer.</p>
+  <p class="reveal"><strong>Bensalem, PA – 11th June 2025</strong> – Testlify, a renowned talent assessment platform trusted by over 1,500+ teams across 50+ countries, has launched its latest innovation, Conversational AI Interviews in video, audio, and text formats.</p>
+  <p class="reveal">This game-changing feature is designed to help companies streamline candidate evaluation with real-time, scenario-based interviews powered by AI. Testlify continues to elevate the hiring experience for leading global brands, including LTIMindtree, Solvay, InDrive, and Ditto Insurance, among many others.</p>
+  <p class="reveal">With this launch, Testlify is redefining how enterprises and staffing firms assess talent — faster, smarter, and more accurately than ever before.</p>
+  <h2 class="reveal">Solving a long-standing hiring problem</h2>
+  <p class="reveal">Traditional interviews often fail to predict how candidates will perform in real workplace situations. Static Q&As, interviewer bias, and inconsistent evaluation frameworks have long hindered effective hiring.</p>
+  <p class="reveal">Testlify's Conversational AI solves this by replicating real-world challenges in a controlled, AI-driven environment. So recruiters can evaluate candidates not just for what they know, but how they act under pressure.</p>
+  <div class="pull reveal">"Too often, interviews only scratch the surface. We built this conversational AI engine to go deeper, revealing the mindset, adaptability, and real-world judgment of each candidate before they're hired." — Abhishek Shah, Founder of Testlify</div>
+  <h2 class="reveal">Explore the power of multi-format conversational AI</h2>
+  <p class="reveal">The platform's latest release includes three advanced formats:</p>
+  <h3 class="reveal">Chat AI</h3>
+  <p class="reveal">Engage candidates in realistic, text-based workplace scenarios — like resolving a billing dispute or calming an irate customer. This helps recruiters assess problem-solving, written communication, and critical thinking in real time.</p>
+  <h3 class="reveal">Voice AI</h3>
+  <p class="reveal">Allow candidates to respond to dynamic, voice-based interview prompts tailored to roles in sales, customer support, or technical helpdesks — capturing verbal fluency, tone, and persuasion skills in action.</p>
+  <h3 class="reveal">Video AI</h3>
+  <p class="reveal">AI avatars guide candidates through complex job scenarios via asynchronous video interviews. Employers can now analyze non-verbal communication, confidence, and emotional intelligence with ease.</p>
+  <p class="reveal">All formats are meticulously crafted to reflect real-life job functions, whether it's managing a missed delivery, leading a team meeting, or troubleshooting a product issue. Each interview simulates realistic stakes, offering employers a deeper and more predictive lens on candidate performance.</p>
+  <h2 class="reveal">A game-changer for enterprise hiring teams</h2>
+  <p class="reveal">With hiring becoming increasingly distributed, inconsistent interviews slow down decisions and introduce bias. Testlify's Conversational AI brings consistency, objectivity, and scale to every candidate interaction without sacrificing the human element.</p>
+  <div class="pull reveal">"We're not just testing skills, we're uncovering true potential. Our clients can now build stronger teams by hiring people who don't just look good on paper, but thrive in real-world environments." — Abhishek Shah</div>
+  <h2 class="reveal">Available now</h2>
+  <p class="reveal">Testlify's Conversational AI interviews are now live and available to all users across plans. Companies can start building customized, role-specific interviews in minutes or explore the platform with a free trial.</p>
+  <h2 class="reveal">About Testlify</h2>
+  <p class="reveal">Testlify is a fast-growing, AI-powered skills assessment and interviewing platform that helps companies hire better, faster, and more objectively. With a test library of 3,500+ assessments covering 4,500+ job roles in 50+ countries, Testlify enables organizations to screen, assess, and interview candidates using real-world scenarios that go far beyond resumes.</p>
+  <p class="reveal">To learn more or start your free trial, visit <a class="lnk" href="core-home.dc.html">testlify.com</a>.</p>
+  <div class="share reveal"><span style="font-size:13.5px;font-weight:700;color:#6A5A5D;margin-right:6px;">Share</span><a class="sbtn" href="#">in</a><a class="sbtn" href="#">X</a><a class="sbtn" href="#">f</a><a class="sbtn" href="#">↗</a></div>
 </div>
-
-<section class="sec darkcta" style="margin-top:56px;"><div class="wrap" style="max-width:640px;">
-  <h2 class="h2 reveal">Try conversational AI interviews</h2>
-  <p class="lead reveal" style="margin:16px auto 28px;transition-delay:.04s;">Start free and run your first AI interview in minutes.</p>
-  <div class="reveal btnrow" style="transition-delay:.08s;">
-    <dc-import name="component-cta-button" label="Try for free" href="#" variant="light" size="md" icon="arrow" hint-size="160px,52px"></dc-import>
-    <dc-import name="component-cta-button" label="Explore interviews" href="interviews.dc.html" variant="outline-light" size="md" icon="none" hint-size="180px,52px"></dc-import>
-  </div>
-</div></section>
 
 <dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
 <dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>

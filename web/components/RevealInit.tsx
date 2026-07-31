@@ -27,16 +27,17 @@ export default function RevealInit() {
 
     const animateReveal = (el: HTMLElement) => {
       const delay = delayMs(el);
-      const dur = 620, startY = 28;
+      const dur = 900, startY = 22;
       const run = () => {
         const start = now();
+        el.style.willChange = 'opacity, transform';
         const step = (t: number) => {
           const p = Math.min((t - start) / dur, 1);
-          const e = 1 - Math.pow(1 - p, 3);
+          const e = 1 - Math.pow(1 - p, 5);
           el.style.opacity = String(e);
           el.style.transform = 'translateY(' + (startY * (1 - e)).toFixed(2) + 'px)';
           if (p < 1) requestAnimationFrame(step);
-          else { el.style.opacity = '1'; el.style.transform = 'none'; }
+          else { el.style.opacity = '1'; el.style.transform = 'none'; el.style.willChange = 'auto'; }
         };
         requestAnimationFrame(step);
       };

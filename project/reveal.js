@@ -13,8 +13,9 @@
         (function(n){
           var d = (parseFloat(n.style.transitionDelay||'0')||0)*1000;
           n.style.transition='none';
-          var dur=700, sy=26, st=null;
-          function tick(t){ if(st===null)st=t; var p=Math.min(1,(t-st)/dur); var e=1-Math.pow(1-p,3); n.style.opacity=String(e); n.style.transform='translateY('+(sy*(1-e)).toFixed(2)+'px)'; if(p<1) requestAnimationFrame(tick); else { n.style.opacity='1'; n.style.transform='none'; } }
+          n.style.willChange='opacity, transform';
+          var dur=900, sy=22, st=null;
+          function tick(t){ if(st===null)st=t; var p=Math.min(1,(t-st)/dur); var e=1-Math.pow(1-p,5); n.style.opacity=String(e); n.style.transform='translateY('+(sy*(1-e)).toFixed(2)+'px)'; if(p<1) requestAnimationFrame(tick); else { n.style.opacity='1'; n.style.transform='none'; n.style.willChange='auto'; } }
           setTimeout(function(){ requestAnimationFrame(tick); }, d);
         })(n);
       }

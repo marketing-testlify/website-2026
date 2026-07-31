@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#1A1014;background:#fff;}
+a{text-decoration:none;color:#F23F44;}
+a:hover{color:#DC3137;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+.sec{padding:96px 28px;}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A7A7D;margin:0 0 16px;}
+.eyebrow b{color:#F23F44;font-weight:700;}
+.h2{font-size:34px;line-height:1.12;font-weight:800;letter-spacing:-1.2px;margin:0;color:#1A1014;}
+.lead{font-size:18px;line-height:1.62;color:#5A4B4E;margin:0;}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+.ft-hero{background:radial-gradient(1000px 520px at 82% -12%,#FFF0EE 0%,rgba(255,240,238,0) 62%),#fff;padding:46px 28px 80px;}
+.ft-crumb{font-size:13px;color:#9A878A;font-weight:600;margin:0 0 26px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.ft-crumb .sep{color:#D6C4C7;}
+.ft-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;}
+.ft-tag{display:inline-flex;align-items:center;gap:7px;background:#FFF0F0;color:#C0242B;font-size:12px;font-weight:700;letter-spacing:.04em;padding:6px 13px;border-radius:999px;}
+.ft-title{font-size:50px;line-height:1.04;font-weight:800;letter-spacing:-2px;margin:17px 0 18px;}
+.ft-title .acc{color:#F23F44;}
+.ft-lede{font-size:18.5px;line-height:1.6;color:#5A4B4E;margin:0;max-width:560px;}
+.ft-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px;}
+.ft-ticks{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:22px;font-size:14.5px;color:#8A7A7D;font-weight:500;}
+.ft-ticks .tick{display:inline-flex;align-items:center;gap:7px;}
+.ft-ticks .tk{color:#F23F44;font-weight:700;}
+.ft-mock{background:#fff;border:1px solid #EFE2E3;border-radius:22px;box-shadow:0 30px 70px rgba(110,11,14,.14);overflow:hidden;display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;}
+.ft-mockimg{width:100%;height:100%;display:block;object-fit:contain;padding:24px;background:#FBF3EE;}
+.ft-sh{max-width:680px;margin:0 0 40px;}
+.ft-sh.ctr{margin-left:auto;margin-right:auto;text-align:center;}
+.ft-split{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:center;}
+.ft-split.rev .ft-splitcopy{order:2;}
+.ft-split.ctr{grid-template-columns:1fr;max-width:760px;margin:0 auto;justify-items:center;text-align:center;}
+.ft-split.ctr .ft-playbtn{margin-left:auto;margin-right:auto;}
+.ft-split.ctr .eyebrow{justify-content:center;}
+.ft-chks{display:flex;flex-direction:column;gap:12px;margin-top:22px;}
+.chk{display:flex;align-items:flex-start;gap:10px;font-size:15px;line-height:1.5;color:#46383C;font-weight:500;}
+.chki{flex:none;width:20px;height:20px;color:#1FA463;margin-top:1px;}
+.ft-panel{background:#fff;border:1px solid #EFE2E3;border-radius:20px;box-shadow:0 22px 50px rgba(110,11,14,.09);overflow:hidden;display:flex;align-items:center;justify-content:center;aspect-ratio:5/4;}
+.ft-panelimg{width:100%;height:100%;display:block;object-fit:contain;padding:28px;background:#FBF3EE;}
+.ft-playbtn{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-weight:600;font-size:14.5px;color:#F23F44;}
+@media(max-width:920px){
+  .ft-title{font-size:36px;letter-spacing:-1.2px;}
+  .h2{font-size:27px;}
+  .sec{padding:64px 22px;}
+  .ft-grid,.ft-split{grid-template-columns:1fr;gap:38px;}
+  .ft-split.rev .ft-splitcopy{order:0;}
+  .ft-tolgrid{grid-template-columns:1fr;}}
+h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
+</style>
+</helmet>
+<dc-import name="component-site-header" announcement="New — AI assistance detection catches ChatGPT-written answers" announcement-cta="See all features" home-href="core-home.dc.html" hint-size="100%,110px"></dc-import>
+
+<section class="ft-hero"><div class="wrap">
+  <div class="ft-grid">
+    <div>
+      <span class="ft-tag reveal in"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Anti-cheating &amp; proctoring</span>
+      <h1 class="ft-title reveal in">Anti-cheating and <span class="acc">proctoring features</span> that HR leaders trust</h1>
+      <p class="ft-lede reveal in">Testlify's advanced anti-cheating and remote proctoring features ensure every assessment reflects real skill and genuine effort — so you can hire candidates who've earned their results.</p>
+      <div class="ft-cta reveal in"><dc-import name="component-cta-button" label="Try for free" href="#" variant="primary" size="lg" icon="arrow" magnetic="true" hint-size="160px,56px"></dc-import><dc-import name="component-cta-button" label="Book a demo" href="company-contact.dc.html" variant="secondary" size="lg" icon="none" hint-size="165px,56px"></dc-import></div>
+      <div class="ft-ticks reveal in"><span class="tick"><b class="tk">✓</b>Free 7-day trial</span><span class="tick"><b class="tk">✓</b>No credit card required</span></div>
+    </div>
+    <div class="ft-mock reveal in"><img class="ft-mockimg" src="https://testlify.com/wp-content/uploads/2023/04/online-test-main-1.png" alt="Anti-cheating features"></div>
+  </div>
+</div></section>
+
+<section class="sec" style="background:#FBF3EE;"><div class="wrap">
+  <div class="ft-split ctr">
+    <div class="ft-splitcopy">
+      <p class="eyebrow reveal">Overview<b>.</b></p>
+      <h2 class="h2 reveal" style="transition-delay:.04s">See how proctoring features works</h2>
+      <p class="lead reveal" style="transition-delay:.08s;margin-top:18px;">Ensure assessment integrity with advanced AI-powered proctoring. Monitor behavior, detect violations, and maintain fairness at scale.</p>
+    </div>
+    <div class="ft-panel reveal" style="transition-delay:.06s;aspect-ratio:16/9;"><img class="ft-panelimg" style="padding:0;object-fit:cover;" src="https://testlify.com/wp-content/uploads/2026/03/Proctoring-Features.png" alt="Proctoring features"></div>
+    <a class="ft-playbtn reveal" style="transition-delay:.12s" href="https://youtu.be/toG0agFgXgg" target="_blank" rel="noopener"><svg width="34" height="34" viewBox="0 0 24 24" fill="#F23F44"><circle cx="12" cy="12" r="11" fill="none" stroke="#F23F44" stroke-width="1.6"></circle><path d="M10 8l6 4-6 4z"></path></svg>Watch the walkthrough</a>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="ft-sh ctr"><p class="eyebrow reveal">Capabilities<b>.</b></p><h2 class="h2 reveal" style="transition-delay:.04s">Twelve layers of integrity, on by default</h2></div>
+</div></section>
+
+<section class="sec" style="background:#fff;padding:56px 28px;"><div class="wrap">
+      <div class="ft-split">
+        <div class="ft-splitcopy">
+          <h2 class="h2 reveal" style="font-size:27px;">Session recording and webcam snapshots</h2>
+          <p class="lead reveal" style="transition-delay:.06s;margin-top:16px;font-size:16px;">Our platform records the candidate's entire test session, including real-time webcam snapshots at intervals. This creates a verifiable audit trail that helps confirm identity, detect impersonation, and provide visual context for any flagged behavior.</p>
+          <div class="ft-chks reveal" style="transition-delay:.1s">
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Build trust in your hiring decisions</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Great for validating remote test-taking integrity</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Helps resolve disputes or candidate challenges</div>
+          </div>
+        </div>
+        <div class="ft-panel reveal" style="transition-delay:.06s"><img class="ft-panelimg" src="https://testlify.com/wp-content/uploads/2023/04/Webcam-access-1.png" alt="Session recording and webcam snapshots"></div>
+      </div>
+</div></section>
+    <section class="sec" style="background:#FBF3EE;padding:56px 28px;"><div class="wrap">
+      <div class="ft-split rev">
+        <div class="ft-splitcopy">
+          <h2 class="h2 reveal" style="font-size:27px;">Location access &amp; IP address tracking</h2>
+          <p class="lead reveal" style="transition-delay:.06s;margin-top:16px;font-size:16px;">With IP and geolocation tracking, you can verify that assessments are taken from authorized locations. This helps prevent proxy test-taking and outsourced assessments.</p>
+          <div class="ft-chks reveal" style="transition-delay:.1s">
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Identify suspicious access or geographic mismatches</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Block unauthorized access or VPN masking</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Adds a powerful layer of authentication</div>
+          </div>
+        </div>
+        <div class="ft-panel reveal" style="transition-delay:.06s"><img class="ft-panelimg" src="https://testlify.com/wp-content/uploads/2023/03/Current-location-pana.png" alt="Location access &amp; IP address tracking"></div>
+      </div>
+</div></section>
+    <section class="sec" style="background:#fff;padding:56px 28px;"><div class="wrap">
+      <div class="ft-split">
+        <div class="ft-splitcopy">
+          <h2 class="h2 reveal" style="font-size:27px;">Copy/paste blocking &amp; screen switch detection</h2>
+          <p class="lead reveal" style="transition-delay:.06s;margin-top:16px;font-size:16px;">Our system disables copy-paste functionality and tracks any attempt to switch tabs or windows during the test. You can set tolerance limits and automatically terminate sessions if violations occur.</p>
+          <div class="ft-chks reveal" style="transition-delay:.1s">
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Enforces strict exam-like discipline</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Prevents external answer sourcing</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Keeps candidates focused on the test</div>
+          </div>
+        </div>
+        <div class="ft-panel reveal" style="transition-delay:.06s"><img class="ft-panelimg" src="https://testlify.com/wp-content/uploads/2023/04/Session-recording-1.png" alt="Copy/paste blocking &amp; screen switch detection"></div>
+      </div>
+</div></section>
+    <section class="sec" style="background:#FBF3EE;padding:56px 28px;"><div class="wrap">
+      <div class="ft-split rev">
+        <div class="ft-splitcopy">
+          <h2 class="h2 reveal" style="font-size:27px;">Question randomization</h2>
+          <p class="lead reveal" style="transition-delay:.06s;margin-top:16px;font-size:16px;">Testlify automatically randomizes questions and answers to reduce the risk of answer sharing or memorization. You can even pull from question pools to create thousands of unique combinations.</p>
+          <div class="ft-chks reveal" style="transition-delay:.1s">
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Makes cheating nearly impossible</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Encourages individual performance</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Improves fairness across the board</div>
+          </div>
+        </div>
+        <div class="ft-panel reveal" style="transition-delay:.06s"><img class="ft-panelimg" src="https://testlify.com/wp-content/uploads/2023/03/Benefits-of-psychometric-tests-for-recruitment-.png" alt="Question randomization"></div>
+      </div>
+</div></section>
+    <section class="sec" style="background:#fff;padding:56px 28px;"><div class="wrap">
+      <div class="ft-split">
+        <div class="ft-splitcopy">
+          <h2 class="h2 reveal" style="font-size:27px;">AI assistance detection</h2>
+          <p class="lead reveal" style="transition-delay:.06s;margin-top:16px;font-size:16px;">Our AI monitors test behavior and analyzes answers for signs of ChatGPT, code generators, or AI writing tools. You get notified when we suspect AI-assisted responses.</p>
+          <div class="ft-chks reveal" style="transition-delay:.1s">
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Protect the credibility of technical tests</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Stay ahead of modern cheating trends</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Red-flag potentially fabricated work</div>
+          </div>
+        </div>
+        <div class="ft-panel reveal" style="transition-delay:.06s"><img class="ft-panelimg" src="https://testlify.com/wp-content/uploads/2023/04/Session-recording-1.png" alt="AI assistance detection"></div>
+      </div>
+</div></section>
+    <section class="sec" style="background:#FBF3EE;padding:56px 28px;"><div class="wrap">
+      <div class="ft-split rev">
+        <div class="ft-splitcopy">
+          <h2 class="h2 reveal" style="font-size:27px;">Snapshot proctoring</h2>
+          <p class="lead reveal" style="transition-delay:.06s;margin-top:16px;font-size:16px;">Enable interval-based webcam snapshots to see the candidate's environment at multiple points. It's a lightweight but effective way to catch unauthorized behavior.</p>
+          <div class="ft-chks reveal" style="transition-delay:.1s">
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Easy to set up</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Reduces the need for full live proctoring</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Adds accountability for the entire session</div>
+          </div>
+        </div>
+        <div class="ft-panel reveal" style="transition-delay:.06s"><img class="ft-panelimg" src="https://testlify.com/wp-content/uploads/2024/02/How-to-simplify-candidate-screening-with-salesforce-test-1024x761.png" alt="Snapshot proctoring"></div>
+      </div>
+</div></section>
+    <section class="sec" style="background:#fff;padding:56px 28px;"><div class="wrap">
+      <div class="ft-split">
+        <div class="ft-splitcopy">
+          <h2 class="h2 reveal" style="font-size:27px;">Full-screen &amp; forced full-screen mode</h2>
+          <p class="lead reveal" style="transition-delay:.06s;margin-top:16px;font-size:16px;">By enforcing full-screen mode, candidates are locked into the assessment interface. Exiting or minimizing the window can trigger warnings or auto-termination.</p>
+          <div class="ft-chks reveal" style="transition-delay:.1s">
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Minimizes distractions and side-searching</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Increases engagement and integrity</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Useful for all test types</div>
+          </div>
+        </div>
+        <div class="ft-panel reveal" style="transition-delay:.06s"><img class="ft-panelimg" src="https://testlify.com/wp-content/uploads/2023/12/Diversity-is-Not-just-an-Ideal-1-1536x1536.png-3-1024x1024.webp" alt="Full-screen &amp; forced full-screen mode"></div>
+      </div>
+</div></section>
+    <section class="sec" style="background:#FBF3EE;padding:56px 28px;"><div class="wrap">
+      <div class="ft-split rev">
+        <div class="ft-splitcopy">
+          <h2 class="h2 reveal" style="font-size:27px;">Mouse-out &amp; tab proctoring</h2>
+          <p class="lead reveal" style="transition-delay:.06s;margin-top:16px;font-size:16px;">Monitor how long a candidate's mouse is outside the test area or how often they switch tabs. Set tolerance levels and auto-terminate based on severity.</p>
+          <div class="ft-chks reveal" style="transition-delay:.1s">
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Perfect for high-stakes roles or tests</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Detects focus loss and suspicious actions</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Customize thresholds based on your risk tolerance</div>
+          </div>
+        </div>
+        <div class="ft-panel reveal" style="transition-delay:.06s"><img class="ft-panelimg" src="https://testlify.com/wp-content/uploads/2023/06/Product-image-1-4-1024x741.png" alt="Mouse-out &amp; tab proctoring"></div>
+      </div>
+</div></section>
+    <section class="sec" style="background:#fff;padding:56px 28px;"><div class="wrap">
+      <div class="ft-split">
+        <div class="ft-splitcopy">
+          <h2 class="h2 reveal" style="font-size:27px;">Honesty agreements &amp; private invites</h2>
+          <p class="lead reveal" style="transition-delay:.06s;margin-top:16px;font-size:16px;">Require candidates to agree to a customized honesty declaration before starting the test. Combine that with private invites to limit access and boost compliance.</p>
+          <div class="ft-chks reveal" style="transition-delay:.1s">
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Creates a sense of responsibility</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Prevents test link sharing</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Adds professionalism and control</div>
+          </div>
+        </div>
+        <div class="ft-panel reveal" style="transition-delay:.06s"><img class="ft-panelimg" src="https://testlify.com/wp-content/uploads/2023/04/Session-recording-1.png" alt="Honesty agreements &amp; private invites"></div>
+      </div>
+</div></section>
+    <section class="sec" style="background:#FBF3EE;padding:56px 28px;"><div class="wrap">
+      <div class="ft-split rev">
+        <div class="ft-splitcopy">
+          <h2 class="h2 reveal" style="font-size:27px;">Question-level activity logs</h2>
+          <p class="lead reveal" style="transition-delay:.06s;margin-top:16px;font-size:16px;">See how long each candidate spent on every question, if they switched tabs during specific answers, and whether their behavior aligned with expectations.</p>
+          <div class="ft-chks reveal" style="transition-delay:.1s">
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Enables data-driven decisions beyond just scores</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Spot inconsistencies in performance</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Identify rushed or skipped questions</div>
+          </div>
+        </div>
+        <div class="ft-panel reveal" style="transition-delay:.06s"><img class="ft-panelimg" src="https://testlify.com/wp-content/uploads/2022/11/Better-Skill-Set-Evaluation-Process.png" alt="Question-level activity logs"></div>
+      </div>
+</div></section>
+    <section class="sec" style="background:#fff;padding:56px 28px;"><div class="wrap">
+      <div class="ft-split">
+        <div class="ft-splitcopy">
+          <h2 class="h2 reveal" style="font-size:27px;">Advanced AI identity verification</h2>
+          <p class="lead reveal" style="transition-delay:.06s;margin-top:16px;font-size:16px;">Using facial recognition and AI image analysis, we match the candidate's live camera feed against their submitted ID or profile image for real-time identity verification.</p>
+          <div class="ft-chks reveal" style="transition-delay:.1s">
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Fully automated for scale and speed</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Stops impersonation and ghost test-taking</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Ideal for remote hiring and contractor screening</div>
+          </div>
+        </div>
+        <div class="ft-panel reveal" style="transition-delay:.06s"><img class="ft-panelimg" src="https://testlify.com/wp-content/uploads/2023/04/Session-recording-1.png" alt="Advanced AI identity verification"></div>
+      </div>
+</div></section>
+    <section class="sec" style="background:#FBF3EE;padding:56px 28px;"><div class="wrap">
+      <div class="ft-split rev">
+        <div class="ft-splitcopy">
+          <h2 class="h2 reveal" style="font-size:27px;">Make screen sharing mandatory</h2>
+          <p class="lead reveal" style="transition-delay:.06s;margin-top:16px;font-size:16px;">Require candidates to share their screen for the entire duration of the test. Monitor all activity and catch cheating attempts instantly.</p>
+          <div class="ft-chks reveal" style="transition-delay:.1s">
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Simple to enable, hard to cheat</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Works well for whiteboard interviews and coding tasks</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Adds transparency to technical skill validation</div>
+          </div>
+        </div>
+        <div class="ft-panel reveal" style="transition-delay:.06s"><img class="ft-panelimg" src="https://testlify.com/wp-content/uploads/2023/03/Benefits-of-psychometric-tests-for-recruitment-.png" alt="Make screen sharing mandatory"></div>
+      </div>
+</div></section>
+<section class="sec" style="background:#fff;padding:56px 28px;"><div class="wrap">
+      <div class="ft-split">
+        <div class="ft-splitcopy">
+          <h2 class="h2 reveal" style="font-size:27px;">Set your own violation tolerance</h2>
+          <p class="lead reveal" style="transition-delay:.06s;margin-top:16px;font-size:16px;">Every organization is different, so we let you define your own thresholds.</p>
+          <div class="ft-chks reveal" style="transition-delay:.1s">
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Tab-switching tolerance (in seconds)</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Mouse-out limits</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Violation counts before auto-termination</div>
+            <div class="chk"><svg class="chki" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>Custom honesty agreements</div>
+          </div>
+        </div>
+        <div class="ft-panel reveal" style="transition-delay:.06s"><img class="ft-panelimg" src="https://testlify.com/wp-content/uploads/2023/04/Session-recording-1.png" alt="Set your own violation tolerance"></div>
+      </div>
+</div></section>
+
+<dc-import name="component-security-section" eyebrow="Security &amp; compliance" heading="Enterprise-grade security by default" sub="SOC 2 Type II, ISO 27001 and GDPR compliance, granular admin controls and a full audit trail — so every assessment is defensible." home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+
+<section class="sec" style="background:#FBF3EE;"><div class="wrap">
+  <div class="ft-sh ctr"><p class="eyebrow reveal">FAQ<b>.</b></p><h2 class="h2 reveal" style="transition-delay:.04s">Frequently asked questions</h2><p class="lead reveal" style="transition-delay:.08s;margin-top:12px;">Want to know more about Testlify? Here are answers to the most commonly asked questions about our company.</p></div>
+  <dc-import name="component-faq" items="{{ faqItems }}" hint-size="100%,600px"></dc-import>
+</div></section>
+
+<dc-import name="component-cta-band" hint-size="100%,520px"></dc-import>
+<dc-import name="component-site-footer" home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  faqData = [
+    { q: "What is Testlify's anti cheating and proctoring features?", a: "Testlify's anti cheating and proctoring Features are designed to mitigate cheating concerns, maintain assessment integrity, ensure fair and accurate evaluations, and provide advanced security measures." },
+    { q: 'How is asking for webcam access helpful?', a: 'There are webcam snapshots captured to ensure the integrity and fairness of the assessment.' },
+    { q: 'How is asking for location access helpful?', a: "Location Access verifies the candidate's location to ensure there are no multiple devices logged in from the same location or if the candidate has changed the location in between the assessment." },
+    { q: 'How is asking for a screen recording feature helpful?', a: 'The screen recording gives the whole recording of the assessment session of the candidate providing a complete insight on what the candidate was doing during the whole assessment.' },
+    { q: "How do Testlify's anti-cheating features empower recruiters?", a: "Testlify's Anti-Cheating Features empower recruiters by providing them with the tools and features they need to create a more robust and reliable pre-employment assessment process." },
+    { q: "How can recruiters and employers try Testlify's anti-cheating features for themselves?", a: "Recruiters can try Testlify's anti-cheating features by signing up for a Testlify account and creating pre-employment assessments with the features enabled." },
+    { q: "Can candidates cheat during the test-taking process even with Testlify's anti-cheating features?", a: "Testlify's Anti-Cheating Features are designed to mitigate cheating concerns and prevent cheating during the test-taking process to the best of their ability." }
+  ];
+
+  componentDidMount() {
+    const sweep = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.reveal:not(.in)').forEach(n => {
+        if (n.getBoundingClientRect().top < vh + 600) {
+          n.classList.add('in');
+          const _d = (parseFloat(n.style.transitionDelay || '0') || 0) * 1000;
+          n.style.transition = 'none';
+          const _dur = 700, _sy = 26; let _st = null;
+          const _tick = (t) => { if (_st === null) _st = t; const p = Math.min(1, (t - _st) / _dur); const e = 1 - Math.pow(1 - p, 3); n.style.opacity = String(e); n.style.transform = 'translateY(' + (_sy * (1 - e)).toFixed(2) + 'px)'; if (p < 1) requestAnimationFrame(_tick); else { n.style.opacity = '1'; n.style.transform = 'none'; } };
+          setTimeout(() => requestAnimationFrame(_tick), _d);
+        }
+      });
+    };
+    this._sweep = sweep;
+    window.addEventListener('scroll', sweep, { passive: true });
+    window.addEventListener('resize', sweep);
+    [0, 150, 400, 800, 1500].forEach(t => setTimeout(sweep, t));
+    requestAnimationFrame(sweep);
+    try { this._mo = new MutationObserver(() => requestAnimationFrame(sweep)); this._mo.observe(document.body, { childList: true, subtree: true }); } catch (e) {}
+  }
+  componentWillUnmount() { if (this._sweep) { window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep); } if (this._mo) this._mo.disconnect(); }
+
+  renderVals() {
+    return {
+      faqItems: this.faqData
+    };
+  }
+}
+
+</script>
+</body>
+</html>

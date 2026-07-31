@@ -1,15 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 type SubItem = { label: string; d: string; href: string };
 type Group = { name: string; cta: string; ctaLabel: string; subs: SubItem[] };
+type PaneItem = { i: number; t: string; d: string; href?: string; icon: ReactNode };
 
-// Rewrite a design href to a Next.js route.
-// - external / hash links pass through
-// - any trust link -> /security
-// - strip .dc.html, strip a leading "core-", core-home -> "/"
+// Rewrite a design href ("<slug>.dc.html") to a Next.js route.
+// - external / hash / already-absolute links pass through
+// - any trust page -> /security
+// - strip .dc.html, strip a leading "core-", core-home -> "/", core-compare -> "/compare-plans"
 function rw(href: string): string {
   if (!href) return '#';
   if (href.startsWith('http') || href.startsWith('#') || href.startsWith('/')) return href;
@@ -17,6 +18,7 @@ function rw(href: string): string {
   if (trustPages.includes(href)) return '/security';
   let slug = href.replace(/\.dc\.html$/, '');
   if (slug === 'core-home') return '/';
+  if (slug === 'core-compare') return '/compare-plans';
   if (slug.startsWith('core-')) slug = slug.slice(5);
   return '/' + slug;
 }
@@ -143,6 +145,98 @@ const RES: Group[] = [
   },
 ];
 
+const SOL_TABS: PaneItem[] = [
+  {
+    i: 0,
+    t: 'By industry type',
+    d: 'IT, SaaS, finance, healthcare & more',
+    icon: (
+      <>
+        <path d="M3 21h18"></path>
+        <path d="M5 21V7l8-4v18"></path>
+        <path d="M19 21V11l-6-4"></path>
+      </>
+    ),
+  },
+  {
+    i: 1,
+    t: 'By use case',
+    d: 'Volume, remote, campus, technical & more',
+    icon: (
+      <>
+        <path d="M12 2l10 5-10 5L2 7z"></path>
+        <path d="M2 12l10 5 10-5"></path>
+        <path d="M2 17l10 5 10-5"></path>
+      </>
+    ),
+  },
+  {
+    i: 2,
+    t: 'By test type',
+    d: 'Coding, cognitive, personality & more',
+    icon: (
+      <>
+        <path d="M9 11l3 3L22 4"></path>
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+      </>
+    ),
+  },
+  {
+    i: 3,
+    t: 'By company type',
+    d: 'Startup to enterprise & public sector',
+    icon: (
+      <>
+        <line x1="12" y1="20" x2="12" y2="10"></line>
+        <line x1="18" y1="20" x2="18" y2="4"></line>
+        <line x1="6" y1="20" x2="6" y2="16"></line>
+      </>
+    ),
+  },
+];
+
+const RES_TABS: PaneItem[] = [
+  {
+    i: 0,
+    t: 'Learn',
+    d: 'Blog, guides, glossary & podcast',
+    icon: (
+      <>
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+      </>
+    ),
+  },
+  {
+    i: 1,
+    t: 'HR tools',
+    d: 'AI generators & 13 calculators',
+    href: 'hr-tools.dc.html',
+    icon: (
+      <>
+        <rect x="3" y="3" width="7" height="7"></rect>
+        <rect x="14" y="3" width="7" height="7"></rect>
+        <rect x="14" y="14" width="7" height="7"></rect>
+        <rect x="3" y="14" width="7" height="7"></rect>
+      </>
+    ),
+  },
+  {
+    i: 2,
+    t: 'Programs',
+    d: 'Referral, partnership & integrations',
+    icon: (
+      <>
+        <circle cx="18" cy="5" r="3"></circle>
+        <circle cx="6" cy="12" r="3"></circle>
+        <circle cx="18" cy="19" r="3"></circle>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+      </>
+    ),
+  },
+];
+
 const CARET = (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
     <polyline points="6 9 12 15 18 9"></polyline>
@@ -250,6 +344,11 @@ const CSS = `
 .plist{display:flex;flex-direction:column;gap:2px;min-width:250px;border-right:1px solid #F4E4E5;padding-right:12px;margin-right:14px;}
 .mlrich.on{background:#FFF4F3;}
 .ppane{display:block;column-count:2;column-gap:14px;width:560px;min-width:560px;padding-top:2px;margin-right:6px;}
+.hrpane{display:grid;grid-template-columns:1fr 1.7fr;gap:0 22px;width:640px;min-width:640px;column-count:1;align-content:start;}
+.hrcol{display:flex;flex-direction:column;gap:1px;}
+.hrcol:last-child{display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:row;gap:1px 12px;align-content:start;}
+.hrglabel{grid-column:1/-1;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A7A7D;padding:4px 12px 6px;}
+.hrcta{grid-column:1/-1;border-top:1px solid #F4E4E5;margin-top:8px;padding-top:12px;}
 .ppane::-webkit-scrollbar{width:6px;}.ppane::-webkit-scrollbar-thumb{background:#EAD6D8;border-radius:8px;}
 .psub{break-inside:avoid;-webkit-column-break-inside:avoid;}
 .psub{display:flex;flex-direction:column;gap:1px;padding:8px 12px;border-radius:10px;transition:background .15s;}
@@ -278,26 +377,20 @@ h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.s
 type Props = {
   announcement?: string;
   announcementCta?: string;
-  announcementHref?: string;
   homeHref?: string;
-  overlay?: boolean;
-  ctaLabel?: string;
-  ctaHref?: string;
-  loginHref?: string;
-  contactHref?: string;
 };
 
 export default function SiteHeader({
   announcement = 'Testlify AI is here — screen, interview & score candidates automatically.',
   announcementCta = "See what's new →",
-  announcementHref = '#demo',
   homeHref = 'core-home.dc.html',
-  overlay = false,
-  ctaLabel = 'Try for free',
-  ctaHref = 'pricing.dc.html',
-  loginHref = '#',
-  contactHref = 'contact.dc.html',
 }: Props) {
+  const announcementHref = '#demo';
+  const contactHref = 'contact.dc.html';
+  const loginHref = 'https://app.testlify.com/login';
+  const ctaHref = 'pricing.dc.html';
+  const ctaLabel = 'Try for free';
+
   const rootRef = useRef<HTMLElement>(null);
   const spacerRef = useRef<HTMLDivElement>(null);
   const [mobOpen, setMobOpen] = useState(false);
@@ -306,12 +399,15 @@ export default function SiteHeader({
   const [resAcc, setResAcc] = useState(0);
   const [mobExp, setMobExp] = useState('');
 
+  const home = rw(homeHref);
+
+  // Keep a spacer the same height as the fixed header, and collapse the ribbon on scroll.
   useEffect(() => {
     const syncSpacer = () => {
       const sp = spacerRef.current;
       const root = rootRef.current;
       if (!sp || !root) return;
-      sp.style.height = overlay ? '0px' : root.offsetHeight + 'px';
+      sp.style.height = root.offsetHeight + 'px';
     };
     let spTO: ReturnType<typeof setTimeout>;
     const onScroll = () => {
@@ -330,15 +426,32 @@ export default function SiteHeader({
       clearTimeout(spTO);
       timers.forEach(clearTimeout);
     };
-  }, [overlay]);
+  }, []);
+
+  // Hash links that point at a section which is not on this page go to the home page instead.
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const target = e.target as Element | null;
+      const a = target?.closest?.('a[href^="#"]');
+      if (!a) return;
+      const id = (a.getAttribute('href') || '').slice(1);
+      if (!id) return;
+      if (!document.getElementById(id)) {
+        e.preventDefault();
+        window.location.href = (home === '/' ? '/' : home) + '#' + id;
+      }
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, [home]);
 
   const posClass = 'sh-fixed';
-  const solidClass =
-    (overlay ? (scrolled ? 'solid collapsed' : '') : 'solid') + (scrolled ? ' collapsed' : '');
+  const solidClass = 'solid' + (scrolled ? ' collapsed' : '');
   const mobOpenCls = mobOpen ? 'open' : '';
 
   const solActive = SOL[solAcc] ?? SOL[0];
   const resActive = RES[resAcc] ?? RES[0];
+
   const closeMob = () => {
     setMobOpen(false);
     setMobExp('');
@@ -378,7 +491,7 @@ export default function SiteHeader({
           </div>
         </div>
         <div className="sh-bar">
-          <Link className="sh-logo" href={rw(homeHref)} aria-label="Testlify home">
+          <Link className="sh-logo" href={home} aria-label="Testlify home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/brand/testlify-logo-main.svg" alt="Testlify" />
           </Link>
@@ -429,7 +542,7 @@ export default function SiteHeader({
                       </span>
                       <span><span className="mlt">Live product demo</span><span className="mld">See the full workflow, end to end</span></span>
                     </a>
-                    <a className="mlrich" href="https://roadmap.testlify.com/" target="_blank" rel="noopener">
+                    <a className="mlrich" href="https://roadmap.testlify.com/" target="_blank" rel="noopener noreferrer">
                       <span className="mlic">
                         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
                       </span>
@@ -461,12 +574,7 @@ export default function SiteHeader({
               <div className="mega mctr">
                 <div className="ptwo">
                   <div className="plist">
-                    {[
-                      { i: 0, t: 'By industry type', d: 'IT, SaaS, finance, healthcare & more', icon: <><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path><path d="M19 21V11l-6-4"></path></> },
-                      { i: 1, t: 'By use case', d: 'Volume, remote, campus, technical & more', icon: <><path d="M12 2l10 5-10 5L2 7z"></path><path d="M2 12l10 5 10-5"></path><path d="M2 17l10 5 10-5"></path></> },
-                      { i: 2, t: 'By test type', d: 'Coding, cognitive, personality & more', icon: <><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></> },
-                      { i: 3, t: 'By company type', d: 'Startup to enterprise & public sector', icon: <><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></> },
-                    ].map((it) => (
+                    {SOL_TABS.map((it) => (
                       <div key={it.i} className={`mlrich ${solAcc === it.i ? 'on' : ''}`} onMouseEnter={() => setSolAcc(it.i)}>
                         <span className="mlic">
                           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{it.icon}</svg>
@@ -482,6 +590,7 @@ export default function SiteHeader({
                         <span className="mld">{s.d}</span>
                       </a>
                     ))}
+                    <a className="ppane-cta" href={rw(solActive.cta)}>{solActive.ctaLabel}</a>
                   </div>
                 </div>
               </div>
@@ -494,13 +603,9 @@ export default function SiteHeader({
               <div className="mega mctr">
                 <div className="ptwo">
                   <div className="plist">
-                    {[
-                      { i: 0, t: 'Learn', d: 'Blog, guides, glossary & podcast', icon: <><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></> },
-                      { i: 1, t: 'HR tools', d: 'AI generators & 13 calculators', icon: <><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></> },
-                      { i: 2, t: 'Programs', d: 'Referral, partnership & integrations', icon: <><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></> },
-                    ].map((it) =>
-                      it.i === 1 ? (
-                        <a key={it.i} className={`mlrich ${resAcc === it.i ? 'on' : ''}`} href={rw('hr-tools.dc.html')} onMouseEnter={() => setResAcc(it.i)}>
+                    {RES_TABS.map((it) =>
+                      it.href ? (
+                        <a key={it.i} className={`mlrich ${resAcc === it.i ? 'on' : ''}`} href={rw(it.href)} onMouseEnter={() => setResAcc(it.i)}>
                           <span className="mlic">
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{it.icon}</svg>
                           </span>
@@ -548,7 +653,7 @@ export default function SiteHeader({
                       <span className="mlic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
                       <span><span className="mlt">Our leadership</span><span className="mld">The team behind Testlify</span></span>
                     </a>
-                    <a className="mlrich" href="/security">
+                    <a className="mlrich" href="https://trust.testlify.com/" target="_blank" rel="noopener noreferrer">
                       <span className="mlic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
                       <span><span className="mlt">Trust center</span><span className="mld">SOC 2, ISO 27001, GDPR</span></span>
                     </a>
@@ -576,7 +681,7 @@ export default function SiteHeader({
             </div>
           </nav>
           <div className="sh-right">
-            <a href={rw(loginHref)} className="nl hdr-login">Login</a>
+            <a href={loginHref} className="nl hdr-login">Login</a>
             <a href={rw(ctaHref)} className="btnsheen hdr-cta" style={{ color: '#fff' }}>
               {ctaLabel}
               <span style={{ fontSize: '18px', lineHeight: 1, color: '#fff' }}>→</span>
@@ -595,7 +700,7 @@ export default function SiteHeader({
       <div className={`mobscrim ${mobOpenCls}`} onClick={closeMob}></div>
       <nav className={`mobnav ${mobOpenCls}`} aria-label="Mobile">
         <button className="mobclose" onClick={closeMob} aria-label="Close menu">✕</button>
-        <a className="moblink" href={rw(homeHref)} onClick={closeMob}>Home</a>
+        <a className="moblink" href={home} onClick={closeMob}>Home</a>
         {/* Product accordion */}
         <div className={`mobacc ${mobExp === 'pro' ? 'open' : ''}`}>
           <button className="mobacc-t" onClick={() => toggle('pro')}>
@@ -609,7 +714,7 @@ export default function SiteHeader({
               <a className="mobacc-link" href={rw('video-interviewing-tool.dc.html')} onClick={closeMob}><span className="mt">Video interviewing</span><span className="md">One-way &amp; live two-way interviews</span></a>
               <a className="mobacc-link" href={rw('science.dc.html')} onClick={closeMob}><span className="mt">Science behind tests</span><span className="md">Validity, reliability &amp; fairness</span></a>
               <a className="mobacc-link" href={rw('demo.dc.html')} onClick={closeMob}><span className="mt">Live product demo</span><span className="md">See the full workflow, end to end</span></a>
-              <a className="mobacc-link" href="https://roadmap.testlify.com/" target="_blank" rel="noopener" onClick={closeMob}><span className="mt">Roadmap</span><span className="md">See what we&apos;re building next</span></a>
+              <a className="mobacc-link" href="https://roadmap.testlify.com/" target="_blank" rel="noopener noreferrer" onClick={closeMob}><span className="mt">Roadmap</span><span className="md">See what we&apos;re building next</span></a>
               <a className="mobacc-link" href={rw('integrations.dc.html')} onClick={closeMob}><span className="mt">ATS integrations</span><span className="md">Native two-way sync with 100+ ATS tools</span></a>
             </div>
           </div>
@@ -676,7 +781,7 @@ export default function SiteHeader({
             <div className="mobacc-sub">
               <a className="mobacc-link" href={rw('about.dc.html')} onClick={closeMob}><span className="mt">Our story</span><span className="md">Why we built Testlify</span></a>
               <a className="mobacc-link" href={rw('contact.dc.html')} onClick={closeMob}><span className="mt">Contact us</span><span className="md">Talk to sales or support</span></a>
-              <a className="mobacc-link" href="/security" onClick={closeMob}><span className="mt">Trust center</span><span className="md">SOC 2, ISO 27001, GDPR</span></a>
+              <a className="mobacc-link" href="https://trust.testlify.com/" target="_blank" rel="noopener noreferrer" onClick={closeMob}><span className="mt">Trust center</span><span className="md">SOC 2, ISO 27001, GDPR</span></a>
               <a className="mobacc-link" href={rw('clients.dc.html')} onClick={closeMob}><span className="mt">Clients</span><span className="md">Teams hiring with Testlify</span></a>
               <a className="mobacc-link" href={rw('our-partners.dc.html')} onClick={closeMob}><span className="mt">Partners</span><span className="md">Refer, resell or build with us</span></a>
               <a className="mobacc-link" href={rw('job-openings.dc.html')} onClick={closeMob}><span className="mt">Job openings</span><span className="md">Join the team behind Testlify</span></a>
@@ -684,7 +789,7 @@ export default function SiteHeader({
           </div>
         </div>
         <span className="mobsub">Account</span>
-        <a className="moblink" href={rw(loginHref)} onClick={closeMob}>Login</a>
+        <a className="moblink" href={loginHref} onClick={closeMob}>Login</a>
         <a className="mobcta" href={rw(ctaHref)} onClick={closeMob}>{ctaLabel}</a>
       </nav>
     </>

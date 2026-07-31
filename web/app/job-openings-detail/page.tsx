@@ -50,8 +50,24 @@ const pd = {
     'Working knowledge of Jira and Confluence.',
   ],
   hasCompetencies: true,
-  competencies: ['Results orientation', 'Agility', 'Initiative', 'Influence', 'Customer focus', 'Learn quickly', 'Recognize implications', 'Apply knowledge'],
-  benefits: ['Flexible Working Style', 'Diversity and Inclusion', 'Learn And Grow', 'Balanced Working Life', 'Flexible work hours', 'Health Insurance'],
+  competencies: [
+    'Results orientation',
+    'Agility',
+    'Initiative',
+    'Influence',
+    'Customer focus',
+    'Learn quickly',
+    'Recognize implications',
+    'Apply knowledge',
+  ],
+  benefits: [
+    'Flexible Working Style',
+    'Diversity and Inclusion',
+    'Learn And Grow',
+    'Balanced Working Life',
+    'Flexible work hours',
+    'Health Insurance',
+  ],
   equalOpportunity:
     "Testlify is deeply committed to creating a workplace and global community where inclusion is not only valued but prioritized. We're proud to be an equal-opportunity employer, seeking to create a welcoming and diverse environment. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, gender identity or expression, family status, marital status, sexual orientation, national origin, genetics, neurodiversity, disability, age, or any other non-merit-based or legally protected grounds.",
 };
@@ -79,10 +95,23 @@ const css = `
 .jdcard .chk li>svg{color:#1FA463;}
 @media(max-width:920px){ .jdsplit{grid-template-columns:1fr;} .jdform{position:static;} .jdrow2{grid-template-columns:1fr;} }
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
+
+.jmeta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.jtag{font-size:12.5px;font-weight:600;color:#8A7A7D;background:#FBF3EE;border-radius:100px;padding:5px 12px;}
+.jdcard .ctabtn{width:100%;justify-content:center;}
 `;
 
 const Check = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.4"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M20 6L9 17l-5-5"></path>
   </svg>
 );
@@ -100,7 +129,7 @@ export default function Page() {
       <section className="jdhero">
         <div className="wrap" style={{ maxWidth: '1100px' }}>
           <p className="jdcrumb reveal">
-            <a href="/">Home</a> / <a href="/job-openings">Job openings</a> / {pd.title}
+            <a href="/job-openings">Job openings</a> / {pd.title}
           </p>
           <h1 className="h1 reveal" style={{ fontSize: '44px', transitionDelay: '.04s' }}>
             {pd.title}
@@ -213,23 +242,24 @@ export default function Page() {
                 <h2>Apply now</h2>
                 <div className="jdrow2">
                   <div className="jdfield">
-                    <label>First name *</label>
-                    <input className="jdinput" type="text" placeholder="Jane" />
+                    <label htmlFor="jd-first">First name *</label>
+                    <input id="jd-first" className="jdinput" type="text" placeholder="Jane" />
                   </div>
                   <div className="jdfield">
-                    <label>Last name *</label>
-                    <input className="jdinput" type="text" placeholder="Doe" />
+                    <label htmlFor="jd-last">Last name *</label>
+                    <input id="jd-last" className="jdinput" type="text" placeholder="Doe" />
                   </div>
                 </div>
                 <div className="jdfield">
-                  <label>Email *</label>
-                  <input className="jdinput" type="email" placeholder="jane@email.com" />
+                  <label htmlFor="jd-email">Email *</label>
+                  <input id="jd-email" className="jdinput" type="email" placeholder="jane@email.com" />
                 </div>
                 <div className="jdfield">
-                  <label>Phone number *</label>
+                  <label htmlFor="jd-phone">Phone number *</label>
                   <div style={{ display: 'flex', gap: '8px' }}>
                     <select
                       className="jdinput"
+                      aria-label="Country calling code"
                       defaultValue="+91"
                       style={{
                         flex: '0 0 84px',
@@ -253,17 +283,23 @@ export default function Page() {
                       <option>+971</option>
                       <option>+65</option>
                     </select>
-                    <input className="jdinput" style={{ flex: 1 }} type="tel" placeholder="555 000 0000" />
+                    <input
+                      id="jd-phone"
+                      className="jdinput"
+                      style={{ flex: 1 }}
+                      type="tel"
+                      placeholder="555 000 0000"
+                    />
                   </div>
                 </div>
                 <div className="jdrow2">
                   <div className="jdfield">
-                    <label>Current CTC *</label>
-                    <input className="jdinput" type="text" placeholder="₹0" />
+                    <label htmlFor="jd-cctc">Current CTC *</label>
+                    <input id="jd-cctc" className="jdinput" type="text" placeholder="₹0" />
                   </div>
                   <div className="jdfield">
-                    <label>Expected CTC *</label>
-                    <input className="jdinput" type="text" placeholder="₹0" />
+                    <label htmlFor="jd-ectc">Expected CTC *</label>
+                    <input id="jd-ectc" className="jdinput" type="text" placeholder="₹0" />
                   </div>
                 </div>
                 <div className="jdfield">

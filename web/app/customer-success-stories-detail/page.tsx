@@ -66,6 +66,7 @@ a:hover{color:#F23F44;}
 .cs-relcard:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(110,11,14,.10);}
 .cs-relcard:hover::before{opacity:1;animation:runborder 2.4s linear infinite;}
 .cs-relimg{aspect-ratio:16/10;overflow:hidden;background:#FBF3EE center/cover no-repeat;transition:transform .5s cubic-bezier(.2,.7,.3,1);}
+.cs-relimg img{width:100%;height:100%;object-fit:cover;display:block;}
 .cs-relcard:hover .cs-relimg{transform:scale(1.05);}
 .cs-relbody{padding:20px 22px 24px;}
 .cs-reltitle{font-size:15px;font-weight:700;line-height:1.4;margin:0;color:#1A1014;}
@@ -73,18 +74,25 @@ a:hover{color:#F23F44;}
 h1,h2,h3,h4,.cs-h1,.cs-h2,.eyebrow{text-wrap:balance;}p,li,.cs-block p{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
+export const metadata = {
+  title:
+    'How Ashesi University built one objective bar for graduate admissions with Testlify | Testlify',
+  description:
+    'Six ready-made Testlify libraries build one rigorous aptitude, English, and reasoning screen that every graduate applicant sits, with no test-writing from scratch.',
+};
+
 const FACT_ICONS: Record<string, React.ReactNode> = {
   'Company size': (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
       <path d="M3 21h18M5 21V7l7-4 7 4v14" /><path d="M10 12h4" />
     </svg>
   ),
-  'Headquarters': (
+  Headquarters: (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" />
     </svg>
   ),
-  'Industry': (
+  Industry: (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
       <path d="M3 21V9l6-4v16" /><path d="M9 21V13h12v8" /><path d="M13 17h4" />
     </svg>
@@ -97,28 +105,25 @@ const FACT_ICONS: Record<string, React.ReactNode> = {
 };
 
 const CAP_ICONS: React.ReactNode[] = [
-  (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="4" width="18" height="14" rx="2" /><path d="M3 9h18" /><path d="M8 14h4" />
-    </svg>
-  ),
-  (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 19.5A2.5 2.5 0 016.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-    </svg>
-  ),
-  (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.77z" />
-    </svg>
-  ),
+  <svg key="c0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="4" width="18" height="14" rx="2" /><path d="M3 9h18" /><path d="M8 14h4" />
+  </svg>,
+  <svg key="c1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 19.5A2.5 2.5 0 016.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+  </svg>,
+  <svg key="c2" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.77z" />
+  </svg>,
 ];
 
 const data = {
-  announcement: 'How Ashesi University built one objective bar for graduate admissions with Testlify',
+  announcement:
+    'How Ashesi University built one objective bar for graduate admissions with Testlify',
   company: 'Ashesi University',
-  headline: 'How Ashesi University built one objective bar for graduate admissions with Testlify',
-  heroImg: 'https://testlify.com/wp-content/uploads/2026/07/medium-shot-graduate-student-scaled.jpg',
+  headline:
+    'How Ashesi University built one objective bar for graduate admissions with Testlify',
+  heroImg:
+    'https://testlify.com/wp-content/uploads/2026/07/medium-shot-graduate-student-scaled.jpg',
   facts: [
     { k: 'Company size', v: '501-1,000 employees' },
     { k: 'Headquarters', v: 'Berekuso, Ghana' },
@@ -138,6 +143,7 @@ const data = {
   ],
   story: [
     {
+      kicker: 'Details',
       heading: 'A values-driven university, and no fair way to compare applicants',
       paras: [
         'Ashesi University is one of Africa’s most respected private universities. Based in Berekuso, Ghana, it is known for a liberal-arts education built around ethics, leadership, and entrepreneurship, and it draws students from across the continent. Its graduate programs, led by the Ashesi MBA, attract applicants from many countries and undergraduate institutions.',
@@ -145,6 +151,7 @@ const data = {
       ],
     },
     {
+      kicker: 'One assessment every applicant sits',
       heading: 'One assessment every applicant sits',
       paras: [
         'Ashesi’s Graduate Admissions team built a standard set of assessments on Testlify and asks every applicant to sit them. Rather than reading documents that do not compare, admissions now sees each candidate answer the same cognitive, English, critical-thinking, analytical, and quantitative-aptitude questions, then compares people on the same objective evidence.',
@@ -152,6 +159,7 @@ const data = {
       ],
     },
     {
+      kicker: 'A repeatable admissions standard, now expanding',
       heading: 'A repeatable admissions standard, now expanding',
       paras: [
         'The standard holds because applicants actually complete it. Of 122 graduate applicants invited, 110 finished their assessment, a 90% completion rate, and the pool logged roughly 7,900 scored responses. Near-universal follow-through means admissions decisions rest on complete, comparable evidence rather than on who submitted the most polished file.',
@@ -160,14 +168,41 @@ const data = {
     },
   ],
   capabilities: [
-    { t: 'Standardized assessment battery', d: 'Every graduate applicant sits the same tests, so admissions compares candidates like for like.' },
-    { t: 'Ready-made skill libraries', d: 'Six Testlify libraries build a rigorous aptitude, English, and reasoning screen with no test-writing from scratch.' },
-    { t: 'Custom assessment setup', d: 'Testlify support helps the team build program-specific assessments for new intakes like the graduate Law program.' },
+    {
+      t: 'Standardized assessment battery',
+      d: 'Every graduate applicant sits the same tests, so admissions compares candidates like for like.',
+    },
+    {
+      t: 'Ready-made skill libraries',
+      d: 'Six Testlify libraries build a rigorous aptitude, English, and reasoning screen with no test-writing from scratch.',
+    },
+    {
+      t: 'Custom assessment setup',
+      d: 'Testlify support helps the team build program-specific assessments for new intakes like the graduate Law program.',
+    },
   ],
   related: [
-    { title: 'How Infojini built one technical screening standard for every candidate submittal', company: 'Infojini', img: 'https://testlify.com/wp-content/uploads/2026/07/Infojini.png', href: '/customer-success-stories' },
-    { title: 'How Benore Logistics built one hiring standard, from the dispatch desk to the executive suite', company: 'Benore Logistics', img: 'https://testlify.com/wp-content/uploads/2026/07/Benore-logistic.png', href: '/customer-success-stories' },
-    { title: 'How World Connection standardized bilingual screening across client programs', company: 'World Connection', img: 'https://testlify.com/wp-content/uploads/2026/07/World-connection.png', href: '/customer-success-stories' },
+    {
+      title:
+        'How Infojini built one technical screening standard for every candidate submittal',
+      company: 'Infojini',
+      img: 'https://testlify.com/wp-content/uploads/2026/07/Infojini.png',
+      href: '/customer-success-stories',
+    },
+    {
+      title:
+        'How Benore Logistics built one hiring standard, from the dispatch desk to the executive suite',
+      company: 'Benore Logistics',
+      img: 'https://testlify.com/wp-content/uploads/2026/07/Benore-logistic.png',
+      href: '/customer-success-stories',
+    },
+    {
+      title:
+        'How World Connection standardized bilingual screening across client programs',
+      company: 'World Connection',
+      img: 'https://testlify.com/wp-content/uploads/2026/07/World-connection.png',
+      href: '/customer-success-stories',
+    },
   ],
   showRelated: true,
 };
@@ -176,12 +211,16 @@ export default function Page() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <SiteHeader announcement={data.announcement} announcementCta="Read customer stories" homeHref="/" />
+      <SiteHeader
+        announcement={data.announcement}
+        announcementCta="Read customer stories"
+        homeHref="/"
+      />
 
       <section className="cs-hero">
         <div className="wrap">
           <p className="cs-crumb reveal in">
-            <Link href="/">Home</Link> / <Link href="/customer-success-stories">Success Story</Link> / {data.headline}
+            <Link href="/customer-success-stories">Success Story</Link> / {data.headline}
           </p>
           <p className="cs-eyebrow reveal in">Customer story</p>
           <h1 className="cs-h1 reveal in">{data.headline}</h1>
@@ -196,7 +235,10 @@ export default function Page() {
               </div>
             ))}
           </div>
-          <div className="cs-heroimg reveal in" role="img" aria-label={data.company} style={{ backgroundImage: `url("${data.heroImg}")` }} />
+          <div className="cs-heroimg reveal in">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={data.heroImg} alt={data.company} />
+          </div>
         </div>
       </section>
 
@@ -205,21 +247,25 @@ export default function Page() {
           <div className="cs-cso">
             <div className="cs-csocard reveal">
               <svg className="cs-csoglyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}>
-                <circle cx="12" cy="12" r="9"></circle><line x1="12" y1="8" x2="12" y2="13"></line><circle cx="12" cy="16.2" r=".2" fill="currentColor" stroke="none"></circle>
+                <circle cx="12" cy="12" r="9"></circle>
+                <line x1="12" y1="8" x2="12" y2="13"></line>
+                <circle cx="12" cy="16.2" r=".2" fill="currentColor" stroke="none"></circle>
               </svg>
               <h3>Challenge</h3>
               <p>{data.challenge}</p>
             </div>
             <div className="cs-csocard reveal">
               <svg className="cs-csoglyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}>
-                <path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                <path d="M9 11l3 3L22 4"></path>
+                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
               </svg>
               <h3>Solution</h3>
               <p>{data.solution}</p>
             </div>
             <div className="cs-csocard reveal">
               <svg className="cs-csoglyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}>
-                <path d="M3 3v18h18"></path><path d="M7 15l4-6 4 3 5-8"></path>
+                <path d="M3 3v18h18"></path>
+                <path d="M7 15l4-6 4 3 5-8"></path>
               </svg>
               <h3>Outcome</h3>
               <p>{data.outcome}</p>
@@ -286,7 +332,10 @@ export default function Page() {
             <div className="cs-relgrid">
               {data.related.map((r) => (
                 <Link className="cs-relcard reveal" href={r.href} key={r.title}>
-                  <div className="cs-relimg" role="img" aria-label={r.company} style={{ backgroundImage: `url("${r.img}")` }} />
+                  <div className="cs-relimg">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={r.img} alt={r.company} />
+                  </div>
                   <div className="cs-relbody">
                     <h3 className="cs-reltitle">{r.title}</h3>
                   </div>

@@ -35,7 +35,6 @@ export default function FairRefundPolicyPage() {
       <SiteHeader
         announcement="Your data, protected — SOC 2, ISO 27001, GDPR & CCPA"
         announcementCta="Trust center"
-        announcementHref="/security"
         homeHref="/"
       />
 

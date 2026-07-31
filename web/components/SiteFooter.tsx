@@ -3,6 +3,9 @@ import Link from 'next/link';
 const css = `
 /* ===========================================================
    Site Footer — single source of truth for the global footer.
+   Drop on any page:  <dc-import name="component-site-footer"
+       home-href="core-home.dc.html" hint-size="100%,560px"></dc-import>
+   #anchors not present on the current page auto-redirect to home-href.
    =========================================================== */
 .sf,.sf *{box-sizing:border-box;font-family:'Poppins',sans-serif;}
 .sf a{text-decoration:none;}
@@ -59,6 +62,145 @@ img,svg,video,table{max-width:100%;height:auto;}
 h1,h2,h3,h4,.h1,.h2,.h3,.hero h1,.eyebrow{text-wrap:balance;}p,li,.body,.lead,.sub,figcaption,blockquote{text-wrap:pretty;}/*om-balance-rule*/
 `;
 
+/** Rewrite a design-file href ("<slug>.dc.html") to its Next.js route. */
+function rw(href: string): string {
+  if (/^(https?:|mailto:|tel:|#|\/)/.test(href)) return href;
+  let slug = href.replace(/\.dc\.html$/, '').replace(/^core-/, '');
+  if (slug === 'home' || slug === '') return '/';
+  if (slug === 'compare') slug = 'compare-plans';
+  return `/${slug}`;
+}
+
+type FootLink = { href: string; label: string };
+type FootColumn = { heading: string; links: FootLink[] };
+
+const columns: FootColumn[] = [
+  {
+    heading: 'Product',
+    links: [
+      { href: 'ai-powered-talent-assessment-platform.dc.html', label: 'Testlify AI' },
+      { href: 'test-library.dc.html', label: 'Test library' },
+      { href: 'integrations.dc.html', label: 'ATS integrations' },
+      { href: 'science.dc.html', label: 'Science' },
+      { href: 'reporting-analytics.dc.html', label: 'Analytics' },
+      { href: 'api.dc.html', label: 'API' },
+      { href: 'reseller-plan.dc.html', label: 'Reseller plan' },
+      { href: 'features.dc.html', label: 'Features' },
+      { href: 'whats-new.dc.html', label: 'What’s new' },
+      { href: 'white-label.dc.html', label: 'White label' },
+      { href: 'video-interviewing-tool.dc.html', label: 'Video interviewing' },
+      { href: 'https://roadmap.testlify.com/', label: 'Product roadmap' },
+    ],
+  },
+  {
+    heading: 'Test type',
+    links: [
+      { href: 'role-specific-tests.dc.html', label: 'Role specific tests' },
+      { href: 'language-tests.dc.html', label: 'Language tests' },
+      { href: 'coding-tests.dc.html', label: 'Programming tests' },
+      { href: 'software-skills-tests.dc.html', label: 'Software skills tests' },
+      { href: 'cognitive-ability-tests.dc.html', label: 'Cognitive ability tests' },
+      { href: 'situational-judgment.dc.html', label: 'Situational judgment' },
+      { href: 'cefr-test.dc.html', label: 'CEFR test' },
+      { href: 'typing-test.dc.html', label: 'Typing test' },
+      { href: 'coding-tests.dc.html', label: 'Coding tests' },
+      { href: 'psychometric-tests.dc.html', label: 'Psychometric tests' },
+      { href: 'engineering-skills.dc.html', label: 'Engineering tests' },
+      { href: 'solution-testtype-template.dc.html', label: 'Process knowledge tests' },
+    ],
+  },
+  {
+    heading: 'Resources',
+    links: [
+      { href: 'blog.dc.html', label: 'Blog' },
+      { href: 'subject-matter-experts.dc.html', label: 'Join Testlify SME' },
+      { href: 'integration-program.dc.html', label: 'Integration program' },
+      { href: 'sitemap.dc.html', label: 'Sitemap' },
+      { href: 'knowledge-base.dc.html', label: 'Knowledge base' },
+      { href: 'podcast.dc.html', label: 'Podcast' },
+      { href: 'referral-program.dc.html', label: 'Referral program' },
+      { href: 'partnership.dc.html', label: 'Partnership program' },
+      { href: 'customer-success-stories.dc.html', label: 'Success stories' },
+      { href: 'alternatives.dc.html', label: 'Competitors' },
+      { href: 'hiring-guides.dc.html', label: 'Hiring guides' },
+      { href: 'hr-glossary.dc.html', label: 'HR glossary' },
+      { href: 'hr-tools.dc.html', label: 'HR tools' },
+    ],
+  },
+  {
+    heading: 'Terms',
+    links: [
+      { href: 'privacy-policy.dc.html', label: 'Privacy policy' },
+      { href: 'terms.dc.html', label: 'Terms & conditions' },
+      { href: 'fair-refund-policy.dc.html', label: 'Refund policy' },
+      { href: 'gdpr-compliance.dc.html', label: 'GDPR compliance' },
+      { href: 'cookie-policy.dc.html', label: 'Cookie policy' },
+      { href: 'security-practices.dc.html', label: 'Security practices' },
+      { href: 'https://trust.testlify.com/', label: 'Security' },
+      { href: 'data-processing-agreement.dc.html', label: 'Data processing agreement' },
+      { href: 'data-privacy-framework.dc.html', label: 'Data privacy framework' },
+      { href: 'ccpa.dc.html', label: 'CCPA' },
+      { href: 'https://trust.testlify.com/', label: 'Trust center' },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { href: 'about.dc.html', label: 'About us' },
+      { href: 'careers.dc.html', label: 'Careers' },
+      { href: 'subject-matter-experts.dc.html', label: 'For subject matter experts' },
+      { href: 'customer-success-stories.dc.html', label: 'Clients' },
+      { href: 'our-partners.dc.html', label: 'Our partners' },
+      { href: 'press-room.dc.html', label: 'Press room' },
+      { href: 'investors.dc.html', label: 'Investors' },
+      { href: 'write-for-us.dc.html', label: 'Write for us' },
+      { href: 'contact.dc.html', label: 'Contact us' },
+      { href: 'https://help.testlify.com/', label: 'Help center' },
+    ],
+  },
+];
+
+const socials: { label: string; glyph: string }[] = [
+  { label: 'LinkedIn', glyph: 'in' },
+  { label: 'X', glyph: 'X' },
+  { label: 'Facebook', glyph: 'f' },
+  { label: 'YouTube', glyph: '▶' },
+];
+
+const backers: { src: string; alt: string }[] = [
+  { src: 'https://testlify.com/wp-content/uploads/2023/12/image-2-1.png', alt: 'Google for Startups' },
+  { src: 'https://testlify.com/wp-content/uploads/2023/12/image-1-1-1024x430.png', alt: 'Microsoft for Startups' },
+  {
+    src: 'https://testlify.com/wp-content/uploads/2023/12/NV_Inception_Program_Logo_NV_Inception_Logo_H_CMYK-1080x662.png.webp',
+    alt: 'NVIDIA Inception',
+  },
+  { src: 'https://testlify.com/wp-content/uploads/2023/12/image-13.png', alt: 'SHRM Labs' },
+];
+
+const legal: FootLink[] = [
+  { href: 'privacy-policy.dc.html', label: 'Privacy policy' },
+  { href: 'terms.dc.html', label: 'Terms & conditions' },
+  { href: 'https://trust.testlify.com/', label: 'Security' },
+  { href: 'gdpr-compliance.dc.html', label: 'GDPR' },
+  { href: 'cookie-policy.dc.html', label: 'Cookie policy' },
+];
+
+function FLink({ href, label }: FootLink) {
+  const to = rw(href);
+  if (/^https?:/.test(to)) {
+    return (
+      <a href={to} target="_blank" rel="noopener" className="flink">
+        {label}
+      </a>
+    );
+  }
+  return (
+    <Link href={to} className="flink">
+      {label}
+    </Link>
+  );
+}
+
 export default function SiteFooter() {
   return (
     <footer className="sf" style={{ paddingTop: '48px', paddingBottom: '24px' }}>
@@ -70,94 +212,49 @@ export default function SiteFooter() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/brand/testlify-logo-white.svg" alt="Testlify" />
             </div>
-            <p className="sf-tag">The AI-powered skills assessment and interviewing platform helping teams hire the best talent — quickly, fairly, efficiently.</p>
-            <div className="sf-soc"><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="X">X</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="YouTube">▶</a></div>
+            <p className="sf-tag">
+              The AI-powered skills assessment and interviewing platform helping teams hire the best talent — quickly, fairly,
+              efficiently.
+            </p>
+            <div className="sf-soc">
+              {socials.map((s) => (
+                <a key={s.label} href="#" aria-label={s.label}>
+                  {s.glyph}
+                </a>
+              ))}
+            </div>
           </div>
-          <div><div className="sf-h">Product</div><div className="sf-col">
-            <Link href="/ai-powered-talent-assessment-platform" className="flink">Testlify AI</Link>
-            <Link href="/test-library" className="flink">Test library</Link>
-            <Link href="/integrations" className="flink">ATS integrations</Link>
-            <Link href="/science" className="flink">Science</Link>
-            <Link href="/reporting-analytics" className="flink">Analytics</Link>
-            <Link href="/api" className="flink">API</Link>
-            <Link href="/reseller-plan" className="flink">Reseller plan</Link>
-            <Link href="/features" className="flink">Features</Link>
-            <Link href="/whats-new" className="flink">What&apos;s new</Link>
-            <Link href="/white-label" className="flink">White label</Link>
-            <Link href="/video-interviewing-tool" className="flink">Video interviewing</Link>
-            <a href="https://roadmap.testlify.com/" target="_blank" rel="noopener" className="flink">Product roadmap</a>
-          </div></div>
-          <div><div className="sf-h">Test type</div><div className="sf-col">
-            <Link href="/role-specific-tests" className="flink">Role specific tests</Link>
-            <Link href="/language-tests" className="flink">Language tests</Link>
-            <Link href="/coding-tests" className="flink">Programming tests</Link>
-            <Link href="/software-skills-tests" className="flink">Software skills tests</Link>
-            <Link href="/cognitive-ability-tests" className="flink">Cognitive ability tests</Link>
-            <Link href="/situational-judgment" className="flink">Situational judgment</Link>
-            <Link href="/cefr-test" className="flink">CEFR test</Link>
-            <Link href="/typing-test" className="flink">Typing test</Link>
-            <Link href="/coding-tests" className="flink">Coding tests</Link>
-            <Link href="/psychometric-tests" className="flink">Psychometric tests</Link>
-            <Link href="/engineering-skills" className="flink">Engineering tests</Link>
-            <Link href="/solution-testtype-template" className="flink">Process knowledge tests</Link>
-          </div></div>
-          <div><div className="sf-h">Resources</div><div className="sf-col">
-            <Link href="/blog" className="flink">Blog</Link>
-            <Link href="/subject-matter-experts" className="flink">Join Testlify SME</Link>
-            <Link href="/integration-program" className="flink">Integration program</Link>
-            <Link href="/sitemap" className="flink">Sitemap</Link>
-            <Link href="/knowledge-base" className="flink">Knowledge base</Link>
-            <Link href="/podcast" className="flink">Podcast</Link>
-            <Link href="/referral-program" className="flink">Referral program</Link>
-            <Link href="/partnership" className="flink">Partnership program</Link>
-            <Link href="/customer-success-stories" className="flink">Success stories</Link>
-            <Link href="/alternatives" className="flink">Competitors</Link>
-            <Link href="/hiring-guides" className="flink">Hiring guides</Link>
-            <Link href="/hr-glossary" className="flink">HR glossary</Link>
-            <Link href="/hr-tools" className="flink">HR tools</Link>
-          </div></div>
-          <div><div className="sf-h">Terms</div><div className="sf-col">
-            <Link href="/privacy-policy" className="flink">Privacy policy</Link>
-            <Link href="/terms" className="flink">Terms &amp; conditions</Link>
-            <Link href="/fair-refund-policy" className="flink">Refund policy</Link>
-            <Link href="/gdpr-compliance" className="flink">GDPR compliance</Link>
-            <Link href="/cookie-policy" className="flink">Cookie policy</Link>
-            <Link href="/security-practices" className="flink">Security practices</Link>
-            <a href="https://trust.testlify.com/" target="_blank" rel="noopener" className="flink">Security</a>
-            <Link href="/data-processing-agreement" className="flink">Data processing agreement</Link>
-            <Link href="/data-privacy-framework" className="flink">Data privacy framework</Link>
-            <Link href="/ccpa" className="flink">CCPA</Link>
-            <a href="https://trust.testlify.com/" target="_blank" rel="noopener" className="flink">Trust center</a>
-          </div></div>
-          <div><div className="sf-h">Company</div><div className="sf-col">
-            <Link href="/about" className="flink">About us</Link>
-            <Link href="/careers" className="flink">Careers</Link>
-            <Link href="/subject-matter-experts" className="flink">For subject matter experts</Link>
-            <Link href="/customer-success-stories" className="flink">Clients</Link>
-            <Link href="/our-partners" className="flink">Our partners</Link>
-            <Link href="/press-room" className="flink">Press room</Link>
-            <Link href="/investors" className="flink">Investors</Link>
-            <Link href="/write-for-us" className="flink">Write for us</Link>
-            <Link href="/contact" className="flink">Contact us</Link>
-            <a href="https://help.testlify.com/" target="_blank" rel="noopener" className="flink">Help center</a>
-          </div></div>
+          {columns.map((col) => (
+            <div key={col.heading}>
+              <div className="sf-h">{col.heading}</div>
+              <div className="sf-col">
+                {col.links.map((l) => (
+                  <FLink key={`${col.heading}-${l.label}`} href={l.href} label={l.label} />
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
+
         <div className="sf-backed" style={{ paddingTop: '24px', paddingBottom: '24px', marginBottom: '24px' }}>
           <span className="sf-backed-l">Backed by</span>
           <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <span className="bpill"><img src="https://testlify.com/wp-content/uploads/2023/12/image-2-1.png" alt="Google for Startups" /></span>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <span className="bpill"><img src="https://testlify.com/wp-content/uploads/2023/12/image-1-1-1024x430.png" alt="Microsoft for Startups" /></span>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <span className="bpill"><img src="https://testlify.com/wp-content/uploads/2023/12/NV_Inception_Program_Logo_NV_Inception_Logo_H_CMYK-1080x662.png.webp" alt="NVIDIA Inception" /></span>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <span className="bpill"><img src="https://testlify.com/wp-content/uploads/2023/12/image-13.png" alt="SHRM Labs" /></span>
+            {backers.map((b) => (
+              <span className="bpill" key={b.alt}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={b.src} alt={b.alt} />
+              </span>
+            ))}
           </div>
         </div>
+
         <div className="sf-bottom" style={{ paddingTop: '0px' }}>
           <span>© 2026 Testlify. All rights reserved.</span>
-          <div className="sf-legal"><Link href="/privacy-policy" className="flink">Privacy policy</Link><Link href="/terms" className="flink">Terms &amp; conditions</Link><a href="https://trust.testlify.com/" target="_blank" rel="noopener" className="flink">Security</a><Link href="/gdpr-compliance" className="flink">GDPR</Link><Link href="/cookie-policy" className="flink">Cookie policy</Link></div>
+          <div className="sf-legal">
+            {legal.map((l) => (
+              <FLink key={`legal-${l.label}`} href={l.href} label={l.label} />
+            ))}
+          </div>
         </div>
       </div>
     </footer>

@@ -36,7 +36,6 @@ export default function DataProcessingAgreementPage() {
       <SiteHeader
         announcement="Your data, protected — SOC 2, ISO 27001, GDPR & CCPA"
         announcementCta="Trust center"
-        announcementHref="/security"
       />
 
       <section className="legalhero"><div className="wrap">

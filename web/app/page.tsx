@@ -665,10 +665,8 @@ export default function Page() {
       <div ref={progRef} className="progbar" />
 
       <SiteHeader
-        overlay
         announcement="Testlify AI is here — screen, interview & score candidates automatically."
         announcementCta="See what's new →"
-        announcementHref="#demo"
       />
 
       {/* HERO */}

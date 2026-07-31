@@ -32,7 +32,7 @@ export default function GdprFaqs() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: legalCss }} />
-      <SiteHeader announcement="Your data, protected — SOC 2, ISO 27001, GDPR & CCPA" announcementCta="Trust center" announcementHref="/security" homeHref="/" />
+      <SiteHeader announcement="Your data, protected — SOC 2, ISO 27001, GDPR & CCPA" announcementCta="Trust center" homeHref="/" />
 
       <section className="legalhero"><div className="wrap">
         <p className="eyebrow">Trust &amp; compliance<b>.</b></p>
