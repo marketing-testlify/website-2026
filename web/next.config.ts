@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
         destination: "/anti-cheating-and-proctoring",
         permanent: true,
       },
+      {
+        // Test detail pages moved to the live nested pattern /test-library/<slug>.
+        source: "/test-library-detail",
+        destination: "/test-library/attention-to-detail-visual",
+        permanent: true,
+      },
     ];
   },
 };

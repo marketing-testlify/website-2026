@@ -177,7 +177,7 @@ const SITEMAP_PAGES: PageEntry[] = [
   { slug: 'terms', title: 'Terms' },
   { slug: 'test-360-degree-feedback', title: 'Test 360 Degree Feedback' },
   { slug: 'test-library', title: 'Test Library' },
-  { slug: 'test-library-detail', title: 'Test Library Detail' },
+  { slug: 'test-library/attention-to-detail-visual', title: 'Test detail (Attention to Detail)' },
   { slug: 'testlify-information-security-standards', title: 'Testlify Information Security Standards' },
   { slug: 'testlify-launches-conversational-ai-for-talent-assessment', title: 'Testlify Launches Conversational AI For Talent Assessment' },
   { slug: 'testlify-pioneers-the-future-with-full-ai-integration-in-talentassessment-revolution', title: 'Testlify Pioneers The Future With Full AI Integration In Talentassessment Revolution' },

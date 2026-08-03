@@ -6,6 +6,7 @@ import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaButton from '@/components/CtaButton';
 import CtaBand from '@/components/CtaBand';
+import { TEST_INDEX } from '@/app/_tests';
 
 const CSS = `
 *{box-sizing:border-box;}
@@ -259,6 +260,10 @@ const TYPES: [string, string, number][] = [
   ['bluecollar', 'Blue collar', 110],
   ['simulation', 'Simulation', 24],
 ];
+
+const SLUG_BY_NAME: Record<string, string> = Object.fromEntries(
+  TEST_INDEX.map((t) => [t.name, t.slug])
+);
 
 const TESTS: TestRow[] = [
   ['Attention to Detail (Textual)', 'cognitive', 'Intermediate', 15, 10, 'Spot inconsistencies and errors across written information under time pressure.'],
@@ -696,7 +701,7 @@ export default function TestLibraryPage() {
               {count > 0 && (
                 <div className="grid fx-grid">
                   {filtered.map((t, i) => (
-                    <Link key={t[0] + i} className={'card ' + CBC_CLASS[t[2]]} href="/test-library-detail">
+                    <Link key={t[0] + i} className={'card ' + CBC_CLASS[t[2]]} href={`/test-library/${SLUG_BY_NAME[t[0]] ?? ''}`}>
                       <div className="card-top">
                         <span className="tbadge">
                           <span className="tbico">{mkIcon(t[1])}</span>

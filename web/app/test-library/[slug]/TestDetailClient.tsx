@@ -6,6 +6,7 @@ import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import CtaButton from '@/components/CtaButton';
 import CtaBand from '@/components/CtaBand';
+import type { TestMeta } from '@/app/_tests';
 
 const CSS = `
 *{box-sizing:border-box;}
@@ -218,9 +219,9 @@ const samples: { title: string; multi: boolean; ask: string; opts: Opt[] }[] = [
 ];
 
 const related = [
-  { name: 'JavaScript (Mid-level)', meta: 'Async, DOM, ES6+ · 30 min', tag: 'Programming', ic: 'code' },
-  { name: 'Redux', meta: 'State management · 20 min', tag: 'Programming', ic: 'layers' },
-  { name: 'Node.js', meta: 'APIs & back-end · 30 min', tag: 'Programming', ic: 'server' },
+  { name: 'JavaScript (Mid-level)', meta: 'Async, DOM, ES6+ · 30 min', tag: 'Programming', ic: 'code', slug: 'javascript' },
+  { name: 'React', meta: 'Hooks & component design · 16 min', tag: 'Programming', ic: 'layers', slug: 'react' },
+  { name: 'Node.js', meta: 'APIs & back-end · 30 min', tag: 'Programming', ic: 'server', slug: 'nodejs' },
 ];
 
 function RelIcon({ k }: { k: string }) {
@@ -230,17 +231,32 @@ function RelIcon({ k }: { k: string }) {
   return <svg {...p}><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg>;
 }
 
-const category = 'Role specific';
 const tag = 'Role-specific skills';
-const title = 'React Developer Test';
-const lede = "Evaluate a candidate's proficiency with React.js — components, JSX, state management and lifecycle — to build scalable, responsive web applications. Built and peer-reviewed by senior engineers to predict on-the-job performance.";
-const type = 'Coding + MCQ';
-const duration = '35 min';
-const questions = 35;
-const level = 'Intermediate';
 const skillsCount = skills.length;
 
-export default function TestLibraryDetailPage() {
+const CAT_LABEL: Record<string, string> = {
+  cognitive: 'Cognitive ability',
+  programming: 'Programming',
+  software: 'Software skills',
+  roleplay: 'Role specific',
+  personality: 'Personality & culture',
+  language: 'Language',
+  situational: 'Situational judgment',
+  typing: 'Typing',
+  bluecollar: 'Blue collar',
+  simulation: 'Simulation',
+};
+
+export default function TestDetailClient({ test }: { test: TestMeta }) {
+  // Per-test values come from the shared test index so every /test-library/<slug>
+  // route renders its own title, level and timings.
+  const title = `${test.name} Test`;
+  const lede = test.desc;
+  const category = CAT_LABEL[test.cat] ?? 'Assessment';
+  const type = test.cat === 'programming' ? 'Coding + MCQ' : 'MCQ';
+  const duration = `${test.minutes} min`;
+  const questions = test.questions;
+  const level = test.level;
   const [open, setOpen] = useState<Record<string, boolean>>({});
   const trackRef = useRef<HTMLDivElement>(null);
   const toggle = (id: string) => setOpen((s) => ({ ...s, [id]: !s[id] }));
@@ -379,7 +395,7 @@ export default function TestLibraryDetailPage() {
         <div className="td-sh ctr"><p className="eyebrow reveal">Related tests<b>.</b></p><h2 className="h2 reveal" style={{ transitionDelay: '.04s' }}>Build a complete assessment</h2></div>
         <div className="relgrid">
           {related.map((r, i) => (
-            <Link className="relcard reveal" href="/test-library-detail" key={i}><div className="reltop"><span className="relic"><RelIcon k={r.ic} /></span><span className="reltag">{r.tag}</span></div><h3 className="h3" style={{ fontSize: '17px', marginBottom: '6px' }}>{r.name}</h3><p className="body" style={{ fontSize: '13.5px' }}>{r.meta}</p></Link>
+            <Link className="relcard reveal" href={`/test-library/${r.slug}`} key={i}><div className="reltop"><span className="relic"><RelIcon k={r.ic} /></span><span className="reltag">{r.tag}</span></div><h3 className="h3" style={{ fontSize: '17px', marginBottom: '6px' }}>{r.name}</h3><p className="body" style={{ fontSize: '13.5px' }}>{r.meta}</p></Link>
           ))}
         </div>
       </div></section>
